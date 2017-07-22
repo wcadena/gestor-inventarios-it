@@ -185,6 +185,24 @@ return [
         *passport
         */
         Laravel\Passport\PassportServiceProvider::class,
+         /*
+         * pdf
+         */
+        Barryvdh\DomPDF\ServiceProvider::class,
+        /*
+         * flash
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        /*
+        *excel
+        */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        /**
+        *collection
+        */
+        
+
 
     ],
 
@@ -239,6 +257,21 @@ return [
         * Acacha AdminLTE template alias
         */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+        /*
+         * pdf
+         */
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        /*
+         * crud
+         */
+        // ...
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        // ...
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        
+        'Uuid' => Webpatser\Uuid\Uuid::class,
 
     ],
 
