@@ -70,10 +70,10 @@ class EquiposController extends Controller
         $modelos = ModeloEquipo::orderBy('modelo','asc')->pluck('modelo','id');
         $orden = OrdenDeCompra::orderBy('ordenCompra','asc')->pluck('ordenCompra','id');
         $custodio = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
-        $estaciones = Estaciones::lists('estacion','id');
+        $estaciones = Estaciones::pluck('estacion','id');
         $areas = Areas::orderBy('area','asc')->pluck('area','id');
         ////////////////////////////////////////////////////////////////////////////
-        $util = Equipos::lists('check_list_id');
+        $util = Equipos::pluck('check_list_id');
 
         //--------------------------------------------------------------------------
         $check_lists = CheckList::whereNotIn('id',
@@ -82,7 +82,7 @@ class EquiposController extends Controller
             ->pluck('id_check_lists','id');
         //dd($check_lists);
         /////////////////////////////////////////////////////////////////////////////
-        //$check_lists = CheckList::lists('id_check_lists','id');
+        //$check_lists = CheckList::pluck('id_check_lists','id');
         Session::flash('Crear_checklist', 'Crear_checklist');
 
         $dtos=array(
@@ -167,11 +167,11 @@ class EquiposController extends Controller
             return redirect('equipos');
         }
 
-        $modelos = ModeloEquipo::lists('modelo','id');
-        $orden = OrdenDeCompra::lists('ordenCompra','id');
+        $modelos = ModeloEquipo::pluck('modelo','id');
+        $orden = OrdenDeCompra::pluck('ordenCompra','id');
         $custodio = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
-        $estaciones = Estaciones::lists('estacion','id');
-        $areas = Areas::lists('area','id');
+        $estaciones = Estaciones::pluck('estacion','id');
+        $areas = Areas::pluck('area','id');
         $util = Equipos::whereNotIn('id',[$id])->pluck('check_list_id');
 
         //--------------------------------------------------------------------------

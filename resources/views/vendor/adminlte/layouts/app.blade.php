@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div id="app" v-cloak>
     <div class="wrapper">
 
@@ -43,9 +43,16 @@ desired effect
         @include('adminlte::layouts.partials.contentheader')
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" >
+            @if(Session::has('flash_message'))
+                <div class="alert alert-success alert-dismissable fade in">
+                    <strong>Mensaje: </strong> {{ Session::get('flash_message') }}
+                </div>
+            @endif
             <!-- Your Page Content Here -->
+            @yield('content')
             @yield('main-content')
+            
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 

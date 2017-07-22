@@ -45,8 +45,8 @@ class CheckListController extends Controller
     public function create()
     {
         $dts=array();
-        $areas = Areas::lists('area','id');
-        $user = User::lists('name','id');
+        $areas = Areas::pluck('area','id');
+        $user = User::pluck('name','id');
         $dts=array($areas,$user);
 
         return view('directory.checklist.create',compact('dts'));
@@ -93,8 +93,8 @@ class CheckListController extends Controller
      */
     public function edit($id)
     {
-        $areas = Areas::lists('area','id');
-        $user = User::lists('name','id');
+        $areas = Areas::pluck('area','id');
+        $user = User::pluck('name','id');
 
         $checklist = CheckList::findOrFail($id);
         $checklist->extras2=$areas;

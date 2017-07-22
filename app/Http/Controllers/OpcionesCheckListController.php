@@ -37,7 +37,7 @@ class OpcionesCheckListController extends Controller
      */
     public function create()
     {
-        $areas = Areas::lists('area','id');
+        $areas = Areas::pluck('area','id');
         return view('directory.opciones_check.create',compact('areas'));
     }
 
@@ -79,7 +79,7 @@ class OpcionesCheckListController extends Controller
      */
     public function edit($id)
     {
-        $areas = Areas::lists('area','id');
+        $areas = Areas::pluck('area','id');
         $opciones_check = OpcionesCheckList::findOrFail($id);
         $opciones_check->extras2=$areas;
 
