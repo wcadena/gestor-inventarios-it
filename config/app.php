@@ -201,6 +201,11 @@ return [
         /**
         *collection
         */
+        /*
+        *spatie/laravel-fractal
+        */        
+        Spatie\Fractal\FractalServiceProvider::class,
+
         
 
 
@@ -272,6 +277,11 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         
         'Uuid' => Webpatser\Uuid\Uuid::class,
+        /*
+        *spatie/laravel-fractal
+        */
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
+
 
     ],
 

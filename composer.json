@@ -16,6 +16,7 @@
         "laravelcollective/html": "^5.4.0",
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "^1.22",
+        "spatie/laravel-fractal": "^4.2",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {
