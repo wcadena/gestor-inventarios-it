@@ -175,3 +175,4 @@ Route::resource('ubicacion', 'UbicacionController');
 
 Route::resource('tecnico', 'InformeMantenimientoPreventivoTecnicoController');
 
+Route::post('users/store', 'api\UserController@store');

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -22,6 +22,16 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_api_routes
-});
+});*/
 
 Route::resource('users', 'api\UserController',['excepto' => 'create,edit']);
+//Route::any('users/create', 'api\UserController@create');
+//Route::post('users/store', 'api\UserController@store');
+
+Route::post('users/store', function()
+{
+	return 'Hello World';
+});
+
+
+Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto' => 'create,edit']);

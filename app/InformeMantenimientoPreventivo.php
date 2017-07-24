@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class InformeMantenimientoPreventivo extends Model
 {
     use SoftDeletes;
+    public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;
     protected $table = 'informe_manto_prevs';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['id','custodio_id','area_id','no_orden','fecha_solicitud','fecha_ejecucion','hora_inicio','hora_fin','informe_manto_prev_cate_id','requerimiento','solucion','resolucion'];
+    protected $fillable = ['id','custodio_id','area_id',
+    'no_orden','fecha_solicitud','fecha_ejecucion','hora_inicio',
+    'hora_fin','informe_manto_prev_cate_id','requerimiento','solucion','resolucion'];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')
      * estatus	enum('VIGENTE', 'BODEGA', 'BAJA')

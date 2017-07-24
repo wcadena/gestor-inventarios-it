@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','first_name','last_name','rol','padrino','username','email','password'
+        'name','first_name','last_name','rol','padrino','username','email','password','token','facebook_user_id'
     ];
 
     /**
@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
     public static function generarVerificationToken()
     {
-        return str_random(40);
+        return str_random(36);
     }
 
     //////////////////////////////////////////////inicio mutadores

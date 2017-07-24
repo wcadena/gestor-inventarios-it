@@ -54,6 +54,12 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function store(Request $request)
     {
+        $reglas = [
+            'no_orden' => 'required',
+            'fecha_ejecucion' => 'required',
+            'requerimiento' => 'required'
+        ];        
+        $this->validate($request, $reglas);
         
         InformeMantenimientoPreventivo::create($request->all());
 

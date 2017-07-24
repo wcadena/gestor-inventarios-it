@@ -11,11 +11,18 @@ use App\Http\Controllers\ApiController;
 
 class UserController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+       /* $this->middleware('client.credentials')->only(['store', 'resend']);
+        $this->middleware('auth:api')->except(['store', 'verify', 'resend']);
+        $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
+        $this->middleware('scope:manage-account')->only(['show', 'update']);
+        $this->middleware('can:view,user')->only('show');
+        $this->middleware('can:update,user')->only('update');
+        $this->middleware('can:delete,user')->only('destroy');*/
+    }
+
      /**
      * Display a listing of the resource.
      *
@@ -35,19 +42,29 @@ class UserController extends ApiController
      */
     public function store(Request $request)
     {
+        
         $reglas = [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed'
-        ];
+        ];        
         $this->validate($request, $reglas);
+        //return 'Hello World';
         $campos = $request->all();
+        
+        $campos['first_name'] = ($request->name);
+        $campos['last_name'] = ($request->name);
+        $campos['padrino'] = ('Avianca ECU');
+        $campos['username'] = ($request->email);
+        
+        
         $campos['password'] = bcrypt($request->password);
+       
        
         $campos['token'] = User::generarVerificationToken();
         $campos['rol'] = 'registrado';
         $usuario = User::create($campos);
-        return $this->showOne($usuario, 201);
+        return $this->showOne($usuario, 201);/**/
     }
     /**
      * Display the specified resource.
