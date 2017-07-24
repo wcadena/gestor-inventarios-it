@@ -13,6 +13,11 @@ use Carbon\Carbon;
 
 class InformeMantenimientoPreventivoController extends ApiController
 {
+    public function __construct()
+    {
+      $this->middleware('client.credentials')->only(['store', 'resend']);
+      $this->middleware('auth:api')->only(['show'])->except(['store', 'verify', 'resend']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,9 +56,11 @@ class InformeMantenimientoPreventivoController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    
+    public function show(InformeMantenimientoPreventivo $info)
     {
-        //
+        return $this->showOne($info);
+        
     }
 
     /**

@@ -19,7 +19,7 @@ class InformeMantenimientoPreventivoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('authEmp:system');
+        $this->middleware('authEmp:administrador');
     }
 
     /**

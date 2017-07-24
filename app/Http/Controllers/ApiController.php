@@ -12,7 +12,7 @@ class ApiController extends Controller
     use ApiResponser;
     public function __construct()
     {
-    	//$this->middleware('auth:api');
+    	$this->middleware('auth:api');
     }
     protected function allowedAdminAction()
     {
