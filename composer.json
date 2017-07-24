@@ -17,6 +17,7 @@
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "^1.22",
         "spatie/laravel-fractal": "^4.2",
+        "spatie/laravel-menu": "^2.1",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e133985ececce7bd61b457a45fedae5",
+    "content-hash": "07e2acc7d73ee1f4ed7741273d105079",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -2835,6 +2835,153 @@
                 "transform"
             ],
             "time": "2017-07-18T07:28:13+00:00"
+        },
+        {
+            "name": "spatie/laravel-menu",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-menu.git",
+                "reference": "61a41e6e008d5a11055dfc94fe57f218ddab053b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-menu/zipball/61a41e6e008d5a11055dfc94fe57f218ddab053b",
+                "reference": "61a41e6e008d5a11055dfc94fe57f218ddab053b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "~5.3.28|~5.4.0",
+                "illuminate/contracts": "~5.3.28|~5.4.0",
+                "illuminate/support": "~5.3.28|~5.4.0",
+                "php": "^7.0",
+                "spatie/menu": "^2.0.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.6",
+                "orchestra/testbench": "3.3.3|~3.4.0",
+                "phpunit/phpunit": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Menu\\Laravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastiandedeyne@gmail.com",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Html menu generator for Laravel",
+            "homepage": "https://github.com/spatie/laravel-menu",
+            "keywords": [
+                "laravel-menu",
+                "spatie"
+            ],
+            "time": "2017-02-20T09:36:46+00:00"
+        },
+        {
+            "name": "spatie/menu",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/menu.git",
+                "reference": "21c3a1f60b07a6b60e9f4104cc5993caf641548e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/menu/zipball/21c3a1f60b07a6b60e9f4104cc5993caf641548e",
+                "reference": "21c3a1f60b07a6b60e9f4104cc5993caf641548e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "spatie/url": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.2.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Menu\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Html menu generator",
+            "homepage": "https://github.com/spatie/menu",
+            "keywords": [
+                "menu",
+                "navigation",
+                "spatie"
+            ],
+            "time": "2017-07-11T06:43:55+00:00"
+        },
+        {
+            "name": "spatie/url",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/url.git",
+                "reference": "a052d689cb4623f74976fe08a2b09aa285a05a0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/url/zipball/a052d689cb4623f74976fe08a2b09aa285a05a0b",
+                "reference": "a052d689cb4623f74976fe08a2b09aa285a05a0b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Url\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Parse, build and manipulate URL's",
+            "homepage": "https://github.com/spatie/url",
+            "keywords": [
+                "spatie",
+                "url"
+            ],
+            "time": "2017-07-01T07:14:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

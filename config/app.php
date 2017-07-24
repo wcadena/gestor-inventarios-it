@@ -205,6 +205,10 @@ return [
         *spatie/laravel-fractal
         */        
         Spatie\Fractal\FractalServiceProvider::class,
+        /**
+        *menu services
+        */
+        Spatie\Menu\Laravel\MenuServiceProvider::class,
 
         
 
@@ -281,6 +285,10 @@ return [
         *spatie/laravel-fractal
         */
         'Fractal' => Spatie\Fractal\FractalFacade::class,
+        /**
+        *menu services
+        */
+        'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
 
 
     ],

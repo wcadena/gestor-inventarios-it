@@ -25,13 +25,5 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 });*/
 
 Route::resource('users', 'api\UserController',['excepto' => 'create,edit']);
-//Route::any('users/create', 'api\UserController@create');
-//Route::post('users/store', 'api\UserController@store');
-
-Route::post('users/store', function()
-{
-	return 'Hello World';
-});
-
 
 Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto' => 'create,edit']);
