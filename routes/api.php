@@ -27,3 +27,6 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 Route::resource('users', 'api\UserController',['excepto' => 'create,edit']);
 
 Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto' => 'create,edit']);
+
+
+Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');

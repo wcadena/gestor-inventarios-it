@@ -180,3 +180,6 @@ Route::post('users/store', 'api\UserController@store');
 Route::get('oautho2', function (Illuminate\Http\Request  $request) {
    return view('oauth2');
 });
+
+Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken')
+->middleware('api');
