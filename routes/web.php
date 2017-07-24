@@ -176,3 +176,7 @@ Route::resource('ubicacion', 'UbicacionController');
 Route::resource('tecnico', 'InformeMantenimientoPreventivoTecnicoController');
 
 Route::post('users/store', 'api\UserController@store');
+
+Route::get('oautho2', function (Illuminate\Http\Request  $request) {
+   return view('oauth2');
+});

@@ -63,6 +63,7 @@ Menu::macro('sidebar', function () {
 			->url('orden', "<i class='glyphicon glyphicon-shopping-cart'></i> <span>".trans('home.men11')."</span>")
 			->url('estaciones', "<i class='glyphicon glyphicon-plane'></i> <span>".trans('home.men12')."</span>")
 			->url('config', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('home.men13')."</span>")
+            ->url('oautho2', "<i class='glyphicon glyphicon-print'></i> <span>".trans('OAuth2')."</span>")
 			;
     })
 	
