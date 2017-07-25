@@ -1,5 +1,5 @@
 <?php
-
+/*
 use Spatie\Menu\Laravel\Menu;
 use Spatie\Menu\Html;
 use Spatie\Menu\Link;
@@ -97,5 +97,6 @@ Menu::macro('sidebar', function () {
 //                ->url('http://www.google.com', 'Google')
 //        )
         ->setActiveFromRequest();
-        */
+        * /
 });
+*/
