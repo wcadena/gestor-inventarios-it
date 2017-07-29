@@ -206,9 +206,9 @@ return [
         */        
         Spatie\Fractal\FractalServiceProvider::class,
         /**
-        *menu services
+        *menu services solo php 7
         */
-        Spatie\Menu\Laravel\MenuServiceProvider::class,
+        //Spatie\Menu\Laravel\MenuServiceProvider::class,
 
         
 
@@ -286,9 +286,9 @@ return [
         */
         'Fractal' => Spatie\Fractal\FractalFacade::class,
         /**
-        *menu services
+        *menu services solo php 7
         */
-        'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
+        //'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
 
 
     ],
