@@ -26,8 +26,8 @@ class PdfController extends Controller
         $view =  \View::make('pdf.invoice', compact('custodio','data', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
-        //return $view ;
+        //return $pdf->stream('invoice');
+        return $view ;
     }
 
     public function getData()

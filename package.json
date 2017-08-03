@@ -19,10 +19,10 @@
     "bootstrap-sass": "3.3.7",
     "cross-env": "^3.2.3",
     "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-html": "^2.0.0",
-    "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "font-awesome": "^4.7.0",
@@ -31,6 +31,7 @@
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "select2": "^4.0.3",
     "toastr": "^2.1.2",
     "vue": "^2.1.10"
   }

@@ -38,6 +38,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .copy('node_modules/admin-lte/dist/img','public/img')
    .copy('node_modules/admin-lte/plugins','public/plugins')
    .copy('node_modules/icheck/skins/square/blue.png','public/css')
+   .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
+   .copy('node_modules/select2/dist/css/select2.min.css','public/css')
+   .copy('node_modules/select2/dist/js/select2.min.js','public/js')
+    
    .copy('node_modules/icheck/skins/square/blue@2x.png','public/css');
 
 if (mix.config.inProduction) {
