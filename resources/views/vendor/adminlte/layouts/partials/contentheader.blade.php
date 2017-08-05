@@ -1,11 +1,12 @@
 <!-- Content Header (Page header) -->
+
 <section class="content-header">
     <h1>
-        @yield('contentheader_title', 'Page Header here')
-        <small>@yield('contentheader_description')</small>
+        @yield('contentheader_title', trans('home.init1'))
+        <small>@yield('contentheader_description',trans('home.init2'))</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('adminlte_lang::message.level') }}</a></li>
-        <li class="active">{{ trans('adminlte_lang::message.here') }}</li>
+        <li><a href="{{ url('/home') }}"><i class="glyphicon glyphicon-dashboard"></i> @yield('contentheader_navegacion', 'Inicio')</a></li>
+        <li class="active">@yield('contentheader_aqui', trans('home.init3'))</li>
     </ol>
 </section>
