@@ -83,6 +83,8 @@
 
 @section('scripts')
     @include('layouts.partials.scripts')
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript">
         $(function () {
             $('#fecha_ingreso').datepicker({

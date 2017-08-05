@@ -210,12 +210,26 @@ class EquiposController extends Controller
      */
     public function update($id, Request $request)
     {
+        $reglas = [
+            'modelo_equipo_id' => 'required',
+            'orden_de_compra_id' => 'required',
+            'custodio_id' => 'required',
+            'estacione_id' => 'required',
+            'area_id' => 'required',
+            'sociedad' => 'required',
+            'descripcion' => 'required',
+
+        ];
+        $this->validate($request, $reglas);
+
         if($request->check_list_id==''){
             Input::flashOnly('check_list_id');
         }
 
         $equipo = Equipos::findOrFail($id);
+
         $equipo->update($request->all());
+        //dd($equipo);
         $custorm=$equipo->jsonSerialize();
         $custorm['id_equipos']=$id;
         $custorm['acciondb']='actualizar';
