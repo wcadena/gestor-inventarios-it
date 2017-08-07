@@ -6,24 +6,33 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }} ">
-    <meta name="author" content="Sergi Tur Badenas - acacha.org">
+    <meta name="description" content="@lang('home.descripcion') ">
+    <meta name="author" content="Wagner Alexander Cadena Lastra">
 
-    <meta property="og:title" content="Adminlte-laravel" />
+    <link rel="icon" type="image/png" href="{{ asset('/favicon.ico') }}">
+    <link rel="icon"
+          type="image/png"
+          href="{{ asset('/favicon.ico') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/png" />
+
+
+    <meta property="og:title" content="@lang('home.sesinvetecu')" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }}" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org/" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x600.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x314.png" />
-    <meta property="og:sitename" content="demo.adminlte.acacha.org" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org" />
+    <meta property="og:description" content="@lang('home.descripcion')" />
+    <meta property="og:url" content="@lang('home.url')" />
+    <meta property="og:image" content="@lang('home.url')img/AcachaAdminLTE.png" />
+    <meta property="og:image" content="@lang('home.url')img/AcachaAdminLTE600x600.png" />
+    <meta property="og:image" content="@lang('home.url')img/AcachaAdminLTE600x314.png" />
+    <meta property="og:sitename" content="@lang('home.sesinvetecu')" />
+    <meta property="og:url" content="@lang('home.url')" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@acachawiki" />
     <meta name="twitter:creator" content="@acacha1" />
 
-    <title>{{ trans('adminlte_lang::message.landingdescriptionpratt') }}</title>
+    <title>@lang('home.url1')- @yield('htmlheader_title', trans('home.url2')) </title>
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/all-landing.css') }}" rel="stylesheet">
@@ -45,14 +54,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>adminlte-laravel</b></a>
+                <a class="navbar-brand" href="#"><b>@lang('home.sesinvetecu')</b></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#home" class="smoothScroll">{{ trans('adminlte_lang::message.home') }}</a></li>
-                    <li><a href="#desc" class="smoothScroll">{{ trans('adminlte_lang::message.description') }}</a></li>
-                    <li><a href="#showcase" class="smoothScroll">{{ trans('adminlte_lang::message.showcase') }}</a></li>
-                    <li><a href="#contact" class="smoothScroll">{{ trans('adminlte_lang::message.contact') }}</a></li>
+                    <li class="active"><a href="#home" class="smoothScroll">@lang('home.men1')</a></li>
+                    <li><a href="#desc" class="smoothScroll">Description</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
@@ -72,13 +79,11 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <div class="container">
                 <div class="row centered">
                     <div class="col-lg-12">
-                        <h1>Acacha <b><a href="https://github.com/acacha/adminlte-laravel">adminlte-laravel</a></b></h1>
-                        <h3>A <a href="https://laravel.com/">Laravel</a> {{ trans('adminlte_lang::message.laravelpackage') }}
-                            scaffolding/boilerplate {{ trans('adminlte_lang::message.to') }} <a href="https://almsaeedstudio.com/preview">AdminLTE</a> {{ trans('adminlte_lang::message.templatewith') }}
-                            <a href="http://getbootstrap.com/">Bootstrap</a> 3.0 {{ trans('adminlte_lang::message.and') }} <a href="http://blacktie.co/demo/pratt/">Pratt</a> Landing page</h3>
-                        <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">{{ trans('adminlte_lang::message.gedstarted') }}</a></h3>
+                        <h1>SES<b><a href="{{ url('/login') }}">Ecuador-Inventarios</a></b></h1>
+                        <h3>@lang('home.descripcion')</h3>
+                        <h3><a href="{{ url('/home') }}" class="btn btn-lg btn-success">@lang('home.comenzar')</a></h3>
                     </div>
-                    <div class="col-lg-2">
+                   {{--<div class="col-lg-2">
                         <h5>{{ trans('adminlte_lang::message.amazing') }}</h5>
                         <p>{{ trans('adminlte_lang::message.basedadminlte') }}</p>
                         <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
@@ -92,6 +97,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <h5>{{ trans('adminlte_lang::message.awesomepackaged') }}</h5>
                         <p>... {{ trans('adminlte_lang::message.by') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a> {{ trans('adminlte_lang::message.at') }} <a href="http://acacha.org">acacha.org</a> {{ trans('adminlte_lang::message.readytouse') }}</p>
                     </div>
+                    --}}
                 </div>
             </div> <!--/ .container -->
         </div><!--/ #headerwrap -->
@@ -102,23 +108,23 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div id="intro">
             <div class="container">
                 <div class="row centered">
-                    <h1>{{ trans('adminlte_lang::message.designed') }}</h1>
+                    <h1>Inventarios OnLine</h1>
                     <br>
                     <br>
                     <div class="col-lg-4">
                         <img src="{{ asset('/img/intro01.png') }}" alt="">
-                        <h3>{{ trans('adminlte_lang::message.community') }}</h3>
-                        <p>{{ trans('adminlte_lang::message.see') }} <a href="https://github.com/acacha/adminlte-laravel">{{ trans('adminlte_lang::message.githubproject') }}</a>, {{ trans('adminlte_lang::message.post') }} <a href="https://github.com/acacha/adminlte-laravel/issues">{{ trans('adminlte_lang::message.issues') }}</a> {{ trans('adminlte_lang::message.and') }} <a href="https://github.com/acacha/adminlte-laravel/pulls">{{ trans('adminlte_lang::message.pullrequests') }}</a></p>
+                        <h3>Conectados</h3>
+                        <p>Siempre en linea los inventarios.</p>
                     </div>
                     <div class="col-lg-4">
                         <img src="{{ asset('/img/intro02.png') }}" alt="">
-                        <h3>{{ trans('adminlte_lang::message.schedule') }}</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <h3>Al Día</h3>
+                        <p>Inventarios y estado de maquinas y a quien controla los activos.</p>
                     </div>
                     <div class="col-lg-4">
                         <img src="{{ asset('/img/intro03.png') }}" alt="">
-                        <h3>{{ trans('adminlte_lang::message.monitoring') }}</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <h3>Monitoreo</h3>
+                        <p>Monitorea los cambios de usuarios y activos .</p>
                     </div>
                 </div>
                 <br>
@@ -127,6 +133,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div><!--/ #introwrap -->
 
         <!-- FEATURES WRAP -->
+        {{--
         <div id="features">
             <div class="container">
                 <div class="row">
@@ -202,7 +209,9 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 </div>
             </div><!--/ .container -->
         </div><!--/ #features -->
+        --}}
     </section>
+    {{--
 
     <section id="showcase" name="showcase">
         <div id="showcase">
@@ -273,6 +282,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             </div>
         </div>
     </section>
+--}}
+
     <footer>
         <div id="c">
             <div class="container">
