@@ -66,6 +66,8 @@ class RegisterController extends Controller
             'username' => 'sometimes|required|max:255|unique:users',
             'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'first_name'     => 'required|max:255',
+            'last_name'     => 'required|max:255',
             'terms'    => 'required',
         ]);
     }
@@ -81,6 +83,12 @@ class RegisterController extends Controller
         $fields = [
             'name'     => $data['name'],
             'email'    => $data['email'],
+            'first_name'    => $data['first_name'],
+            'last_name'    => $data['last_name'],
+            'username'    => $data['username'],
+            'rol' =>'registrado',
+            'padrino' =>'Avianca',
+            'token' =>User::generarVerificationToken(),
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.users.field','email') === 'username' && isset($data['username'])) {

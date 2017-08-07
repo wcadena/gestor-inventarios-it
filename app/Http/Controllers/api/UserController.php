@@ -54,7 +54,7 @@ class UserController extends ApiController
         
         $campos['first_name'] = ($request->name);
         $campos['last_name'] = ($request->name);
-        $campos['padrino'] = ('Avianca ECU');
+        $campos['padrino'] = ('Avianca');
         $campos['username'] = ($request->email);
         
         

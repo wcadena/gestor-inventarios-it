@@ -2,12 +2,35 @@
  <form method="post" @submit.prevent="submit" @keydown="clearErrors($event.target.name)">
   <div class="alert alert-success text-center" v-show="form.succeeded" id="result"> {{ trans('adminlte_lang_message.registered') }} <i class="fa fa-refresh fa-spin"></i> {{ trans('adminlte_lang_message.entering') }}</div>
   <div class="form-group has-feedback " :class="{ 'has-error': form.errors.has('name') }">
-   <input type="text" class="form-control" :placeholder="trans('adminlte_lang_message.fullname')" name="name" value="" v-model="form.name" autofocus/>
+   <input type="text" class="form-control" :placeholder="trans('form.name')" name="name" value="" v-model="form.name" autofocus/>
    <span class="glyphicon glyphicon-user form-control-feedback"></span>
    <transition name="fade">
     <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
    </transition>
   </div>
+  <!---->
+  <div class="form-group has-feedback " :class="{ 'has-error': form.errors.has('first_name') }">
+   <input type="text" class="form-control" :placeholder="trans('form.first_name')" name="first_name" value="" v-model="form.first_name" autofocus/>
+   <span class="glyphicon glyphicon-user form-control-feedback"></span>
+   <transition name="fade">
+    <span class="help-block" v-if="form.errors.has('first_name')" v-text="form.errors.get('first_name')"></span>
+   </transition>
+  </div>
+  <div class="form-group has-feedback " :class="{ 'has-error': form.errors.has('last_name') }">
+   <input type="text" class="form-control" :placeholder="trans('form.last_name')" name="last_name" value="" v-model="form.last_name" autofocus/>
+   <span class="glyphicon glyphicon-user form-control-feedback"></span>
+   <transition name="fade">
+    <span class="help-block" v-if="form.errors.has('last_name')" v-text="form.errors.get('last_name')"></span>
+   </transition>
+  </div>
+  <div class="form-group has-feedback " :class="{ 'has-error': form.errors.has('username') }">
+   <input type="text" class="form-control" :placeholder="trans('form.username')" name="username" value="" v-model="form.username" autofocus/>
+   <span class="glyphicon glyphicon-user form-control-feedback"></span>
+   <transition name="fade">
+    <span class="help-block" v-if="form.errors.has('username')" v-text="form.errors.get('username')"></span>
+   </transition>
+  </div>
+  <!---->
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('email') }">
    <input type="email" class="form-control" :placeholder="trans('adminlte_lang_message.email')" name="email" value="" v-model="form.email"/>
    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -59,7 +82,7 @@ export default {
   mixins: [initialitzeIcheck, redirect],
   data: function () {
     return {
-      form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
+      form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '',  last_name: '' ,username : ''})
     }
   },
   watch: {

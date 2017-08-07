@@ -33,6 +33,12 @@ return [
 	'ncs234' => 'Num Cajas: ',
 	'asadd2' => 'Custodio:',
 	'kijhuu7y' => 'Crear Equipo',
+
+    'name' => 'Nombre completo',
+    'first_name' => 'Primer Nombre',
+    'last_name' => 'Apellido',
+    'username' => 'usuario de dominio Avianca\xxxxxx',
+
 	'' => '',
 	'' => '',
 ];

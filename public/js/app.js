@@ -25099,6 +25099,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -25109,7 +25132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mixins: [__WEBPACK_IMPORTED_MODULE_1__InitializeIcheck__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__redirect__["a" /* default */]],
   data: function data() {
     return {
-      form: new __WEBPACK_IMPORTED_MODULE_0_acacha_forms___default.a({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
+      form: new __WEBPACK_IMPORTED_MODULE_0_acacha_forms___default.a({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '', last_name: '', username: '' })
     };
   },
   watch: {
@@ -45455,7 +45478,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": _vm.trans('adminlte_lang_message.fullname'),
+      "placeholder": _vm.trans('form.name'),
       "name": "name",
       "value": "",
       "autofocus": ""
@@ -45479,6 +45502,126 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "help-block",
     domProps: {
       "textContent": _vm._s(_vm.form.errors.get('name'))
+    }
+  }) : _vm._e()])], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group has-feedback ",
+    class: {
+      'has-error': _vm.form.errors.has('first_name')
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.first_name),
+      expression: "form.first_name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": _vm.trans('form.first_name'),
+      "name": "first_name",
+      "value": "",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.form.first_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.first_name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "glyphicon glyphicon-user form-control-feedback"
+  }), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "fade"
+    }
+  }, [(_vm.form.errors.has('first_name')) ? _c('span', {
+    staticClass: "help-block",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('first_name'))
+    }
+  }) : _vm._e()])], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group has-feedback ",
+    class: {
+      'has-error': _vm.form.errors.has('last_name')
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.last_name),
+      expression: "form.last_name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": _vm.trans('form.last_name'),
+      "name": "last_name",
+      "value": "",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.form.last_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.last_name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "glyphicon glyphicon-user form-control-feedback"
+  }), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "fade"
+    }
+  }, [(_vm.form.errors.has('last_name')) ? _c('span', {
+    staticClass: "help-block",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('last_name'))
+    }
+  }) : _vm._e()])], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group has-feedback ",
+    class: {
+      'has-error': _vm.form.errors.has('username')
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.username),
+      expression: "form.username"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": _vm.trans('form.username'),
+      "name": "username",
+      "value": "",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.form.username)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.username = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "glyphicon glyphicon-user form-control-feedback"
+  }), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "fade"
+    }
+  }, [(_vm.form.errors.has('username')) ? _c('span', {
+    staticClass: "help-block",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('username'))
     }
   }) : _vm._e()])], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group has-feedback",
