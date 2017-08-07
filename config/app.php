@@ -209,7 +209,10 @@ return [
         *menu services solo php 7
         */
         //Spatie\Menu\Laravel\MenuServiceProvider::class,
-
+        /**
+         * pusher
+         */
+        Vinkla\Pusher\PusherServiceProvider::class
         
 
 
@@ -289,6 +292,10 @@ return [
         *menu services solo php 7
         */
         //'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
+        /**
+         * pusher
+         */
+        'Pusher' => Vinkla\Pusher\Facades\Pusher::class
 
 
     ],

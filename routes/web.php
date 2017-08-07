@@ -190,3 +190,24 @@ Route::get('oautho2', function (Illuminate\Http\Request  $request) {
 
 Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken')
 ->middleware('api');
+
+Route::get('pusher', function (Request $request) {
+
+    Vinkla\Pusher\Facades\Pusher::trigger('my-channel', 'my-event', ['message' => "Hola tewst laravel"]);
+
+    $options = array(
+        'cluster' => 'us2',
+        'encrypted' => true
+    );
+    $pusher = new Pusher\Pusher(
+        'b320838d82f185dbab9d',
+        '552daa7dde66a26359ab',
+        '379930',
+        $options
+    );
+
+    $data['message'] = 'hello world';
+    $pusher->trigger('my-channel', 'my-event', $data);
+
+    return "Manda mensaje pusher";
+});

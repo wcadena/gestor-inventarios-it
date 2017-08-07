@@ -17,7 +17,9 @@
         "laravelcollective/html": "^5.4.0",
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "^1.22",
+        "pusher/pusher-php-server": "^3.0",
         "spatie/laravel-fractal": "^4.2",
+        "vinkla/pusher": "^3.0",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {
