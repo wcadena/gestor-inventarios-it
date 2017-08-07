@@ -46,6 +46,14 @@ class ModeloEquipoController extends Controller
      */
     public function store(Request $request)
     {
+        $reglas = [
+            'modelo' => 'required',
+            'fabricante' => 'required',
+            'garantia_anios' => 'required',
+            'tipo_equipo' => 'required',
+
+        ];
+        $this->validate($request, $reglas);
         
         ModeloEquipo::create($request->all());
 
