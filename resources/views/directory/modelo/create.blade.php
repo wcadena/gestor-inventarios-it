@@ -15,7 +15,20 @@
                 <div class="form-group {{ $errors->has('modelo') ? 'has-error' : ''}}">
                 {!! Form::label('modelo', 'Modelo: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('modelo', null, ['class' => 'form-control','id'=>'modelo']) !!}
+
+                    <autocomplete-vue
+                            url="{{url('tags_model_modelo')}}"
+                            requestType="get"
+                            anchor = "modelo"
+                            deepValue=""
+                            label="writer"
+                            class = "form-control"
+                            id= "modelo"
+                            param = "term"
+                            className="form-control"
+                            :classes="{ wrapper: 'panel panel-default ', input: 'form-control', list: 'data-list list-group', item: 'data-list-item list-group-item' }"
+                            placeholder="Modelo"
+                    ></autocomplete-vue>
                     {!! $errors->first('modelo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -37,13 +50,33 @@
                 {!! Form::label('tipo_equipo', 'Tipo Equipoareas: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     <code>*'DESKTOP','LAPTOP','CPU','CLON','IMPRESORA LASER','IMPRESORA MATRICIAL',etc...</code>
-                    {!! Form::text('tipo_equipo', null, ['class' => 'form-control','id'=>'tipo_equipo']) !!}
-                    {!! $errors->first('tipo_equipo', '<p class="help-block">:message</p>') !!}
+                    <autocomplete-vue
+                            url="{{url('tags_model_tipo')}}"
+                            requestType="get"
+                            anchor = "tipo_equipo"
+                            deepValue=""
+                            label="writer"
+                            class = "form-control"
+                            id= "tipo_equipo"
+                            param = "term"
+                            className="form-control"
+                            :classes="{ wrapper: 'panel panel-default ', input: 'form-control', list: 'data-list list-group', item: 'data-list-item list-group-item' }"
+                            placeholder="Tipo de equipo"
+                    ></autocomplete-vue>
+
+                {!! $errors->first('tipo_equipo', '<p class="help-block">:message</p>') !!}
+                    <!--https://github.com/BosNaufal/vue2-autocomplete -->
+
+
+
+
+
+
                 </div>
             </div>
 
 
-    <div class="form-group">
+    <div class="form-group" style="z-index: 1000;">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
@@ -65,42 +98,5 @@
             <!-- jquery ui
     <script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>-->
-        <script>
-            window.onload = function() {
-                $(function(){
-                    $( "#tipo_equipo" ).autocomplete({
-                    source: function( request, response ) {
-                        $.ajax( {
-                            url: "{{url('tags_model_tipo')}}",
-                            dataType: "json",
-                            data: {
-                                term: request.term
-                            },
-                            success: function( data ) {
-                                // Handle 'no match' indicated by [ "" ] response
-                                response( data.length === 1 && data[ 0 ].length === 0 ? [] : data );
-                            }
-                        } );
-                    },
-                    minLength: 3
-                } );
-                    $( "#modelo" ).autocomplete({
-                    source: function( request, response ) {
-                        $.ajax( {
-                            url: "{{url('tags_model_modelo')}}",
-                            dataType: "json",
-                            data: {
-                                term: request.term
-                            },
-                            success: function( data ) {
-                                // Handle 'no match' indicated by [ "" ] response
-                                response( data.length === 1 && data[ 0 ].length === 0 ? [] : data );
-                            }
-                        } );
-                    },
-                    minLength: 3
-                } );
-                });
-            }
-        </script>
+
 @endsection

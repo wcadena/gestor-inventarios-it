@@ -34,5 +34,8 @@
     "select2": "^4.0.3",
     "toastr": "^2.1.2",
     "vue": "^2.1.10"
+  },
+  "dependencies": {
+    "autocomplete-vue": "^1.0.3"
   }
 }

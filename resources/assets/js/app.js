@@ -32,6 +32,8 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
+
 const app = new Vue({
     el: '#app'
 });

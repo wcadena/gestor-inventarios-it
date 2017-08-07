@@ -60,7 +60,7 @@
     <p class=MsoNormal style='margin-left:17.0pt;mso-line-height-alt:0pt'><b
              style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
                style='font-size:10.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:Arial'>ASIGNACI&Oacute;N</span></i></b></p>
+  mso-fareast-font-family:Arial'>{{$repono->novedad}}</span></i></b></p>
    </td>
   </tr>
   <tr style='mso-yfti-irow:1;height:11.35pt'>
@@ -119,7 +119,7 @@
     <p class=MsoNormal align=right style='text-align:right;mso-line-height-alt:
   0pt'><b style='mso-bidi-font-weight:normal'><span style='font-size:8.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$date}}</span></b></p>
+  Arial'>{{$repono->fecha_novedades}}</span></b></p>
    </td>
   </tr>
   <tr style='mso-yfti-irow:3;height:4.1pt'>
@@ -537,26 +537,26 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:8.3pt'>
     <p class=MsoNormal align=center style='text-align:center;line-height:6.3pt;
   mso-line-height-rule:exactly'><span style='font-size:5.5pt;mso-bidi-font-size:
-  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>{{$custodio->pais}}</span></p>
+  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>{{$repono->custodioxc->pais}}</span></p>
    </td>
    <td width=132 colspan=3 valign=bottom style='width:99.0pt;border:none;
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:8.3pt'>
     <p class=MsoNormal align=center style='margin-right:31.65pt;text-align:center;
   line-height:6.3pt;mso-line-height-rule:exactly'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$custodio->ciudad}}</span></p>
+  Arial'>{{$repono->custodioxc->ciudad}}</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;border:none;border-right:
   solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:8.3pt'>
     <p class=MsoNormal style='margin-left:1.0pt;line-height:6.3pt;mso-line-height-rule:
   exactly'><span style='font-size:5.5pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>{{$custodio->direccion}}</span></p>
+  "Arial",sans-serif;mso-fareast-font-family:Arial'>{{substr($repono->custodioxc->direccion,0,45)}}</span></p>
    </td>
    <td width=223 colspan=4 valign=bottom style='width:167.0pt;border:none;
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:8.3pt'>
     <p class=MsoNormal align=center style='text-align:center;mso-line-height-alt:
   0pt'><span style='font-size:5.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:Arial'>{{substr($custodio->area_piso,0,30)}}</span><span
+  mso-fareast-font-family:Arial'>{{substr($repono->custodioxc->area_piso,0,30)}}</span><span
              style='font-size:7.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -652,7 +652,7 @@
   border-bottom:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.35pt'>
     <p class=MsoNormal align=center style='text-align:center;mso-line-height-alt:
   0pt'><span style='font-size:6.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:Arial'>{{$custodio->nombre_responsable}}</span><span
+  mso-fareast-font-family:Arial'>{{$repono->custodioxc->nombre_responsable}}</span><span
              style='font-size:9.5pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -688,7 +688,7 @@
   border-bottom:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.0pt'>
     <p class=MsoNormal align=center style='text-align:center;line-height:6.3pt;
   mso-line-height-rule:exactly'><span style='font-size:5.5pt;mso-bidi-font-size:
-  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>{{$custodio->documentoIdentificacion}}</span></p>
+  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>{{$repono->custodioxc->documentoIdentificacion}}</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;padding:0cm 0cm 0cm 0cm;
   height:11.0pt'>
@@ -702,7 +702,7 @@
     <p class=MsoNormal align=center style='margin-left:7.3pt;text-align:center;
   line-height:6.3pt;mso-line-height-rule:exactly'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{substr($custodio->cargo,0,25)}}</span></p>
+  Arial'>{{substr($repono->custodioxc->cargo,0,25)}}</span></p>
    </td>
    <td width=16 valign=bottom style='width:12.0pt;border:none;border-bottom:
   solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.0pt'>
@@ -742,7 +742,7 @@
     <p class=MsoNormal align=center style='margin-right:31.65pt;text-align:center;
   line-height:6.3pt;mso-line-height-rule:exactly'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$custodio->compania}}</span></p>
+  Arial'>{{$repono->custodioxc->compania}}</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;padding:0cm 0cm 0cm 0cm;
   height:11.35pt'>
@@ -758,7 +758,7 @@
     <p class=MsoNormal align=center style='margin-left:7.3pt;text-align:center;
   line-height:6.3pt;mso-line-height-rule:exactly'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$custodio->telefono}}</span></p>
+  Arial'>{{$repono->custodioxc->telefono}}</span></p>
    </td>
    <td width=16 valign=bottom style='width:12.0pt;padding:0cm 0cm 0cm 0cm;
   height:11.35pt'>
@@ -854,7 +854,8 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
   </tr>
-    <tr style='mso-yfti-irow:16;height:3.2pt'>
+  
+  <tr style='mso-yfti-irow:16;height:3.2pt'>
    <td width=12 valign=bottom style='width:9.0pt;padding:0cm 0cm 0cm 0cm;
   height:3.2pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
@@ -997,6 +998,7 @@
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   5.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
+
    </td>
    <td width=16 valign=bottom style='width:12.0pt;border-top:none;border-left:
   none;border-bottom:solid #333 1.0pt;border-right:solid #D9D9D9 1.0pt;
@@ -1047,7 +1049,6 @@
   exactly'><b style='mso-bidi-font-weight:normal'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   Arial'>17. C&oacute;digo interno</span></b></p>
-
    </td>
    <td width=57 valign=bottom style='width:43.0pt;border:none;border-right:solid #F2F2F2 1.0pt;
   background:#F2F2F2;padding:0cm 0cm 0cm 0cm;height:6.75pt'>
@@ -1068,7 +1069,7 @@
     <p class=MsoNormal style='margin-left:14.0pt;line-height:6.3pt;mso-line-height-rule:
   exactly'><b style='mso-bidi-font-weight:normal'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>19. No. Serie</span></b></p>
+  Arial'>19. @lang('form.noser')</span></b></p>
    </td>
    <td width=16 valign=bottom style='width:12.0pt;border:none;border-right:solid #333 1.0pt;
   background:#F2F2F2;padding:0cm 0cm 0cm 0cm;height:6.75pt'>

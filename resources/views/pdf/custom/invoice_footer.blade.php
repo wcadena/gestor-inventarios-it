@@ -1,4 +1,3 @@
-
   <tr style='mso-yfti-irow:42;height:2.75pt'>
    <td width=12 valign=bottom style='width:9.0pt;padding:0cm 0cm 0cm 0cm;
   height:2.75pt'>
@@ -163,9 +162,10 @@
   border-left:none;border-bottom:solid #333 1.0pt;border-right:solid #333 1.0pt;
   mso-border-left-alt:solid #D9D9D9 1.0pt;background:#D9D9D9;padding:0cm 0cm 0cm 0cm;
   height:32.7pt'>
-    <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
-  12.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
+    
+  <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
+  normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
+  "Arial",sans-serif;mso-fareast-font-family:Arial'>{{$repono->observaciones}}</span></b></p>
    </td>
   </tr>
   <tr style='mso-yfti-irow:45;height:6.95pt'>
@@ -254,7 +254,7 @@
   padding:0cm 0cm 0cm 0cm;height:8.7pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>Como colaborador declaro
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>Como colaborador declaro
   que los activos y/o equipos relacionados en el presente documento se
   encuentran bajo mi responsabilidad, de tal manera, a partir de la fecha me
   obligo a dar un uso adecuado aceptando todas</span></b></p>
@@ -271,7 +271,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>las condiciones que me
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>las condiciones que me
   imponga el empleador para su correcta utilizaci&oacute;n, as&amp;iacute; como a las
   obligaciones contenidas en el reglamento de trabajo, y dem&aacute;s
   documentos/pol&amp;iacute;ticas institucionales que regulen el uso adecuado de</span></b></p>
@@ -288,7 +288,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>los activos y/o equipos de
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>los activos y/o equipos de
   trabajo. En caso de p&eacute;rdida o da&ntilde;o por omitir mis obligaciones de cuidado y
   uso adecuado, asumir&eacute; el costo de la reposici&oacute;n o arreglo del activo. Con la
   suscripci&oacute;n del presente documento</span></b></p>
@@ -305,7 +305,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>autorizo expresamente a mi
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>autorizo expresamente a mi
   empleador para que de verificarse la p&eacute;rdida o da&ntilde;o provocado por el mal uso
   o negligencia del activo y/o equipo de trabajo asignado a mi cargo, descuente
   del valor de mis salarios y de</span></b></p>
@@ -322,7 +322,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>cualquier tipo de ingreso
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>cualquier tipo de ingreso
   laboral, bien sea legal o extralegal, que reciba del empleador durante la
   vigencia del contrato de trabajo, as&amp;iacute; como de todos los ingresos a los que
   pueda tener derecho al terminar el contrato de</span></b></p>
@@ -339,7 +339,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>trabajo y que est&eacute;n
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>trabajo y que est&eacute;n
   incluidos en mi liquidaci&oacute;n o finiquito del contrato de trabajo. En todo
   caso, los descuentos se realizar&aacute;n conforme a los l&amp;iacute;mites que establezca la
   legislaci&oacute;n laboral vigente. As&amp;iacute; mismo, me comprometo</span></b></p>
@@ -356,7 +356,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>a informar oportunamente al
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>a informar oportunamente al
   &aacute;rea de Activos Fijos sobre cualquier desplazamiento, traslado temporal o
   definitivo de dicho activo mediante la tramitaci&oacute;n del FORMATO DE NOVEDADES DE
   ACTIVOS y sobre cualquier</span></b></p>
@@ -373,7 +373,7 @@
   height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>situaci&oacute;n que ponga en
+  "Arial",sans-serif;mso-fareast-font-family:Arial;text-align : justify;'>situaci&oacute;n que ponga en
   riesgo los bienes relacionados.</span></b></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;padding:0cm 0cm 0cm 0cm;
@@ -918,7 +918,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:7.5pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>DAVID PADILLA</span><span style='font-size:6.5pt;mso-bidi-font-size:
+  Arial'>{{$repono->antiguo_custodioxc->nombre_responsable}}</span><span style='font-size:6.5pt;mso-bidi-font-size:
   10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -982,7 +982,7 @@
   padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>LIDET IT ECUADOR</span><span style='font-size:5.0pt;mso-bidi-font-size:
+  Arial'>{{$repono->antiguo_custodioxc->cargo}}</span><span style='font-size:5.0pt;mso-bidi-font-size:
   10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -999,7 +999,7 @@
   padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>DIEGO.UQUILLAS@AVIANCA.COM</span><span style='font-size:5.0pt;
+  Arial'>{{$repono->correo}}</span><span style='font-size:5.0pt;
   mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -1120,7 +1120,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>1716198567</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
+  Arial'>{{$repono->custodioxc->documentoIdentificacion}}</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
   font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -1427,7 +1427,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   5.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'>{{$repono->traslado_custodioxc->nombre_responsable}}</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;border:none;border-right:
   solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>
@@ -1544,7 +1544,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   5.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'>{{$repono->traslado_custodioxc->cargo}}</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;border:none;border-right:
   solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>
@@ -1557,7 +1557,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   5.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'>{{substr($repono->traslado_custodioxc->area_piso,0,30)}}</span></p>
    </td>
   </tr>
   <tr style='mso-yfti-irow:72;height:1.25pt'>
@@ -1785,3 +1785,4 @@
    </td>
   </tr>
  
+

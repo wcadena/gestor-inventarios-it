@@ -148,15 +148,21 @@ Route::group(array('prefix' => 'api'), function() {
 });
 
 Route::get('tags_model_tipo', function (Illuminate\Http\Request  $request) {
+
     $term = $request->term ?: '';
     $term = str_replace(" ", "%", "$term");
-    $tags= App\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')->groupby('tipo_equipo')->pluck('tipo_equipo');
-    return \Response::json($tags);
+    $tags= App\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')
+        ->select(DB::raw('tipo_equipo'))
+        ->groupby('tipo_equipo')
+    ->get();
+    return response()->json($tags, 200);
 });
 Route::get('tags_model_modelo', function (Illuminate\Http\Request  $request) {
     $term = $request->term ?: '';
     $term = str_replace(" ", "%", "$term");
-    $tags= App\ModeloEquipo::where('modelo', 'like', '%'.$term.'%')->groupby('modelo')->pluck('modelo');
+    $tags= App\ModeloEquipo::where('modelo', 'like', '%'.$term.'%')
+        ->select(DB::raw('modelo'))
+        ->groupby('modelo')->get();
     return \Response::json($tags);
 });
 

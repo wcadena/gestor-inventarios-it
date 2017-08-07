@@ -3,7 +3,7 @@
   padding:0cm 0cm 0cm 0cm;height:9.85pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial;color:#969696'>{{ $x+1}}</span></p>
+  Arial;color:#969696'>{{$x+1}}</span></p>
    </td>
    <td width=48 valign=bottom style='width:36.0pt;border:none;border-bottom:
   solid #333 1.0pt;mso-border-top-alt:solid #333 1.0pt;padding:
@@ -43,7 +43,7 @@
     <p class=MsoNormal align=center style='text-align:center;mso-line-height-alt:
   0pt'><span lang=EN-US style='font-size:4.5pt;mso-bidi-font-size:10.0pt;
   font-family:"Arial",sans-serif;mso-fareast-font-family:Arial;mso-ansi-language:
-  EN-US'>{{$item->modelo_equipoxc->fabricante}} {{$item->modelo_equipoxc->modelo}}</span><span lang=EN-US style='font-size:
+  EN-US'>{{--{{$item->descripcion}} --}}{{$item->modelo_equipoxc->fabricante}} {{$item->modelo_equipoxc->modelo}}</span><span lang=EN-US style='font-size:
   8.5pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   mso-ansi-language:EN-US'></span></p>
@@ -66,4 +66,5 @@
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   Arial'>{{$item->estado}}</span></p>
    </td>
-  </tr>{{--{{$item->no_serie}}--}}
+  </tr>
+  {{-- {{$item->no_serie}} --}}
