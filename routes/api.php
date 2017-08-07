@@ -26,6 +26,10 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 
 Route::resource('users', 'api\UserController',['excepto' => 'create,edit']);
 
+Route::get('users/verificar', 'api\UserController@verify');
+
+Route::get('usuario', 'api\UserController@usuario');
+
 Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto' => 'create,edit']);
 
 

@@ -136,6 +136,17 @@ class UserController extends ApiController
         $user->save();
         return $this->showMessage('La cuenta ha sido verificada');
     }
+
+    public function usuario(Request $request)
+    {
+        $reglas = [
+            'email' => 'required|email'
+        ];
+        $this->validate($request, $reglas);
+        $user = User::where('email', $request->email)->firstOrFail();
+        return $this->showOne($user);
+    }
+
     public function resend(User $user)
     {
         if ($user->esVerificado()) {
