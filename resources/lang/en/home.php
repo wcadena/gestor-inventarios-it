@@ -25,6 +25,7 @@ return [
     'url2'=>'El titulo del sitio Aquí',
     'logo1'=>'<span class="logo-mini"><b>E</b>C</span>',
     'logo2' => '<span class="logo-lg"><b>SES</b> Inventarios</span>',
+    'logo3' => '<b>SES</b>Inventarios',
     'usu1' => 'Su rol es: ',
     'profile' => 'Perfil',
     'salir' => 'Salir',
