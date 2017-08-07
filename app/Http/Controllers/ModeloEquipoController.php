@@ -99,6 +99,14 @@ class ModeloEquipoController extends Controller
      */
     public function update($id, Request $request)
     {
+        $reglas = [
+            'modelo' => 'required',
+            'fabricante' => 'required',
+            'garantia_anios' => 'required',
+            'tipo_equipo' => 'required',
+
+        ];
+        $this->validate($request, $reglas);
         
         $modelo = ModeloEquipo::findOrFail($id);
         $modelo->update($request->all());
