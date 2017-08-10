@@ -212,7 +212,7 @@ return [
         /**
          * pusher
          */
-        Vinkla\Pusher\PusherServiceProvider::class
+        //Vinkla\Pusher\PusherServiceProvider::class
         
 
 
@@ -295,7 +295,7 @@ return [
         /**
          * pusher
          */
-        'Pusher' => Vinkla\Pusher\Facades\Pusher::class
+        //'Pusher' => Vinkla\Pusher\Facades\Pusher::class
 
 
     ],

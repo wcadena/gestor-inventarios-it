@@ -57,7 +57,7 @@
             <div class="form-group {{ $errors->has('num_cajas') ? 'has-error' : ''}}">
                 {!! Form::label('num_cajas', trans('form.ncs234'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('num_cajas', null, ['class' => 'form-control']) !!}
+                    {!! Form::number('num_cajas', null, ['class' => 'form-control','min'=>"0"]) !!}
                     {!! $errors->first('num_cajas', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
