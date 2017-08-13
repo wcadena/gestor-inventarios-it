@@ -2,12 +2,19 @@
 
 namespace App;
 
+use App\Transformers\CustodiosTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class Custodios extends Model
 {
     use SoftDeletes;
+    use Notifiable, HasApiTokens;
+
+    public $transformer = CustodiosTransformer::class;
+
     protected $dates = ['deleted_at'];
     protected $fillable = ['nombre_responsable','ciudad','direccion','area-piso','documentoIdentificacion','cargo','compania','telefono','estado'];
 

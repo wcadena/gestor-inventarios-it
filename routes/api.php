@@ -34,3 +34,11 @@ Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto
 
 
 Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
+
+
+Route::resource('puestos', 'api\PuestoController',['excepto' => 'create']);
+Route::resource('puestos.custodios.rel', 'api\PuestoCustodioController');
+
+Route::get('puesto_asigna', 'api\PuestoCustodioController@asigna');
+Route::resource('custodios', 'api\CustodioController');
+Route::get('custodiosCedula', 'api\CustodioController@cedula');
