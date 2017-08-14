@@ -141,6 +141,7 @@ class PuestoCustodioController extends ApiController
                     'puesto_id' => $puesto->id,
                     'custodio_id' => $custodio->id,
                 ]);
+                $transaction->delete();
             }
             return $this->showMessage("Salida registrada :".Carbon::now(), 201);
         });
