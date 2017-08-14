@@ -105,6 +105,49 @@ class PuestoCustodioController extends ApiController
     }
 
     /**
+     * liberar puesto
+     */
+    public function liberar(Request $request){
+        $reglas = [
+            'documentoIdentificacion' => 'required|max:15',
+            'codigo' => 'required|max:250',
+        ];
+        $this->validate($request, $reglas);
+
+        return DB::transaction(function () use ($request) {
+
+            $custodio = Custodios::where("documentoIdentificacion","like",$request->documentoIdentificacion)->first();
+            $puesto = Puesto::where("codigo","like",$request->codigo)->first();
+
+            $puestoconsole = PuestoCustodios::where('custodio_id','=',$custodio->id)
+                // ->where('puesto_id','=',$puesto->id)//pone libre todos los otros puestos
+                ->get();
+            $poneSalida=0;
+            foreach ($puestoconsole as $pc){
+                $p = Puesto::where('id','=',$pc->puesto_id)->firstOrFail();
+                $p->estado='LIBRE';
+                $p->save();
+                $pc->fecha_fin= Carbon::now();
+                $pc->save();
+                $pc->delete();
+                $poneSalida++;
+            }
+            $transaction = $puestoconsole;
+            if($poneSalida==0){
+                $transaction = PuestoCustodios::create([
+                    'fecha_inicio' =>Carbon::now(),
+                    'fecha_fin' =>Carbon::now(),
+                    'horas_trabajadas' => -1,
+                    'puesto_id' => $puesto->id,
+                    'custodio_id' => $custodio->id,
+                ]);
+            }
+            return $this->showMessage("Salida registrada :".Carbon::now(), 201);
+        });
+
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

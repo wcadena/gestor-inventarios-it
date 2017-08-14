@@ -40,5 +40,6 @@ Route::resource('puestos', 'api\PuestoController',['excepto' => 'create']);
 Route::resource('puestos.custodios.rel', 'api\PuestoCustodioController');
 
 Route::get('puesto_asigna', 'api\PuestoCustodioController@asigna');
+Route::get('puesto_liberar', 'api\PuestoCustodioController@liberar');
 Route::resource('custodios', 'api\CustodioController');
 Route::get('custodiosCedula', 'api\CustodioController@cedula');
