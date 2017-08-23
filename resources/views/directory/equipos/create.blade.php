@@ -28,7 +28,7 @@
                 {!! Form::label('custodio_id', trans('form.asadd2'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
 
-                    {!! Form::select('custodio_id', $dtos['custodio'], null, ['class' => 'form-control']) !!}
+                    {!! Form::select('custodio_id', $dtos['custodio'], $dtos['custodio_defecto'], ['class' => 'form-control']) !!}
                     {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
                 {!! Form::label('area_id', trans('form.ai3e'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('area_id', $dtos['areas'], null, ['class' => 'form-control']) !!}
+                    {!! Form::select('area_id', $dtos['areas'], $dtos['areas_defualt'], ['class' => 'form-control']) !!}
                     {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="form-group {{ $errors->has('sociedad') ? 'has-error' : ''}}">
                 {!! Form::label('sociedad', trans('form.sxs3'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('sociedad', Auth::user()->padrino, ['class' => 'form-control']) !!}
+                    {!! Form::text('sociedad', Auth::user()->padrino, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                     {!! $errors->first('sociedad', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

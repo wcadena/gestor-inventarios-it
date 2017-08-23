@@ -74,6 +74,7 @@ class EquiposController extends Controller
         $areas = Areas::orderBy('area','asc')->pluck('area','id');
         ////////////////////////////////////////////////////////////////////////////
         $util = Equipos::pluck('check_list_id');
+        $config_custodio_prin= Configuracion::where('atributo','=','CUSTODIO_BODEGA')->first();
 
         //--------------------------------------------------------------------------
         $check_lists = CheckList::whereNotIn('id',
@@ -85,12 +86,22 @@ class EquiposController extends Controller
         //$check_lists = CheckList::pluck('id_check_lists','id');
         Session::flash('Crear_checklist', 'Crear_checklist');
 
+        $areas_defualt='';
+
+        if (session('areas_default')) {
+            $areas_defualt=session('areas_default');
+           // dd($areas_defualt);
+        }
+
+
         $dtos=array(
             'modelos'=>$modelos,
             'orden'=>$orden,
             'custodio'=>$custodio,
+            'custodio_defecto'=>$config_custodio_prin->valor,
             'estaciones'=>$estaciones,
             'areas'=>$areas,
+            'areas_defualt'=>$areas_defualt,
             'check_lists'=>$check_lists,
 
         );
@@ -107,6 +118,13 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
+        $reglas = [
+            'area_id' => 'required',
+            'observaciones' => 'required',
+            'descripcion' => 'required',
+        ];
+        $this->validate($request, $reglas);
+        session(['areas_default' => Input::get('area_id')]);
         $nerd = new CheckList();
         $nerd->area_id       = Input::get('area_id');
         $nerd->user_id      = Auth::id();
