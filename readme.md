@@ -1,3 +1,20 @@
+# Sistema de Inventarios Con Laravel 5.4
+
+Sistema de inventarios con Laravel 5.4 , proyectado para RestFull, uso de IONIC y JAVA
+
+## Modulos existentes
+
+### Usuarios
+
+
+### Equipos
+
+
+### Modelos
+
+### Movimiento
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

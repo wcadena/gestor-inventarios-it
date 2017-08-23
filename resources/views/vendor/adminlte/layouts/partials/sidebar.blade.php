@@ -61,6 +61,8 @@
                     </ul>
                  </li>
              @endif
+             <li><a href="https://github.com/wcadena/inventarioFinalApp/pulls"  target="_blank"><i class='glyphicon glyphicon-info-sign'></i> <span>@lang('home.menError')</span></a></li>
+
          </ul>        
         <!-- /.sidebar-menu -->
     </section>
