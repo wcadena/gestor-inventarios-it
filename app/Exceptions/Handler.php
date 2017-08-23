@@ -49,6 +49,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if (config('app.debug')) {
+            return parent::render($request, $exception);
+        }
         if ($exception instanceof ValidationException) {
             return $this->convertValidationExceptionToResponse($exception, $request);
         }
@@ -80,9 +83,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof TokenMismatchException) {
             return redirect()->back()->withInput($request->input());
         }
-        if (config('app.debug')) {
-            return parent::render($request, $exception);            
-        }
+
         return $this->errorResponse('Falla inesperada. Intente luego', 500);
     }
     /**
