@@ -1,18 +1,29 @@
-# Sistema de Inventarios Con Laravel 5.4
+# Sistema de Inventarios de Activos Fijos con Laravel 5.4
 
-Sistema de inventarios con Laravel 5.4 , proyectado para RestFull, uso de IONIC y JAVA
+Sistema de inventarios de Activos Fijos con Laravel 5.4 , proyectado para RestFull, uso de IONIC y JAVA
 
 ## Modulos existentes
 
 ### Usuarios
+Administre los usuarios del sistema, con cuatro perfiles:
+####-Registrado
+Usuario que entra por primera vez, no tiene acceso a nada
+####-Usuario
+Solo puede ver su perfil y los custodios y sus reportes
+####-Administrador
+Administra la aplicacion
+####-SYSTEM
+Administra valores de la aplicacion de sistema
 
 
 ### Equipos
-
+Administra los activos , CRUD de activos
 
 ### Modelos
+Administra los modelos
 
 ### Movimiento
+
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
