@@ -49,7 +49,7 @@ return [
     'men12' => 'Estaciones',
     'men13' => 'Configuraciones',
     'menrep1' => 'Reporte 1',
-    'menError' => 'Reporta errores y sugerencias',
+    'menError' => 'Errores y Sugerencias',
     'whoops' => '¡Ups!',
     'problemlog' => 'Hay un problema con tu Ingreso.',
     'sing1' => 'Ingrese para iniciar seccion',

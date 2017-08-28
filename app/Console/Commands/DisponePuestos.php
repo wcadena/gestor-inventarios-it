@@ -44,7 +44,7 @@ class DisponePuestos extends Command
         $arguments = $this->arguments();
 
         $puestos = PuestoCustodios::all();
-
+        $encerados=0;
         foreach ($puestos as $puesto){
             $ahorita = Carbon::now();
             //dd($ahorita);
