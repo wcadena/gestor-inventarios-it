@@ -10,6 +10,7 @@
         "almasaeed2010/adminlte": "^2.3",
         "barryvdh/laravel-dompdf": "^0.8.0",
         "doctrine/dbal": "^2.6",
+        "geckob/firebase": "^0.1.1",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^3.0",

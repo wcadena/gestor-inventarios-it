@@ -11,40 +11,42 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .js('resources/assets/js/app-landing.js', 'public/js/app-landing.js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .less('node_modules/bootstrap-less/bootstrap/bootstrap.less', 'public/css/bootstrap.css')
-   .less('resources/assets/less/adminlte-app.less','public/css/adminlte-app.css')
-   .less('node_modules/toastr/toastr.less','public/css/toastr.css')
-   .combine([
-       'public/css/app.css',
-       'node_modules/admin-lte/dist/css/skins/_all-skins.css',
-       'public/css/adminlte-app.css',
-       'node_modules/icheck/skins/square/blue.css',
-       'public/css/toastr.css',
-       'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
-   ], 'public/css/all.css')
-   .combine([
-       'public/css/bootstrap.css',
-       'resources/assets/css/main.css'
-   ], 'public/css/all-landing.css')
-   //APP RESOURCES
-   .copy('resources/assets/img/*.*','public/img')
-   //VENDOR RESOURCES
-   .copy('node_modules/font-awesome/fonts/*.*','public/fonts/')
-   .copy('node_modules/ionicons/dist/fonts/*.*','public/fonts/')
-   .copy('node_modules/admin-lte/bootstrap/fonts/*.*','public/fonts/bootstrap')
-   .copy('node_modules/admin-lte/dist/css/skins/*.*','public/css/skins')
-   .copy('node_modules/admin-lte/dist/img','public/img')
-   .copy('node_modules/admin-lte/plugins','public/plugins')
-   .copy('node_modules/icheck/skins/square/blue.png','public/css')
-   .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
-   .copy('node_modules/select2/dist/css/select2.min.css','public/css')
-   .copy('node_modules/select2/dist/js/select2.min.js','public/js')
-    
-   .copy('node_modules/icheck/skins/square/blue@2x.png','public/css');
+mix.js('resources/assets/js/app.js', 'js')
+    .js('resources/assets/js/app-landing.js', 'js/app-landing.js')
+    .sass('resources/assets/sass/app.scss', 'html/css')
+    .less('node_modules/bootstrap-less/bootstrap/bootstrap.less', 'html/css/bootstrap.css')
+    .less('resources/assets/less/adminlte-app.less','html/css/adminlte-app.css')
+    .less('node_modules/toastr/toastr.less','html/css/toastr.css')
+    .combine([
+        'html/css/app.css',
+        'node_modules/admin-lte/dist/css/skins/_all-skins.css',
+        'html/css/adminlte-app.css',
+        'node_modules/icheck/skins/square/blue.css',
+        'html/css/toastr.css',
+        'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
+    ], 'html/css/all.css')
+    .combine([
+        'html/css/bootstrap.css',
+        'resources/assets/css/main.css'
+    ], 'html/css/all-landing.css')
+    //APP RESOURCES
+    .copy('resources/assets/img/*.*','html/img')
+    //VENDOR RESOURCES
+    .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
+    .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
+    .copy('node_modules/admin-lte/bootstrap/fonts/*.*','html/fonts/bootstrap')
+    .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
+    .copy('node_modules/admin-lte/dist/img','html/img')
+    .copy('node_modules/admin-lte/plugins','html/plugins')
+    .copy('node_modules/icheck/skins/square/blue.png','html/css')
+    .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
+    .copy('node_modules/select2/dist/css/select2.min.css','html/css')
+    .copy('node_modules/select2/dist/js/select2.min.js','html/js')
+
+    .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
+    .setPublicPath('html')
+;
 
 if (mix.config.inProduction) {
-  mix.version();
+    mix.version();
 }
