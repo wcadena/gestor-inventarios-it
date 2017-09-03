@@ -211,3 +211,48 @@ Route::get('pusher', function (Request $request) {
 
     return "Manda mensaje pusher";
 });
+
+Route::get('fire-test', function (Request $request) {
+
+    $DEFAULT_URL = env('FIRE_DATABASE_URL');// 'https://inventario-352a6.firebaseio.com';
+    $DEFAULT_TOKEN = env('FIRE_DATABASE_SECRET');//'0KGnKhp8pLGa2Mtzm14KkOpENc1Sw5eQIagN33xQ'; //https://console.firebase.google.com/project/inventario-352a6/settings/serviceaccounts/databasesecrets?hl=es-419
+    $DEFAULT_PATH = '/firebase/example';
+    /**/
+    $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
+
+
+// --- storing an array ---
+    $test = array(
+        "foo" => "bar",
+        "i_love" => "lamp",
+        "id" => 42
+    );
+    $dateTime = new DateTime();
+    //$firebase->set($DEFAULT_PATH . '/' . $dateTime->format('c'), $test);
+
+    //dd($firebase);
+
+// --- storing a string ---
+    //$firebase->set($DEFAULT_PATH . '/name/contact001', "John Doe");
+
+// --- reading the stored string ---
+    $name = $firebase->get($DEFAULT_PATH . '/name/contact001');
+
+/*
+    $p = new \App\Puesto();
+    $p->ubicacion_id=1;
+    $p->codigo="asd7";
+    $p->estado= "LIBRE";
+    $p->save();
+*/
+$p = new \App\Puesto();
+$p->find(7);
+$p->estado= "OCUPADO";
+$p->update();
+
+    dd($name);
+    //dd($firebase);
+
+    return "Manda mensaje firebase";
+
+});

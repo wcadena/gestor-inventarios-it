@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Mpociot\Firebase\SyncsWithFirebase;
 
 class PuestoCustodios extends Model
 {
     use Notifiable, HasApiTokens, SoftDeletes;
+    use SyncsWithFirebase;
     protected $table = 'puestos_custodios';
 
     public $transformer = PuestoCustodiosTransformer::class;
