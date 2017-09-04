@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Mpociot\Firebase\SyncsWithFirebase;
 
 class Ubicacion extends Model
 {
     use SoftDeletes;
+    use SyncsWithFirebase;
     protected $dates = ['ubicacion'];
     protected $fillable = ['estacione_id', 'edificio', 'piso', 'area_id', 'imagen'];
     /*

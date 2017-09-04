@@ -8,10 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use Mpociot\Firebase\SyncsWithFirebase;
 
 class User extends Authenticatable
 {
      use Notifiable, HasApiTokens, SoftDeletes;
+    use SyncsWithFirebase;
 
      public $transformer = UserTransformer::class;
 
