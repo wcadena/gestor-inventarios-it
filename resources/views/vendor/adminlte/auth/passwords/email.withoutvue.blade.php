@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.auth')
 
 @section('htmlheader_title')
-    Password recovery
+    {{ trans('adminlte_lang::message.passwordrecovery') }}
 @endsection
 
 @section('content')
@@ -51,7 +51,7 @@
                     </div>
                 </form>
 
-                <a href="{{ url('/login') }}">Log in</a><br>
+                <a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a><br>
                 <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
 
             </div><!-- /.login-box-body -->

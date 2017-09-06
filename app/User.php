@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\MyOwnResetPassword;
 use Laravel\Passport\HasApiTokens;
 use App\Transformers\UserTransformer;
 use Illuminate\Notifications\Notifiable;
@@ -14,6 +15,7 @@ class User extends Authenticatable
 {
      use Notifiable, HasApiTokens, SoftDeletes;
     use SyncsWithFirebase;
+    use Notifiable;
 
      public $transformer = UserTransformer::class;
 
@@ -73,4 +75,15 @@ class User extends Authenticatable
         $this->attributes['email'] = strtolower($valor);
     }
     //////////////////////////////////////////////fin mutwadores
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MyOwnResetPassword($token));
+    }
+
 }

@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.auth')
 
 @section('htmlheader_title')
-    Log in
+    {{ trans('adminlte_lang::message.login') }}
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
 
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+                    <strong>Whoops!</strong>{{ trans('adminlte_lang::message.login') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

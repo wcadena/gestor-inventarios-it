@@ -32,6 +32,7 @@ return [
     'signGoogle+'             => 'Entra con Google+',
     'sendpassword'            => 'Enviar el enlace para restablecer la contraseña',
     'passwordreset'           => 'Restablecer la contraseña',
+    'passwordrecovery'        => 'Recuperar contraseña',
     'pagenotfound'            => 'Página no encontrada',
     '404error'                => 'Página de error 404',
     'notfindpage'             => 'No hemos podido encontrar la página que estabas buscando.',
@@ -131,4 +132,12 @@ return [
     'loggedin'                => 'Login correcto!',
     'entering'                => 'Entrando...',
     'registered'              => 'Usuario registrado!',
+    'mensajecorreo'           => 'Si tiene un problema dando clic en el botón ":actionText", copie y pegue la URL adjunta en tu buscador: [:actionUrl](:actionUrl)',
+    'regards'                 => 'Saludos',
+    'whoops'                 => '¡Ups!',
+    'hello'                 => '¡Hola!',
+    'notifiableline1'              =>  'Usted esta recibiendo este correo porque nosotros hemos recibido una solicitud de reinicio de clave para su cuenta.',
+    'notifiableaction'              =>  'Reiniciar clave',
+    'notifiableline2'              =>  'Si usted no realizo la acción de reinicio de clave no realice este cambio.',
+
 ];
