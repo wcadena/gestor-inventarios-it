@@ -130,10 +130,10 @@
 
 
                             <button type="submit" class="zxsdfg btn btn-primary btn-xs" data-loading-text="Cargando..." >@lang('form.update')</button>
-
+                            @if(Auth::getUser()->rol=="system")
                         <a href="{{ url('checklist_opcionescheck/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">@lang('form.update_modificar')</button>
-                        </a> /						   <button type="submit" class="deleT3hjusd45lL btn btn-danger btn-xs" data-loading-text="Borrando..." >@lang('form.deletee')</button>						
+                        </a> /@endif						   <button type="submit" class="deleT3hjusd45lL btn btn-danger btn-xs" data-loading-text="Borrando..." >@lang('form.deletee')</button>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['checklist_opcionescheck', $item->id],
