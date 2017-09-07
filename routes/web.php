@@ -256,3 +256,6 @@ $p->update();
     return "Manda mensaje firebase";
 
 });
+
+Route::post('busqueda', 'BusquedaController@busqueda');
+Route::get('busqueda', 'BusquedaController@busqueda');
