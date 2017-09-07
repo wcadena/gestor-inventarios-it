@@ -10,7 +10,7 @@ class Equipos extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['modelo_equipo_id','orden_de_compra_id','custodio_id','estacione_id','area_id','check_list_id','num_cajas','sociedad','no_serie','codigo_barras','codigo_avianca','codigo_otro','descripcion','ip','estado','estatus','garantia','observaciones'];
+    protected $fillable = ['modelo_equipo_id','orden_de_compra_id','custodio_id','estacione_id','area_id','check_list_id','num_cajas','sociedad','no_serie','codigo_barras','codigo_avianca','codigo_otro','descripcion','ip','estado','estatus','garantia','observaciones','imagen'];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')
      * estatus	enum('VIGENTE', 'BODEGA', 'BAJA')

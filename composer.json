@@ -11,6 +11,7 @@
         "barryvdh/laravel-dompdf": "^0.8.0",
         "doctrine/dbal": "^2.6",
         "geckob/firebase": "^0.1.1",
+        "intervention/image": "^2.4",
         "ktamas77/firebase-php": "^2.2",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.4.*",

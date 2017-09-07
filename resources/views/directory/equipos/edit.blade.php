@@ -36,7 +36,9 @@
 
                             'url' => ['equipos', $equipo->id],
 
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+
+                            'files'=>'true'
 
                         ]) !!}
 
@@ -50,7 +52,8 @@
     {!! Form::model($equipo, [
         'method' => 'PATCH',
         'url' => ['equipos', $equipo->id],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'files' => true
     ]) !!}
 
                 <div class="form-group {{ $errors->has('orden_de_compra_id') ? 'has-error' : ''}}">
@@ -190,6 +193,14 @@
                     {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+        <div class="form-group {{ $errors->has('imagen') ? 'has-error' : ''}}">
+            {!! Form::label('imagen', 'Imagen: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::file('imagen', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('imagen', '<p class="help-block">:message</p>') !!}
+                <img  width="300" height="200"  alt="{{$equipo->no_serie}}" class="img-thumbnail" src="{{url('equipos/'.$equipo->id .'/image')}}" />
+            </div>
+        </div>
 
 
     <div class="form-group">

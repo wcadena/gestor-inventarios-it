@@ -42,6 +42,8 @@ Route::resource('modelo', 'ModeloEquipoController');
 Route::resource('orden', 'OrdenDeCompraController');
 
 Route::resource('equipos', 'EquiposController');
+Route::get('equipos/{id}/image','EquiposController@showPicture');
+
 Route::resource('custodio', 'CustodiosController');
 Route::resource('estaciones', 'EstacionesController');
 Route::resource('checklist', 'CheckListController');

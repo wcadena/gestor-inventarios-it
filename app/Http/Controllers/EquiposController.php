@@ -22,9 +22,12 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
+
 use League\Flysystem\Exception;
 use Session;
 use Webpatser\Uuid\Uuid;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class EquiposController extends Controller
 {
@@ -122,8 +125,20 @@ class EquiposController extends Controller
             'area_id' => 'required',
             'observaciones' => 'required',
             'descripcion' => 'required',
+            'no_serie' => 'required',
         ];
         $this->validate($request, $reglas);
+        /**
+         * si encuentra uno con serie identica
+         */
+
+            $equipo_exist = Equipos::where('no_serie','=',Input::get('no_serie'))->get();
+
+            if($equipo_exist->count()>1){
+                Session::flash('flash_message', 'Equipos con un numero de serie ya existente: '.Input::get('no_serie').", Se ha abierto el equipo existente, verificar datos.");
+                return redirect('equipos/'.$equipo_exist->first()->id."/edit");
+            }
+
         session(['areas_default' => Input::get('area_id')]);
         $nerd = new CheckList();
         $nerd->area_id       = Input::get('area_id');
@@ -135,6 +150,16 @@ class EquiposController extends Controller
         $utill77563=$dathui009->crearChecklist(Input::get('area_id'),$nerd->id);
         $custorm=$request->all();
         $custorm['check_list_id']=$nerd->id;
+
+        $file = Input::file('imagen');//la imagen se lee aca
+
+        if(Input::hasFile('imagen')) {
+
+            $img = Image::make($file)->resize(600, 400);
+            Response::make($img->encode('jpeg'));
+            $custorm['imagen'] = $img;
+
+        }
 
         $equip3=Equipos::create($custorm);
         $custorm['id_equipos']=$equip3->id;
@@ -178,7 +203,7 @@ class EquiposController extends Controller
     {
         //dd($id);
         try{
-        $equipo = Equipos::find($id);
+            $equipo = Equipos::find($id);
 
         if ($equipo == null){
             Session::flash('flash_message', 'Equipo No encontrado!');
@@ -219,6 +244,20 @@ class EquiposController extends Controller
         }
     }
 
+    public function showPicture($id)
+    {
+        $picture = Equipos::findOrFail($id);
+        $pic = Image::make($picture->imagen);
+        $response = Response::make($pic->encode('jpeg'));
+
+        //setting content-type
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
+    }
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -246,11 +285,22 @@ class EquiposController extends Controller
 
         $equipo = Equipos::findOrFail($id);
 
-        $equipo->update($request->all());
+        $file = Input::file('imagen');//la imagen se lee aca
+
+        $custorm0=$request->all();
+        if(Input::hasFile('imagen')) {
+            $img = Image::make($file)->resize(600, 400);
+            Response::make($img->encode('jpeg'));
+            $custorm0['imagen'] = $img;
+        }
+        $equipo->update($custorm0);
         //dd($equipo);
         $custorm=$equipo->jsonSerialize();
         $custorm['id_equipos']=$id;
         $custorm['acciondb']='actualizar';
+
+        //dd($f);
+
         Equipos_log::create($custorm);
         Session::flash('flash_message', 'Equipos updated!');
 

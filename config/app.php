@@ -213,6 +213,14 @@ return [
          * pusher
          */
         //Vinkla\Pusher\PusherServiceProvider::class
+        /**
+         * imagen
+         */
+        Intervention\Image\ImageServiceProvider::class,
+        /**
+         * 'fin imagen
+         */
+
 
 
 
@@ -295,8 +303,11 @@ return [
         /**
          * pusher
          */
-        //'Pusher' => Vinkla\Pusher\Facades\Pusher::class
-
+        //'Pusher' => Vinkla\Pusher\Facades\Pusher::class,
+        /**
+         * imagen
+         */
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

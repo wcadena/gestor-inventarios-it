@@ -5,7 +5,7 @@
     <h1>@lang('form.kijhuu7y')</h1>
     <hr/>
 
-    {!! Form::open(['url' => 'equipos', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => 'equipos', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 <div class="form-group {{ $errors->has('orden_de_compra_id') ? 'has-error' : ''}}">
                 {!! Form::label('orden_de_compra_id', 'Orden De Compra Id: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -137,6 +137,13 @@
                 <div class="col-sm-6">
                     {!! Form::text('observaciones', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('imagen') ? 'has-error' : ''}}">
+                {!! Form::label('imagen', 'Imagen: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::file('imagen', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('imagen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
