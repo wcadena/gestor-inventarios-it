@@ -19,13 +19,17 @@ class User extends Authenticatable
 
      public $transformer = UserTransformer::class;
 
+    const USUARIO_VERIFICADO = '1';
+    const USUARIO_NO_VERIFICADO = '0';
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name','first_name','last_name','rol','padrino','username','email','password','token','facebook_user_id'
+        'name','first_name','last_name','rol','padrino','username','email','password','verification_token','token','facebook_user_id'
     ];
 
     /**
@@ -85,5 +89,10 @@ class User extends Authenticatable
     {
         $this->notify(new MyOwnResetPassword($token));
     }
+    public function esVerificado()
+    {
+        return $this->verified == User::USUARIO_VERIFICADO;
+    }
+
 
 }

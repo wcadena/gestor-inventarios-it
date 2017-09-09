@@ -89,6 +89,7 @@ class RegisterController extends Controller
             'rol' =>'registrado',
             'padrino' =>'Avianca',
             'token' =>User::generarVerificationToken(),
+            'verification_token' => User::generarVerificationToken(),
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.users.field','email') === 'username' && isset($data['username'])) {

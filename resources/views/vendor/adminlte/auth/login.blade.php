@@ -22,6 +22,11 @@
                 </ul>
             </div>
         @endif
+            @if(Session::has('flash_message'))
+                <div class="alert alert-success alert-dismissable fade in">
+                    <strong>Mensaje: </strong> {{ Session::get('flash_message') }}
+                </div>
+            @endif
 
         <div class="login-box-body">
         <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>

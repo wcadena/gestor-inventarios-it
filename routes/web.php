@@ -261,3 +261,6 @@ $p->update();
 
 Route::post('busqueda', 'BusquedaController@busqueda');
 Route::get('busqueda', 'BusquedaController@busqueda');
+
+Route::name('verify')->get('users/verify/{token}', 'UserApiController@verify');
+Route::name('resend')->get('users/{user}/resend', 'UserApiController@resend');

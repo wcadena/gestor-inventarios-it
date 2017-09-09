@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Mail\UserCreated;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
@@ -17,7 +20,29 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
        Schema::defaultStringLength(191);
-        
+
+       /*
+        * para embio de correo cuando se realiza un ingreso.
+        */
+        User::created(function($user) {
+            retry(5, function() use ($user) {
+                Mail::to($user)->send(new UserCreated($user));
+            }, 100);
+        });
+        User::updated(function($user) {
+            if ($user->isDirty('email')) {
+                $user->verified=0;
+                $user->verification_token = User::generarVerificationToken();
+                $user->save();
+                retry(5, function() use ($user) {
+                    Mail::to($user)->send(new UserCreated($user));
+                }, 100);
+            }
+        });
+
+
+
+
     }
 
     /**

@@ -48,6 +48,9 @@ class UsuarioLogController extends Controller
     {
         $req = $request->all();
         $req['password'] = bcrypt($req['password']);
+
+        $req['verified'] = User::USUARIO_VERIFICADO;
+
         User::create($req);
 
         Session::flash('flash_message', 'User added!');
@@ -101,6 +104,7 @@ class UsuarioLogController extends Controller
         $usuario = User::findOrFail($id);
         $req = $request->all();
         $req['password'] = bcrypt($req['password']);
+        $req['verified'] = User::USUARIO_VERIFICADO;
         $usuario->update($req);
 
         Session::flash('flash_message', 'User updated!');
