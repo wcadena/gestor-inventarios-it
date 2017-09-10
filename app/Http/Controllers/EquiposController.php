@@ -17,6 +17,7 @@ use App\Equipos;
 use App\ModeloEquipo;
 use App\OrdenDeCompra;
 use App\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
@@ -183,6 +184,42 @@ class EquiposController extends Controller
     {
         $equipo = \Illuminate\Support\Facades\Session::put('equipo_id',$id);
         $equipo = Equipos::findOrFail($id);
+
+
+
+        if($equipo->modelo_equipoxc->fabricante=='HP'&&
+            $equipo->hp_warrantyLevel==null){
+            $http = new Client;
+            $res = $http->request('GET', 'https://support.hp.com/hp-pps-services/os/getWarrantyInfo?serialnum='.$equipo->no_serie.'&counpurchase=es&cc=es&lc=es&redirectPage=WarrantyResult'
+            );
+            $respuesta =json_decode((string) $res->getBody(), true);
+            //dd($respuesta["newProduct"]["imageUrl"]);
+            $equipo->hp_warrantyLevel	=	$respuesta["warrantyLevel"];
+            $equipo->hp_endDate	=	$respuesta["endDate"];
+            $equipo->hp_displaySerialNumber	=	$respuesta["displaySerialNumber"];
+            $equipo->hp_modelNumber	=	$respuesta["modelNumber"];
+            $equipo->hp_countryOfPurchase	=	$respuesta["countryOfPurchase"];
+            $equipo->hp_newProduct_seriesName	=	$respuesta["newProduct"]["seriesName"];
+            $equipo->hp_newProduct_imageUrl	=	$respuesta["newProduct"]["imageUrl"];
+            $equipo->hp_warrantyResultRedirectUrl   =   $respuesta["warrantyResultRedirectUrl"];
+        }
+        if(!$equipo->hp_endDate==null){
+            $fecha_caduca = Carbon::createFromFormat('Y-m-d', $equipo->hp_endDate);
+            $diferenciaanios = Carbon::now()->diffInDays($fecha_caduca, false);
+            if($diferenciaanios<0){
+                $equipo->garantia   =   "NO";
+                $equipo->save();
+                Session::flash('flash_message_show1', 'Ya no esta en garantia la maquina, caduco en: '.$fecha_caduca);
+            }else{
+                $equipo->garantia   =   "SI";
+                $equipo->save();
+                Session::flash('flash_message_show1', 'Esta en garantia la maquina, caduca el: '.$fecha_caduca);
+            }
+        }
+
+
+
+
         $checklist_opcionescheck = CheckList_OpcionesCheckList::where('check_list_id', $equipo->check_list_id)->paginate(200);
 
         $bitacora = Bitacora::where('id_equipos','=',$id)->paginate(15);
