@@ -46,9 +46,10 @@
              <li><a href="{{ url('informes') }}"><i class='glyphicon glyphicon-wrench'></i> <span>Informes</span></a></li>
              @endif
              <li class="treeview">
-                 <a href="#"><i class='fa fa-link'></i> <span>@lang('home.menrep1')</span> <i class="fa fa-angle-left pull-right"></i></a>
+                 <a href="#"><i class='fa fa-link'></i> <span>@lang('home.menrepM')</span> <i class="fa fa-angle-left pull-right"></i></a>
                  <ul class="treeview-menu">
                      <li><a href="{{ url('reporte1') }}"><i class='glyphicon glyphicon-stats'></i> <span>@lang('home.menrep1')</span></a></li>
+                     <li><a href="{{ url('reporteEstaciones/1') }}"><i class='glyphicon glyphicon-stats'></i> <span>@lang('home.menrep2')</span></a></li>
                  </ul>
              </li>
              @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))

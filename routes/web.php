@@ -172,7 +172,8 @@ Route::resource('reporte1', 'ReporteController');
 
 Route::get('reporte1excel', 'ReporteController@excel');
 
-Route::get('reporteEstaciones', 'ReporteController@estaciones');
+Route::get('reporteEstaciones/{estacione_id}', 'ReporteController@estaciones');
+Route::get('reporte1excelEstaciones/{estacione_id}', 'ReporteController@excelEstaciones');
 
 Route::resource('bitacora', 'BitacoraController');
 

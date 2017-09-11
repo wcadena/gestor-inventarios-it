@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Facades\Excel;
+use Session;
 
 class ReporteController extends Controller
 {
@@ -29,15 +31,32 @@ class ReporteController extends Controller
 
     }
 
-    public function estaciones()
+    public function estaciones($estacione_id)
     {
 
-        $equipos = DB::table('equipos')
-            ->select('estaciones.estacion', DB::raw('SUM(estacione_id) as Contador'))
+        $estaciones = Equipos::select('estaciones.estacion', DB::raw('Count(estacione_id) as Contador') ,
+            DB::raw('MAX(estacione_id) as estacione_id'))
             ->join('estaciones', 'estaciones.id', '=', 'equipos.estacione_id')
             ->groupBy('estacione_id')
             ->get();
-        dd($equipos);
+        $equipos = Equipos::where('estacione_id',$estacione_id)
+            ->get();
+        //dd($estaciones->first()->estacione_id);
+        return view('directory.reporte.reporte_estaciones', compact('equipos','estaciones','estacione_id'));
+
+    }
+    public function excelEstaciones($estacione_id){
+
+        //return view('directory.reporte.repo1excel', compact('equipos'));
+        Session::flash('flash_estacione_id', $estacione_id);
+
+        Excel::create('Reporte_por_estaciones', function($excel) {
+
+            $excel->sheet('Maquinas', function($sheet) {
+                $equipos = Equipos::where('estacione_id', Session::get('flash_estacione_id'))->get();
+                $sheet->loadView('directory.reporte.repo1excel', compact('equipos'));
+            });
+        })->download('xls');;
 
     }
 
@@ -45,7 +64,7 @@ class ReporteController extends Controller
 
         //return view('directory.reporte.repo1excel', compact('equipos'));
 
-        Excel::create('Reporte Total', function($excel) {
+        Excel::create('Reporte_Total', function($excel) {
 
             $excel->sheet('Maquinas', function($sheet) {
                 $equipos = Equipos::get();

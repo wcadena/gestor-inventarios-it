@@ -38,7 +38,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $minutos    =       1;//30 minutos refresca la base
+        $minutos    =       30;//30 minutos refresca la base
         $maquinas = Cache::remember('maquinas', $minutos, function () {
             return DB::table('equipos')->count();
         });
