@@ -14,6 +14,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Equipos;
+use App\Jobs\SendActualizacionCustodioeEmail;
 use App\ModeloEquipo;
 use App\OrdenDeCompra;
 use App\User;
@@ -402,7 +403,12 @@ class EquiposController extends Controller
             $custorm['id_equipos']=$valor;
             $custorm['acciondb']='editar';
             Equipos_log::create($custorm);
+            //Mail::to($user)->send(new UserCreated($user));
+            SendActualizacionCustodioeEmail::dispatch(Custodios::findOrFail($equipo->custodio_id))->onQueue('processing');
+
         }
+        //Mail::to($user)->send(new UserCreated($user));
+        SendActualizacionCustodioeEmail::dispatch($obj_custodio)->onQueue('processing');
 
         //return ('hola');
         $equipos = Equipos::where('custodio_id',$nuevo_custodio)->paginate(15);
