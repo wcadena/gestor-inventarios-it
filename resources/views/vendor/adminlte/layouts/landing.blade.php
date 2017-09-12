@@ -2,7 +2,7 @@
 <!--
 Landing page based on Pratt: http://blacktie.co/demo/pratt/
 -->
-<html lang="en">
+<html lang="{{App::getLocale()}}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

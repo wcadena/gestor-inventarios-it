@@ -14,16 +14,9 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">{{trans('home.men1')}}</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-								<i class="fa fa-minus"></i></button>
-							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-								<i class="fa fa-times"></i></button>
-						</div>
 					</div>
 					<div class="box-body">
-						{{ trans('adminlte_lang::message.logged') }}
+						{{ trans('adminlte_lang::message.logged') }} {{\Illuminate\Support\Facades\Auth::user()->name}}
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -42,8 +35,8 @@
 					</span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Equipos Registrados</span>
-						<span class="info-box-number">{{$maquinas}}<small> Unidades</small></span>
+						<span class="info-box-text">{{trans('home.equipo2r')}}</span>
+						<span class="info-box-number">{{$maquinas}}<small> </small></span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -55,7 +48,7 @@
 					<span class="info-box-icon bg-red"><i class="fa fa-user" aria-hidden="true"></i></span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Usuarios</span>
+						<span class="info-box-text">{{trans('home.equipo4r')}}</span>
 						<span class="info-box-number">{{$usuarios}}</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -72,7 +65,7 @@
 					<span class="info-box-icon bg-green"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Maquinas asignadas</span>
+						<span class="info-box-text">{{trans('home.equipo5r')}}</span>
 						<span class="info-box-number">{{$equipos_asignados}}</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -85,7 +78,7 @@
 					<span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
 					<div class="info-box-content">
-						<span class="info-box-text">Custodios</span>
+						<span class="info-box-text">{{trans('home.equipo6r')}} </span>
 						<span class="info-box-number">{{$custodios}}</span>
 					</div>
 					<!-- /.info-box-content -->
@@ -99,7 +92,7 @@
 
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<h3 class="box-title">Maquinas por Estación</h3>
+				<h3 class="box-title">{{trans('home.equipo7r')}} </h3>
 
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -132,9 +125,10 @@
 			<div class="box-footer no-padding">
 				<ul class="nav nav-pills nav-stacked">
 					@foreach($pie_estaciones as $item)
-					<li><a href="#">{{$item->estacion}}
+					<li><a href="{{url('reporteEstaciones/'.$item->estacione_id)}}">
+							{{$item->estacion}}
 							<span class="pull-right" style="color:rgb({{$item->Contador}}, 0, {{$item->Contador}})" >
-								<i class="fa fa-angle-left"></i>  {{$item->Contador}} Equipos</span></a></li>
+								<i class="fa fa-angle-left"></i>  {{$item->Contador}} {{trans('home.men2')}}</span></a></li>
 					@endforeach
 				</ul>
 			</div>

@@ -2,10 +2,10 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-        <a href="@lang('home.url')"></a><b>@lang('home.sesinvetecu')</b></a>. Sistema de Inventario de Activos y sus Usuarios.<br/>
+        <a href="@lang('home.url')"></a><b>@lang('home.sesinvetecu')</b></a>. @lang('home.footer1j').<br/>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017</strong> Created by <a href="#">Wagner Cadena</a>.
+    <strong> @lang('home.Copyrightw1')</strong> @lang('home.creadopor4') <a href="https://github.com/wcadena/inventarioFinalApp" target="_blank">@lang('home.autor')</a>.
     <br/>
-    Desarrollo <a href="#">Aerogal</a>
+    @lang('home.equipo1c') <a href="#">@lang('home.equipo2c')</a>
 </footer>
