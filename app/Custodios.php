@@ -6,6 +6,7 @@ use App\Transformers\CustodiosTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
 
 class Custodios extends Model
@@ -28,6 +29,19 @@ class Custodios extends Model
     public function reponovedadeshm()
     {
         return $this->hasMany('App\RepoNovedades', 'custodio_id', 'id');
+    }
+
+    public static function getENUM($tabla)
+    {
+        $type = DB::select( DB::raw("SHOW COLUMNS FROM custodios WHERE Field = '".$tabla."'") )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $enum = array();
+        foreach( explode(',', $matches[1]) as $value )
+        {
+            $v = trim( $value, "'" );
+            $enum = array_add($enum, $v, $v);
+        }
+        return $enum;
     }
 
 }

@@ -89,7 +89,7 @@ class UserController extends ApiController
         $reglas = [
             'email' => 'email|unique:users,email,' . $user->id,
             'password' => 'min:6|confirmed',
-            'rol' => 'in: usuario,administrador,system',
+            'rol' => 'in: usuario,administrador,system,planta_fisica,recursos_humanos,encargado_activos_fijos,sistemas',
         ];
         $this->validate($request, $reglas);
         if ($request->has('name')) {

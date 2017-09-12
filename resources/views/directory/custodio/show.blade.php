@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <h1>Custodio</h1>
+    <h1>@lang('fo.Custodio')</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th> <th>Nombre Responsable</th><th>Ciudad</th><th>Direccion</th>
-                    <th>Accion</th>
+                    <th>@lang('fo.ID')</th> <th>@lang('fo.nombre__respnsable')</th><th>@lang('fo.ciudad_')</th><th>@lang('fo.direccion_')</th>
+                    <th>@lang('fo.Accion')</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,14 +31,14 @@
     <a  id="sxxxdw3wsfg2"   class="zxsdfgsd33" href="{{ url('custodio_custom/'.$custodio->id) }}">
         <button class="zxsdfgsd33 btn btn-default" type="button">@lang('form.retg_custom')</button>
     </a>
-    <h1>Equipos a cargo de usuario</h1>
+    <h1>@lang('fo.Equipos a cargo de usuario')</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
             <tr>
-                <th>@lang('form.sno')</th><th>Sociedad</th><th>No. RPM (Cód.Barras)</th>
+                <th>@lang('form.sno')</th><th>@lang('fo.Sociedad')</th><th>@lang('fo.No. RPM (Cód.Barras)')</th>
                 <th>@lang('form.codint')</th>
-                <th>Descripción (Marca - Modelo)</th><th>@lang('form.noser')</th><th>Estado<th>Actions</th>
+                <th>@lang('fo.Descripción (Marca - Modelo)')</th><th>@lang('form.noser')</th><th>@lang('fo.Estado')<th>@lang('fo.Actions')</th>
             </tr>
             </thead>
             <tbody>

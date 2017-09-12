@@ -12,7 +12,7 @@
             overflow: scroll;
         }
     </style>
-    <h1>@lang('form.equipos')<a href="{{ url('reporte1excel') }}" class="btn btn-primary pull-right btn-sm"><i class='fa fa-file-excel-o'></i> Excel</a></h1>
+    <h1>@lang('form.equipos')<a href="{{ url('reporte1excel') }}" class="btn btn-primary pull-right btn-sm"><i class='fa fa-file-excel-o'></i> @lang('rep.Excel')</a></h1>
 
 
         <div class=" scroll-area">

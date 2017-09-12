@@ -36,7 +36,7 @@ class EquiposController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('authEmp:usuario;administrador;system');
+        $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
 
     }
     /**
@@ -210,11 +210,11 @@ class EquiposController extends Controller
             if($diferenciaanios<0){
                 $equipo->garantia   =   "NO";
                 $equipo->save();
-                Session::flash('flash_message_show1', 'Ya no esta en garantia la maquina, caduco en: '.$fecha_caduca);
+                Session::flash('flash_message_show1error', trans('form.nogarantia').$fecha_caduca);
             }else{
                 $equipo->garantia   =   "SI";
                 $equipo->save();
-                Session::flash('flash_message_show1', 'Esta en garantia la maquina, caduca el: '.$fecha_caduca);
+                Session::flash('flash_message_show1',trans('form.garantia') .$fecha_caduca);
             }
         }
 

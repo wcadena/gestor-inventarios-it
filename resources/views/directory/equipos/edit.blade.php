@@ -13,23 +13,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">@lang('form.modal1')</h4>
             </div>
             <div class="modal-body" id="check-list11a34">
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('form.cerrar')</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal fin -->
 
-    <h1>Editar Equipo
+    <h1>@lang('form.editEquipo')
 
-        <a href="{{ url('equipos', $equipo->id) }}">Hoja de trabajo</a>
-
+        <a href="{{ url('equipos', $equipo->id) }}" class="btn btn-primary">@lang('form.hojatrabaj')</a>
+        @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
         {!! Form::open([
 
                             'method'=>'DELETE',
@@ -45,7 +45,7 @@
         {!! Form::submit(trans('form.deletee'), ['class' => 'btn btn-danger pull-right btn-sm']) !!}
 
         {!! Form::close() !!}
-
+        @endif
 
     </h1>
 
@@ -55,9 +55,9 @@
         'class' => 'form-horizontal',
         'files' => true
     ]) !!}
-
-                <div class="form-group {{ $errors->has('orden_de_compra_id') ? 'has-error' : ''}}">
-                {!! Form::label('orden_de_compra_id', 'Orden De Compra Id: ', ['class' => 'col-sm-3 control-label']) !!}
+        @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
+        <div class="form-group {{ $errors->has('orden_de_compra_id') ? 'has-error' : ''}}">
+                {!! Form::label('orden_de_compra_id', trans('form.ordencompra'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
 
                     {{ Form::select('orden_de_compra_id', $equipo->extras2['orden'], null, ['class' => 'form-control']) }}
@@ -65,13 +65,17 @@
                 </div>
             </div>
     <div class="form-group {{ $errors->has('modelo_equipo_id') ? 'has-error' : ''}}">
-        {!! Form::label('modelo_equipo_id', 'Modelo Id: ', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label('modelo_equipo_id', trans('form.modeloid'), ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
 
             {!! Form::select('modelo_equipo_id', $equipo->extras2['modelos'], null, ['class' => 'form-control']) !!}
             {!! $errors->first('modelo_equipo_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
+        @else
+            {!! Form::hidden('orden_de_compra_id', null, ['class' => 'form-control']) !!}
+            {!! Form::hidden('modelo_equipo_id', null, ['class' => 'form-control']) !!}
+        @endif
             <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
                 {!! Form::label('custodio_id', trans('form.asadd2'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -98,8 +102,8 @@
                 {!! Form::label('check_list_id', trans('form.clid32'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {{ Form::select('check_list_id', $equipo->extras2['check_lists'], null, ['class' => 'form-control','id' => 'check_list_id']) }}
-                    <button data-area_id="{{$equipo->area_id}}" data-checklist="{{$equipo->check_listxc['id_check_lists']}}" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                        Ver checklist
+                    <button data-area_id="{{$equipo->area_id}}" data-checklist="{{$equipo->check_listxc['id_check_lists']}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        @lang('form.verchecklist')
                     </button>
                     <!--Editar(<a href="{{ url('checklist/' . $equipo->check_list_id ) }}">
                         {{$equipo->check_list_id}}
@@ -121,13 +125,24 @@
                     {!! $errors->first('sociedad', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+        @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
             <div class="form-group {{ $errors->has('no_serie') ? 'has-error' : ''}}">
-                {!! Form::label('no_serie', 'No Serie: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('no_serie', trans('form.noserie'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('no_serie', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('no_serie', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            @else
+            <div class="form-group {{ $errors->has('no_serie') ? 'has-error' : ''}}">
+                {!! Form::label('no_serie', trans('form.noserie'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {{$equipo->no_serie}}
+                    {!! Form::hidden('no_serie', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('no_serie', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            @endif
             {{--<div class="form-group {{ $errors->has('codigo_barras') ? 'has-error' : ''}}">
                 {!! Form::label('codigo_barras', 'Codigo Barras: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -136,7 +151,7 @@
                 </div>
             </div>--}}{!! Form::hidden('codigo_barras', null, ['class' => 'form-control']) !!}
             <div class="form-group {{ $errors->has('codigo_avianca') ? 'has-error' : ''}}">
-                {!! Form::label('codigo_avianca', 'Codigo Avianca: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('codigo_avianca', trans('form.aviancacode'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('codigo_avianca', null, ['class' => 'form-control', 'id' => 'codigo_avianca'  ]) !!}
                     {!! $errors->first('codigo_avianca', '<p class="help-block">:message</p>') !!}
@@ -151,28 +166,28 @@
                 </div>
             </div>--}}{!! Form::hidden('codigo_otro', null, ['class' => 'form-control']) !!}
             <div class="form-group {{ $errors->has('descripcion') ? 'has-error' : ''}}">
-                {!! Form::label('descripcion', 'Descripcion: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('descripcion', trans('form.descrip'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('ip') ? 'has-error' : ''}}">
-                {!! Form::label('ip', 'Ip: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('ip', trans('form.iip'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('ip', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('ip', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
-                {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('estado', trans('form.estad2w'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::select('estado', \App\Equipos::getENUM('estado'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('estatus') ? 'has-error' : ''}}">
-                {!! Form::label('estatus', 'Estatus: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('estatus', trans('form.statyhs'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
 
                     {!! Form::select('estatus', \App\Equipos::getENUM('estatus'), null, ['class' => 'form-control']) !!}
@@ -180,14 +195,14 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('garantia') ? 'has-error' : ''}}">
-                {!! Form::label('garantia', 'Garantia: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('garantia', trans('form.garantia'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::select('garantia', \App\Equipos::getENUM('garantia'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('garantia', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('observaciones') ? 'has-error' : ''}}">
-                {!! Form::label('observaciones', 'Observaciones: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('observaciones', trans('form.obs123'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('observaciones', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
@@ -238,7 +253,7 @@
         function poderAction(){
             $('#as55trgyu a').on('click', function(e) {
                 e.preventDefault();
-                alert("Actualizando...");
+                alert("@lang('form.update2')...");
                 var ut = $(this).attr('href');
                 $.ajax({
                             url: ut,
@@ -280,7 +295,7 @@
                     cargaChecklist(area_id_g, check_list_id_g);
                     ////////////////////////////////////////////////////////
                     var modal = $(this)
-                    modal.find('.modal-title').text('Editar CheckList: ' + recipient)
+                    modal.find('.modal-title').text('@lang('form.editarChecklist'): ' + recipient)
                     modal.find('.modal-body input').val(recipient)
                 });
 

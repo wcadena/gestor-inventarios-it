@@ -16,7 +16,7 @@ class ReporteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('authEmp:usuario;administrador;system');
+        $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
     /**
      * Display a listing of the resource.
