@@ -47,21 +47,7 @@ class EquiposController extends Controller
     public function index()
     {
         $equipos = Equipos::paginate(15);
-        ////////////////////////////////////////////////////////////////////////
-        /*foreach ($equipos as $o) {
-            $nerd = new CheckList();
-            $nerd->area_id = $o->area_id;
-            $nerd->user_id = Auth::id();
-            $nerd->id_check_lists = uniqid('CHK-');
-            $nerd->unik_check_lists = Uuid::generate();
-            $nerd->save();
-            $dathui009 = new CheckListController();
-            $utill77563 = $dathui009->crearChecklist($o->area_id, $nerd->id);
-            $o->check_list_id=$nerd->id;
-            $o->save();
-        }
-       /**/
-        ////////////////////////////////////////////////////////////////////////
+
         return view('directory.equipos.index', compact('equipos'));
     }
 
@@ -160,10 +146,12 @@ class EquiposController extends Controller
             $img = Image::make($file)->resize(600, 400);
             Response::make($img->encode('jpeg'));
             $custorm['imagen'] = $img;
-
         }
 
         $equip3=Equipos::create($custorm);
+        $custodio_n = Custodios::find(Input::get('custodio_id'));
+        $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+        $custodio_n->save();
         $custorm['id_equipos']=$equip3->id;
         $custorm['acciondb']='crear';
 
@@ -331,8 +319,19 @@ class EquiposController extends Controller
             Response::make($img->encode('jpeg'));
             $custorm0['imagen'] = $img;
         }
+
+        $custodio_n = Custodios::find($equipo->custodio_id);
+        $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+        $custodio_n->save();
+
         $equipo->update($custorm0);
         //dd($equipo);
+
+        $custodio_n2 = Custodios::find(Input::get('custodio_id'));
+        $custodio_n2->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+        $custodio_n2->save();
+
+
         $custorm=$equipo->jsonSerialize();
         $custorm['id_equipos']=$id;
         $custorm['acciondb']='actualizar';
@@ -359,6 +358,9 @@ class EquiposController extends Controller
         $custorm=$equip3->jsonSerialize();
         $custorm['id_equipos']=$equip3->id;
         $custorm['acciondb']='borrar';
+        $custodio_n = Custodios::find($equip3->custodio_id);
+        $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+        $custodio_n->save();
         Equipos_log::create($custorm);
 
         Session::flash('flash_message', 'Equipos deleted!');
@@ -385,6 +387,14 @@ class EquiposController extends Controller
         foreach ($equipos as $valor ){
             //echo $valor;
             $equipo = Equipos::findOrFail($valor);
+
+            $custodio_n = Custodios::find($equipo->custodio_id);
+            $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+            $custodio_n->save();
+            $custodio_n2 = Custodios::find($nuevo_custodio);
+            $custodio_n2->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+            $custodio_n2->save();
+
             $equipo->observaciones=$equipo->observaciones."[Se pasa de ".Custodios::findOrFail($equipo->custodio_id)->nombre_responsable." a ".$obj_custodio->nombre_responsable."]";
             $equipo->custodio_id =$CUSTODIO_BODEGA;
             $equipo->estatus='BODEGA';
@@ -403,13 +413,9 @@ class EquiposController extends Controller
             $custorm['id_equipos']=$valor;
             $custorm['acciondb']='editar';
             Equipos_log::create($custorm);
-            //Mail::to($user)->send(new UserCreated($user));
-            SendActualizacionCustodioeEmail::dispatch(Custodios::findOrFail($equipo->custodio_id))->onQueue('processing');
-
         }
         //Mail::to($user)->send(new UserCreated($user));
-        SendActualizacionCustodioeEmail::dispatch($obj_custodio)->onQueue('processing');
-
+        
         //return ('hola');
         $equipos = Equipos::where('custodio_id',$nuevo_custodio)->paginate(15);
         $custodio_id=$nuevo_custodio;

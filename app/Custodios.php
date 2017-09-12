@@ -16,6 +16,9 @@ class Custodios extends Model
 
     public $transformer = CustodiosTransformer::class;
 
+    const CUSTODIO_NOTIFICADO = '1';
+    const CUSTODIO_NO_NOTIFICADO = '0';
+
     protected $dates = ['deleted_at'];
     protected $fillable = ['nombre_responsable','ciudad','direccion','area-piso','documentoIdentificacion','cargo','compania','telefono','estado'];
 
@@ -29,6 +32,11 @@ class Custodios extends Model
     public function reponovedadeshm()
     {
         return $this->hasMany('App\RepoNovedades', 'custodio_id', 'id');
+    }
+
+    public function mandarNotificacion()
+    {
+        return $this->notificado == Custodios::CUSTODIO_NOTIFICADO;
     }
 
     public static function getENUM($tabla)
