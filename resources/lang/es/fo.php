@@ -69,5 +69,7 @@ return [
     'pais'      =>      'País: ',
     'nombre_largo'      =>      'Nombre Largo: ',
     'Edit Estacione'      =>      'Editar Estación',
+    'atencion'      =>      'Atención',
+    'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantaneos',
 ];
 

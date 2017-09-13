@@ -20,7 +20,7 @@ class Custodios extends Model
     const CUSTODIO_NO_NOTIFICADO = '0';
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nombre_responsable','ciudad','direccion','area-piso','documentoIdentificacion','cargo','compania','telefono','estado'];
+    protected $fillable = ['nombre_responsable','ciudad','direccion','area-piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email'];
 
     public function estados() {
         return $this->hasMany('ACTIVO', 'INACTIVO');

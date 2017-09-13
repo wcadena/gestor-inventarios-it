@@ -4,8 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Custodios;
 use App\Http\Controllers\ApiController;
+use App\Mail\NotificaCustodioCambio;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class CustodioController extends ApiController
 {
@@ -94,10 +95,20 @@ class CustodioController extends ApiController
 
         $custodio = Custodios::Notificar()->where('id',$request->id)->get();
         if($custodio->count()==1){
+            $custodios=$custodio[0];
+            if ($custodios->email== null||$custodios->email==''){
+                return $this->showMessage("Este Custodio no tiene correo configurado",404);
+            }
+            Mail::to($custodios)
+                //->queue(new NotificaCustodioCambio($custodios));
+                ->send(new NotificaCustodioCambio($custodios));
+
+            $custodios->notificado    = Custodios::CUSTODIO_NO_NOTIFICADO;
+            $custodios->save();
             return $this->showMessage("Se ha enviado la notificacion");
             //$this->showMessage("Se ha enviado la notificacion", 504);
         }
-        return $this->showMessage("Este usuario ya no tiene notificaciones pendientes",404);
+        return $this->showMessage("Este Custodio ya no tiene notificaciones pendientes",404);
 
     }
 

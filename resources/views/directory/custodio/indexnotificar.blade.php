@@ -17,7 +17,10 @@
 
 
     <h1>@lang('fo.notificar_custodio') <a href="#" class="btn btn-primary pull-right btn-sm notifica_mailSend_masivo">@lang('fo.notificar_custodio_todos') </a></h1>
-
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>@lang('fo.atencion')</strong>@lang('fo.mensaje_de_notificacion_pagina')
+    </div>
     <div class="pull-right btn-sm" id="{{'alert-x'}}"></div>
     <div class="table">
 
@@ -47,10 +50,11 @@
 
                     <td><a href="{{ url('custodio', $item->id) }}">{{ $item->nombre_responsable }}</a></td><td>{{ $item->ciudad }}</td><td>{{ $item->direccion }}</td>
 
-                    <td>
+                    <td id="notifica_celda_{{$item->id}}">
                         <a href="#" data-id="{{$item->id}}">
                             <button type="button" class="btn btn-primary btn-xs notifica_mailSend">@lang('fo.notificar_custodio_uno')</button>
                         </a>
+
                     </td>
 
                 </tr>
@@ -103,6 +107,7 @@
                         console.log(error);
                         console.log(status);
                         console.log(xhr);
+                        $('#notifica_celda_'+id).html(xhr.responseJSON.data);
                         $btn.button('reset');
                     }
                 });
@@ -111,8 +116,8 @@
 
             $('.notifica_mailSend_masivo').click(function (e) {
                 e.preventDefault();
-
-
+                alert("Activar '->queue(new NotificaCustodioCambio($custodios));', solo para servidores linux con consola ");
+                return  $(this).hide();
                 if (confirm('¿Mandar mensajes masivos a todos los usuarios?')) {
                     var correos = [];
                     @foreach($custodio as $item)
@@ -124,6 +129,7 @@
                         a.fadeOut();
                         var id = correos[i];
                         var url ='{{url('api/custodiosNotificacion')}}?id='+id;
+
                         $.ajax({
                             type: "GET",
                             url: url,
@@ -134,11 +140,12 @@
                                 $("#alert-x").html("<strong>Actualizado!</strong> Actualizado sin novedad ");
                                 $("#alert-x").fadeOut();
 
-                            },error: function(xhr, status, error) {
+                            },error: function(xhr, status, error,data) {
                                 console.log(error);
                                 console.log(status);
                                 console.log(xhr);
-                                a.fadein();
+                                $('#notifica_celda_'+id).html(xhr.responseJSON.data);
+                                a.fadeIn();
                             }
                         });
                     }
