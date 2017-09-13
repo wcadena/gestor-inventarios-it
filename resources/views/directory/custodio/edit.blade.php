@@ -67,6 +67,13 @@
                     {!! $errors->first('telefono', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
+                {!! Form::label('email', trans('fo.email'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
             <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
                 {!! Form::label('estado', trans('fo.estado'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

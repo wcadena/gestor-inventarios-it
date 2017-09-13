@@ -21,6 +21,7 @@ return [
     'ciudad' => 'Ciudad: ',
     'direccion' => 'Localidad: ',
     'area_piso' => 'Área Piso: ',
+    'email' => 'Correo: ',
     'documentoIdentificacion' => 'Documento de Identificación: ',
     'cargo' => 'Cargo: ',
     'compania' => 'Compañía: ',
@@ -70,6 +71,6 @@ return [
     'nombre_largo'      =>      'Nombre Largo: ',
     'Edit Estacione'      =>      'Editar Estación',
     'atencion'      =>      'Atención',
-    'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantaneos',
+    'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantáneos',
 ];
 

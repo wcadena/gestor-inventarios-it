@@ -53,6 +53,20 @@ class CustodiosController extends Controller
      */
     public function store(Request $request)
     {
+        $reglas = [
+            'pais' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'documentoIdentificacion' => 'required',
+            'cargo' => 'required',
+            'compania' => 'required',
+            'telefono' => 'required',
+            'nombre_responsable' => 'required',
+            'area_piso' => 'required',
+            'email' => 'required',
+
+        ];
+        $this->validate($request, $reglas);
         
         Custodios::create($request->all());
 
@@ -123,6 +137,20 @@ class CustodiosController extends Controller
      */
     public function update($id, Request $request)
     {
+        $reglas = [
+            'pais' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'documentoIdentificacion' => 'required',
+            'cargo' => 'required',
+            'compania' => 'required',
+            'telefono' => 'required',
+            'nombre_responsable' => 'required',
+            'area_piso' => 'required',
+            'email' => 'required',
+
+        ];
+        $this->validate($request, $reglas);
         
         $custodio = Custodios::findOrFail($id);
         $custodio->update($request->all());
