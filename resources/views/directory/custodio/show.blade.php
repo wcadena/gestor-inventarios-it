@@ -7,13 +7,13 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>@lang('fo.ID')</th> <th>@lang('fo.nombre__respnsable')</th><th>@lang('fo.ciudad_')</th><th>@lang('fo.direccion_')</th>
+                    <th>@lang('fo.ID')</th> <th>@lang('fo.nombre__respnsable')</th><th>@lang('fo.ciudad_')</th><th>@lang('fo.area_')</th>
                     <th>@lang('fo.Accion')</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $custodio->id }}</td> <td> {{ $custodio->nombre_responsable }} </td><td> {{ $custodio->ciudad }} </td><td> {{ $custodio->direccion }} </td>
+                    <td>{{ $custodio->id }}</td> <td> {{ $custodio->nombre_responsable }} </td><td> {{ $custodio->ciudad }} </td><td> {{ $custodio->area_piso }} </td>
                     <td><a href="{{ url('custodio/' . $custodio->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
                         </a></td>

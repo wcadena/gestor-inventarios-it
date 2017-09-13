@@ -267,3 +267,5 @@ Route::get('busqueda', 'BusquedaController@busqueda');
 
 Route::name('verify')->get('users/verify/{token}', 'UserApiController@verify');
 Route::name('resend')->get('users/{user}/resend', 'UserApiController@resend');
+
+Route::name('enviar_notificaciones')->get('enviar_notificaciones', 'CustodiosController@indexnotificaciones');

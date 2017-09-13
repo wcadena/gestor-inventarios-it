@@ -39,6 +39,11 @@ class Custodios extends Model
         return $this->notificado == Custodios::CUSTODIO_NOTIFICADO;
     }
 
+    public function scopeNotificar($query)
+    {
+        return $query->where('notificado', '=', 1);
+    }
+
     public static function getENUM($tabla)
     {
         $type = DB::select( DB::raw("SHOW COLUMNS FROM custodios WHERE Field = '".$tabla."'") )[0]->Type;

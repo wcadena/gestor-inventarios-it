@@ -202,7 +202,7 @@ class EquiposController extends Controller
             }else{
                 $equipo->garantia   =   "SI";
                 $equipo->save();
-                Session::flash('flash_message_show1',trans('form.garantia') .$fecha_caduca);
+                Session::flash('flash_message_show1',trans('form.garantia_s') .$fecha_caduca);
             }
         }
 
@@ -415,7 +415,7 @@ class EquiposController extends Controller
             Equipos_log::create($custorm);
         }
         //Mail::to($user)->send(new UserCreated($user));
-        
+
         //return ('hola');
         $equipos = Equipos::where('custodio_id',$nuevo_custodio)->paginate(15);
         $custodio_id=$nuevo_custodio;

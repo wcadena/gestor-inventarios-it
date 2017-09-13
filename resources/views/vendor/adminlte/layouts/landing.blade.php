@@ -9,15 +9,17 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="description" content="@lang('home.descripcion') ">
     <meta name="author" content="Wagner Alexander Cadena Lastra">
 
-    <link rel="icon" type="image/png" href="{{ asset('/favicon.ico') }}">
-    <link rel="icon"
-          type="image/png"
-          href="{{ asset('/favicon.ico') }}" />
-    <link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
-    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/png" />
-    <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/png" />
 
-
+    {{----}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#da532c">
+    <meta name="apple-mobile-web-app-title" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
+    <meta name="application-name" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
+    <meta name="theme-color" content="#da532c">
+    {{----}}
     <meta property="og:title" content="@lang('home.sesinvetecu')" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="@lang('home.descripcion')" />

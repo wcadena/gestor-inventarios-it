@@ -10,7 +10,7 @@ return [
     'ciudad'    =>     'Ciudad de Custodio',
     'estacion'  =>     'Estación',
     'area'  =>     'Área',
-    'num_cajas'     =>     'Numero de Caja',
+    'num_cajas'     =>     'Número de Caja',
     'sociedad'  =>     'Sociedad',
     'no_serie'  =>     'N° de Serie',
     'codigo_barras'     =>     'Código de Barras',

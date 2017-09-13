@@ -14,6 +14,9 @@ return [
     */
 
     'create_new_custodio' => 'Crear nuevo custodio',
+    'notificar_custodio' => 'Notificar Custodios cambios de equipos',
+    'notificar_custodio_todos' => 'Notificar a todos',
+    'notificar_custodio_uno' => 'Notificar',
     'nombre_responsable' => 'Nombre Responsable: ',
     'ciudad' => 'Ciudad: ',
     'direccion' => 'Localidad: ',
@@ -31,7 +34,8 @@ return [
     'ID' => 'ID.',
     'nombre__respnsable' => 'Nombre Responsable',
     'ciudad_' => 'Ciudad',
-    'direccion_' => 'Direccion',
+    'direccion_' => 'Localidad',
+    'area_' => 'Área',
     'Acciones' => 'Acciones',
     'Accion' => 'Acciones',
     'Sociedad'      =>      'Sociedad',
@@ -65,15 +69,5 @@ return [
     'pais'      =>      'País: ',
     'nombre_largo'      =>      'Nombre Largo: ',
     'Edit Estacione'      =>      'Editar Estación',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-    ''      =>      '',
-
-
 ];
+

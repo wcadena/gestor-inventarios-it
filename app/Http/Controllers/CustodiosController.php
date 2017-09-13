@@ -29,6 +29,13 @@ class CustodiosController extends Controller
         return view('directory.custodio.index', compact('custodio'));
     }
 
+    public function indexnotificaciones()
+    {
+        $custodio = Custodios::notificar()->paginate(100);
+
+        return view('directory.custodio.indexnotificar', compact('custodio'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

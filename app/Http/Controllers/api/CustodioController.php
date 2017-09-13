@@ -81,6 +81,27 @@ class CustodioController extends ApiController
     }
 
     /**
+     * api de envio de notificacion de custodios
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function notificacion(Request $request)
+    {
+        $reglas = [
+            'id' => 'required',
+        ];
+        $this->validate($request, $reglas);
+
+        $custodio = Custodios::Notificar()->where('id',$request->id)->get();
+        if($custodio->count()==1){
+            return $this->showMessage("Se ha enviado la notificacion");
+            //$this->showMessage("Se ha enviado la notificacion", 504);
+        }
+        return $this->showMessage("Este usuario ya no tiene notificaciones pendientes",404);
+
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

@@ -59,7 +59,9 @@
                          <li><a href="{{ url('usuario') }}"><i class='glyphicon glyphicon-user'></i> <span>@lang('home.men7') </span></a></li>
                          <li><a href="{{ url('opciones_check') }}"><i class='glyphicon glyphicon-check'></i> <span>@lang('home.men8')</span></a></li>
                          <li><a href="{{ url('checklist') }}"><i class='glyphicon glyphicon-check'></i> <span>@lang('home.men4')</span></a></li>
+                         @if(str_contains(Auth::getUser()->rol, ['system']))
                          <li><a href="{{ url('checklist_opcionescheck') }}"><i class='glyphicon glyphicon-link'></i> <span>@lang('home.men5')</span></a></li>
+                         @endif
                          <li><a href="{{ url('areas') }}"><i class='glyphicon glyphicon-flag'></i> <span>@lang('home.men9')</span></a></li>
                          <li><a href="{{ url('modelo') }}"><i class='glyphicon glyphicon-copyright-mark'></i> <span>@lang('home.men10')</span></a></li>
                          <li><a href="{{ url('orden') }}"><i class='glyphicon glyphicon-shopping-cart'></i> <span>@lang('home.men11')</span></a></li>

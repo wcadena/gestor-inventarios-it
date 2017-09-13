@@ -2,6 +2,16 @@
     <meta charset="UTF-8">
     <title> {{env('APP_NAME', 'Laravel')}} - @yield('htmlheader_title', env('APP_TITLE_PAGE', 'Your title here')) </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#da532c">
+    <meta name="apple-mobile-web-app-title" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
+    <meta name="application-name" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
+    <meta name="theme-color" content="#da532c">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
