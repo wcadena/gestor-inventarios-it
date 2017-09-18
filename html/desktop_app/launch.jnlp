@@ -16,7 +16,7 @@
         <j2se java-vm-args="-Djava.security.policy=applet.policy" version="1.8+"/>
         <jar href="Actualizador.jar" main="true"/>
     </resources>
-    <applet-desc height="300" main-class="ActualizadorJNLP" name="Actualizador" width="300">
+    <applet-desc height="300" main-class="ini.ActualizadorJNLP" name="Actualizador" width="300">
     <param name="user" value="wcadena"/>
 <param name="pass" value="clave"/>
 <param name="server" value=""/>

@@ -5,32 +5,34 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
-        "acacha/admin-lte-template-laravel": "^4.1",
+        "php": ">=7.0.0",
+        "acacha/admin-lte-template-laravel": "^5.0",
         "almasaeed2010/adminlte": "^2.3",
-        "barryvdh/laravel-dompdf": "^0.8.0",
+        "barryvdh/laravel-dompdf": "^0.8.1",
         "doctrine/dbal": "^2.6",
-        "geckob/firebase": "^0.1.1",
+		"fideloper/proxy": "~3.3",
+        "geckob/firebase": "^0.1.2",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
         "ktamas77/firebase-php": "^2.2",
         "laracasts/flash": "^3.0",
-        "laravel/framework": "5.4.*",
-        "laravel/passport": "^3.0",
+        "laravel/framework": "5.5.*",
+        "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0",
+        "laravelcollective/html": "^5.5",
         "maatwebsite/excel": "^2.1",
         "mpociot/laravel-firebase-sync": "^1.0",
         "nesbot/carbon": "^1.22",
         "pusher/pusher-php-server": "^3.0",
-        "spatie/laravel-fractal": "^4.2",
-        "vinkla/pusher": "^3.0",
-        "webpatser/laravel-uuid": "^2.0"
+        "spatie/laravel-fractal": "^5.2",
+        "vinkla/pusher": "^3.1",
+        "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
+		"filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [

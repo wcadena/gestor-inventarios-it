@@ -1,18 +1,18 @@
-# Sistema de Inventarios de Activos Fijos con Laravel 5.4
+# Sistema de Inventarios de Activos Fijos con Laravel 5.5
 
-Sistema de inventarios de Activos Fijos con Laravel 5.4 , proyectado para RestFull, uso de IONIC y JAVA
+Sistema de inventarios de Activos Fijos con Laravel 5.5 , proyectado para RestFull, uso de IONIC y JAVA
 Si necesitas una demostracion escribe a wcadena@outlook.com
 ## Modulos existentes
 
 ### Usuarios
 Administre los usuarios del sistema, con cuatro perfiles:
-####-Registrado
+#### -Registrado
 Usuario que entra por primera vez, no tiene acceso a nada
-####-Usuario
+#### -Usuario
 Solo puede ver su perfil y los custodios y sus reportes
-####-Administrador
+#### -Administrador
 Administra la aplicacion
-####-SYSTEM
+#### -SYSTEM
 Administra valores de la aplicacion de sistema
 
 
