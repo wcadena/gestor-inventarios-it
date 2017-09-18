@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\EmpresaScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,14 @@ class Equipos extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EmpresaScope());
+    }
+
     protected $fillable = ['modelo_equipo_id','orden_de_compra_id','custodio_id','estacione_id','area_id','check_list_id','num_cajas','sociedad','no_serie','codigo_barras','codigo_avianca','codigo_otro','descripcion','ip','estado','estatus','garantia','observaciones','imagen','codigo_contable','hp_warrantyLevel','hp_endDate','hp_displaySerialNumber','hp_modelNumber','hp_countryOfPurchase','hp_newProduct_seriesName','hp_newProduct_imageUrl','hp_warrantyResultRedirectUrl'];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')

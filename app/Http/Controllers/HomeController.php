@@ -11,6 +11,7 @@ use App\Configuracion;
 use App\Custodios;
 use App\Equipos;
 use App\Http\Requests;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -38,18 +39,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $minutos    =       30;//30 minutos refresca la base
+        $minutos    =       1;//30 minutos refresca la base
         $maquinas = Cache::remember('maquinas', $minutos, function () {
-            return DB::table('equipos')->count();
+            return Equipos::count();
         });
         $usuarios = Cache::remember('usuarios', $minutos, function () {
-            return DB::table('users')->count();
+            return User::count();
         });
 
         $equipos_asignados = Cache::remember('equipos_asignados', $minutos, function () {
             $encargado = Configuracion::where('atributo','CUSTODIO_BODEGA')->get()->first()->valor;
-            return DB::table('equipos')
-                ->where('custodio_id','<>',$encargado)
+            return Equipos::where('custodio_id','<>',$encargado)
                 ->count();
         });
 

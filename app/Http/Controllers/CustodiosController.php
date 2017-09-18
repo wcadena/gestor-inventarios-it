@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Areas;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -43,7 +44,8 @@ class CustodiosController extends Controller
      */
     public function create()
     {
-        return view('directory.custodio.create');
+        $areas = Areas::orderBy('area','asc')->pluck('area','area');
+        return view('directory.custodio.create',compact('areas'));
     }
 
     /**
@@ -54,7 +56,6 @@ class CustodiosController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'pais' => 'required',
             'ciudad' => 'required',
             'direccion' => 'required',
             'documentoIdentificacion' => 'required',

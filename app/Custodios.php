@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\CustodiosScope;
 use App\Transformers\CustodiosTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,13 +15,20 @@ class Custodios extends Model
     use SoftDeletes;
     use Notifiable, HasApiTokens;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new CustodiosScope());
+    }
+
     public $transformer = CustodiosTransformer::class;
 
     const CUSTODIO_NOTIFICADO = '1';
     const CUSTODIO_NO_NOTIFICADO = '0';
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nombre_responsable','ciudad','direccion','area-piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email'];
+    protected $fillable = ['nombre_responsable','ciudad','direccion','area_piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email'];
 
     public function estados() {
         return $this->hasMany('ACTIVO', 'INACTIVO');
