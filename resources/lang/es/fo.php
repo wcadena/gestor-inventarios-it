@@ -64,6 +64,7 @@ return [
     'Add New Estacione'      =>      'Añadir Estación',
     'Estacion'      =>      'Estación',
     'Pais'      =>      'País',
+    'Maquinas'      =>      'Máquinas/Equipos',
     'Nombre Largo'      =>      'Nombre Largo',
     'Create New Estacione'      =>      'Crear nueva Estación',
     'estacion'      =>      'Estación: ',

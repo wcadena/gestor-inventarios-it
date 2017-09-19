@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>@lang('form.sno')</th><th>@lang('fo.Area')</th><th>@lang('fo.Actions')</th>
+                    <th>@lang('form.sno')</th><th>@lang('fo.Area')</th><th>@lang('fo.Maquinas')</th><th>@lang('fo.Actions')</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +17,7 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td><a href="{{ url('areas', $item->id) }}">{{ $item->area }}</a></td>
+                    <td>{{ $item->equiposxc()->count() }}</td>
                     <td>
                         <a href="{{ url('areas/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">@lang('fo.Update')</button>

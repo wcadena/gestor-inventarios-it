@@ -18,4 +18,70 @@
         </table>
     </div>
 
+
+    <div class="table">
+
+        <table class="table table-bordered table-striped table-hover">
+
+            <thead>
+
+            <tr>
+
+                <th>@lang('form.sno')</th><th>Modelo</th><th>Custodio</th><th>Estacione</th><th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            @php $x=0; @endphp
+            @foreach($area->equiposxc as $item)
+
+                @php $x++;@endphp
+
+                <tr>
+
+                    <td>{{ $x }}</td>
+
+                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td><td>{{ $item->custodioxc->nombre_responsable }}</td><td>{{ $item->estacionxc->estacion }}</td>
+
+                    <td>
+
+                        <a href="{{ url('equipos/' . $item->id . '/edit') }}">
+
+                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+
+                        </a> /
+
+                        {!! Form::open([
+
+                            'method'=>'DELETE',
+
+                            'url' => ['equipos', $item->id],
+
+                            'style' => 'display:inline'
+
+                        ]) !!}
+
+                        {!! Form::submit(trans('form.deletee'), ['class' => 'btn btn-danger btn-xs']) !!}
+
+                        {!! Form::close() !!}
+
+                    </td>
+
+                </tr>
+
+            @endforeach
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+
 @endsection

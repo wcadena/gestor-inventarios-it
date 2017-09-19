@@ -13,4 +13,10 @@ class Areas extends Model
         return $this->hasMany('App\CheckList', 'area_id');
     }
 
+    public function equiposxc()
+    {
+        //return $this->hasMany('App\Equipos',);
+        return $this->hasMany('App\Equipos', 'area_id', 'id');
+    }
+
 }
