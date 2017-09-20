@@ -269,3 +269,7 @@ Route::name('verify')->get('users/verify/{token}', 'UserApiController@verify');
 Route::name('resend')->get('users/{user}/resend', 'UserApiController@resend');
 
 Route::name('enviar_notificaciones')->get('enviar_notificaciones', 'CustodiosController@indexnotificaciones');
+
+
+Route::name('verify_custodio')->get('custodio/verify/{token}', 'CustodiosController@verify');
+Route::name('resend_custodio')->get('custodio/{custodios}/resend', 'CustodiosController@resend');

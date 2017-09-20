@@ -15,8 +15,8 @@ class CustodiosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
+        $this->middleware('auth')->except(['verify', 'resend']);
+        $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas')->except(['verify', 'resend']);
     }
     /**
      * Display a listing of the resource.
@@ -175,6 +175,47 @@ class CustodiosController extends Controller
         Session::flash('flash_message', 'Custodios deleted!');
 
         return redirect('custodio');
+    }
+
+    public function showACustom($documentoIdentificacion)
+    {
+
+        $custodio = Custodios::where('documentoIdentificacion','=',$documentoIdentificacion);
+        if ($custodio == null){
+            Session::flash('flash_message_home', 'Custodio no encontrado!');
+            return redirect('home');
+        }
+
+        return view('directory.custodio.showACustom', compact('custodio'));
+    }
+    public function verify($token)
+    {
+
+        $user = Custodios::where('verification_token', $token)->firstOrFail();
+        $user->token = Custodios::generarToken();
+        $user->verification_token = null;
+        $user::sendPasswordResetNotification($user);
+        //dd($token);
+        $user->save();
+        Session::flash('flash_message', 'MEnsaje enviadoCon clave.');
+        return redirect('login');
+    }
+    public function resend(Custodios $custodios)
+    {
+        //dd($custodios);
+
+        retry(5, function() use ($custodios) {
+            if($custodios->token==null){
+                $custodios->token=Custodios::generarToken();
+            }
+            if($custodios->verification_token==null){
+                $custodios->verification_token=Custodios::generarVerificationToken();
+            }
+            $custodios->save();
+            $custodios->sendPasswordResetNotification($custodios);
+        }, 100);
+        Session::flash('flash_message', 'El correo de verificación se ha reenviado a: '.$custodios->email);
+        return redirect('login');
     }
 
 }

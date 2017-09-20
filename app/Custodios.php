@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\CustodioDarClave;
 use App\Scopes\CustodiosScope;
 use App\Transformers\CustodiosTransformer;
 use Illuminate\Database\Eloquent\Model;
@@ -9,11 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
+use Mpociot\Firebase\SyncsWithFirebase;
 
 class Custodios extends Model
 {
     use SoftDeletes;
     use Notifiable, HasApiTokens;
+    use SyncsWithFirebase;
 
     protected static function boot()
     {
@@ -28,7 +31,8 @@ class Custodios extends Model
     const CUSTODIO_NO_NOTIFICADO = '0';
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nombre_responsable','ciudad','direccion','area_piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email'];
+    protected $fillable = ['nombre_responsable','ciudad','direccion','area_piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email',
+        ' verification_token','token','direccion_preferida','longitud_1','latitud_1','longitud_2','latitud_2','whatsapp','telefono_celular_notificacion','slack_id'];
 
     public function estados() {
         return $this->hasMany('ACTIVO', 'INACTIVO');
@@ -63,6 +67,20 @@ class Custodios extends Model
             $enum = array_add($enum, $v, $v);
         }
         return $enum;
+    }
+    public static function generarVerificationToken()
+    {
+        return str_random(36);
+    }
+    public static function generarToken()
+    {
+        return str_random(6);
+    }
+
+    public function sendPasswordResetNotification(Custodios $custodios)
+    {
+
+        $this->notify(new CustodioDarClave($custodios));
     }
 
 }

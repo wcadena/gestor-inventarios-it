@@ -10,7 +10,7 @@
         "almasaeed2010/adminlte": "^2.3",
         "barryvdh/laravel-dompdf": "^0.8.1",
         "doctrine/dbal": "^2.6",
-		"fideloper/proxy": "~3.3",
+        "fideloper/proxy": "~3.3",
         "geckob/firebase": "^0.1.2",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
