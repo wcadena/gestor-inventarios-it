@@ -11,7 +11,7 @@ class Configuracion extends Model
 {
    use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['atributo','tipo','valores_fuente',"fijo",'valor'];
+    protected $fillable = ['atributo','tipo','valores_fuente',"fijo",'valor','empresa'];
 
     protected static function boot()
     {

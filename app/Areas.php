@@ -15,7 +15,7 @@ class Areas extends Model
         static::addGlobalScope(new EmpresaTScope());
     }
 
-    protected $fillable = ['area'];
+    protected $fillable = ['area','empresa'];
     public function checklistxc()
     {
         return $this->hasMany('App\CheckList', 'area_id');

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estaciones extends Model
 {
     protected $dates = ['deleted_at'];
-    protected $fillable = ['estacion'];
+    protected $fillable = ['estacion','empresa'];
 
     protected static function boot()
     {
