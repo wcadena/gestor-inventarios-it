@@ -2,10 +2,18 @@
 
 namespace App;
 
+use App\Scopes\EmpresaTScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Areas extends Model
 {
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EmpresaTScope());
+    }
 
     protected $fillable = ['area'];
     public function checklistxc()

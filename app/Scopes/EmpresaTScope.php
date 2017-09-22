@@ -1,7 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Humberto
- * Date: 22/09/2017
- * Time: 12:36
- */
+
+namespace App\Scopes;
+
+use App\User;
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
+
+class EmpresaTScope implements Scope
+{
+    /**
+     * Apply the scope to a given Eloquent query builder.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder->where('empresa', '=', Auth::user()->empresa);
+    }
+}
