@@ -15,10 +15,14 @@ class CreateEmpresasTable extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
 
-            $table->string("empresa")->unique()->primary();
+            $table->string("empresa")->unique();
             $table->timestamps();
             $table->softDeletes();
         });
+        $e = new \App\Empresa();
+        $e->empresa = 'Avianca EC';
+        $e->save();
+
     }
 
     /**
