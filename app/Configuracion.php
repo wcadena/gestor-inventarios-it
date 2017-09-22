@@ -32,6 +32,10 @@ class Configuracion extends Model
         }
         return $enum;
     }
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+    }
 
     public function scopeConfig($query, $type)
     {

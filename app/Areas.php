@@ -27,4 +27,9 @@ class Areas extends Model
         return $this->hasMany('App\Equipos', 'area_id', 'id');
     }
 
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+    }
+
 }

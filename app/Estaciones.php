@@ -16,5 +16,10 @@ class Estaciones extends Model
 
         static::addGlobalScope(new EmpresaTScope());
     }
+
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+    }
     
 }

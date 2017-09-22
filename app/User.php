@@ -78,6 +78,11 @@ class User extends Authenticatable
     {
         $this->attributes['email'] = strtolower($valor);
     }
+
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+    }
     //////////////////////////////////////////////fin mutwadores
     /**
      * Send the password reset notification.
