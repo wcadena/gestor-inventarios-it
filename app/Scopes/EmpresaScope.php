@@ -19,6 +19,6 @@ class EmpresaScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('sociedad', '=', Auth::user()->padrino);
+        $builder->where('sociedad', '=', Auth::user()->empresa);
     }
 }

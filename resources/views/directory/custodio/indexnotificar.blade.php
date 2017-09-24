@@ -91,11 +91,14 @@
                 var a= $(this).parents("tr");
                 var id = (a.data('id'));
                 var $btn = $(this).button('loading');
-                var url ='{{url('api/custodiosNotificacion')}}?id='+id;
+                var url ='{{url('custodiosNotificacion')}}?id='+id;
                 $.ajax({
                     type: "GET",
                     url: url,
                     cache: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFmZTE4NDZiZTY0YmZjNDkwMGQ3Y2VmMjBiYzk4NzhkNWQ1YWM2OWIwNDgwNGQ4NjEyNzM2ZjcwNmRiMDM5MmY0Y2ZhY2Y5MWU0M2IxZTIwIn0.eyJhdWQiOiIxIiwianRpIjoiYWZlMTg0NmJlNjRiZmM0OTAwZDdjZWYyMGJjOTg3OGQ1ZDVhYzY5YjA0ODA0ZDg2MTI3MzZmNzA2ZGIwMzkyZjRjZmFjZjkxZTQzYjFlMjAiLCJpYXQiOjE1MDYyNjEzNjAsIm5iZiI6MTUwNjI2MTM2MCwiZXhwIjoxNTM3Nzk3MzYwLCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.y8G1acEh2VEguq4_p7ikaNYaaFsR7Ek6FeNy6U4ZEQhnGS4mn4ErNMiM4FqNHnxwhxQG5sva-qlv6s3i5pHOuRiYSaK3IIu3KmNbcXKR4_Q0Veyi_wa1Mzya-8bhhe7CZzCTd8weVPPTn2M52iki61xUY6pbus8ni8qbpFyG-LFf36kG3wpggvF7TJNG81fk3EyHZVrAPk2MUMLSEpLukEdOORrcsOOALAPpDAnWsldAFfyLrq0J4dCihMIEffTT__Tlc9AjFqwt4rYv0XP838cj3iHsrewJmx9Ifk276Yc6Hqw-iGtdOgvwGTQIb9Sh6hePndwdj_X476yKoYxP0ArnoZLm7mrVWaKGfntQXeqS31pZE7wlsHR6WxUUJc5IA-o9G6AdXXLtb5Mp7AEJFSqSTh9lCt25MuMl_ZhxzAzSPrOkWRaRKNMadW-k1heT2eVSgtpLWJEZqJlXR0Mb7QchcRzVXb5epss8yWxfikMlmdy_BBE0yVPcQ2jnTepA6c4LMiGa13g42hwwroSCJPEGEglsDo6SBf5OMlwfga_jJYnBFPh32R0kRJ7Si830nD5VzHnJr_pad48k7xqHDHX9iMUa_w0qEZDfCYXgrt_T1VK2tkqAXtTkOC27bqnfMmQb6uqoXo_JgkhAdbgZDgVeF_XF9FuTLTZk9gSydvY');
+                    },
                     success: function(data){
                         //alert("listo:"+data);
                         $("#alert-x").fadeIn();
@@ -128,7 +131,7 @@
                         var a   =  $('#linea_notificacion-'+correos[i]);
                         a.fadeOut();
                         var id = correos[i];
-                        var url ='{{url('api/custodiosNotificacion')}}?id='+id;
+                        var url ='{{url('custodiosNotificacion')}}?id='+id;
 
                         $.ajax({
                             type: "GET",

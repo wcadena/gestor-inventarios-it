@@ -19,6 +19,6 @@ class CustodiosScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('compania', '=', Auth::user()->padrino);
+        $builder->where('compania', '=', Auth::user()->empresa);
     }
 }

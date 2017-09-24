@@ -121,7 +121,7 @@
             <div class="form-group {{ $errors->has('sociedad') ? 'has-error' : ''}}">
                 {!! Form::label('sociedad', trans('form.sxs3'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('sociedad', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('sociedad', null, ['class' => 'form-control','readonly' => 'readonly']) !!}
                     {!! $errors->first('sociedad', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

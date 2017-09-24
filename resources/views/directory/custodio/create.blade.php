@@ -61,7 +61,7 @@
             <div class="form-group {{ $errors->has('compania') ? 'has-error' : ''}}">
                 {!! Form::label('compania', trans('fo.compania'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('compania', Auth::user()->padrino, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+                    {!! Form::text('compania', Auth::user()->empresa, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                     {!! $errors->first('compania', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,7 +37,10 @@ class UsuarioLogController extends Controller
      */
     public function create()
     {
-        return view('directory.usuario.create');
+
+        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
+
+        return view('directory.usuario.create',compact('empresa'));
     }
 
     /**
@@ -87,8 +91,9 @@ class UsuarioLogController extends Controller
             Session::flash('flash_message', 'Usuario No encontrado!');
             return redirect('usuario');
         }
+        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
 
-        return view('directory.usuario.edit', compact('usuario'));
+        return view('directory.usuario.edit', compact('empresa','usuario'));
     }
 
     /**

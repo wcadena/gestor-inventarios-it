@@ -53,10 +53,17 @@
                     {!! $errors->first('cargo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+    <div class="form-group {{ $errors->has('pais') ? 'has-error' : ''}}">
+        {!! Form::label('pais', trans('fo.pais'), ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('pais', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('pais', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
             <div class="form-group {{ $errors->has('compania') ? 'has-error' : ''}}">
                 {!! Form::label('compania', trans('fo.compania'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('compania', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('compania', null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                     {!! $errors->first('compania', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
