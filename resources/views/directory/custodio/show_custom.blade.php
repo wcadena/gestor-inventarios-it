@@ -87,7 +87,7 @@
     <div class="form-group {{ $errors->has('correo') ? 'has-error' : ''}}">
         {!! Form::label('correo', 'Correo: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::text('correo', null, ['class' => 'form-control']) !!}
+            {!! Form::text('correo', $custodio->email, ['class' => 'form-control']) !!}
             {!! $errors->first('correo', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -110,7 +110,7 @@
         {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
 
-            {{ Form::select('antiguo_custodio_id', $custodios, null, ['class' => 'form-control']) }}
+            {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'form-control']) }}
             {!! $errors->first('antiguo_custodio_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

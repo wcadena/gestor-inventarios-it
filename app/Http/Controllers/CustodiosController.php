@@ -97,6 +97,7 @@ class CustodiosController extends Controller
     public function show_custom($id)
     {
         $custodio = Custodios::findOrFail($id);
+        
         $custodios = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
 
         return view('directory.custodio.show_custom', compact('custodio','custodios'));
