@@ -95,7 +95,7 @@ class CustodioController extends ApiController
         ];
         $this->validate($request, $reglas);
         //dd(Auth::user()->empresa);
-        $custodio = Custodios::where('id',$request->id)->get();
+        $custodio = Custodios::Notificar()->where('id',$request->id)->get();
         //dd($custodio);
         if($custodio->count()==1){
             $custodios=$custodio[0];
