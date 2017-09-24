@@ -423,7 +423,7 @@ class EquiposController extends Controller
                 $custorm['id_equipos']=$valor;
                 $custorm['acciondb']='editar';
                 $custorm['id_users']=Auth::user()->id;
-                
+
                 Equipos_log::create($custorm);
             }
         }catch (Exception $e){
