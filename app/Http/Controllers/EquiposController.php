@@ -155,6 +155,7 @@ class EquiposController extends Controller
         $custodio_n->save();
         $custorm['id_equipos']=$equip3->id;
         $custorm['acciondb']='crear';
+        $custorm['id_users']=Auth::user()->id;
 
         Equipos_log::create($custorm);
         Session::flash('flash_message', 'Equipos added!');
@@ -336,7 +337,7 @@ class EquiposController extends Controller
         $custorm=$equipo->jsonSerialize();
         $custorm['id_equipos']=$id;
         $custorm['acciondb']='actualizar';
-
+        $custorm['id_users']=Auth::user()->id;
         //dd($f);
 
         Equipos_log::create($custorm);
@@ -362,6 +363,7 @@ class EquiposController extends Controller
         $custodio_n = Custodios::find($equip3->custodio_id);
         $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
         $custodio_n->save();
+        $custorm['id_users']=Auth::user()->id;
         Equipos_log::create($custorm);
 
         Session::flash('flash_message', 'Equipos deleted!');
@@ -409,6 +411,7 @@ class EquiposController extends Controller
                 $custorm=$equipo->jsonSerialize();
                 $custorm['id_equipos']=$valor;
                 $custorm['acciondb']='editar';
+                $custorm['id_users']=Auth::user()->id;
 
                 Equipos_log::create($custorm);
 
@@ -419,6 +422,8 @@ class EquiposController extends Controller
                 $custorm=$equipo->jsonSerialize();
                 $custorm['id_equipos']=$valor;
                 $custorm['acciondb']='editar';
+                $custorm['id_users']=Auth::user()->id;
+                
                 Equipos_log::create($custorm);
             }
         }catch (Exception $e){
