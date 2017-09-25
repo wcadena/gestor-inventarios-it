@@ -87,14 +87,14 @@
     <div class="form-group {{ $errors->has('correo') ? 'has-error' : ''}}">
         {!! Form::label('correo', 'Correo: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::text('correo', null, ['class' => 'form-control']) !!}
+            {!! Form::text('correo', $custodio->email, ['class' => 'form-control']) !!}
             {!! $errors->first('correo', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('fecha_novedades') ? 'has-error' : ''}}">
         {!! Form::label('fecha_novedades', 'Fecha Novedades: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::date('fecha_novedades', null, ['class' => 'form-control']) !!}
+            {!! Form::date('fecha_novedades', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
             {!! $errors->first('fecha_novedades', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -142,7 +142,7 @@
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
-    <h1>Equipos a cargo de usuario</h1>
+    <h1>@lang('fo.Equipos a cargo de usuario')</h1>
     {!! $errors->first('equipos', '<div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Warning!</strong> :message
@@ -151,9 +151,15 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
             <tr>
-                <th>@lang('form.sno')</th><th>Sociedad</th><th>No. RPM (Cód.Barras)</th>
+                <th>@lang('form.sno')</th>
+                <th>@lang('fo.Sociedad')</th>
+                <th>@lang('fo.no_serie')</th>
                 <th>@lang('form.codint')</th>
-                <th>Descripción (Marca - Modelo)</th><th>@lang('form.noser')</th><th>Estado<th>Actions</th>
+                <th>@lang('fo.Descripción (Marca - Modelo)')</th>
+                <th>@lang('form.noser')</th>
+                <th>@lang('fo.Estado')</th>
+                <th>@lang('fo.RepoNovedades')</th>
+                <th>@lang('fo.Actions')</th>
             </tr>
             </thead>
             <tbody>
@@ -162,9 +168,23 @@
                 @php $x++;@endphp
                 <tr>
                     <td>{{ Form::checkbox('equipos[]', $item->id, false) }}</td>
-                    <td>{{ $item->sociedad }}</td><td><a href="{{ url('equipos', $item->id) }}">{{ $item->codigo_barras }}</a></td>
+                    <td>{{ $item->sociedad }}</td>
+                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->no_serie }}</a></td>
                     <td>{{ $item->codigo_avianca }}</td>
-                    <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td><td>{{ $item->no_serie }}</td><td>{{ $item->estado }}</td>
+                    <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td>
+                    <td>{{ $item->no_serie }}</td>
+                    <td>{{ $item->estado }}</td>
+                    <td>
+                        @if($item->equipos_reponovedadesdetalle['repo_novedades_id']>0)
+                            @foreach($item->equipos_reponovedadesdetalle as $item2x)
+                        <a href="{{ url('repo_novedades/' .  $item2x->repo_novedades_id ) }}">
+                            ({{$item2x->repo_novedades_id}})@lang('fo.Novedad')
+                        </a>
+                            @endforeach
+                        @else
+                            @lang('fo.sinNovedad')
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>

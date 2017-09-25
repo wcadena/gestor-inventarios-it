@@ -80,6 +80,10 @@ class Equipos extends Model
     {
         return $this->hasOne('App\Equipos_log', 'id', 'id_equipos');
     }
+    public function equipos_reponovedadesdetalle()
+    {
+        return $this->hasOne('App\RepoNovedadesDetalle', 'id_equipos', 'id');
+    }
 
     
 }

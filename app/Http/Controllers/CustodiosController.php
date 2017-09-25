@@ -191,12 +191,12 @@ class CustodiosController extends Controller
     public function verify($token)
     {
 
-        $user = Custodios::where('verification_token', $token)->firstOrFail();
-        $user->token = Custodios::generarToken();
-        $user->verification_token = null;
-        $user::sendPasswordResetNotification($user);
+        $custodios = Custodios::where('verification_token', $token)->firstOrFail();
+        $custodios->token = Custodios::generarToken();
+        $custodios->verification_token = null;
+        $custodios::sendPasswordResetNotification($custodios);
         //dd($token);
-        $user->save();
+        $custodios->save();
         Session::flash('flash_message', 'MEnsaje enviadoCon clave.');
         return redirect('login');
     }

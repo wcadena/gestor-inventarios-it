@@ -46,5 +46,10 @@ class RepoNovedadesDetalle extends Model
         return $this->hasOne('App\Equipos_log', 'id', 'id_equipos');
     }
 
+    public function repo_novedades_master()
+    {//no esta probado
+        return $this->belongsTo('App\RepoNovedades','repo_novedades_id','id');
+    }
+
 
 }

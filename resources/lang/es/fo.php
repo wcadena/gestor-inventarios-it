@@ -51,7 +51,7 @@ return [
     'fabricante'      =>      'Fabricante: ',
     'garantia_anios'      =>      'Garantía Años: ',
     'tipo_equipo'      =>      'Tipo de equipo: ',
-    'Create'      =>      'Crear',
+    'no_serie'      =>      'Serie',
     'Edit Modelo'      =>      'Editar Modelo',
     'Add New Area'      =>      'Añadir nueva área',
     'Areas'      =>      'Áreas',
@@ -73,5 +73,9 @@ return [
     'Edit Estacione'      =>      'Editar Estación',
     'atencion'      =>      'Atención',
     'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantáneos',
+    'Equipos a cargo de usuario'  =>  'Equipos a cargo de usuario',
+    'RepoNovedades'=>'Reporte de Novedades',
+    'Novedad'=>'Acta de Entrega',
+    'sinNovedad'=>'No tiene novedad'
 ];
 

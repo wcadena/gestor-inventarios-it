@@ -162,11 +162,19 @@ class RepoNovedadesController extends Controller
      */
     public function destroy($id)
     {
+        $repo_novedade = RepoNovedades::findOrFail($id);
+        $id_custodio= $repo_novedade->custodio_id;
+
+        foreach ($repo_novedade->reponovedadedetalleshm as $repo){
+            //dd($repo);
+            $repo->delete();
+        }
+
         RepoNovedades::destroy($id);
 
         Session::flash('flash_message', 'RepoNovedades deleted!');
 
-        return redirect('repo_novedades');
+        return redirect('custodio_custom/'.$id_custodio);
     }
 
 }
