@@ -99,6 +99,9 @@ class User extends Authenticatable
     {
         return $this->verified == User::USUARIO_VERIFICADO;
     }
+    public  function  getEmpresa(){
+        return $this->empresa;
+    }
 
 
 }
