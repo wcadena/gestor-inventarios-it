@@ -17,46 +17,52 @@
 
     <h1>@lang('form.equipos') de {{$nombre_responsable2}}<a href="{{ url('equipos/create') }}" class="btn btn-primary pull-right btn-sm">@lang('form.addnew') Equipo</a></h1>
 
+
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <fieldset>
 
         <div class="form-group" >
-
+            {!! Form::open([
+                            'method'=>'POST',
+                            'url' => ['reasignarindexecho']
+                        ]) !!}
             <div class="input-group">
 
              <span class="input-group-btn">
 
-                <a  id="sxxxdw3wsfg"  class="zxsdfgsd33" href="{{ url('custodio/{idzx3er}') }}">
 
-                    <button class="zxsdfgsd33 btn btn-default" type="button">@lang('form.buscar')</button>
 
-                </a>
+                    {!! Form::submit('Asignar Equipos', ['class' => ' btn btn-default']) !!}
+
+
 
               </span>
 
-                {!! Form::open([
+                <div class="form-group {{ $errors->has('equipoidfull') ? 'has-error' : ''}}">
 
-                            'method'=>'POST',
+                    <div>
+                        {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
+                        {!! $errors->first('equipoidfull', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
 
-                            'url' => ['reasignarindexecho'],
 
-                            'style' => 'display:inline'
 
-                        ]) !!}
 
-                {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
 
                 {{ Form::hidden('custodio_id', $custodio_id) }}
-
-                {!! Form::submit('Asignar Equipos', ['class' => 'btn btn-danger btn-xs']) !!}
-
-                {!! Form::close() !!}
-
-
 
 
 
             </div>
-
+            {!! Form::close() !!}
             <label for="equipoid">Equipo </label>
 
 

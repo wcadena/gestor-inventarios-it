@@ -40,14 +40,14 @@
                     {!! $errors->first('rol', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('padrino') ? 'has-error' : ''}}">
-                {!! Form::label('padrino', 'Empresa: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::select('padrino', \App\User::getENUM('padrino'), null, ['class' => 'form-control']) !!}
+    <div class="form-group {{ $errors->has('empresa') ? 'has-error' : ''}}">
+        {!! Form::label('area_piso',trans('fo.empresa') , ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::select('empresa', $empresa, null, ['class' => 'form-control']) !!}
+            {!! $errors->first('empresa', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
 
-                    {!! $errors->first('padrino', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
             <div class="form-group {{ $errors->has('username') ? 'has-error' : ''}}">
                 {!! Form::label('username', 'Username: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

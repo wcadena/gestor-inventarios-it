@@ -6,13 +6,14 @@ use App\Custodios;
 use App\Http\Controllers\ApiController;
 use App\Mail\NotificaCustodioCambio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class CustodioController extends ApiController
 {
     public function __construct()
     {
-        //$this->middleware('client.credentials')->only(['store', 'resend']);
+        //$this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
         /* $this->middleware('auth:api')->except(['store', 'verify', 'resend']);
        $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
        $this->middleware('scope:manage-account')->only(['show', 'update']);
@@ -88,12 +89,14 @@ class CustodioController extends ApiController
      */
     public function notificacion(Request $request)
     {
+        //para enviar notificaciones desde la misma aplicacion, si va en el api el api pide autenticacion fuera del aplicativo, asi se ingresa dentro del app
         $reglas = [
             'id' => 'required',
         ];
         $this->validate($request, $reglas);
-
+        //dd(Auth::user()->empresa);
         $custodio = Custodios::Notificar()->where('id',$request->id)->get();
+        //dd($custodio);
         if($custodio->count()==1){
             $custodios=$custodio[0];
             if ($custodios->email== null||$custodios->email==''){

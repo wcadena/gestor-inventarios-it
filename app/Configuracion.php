@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\EmpresaTScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,14 @@ class Configuracion extends Model
 {
    use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['atributo','tipo','valores_fuente',"fijo",'valor'];
+    protected $fillable = ['atributo','tipo','valores_fuente',"fijo",'valor','empresa'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EmpresaTScope());
+    }
 
     public static function getENUM($tabla)
     {
@@ -23,6 +31,10 @@ class Configuracion extends Model
             $enum = array_add($enum, $v, $v);
         }
         return $enum;
+    }
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
     }
 
     public function scopeConfig($query, $type)

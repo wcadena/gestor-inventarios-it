@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','first_name','last_name','rol','padrino','username','email','password','verification_token','token','facebook_user_id'
+        'name','first_name','last_name','rol','username','email','password','verification_token','token','facebook_user_id','empresa'
     ];
 
     /**
@@ -53,7 +53,8 @@ class User extends Authenticatable
         $type = DB::select( DB::raw("SHOW COLUMNS FROM users WHERE Field = '".$tabla."'") )[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
         $enum = array();
-        foreach( explode(',', $matches[1]) as $value )
+        $enumerado =  explode(',', $matches[1]);
+        foreach($enumerado as $value )
         {
             $v = trim( $value, "'" );
             $enum = array_add($enum, $v, $v);
@@ -78,6 +79,11 @@ class User extends Authenticatable
     {
         $this->attributes['email'] = strtolower($valor);
     }
+
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+    }
     //////////////////////////////////////////////fin mutwadores
     /**
      * Send the password reset notification.
@@ -92,6 +98,9 @@ class User extends Authenticatable
     public function esVerificado()
     {
         return $this->verified == User::USUARIO_VERIFICADO;
+    }
+    public  function  getEmpresa(){
+        return $this->empresa;
     }
 
 

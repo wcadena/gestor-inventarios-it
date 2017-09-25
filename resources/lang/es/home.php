@@ -42,6 +42,7 @@ return [
     'men6' => 'Administración',
     'men61' => 'Administración del Sistema',
     'men7' => 'Administrar Usuarios',
+    'garantiasHP' => 'Garantias de HP',
     'men8' => 'Opciones de Checklist',
     'men9' => 'Áreas',
     'men10' => 'Modelos',

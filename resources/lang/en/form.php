@@ -19,6 +19,7 @@ return [
 	'addnew' => 'Añadir ',
 	'sno' => '#',
 	'equipos' => 'Equipos',
+    'equipo' => 'Equipo',
 	'reqeq' => 'Reasignar Equipo',
 	'retg' => 'Imprimir Reporte de novedades FULL',
     'retg_custom' => 'Imprimir Reporte de novedades Personalizado',

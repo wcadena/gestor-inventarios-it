@@ -90,7 +90,9 @@
 
                     <td>{{ $x }}</td>
 
-                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td><td>{{ $item->custodioxc->nombre_responsable }}</td><td>{{ $item->estacionxc->estacion }}</td>
+                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td>
+                    <td>{{ $item->custodioxc['nombre_responsable'] }}</td>
+                    <td>{{ $item->estacionxc->estacion }}</td>
 
                     <td>
 

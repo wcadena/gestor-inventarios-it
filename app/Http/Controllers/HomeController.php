@@ -13,6 +13,7 @@ use App\Equipos;
 use App\Http\Requests;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -40,25 +41,25 @@ class HomeController extends Controller
     public function index()
     {
         $minutos    =       1;//30 minutos refresca la base
-        $maquinas = Cache::remember('maquinas', $minutos, function () {
+        $maquinas = Cache::remember('maquinas'.Auth::user()->getEmpresa(), $minutos, function () {
             return Equipos::count();
         });
-        $usuarios = Cache::remember('usuarios', $minutos, function () {
+        $usuarios = Cache::remember('usuarios'.Auth::user()->getEmpresa(), $minutos, function () {
             return User::count();
         });
 
-        $equipos_asignados = Cache::remember('equipos_asignados', $minutos, function () {
+        $equipos_asignados = Cache::remember('equipos_asignados'.Auth::user()->getEmpresa(), $minutos, function () {
             $encargado = Configuracion::where('atributo','CUSTODIO_BODEGA')->get()->first()->valor;
             return Equipos::where('custodio_id','<>',$encargado)
                 ->count();
         });
 
-        $custodios = Cache::remember('custodios', $minutos, function () {
+        $custodios = Cache::remember('custodios'.Auth::user()->getEmpresa(), $minutos, function () {
             $encargado = Configuracion::where('atributo','CUSTODIO_BODEGA')->get()->first()->valor;
             return Custodios::count();
         });
 
-        $pie_estaciones = Cache::remember('pie_estaciones', $minutos, function () {
+        $pie_estaciones = Cache::remember('pie_estaciones'.Auth::user()->getEmpresa(), $minutos, function () {
             return Equipos::select('estaciones.estacion', DB::raw('COUNT(estacione_id) as Contador'),
                 DB::raw('MAX(estacione_id) as estacione_id'))
                 ->join('estaciones', 'estaciones.id', '=', 'equipos.estacione_id')

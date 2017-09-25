@@ -2,12 +2,20 @@
 
 namespace App;
 
+use App\Scopes\EmpresaTScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Areas extends Model
 {
 
-    protected $fillable = ['area'];
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EmpresaTScope());
+    }
+
+    protected $fillable = ['area','empresa'];
     public function checklistxc()
     {
         return $this->hasMany('App\CheckList', 'area_id');
@@ -17,6 +25,11 @@ class Areas extends Model
     {
         //return $this->hasMany('App\Equipos',);
         return $this->hasMany('App\Equipos', 'area_id', 'id');
+    }
+
+    public function empresaxc()
+    {
+        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
     }
 
 }

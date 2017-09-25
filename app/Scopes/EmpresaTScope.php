@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
-class EmpresaScope implements Scope
+class EmpresaTScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.
@@ -19,6 +19,6 @@ class EmpresaScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('sociedad', '=', Auth::user()->empresa);
+        $builder->where('empresa', '=', Auth::user()->empresa);
     }
 }

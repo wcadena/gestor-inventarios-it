@@ -72,10 +72,16 @@ return [
     'nombre_largo'      =>      'Nombre Largo: ',
     'Edit Estacione'      =>      'Editar Estación',
     'atencion'      =>      'Atención',
+    'empresa'      =>      'Empresa:',
     'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantáneos',
     'Equipos a cargo de usuario'  =>  'Equipos a cargo de usuario',
     'RepoNovedades'=>'Reporte de Novedades',
     'Novedad'=>'Acta de Entrega',
-    'sinNovedad'=>'No tiene novedad'
+    'sinNovedad'=>'No tiene novedad',
+    'Atributo'   =>  'Atributo',
+    'Tipo'   =>  'Tipo',
+    'Valor'   =>  'Valor',
+    'Config'=>'Atributos de configuracion de sistema, no modificar',
+    'Add New Config'=>'Nueva Configuracion',
 ];
 

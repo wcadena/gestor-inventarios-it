@@ -23,6 +23,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
@@ -154,6 +155,7 @@ class EquiposController extends Controller
         $custodio_n->save();
         $custorm['id_equipos']=$equip3->id;
         $custorm['acciondb']='crear';
+        $custorm['id_users']=Auth::user()->id;
 
         Equipos_log::create($custorm);
         Session::flash('flash_message', 'Equipos added!');
@@ -335,7 +337,7 @@ class EquiposController extends Controller
         $custorm=$equipo->jsonSerialize();
         $custorm['id_equipos']=$id;
         $custorm['acciondb']='actualizar';
-
+        $custorm['id_users']=Auth::user()->id;
         //dd($f);
 
         Equipos_log::create($custorm);
@@ -361,6 +363,7 @@ class EquiposController extends Controller
         $custodio_n = Custodios::find($equip3->custodio_id);
         $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
         $custodio_n->save();
+        $custorm['id_users']=Auth::user()->id;
         Equipos_log::create($custorm);
 
         Session::flash('flash_message', 'Equipos deleted!');
@@ -378,42 +381,55 @@ class EquiposController extends Controller
     }
     public function reasignarindexecho(Request $request)
     {
-
+        $request->validate([
+            'equipoidfull' => 'required',
+            'custodio_id' => 'required',
+        ]);
         $equipos = $request->input('equipoidfull');
         $nuevo_custodio = $request->input('custodio_id');
         $obj_custodio = Custodios::findOrFail($nuevo_custodio);
         $nombre_responsable2 = $obj_custodio->nombre_responsable;
         $CUSTODIO_BODEGA = Configuracion::Config('CUSTODIO_BODEGA');
-        foreach ($equipos as $valor ){
-            //echo $valor;
-            $equipo = Equipos::findOrFail($valor);
+        try{
+            DB::beginTransaction();
 
-            $custodio_n = Custodios::find($equipo->custodio_id);
-            $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
-            $custodio_n->save();
-            $custodio_n2 = Custodios::find($nuevo_custodio);
-            $custodio_n2->notificado =   Custodios::CUSTODIO_NOTIFICADO;
-            $custodio_n2->save();
+            foreach ($equipos as $valor ){
+                //echo $valor;
+                $equipo = Equipos::findOrFail($valor);
 
-            $equipo->observaciones=$equipo->observaciones."[Se pasa de ".Custodios::findOrFail($equipo->custodio_id)->nombre_responsable." a ".$obj_custodio->nombre_responsable."]";
-            $equipo->custodio_id =$CUSTODIO_BODEGA;
-            $equipo->estatus='BODEGA';
-            $equipo->save();
-            $custorm=$equipo->jsonSerialize();
-            $custorm['id_equipos']=$valor;
-            $custorm['acciondb']='editar';
+                $custodio_n = Custodios::find($equipo->custodio_id);
+                $custodio_n->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+                $custodio_n->save();
+                $custodio_n2 = Custodios::find($nuevo_custodio);
+                $custodio_n2->notificado =   Custodios::CUSTODIO_NOTIFICADO;
+                $custodio_n2->save();
 
-            Equipos_log::create($custorm);
+                $equipo->observaciones=$equipo->observaciones."[Se pasa de ".Custodios::findOrFail($equipo->custodio_id)->nombre_responsable." a ".$obj_custodio->nombre_responsable."]";
+                $equipo->custodio_id =$CUSTODIO_BODEGA;
+                $equipo->estatus='BODEGA';
+                $equipo->save();
+                $custorm=$equipo->jsonSerialize();
+                $custorm['id_equipos']=$valor;
+                $custorm['acciondb']='editar';
+                $custorm['id_users']=Auth::user()->id;
 
-            $equipo->custodio_id =$nuevo_custodio;
-            $equipo->estatus='VIGENTE';
-            $equipo->save();
+                Equipos_log::create($custorm);
 
-            $custorm=$equipo->jsonSerialize();
-            $custorm['id_equipos']=$valor;
-            $custorm['acciondb']='editar';
-            Equipos_log::create($custorm);
+                $equipo->custodio_id =$nuevo_custodio;
+                $equipo->estatus='VIGENTE';
+                $equipo->save();
+
+                $custorm=$equipo->jsonSerialize();
+                $custorm['id_equipos']=$valor;
+                $custorm['acciondb']='editar';
+                $custorm['id_users']=Auth::user()->id;
+
+                Equipos_log::create($custorm);
+            }
+        }catch (Exception $e){
+            DB::rollback();
         }
+        DB::commit();
         //Mail::to($user)->send(new UserCreated($user));
 
         //return ('hola');
@@ -433,4 +449,10 @@ class EquiposController extends Controller
         return $equipos = Equipos::where($dato, $valor)->get();
     }
 
+    public function garantiasHP()
+    {
+        $equipos = Equipos::where('hp_displaySerialNumber','=',null)->paginate(50);
+
+        return view('directory.equipos.index_garantiaHP', compact('equipos'));
+    }
 }
