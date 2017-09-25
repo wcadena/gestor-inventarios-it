@@ -277,3 +277,5 @@ Route::name('resend_custodio')->get('custodio/{custodios}/resend', 'CustodiosCon
 Route::get('custodiosNotificacion', 'api\CustodioController@notificacion');
 
 Route::get('sendNotificacion', 'api\CustodioController@cedula');
+
+Route::name('garantiasHP')->get('garantiasHP','EquiposController@garantiasHP');

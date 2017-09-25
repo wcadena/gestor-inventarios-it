@@ -449,4 +449,10 @@ class EquiposController extends Controller
         return $equipos = Equipos::where($dato, $valor)->get();
     }
 
+    public function garantiasHP()
+    {
+        $equipos = Equipos::where('hp_displaySerialNumber','=',null)->paginate(50);
+
+        return view('directory.equipos.index_garantiaHP', compact('equipos'));
+    }
 }

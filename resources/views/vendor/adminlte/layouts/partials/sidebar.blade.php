@@ -57,6 +57,9 @@
                      <a href="#"><i class="glyphicon glyphicon-wrench"></i> <span>@lang('home.men13')</span> <i class="fa fa-angle-left pull-right"></i></a>
                      <ul class="treeview-menu">
                          <li><a href="{{ url('usuario') }}"><i class='glyphicon glyphicon-user'></i> <span>@lang('home.men7') </span></a></li>
+                         @if(str_contains(Auth::getUser()->rol, ['system']))
+                         <li><a href="{{ url('garantiasHP') }}"><i class='glyphicon glyphicon glyphicon-barcode'></i> <span>@lang('home.garantiasHP') </span></a></li>
+                         @endif
                          <li><a href="{{ url('opciones_check') }}"><i class='glyphicon glyphicon-check'></i> <span>@lang('home.men8')</span></a></li>
                          <li><a href="{{ url('checklist') }}"><i class='glyphicon glyphicon-check'></i> <span>@lang('home.men4')</span></a></li>
                          @if(str_contains(Auth::getUser()->rol, ['system']))
