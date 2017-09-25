@@ -16,12 +16,8 @@ class AddEmpresaEstacionesTable extends Migration
         Schema::table('estaciones', function (Blueprint $table) {
             $table->string('empresa');
             });
-            $use = \App\Estaciones::all();
-            foreach ($use as $u){
-                $u->empresa = 'Avianca Ec';
-                $u->save();
+            $affected = DB::update('update estaciones set empresa = ?', ['Avianca Ec']);
 
-            }
             Schema::table('estaciones', function (Blueprint $table) {
 
                 $table->foreign('empresa')->references('empresa')->on('empresas');

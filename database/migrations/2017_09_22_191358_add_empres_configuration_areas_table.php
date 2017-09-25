@@ -16,12 +16,9 @@ class AddEmpresConfigurationAreasTable extends Migration
         Schema::table('configuracions', function (Blueprint $table) {
                 $table->string('empresa');
             });
-            $use = \App\Configuracion::all();
-            foreach ($use as $u){
-                $u->empresa = 'Avianca Ec';
-                $u->save();
+            $affected = DB::update('update configuracions set empresa = ?', ['Avianca Ec']);
 
-            }
+
             Schema::table('configuracions', function (Blueprint $table) {
 
                 $table->foreign('empresa')->references('empresa')->on('empresas');

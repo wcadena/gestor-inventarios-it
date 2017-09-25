@@ -21,14 +21,12 @@ class AddEmpresaUsuariosTable extends Migration
 
             $table->string('empresa');
         });
-        $use = \App\User::all();
-        foreach ($use as $u){
-            $u->empresa = 'Avianca Ec';
-            $u->save();
 
-        }
+
+        $affected = DB::update('update users set empresa = ?', ['Avianca Ec']);
+
+
         Schema::table('users', function (Blueprint $table) {
-
             $table->foreign('empresa')->references('empresa')->on('empresas');
         });
 

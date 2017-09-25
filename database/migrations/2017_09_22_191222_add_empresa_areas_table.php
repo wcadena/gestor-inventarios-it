@@ -16,12 +16,10 @@ class AddEmpresaAreasTable extends Migration
             Schema::table('areas', function (Blueprint $table) {
                 $table->string('empresa');
             });
-            $use = \App\Areas::all();
-            foreach ($use as $u){
-                $u->empresa = 'Avianca Ec';
-                $u->save();
 
-            }
+            $affected = DB::update('update areas set empresa = ?', ['Avianca Ec']);
+
+
             Schema::table('areas', function (Blueprint $table) {
 
                 $table->foreign('empresa')->references('empresa')->on('empresas');

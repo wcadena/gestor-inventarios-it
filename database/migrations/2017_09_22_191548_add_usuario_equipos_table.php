@@ -16,6 +16,7 @@ class AddUsuarioEquiposTable extends Migration
         Schema::table('equipos_logs', function (Blueprint $table) {
                 $table->integer('id_users')->unsigned();
         });
+        echo '[1]';
     }
 
     /**
