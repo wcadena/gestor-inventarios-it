@@ -72,6 +72,12 @@ return [
     'nombre_largo'      =>      'Nombre Largo: ',
     'Edit Estacione'      =>      'Editar Estación',
     'atencion'      =>      'Atención',
+    'empresa'      =>      'Empresa:',
     'mensaje_de_notificacion_pagina'      =>      'El mensaje de notificación le toma 30 minutos en refrescarse, los correo son instantáneos',
+    'Atributo'   =>  'Atributo',
+    'Tipo'   =>  'Tipo',
+    'Valor'   =>  'Valor',
+    'Config'=>'Atributos de configuracion de sistema, no modificar',
+    'Add New Config'=>'Nueva Configuracion',
 ];
 
