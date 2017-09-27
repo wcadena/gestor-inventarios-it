@@ -303,6 +303,7 @@ class EquiposController extends Controller
             'area_id' => 'required',
             'sociedad' => 'required',
             'descripcion' => 'required',
+            'observaciones' => 'required',
 
         ];
         $this->validate($request, $reglas);
