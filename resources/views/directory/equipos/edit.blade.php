@@ -213,7 +213,9 @@
             <div class="col-sm-6">
                 {!! Form::file('imagen', null, ['class' => 'form-control']) !!}
                 {!! $errors->first('imagen', '<p class="help-block">:message</p>') !!}
+                @if($equipo->imagen != null)
                 <img  width="300" height="200"  alt="{{$equipo->no_serie}}" class="img-thumbnail" src="{{url('equipos/'.$equipo->id .'/image')}}" />
+                @endif
             </div>
         </div>
 
