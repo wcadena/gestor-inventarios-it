@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>@lang('fo.Config')<a href="{{ url('config/create') }}" class="btn btn-primary pull-right btn-sm"></a></h1>
+    <h1>@lang('fo.Config')<a href="{{ url('config/create') }}" class="btn btn-primary pull-right btn-sm">@lang('fo.Add New Config')</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

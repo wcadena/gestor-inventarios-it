@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Dusk\DuskServiceProvider;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->environment('local', 'testing')) {
-            $this->app->register(DuskServiceProvider::class);
+
         }
         $this->app->bind('path.public', function() {
             return base_path().'/html';

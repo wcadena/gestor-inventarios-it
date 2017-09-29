@@ -46,7 +46,9 @@ class OrdenDeCompraController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'ordenCompra' => 'required',
+        ]);
         OrdenDeCompra::create($request->all());
 
         Session::flash('flash_message', 'OrdenDeCompra added!');

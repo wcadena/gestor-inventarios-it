@@ -46,7 +46,13 @@ class EstacionesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'nombre_largo' => 'required',
+            'pais' => 'required',
+            'estacion' => 'required',
+            'estacion' => 'required',
+            'empresa' => 'required',
+        ]);
         Estaciones::create($request->all());
 
         Session::flash('flash_message', 'Estaciones added!');
@@ -91,7 +97,13 @@ class EstacionesController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $request->validate([
+            'nombre_largo' => 'required',
+            'pais' => 'required',
+            'estacion' => 'required',
+            'estacion' => 'required',
+            'empresa' => 'required',
+        ]);
         $estacione = Estaciones::findOrFail($id);
         $estacione->update($request->all());
 

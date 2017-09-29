@@ -46,7 +46,9 @@ class AreasController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'area' => 'required',
+        ]);
         Areas::create($request->all());
 
         Session::flash('flash_message', 'Areas added!');
@@ -91,7 +93,9 @@ class AreasController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $request->validate([
+            'area' => 'required',
+        ]);
         $area = Areas::findOrFail($id);
         $area->update($request->all());
 

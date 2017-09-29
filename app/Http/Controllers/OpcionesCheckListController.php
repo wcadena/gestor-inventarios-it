@@ -48,7 +48,10 @@ class OpcionesCheckListController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'atributo' => 'required',
+        ]);
+
         OpcionesCheckList::create($request->all());
 
         Session::flash('flash_message', 'OpcionesCheckList added!');

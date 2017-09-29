@@ -21,7 +21,7 @@
             <div class="form-group {{ $errors->has('pais') ? 'has-error' : ''}}">
                 {!! Form::label('pais', trans('fo.pais'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('pais', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('pais', \App\Estaciones::getENUM('pais'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('pais', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

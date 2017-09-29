@@ -53,8 +53,8 @@
                     <td>{{ $item->custodioxc->nombre_responsable }}</td>
                     <td>{{ $item->custodioxc->area_piso }}</td>
                     <td>{{ $item->custodioxc->ciudad }}</td>
-                    <td>{{ $item->estacionxc->estacion }}</td>
-                    <td>{{ $item->areaxc->area }}</td>
+                    <td>{{ $item->estacionxc['estacion'] }}</td>
+                    <td>{{ $item->areaxc['area'] }}</td>
                     <td>{{ $item->num_cajas }}</td>
                     <td>{{ $item->sociedad }}</td>
                     <td>{{ $item->no_serie }}</td>

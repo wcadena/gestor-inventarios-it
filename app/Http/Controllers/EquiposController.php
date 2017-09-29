@@ -159,6 +159,7 @@ class EquiposController extends Controller
 
         Equipos_log::create($custorm);
         Session::flash('flash_message', 'Equipos added!');
+        \Illuminate\Support\Facades\Session::put('x_notificar_time',\Carbon\Carbon::now()->addMinutes(0));
 
         return redirect('equipos');
         //echo
@@ -343,6 +344,7 @@ class EquiposController extends Controller
 
         Equipos_log::create($custorm);
         Session::flash('flash_message', 'Equipos updated!');
+        \Illuminate\Support\Facades\Session::put('x_notificar_time',\Carbon\Carbon::now()->addMinutes(0));
 
         return redirect('equipos');
     }
@@ -368,6 +370,8 @@ class EquiposController extends Controller
         Equipos_log::create($custorm);
 
         Session::flash('flash_message', 'Equipos deleted!');
+        \Illuminate\Support\Facades\Session::put('x_notificar_time',\Carbon\Carbon::now()->addMinutes(0));
+
 
         return redirect('equipos');
     }
@@ -434,6 +438,8 @@ class EquiposController extends Controller
         //Mail::to($user)->send(new UserCreated($user));
 
         //return ('hola');
+
+        \Illuminate\Support\Facades\Session::put('x_notificar_time',\Carbon\Carbon::now()->addMinutes(0));
         $equipos = Equipos::where('custodio_id',$nuevo_custodio)->paginate(15);
         $custodio_id=$nuevo_custodio;
         return view('directory.equipos.index_reasignar', compact('equipos','custodio_id','nombre_responsable2'));
