@@ -107,9 +107,15 @@ class UsuarioLogController extends Controller
     {
         
         $usuario = User::findOrFail($id);
-        $req = $request->all();
-        $req['password'] = bcrypt($req['password']);
+
+        if($request['password'] != null ){
+            $req = $request->all();
+            $req['password'] = bcrypt($req['password']);
+        }else{
+            $req = $request->except('password');
+        }
         $req['verified'] = User::USUARIO_VERIFICADO;
+        //dd($req);
         $usuario->update($req);
 
         Session::flash('flash_message', 'User updated!');
