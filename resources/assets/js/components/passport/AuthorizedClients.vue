@@ -84,6 +84,7 @@
              * Prepare the component (Vue 2.x).
              */
             prepareComponent() {
+            console.log('prepare');
                 this.getTokens();
             },
 
@@ -93,7 +94,7 @@
             getTokens() {
                 axios.get('/oauth/tokens')
                         .then(response => {
-                            this.tokens = response.data;
+                        this.tokens = response.data;
                         });
             },
 
