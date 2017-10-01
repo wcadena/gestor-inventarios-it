@@ -40,7 +40,7 @@
             <div class="form-group {{ $errors->has('area_piso') ? 'has-error' : ''}}">
                 {!! Form::label('area_piso',trans('fo.area_piso') , ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('area_piso', $areas, null, ['class' => 'form-control']) !!}
+                    {!! Form::select('area_piso', $areas, null, ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('area_piso', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

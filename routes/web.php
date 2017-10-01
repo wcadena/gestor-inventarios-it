@@ -279,3 +279,30 @@ Route::get('custodiosNotificacion', 'api\CustodioController@notificacion');
 Route::get('sendNotificacion', 'api\CustodioController@cedula');
 
 Route::name('garantiasHP')->get('garantiasHP','EquiposController@garantiasHP');
+
+Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' => '5',
+        'redirect_uri' => env('APP_URL').'/callback',
+        'response_type' => 'code',
+        'scope' => '',
+    ]);
+
+    return redirect(env('APP_URL').'/oauth/authorize?'.$query);
+});
+
+Route::get('/callback', function (Illuminate\Http\Request $request) {
+    $http = new GuzzleHttp\Client;
+
+    $response = $http->post(env('APP_URL').'/oauth/token', [
+        'form_params' => [
+            'grant_type' => 'authorization_code',
+            'client_id' => '5',
+            'client_secret' => '72jO5wURXskMemg96fi8Jdjf1OSe5JmMBKGcPRoV',
+            'redirect_uri' => env('APP_URL').'/callback',
+            'code' => $request->code,
+        ],
+    ]);
+
+    return json_decode((string) $response->getBody(), true);
+});

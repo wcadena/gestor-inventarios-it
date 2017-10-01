@@ -24,11 +24,17 @@ mix.js('resources/assets/js/app.js', 'js')
         'node_modules/icheck/skins/square/blue.css',
         'html/css/toastr.css',
         'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
+        'node_modules/jquery-chosen/chosen.css',
     ], 'html/css/all.css')
     .combine([
         'html/css/bootstrap.css',
         'resources/assets/css/main.css'
     ], 'html/css/all-landing.css')
+    .scripts([
+        'node_modules/jquery-chosen/chosen.jquery.js',
+        'resources/assets/js/app_master.js'
+    ], 'html/js/all.js')
+
     //APP RESOURCES
     .copy('resources/assets/img/*.*','html/img')
     //VENDOR RESOURCES
@@ -42,6 +48,8 @@ mix.js('resources/assets/js/app.js', 'js')
     .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
     .copy('node_modules/select2/dist/css/select2.min.css','html/css')
     .copy('node_modules/select2/dist/js/select2.min.js','html/js')
+    .copy('node_modules/jquery-chosen/chosen-sprite.png','html/css')
+    .copy('node_modules/jquery-chosen/chosen-sprite@2x.png','html/css')
 
     .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
     .setPublicPath('html')

@@ -10,7 +10,7 @@
                 <div class="form-group {{ $errors->has('orden_de_compra_id') ? 'has-error' : ''}}">
                 {!! Form::label('orden_de_compra_id', 'Orden De Compra Id: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {{ Form::select('orden_de_compra_id', $dtos['orden'], null, ['class' => 'form-control']) }}
+                    {{ Form::select('orden_de_compra_id', $dtos['orden'], null, ['class' => 'form-control chosen-select']) }}
                     {!! $errors->first('orden_de_compra_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -18,7 +18,7 @@
         {!! Form::label('modelo_equipo_id', 'Modelo Id: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
 
-            {!! Form::select('modelo_equipo_id', $dtos['modelos'], null, ['class' => 'form-control']) !!}
+            {!! Form::select('modelo_equipo_id', $dtos['modelos'], null, ['class' => 'form-control chosen-select']) !!}
             {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -28,21 +28,21 @@
                 {!! Form::label('custodio_id', trans('form.asadd2'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
 
-                    {!! Form::select('custodio_id', $dtos['custodio'], $dtos['custodio_defecto'], ['class' => 'form-control']) !!}
+                    {!! Form::select('custodio_id', $dtos['custodio'], $dtos['custodio_defecto'], ['class' => 'form-control chosen-select']) !!}
                     {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('estacione_id') ? 'has-error' : ''}}">
                 {!! Form::label('estacione_id', trans('form.eid3'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('estacione_id', $dtos['estaciones'], null, ['class' => 'form-control']) !!}
+                    {!! Form::select('estacione_id', $dtos['estaciones'], null, ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('estacione_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
                 {!! Form::label('area_id', trans('form.ai3e'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('area_id', $dtos['areas'], $dtos['areas_defualt'], ['class' => 'form-control']) !!}
+                    {!! Form::select('area_id', $dtos['areas'], $dtos['areas_defualt'], ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -114,21 +114,21 @@
             <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
                 {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('estado', \App\Equipos::getENUM('estado'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('estado', \App\Equipos::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('estatus') ? 'has-error' : ''}}">
                 {!! Form::label('estatus', 'Estatus: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('estatus', \App\Equipos::getENUM('estatus'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('estatus', \App\Equipos::getENUM('estatus'), null, ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('estatus', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('garantia') ? 'has-error' : ''}}">
                 {!! Form::label('garantia', 'Garantia: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('garantia', \App\Equipos::getENUM('garantia'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('garantia', \App\Equipos::getENUM('garantia'), null, ['class' => 'chosen-select form-control']) !!}
                     {!! $errors->first('garantia', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

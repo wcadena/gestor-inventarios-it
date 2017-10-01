@@ -1,10 +1,11 @@
 {
-  "/js/app.js": "/js/app.js",
-  "/css/app.css": "/css/app.css",
-  "/css/bootstrap.css": "/css/bootstrap.css",
-  "/css/adminlte-app.css": "/css/adminlte-app.css",
-  "/css/toastr.css": "/css/toastr.css",
-  "/js/app-landing.js": "/js/app-landing.js",
-  "/css/all-landing.css": "/css/all-landing.css",
-  "/css/all.css": "/css/all.css"
+  "/js/app.js": "/js/app.0d6ca7e1372a27dc1fc3.js",
+  "/css/app.css": "/css/app.ad6d503309fb42b6fca17e1d363f289b.css",
+  "/css/bootstrap.css": "/css/bootstrap.17dcb46c9850a830b600e783a06063d6.css",
+  "/css/adminlte-app.css": "/css/adminlte-app.0acb6b95893d9e105895d853039b52cf.css",
+  "/css/toastr.css": "/css/toastr.f4d6c90b03a45accf6238a5c0a985a04.css",
+  "/js/app-landing.js": "/js/app-landing.ac453bab1c5574b502dc.js",
+  "/css/all.css": "/css/all.18198202f08417d0d6b9405746334f5d.css",
+  "/css/all-landing.css": "/css/all-landing.b24d641e20db0a537c2f7db257981beb.css",
+  "/js/all.js": "/js/all.e28c15731afcd361bc82f74a66f6798d.js"
 }
