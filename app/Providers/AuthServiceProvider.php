@@ -36,6 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         Passport::tokensCan([
             'place-orders' => 'Place orders',
             'check-status' => 'Check order status',
+            'dar-datos' => 'Entregar datos personales',
         ]);
     }
 }

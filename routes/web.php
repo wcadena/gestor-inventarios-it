@@ -193,8 +193,7 @@ Route::get('oautho2', function (Illuminate\Http\Request  $request) {
    return view('oauth2');
 });
 
-Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken')
-->middleware('api');
+
 
 Route::get('pusher', function (Request $request) {
 
@@ -285,7 +284,7 @@ Route::get('/redirect', function () {
         'client_id' => '5',
         'redirect_uri' => env('APP_URL').'/callback',
         'response_type' => 'code',
-        'scope' => '',
+        'scope' => 'place-orders',
     ]);
 
     return redirect(env('APP_URL').'/oauth/authorize?'.$query);
@@ -298,7 +297,7 @@ Route::get('/callback', function (Illuminate\Http\Request $request) {
         'form_params' => [
             'grant_type' => 'authorization_code',
             'client_id' => '5',
-            'client_secret' => '72jO5wURXskMemg96fi8Jdjf1OSe5JmMBKGcPRoV',
+            'client_secret' => 'jBEJ5g4x4VVaJVDObsG1d9FISxSyURkDmMr67lhP',
             'redirect_uri' => env('APP_URL').'/callback',
             'code' => $request->code,
         ],
