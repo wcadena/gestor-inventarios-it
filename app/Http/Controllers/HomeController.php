@@ -11,11 +11,14 @@ use App\Configuracion;
 use App\Custodios;
 use App\Equipos;
 use App\Http\Requests;
+use App\OAuthApp;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class HomeController
@@ -30,7 +33,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
+
+        $this->middleware('auth')->only(['index']);
     }
 
     /**
@@ -40,6 +45,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        if(URL::previous() == env('APP_URL').'/login'){
+            $token_oauth = OAuthApp::where('id','=',session('_token'))->first();
+
+            if($token_oauth != null){
+                $query = http_build_query([
+                    'client_id' => $token_oauth->client_id,
+                    'redirect_uri' => env('APP_URL').'/callback',
+                    'response_type' => 'code',
+                    'scope' => 'place-orders',
+                ]);
+                $redireccTOAut2=env('APP_URL').'/oauth/authorize?'.$query;
+                return redirect($redireccTOAut2);
+            }
+        }
+
         $minutos    =       1;//30 minutos refresca la base
         $maquinas = Cache::remember('maquinas'.Auth::user()->getEmpresa(), $minutos, function () {
             return Equipos::count();

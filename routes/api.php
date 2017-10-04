@@ -33,7 +33,7 @@ Route::get('usuario', 'api\UserController@usuario');
 Route::resource('info', 'api\InformeMantenimientoPreventivoController',['excepto' => 'create,edit']);
 
 
-Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
+//Route::post('oauth/token','\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
 
 
 Route::resource('puestos', 'api\PuestoController',['excepto' => 'create']);
