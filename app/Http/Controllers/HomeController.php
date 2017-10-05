@@ -49,7 +49,7 @@ class HomeController extends Controller
         if(URL::previous() == env('APP_URL').'/login'){
             $token_oauth = OAuthApp::where('id','=',session('_token'))->first();
 
-            if($token_oauth != null){
+            if($token_oauth != null && $token_oauth->esActivo() ){
                 $query = http_build_query([
                     'client_id' => $token_oauth->client_id,
                     'redirect_uri' => env('APP_URL').'/callback',

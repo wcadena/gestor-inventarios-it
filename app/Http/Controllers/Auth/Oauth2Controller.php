@@ -22,6 +22,7 @@ class Oauth2Controller extends Controller
         $request->validate([
             'client_id' => 'required',
             'token_secret' => 'required',
+            'client_secret' => 'required',
         ]);
 
         $oauth=$request->all();
@@ -43,18 +44,26 @@ class Oauth2Controller extends Controller
     }
     public function callback(Request $request){
 
+        $token_oauth = OAuthApp::where('id','=',session('_token'))->first();
         $http = new Client();
 
         $response = $http->post(env('APP_URL').'/oauth/token', [
             'form_params' => [
                 'grant_type' => 'authorization_code',
-                'client_id' => '5',
-                'client_secret' => 'jBEJ5g4x4VVaJVDObsG1d9FISxSyURkDmMr67lhP',
+                'client_id' => $token_oauth->client_id,
+                'client_secret' => $token_oauth->client_secret,
                 'redirect_uri' => env('APP_URL').'/callback',
                 'code' => $request->code,
             ],
         ]);
-        //session()->forget('redirect_oauth2');
-        return json_decode((string) $response->getBody(), true);
+        $token_oauth->activo = OAuthApp::AUTH_INACTIVO;
+        $recuperadoDelCallOauth = json_decode((string) $response->getBody(), true);
+        $token_oauth->token_type = $recuperadoDelCallOauth['token_type'];
+        $token_oauth->expires_in = $recuperadoDelCallOauth['expires_in'];
+        $token_oauth->access_token = $recuperadoDelCallOauth['access_token'];
+        $token_oauth->refresh_token = $recuperadoDelCallOauth['refresh_token'];
+        $token_oauth->save();
+
+        return redirect('oauth_final');
     }
 }

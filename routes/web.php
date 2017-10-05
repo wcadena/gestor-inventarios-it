@@ -283,3 +283,6 @@ Route::get('/redirect', 'Auth\Oauth2Controller@redirect');
 
 Route::get('/callback', 'Auth\Oauth2Controller@callback');
 
+Route::name('OauthFinal')->get('oauth_final', function (Request $request) {
+   return view('oauth2_final');
+});

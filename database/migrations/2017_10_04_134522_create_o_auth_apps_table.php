@@ -16,6 +16,7 @@ class CreateOAuthAppsTable extends Migration
         Schema::create('o_auth_apps', function (Blueprint $table) {
             $table->string('id', 100)->primary();
             $table->string('token_secret', 100)->nullable();
+            $table->string('client_secret', 100)->nullable();
             $table->integer('client_id')->unsigned();
             $table->string('activo',1)->default(\App\OAuthApp::AUTH_INACTIVO);
             $table->string('token_type')->nullable();
