@@ -45,6 +45,10 @@ class Custodios extends Model
     {
         return $this->hasMany('App\RepoNovedades', 'custodio_id', 'id');
     }
+    public function puestoCustodios()
+    {
+        return $this->hasMany('App\PuestoCustodios','custodio_id');
+    }
 
     public function mandarNotificacion()
     {

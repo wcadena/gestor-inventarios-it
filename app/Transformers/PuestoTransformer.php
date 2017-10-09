@@ -24,8 +24,8 @@ class PuestoTransformer extends TransformerAbstract
             'fechaEliminacion' => isset($puesto->deleted_at) ? (string) $puesto->deleted_at : null,
             'links' => [
                 [
-                    'rel' => 'puesto.custodios',
-                    'href' => route('custodios.show', $puesto->id),
+                    'rel' => 'puestos.custodios',
+                    'href' => route('puestos.custodios.index', $puesto),
                 ],
             ],
         ];

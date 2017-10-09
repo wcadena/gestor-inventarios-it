@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Custodios;
 use App\Puesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -14,7 +15,7 @@ class PuestoController extends ApiController
         $this->middleware('client.credentials')->only(['store', 'resend']);
          $this->middleware('auth:api')->except(['store', 'verify', 'resend']);
        $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
-       $this->middleware('scope:manage-account')->only(['show', 'update']);
+       //$this->middleware('scope:manage-account')->only(['show', 'update']);
        /*$this->middleware('can:view,user')->only('show');
        $this->middleware('can:update,user')->only('update');
        $this->middleware('can:delete,user')->only('destroy');*/
@@ -27,7 +28,6 @@ class PuestoController extends ApiController
      */
     public function index()
     {
-
         $puestos = Puesto::all();
         return $this->showAll($puestos);
     }
@@ -41,7 +41,6 @@ class PuestoController extends ApiController
     public function show(Puesto $puesto)
     {
         return $this->showOne($puesto);
-
     }
 
     public function puesto(Request $request)
@@ -72,8 +71,8 @@ class PuestoController extends ApiController
         if (!$puesto->estado=='OCUPADO') {
             return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
-        $user->save();
-        return $this->showOne($user);
+        $puesto->save();
+        return $this->showOne($puesto);
     }
     /**
      * Remove the specified resource from storage.
@@ -81,10 +80,10 @@ class PuestoController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Puesto $puesto)
     {
-        $user->delete();
-        return $this->showOne($user);
+        $puesto->delete();
+        return $this->showOne($puesto);
     }
     public function verify($token)
     {
@@ -103,6 +102,13 @@ class PuestoController extends ApiController
         $this->validate($request, $reglas);
         $user = User::where('email', $request->email)->firstOrFail();
         return $this->showOne($user);
+    }
+
+    public function puestoCustodio(Custodios $custodios)
+    {
+        $puestosDeCustodio = $custodios->puestos;
+        dd($puestosDeCustodio);
+        return $this->showAll($puestosDeCustodio);
     }
 
     public function resend(User $user)

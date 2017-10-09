@@ -27,8 +27,8 @@ class CustodiosTransformer extends TransformerAbstract
             'fechaEliminacion' => isset($custodios->deleted_at) ? (string) $custodios->deleted_at : null,
             'links' => [
                 [
-                    'rel' => 'puesto.custodios',
-                    'href' => route('custodios.show', $custodios->id),
+                    'rel' => 'custodios.puestos',
+                    'href' => route('custodios.puestos.index', $custodios),
                 ],
             ],
         ];

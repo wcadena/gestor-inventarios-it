@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\api;
 
-
 use App\Custodios;
 use App\Http\Controllers\ApiController;
 use App\Puesto;
@@ -12,7 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class PuestoCustodioController extends ApiController
+class CustodioPuestoController extends ApiController
 {
 
     public function __construct()
@@ -20,14 +19,21 @@ class PuestoCustodioController extends ApiController
 
     }
 
-     /**
+    public function boot()
+    {
+        parent::boot();
+
+        Route::model('custodios', Custodios::class);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($puesto)
+    public function index($custodios)
     {
-        return $this->showAll(PuestoCustodios::where('puesto_id','=',$puesto)->get());
+        return $this->showAll(PuestoCustodios::where('custodio_id','=',$custodios)->get());
     }
 
 
@@ -40,7 +46,7 @@ class PuestoCustodioController extends ApiController
     public function store(Puesto $puesto, Custodios $custodio,Request $request)
     {
         $rules = [
-           // 'fecha_inicio' => 'required|date|',
+            // 'fecha_inicio' => 'required|date|',
             'horas_trabajadas' => 'required|integer|min:1',
             'estado' => 'required|in:OCUPADO,RESERVADO,LIBRE',
         ];
@@ -82,7 +88,7 @@ class PuestoCustodioController extends ApiController
             $puesto = Puesto::where("codigo","like",$request->codigo)->first();
 
             $puestoconsole = PuestoCustodios::where('custodio_id','=',$custodio->id)
-               // ->where('puesto_id','=',$puesto->id)//pone libre todos los otros puestos
+                // ->where('puesto_id','=',$puesto->id)//pone libre todos los otros puestos
                 ->get();
             foreach ($puestoconsole as $pc){
                 $p = Puesto::where('id','=',$pc->puesto_id)->firstOrFail();
@@ -159,7 +165,7 @@ class PuestoCustodioController extends ApiController
     {
         $pc =PuestoCustodios::where("puesto_id",'=',$puesto->id)->get();
         return $this->showAll($pc);
-       return "show";
+        return "show";
     }
 
     /**

@@ -21,6 +21,15 @@ class PuestoCustodios extends Model
         'puesto_id','custodio_id','fecha_inicio','fecha_fin','horas_trabajadas'
     ];
 
+    public function custodio()
+    {
+        return $this->belongsTo(Custodios::class,'custodio_id');
+    }
+
+    public function puesto()
+    {
+        return $this->belongsTo(Puesto::class,'puesto_id');
+    }
 
 
 

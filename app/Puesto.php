@@ -43,4 +43,10 @@ class Puesto extends Model
         return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
     }
 
+    public function PuestoCustodios()
+    {
+        return $this->hasMany(PuestoCustodios::class);
+    }
+
+
 }

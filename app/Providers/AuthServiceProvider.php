@@ -38,5 +38,7 @@ class AuthServiceProvider extends ServiceProvider
             'check-status' => 'Check order status',
             'dar-datos' => 'Entregar datos personales',
         ]);
+
+        Passport::enableImplicitGrant();
     }
 }
