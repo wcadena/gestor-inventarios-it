@@ -17,6 +17,8 @@ class PuestoCustodioController extends ApiController
 
     public function __construct()
     {
+        $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
+        $this->middleware('auth:api')->except(['store', 'verify', 'resend']);
 
     }
 
@@ -79,6 +81,7 @@ class PuestoCustodioController extends ApiController
         return DB::transaction(function () use ($request) {
 
             $custodio = Custodios::where("documentoIdentificacion","like",$request->documentoIdentificacion)->first();
+
             $puesto = Puesto::where("codigo","like",$request->codigo)->first();
 
             $puestoconsole = PuestoCustodios::where('custodio_id','=',$custodio->id)
