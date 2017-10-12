@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
             'signature:X-Application-Name',
             'throttle:60,1',
             'bindings',
+            \Barryvdh\Cors\HandleCors::class,
         ],
     ];
 

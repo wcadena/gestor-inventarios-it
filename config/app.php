@@ -220,6 +220,10 @@ return [
         /**
          * 'fin imagen
          */
+        /**
+         * CORS Middleware for Laravel 5
+         */
+        Barryvdh\Cors\ServiceProvider::class,
 
 
 

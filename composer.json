@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "acacha/admin-lte-template-laravel": "^5.0",
         "almasaeed2010/adminlte": "^2.3",
+        "barryvdh/laravel-cors": "^0.9.3",
         "barryvdh/laravel-dompdf": "^0.8.1",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
