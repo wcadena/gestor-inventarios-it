@@ -111,6 +111,7 @@ class PuestoCustodioController extends ApiController
 
             $transaction = PuestoCustodios::create([
                 'fecha_inicio' =>Carbon::now(),
+                'fecha_fin' => Carbon::now()->addHour($request->horas),
                 'horas_trabajadas' => $request->horas,
                 'puesto_id' => $puesto->id,
                 'custodio_id' => $custodio->id,
@@ -130,6 +131,7 @@ class PuestoCustodioController extends ApiController
             'documentoIdentificacion' => 'required|max:15',
             'codigo' => 'required|max:250',
         ];
+        Artisan::call('disponibilidad:ordena', []);
         $this->validate($request, $reglas);
 
         return DB::transaction(function () use ($request) {
