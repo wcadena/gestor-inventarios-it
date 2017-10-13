@@ -10,6 +10,7 @@ use App\PuestoCustodios;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class PuestoCustodioController extends ApiController
@@ -78,12 +79,25 @@ class PuestoCustodioController extends ApiController
         ];
         $this->validate($request, $reglas);
 
+        Artisan::call('disponibilidad:ordena', []);
+
         return DB::transaction(function () use ($request) {
 
             $custodio = Custodios::where("documentoIdentificacion","like",$request->documentoIdentificacion)->first();
 
             $puesto = Puesto::where("codigo","like",$request->codigo)->first();
 
+            if(count($puesto->PuestoCustodios)>0){
+                $puesto_dato=$puesto->PuestoCustodios[0];
+                $id_custodioenpuesto=$puesto_dato['custodio_id'];
+                if($id_custodioenpuesto != $custodio->id){
+                    $custodioenpuesto= Custodios::findOrFail($id_custodioenpuesto);
+                    return $this->errorResponse("Puesto ya cogido por ".$custodioenpuesto->nombre_responsable. ', Cedula: '.$custodioenpuesto->documentoIdentificacion. ' a las :'.$puesto_dato->fecha_inicio
+                        ." por (".$puesto_dato->horas_trabajadas.") horas", 418 );
+                }else{
+                    return $this->showOne($puesto->PuestoCustodios[0], 201);
+                }
+            }
             $puestoconsole = PuestoCustodios::where('custodio_id','=',$custodio->id)
                // ->where('puesto_id','=',$puesto->id)//pone libre todos los otros puestos
                 ->get();
