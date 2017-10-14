@@ -6,6 +6,7 @@ use App\Transformers\PuestoTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
 use Mpociot\Firebase\SyncsWithFirebase;
 
@@ -46,6 +47,11 @@ class Puesto extends Model
     public function PuestoCustodios()
     {
         return $this->hasMany(PuestoCustodios::class);
+    }
+
+    public function ubicacions()
+    {
+        return $this->hasOne('App\Ubicacion', 'id', 'ubicacion_id');
     }
 
 

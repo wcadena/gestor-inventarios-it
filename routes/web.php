@@ -184,6 +184,7 @@ Route::post('custodio_custom', 'CustodiosController@show_custom_post');
 
 Route::resource('informes', 'InformeMantenimientoPreventivoController');
 Route::resource('ubicacion', 'UbicacionController');
+Route::resource('puesto', 'PuestosController');
 
 Route::resource('tecnico', 'InformeMantenimientoPreventivoTecnicoController');
 
