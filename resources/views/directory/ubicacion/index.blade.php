@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Estacione Id</th><th>Edificio</th><th>Piso</th><th>Actions</th>
+                    <th>S.No</th><th>Edificio</th><th>Estacione Id</th><th>Piso</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +16,7 @@
                 @php $x++;@endphp
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('ubicacion', $item->id) }}">{{ $item->estacione_id }}</a></td><td>{{ $item->edificio }}</td><td>{{ $item->piso }}</td>
+                    <td><a href="{{ url('ubicacion', $item->id) }}">{{ $item->estacionxc['estacion'] }}</a></td><td>{{ $item->edificio }}</td><td>{{ $item->piso }}</td>
                     <td>
                         <a href="{{ url('ubicacion/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

@@ -11,11 +11,13 @@
         'class' => 'form-horizontal'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('estacione_id') ? 'has-error' : ''}}">
-                {!! Form::label('estacione_id', 'Estacione Id: ', ['class' => 'col-sm-3 control-label']) !!}
+
+            @php( $campo = 'estacione_id' )
+            <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
+                {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('estacione_id', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('estacione_id', '<p class="help-block">:message</p>') !!}
+                    {{ Form::select($campo,  \App\Estaciones::all()->pluck('estacion','id'), null, ['class' => 'chosen-select form-control']) }}
+                    {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('edificio') ? 'has-error' : ''}}">
@@ -32,13 +34,15 @@
                     {!! $errors->first('piso', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
-                {!! Form::label('area_id', 'Area Id: ', ['class' => 'col-sm-3 control-label']) !!}
+            @php( $campo = 'area_id' )
+            <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
+                {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('area_id', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
+                    {{ Form::select($campo,  \App\Areas::all()->pluck('area','id'), null, ['class' => 'chosen-select form-control']) }}
+                    {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
 
 
     <div class="form-group">
