@@ -42,8 +42,10 @@
              --><li><a href="{{ url('home') }}"><i class='glyphicon glyphicon-home'></i> <span>@lang('home.men1')</span></a></li>
              <li><a href="{{ url('equipos') }}"><i class='glyphicon glyphicon-print'></i> <span>@lang('home.men2')</span></a></li>
              <li><a href="{{ url('custodio') }}"><i class='glyphicon glyphicon-user'></i> <span>@lang('home.men3')</span></a></li>
-             @if(str_contains(Auth::getUser()->rol, ['planta_fisica']))
-             <li><a href="{{ url('informes') }}"><i class='glyphicon glyphicon-wrench'></i> <span>Informes</span></a></li>
+             @if(str_contains(Auth::getUser()->rol, ['planta_fisica','system']))
+                 <li><a href="{{ url('ubicacion') }}"><i class='glyphicon glyphicon-wrench'></i> <span>Ubicaciones</span></a></li>
+                 <li><a href="{{ url('puesto') }}"><i class='glyphicon glyphicon-pushpin'></i> <span>Puestos</span></a></li>
+                 <li><a href="{{ url('informes') }}"><i class='glyphicon glyphicon-eye-open'></i> <span>Informes</span></a></li>
              @endif
              <li class="treeview">
                  <a href="#"><i class='fa fa-link'></i> <span>@lang('home.menrepM')</span> <i class="fa fa-angle-left pull-right"></i></a>

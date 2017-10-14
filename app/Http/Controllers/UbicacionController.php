@@ -13,6 +13,11 @@ use Session;
 class UbicacionController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authEmp:system;planta_fisica');
+    }
     /**
      * Display a listing of the resource.
      *
