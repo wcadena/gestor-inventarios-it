@@ -73,10 +73,12 @@
         @php( $x++)
         @if($x==19)
             @include('pdf.custom.invoice_footer')
-            @php($x=0)     
+            @php($x=0)
+</table>
+<div style="page-break-after:always;"></div>
             <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
-        style='border-collapse:collapse;mso-padding-alt:0cm 0cm 0cm 0cm'>       
-            <div style="page-break-after:always;"></div>
+        style='border-collapse:collapse;mso-padding-alt:0cm 0cm 0cm 0cm'>
+
         @endif
     @empty
     {{--@include('pdf.invoice_tablaVacia')--}}
@@ -160,9 +162,12 @@
     @php($x=0)
        </table>
     @endif
-
 </body>
+{{--
+<img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate(env('APP_URL').'/pdf_custom/'.$repono->token_unico)) !!} ">
 
+<img src="data:image/png;base64,{{DNS2D::getBarcodePNG(env('APP_URL').'/pdf_custom/'.$repono->token_unico, 'QRCODE')}}" alt="barcode" />
+--}}
 
 
 </html>

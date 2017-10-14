@@ -18,7 +18,7 @@
         </table>
     </div>
 
-    <a  id="sxxxdw3wsfg3"  target="_blank" class="zxsdfgsd33" href="{{ url('pdf_custom/'.$repo_novedade->id) }}">
+    <a  id="sxxxdw3wsfg3"  target="_blank" class="zxsdfgsd33" href="{{ url('pdf_custom/'.$repo_novedade->token_unico) }}">
         <button class="zxsdfgsd33 btn btn-default" type="button">Impresion De PDF</button>
     </a>
 

@@ -76,9 +76,10 @@
             @include('pdf.invoice_footer')
             @php($x=0)
             </table>
+<div style="page-break-after:always;"></div>
             <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
         style='border-collapse:collapse;mso-padding-alt:0cm 0cm 0cm 0cm'>
-            <div style="page-break-after:always;"></div>
+
         @endif
     @empty
     
@@ -162,7 +163,9 @@
     @php($x=0)
     </table>
     @endif
-
+{{--
+<img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate(env('APP_URL').'/pdf/'.$custodio->id)) !!} ">
+--}}
 </body>
 
 

@@ -224,6 +224,14 @@ return [
          * CORS Middleware for Laravel 5
          */
         Barryvdh\Cors\ServiceProvider::class,
+        /**
+         * https://www.simplesoftware.io/docs/simple-qrcode
+         */
+       SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        /**
+         * composer require milon/barcode
+         */
+        Milon\Barcode\BarcodeServiceProvider::class,
 
 
 
@@ -312,6 +320,15 @@ return [
          * imagen
          */
         'Image' => Intervention\Image\Facades\Image::class,
+        /**
+         *  https://www.simplesoftware.io/docs/simple-qrcode
+         */
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        /**
+         * composer require milon/barcode
+         */
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
     ],
 

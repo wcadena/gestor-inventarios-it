@@ -117,7 +117,7 @@
   border:none;border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;
   height:14.0pt'>
     <p class=MsoNormal align=right style='text-align:right;mso-line-height-alt:
-  0pt'><b style='mso-bidi-font-weight:normal'><span style='font-size:8.5pt;
+  0pt'><b style='mso-bidi-font-weight:normal'><span style='font-size:7.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   Arial'>{{$date}}</span></b></p>
    </td>

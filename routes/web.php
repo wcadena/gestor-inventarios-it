@@ -131,7 +131,7 @@ Route::post('reasignarindexecho', 'EquiposController@reasignarindexecho');
 
 
 Route::name('pdf')->get('pdf/{custodio_id}', 'PdfController@invoice');
-Route::get('pdf_custom/{custodio_id}', 'PdfController@invoiceCustom');
+Route::get('pdf_custom/{token_unico}', 'PdfController@invoiceCustom');
 
 Route::get('checklist_crear_mini/{area_id}/{checklist}', 'CheckListController@crearChecklist_mini');
 Route::post('checklist_crear_mini/{area_id}/{checklist}', 'CheckListController@crearChecklist_mini');

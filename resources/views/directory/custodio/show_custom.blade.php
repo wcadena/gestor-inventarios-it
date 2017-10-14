@@ -46,7 +46,10 @@
                         <tbody>
                         @foreach($custodio->reponovedadeshm as $item)
                         <tr>
-                            <td>{{ $item->id }}</td> <td> {{ $item->fecha_novedades }} </td><td> {{ $item->observaciones }} </td><td> {{ $item->antiguo_custodioxc->nombre_responsable }} </td>
+                            <td>{{ $item->id }}</td> <td> {{ $item->fecha_novedades }} </td><td> {{ $item->observaciones }} </td>
+
+                            <td> {{ $item->antiguo_custodioxc['nombre_responsable'] }} </td>
+
                             <td>
                                 <a href="{{ url('repo_novedades/' . $item->id ) }}">
                                     <button type="submit" class="btn btn-primary btn-xs">Ver Previo</button>
@@ -164,6 +167,7 @@
             </thead>
             <tbody>
             @php $x=0; @endphp
+
             @foreach($custodio->equiposhm as $item)
                 @php $x++;@endphp
                 <tr>
@@ -177,8 +181,8 @@
                     <td>
                         @if($item->equipos_reponovedadesdetalle['repo_novedades_id']>0)
                             @foreach($item->equipos_reponovedadesdetalle as $item2x)
-                        <a href="{{ url('repo_novedades/' .  $item2x->repo_novedades_id ) }}">
-                            ({{$item2x->repo_novedades_id}})@lang('fo.Novedad')
+                        <a href="{{ url('repo_novedades/' .  $item2x['repo_novedades_id'] ) }}">
+                            ({{$item2x['repo_novedades_id']}})@lang('fo.Novedad')
                         </a>
                             @endforeach
                         @else

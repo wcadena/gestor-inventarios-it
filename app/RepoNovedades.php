@@ -10,7 +10,7 @@ class RepoNovedades extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['custodio_id','correo','fecha_novedades','novedad','observaciones','antiguo_custodio_id','traslado_custodio_id','estado'];
+    protected $fillable = ['custodio_id','correo','fecha_novedades','novedad','observaciones','antiguo_custodio_id','traslado_custodio_id','estado','token_unico'];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')
      * estatus	enum('VIGENTE', 'BODEGA', 'BAJA')
@@ -30,6 +30,12 @@ class RepoNovedades extends Model
         }
         return $enum;
     }
+
+    public static function generarUnico()
+    {
+        return str_random(50);
+    }
+
 
     public function custodioxc()
     {

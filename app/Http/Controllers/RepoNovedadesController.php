@@ -72,6 +72,8 @@ class RepoNovedadesController extends Controller
             DB::beginTransaction();
             //dd($request);
             $rep = RepoNovedades::create($request->all());
+            $rep->token_unico = RepoNovedades::generarUnico();
+            $rep->save();
             //////////////////////////////////////////////
             $equipos = Input::get('equipos');
             if(is_array($equipos))

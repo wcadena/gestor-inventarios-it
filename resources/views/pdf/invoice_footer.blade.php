@@ -782,7 +782,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='margin-left:1.0pt;line-height:5.15pt;mso-line-height-rule:
   exactly'><span style='font-size:4.5pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>david.padilla@avianca.com</span></p>
+  "Arial",sans-serif;mso-fareast-font-family:Arial'>[_________________________]@avianca.com</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;border:none;border-right:
   solid #F2F2F2 1.0pt;background:#F2F2F2;padding:0cm 0cm 0cm 0cm;height:6.0pt'>
@@ -918,7 +918,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:7.5pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>DAVID PADILLA</span><span style='font-size:6.5pt;mso-bidi-font-size:
+  Arial'>[_________________________]</span><span style='font-size:6.5pt;mso-bidi-font-size:
   10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -982,7 +982,7 @@
   padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>LIDET IT ECUADOR</span><span style='font-size:5.0pt;mso-bidi-font-size:
+  Arial'>[_________________________]</span><span style='font-size:5.0pt;mso-bidi-font-size:
   10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -999,7 +999,7 @@
   padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>DIEGO.UQUILLAS@AVIANCA.COM</span><span style='font-size:5.0pt;
+  Arial'>...........................@AVIANCA.COM</span><span style='font-size:5.0pt;
   mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -1105,7 +1105,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>1719984575</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
+  Arial'>[_________________________]</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
   font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -1120,7 +1120,7 @@
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:6.0pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>1716198567</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
+  Arial'>[_________________________]</span><span style='font-size:5.0pt;mso-bidi-font-size:10.0pt;
   font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -1784,4 +1784,3 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'></span></p>
    </td>
   </tr>
- 

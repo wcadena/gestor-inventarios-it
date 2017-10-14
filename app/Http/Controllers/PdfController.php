@@ -8,6 +8,7 @@ use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Log;
 
 class PdfController extends Controller
 {
@@ -25,9 +26,18 @@ class PdfController extends Controller
         $invoice = "2222";
         $view =  \View::make('pdf.invoice', compact('custodio','data', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        //return $pdf->stream('invoice');
-        return $view ;
+        $impresion=$view;
+        try{
+
+            $pdf->loadHTML($view);
+            //para la impresion de muchos
+            //$impresion = $pdf->stream('invoice');
+
+        } catch (Exception $e) {
+            report($e);
+        }
+        return $impresion ;
+
     }
 
     public function getData()
@@ -41,15 +51,16 @@ class PdfController extends Controller
         return $data;
     }
 
-    public function invoiceCustom($custodio_id)
+    public function invoiceCustom($token_unico)
     {
-        $repono = RepoNovedades::findOrFail($custodio_id);
+        $repono = RepoNovedades::where('token_unico','=',$token_unico)->first();
         //return \View::make('pdf.custom.invoice', compact('repono'));
         $view =  \View::make('pdf.custom.invoice', compact('repono'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
-        //return $view ;
+        $impresion = $view;
+        $impresion = $pdf->stream('invoice');
+        return  $impresion;
     }
 
     public function beta($custodio_id)

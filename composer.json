@@ -22,9 +22,11 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "maatwebsite/excel": "^2.1",
+        "milon/barcode": "^5.3",
         "mpociot/laravel-firebase-sync": "^1.0",
         "nesbot/carbon": "^1.22",
         "pusher/pusher-php-server": "^3.0",
+        "simplesoftwareio/simple-qrcode": "^1.5",
         "spatie/laravel-fractal": "^5.2",
         "vinkla/pusher": "^3.1",
         "webpatser/laravel-uuid": "^3.0"
