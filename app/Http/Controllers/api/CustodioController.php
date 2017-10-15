@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Areas;
 use App\Custodios;
+use App\Empresa;
 use App\Http\Controllers\ApiController;
 use App\Mail\NotificaCustodioCambio;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 
 class CustodioController extends ApiController
 {
@@ -17,7 +20,7 @@ class CustodioController extends ApiController
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
         $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
-         $this->middleware('auth:api')->except(['store', 'verify', 'resend']);
+         $this->middleware('auth:api')->except([ 'verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
         $this->middleware('can:view,user')->only('show');
@@ -108,6 +111,39 @@ class CustodioController extends ApiController
         }
         return $this->showMessage("Este Custodio ya no tiene notificaciones pendientes",404);
 
+    }
+
+    public function store(Request $request)
+    {
+        $empresa = Empresa::all()->pluck('empresa');
+        $emp="";
+        foreach ($empresa as $var){
+            $emp = $emp.$var.",";
+        }
+        $area = Areas::all()->pluck('area');
+        $are="";
+        foreach ($area as $var){
+            $are = $are.$var.",";
+        }
+
+        $request->validate([
+            'pais' => 'required|max:255',
+            'ciudad' => 'required|max:255',
+            'direccion' => 'required|max:255',
+            'documentoIdentificacion' => 'required|unique:custodios|max:255',
+            'cargo' => 'required|max:255',
+            'compania' => 'required|in:'.$emp,
+            'telefono' => 'required|max:255',
+            'nombre_responsable' => 'required|max:255',
+            'area_piso' => 'required|in:'.$are,
+            'email' => 'required|email|max:255',
+
+        ]);
+        //return 'Hello World';
+        //dd($custodios);
+        $campos = $request->all();
+        $custodios = Custodios::create($campos);
+        return $this->showOne($custodios, 201);/**/
     }
 
 }
