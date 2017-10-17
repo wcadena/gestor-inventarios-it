@@ -45,3 +45,6 @@ Route::resource('custodios', 'api\CustodioController', ['only' => ['index', 'sho
 Route::resource('custodios.puestos', 'api\CustodioPuestoController');
 Route::get('custodiosCedula', 'api\CustodioController@cedula');
 
+Route::resource('/empresas', 'api\EmpresaController',['excepto' => 'create']);
+Route::resource('/areas', 'api\AreasController',['excepto' => 'create']);
+Route::resource('/equipos', 'api\EquiposController',['excepto' => 'create']);

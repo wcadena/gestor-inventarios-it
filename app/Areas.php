@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Scopes\EmpresaTScope;
+use App\Transformers\AreasTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Areas extends Model
@@ -16,6 +17,7 @@ class Areas extends Model
     }
 
     protected $fillable = ['area','empresa'];
+    public $transformer = AreasTransformer::class;
     public function checklistxc()
     {
         return $this->hasMany('App\CheckList', 'area_id');
