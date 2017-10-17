@@ -54,7 +54,7 @@
   9.85pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$item->codigo_barras}}</span><span style='font-size:8.5pt;mso-bidi-font-size:10.0pt;
+  Arial'>{{$item->no_serie}}</span><span style='font-size:8.5pt;mso-bidi-font-size:10.0pt;
   font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>

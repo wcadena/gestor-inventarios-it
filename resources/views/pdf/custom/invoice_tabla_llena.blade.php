@@ -52,9 +52,9 @@
   border-left:none;border-bottom:solid #333 1.0pt;border-right:solid #333 1.0pt;
   mso-border-top-alt:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:
   9.85pt'>
-    <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
+    <p class=MsoNormal style='mso-line-height-alt:0pt' align=center ><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>{{$item->codigo_barras}}</span><span style='font-size:8.5pt;mso-bidi-font-size:10.0pt;
+  Arial '>{{$item->no_serie}}</span><span style='font-size:8.5pt;mso-bidi-font-size:10.0pt;
   font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
   mso-bidi-font-family:Arial'></span></p>
    </td>
@@ -62,7 +62,7 @@
   none;border-bottom:solid #333 1.0pt;border-right:solid #333 1.0pt;
   mso-border-top-alt:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:
   9.85pt'>
-    <p class=MsoNormal style='mso-line-height-alt:0pt'><span style='font-size:
+    <p class=MsoNormal style='mso-line-height-alt:0pt' align=center ><span style='font-size:
   4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   Arial'>{{$item->estado}}</span></p>
    </td>

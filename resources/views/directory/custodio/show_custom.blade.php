@@ -105,7 +105,7 @@
     <div class="form-group {{ $errors->has('novedad') ? 'has-error' : ''}}">
         {!! Form::label('novedad', 'Novedad: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('novedad', \App\RepoNovedades::getENUM('novedad'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('novedad', \App\RepoNovedades::getENUM('novedad'), null, ['class' => 'chosen-select form-control']) !!}
             {!! $errors->first('novedad', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -113,7 +113,7 @@
         {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
 
-            {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'form-control']) }}
+            {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'chosen-select form-control']) }}
             {!! $errors->first('antiguo_custodio_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -128,7 +128,7 @@
     <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
         {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('estado', \App\RepoNovedades::getENUM('estado'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('estado', \App\RepoNovedades::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
             {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -136,7 +136,7 @@
         {!! Form::label('traslado_custodio_id', "Responsable Traslado", ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
 
-            {{ Form::select('traslado_custodio_id', $custodios, null, ['class' => 'form-control']) }}
+            {{ Form::select('traslado_custodio_id', $custodios, null, ['class' => 'chosen-select form-control']) }}
             {!! $errors->first('traslado_custodio_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
