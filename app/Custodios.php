@@ -32,7 +32,8 @@ class Custodios extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['nombre_responsable','ciudad','direccion','area_piso','documentoIdentificacion','cargo','compania','telefono','estado','notificado','email',
-        ' verification_token','token','direccion_preferida','longitud_1','latitud_1','longitud_2','latitud_2','whatsapp','telefono_celular_notificacion','slack_id','pais','celular','ext'];
+        ' verification_token','token','direccion_preferida','longitud_1','latitud_1','longitud_2','latitud_2','whatsapp','telefono_celular_notificacion','slack_id','pais',
+        'celular','ext','image'];
 
     public function estados() {
         return $this->hasMany('ACTIVO', 'INACTIVO');

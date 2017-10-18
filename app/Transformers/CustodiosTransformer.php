@@ -27,6 +27,7 @@ class CustodiosTransformer extends TransformerAbstract
             'fechaCreacion' => (string)$custodios->created_at,
             'fechaActualizacion' => (string)$custodios->updated_at,
             'fechaEliminacion' => isset($custodios->deleted_at) ? (string) $custodios->deleted_at : null,
+            'image' => env('APP_URL').'/img/perfil/'.$custodios->image,
             'links' => [
                 [
                     'rel' => 'custodios.puestos',
@@ -50,6 +51,7 @@ class CustodiosTransformer extends TransformerAbstract
             'estado' => 'estado',
             'celular' => 'celular',
             'ext' => 'ext',
+            'image' => 'image',
             'fechaCreacion' => 'created_at',
             'fechaActualizacion' => 'updated_at',
             'fechaEliminacion' => 'deleted_at',
@@ -71,6 +73,7 @@ class CustodiosTransformer extends TransformerAbstract
             'estado' => 'estado',
             'celular' => 'celular',
             'ext' => 'ext',
+            'image' => 'image',
             'created_at' => 'fechaCreacion',
             'updated_at' => 'fechaActualizacion',
             'deleted_at' => 'fechaEliminacion',

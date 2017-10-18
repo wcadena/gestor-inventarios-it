@@ -142,7 +142,24 @@ class CustodioController extends ApiController
         //return 'Hello World';
         //dd($custodios);
         $campos = $request->all();
+        $campos['image'] = $request->image->store('');
+
         $custodios = Custodios::create($campos);
+        return $this->showOne($custodios, 201);/**/
+    }
+
+    public function storeImagen(Request $request)
+    {
+
+
+        $request->validate([
+            'id'  => 'required',
+            'image' => 'required',
+
+        ]);
+        $custodios =  Custodios::findOrFail($request->id);
+        $custodios->image = $request->image->store('');
+
         return $this->showOne($custodios, 201);/**/
     }
 

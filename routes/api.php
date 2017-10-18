@@ -44,6 +44,7 @@ Route::get('puesto_liberar', 'api\PuestoCustodioController@liberar');
 Route::resource('custodios', 'api\CustodioController', ['only' => ['index', 'show','store']]);
 Route::resource('custodios.puestos', 'api\CustodioPuestoController');
 Route::get('custodiosCedula', 'api\CustodioController@cedula');
+Route::post('custodiosSetImage','api\CustodioController@storeImagen');
 
 Route::resource('/empresas', 'api\EmpresaController',['excepto' => 'create']);
 Route::resource('/areas', 'api\AreasController',['excepto' => 'create']);
