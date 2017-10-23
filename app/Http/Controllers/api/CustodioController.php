@@ -8,10 +8,14 @@ use App\Empresa;
 use App\Http\Controllers\ApiController;
 use App\Mail\NotificaCustodioCambio;
 use App\User;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManagerStatic;
 
 class CustodioController extends ApiController
 {
@@ -32,6 +36,9 @@ class CustodioController extends ApiController
         parent::boot();
 
         Route::model('custodios', Custodios::class);
+
+
+
     }
     /**
      * Display a listing of the resource.
@@ -150,15 +157,33 @@ class CustodioController extends ApiController
 
     public function storeImagen(Request $request)
     {
-
-
         $request->validate([
             'id'  => 'required',
-            'image' => 'required',
+            'image' => 'required|imageable',
 
         ]);
         $custodios =  Custodios::findOrFail($request->id);
-        $custodios->image = $request->image->store('');
+        //$custodios->image = $request->image->store('');
+        //$custodios->image = ImageManagerStatic::make($request->image)->store('');
+
+        $img = Image::make($request->image);
+
+        //dd($img);
+        $img->save('img/perfil/html.jpg','images');
+
+        $photo = Image::make($request->image)
+            ->resize(1000, null, function ($constraint) { $constraint->aspectRatio(); } )
+            ->encode('jpg',80);
+
+        $hash = md5($photo->__toString());
+        $path = "{$hash}.jpg";
+
+
+        Storage::disk('images')->put( $path, $photo);
+
+        $custodios->image = $path;
+        $custodios->save();
+
 
         return $this->showOne($custodios, 201);/**/
     }
