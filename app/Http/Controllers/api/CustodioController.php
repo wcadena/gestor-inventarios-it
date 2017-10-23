@@ -166,11 +166,6 @@ class CustodioController extends ApiController
         //$custodios->image = $request->image->store('');
         //$custodios->image = ImageManagerStatic::make($request->image)->store('');
 
-        $img = Image::make($request->image);
-
-        //dd($img);
-        $img->save('img/perfil/html.jpg','images');
-
         $photo = Image::make($request->image)
             ->resize(1000, null, function ($constraint) { $constraint->aspectRatio(); } )
             ->encode('jpg',80);
