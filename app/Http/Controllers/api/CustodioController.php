@@ -160,11 +160,8 @@ class CustodioController extends ApiController
         $request->validate([
             'id'  => 'required',
             'image' => 'required|imageable',
-
         ]);
         $custodios =  Custodios::findOrFail($request->id);
-        //$custodios->image = $request->image->store('');
-        //$custodios->image = ImageManagerStatic::make($request->image)->store('');
 
         $photo = Image::make($request->image)
             ->resize(1000, null, function ($constraint) { $constraint->aspectRatio(); } )
@@ -173,12 +170,10 @@ class CustodioController extends ApiController
         $hash = md5($photo->__toString());
         $path = "{$hash}.jpg";
 
-
         Storage::disk('images')->put( $path, $photo);
 
         $custodios->image = $path;
         $custodios->save();
-
 
         return $this->showOne($custodios, 201);/**/
     }
