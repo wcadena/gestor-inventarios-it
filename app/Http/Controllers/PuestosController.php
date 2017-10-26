@@ -118,4 +118,6 @@ class PuestosController extends Controller
         return redirect('puesto');
     }
 
+
+
 }

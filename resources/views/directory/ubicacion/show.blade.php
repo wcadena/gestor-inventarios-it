@@ -18,4 +18,6 @@
         </table>
     </div>
 
+    <img src="{{env('APP_URL', 'http://localhost').'/img/perfil/'.$ubicacion->imagen}}">
+
 @endsection

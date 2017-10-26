@@ -8,8 +8,11 @@
     {!! Form::model($ubicacion, [
         'method' => 'PATCH',
         'url' => ['ubicacion', $ubicacion->id],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'enctype'=>"multipart/form-data"
     ]) !!}
+
+
 
 
             @php( $campo = 'estacione_id' )
@@ -39,6 +42,15 @@
                 {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {{ Form::select($campo,  \App\Areas::all()->pluck('area','id'), null, ['class' => 'chosen-select form-control']) }}
+                    {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+            @php( $campo = 'imagen' )
+            <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
+                {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::file($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
                     {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

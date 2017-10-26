@@ -47,8 +47,17 @@ class UbicacionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'edificio' => 'required',
+            'piso' => 'required',
+            'imagen' => 'required',
+        ]);
+
+        $ubica = $request->all();
+        $ubica['imagen'] = $request->imagen->store('');
+
         
-        Ubicacion::create($request->all());
+        Ubicacion::create($ubica);
 
         Session::flash('flash_message', 'Ubicacion added!');
 
@@ -92,9 +101,25 @@ class UbicacionController extends Controller
      */
     public function update($id, Request $request)
     {
+        $request->validate([
+            'edificio' => 'required',
+            'piso' => 'required',
+
+        ]);
         
         $ubicacion = Ubicacion::findOrFail($id);
-        $ubicacion->update($request->all());
+
+
+
+        $ubica = $request->all();
+        if( $request->imagen != null){
+            $ubica['imagen'] = $request->imagen->store('');
+        }else{
+            $ubica['imagen'] =  $ubicacion->imagen;
+        }
+
+
+        $ubicacion->update($ubica);
 
         Session::flash('flash_message', 'Ubicacion updated!');
 
@@ -115,6 +140,15 @@ class UbicacionController extends Controller
         Session::flash('flash_message', 'Ubicacion deleted!');
 
         return redirect('ubicacion');
+    }
+
+    public function daImagen(Request $request){
+
+        $request->validate([
+            'id' => 'required',
+        ]);
+        $puesto = Ubicacion::findOrFail($request->id);
+        return $puesto->imagen;
     }
 
 }
