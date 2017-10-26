@@ -18,6 +18,15 @@
         </table>
     </div>
 
-    <img src="{{env('APP_URL', 'http://localhost').'/img/perfil/'.$ubicacion->imagen}}">
+    <div style="position: relative;">
+        <img  src="{{env('APP_URL', 'http://localhost').'/img/perfil/'.$ubicacion->imagen}}"
+              style="position:relative;"/>
+        @foreach($ubicacion->puestosxc as $puesto )
+            <a href="{{ url('puesto/' . $puesto->id . '/edit') }}">
+                <div id="aqui3" style="position: absolute; left: {{$puesto->x}}px; top: {{$puesto->y}}px;"><span class="glyphicon glyphicon-screenshot" style="color:red"></span></div>
+            </a>
+        @endforeach
+    </div>
+
 
 @endsection

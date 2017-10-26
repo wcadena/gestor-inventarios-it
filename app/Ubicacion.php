@@ -42,6 +42,11 @@ class Ubicacion extends Model
     {
         return $this->hasOne('App\Areas', 'id', 'area_id');
     }
+    public function puestosxc()
+    {
+
+        return $this->hasMany('App\Puesto', 'ubicacion_id', 'id');
+    }
 
 
 }
