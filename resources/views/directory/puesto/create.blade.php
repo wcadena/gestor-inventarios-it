@@ -55,14 +55,14 @@
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-    <svg id="imagensampler3" width="100%" height="100%" fill="url(#image)" style="border: solid 1px red">
-        <defs>
-            <pattern id="imagensampler4" patternUnits="userSpaceOnUse" >
-                <image id="imagensampler4im" x="0" y="0" xlink:href="http://inventario3.aerogal.dev/img/perfil/BVP7GgSAGD2kCtpXZNZgTjWOowHTpe2RIfsvBkme.png"></image>
-            </pattern>
-        </defs>
-        <rect  id="imagensampler5" width="100%" height="100%" fill="url(#imagensampler4)" />
-    </svg>
+
+
+
+    <div style="position: relative;">
+        <img id="imagensampler2" src="{{env('APP_URL', 'http://localhost').'/img/perfil/'}}"
+             style="position:relative;"/>
+        <div id="aqui3" style="position: absolute; left: 0px; top: 0px;"><span class="glyphicon glyphicon-screenshot" style="color:red"></span></div>
+    </div>
 
 
 
@@ -128,28 +128,7 @@
             var ubicacion_id = $( "#ubicacion_id" ).val();
 
             $.get( "{{env('APP_URL', 'http://localhost')}}/imagenUbicacion?id="+ubicacion_id, function( data ) {
-                //$('#imagensampler2').attr('src','{{env('APP_URL', 'http://localhost').'/img/perfil/'}}'+data);
-
-                $('#imagensampler4im').attr('href','{{env('APP_URL', 'http://localhost').'/img/perfil/'}}'+data);
-
-
-                var offset = $('#imagensampler5').offset();
-                var x = offset.left;
-                var y = offset.top;
-
-                $('#imagensampler3').attr('width',x);
-                $('#imagensampler3').attr('height',y);
-
-                $('#imagensampler4').attr('width',x);
-                $('#imagensampler4').attr('height',y);
-
-
-                $('#imagensampler4im').attr('width',x);
-                $('#imagensampler4im').attr('height',y);
-
-                //$('#imagensampler5').attr('width',x);
-                //$('#imagensampler5').attr('height',y);
-
+                $('#imagensampler2').attr('src','{{env('APP_URL', 'http://localhost').'/img/perfil/'}}'+data);
             });
         }
         $(function () {
@@ -163,10 +142,16 @@
 
     <script type="text/javascript">
         $(function () {
-            $('#imagensampler5').click(function(e) {
+            $('#imagensampler2').click(function(e) {
                 var offset = $(this).offset();
-                $('#x').val(e.pageX - offset.left);
-                $('#y').val(e.pageY - offset.top);
+
+                var x = e.pageX - offset.left;
+                var y = e.pageY - offset.top;
+                $('#x').val(x);
+                $('#y').val(y);
+
+                $('#aqui3').attr('style','position: absolute; left: '+x+'px; top: '+y+'px');
+
             });
         });
     </script>
