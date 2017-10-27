@@ -27,6 +27,10 @@ class PuestoTransformer extends TransformerAbstract
                     'rel' => 'puestos.custodios',
                     'href' => route('puestos.custodios.index', $puesto),
                 ],
+                [
+                    'rel' => 'ubicacions',
+                    'href' => route('ubicacions.show', $puesto->ubicacions['id']),
+                ],
             ],
         ];
     }

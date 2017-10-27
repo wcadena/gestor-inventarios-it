@@ -178,4 +178,24 @@ class CustodioController extends ApiController
         return $this->showOne($custodios, 201);/**/
     }
 
+    public function persona(Request $request)
+    {
+
+        $reglas = [
+            'nombre_completo' => 'required|min:5',
+        ];
+        $this->validate($request, $reglas);
+
+        $term = strtoupper($request->nombre_completo) ?: '';
+        $term = str_replace(" ", "%", "$term");
+
+        $custodio = Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
+        orwhere('cargo', 'like', '%'.$term.'%')->
+        orwhere('area_piso', 'like', '%'.$term.'%')->firstOrFail();
+
+
+
+        return $this->showOne($custodio);
+    }
+
 }
