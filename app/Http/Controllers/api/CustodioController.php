@@ -191,11 +191,11 @@ class CustodioController extends ApiController
 
         $custodio = Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
         orwhere('cargo', 'like', '%'.$term.'%')->
-        orwhere('area_piso', 'like', '%'.$term.'%')->firstOrFail();
+        orwhere('area_piso', 'like', '%'.$term.'%')->get();
 
 
 
-        return $this->showOne($custodio);
+        return $this->showAll($custodio);
     }
 
 }
