@@ -99,7 +99,7 @@ class Handler extends ExceptionHandler
 
         return $this->errorResponse('Falla inesperada. Intente luego', 500);
     }
-    
+
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
