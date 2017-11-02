@@ -13,9 +13,9 @@ use Mpociot\Firebase\SyncsWithFirebase;
 
 class User extends Authenticatable
 {
-     use Notifiable, HasApiTokens, SoftDeletes;
+    use Notifiable, HasApiTokens, SoftDeletes;
     use SyncsWithFirebase;
-    use Notifiable;
+
 
      public $transformer = UserTransformer::class;
 
@@ -103,5 +103,10 @@ class User extends Authenticatable
         return $this->empresa;
     }
 
+    public function roles()
+    {
+
+        return $this->belongsToMany('App\Rol', 'usuariorols' )->using('App\Usuariorol');
+    }
 
 }
