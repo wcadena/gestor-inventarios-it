@@ -48,7 +48,7 @@ class PuestosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         Puesto::create($request->all());
 
         Session::flash('flash_message', 'Puesto added!');
@@ -93,7 +93,7 @@ class PuestosController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+
         $puesto = Puesto::findOrFail($id);
         $puesto->update($request->all());
 

@@ -289,3 +289,6 @@ Route::name('OauthFinal')->get('oauth_final', function (Request $request) {
 });
 
 Route::get('imagenUbicacion','UbicacionController@daImagen');
+
+
+Route::resource('roles','RolController');
