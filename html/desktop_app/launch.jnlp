@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<jnlp codebase="http://inventario3.aerogal.dev/desktop_app/" href="launch.jnlp" spec="1.0+">
+<jnlp codebase="http://inventario.ecuatask.dev/desktop_app/" href="launch.jnlp" spec="1.0+">
     <information>
         <title>Actualizador</title>
         <vendor>wcadena</vendor>

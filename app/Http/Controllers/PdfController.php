@@ -20,7 +20,7 @@ class PdfController extends Controller
     }
     public function invoice($custodio_id)
     {
-        $custodio = Custodios::findOrFail($custodio_id);
+        $custodio = Custodios::where('documentoIdentificacion','=',$custodio_id)->firstOrFail();
         $data = $this->getData();
         $date = date('Y-m-d');
         $invoice = "2222";

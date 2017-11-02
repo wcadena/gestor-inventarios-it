@@ -25,7 +25,7 @@
     <a  id="sxxxdw3wsfg1"  class="zxsdfgsd33" href="{{ url('reasignar/'.$custodio->id) }}">
         <button class="zxsdfgsd33 btn btn-default" type="button">@lang('form.reqeq')</button>
     </a>
-    <a  id="sxxxdw3wsfg3"  target="_blank" class="zxsdfgsd33" href="{{ url('pdf/'.$custodio->id) }}">
+    <a  id="sxxxdw3wsfg3"  target="_blank" class="zxsdfgsd33" href="{{ url('pdf/'.$custodio->documentoIdentificacion) }}">
         <button class="zxsdfgsd33 btn btn-default" type="button">@lang('form.retg')</button>
     </a>
     <a  id="sxxxdw3wsfg2"   class="zxsdfgsd33" href="{{ url('custodio_custom/'.$custodio->id) }}">

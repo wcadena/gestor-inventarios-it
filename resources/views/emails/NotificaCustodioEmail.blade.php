@@ -4,7 +4,7 @@
 @lang('message.notifica_saludo') {{$custodios->nombre_responsable}}
 @lang('message.notifica_correo_line1')
 
-@component('mail::button', ['url' => route('pdf',$custodios->id)])
+@component('mail::button', ['url' => route('pdf',$custodios->documentoIdentificacion)])
 @lang('message.notifica_correo')
 @endcomponent
 

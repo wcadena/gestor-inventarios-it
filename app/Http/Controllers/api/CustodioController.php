@@ -23,8 +23,8 @@ class CustodioController extends ApiController
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
-         $this->middleware('auth:api')->except([ 'verify', 'resend']);
+        $this->middleware('client.credentials')->only(['store', 'resend',]);
+         $this->middleware('auth:api')->except([ 'verify', 'resend','notificacion']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
         $this->middleware('can:view,user')->only('show');
@@ -98,8 +98,9 @@ class CustodioController extends ApiController
         $reglas = [
             'id' => 'required',
         ];
+        //dd($request);
         $this->validate($request, $reglas);
-        //dd(Auth::user()->empresa);
+
         $custodio = Custodios::Notificar()->where('id',$request->id)->get();
         //dd($custodio);
         if($custodio->count()==1){

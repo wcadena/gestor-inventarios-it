@@ -4,7 +4,7 @@
 Estimado {{$custodios->nombre_responsable}}:
 Se ha actualizado las maquinas bajo su custodia, este correo es una notificación de cambio.
 
-@component('mail::button', ['url' => route('pdf/{id}',$custodios->id)])
+@component('mail::button', ['url' => route('pdf/{id}',$custodios->documentoIdentificacion)])
 Archivo Actualizado
 @endcomponent
 
