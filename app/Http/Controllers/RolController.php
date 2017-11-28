@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Modulo;
+use App\Permiso;
 use App\Rol;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Foreach_;
 use Session;
 
 class RolController extends Controller
@@ -36,7 +39,12 @@ class RolController extends Controller
      */
     public function create()
     {
-        return view('directory.rol.create');
+        $modulo = Modulo::all();
+       /* foreach($modulo AS $item){
+            dd($item->permisos);
+        }*/
+
+        return view('directory.rol.create', compact('modulo'));
     }
 
     /**

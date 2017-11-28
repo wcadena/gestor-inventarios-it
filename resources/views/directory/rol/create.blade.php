@@ -18,22 +18,56 @@
 
     @php( $campo = 'rol' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, trans('fo   '.$campo).':', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
-
-
     @php( $campo = 'descripcion' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
+    </div>
+
+    <h1>@lang('fo.Permisos')</h1>
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>@lang('form.sno')</th>
+                <th>@lang('fo.modulo')</th>
+                <th>@lang('fo.permiso')</th>
+                <th>@lang('form.codint')</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            @php($x=0)
+
+            @foreach($modulo as $item2)
+                <tr>
+                    <td colspan="2">Modulo</td>
+                    <td colspan="3">{{$item2->modulo}}</td>
+                </tr>
+
+                @foreach($item2->permisos as $item)
+                    @php($x++)
+                    <tr>
+                        <td>{{ $x }} | {{ Form::checkbox('permisos[]', $item->id, false) }}</td>
+                        <td>{{$item2->modulo}}</td>
+                        <td>{{ $item->permiso }}</td>
+                        <td>{{ $item->descripcion }}</td>
+                    </tr>
+                @endforeach
+            @endforeach
+            </tbody>
+        </table>
+
     </div>
 
 
