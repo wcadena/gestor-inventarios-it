@@ -7,8 +7,13 @@ use App\Http\Controllers\Controller;
 
 use App\Modulo;
 use App\Permiso;
+use App\Permisorol;
+use App\Permisorols;
 use App\Rol;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use PhpParser\Node\Stmt\Foreach_;
 use Session;
 
@@ -54,12 +59,40 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'rol' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'permisos_r' => 'required',
+        ]);
+        try{
+            DB::beginTransaction();
+            //dd($request);
+            $rol = Rol::create($request->all());
+            $rol->save();
+            //////////////////////////////////////////////
+            $equipos = Input::get('permisos_r');
+            if(is_array($equipos))
+            {
+                foreach ($equipos as $equipo){
+                    $permiso = Permiso::findOrFail($equipo)->toArray();
+                    //dd($equipo);
+                    $permi_rol['permiso_id']=$permiso['id'];
+                    $permi_rol['rol_id']=$rol->id;
+                    Permisorol::create($permi_rol);
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Permisos Rol added!');
+            }else{
+                Session::flash('flash_message', 'Error Permisos Rol added!');
+                DB::rollback();
+            }
 
-        Rol::create($request->all());
+            DB::commit();
+            return redirect('roles');
 
-        Session::flash('flash_message', '¡Rol añadido!');
-
-        return redirect('rol');
+        }catch (Exception $e){
+            DB::rollback();
+        }
     }
 
     /**
@@ -86,8 +119,9 @@ class RolController extends Controller
     public function edit($id)
     {
         $rol = Rol::findOrFail($id);
+        $modulo = Modulo::all();
 
-        return view('directory.rol.edit', compact('rol'));
+        return view('directory.rol.edit', compact('rol','modulo'));
     }
 
     /**
@@ -100,12 +134,50 @@ class RolController extends Controller
     public function update($id, Request $request)
     {
 
-        $rol = Rol::findOrFail($id);
-        $rol->update($request->all());
 
-        Session::flash('flash_message', '¡Rol actualizado!');
+        $this->validate($request, [
+            'rol' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'permisos_r' => 'required',
+        ]);
+        try{
+            DB::beginTransaction();
+            //dd($request);
 
-        return redirect('rol');
+            $rol = Rol::findOrFail($id);
+            $rol->update($request->all());
+            //////////////////////////////////////////////
+            $perdel= Permisorol::where('rol_id','=',$rol->id)->get();
+            foreach ($perdel as $borraras2){
+                // da error aca, no se puede borrar tabla pivote de manera que se de softdelete, es mas, por favor llenar deleta_at y
+                //observar que no cambia nada, se deberia borrar hard y usar $rol->permiso->pivot->delete(), consulatar en documentacion.
+                $borraras2->delete();
+            }
+            //dd($perdel);
+            $equipos = Input::get('permisos_r');
+            if(is_array($equipos))
+            {
+                foreach ($equipos as $equipo){
+                    $permiso = Permiso::findOrFail($equipo)->toArray();
+                    //dd($equipo);
+                    $permi_rol['permiso_id']=$permiso['id'];
+                    $permi_rol['rol_id']=$rol->id;
+                    //Permisorol::create($permi_rol);
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Permisos Rol updated!');
+            }else{
+                Session::flash('flash_message', 'Error Permisos Rol updated!');
+                DB::rollback();
+            }
+
+            DB::commit();
+            return redirect('roles');
+
+        }catch (Exception $e){
+            DB::rollback();
+        }
+        return redirect('roles');
     }
 
     /**
@@ -121,6 +193,6 @@ class RolController extends Controller
 
         Session::flash('flash_message', '¡Rol Borrado!');
 
-        return redirect('rol');
+        return redirect('roles');
     }
 }

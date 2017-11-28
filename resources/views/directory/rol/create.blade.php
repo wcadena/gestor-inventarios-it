@@ -58,7 +58,7 @@
                 @foreach($item2->permisos as $item)
                     @php($x++)
                     <tr>
-                        <td>{{ $x }} | {{ Form::checkbox('permisos[]', $item->id, false) }}</td>
+                        <td>{{ $x }} | {{ Form::checkbox('permisos_r[]', $item->id, false) }}</td>
                         <td>{{$item2->modulo}}</td>
                         <td>{{ $item->permiso }}</td>
                         <td>{{ $item->descripcion }}</td>

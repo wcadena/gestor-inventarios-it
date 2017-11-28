@@ -20,5 +20,9 @@ class Permiso extends Model
         'descripcion',
     ];
 
+    public function modulos()
+    {
 
+        return $this->belongsTo('App\Modulo', 'modulo_id', 'id');
+    }
 }

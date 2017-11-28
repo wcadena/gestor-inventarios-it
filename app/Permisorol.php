@@ -11,11 +11,20 @@ use Mpociot\Firebase\SyncsWithFirebase;
 
 class Permisorol extends Pivot
 {
-    use Notifiable, HasApiTokens, SoftDeletes;
+    use Notifiable, HasApiTokens;
     use SyncsWithFirebase;
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
+
+    protected $table = 'permisorols';
 
     protected $fillable = [
         'permiso_id',
         'rol_id',
     ];
+
+
 }

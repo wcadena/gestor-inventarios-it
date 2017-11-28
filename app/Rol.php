@@ -10,7 +10,7 @@ use Mpociot\Firebase\SyncsWithFirebase;
 
 class Rol extends Model
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable, HasApiTokens,SoftDeletes;
     use SyncsWithFirebase;
 
     protected $fillable = [

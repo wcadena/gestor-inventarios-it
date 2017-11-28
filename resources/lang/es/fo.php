@@ -88,6 +88,11 @@ return [
     'Rol'  =>  'Rol',
     'descripcion'  =>  'Descripción',
     'Ruta'  =>  'Ruta',
+    'Permisos' => 'Permisos',
+    'Descripcion' => 'Descripción',
+    'permiso' => 'Permiso',
+    'modulo' => 'Modulo',
     'Roles' => 'Roles',
+
 ];
 
