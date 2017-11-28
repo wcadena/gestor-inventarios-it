@@ -6,39 +6,19 @@
 
 
 
-    <h1>Create New Puesto</h1>
+    <h1>Crear nuevo Rol</h1>
 
     <hr/>
 
 
 
-    {!! Form::open(['url' => 'puesto', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => 'roles', 'class' => 'form-horizontal']) !!}
 
 
 
-    @php( $campo = 'ubicacion_id' )
+    @php( $campo = 'rol' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {{ Form::select($campo, \App\Ubicacion::all()->pluck('edificio','id'), null, ['class' => 'chosen-select form-control','id' => $campo ]) }}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-
-
-    @php( $campo = 'codigo' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::text($campo, \App\Puesto::generarCodigo(), ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-    @php( $campo = 'detalle' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label($campo, trans('fo   '.$campo).':', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
@@ -47,34 +27,14 @@
 
 
 
-    @php( $campo = 'estado' )
+    @php( $campo = 'descripcion' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
         {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {{ Form::select($campo, \App\Puesto::getENUM('estado'), null, ['class' => 'chosen-select form-control']) }}
+            {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
-
-
-    <div style="position: relative;">
-        <img id="imagensampler2" src="{{env('APP_URL', 'http://localhost').'/img/perfil/'}}"
-             style="position:relative;"/>
-        <div id="aqui3" style="position: absolute; left: 0px; top: 0px;"><span class="glyphicon glyphicon-screenshot" style="color:red"></span></div>
-    </div>
-
-
-
-    @php( $campo = 'x' )
-
-            {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
-
-    @php( $campo = 'y' )
-
-            {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
 
 
     <div class="form-group">
@@ -114,48 +74,4 @@
 @section('scripts')
     @include('layouts.partials.scripts')
     <!-- bootstrap datepicker -->
-    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#fecha_compra').datepicker({
-                format: 'yyyy-mm-dd'
-            });
-
-        });
-    </script>
-    <script type="text/javascript">
-        function setImagen(){
-            var ubicacion_id = $( "#ubicacion_id" ).val();
-
-            $.get( "{{env('APP_URL', 'http://localhost')}}/imagenUbicacion?id="+ubicacion_id, function( data ) {
-                $('#imagensampler2').attr('src','{{env('APP_URL', 'http://localhost').'/img/perfil/'}}'+data);
-            });
-        }
-        $(function () {
-            $( "#ubicacion_id" ).change(function() {
-                setImagen();
-            });
-            setImagen();
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        $(function () {
-            $('#imagensampler2').click(function(e) {
-                var offset = $(this).offset();
-
-                var x = e.pageX - offset.left;
-                var y = e.pageY - offset.top;
-                $('#x').val(x);
-                $('#y').val(y);
-
-                $('#aqui3').attr('style','position: absolute; left: '+x+'px; top: '+y+'px');
-
-            });
-        });
-    </script>
-
-
-
 @endsection

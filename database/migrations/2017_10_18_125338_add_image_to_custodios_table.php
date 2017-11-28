@@ -27,7 +27,7 @@ class AddImageToCustodiosTable extends Migration
     {
         Schema::table('custodios', function (Blueprint $table) {
 
-            $table->dropColumn('celular');
+            $table->dropColumn('image');
         });
     }
 }

@@ -23,6 +23,7 @@ class CreateUsuariorolsTable extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+
         });
     }
 

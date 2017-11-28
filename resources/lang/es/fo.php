@@ -83,5 +83,11 @@ return [
     'Valor'   =>  'Valor',
     'Config'=>'Atributos de configuracion de sistema, no modificar',
     'Add New Config'=>'Nueva Configuracion',
+
+    'rol'  =>  'rol',
+    'Rol'  =>  'Rol',
+    'descripcion'  =>  'Descripción',
+    'Ruta'  =>  'Ruta',
+    'Roles' => 'Roles',
 ];
 
