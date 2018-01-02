@@ -67,5 +67,6 @@ return [
     'actions' => 'Acciones',
     'fecha_ingreso' => 'Fecha Ingreso',
     'titulobitacora' => 'Título de Bitácora',
+    'empresa_procede1' => 'Empresa Procede Equipo'
 ];
 

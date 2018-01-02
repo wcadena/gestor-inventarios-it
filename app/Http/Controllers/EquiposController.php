@@ -8,6 +8,7 @@ use App\CheckList;
 use App\CheckList_OpcionesCheckList;
 use App\Configuracion;
 use App\Custodios;
+use App\Empresa;
 use App\Equipos_log;
 use App\Estaciones;
 use App\Http\Requests;
@@ -64,6 +65,7 @@ class EquiposController extends Controller
         $custodio = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
         $estaciones = Estaciones::pluck('estacion','id');
         $areas = Areas::orderBy('area','asc')->pluck('area','id');
+        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
         ////////////////////////////////////////////////////////////////////////////
         $util = Equipos::pluck('check_list_id');
         $config_custodio_prin= Configuracion::where('atributo','=','CUSTODIO_BODEGA')->first();
@@ -95,6 +97,7 @@ class EquiposController extends Controller
             'areas'=>$areas,
             'areas_defualt'=>$areas_defualt,
             'check_lists'=>$check_lists,
+            'empresa'=>$empresa,
 
         );
 
@@ -108,15 +111,9 @@ class EquiposController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Requests\EquiposRequest $request)
     {
-        $reglas = [
-            'area_id' => 'required',
-            'observaciones' => 'required',
-            'descripcion' => 'required',
-            'no_serie' => 'required',
-        ];
-        $this->validate($request, $reglas);
+
         /**
          * si encuentra uno con serie identica
          */
@@ -194,6 +191,7 @@ class EquiposController extends Controller
             $equipo->hp_newProduct_seriesName	=	$respuesta["newProduct"]["seriesName"];
             $equipo->hp_newProduct_imageUrl	=	$respuesta["newProduct"]["imageUrl"];
             $equipo->hp_warrantyResultRedirectUrl   =   $respuesta["warrantyResultRedirectUrl"];
+            $equipo->empresa_procede1       =   $respuesta["empresa_procede1"];
         }
         if(!$equipo->hp_endDate==null){
             $fecha_caduca = Carbon::createFromFormat('Y-m-d', $equipo->hp_endDate);
@@ -245,7 +243,7 @@ class EquiposController extends Controller
         $estaciones = Estaciones::pluck('estacion','id');
         $areas = Areas::pluck('area','id');
         $util = Equipos::whereNotIn('id',[$id])->pluck('check_list_id');
-
+        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
         //--------------------------------------------------------------------------
         $check_lists = CheckList::whereNotIn('id',
             $util
@@ -260,7 +258,7 @@ class EquiposController extends Controller
             'estaciones'=>$estaciones,
             'areas'=>$areas,
             'check_lists'=>$check_lists,
-
+            'empresa'=>$empresa
         );
         
 
@@ -294,20 +292,8 @@ class EquiposController extends Controller
      *
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, Requests\EquiposRequest $request)
     {
-        $reglas = [
-            'modelo_equipo_id' => 'required',
-            'orden_de_compra_id' => 'required',
-            'custodio_id' => 'required',
-            'estacione_id' => 'required',
-            'area_id' => 'required',
-            'sociedad' => 'required',
-            'descripcion' => 'required',
-            'observaciones' => 'required',
-
-        ];
-        $this->validate($request, $reglas);
 
         if($request->check_list_id==''){
             Input::flashOnly('check_list_id');

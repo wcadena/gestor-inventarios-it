@@ -219,6 +219,15 @@
             </div>
         </div>
 
+        <div class="form-group {{ $errors->has('empresa_procede1') ? 'has-error' : ''}}">
+            {!! Form::label('empresa_procede1', trans('form.empresa_procede1'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+
+                {{ Form::select('empresa_procede1', $equipo->extras2['empresa'], null, ['class' => 'chosen-select form-control']) }}
+                {!! $errors->first('empresa_procede1', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
