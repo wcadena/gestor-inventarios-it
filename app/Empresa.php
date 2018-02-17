@@ -13,5 +13,8 @@ class Empresa extends Model
     public $transformer = EmpresaTransformer::class;
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['empresa'];
+    protected $primaryKey = 'empresa';
+    public $incrementing = false;
+
+    protected $fillable = ['empresa','formula_codigo'];
 }

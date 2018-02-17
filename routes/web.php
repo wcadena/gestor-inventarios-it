@@ -292,3 +292,4 @@ Route::get('imagenUbicacion','UbicacionController@daImagen');
 
 
 Route::resource('roles','RolController');
+Route::resource('empresa','EmpresaController');

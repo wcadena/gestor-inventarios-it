@@ -93,6 +93,12 @@ return [
     'permiso' => 'Permiso',
     'modulo' => 'Modulo',
     'Roles' => 'Roles',
+    'Empresa'  =>  'Empresa',
+    'formula_codigo'  =>  'Formula de etiqueta',
+    'empresa'  =>  'Empresa',
+    'formula_codigo'  =>  'Formula de etiqueta',
+    ''  =>  '',
+    ''  =>  '',
 
 ];
 

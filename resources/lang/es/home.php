@@ -96,5 +96,6 @@ return [
     'mensaje_custodio_b' => 'Pendientes de enviar la Notificación',
     'mensaje_custodio_b1' => 'Hace :hora min',
     'mensaje_custodio_c' => 'Envía Notificaciones',
+    'empresa' => 'Empresa',
 ];
 

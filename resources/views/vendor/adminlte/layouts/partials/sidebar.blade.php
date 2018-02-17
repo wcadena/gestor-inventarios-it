@@ -72,8 +72,9 @@
                          <li><a href="{{ url('orden') }}"><i class='glyphicon glyphicon-shopping-cart'></i> <span>@lang('home.men11')</span></a></li>
                          <li><a href="{{ url('estaciones') }}"><i class='glyphicon glyphicon-plane'></i> <span>@lang('home.men12')</span></a></li>
                          @if(str_contains(Auth::getUser()->rol, ['system']))
-                         <li><a href="{{ url('config') }}"><i class='glyphicon glyphicon-wrench'></i> <span>@lang('home.men13')</span></a></li>
-                         <li><a href="{{ url('oautho2') }}"><i class='glyphicon glyphicon-wrench'></i> <span>@lang('OAuth2')</span></a></li>
+                             <li><a href="{{ url('empresa') }}"><i class='glyphicon glyphicon-globe'></i> <span>@lang('home.empresa')</span></a></li>
+                             <li><a href="{{ url('config') }}"><i class='glyphicon glyphicon-wrench'></i> <span>@lang('home.men13')</span></a></li>
+                             <li><a href="{{ url('oautho2') }}"><i class='glyphicon glyphicon-wrench'></i> <span>@lang('OAuth2')</span></a></li>
                          @endif
                     </ul>
                  </li>
