@@ -13,7 +13,7 @@
             <p>
                 {{ trans('adminlte_lang::message.mainwhile') }} <a href='{{ url('/home') }}'>{{ trans('adminlte_lang::message.returndashboard') }}</a> {{ trans('adminlte_lang::message.usingsearch') }}
             </p>
-            <form class='search-form'>
+            <form class='search-form'>asdasdjlkjasd777asdt67fvj
                 <div class='input-group'>
                     <input type="text" name="search" class='form-control' placeholder="{{ trans('adminlte_lang::message.search') }}"/>
                     <div class="input-group-btn">

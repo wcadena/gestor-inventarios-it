@@ -67,6 +67,8 @@ return [
     'actions' => 'Acciones',
     'fecha_ingreso' => 'Fecha Ingreso',
     'titulobitacora' => 'Título de Bitácora',
-    'empresa_procede1' => 'Empresa Procede Equipo'
+    'empresa_procede1' => 'Empresa Procede Equipo',
+    'The page has expired due to inactivity.'     => 'La página a expirado por inactividad.',// vendor/laravel/franework/src/illuminate/fundation/exception/views/
+    'Please refresh and try again.' => 'Por favor refresque el navegador (F5) y trate nuevamente.',
 ];
 
