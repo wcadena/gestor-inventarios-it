@@ -2,12 +2,16 @@
 
 namespace App;
 
+use App\Transformers\ChecklistTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CheckList extends Model
 {
     use SoftDeletes;
+
+    public $transformer = ChecklistTransformer::class;
+
     protected $dates = ['deleted_at'];
     protected $fillable = ['area_id','user_id','id_check_lists','unik_check_lists'];
     public function areaxc()

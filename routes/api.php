@@ -49,7 +49,9 @@ Route::get('custodiosBuscar', 'api\CustodioController@persona');
 Route::post('custodiosSetImage','api\CustodioController@storeImagen');
 
 Route::resource('/empresas', 'api\EmpresaController',['excepto' => 'create']);
-Route::resource('/areas', 'api\AreasController',['excepto' => 'create']);
+Route::resource('/areas', 'api\AreasController',['only' => ['index', 'show','store'],'parameters' => [
+    'areas' => 'areas']]);
 Route::resource('/equipos', 'api\EquiposController',['only' => ['index', 'show','store'],'parameters' => [
     'equipos' => 'equipos']]);
 Route::get('/equipo_no_serie', 'api\EquiposController@equipo_no_serie');
+Route::resource('/checkList', 'api\CheckListController',['only' => ['index', 'show','store']]);

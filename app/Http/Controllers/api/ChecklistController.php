@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Areas;
+use App\CheckList;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class AreasController extends ApiController
+class CheckListController extends ApiController
 {
     public function __construct()
     {
@@ -20,6 +19,7 @@ class AreasController extends ApiController
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');*/
+
     }
     /**
      * Display a listing of the resource.
@@ -28,8 +28,9 @@ class AreasController extends ApiController
      */
     public function index()
     {
-        $areas = Areas::all();
-        return $this->showAll($areas);
+        $equipos = CheckList::all();
+
+        return $this->showAll($equipos);
     }
 
     /**
@@ -59,11 +60,12 @@ class AreasController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Areas $areas)
+    public function show(CheckList $checkList)
     {
-        return $this->showOne($areas);
-
+        //dd($equipos);
+        return $this->showOne($checkList);
     }
+
 
     /**
      * Show the form for editing the specified resource.
