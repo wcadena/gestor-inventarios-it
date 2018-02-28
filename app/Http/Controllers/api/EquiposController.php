@@ -4,12 +4,13 @@ namespace App\Http\Controllers\api;
 
 use App\Equipos;
 use App\Http\Controllers\ApiController;
+use App\Transformers\EquiposTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EquiposController extends ApiController
 {
-    public function __construct()
+    public function __construct(EquiposTransformer $equiposTransformer)
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
@@ -20,6 +21,7 @@ class EquiposController extends ApiController
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');*/
+
     }
     /**
      * Display a listing of the resource.
@@ -60,9 +62,22 @@ class EquiposController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Equipos $equipos)
     {
-        //
+       //dd($equipos);
+        return $this->showOne($equipos);
+    }
+
+    public function equipo_no_serie(Request $request){
+        $reglas = [
+            'no_serie' => 'required|max:255',
+        ];
+        $this->validate($request, $reglas);
+
+
+        $equipo = Equipos::where('no_serie',"like", '%'.$request->no_serie."%")->firstOrFail();
+
+        return $this->showOne($equipo);
     }
 
     /**

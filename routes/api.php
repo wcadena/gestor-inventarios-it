@@ -50,4 +50,6 @@ Route::post('custodiosSetImage','api\CustodioController@storeImagen');
 
 Route::resource('/empresas', 'api\EmpresaController',['excepto' => 'create']);
 Route::resource('/areas', 'api\AreasController',['excepto' => 'create']);
-Route::resource('/equipos', 'api\EquiposController',['excepto' => 'create']);
+Route::resource('/equipos', 'api\EquiposController',['only' => ['index', 'show','store'],'parameters' => [
+    'equipos' => 'equipos']]);
+Route::get('/equipo_no_serie', 'api\EquiposController@equipo_no_serie');

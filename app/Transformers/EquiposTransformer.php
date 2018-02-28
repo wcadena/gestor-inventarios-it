@@ -12,6 +12,7 @@ class EquiposTransformer extends TransformerAbstract
      */
     public function transform(Equipos $equipos)
     {
+
         return [
             'id' => (string)$equipos->id,
             'modelo_equipo_id' => (string)$equipos->modelo_equipo_id,
@@ -50,6 +51,7 @@ class EquiposTransformer extends TransformerAbstract
             'fechaCreacion' => (string)$equipos->created_at,
             'fechaActualizacion' => (string)$equipos->updated_at,
             'fechaEliminacion' => isset($equipos->deleted_at) ? (string) $equipos->deleted_at : null,
+
             'links' => [
                 [
                     'rel' => 'custodios.puestos',
