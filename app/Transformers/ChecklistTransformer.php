@@ -30,6 +30,7 @@ class ChecklistTransformer extends TransformerAbstract
                 [
                     'rel' => 'self',
                     'href' => action('api\EquiposController@show', ['id' => $checklist->equiposxm['id']]),
+
                 ],
             ],
         ];

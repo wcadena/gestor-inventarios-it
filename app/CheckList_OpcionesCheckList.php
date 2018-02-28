@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Transformers\CheckList_OpcionesCheckListTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,6 +12,7 @@ class CheckList_OpcionesCheckList extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['check_list_id','opciones_check_list_id','tipo','atributo','valor1','valor2','valor3','valor4','valor5','valor6','valor7','valor8','valor9','valor10'];
 
+    public $transformer = CheckList_OpcionesCheckListTransformer::class;
     public function estados() {
         return $this->hasMany('ACTIVO', 'INACTIVO');
     }
