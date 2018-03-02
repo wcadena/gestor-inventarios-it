@@ -48,11 +48,14 @@ Route::get('custodiosCedula', 'api\CustodioController@cedula');
 Route::get('custodiosBuscar', 'api\CustodioController@persona');
 Route::post('custodiosSetImage','api\CustodioController@storeImagen');
 
-Route::resource('/empresas', 'api\EmpresaController',['excepto' => 'create']);
-Route::resource('/areas', 'api\AreasController',['only' => ['index', 'show','store'],'parameters' => [
+Route::resource('empresas', 'api\EmpresaController',['excepto' => 'create']);
+Route::resource('areas', 'api\AreasController',['only' => ['index', 'show','store'],'parameters' => [
     'areas' => 'areas']]);
-Route::resource('/Equipos', 'api\EquiposController',['only' => ['index', 'show','store'],'parameters' => [
+Route::resource('equipos', 'api\EquiposController',['only' => ['index', 'show','store'],'parameters' => [
     'equipos' => 'equipos']]);
-Route::get('/equipo_no_serie', 'api\EquiposController@equipo_no_serie');
-Route::resource('/checkList', 'api\CheckListController',['only' => ['index', 'show','store']]);
-Route::resource('/check_list__opciones_check_lists', 'api\CheckList_OpcionesCheckListController',['only' => ['index', 'show','store']]);
+Route::resource('equipos.checkList', 'api\EquipoCheckListController',['only' => ['index','store'],'parameters' => [
+    'equipos' => 'equipos']]);
+
+Route::get('equipo_no_serie', 'api\EquiposController@equipo_no_serie');
+Route::resource('checkList', 'api\CheckListController',['only' => ['index', 'show','store']]);
+Route::resource('check_list__opciones_check_lists', 'api\CheckList_OpcionesCheckListController',['only' => ['index', 'show','store']]);

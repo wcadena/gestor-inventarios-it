@@ -57,6 +57,10 @@ class EquiposTransformer extends TransformerAbstract
                     'rel' => 'custodios.puestos',
                     'href' => route('custodios.puestos.index', $equipos),
                 ],
+                [
+                    'rel' => 'equipos.checkList',
+                    'href' => route('equipos.checkList.index', $equipos),
+                ],
             ],
         ];
     }

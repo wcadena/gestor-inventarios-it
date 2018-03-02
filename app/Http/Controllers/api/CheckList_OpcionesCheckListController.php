@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\CheckList;
 use App\CheckList_OpcionesCheckList;
 use App\Http\Controllers\ApiController;
+use App\OpcionesCheckList;
 use Illuminate\Http\Request;
 
 class CheckList_OpcionesCheckListController extends ApiController
@@ -52,7 +53,28 @@ class CheckList_OpcionesCheckListController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'check_list_id' => 'required|exists:check_lists,id',
+            'opciones_check_list_id' => 'required|exists:opciones_check_lists,id',
+            'valor1' => 'required|max:255',
+            'valor2' => 'max:255',
+            'valor3' => 'max:255',
+            'valor4' => 'max:255',
+            'valor5' => 'max:255',
+            'valor6' => 'max:255',
+            'valor7' => 'max:255',
+            'valor8' => 'max:255',
+            'valor9' => 'max:255',
+            'valor10' => 'max:255',
+        ]);
+
+        $campos = $request->all();
+        $opcion = OpcionesCheckList::findOrFail($request->opciones_check_list_id);
+        $campos['tipo'] = $opcion->tipo;
+        $campos['atributo'] = $opcion->atributo;
+
+        $custodios = CheckList_OpcionesCheckList::create($campos);
+        return $this->showOne($custodios, 201);
     }
 
     /**
