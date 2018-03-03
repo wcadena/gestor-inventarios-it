@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'cors',
             'signature:X-Application-Name',
-            'throttle:60,1',
+            'throttle:800,1',
             'bindings',
 
         ],
