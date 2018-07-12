@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Areas extends Model
 {
-
     protected static function boot()
     {
         parent::boot();
@@ -16,8 +15,9 @@ class Areas extends Model
         static::addGlobalScope(new EmpresaTScope());
     }
 
-    protected $fillable = ['area','empresa'];
+    protected $fillable = ['area', 'empresa'];
     public $transformer = AreasTransformer::class;
+
     public function checklistxc()
     {
         return $this->hasMany('App\CheckList', 'area_id');
@@ -33,5 +33,4 @@ class Areas extends Model
     {
         return $this->hasOne('App\Empresa', 'empresa', 'empresa');
     }
-
 }

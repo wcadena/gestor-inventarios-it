@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Areas;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Custodios;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class CustodiosController extends Controller
@@ -18,6 +14,7 @@ class CustodiosController extends Controller
         $this->middleware('auth')->except(['verify', 'resend']);
         $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas')->except(['verify', 'resend']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,8 +41,9 @@ class CustodiosController extends Controller
      */
     public function create()
     {
-        $areas = Areas::orderBy('area','asc')->pluck('area','area');
-        return view('directory.custodio.create',compact('areas'));
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'area');
+
+        return view('directory.custodio.create', compact('areas'));
     }
 
     /**
@@ -56,19 +54,19 @@ class CustodiosController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'ciudad' => 'required',
-            'direccion' => 'required',
+            'ciudad'                  => 'required',
+            'direccion'               => 'required',
             'documentoIdentificacion' => 'required',
-            'cargo' => 'required',
-            'compania' => 'required',
-            'telefono' => 'required',
-            'nombre_responsable' => 'required',
-            'area_piso' => 'required',
-            'email' => 'required',
+            'cargo'                   => 'required',
+            'compania'                => 'required',
+            'telefono'                => 'required',
+            'nombre_responsable'      => 'required',
+            'area_piso'               => 'required',
+            'email'                   => 'required',
 
         ];
         $this->validate($request, $reglas);
-        
+
         Custodios::create($request->all());
 
         Session::flash('flash_message', 'Custodios added!');
@@ -79,28 +77,29 @@ class CustodiosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function show($id)
     {
-
         $custodio = Custodios::find($id);
-        if ($custodio == null){
+        if ($custodio == null) {
             Session::flash('flash_message', 'Custodio no encontrado!');
+
             return redirect('custodio');
         }
 
         return view('directory.custodio.show', compact('custodio'));
     }
+
     public function show_custom($id)
     {
         $custodio = Custodios::findOrFail($id);
 
-        $custodios = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
 
-        return view('directory.custodio.show_custom', compact('custodio','custodios'));
+        return view('directory.custodio.show_custom', compact('custodio', 'custodios'));
     }
 
     public function show_custom_post(Request $request)
@@ -114,16 +113,16 @@ class CustodiosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function edit($id)
     {
-
         $custodio = Custodios::find($id);
-        if ($custodio == null){
+        if ($custodio == null) {
             Session::flash('flash_message', 'Custodio no encontrado!');
+
             return redirect('custodio');
         }
 
@@ -133,27 +132,27 @@ class CustodiosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
         $reglas = [
-            'pais' => 'required',
-            'ciudad' => 'required',
-            'direccion' => 'required',
+            'pais'                    => 'required',
+            'ciudad'                  => 'required',
+            'direccion'               => 'required',
             'documentoIdentificacion' => 'required',
-            'cargo' => 'required',
-            'compania' => 'required',
-            'telefono' => 'required',
-            'nombre_responsable' => 'required',
-            'area_piso' => 'required',
-            'email' => 'required',
+            'cargo'                   => 'required',
+            'compania'                => 'required',
+            'telefono'                => 'required',
+            'nombre_responsable'      => 'required',
+            'area_piso'               => 'required',
+            'email'                   => 'required',
 
         ];
         $this->validate($request, $reglas);
-        
+
         $custodio = Custodios::findOrFail($id);
         $custodio->update($request->all());
 
@@ -165,7 +164,7 @@ class CustodiosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -180,18 +179,18 @@ class CustodiosController extends Controller
 
     public function showACustom($documentoIdentificacion)
     {
-
-        $custodio = Custodios::where('documentoIdentificacion','=',$documentoIdentificacion);
-        if ($custodio == null){
+        $custodio = Custodios::where('documentoIdentificacion', '=', $documentoIdentificacion);
+        if ($custodio == null) {
             Session::flash('flash_message_home', 'Custodio no encontrado!');
+
             return redirect('home');
         }
 
         return view('directory.custodio.showACustom', compact('custodio'));
     }
+
     public function verify($token)
     {
-
         $custodios = Custodios::where('verification_token', $token)->firstOrFail();
         $custodios->token = Custodios::generarToken();
         $custodios->verification_token = null;
@@ -199,24 +198,26 @@ class CustodiosController extends Controller
         //dd($token);
         $custodios->save();
         Session::flash('flash_message', 'MEnsaje enviadoCon clave.');
+
         return redirect('login');
     }
+
     public function resend(Custodios $custodios)
     {
         //dd($custodios);
 
-        retry(5, function() use ($custodios) {
-            if($custodios->token==null){
-                $custodios->token=Custodios::generarToken();
+        retry(5, function () use ($custodios) {
+            if ($custodios->token == null) {
+                $custodios->token = Custodios::generarToken();
             }
-            if($custodios->verification_token==null){
-                $custodios->verification_token=Custodios::generarVerificationToken();
+            if ($custodios->verification_token == null) {
+                $custodios->verification_token = Custodios::generarVerificationToken();
             }
             $custodios->save();
             $custodios->sendPasswordResetNotification($custodios);
         }, 100);
         Session::flash('flash_message', 'El correo de verificación se ha reenviado a: '.$custodios->email);
+
         return redirect('login');
     }
-
 }

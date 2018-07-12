@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCustodiosTable extends Migration
 {
@@ -14,14 +14,14 @@ class CreateCustodiosTable extends Migration
     {
         Schema::create('custodios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("pais");
-            $table->string("ciudad");
-            $table->string("direccion");
-            $table->string("area-piso");
-            $table->string("documentoIdentificacion");
-            $table->string("cargo");
-            $table->string("compania");
-            $table->string("telefono");
+            $table->string('pais');
+            $table->string('ciudad');
+            $table->string('direccion');
+            $table->string('area-piso');
+            $table->string('documentoIdentificacion');
+            $table->string('cargo');
+            $table->string('compania');
+            $table->string('telefono');
             $table->enum('estado', ['ACTIVO', 'INACTIVO']);
             $table->softDeletes();
             $table->timestamps();

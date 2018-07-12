@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Areas;
 use App\Custodios;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -41,10 +37,11 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function create()
     {
-        $custodios = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
-        $areas = Areas::orderBy('area','asc')->pluck('area','id');
-        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria','asc')->pluck('categoria','id');
-        return view('directory.informes.create',compact('dtos','custodios','areas','categoria_mant'));
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
+        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
+
+        return view('directory.informes.create', compact('dtos', 'custodios', 'areas', 'categoria_mant'));
     }
 
     /**
@@ -55,12 +52,12 @@ class InformeMantenimientoPreventivoController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'no_orden' => 'required',
+            'no_orden'        => 'required',
             'fecha_ejecucion' => 'required',
-            'requerimiento' => 'required'
-        ];        
+            'requerimiento'   => 'required',
+        ];
         $this->validate($request, $reglas);
-        
+
         InformeMantenimientoPreventivo::create($request->all());
 
         Session::flash('flash_message', 'InformeMantenimientoPreventivo added!');
@@ -71,7 +68,7 @@ class InformeMantenimientoPreventivoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -85,36 +82,35 @@ class InformeMantenimientoPreventivoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function edit($id)
     {
-        $custodios = Custodios::orderBy('nombre_responsable','asc')->pluck('nombre_responsable','id');
-        $areas = Areas::orderBy('area','asc')->pluck('area','id');
-        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria','asc')->pluck('categoria','id');
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
+        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
 
         $informe = InformeMantenimientoPreventivo::findOrFail($id);
 
         Session::put('informe_manto_prev_id', $informe->id);
         //$equipo_id = Session::get('informe_manto_prev_id');//para ver
 
-        $tecnico = InformeMantenimientoPreventivoTecnico::where('informe_manto_prev_id','=',$informe->id);
+        $tecnico = InformeMantenimientoPreventivoTecnico::where('informe_manto_prev_id', '=', $informe->id);
 
-        return view('directory.informes.edit', compact('informe','custodios','areas','categoria_mant','tecnico'));
+        return view('directory.informes.edit', compact('informe', 'custodios', 'areas', 'categoria_mant', 'tecnico'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $informe = InformeMantenimientoPreventivo::findOrFail($id);
         $informe->update($request->all());
 
@@ -126,7 +122,7 @@ class InformeMantenimientoPreventivoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -138,5 +134,4 @@ class InformeMantenimientoPreventivoController extends Controller
 
         return redirect('informes');
     }
-
 }

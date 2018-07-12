@@ -3,12 +3,12 @@
 namespace App;
 
 use App\Notifications\MyOwnResetPassword;
-use Laravel\Passport\HasApiTokens;
 use App\Transformers\UserTransformer;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Laravel\Passport\HasApiTokens;
 use Mpociot\Firebase\SyncsWithFirebase;
 
 class User extends Authenticatable
@@ -16,12 +16,10 @@ class User extends Authenticatable
     use Notifiable, HasApiTokens, SoftDeletes;
     use SyncsWithFirebase;
 
-
-     public $transformer = UserTransformer::class;
+    public $transformer = UserTransformer::class;
 
     const USUARIO_VERIFICADO = '1';
     const USUARIO_NO_VERIFICADO = '0';
-
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','first_name','last_name','rol','username','password','email','verification_token','token','facebook_user_id','empresa','verified'
+        'name', 'first_name', 'last_name', 'rol', 'username', 'password', 'email', 'verification_token', 'token', 'facebook_user_id', 'empresa', 'verified',
     ];
 
     /**
@@ -41,26 +39,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     protected static $graph_node_field_aliases = [
-        'id' => 'facebook_user_id',
-        'name' => 'name',
-        'email' => 'email',
-        'email' => 'username',
-        'FirstName' => 'first_name',
+        'id'         => 'facebook_user_id',
+        'name'       => 'name',
+        'email'      => 'email',
+        'email'      => 'username',
+        'FirstName'  => 'first_name',
         'MiddleName' => 'last_name',
     ];
+
     public static function getENUM($tabla)
     {
-        $type = DB::select( DB::raw("SHOW COLUMNS FROM users WHERE Field = '".$tabla."'") )[0]->Type;
+        $type = DB::select(DB::raw("SHOW COLUMNS FROM users WHERE Field = '".$tabla."'"))[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
-        $enum = array();
-        $enumerado =  explode(',', $matches[1]);
-        foreach($enumerado as $value )
-        {
-            $v = trim( $value, "'" );
+        $enum = [];
+        $enumerado = explode(',', $matches[1]);
+        foreach ($enumerado as $value) {
+            $v = trim($value, "'");
             $enum = array_add($enum, $v, $v);
         }
+
         return $enum;
     }
+
     public static function generarVerificationToken()
     {
         return str_random(36);
@@ -71,10 +71,12 @@ class User extends Authenticatable
     {
         $this->attributes['name'] = strtolower($valor);
     }
+
     public function getNameAttribute($valor)
     {
         return ucwords($valor);
     }
+
     public function setEmailAttribute($valor)
     {
         $this->attributes['email'] = strtolower($valor);
@@ -84,29 +86,33 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Empresa', 'empresa', 'empresa');
     }
+
     //////////////////////////////////////////////fin mutwadores
+
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyOwnResetPassword($token));
     }
+
     public function esVerificado()
     {
-        return $this->verified == User::USUARIO_VERIFICADO;
+        return $this->verified == self::USUARIO_VERIFICADO;
     }
-    public  function  getEmpresa(){
+
+    public function getEmpresa()
+    {
         return $this->empresa;
     }
 
     public function roles()
     {
-
-        return $this->belongsToMany('App\Rol', 'usuariorols' )->using('App\Usuariorol');
+        return $this->belongsToMany('App\Rol', 'usuariorols')->using('App\Usuariorol');
     }
-
 }

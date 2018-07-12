@@ -39,6 +39,6 @@ return [
     | The name of the seeder to add admin user to database.
     */
 
-    'AdminUserSeeder' => 'AdminUserSeeder.php'
+    'AdminUserSeeder' => 'AdminUserSeeder.php',
 
 ];

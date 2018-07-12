@@ -2,29 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Modulo;
 use App\Permiso;
 use App\Permisorol;
-use App\Permisorols;
 use App\Rol;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use PhpParser\Node\Stmt\Foreach_;
 use Session;
 
 class RolController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +39,9 @@ class RolController extends Controller
     public function create()
     {
         $modulo = Modulo::all();
-       /* foreach($modulo AS $item){
-            dd($item->permisos);
-        }*/
+        /* foreach($modulo AS $item){
+             dd($item->permisos);
+         }*/
 
         return view('directory.rol.create', compact('modulo'));
     }
@@ -60,37 +54,37 @@ class RolController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'rol' => 'required|max:255',
+            'rol'         => 'required|max:255',
             'descripcion' => 'required|max:255',
-            'permisos_r' => 'required',
+            'permisos_r'  => 'required',
         ]);
-        try{
+
+        try {
             DB::beginTransaction();
             //dd($request);
             $rol = Rol::create($request->all());
             $rol->save();
             //////////////////////////////////////////////
             $equipos = Input::get('permisos_r');
-            if(is_array($equipos))
-            {
-                foreach ($equipos as $equipo){
+            if (is_array($equipos)) {
+                foreach ($equipos as $equipo) {
                     $permiso = Permiso::findOrFail($equipo)->toArray();
                     //dd($equipo);
-                    $permi_rol['permiso_id']=$permiso['id'];
-                    $permi_rol['rol_id']=$rol->id;
+                    $permi_rol['permiso_id'] = $permiso['id'];
+                    $permi_rol['rol_id'] = $rol->id;
                     Permisorol::create($permi_rol);
                 }
                 // do stuff with checked friends
                 Session::flash('flash_message', 'Permisos Rol added!');
-            }else{
+            } else {
                 Session::flash('flash_message', 'Error Permisos Rol added!');
                 DB::rollback();
             }
 
             DB::commit();
-            return redirect('roles');
 
-        }catch (Exception $e){
+            return redirect('roles');
+        } catch (Exception $e) {
             DB::rollback();
         }
     }
@@ -98,7 +92,7 @@ class RolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -112,7 +106,7 @@ class RolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -121,69 +115,68 @@ class RolController extends Controller
         $rol = Rol::findOrFail($id);
         $modulo = Modulo::all();
 
-        return view('directory.rol.edit', compact('rol','modulo'));
+        return view('directory.rol.edit', compact('rol', 'modulo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-
-
         $this->validate($request, [
-            'rol' => 'required|max:255',
+            'rol'         => 'required|max:255',
             'descripcion' => 'required|max:255',
-            'permisos_r' => 'required',
+            'permisos_r'  => 'required',
         ]);
-        try{
+
+        try {
             DB::beginTransaction();
             //dd($request);
 
             $rol = Rol::findOrFail($id);
             $rol->update($request->all());
             //////////////////////////////////////////////
-            $perdel= Permisorol::where('rol_id','=',$rol->id)->get();
-            foreach ($perdel as $borraras2){
+            $perdel = Permisorol::where('rol_id', '=', $rol->id)->get();
+            foreach ($perdel as $borraras2) {
                 // da error aca, no se puede borrar tabla pivote de manera que se de softdelete, es mas, por favor llenar deleta_at y
                 //observar que no cambia nada, se deberia borrar hard y usar $rol->permiso->pivot->delete(), consulatar en documentacion.
                 $borraras2->delete();
             }
             //dd($perdel);
             $equipos = Input::get('permisos_r');
-            if(is_array($equipos))
-            {
-                foreach ($equipos as $equipo){
+            if (is_array($equipos)) {
+                foreach ($equipos as $equipo) {
                     $permiso = Permiso::findOrFail($equipo)->toArray();
                     //dd($equipo);
-                    $permi_rol['permiso_id']=$permiso['id'];
-                    $permi_rol['rol_id']=$rol->id;
+                    $permi_rol['permiso_id'] = $permiso['id'];
+                    $permi_rol['rol_id'] = $rol->id;
                     //Permisorol::create($permi_rol);
                 }
                 // do stuff with checked friends
                 Session::flash('flash_message', 'Permisos Rol updated!');
-            }else{
+            } else {
                 Session::flash('flash_message', 'Error Permisos Rol updated!');
                 DB::rollback();
             }
 
             DB::commit();
-            return redirect('roles');
 
-        }catch (Exception $e){
+            return redirect('roles');
+        } catch (Exception $e) {
             DB::rollback();
         }
+
         return redirect('roles');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */

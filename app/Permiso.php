@@ -10,7 +10,6 @@ use Mpociot\Firebase\SyncsWithFirebase;
 
 class Permiso extends Model
 {
-
     use Notifiable, HasApiTokens, SoftDeletes;
     use SyncsWithFirebase;
 
@@ -22,7 +21,6 @@ class Permiso extends Model
 
     public function modulos()
     {
-
         return $this->belongsTo('App\Modulo', 'modulo_id', 'id');
     }
 }

@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Empresa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class EmpresaController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,21 +49,21 @@ class EmpresaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'empresa' => 'required|max:255',
+            'empresa'        => 'required|max:255',
             'formula_codigo' => 'required',
         ]);
-       $rol = Empresa::create($request->all());
-       $rol->save();
-       //////////////////////////////////////////////
-       Session::flash('flash_message', 'Empresa added!');
-        return redirect('empresa');
+        $rol = Empresa::create($request->all());
+        $rol->save();
+        //////////////////////////////////////////////
+        Session::flash('flash_message', 'Empresa added!');
 
+        return redirect('empresa');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -78,7 +77,7 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -86,44 +85,39 @@ class EmpresaController extends Controller
     {
         $empresa = Empresa::where('empresa', '=', $id)->firstOrFail();
 
-
         return view('directory.empresa.edit', compact('empresa'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-
-
         $this->validate($request, [
-            'empresa' => 'required|max:255',
+            'empresa'        => 'required|max:255',
             'formula_codigo' => 'required',
         ]);
         $empresa = Empresa::where('empresa', '=', $id)->firstOrFail();
         $empresa->update($request->all());
         /////////////////////////////////////////
         Session::flash('flash_message', 'Permisos Rol updated!');
+
         return redirect('empresa');
-
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function destroy($id)
     {
-
         Empresa::destroy($id);
 
         Session::flash('flash_message', '¡Empresa Borrado!');

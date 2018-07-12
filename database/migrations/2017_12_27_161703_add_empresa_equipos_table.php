@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddEmpresaEquiposTable extends Migration
 {
@@ -14,11 +14,11 @@ class AddEmpresaEquiposTable extends Migration
     public function up()
     {
         Schema::table('equipos', function (Blueprint $table) {
-                $table->string('empresa_procede1')->nullable();
+            $table->string('empresa_procede1')->nullable();
         });
         $affected = DB::update('update equipos set empresa_procede1 = ?', ['Avianca Ec']);
         Schema::table('equipos', function (Blueprint $table) {
-                $table->foreign('empresa_procede1')->references('empresa')->on('empresas');
+            $table->foreign('empresa_procede1')->references('empresa')->on('empresas');
         });
 
         Schema::table('equipos_logs', function (Blueprint $table) {
@@ -28,7 +28,6 @@ class AddEmpresaEquiposTable extends Migration
         Schema::table('equipos_logs', function (Blueprint $table) {
             $table->foreign('empresa_procede1')->references('empresa')->on('empresas');
         });
-
     }
 
     /**

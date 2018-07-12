@@ -20,13 +20,11 @@ class Rol extends Model
 
     public function users()
     {
-
-        return $this->belongsToMany('App\User', 'usuariorols' )->using('App\Usuariorol');
+        return $this->belongsToMany('App\User', 'usuariorols')->using('App\Usuariorol');
     }
 
     public function permisos()
     {
-
-        return $this->belongsToMany('App\Permiso', 'permisorols' )->using('App\Permisorol');
+        return $this->belongsToMany('App\Permiso', 'permisorols')->using('App\Permisorol');
     }
 }

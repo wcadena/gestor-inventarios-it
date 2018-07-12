@@ -2,15 +2,13 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Support\Facades\Hash;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
 
 /**
  * Class AcachaAdmintLTELaravelTest.
- *
- * @package Tests\Browser
  */
 class AcachaAdmintLTELaravelTest extends DuskTestCase
 {

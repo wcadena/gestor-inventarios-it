@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddContableToEquiposTable extends Migration
 {
@@ -10,6 +10,7 @@ class AddContableToEquiposTable extends Migration
     {
         \Illuminate\Support\Facades\DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
+
     /**
      * Run the migrations.
      *
@@ -18,7 +19,7 @@ class AddContableToEquiposTable extends Migration
     public function up()
     {
         Schema::table('equipos', function (Blueprint $table) {
-            $table->string("codigo_contable")->nullable();
+            $table->string('codigo_contable')->nullable();
         });
     }
 

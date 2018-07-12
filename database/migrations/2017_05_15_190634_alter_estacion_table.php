@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AlterEstacionTable extends Migration
 {
@@ -13,7 +13,7 @@ class AlterEstacionTable extends Migration
     public function up()
     {
         Schema::table('estaciones', function (Blueprint $table) {
-            $table->enum('pais', ['ECUADOR', 'COLOMBIA','EL SALVADOR']);
+            $table->enum('pais', ['ECUADOR', 'COLOMBIA', 'EL SALVADOR']);
             $table->string('nombre_largo');
         });
     }

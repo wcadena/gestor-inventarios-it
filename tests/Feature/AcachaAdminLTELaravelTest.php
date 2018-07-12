@@ -2,19 +2,15 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use ReflectionException;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class AcachaAdminLTELaravelTest.
- *
- * @package Tests\Feature
  */
 class AcachaAdminLTELaravelTest extends TestCase
 {
@@ -76,8 +72,6 @@ class AcachaAdminLTELaravelTest extends TestCase
     {
         $this->urlReturnsCode($url, 401);
     }
-
-
 
     /**
      * Test url returns a specific status code.
@@ -170,18 +164,18 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testNewUserRegistration()
     {
         $response = $this->json('POST', '/register', [
-            'name' => 'Sergi Tur Badenas',
-            'email' => 'sergiturbadenas@gmail.com',
-            'terms' => 'true',
-            'password' => 'passw0RD',
+            'name'                  => 'Sergi Tur Badenas',
+            'email'                 => 'sergiturbadenas@gmail.com',
+            'terms'                 => 'true',
+            'password'              => 'passw0RD',
             'password_confirmation' => 'passw0RD',
         ]);
 
         $response->assertStatus(302);
 
         $this->assertDatabaseHas('users', [
-            'name' => 'Sergi Tur Badenas',
-            'email' => 'sergiturbadenas@gmail.com'
+            'name'  => 'Sergi Tur Badenas',
+            'email' => 'sergiturbadenas@gmail.com',
         ]);
     }
 
@@ -193,17 +187,17 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testNewUserRegistrationRequiredFields()
     {
         $response = $this->json('POST', '/register', [
-            'name' => '',
-            'email' => '',
-            'password' => '',
+            'name'                  => '',
+            'email'                 => '',
+            'password'              => '',
             'password_confirmation' => '',
         ]);
 
         $response->assertStatus(422)->assertJson([
-            'name' => [ "The name field is required." ],
-            'email' => [ "The email field is required." ],
-            'password' => [ "The password field is required." ],
-            'terms' => [ "The terms field is required." ],
+            'name'     => ['The name field is required.'],
+            'email'    => ['The email field is required.'],
+            'password' => ['The password field is required.'],
+            'terms'    => ['The terms field is required.'],
         ]);
     }
 
@@ -217,7 +211,7 @@ class AcachaAdminLTELaravelTest extends TestCase
         $user = factory(\App\User::class)->create(['password' => Hash::make('passw0RD')]);
 
         $response = $this->json('POST', '/login', [
-            'email' => $user->email,
+            'email'    => $user->email,
             'password' => 'passw0RD',
         ]);
 
@@ -232,12 +226,12 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testLoginFailed()
     {
         $response = $this->json('POST', '/login', [
-            'email' => 'sergiturbadenas@gmail.com',
+            'email'    => 'sergiturbadenas@gmail.com',
             'password' => 'passw0RDinventatquenopotfuncionat',
         ]);
 
         $response->assertStatus(422)->assertJson([
-            "email" => "These credentials do not match our records."
+            'email' => 'These credentials do not match our records.',
         ]);
     }
 
@@ -249,31 +243,31 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testLoginRequiredFields()
     {
         $response = $this->json('POST', '/login', [
-            'email' => '',
+            'email'    => '',
             'password' => '',
         ]);
 
         $response->assertStatus(422)->assertJson([
-            'email' => [ "The email field is required." ],
-            'password' => [ "The password field is required." ],
+            'email'    => ['The email field is required.'],
+            'password' => ['The password field is required.'],
         ]);
     }
 
     /**
-     * Test make:view command
-     *
+     * Test make:view command.
      */
     public function testMakeViewCommand()
     {
         $view = 'ehqwiqweiohqweihoqweiohqweiojhqwejioqwejjqwe';
-        $viewPath= 'views/' . $view . '.blade.php';
+        $viewPath = 'views/'.$view.'.blade.php';
+
         try {
             unlink(resource_path($view));
         } catch (\Exception $e) {
         }
         $this->callArtisanMakeView($view);
         $resultAsText = Artisan::output();
-        $expectedOutput = 'File ' . resource_path($viewPath) . ' created';
+        $expectedOutput = 'File '.resource_path($viewPath).' created';
         $this->assertEquals($expectedOutput, trim($resultAsText));
         $this->assertFileExists(resource_path($viewPath));
         $this->callArtisanMakeView($view);
@@ -295,13 +289,14 @@ class AcachaAdminLTELaravelTest extends TestCase
     }
 
     /**
-     * Test adminlte:admin command
+     * Test adminlte:admin command.
      *
      * @group
      */
     public function testAdminlteAdminCommand()
     {
         $seed = database_path('seeds/AdminUserSeeder.php');
+
         try {
             unlink($seed);
         } catch (\Exception $e) {
@@ -309,7 +304,6 @@ class AcachaAdminLTELaravelTest extends TestCase
         $this->callAdminlteAdminCommand();
         $this->assertFileExists($seed);
     }
-
 
     /**
      * Call adminlte:admin command.

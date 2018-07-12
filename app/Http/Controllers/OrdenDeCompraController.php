@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\OrdenDeCompra;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class OrdenDeCompraController extends Controller
@@ -17,6 +13,7 @@ class OrdenDeCompraController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +56,7 @@ class OrdenDeCompraController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -73,7 +70,7 @@ class OrdenDeCompraController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -87,13 +84,12 @@ class OrdenDeCompraController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $orden = OrdenDeCompra::findOrFail($id);
         $orden->update($request->all());
 
@@ -105,7 +101,7 @@ class OrdenDeCompraController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -117,5 +113,4 @@ class OrdenDeCompraController extends Controller
 
         return redirect('orden');
     }
-
 }

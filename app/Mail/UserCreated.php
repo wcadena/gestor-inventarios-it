@@ -6,13 +6,11 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 
 class UserCreated extends Mailable
 {
     use Queueable, SerializesModels;
-
 
     public $user;
 

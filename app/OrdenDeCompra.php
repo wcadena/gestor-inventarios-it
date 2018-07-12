@@ -9,5 +9,5 @@ class OrdenDeCompra extends Model
 {
     //
     use SoftDeletes;
-    protected $fillable = ['ordenCompra','fecha_compra'];
+    protected $fillable = ['ordenCompra', 'fecha_compra'];
 }

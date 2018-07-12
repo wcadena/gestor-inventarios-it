@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddEmpresaEstacionesTable extends Migration
 {
@@ -15,13 +15,12 @@ class AddEmpresaEstacionesTable extends Migration
     {
         Schema::table('estaciones', function (Blueprint $table) {
             $table->string('empresa');
-            });
-            $affected = DB::update('update estaciones set empresa = ?', ['Avianca Ec']);
+        });
+        $affected = DB::update('update estaciones set empresa = ?', ['Avianca Ec']);
 
-            Schema::table('estaciones', function (Blueprint $table) {
-
-                $table->foreign('empresa')->references('empresa')->on('empresas');
-            });
+        Schema::table('estaciones', function (Blueprint $table) {
+            $table->foreign('empresa')->references('empresa')->on('empresas');
+        });
     }
 
     /**

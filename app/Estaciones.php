@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Estaciones extends Model
 {
     protected $dates = ['deleted_at'];
-    protected $fillable = ['estacion','empresa','nombre_largo','pais'];
+    protected $fillable = ['estacion', 'empresa', 'nombre_largo', 'pais'];
 
     protected static function boot()
     {
@@ -25,16 +25,15 @@ class Estaciones extends Model
 
     public static function getENUM($tabla)
     {
-        $type = DB::select( DB::raw("SHOW COLUMNS FROM estaciones WHERE Field = '".$tabla."'") )[0]->Type;
+        $type = DB::select(DB::raw("SHOW COLUMNS FROM estaciones WHERE Field = '".$tabla."'"))[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
-        $enum = array();
-        $enumerado =  explode(',', $matches[1]);
-        foreach($enumerado as $value )
-        {
-            $v = trim( $value, "'" );
+        $enum = [];
+        $enumerado = explode(',', $matches[1]);
+        foreach ($enumerado as $value) {
+            $v = trim($value, "'");
             $enum = array_add($enum, $v, $v);
         }
+
         return $enum;
     }
-    
 }

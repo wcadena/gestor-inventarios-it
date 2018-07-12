@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateOpcionesCheckListsTable extends Migration
 {
@@ -19,8 +19,8 @@ class CreateOpcionesCheckListsTable extends Migration
             $table->foreign('area_id')->references('id')->on('areas');
 
             $table->string('atributo');
-            $table->enum("mandatorio", ['SI', 'NO']);
-            $table->enum("tipo", ['si-no', 'text','equipo_id','fecha','si-no&version','ip','equipo_id&texto']);
+            $table->enum('mandatorio', ['SI', 'NO']);
+            $table->enum('tipo', ['si-no', 'text', 'equipo_id', 'fecha', 'si-no&version', 'ip', 'equipo_id&texto']);
 
             $table->timestamps();
         });

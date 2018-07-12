@@ -5,7 +5,6 @@ namespace App\Http\Controllers\api;
 use App\Empresa;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class EmpresaController extends ApiController
 {
@@ -13,14 +12,15 @@ class EmpresaController extends ApiController
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
-        $this->middleware('auth:api')->except([ 'verify', 'resend']);
+        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion']);
+        $this->middleware('auth:api')->except(['verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');*/
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +46,8 @@ class EmpresaController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,7 +58,8 @@ class EmpresaController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -68,7 +70,8 @@ class EmpresaController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,8 +82,9 @@ class EmpresaController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,7 +95,8 @@ class EmpresaController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

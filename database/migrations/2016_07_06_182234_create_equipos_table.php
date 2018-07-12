@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateEquiposTable extends Migration
 {
@@ -36,14 +36,14 @@ class CreateEquiposTable extends Migration
 
             $table->binary('imagen');
 
-            $table->integer("num_cajas");
-            $table->string("sociedad");
-            $table->string("no_serie");
-            $table->string("codigo_barras");
-            $table->string("codigo_avianca");
-            $table->string("codigo_otro");
-            $table->string("descripcion");
-            $table->string("ip");
+            $table->integer('num_cajas');
+            $table->string('sociedad');
+            $table->string('no_serie');
+            $table->string('codigo_barras');
+            $table->string('codigo_avianca');
+            $table->string('codigo_otro');
+            $table->string('descripcion');
+            $table->string('ip');
             /*$table->string("modelo");
             $table->string("cpu");
             $table->string("monitor");
@@ -52,12 +52,10 @@ class CreateEquiposTable extends Migration
             $table->string("custodio");
             $table->string("estacion");
             $table->string("oficina");*/
-            $table->enum('estado', ['BUENO', 'MALO','NUEVO']);
-            $table->enum('estatus', ['VIGENTE', 'BODEGA','BAJA']);
-            $table->enum("garantia", ['SI', 'NO']);
-            $table->string("observaciones");
-
-
+            $table->enum('estado', ['BUENO', 'MALO', 'NUEVO']);
+            $table->enum('estatus', ['VIGENTE', 'BODEGA', 'BAJA']);
+            $table->enum('garantia', ['SI', 'NO']);
+            $table->string('observaciones');
 
             $table->timestamps();
             $table->softDeletes();

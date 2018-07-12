@@ -55,17 +55,17 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'cors' => \Barryvdh\Cors\HandleCors::class,
+        'auth'               => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'         => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'           => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'                => \Illuminate\Auth\Middleware\Authorize::class,
+        'cors'               => \Barryvdh\Cors\HandleCors::class,
         'client.credentials' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
-        'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
-        'signature' => \App\Http\Middleware\SignatureMiddleware::class,
+        'guest'              => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'           => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'scope'              => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
+        'scopes'             => \Laravel\Passport\Http\Middleware\CheckScopes::class,
+        'signature'          => \App\Http\Middleware\SignatureMiddleware::class,
         //ini autentificacion intermedia
         'authEmp' => \App\Http\Middleware\AuthEmpleado::class,
         //fin autentificacion intermedia

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateOrdenDeComprasTable extends Migration
 {
@@ -14,8 +14,8 @@ class CreateOrdenDeComprasTable extends Migration
     {
         Schema::create('orden_de_compras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("ordenCompra");
-            $table->date("fecha_compra");
+            $table->string('ordenCompra');
+            $table->date('fecha_compra');
             $table->timestamps();
         });
     }

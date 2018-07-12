@@ -5,23 +5,22 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\ApiController;
 use App\Ubicacion;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UbicacionController extends ApiController
 {
-
     public function __construct()
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
-        $this->middleware('auth:api')->except([ 'verify', 'resend']);
+        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion']);
+        $this->middleware('auth:api')->except(['verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');*/
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +29,7 @@ class UbicacionController extends ApiController
     public function index()
     {
         $ubicacion = Ubicacion::all();
+
         return $this->showAll($ubicacion);
     }
 
@@ -46,7 +46,8 @@ class UbicacionController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,7 +58,8 @@ class UbicacionController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Ubicacion $ubicacion)
@@ -68,7 +70,8 @@ class UbicacionController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,8 +82,9 @@ class UbicacionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,7 +95,8 @@ class UbicacionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

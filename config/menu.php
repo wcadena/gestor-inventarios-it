@@ -31,20 +31,20 @@ Menu::macro('adminlteDefaultMenu', function ($content) {
 Menu::macro('sidebar', function () {
     return Menu::adminlteMenu()
      ->add(Html::raw('HEADER')->addParentClass('header'))
-	->url('home', "<i class='glyphicon glyphicon-home'></i> <span>".trans('home.men1')."</span>")
-	
-	->url('equipos', "<i class='glyphicon glyphicon-print'></i> <span>".trans('home.men2')."</span>")
-	->url('custodio', "<i class='glyphicon glyphicon-user'></i> <span>".trans('home.men3')."</span>")
-	->url('checklist', "<i class='glyphicon glyphicon-check'></i> <span>".trans('home.men4')."</span>")
-	->url('informes', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('Informes')."</span>")
-	
-	->add(Menu::new()
+    ->url('home', "<i class='glyphicon glyphicon-home'></i> <span>".trans('home.men1')."</span>")
+
+    ->url('equipos', "<i class='glyphicon glyphicon-print'></i> <span>".trans('home.men2')."</span>")
+    ->url('custodio', "<i class='glyphicon glyphicon-user'></i> <span>".trans('home.men3')."</span>")
+    ->url('checklist', "<i class='glyphicon glyphicon-check'></i> <span>".trans('home.men4')."</span>")
+    ->url('informes', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('Informes')."</span>")
+
+    ->add(Menu::new()
         ->add(Html::raw("<i class='fa fa-link'></i> <span>".trans('home.menrep1')."</span> <i class='fa fa-angle-left pull-right'></i>")->addParentClass('header'))
         ->url('reporte1', "<i class='glyphicon glyphicon-stats'></i>".('home.menrep1')." <span></span>")
     )
     //->add(Link::to('#', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('home.men13')."</span> <i class='fa fa-angle-left pull-right'></i>"))
     ->each(function (Menu $link) {
-        
+
         // Return if string doesn't contain 'Foo'
         if (Auth::getUser()->rol!="administrador"||
             Auth::getUser()->rol!="system") {
@@ -56,17 +56,17 @@ Menu::macro('sidebar', function () {
             ->addParentClass('treeview')
             ->addClass('treeview-menu')
             ->url('usuario', "<i class='glyphicon glyphicon-user'></i> <span>".trans('home.men7')."</span>")
-			->url('opciones_check', "<i class='glyphicon glyphicon-check'></i> <span>".trans('home.men8')."</span>")
-			->url('checklist_opcionescheck', "<i class='glyphicon glyphicon-link'></i> <span>".trans('home.men5')."</span>")
-			->url('areas', "<i class='glyphicon glyphicon-flag'></i> <span>".trans('home.men9')."</span>")
-			->url('modelo', "<i class='glyphicon glyphicon-copyright-mark'></i> <span>".trans('home.men10')."</span>")
-			->url('orden', "<i class='glyphicon glyphicon-shopping-cart'></i> <span>".trans('home.men11')."</span>")
-			->url('estaciones', "<i class='glyphicon glyphicon-plane'></i> <span>".trans('home.men12')."</span>")
-			->url('config', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('home.men13')."</span>")
+            ->url('opciones_check', "<i class='glyphicon glyphicon-check'></i> <span>".trans('home.men8')."</span>")
+            ->url('checklist_opcionescheck', "<i class='glyphicon glyphicon-link'></i> <span>".trans('home.men5')."</span>")
+            ->url('areas', "<i class='glyphicon glyphicon-flag'></i> <span>".trans('home.men9')."</span>")
+            ->url('modelo', "<i class='glyphicon glyphicon-copyright-mark'></i> <span>".trans('home.men10')."</span>")
+            ->url('orden', "<i class='glyphicon glyphicon-shopping-cart'></i> <span>".trans('home.men11')."</span>")
+            ->url('estaciones', "<i class='glyphicon glyphicon-plane'></i> <span>".trans('home.men12')."</span>")
+            ->url('config', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('home.men13')."</span>")
             ->url('oautho2', "<i class='glyphicon glyphicon-print'></i> <span>".trans('OAuth2')."</span>")
-			;
+            ;
     })
-	
+
         ->setActiveFromRequest();
        /* ->add(Html::raw('HEADER')->addParentClass('header'))
         ->action('HomeController@index', '<i class="fa fa-home"></i><span>Home</span>')

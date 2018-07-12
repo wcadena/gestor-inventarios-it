@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Arbol;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class ArbolController extends Controller
@@ -17,6 +13,7 @@ class ArbolController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,8 +43,8 @@ class ArbolController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
-        
+        // dd($request->all());
+
         Arbol::create($request->all());
 
         Session::flash('flash_message', 'Arbol added!');
@@ -58,7 +55,7 @@ class ArbolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -72,7 +69,7 @@ class ArbolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -86,13 +83,12 @@ class ArbolController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $arbol = Arbol::findOrFail($id);
         $arbol->update($request->all());
 
@@ -104,7 +100,7 @@ class ArbolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -116,5 +112,4 @@ class ArbolController extends Controller
 
         return redirect('arbol');
     }
-
 }

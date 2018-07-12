@@ -11,9 +11,9 @@ class InformeMantenimientoPreventivo extends Model
     public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;
     protected $table = 'informe_manto_prevs';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['id','custodio_id','area_id',
-    'no_orden','fecha_solicitud','fecha_ejecucion','hora_inicio',
-    'hora_fin','informe_manto_prev_cate_id','requerimiento','solucion','resolucion'];
+    protected $fillable = ['id', 'custodio_id', 'area_id',
+    'no_orden', 'fecha_solicitud', 'fecha_ejecucion', 'hora_inicio',
+    'hora_fin', 'informe_manto_prev_cate_id', 'requerimiento', 'solucion', 'resolucion', ];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')
      * estatus	enum('VIGENTE', 'BODEGA', 'BAJA')
@@ -30,18 +30,14 @@ class InformeMantenimientoPreventivo extends Model
         return $this->hasOne('App\Custodios', 'id', 'custodio_id');
     }
 
-
     public function informe_manto_prev_catexc()
     {
         return $this->hasOne('App\User', 'id', 'informe_manto_prev_cate_id');
     }
 
-////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
     public function modelo_equipoxc()
     {
         return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
     }
-
-
-
 }

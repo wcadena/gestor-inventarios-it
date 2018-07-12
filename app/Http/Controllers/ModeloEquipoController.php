@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\ModeloEquipo;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class ModeloEquipoController extends Controller
@@ -17,6 +13,7 @@ class ModeloEquipoController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,14 +44,14 @@ class ModeloEquipoController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'modelo' => 'required',
-            'fabricante' => 'required',
+            'modelo'         => 'required',
+            'fabricante'     => 'required',
             'garantia_anios' => 'required',
-            'tipo_equipo' => 'required',
+            'tipo_equipo'    => 'required',
 
         ];
         $this->validate($request, $reglas);
-        
+
         ModeloEquipo::create($request->all());
 
         Session::flash('flash_message', 'ModeloEquipo added!');
@@ -65,7 +62,7 @@ class ModeloEquipoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -79,7 +76,7 @@ class ModeloEquipoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -93,21 +90,21 @@ class ModeloEquipoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
         $reglas = [
-            'modelo' => 'required',
-            'fabricante' => 'required',
+            'modelo'         => 'required',
+            'fabricante'     => 'required',
             'garantia_anios' => 'required',
-            'tipo_equipo' => 'required',
+            'tipo_equipo'    => 'required',
 
         ];
         $this->validate($request, $reglas);
-        
+
         $modelo = ModeloEquipo::findOrFail($id);
         $modelo->update($request->all());
 
@@ -119,7 +116,7 @@ class ModeloEquipoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -131,5 +128,4 @@ class ModeloEquipoController extends Controller
 
         return redirect('modelo');
     }
-
 }

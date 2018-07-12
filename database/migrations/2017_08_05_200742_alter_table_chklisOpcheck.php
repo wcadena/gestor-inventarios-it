@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AlterTableChklisOpcheck extends Migration
 {
@@ -15,6 +15,7 @@ class AlterTableChklisOpcheck extends Migration
     {
         \Illuminate\Support\Facades\DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
+
     public function up()
     {
         Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {

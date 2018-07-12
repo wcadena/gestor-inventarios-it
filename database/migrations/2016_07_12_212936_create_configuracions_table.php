@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateConfiguracionsTable extends Migration
 {
@@ -15,9 +15,9 @@ class CreateConfiguracionsTable extends Migration
         Schema::create('configuracions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('atributo');
-            $table->enum('tipo',['texto', 'lista','num']);
+            $table->enum('tipo', ['texto', 'lista', 'num']);
             $table->string('valores_fuente');
-            $table->enum("fijo",['FIJO', 'MOVIL']);
+            $table->enum('fijo', ['FIJO', 'MOVIL']);
             $table->string('valor');
             $table->timestamps();
             $table->softDeletes();

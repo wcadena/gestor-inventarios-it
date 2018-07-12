@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePermisosTable extends Migration
 {
@@ -16,11 +16,10 @@ class CreatePermisosTable extends Migration
         Schema::create('permisos', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('permiso',100);
+            $table->string('permiso', 100);
             $table->integer('modulo_id')->unsigned();
             $table->foreign('modulo_id')->references('id')->on('modulos');
-            $table->string('descripcion',150);
-
+            $table->string('descripcion', 150);
 
             $table->timestamps();
             $table->softDeletes();

@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Areas;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\OpcionesCheckList;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class OpcionesCheckListController extends Controller
@@ -18,6 +14,7 @@ class OpcionesCheckListController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,8 +34,9 @@ class OpcionesCheckListController extends Controller
      */
     public function create()
     {
-        $areas = Areas::pluck('area','id');
-        return view('directory.opciones_check.create',compact('areas'));
+        $areas = Areas::pluck('area', 'id');
+
+        return view('directory.opciones_check.create', compact('areas'));
     }
 
     /**
@@ -62,7 +60,7 @@ class OpcionesCheckListController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -76,15 +74,15 @@ class OpcionesCheckListController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function edit($id)
     {
-        $areas = Areas::pluck('area','id');
+        $areas = Areas::pluck('area', 'id');
         $opciones_check = OpcionesCheckList::findOrFail($id);
-        $opciones_check->extras2=$areas;
+        $opciones_check->extras2 = $areas;
 
         return view('directory.opciones_check.edit', compact('opciones_check'));
     }
@@ -92,13 +90,12 @@ class OpcionesCheckListController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $opciones_check = OpcionesCheckList::findOrFail($id);
         $opciones_check->update($request->all());
 
@@ -110,7 +107,7 @@ class OpcionesCheckListController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -122,5 +119,4 @@ class OpcionesCheckListController extends Controller
 
         return redirect('opciones_check');
     }
-
 }
