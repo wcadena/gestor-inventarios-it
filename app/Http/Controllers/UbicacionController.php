@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Ubicacion;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class UbicacionController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system;planta_fisica');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,14 +45,13 @@ class UbicacionController extends Controller
     {
         $request->validate([
             'edificio' => 'required',
-            'piso' => 'required',
-            'imagen' => 'required',
+            'piso'     => 'required',
+            'imagen'   => 'required',
         ]);
 
         $ubica = $request->all();
         $ubica['imagen'] = $request->imagen->store('');
 
-        
         Ubicacion::create($ubica);
 
         Session::flash('flash_message', 'Ubicacion added!');
@@ -67,7 +62,7 @@ class UbicacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -81,7 +76,7 @@ class UbicacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -95,7 +90,7 @@ class UbicacionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -103,21 +98,18 @@ class UbicacionController extends Controller
     {
         $request->validate([
             'edificio' => 'required',
-            'piso' => 'required',
+            'piso'     => 'required',
 
         ]);
-        
+
         $ubicacion = Ubicacion::findOrFail($id);
 
-
-
         $ubica = $request->all();
-        if( $request->imagen != null){
+        if ($request->imagen != null) {
             $ubica['imagen'] = $request->imagen->store('');
-        }else{
-            $ubica['imagen'] =  $ubicacion->imagen;
+        } else {
+            $ubica['imagen'] = $ubicacion->imagen;
         }
-
 
         $ubicacion->update($ubica);
 
@@ -129,7 +121,7 @@ class UbicacionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -142,13 +134,13 @@ class UbicacionController extends Controller
         return redirect('ubicacion');
     }
 
-    public function daImagen(Request $request){
-
+    public function daImagen(Request $request)
+    {
         $request->validate([
             'id' => 'required',
         ]);
         $puesto = Ubicacion::findOrFail($request->id);
+
         return $puesto->imagen;
     }
-
 }

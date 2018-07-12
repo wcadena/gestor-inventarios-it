@@ -16,7 +16,5 @@ class Busqueda extends Model
     public $transformer = BusquedaTransformer::class;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['user_id',"palabra_q","instancia","instancia_id","dato"];
-
-
+    protected $fillable = ['user_id', 'palabra_q', 'instancia', 'instancia_id', 'dato'];
 }

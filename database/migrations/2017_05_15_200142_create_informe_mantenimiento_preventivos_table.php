@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateInformeMantenimientoPreventivosTable extends Migration
 {
@@ -25,12 +25,10 @@ class CreateInformeMantenimientoPreventivosTable extends Migration
 
             ////////////////
 
-
             $table->string('no_orden');
 
             $table->date('fecha_solicitud');
             $table->date('fecha_ejecucion');
-
 
             $table->time('hora_inicio');
             $table->time('hora_fin');
@@ -41,7 +39,6 @@ class CreateInformeMantenimientoPreventivosTable extends Migration
             $table->string('requerimiento');
             $table->string('solucion')->nullable();
             $table->string('resolucion')->nullable();
-
 
             $table->timestamps();
             $table->softDeletes();

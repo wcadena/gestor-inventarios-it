@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddCorreosNotificacionCustodiosTable extends Migration
 {
@@ -10,6 +10,7 @@ class AddCorreosNotificacionCustodiosTable extends Migration
     {
         \Illuminate\Support\Facades\DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
+
     /**
      * Run the migrations.
      *
@@ -18,8 +19,8 @@ class AddCorreosNotificacionCustodiosTable extends Migration
     public function up()
     {
         Schema::table('custodios', function (Blueprint $table) {
-            $table->string("email")->nullable();
-            $table->integer("notificado")->default(0)->nullable()->unsigned();
+            $table->string('email')->nullable();
+            $table->integer('notificado')->default(0)->nullable()->unsigned();
         });
     }
 

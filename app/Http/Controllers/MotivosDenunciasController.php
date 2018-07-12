@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Motivos_Denuncias;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class MotivosDenunciasController extends Controller
@@ -17,6 +13,7 @@ class MotivosDenunciasController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:;;system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +43,6 @@ class MotivosDenunciasController extends Controller
      */
     public function store(Request $request)
     {
-        
         Motivos_Denuncias::create($request->all());
 
         Session::flash('flash_message', 'Motivos_Denuncias added!');
@@ -57,7 +53,7 @@ class MotivosDenunciasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -71,7 +67,7 @@ class MotivosDenunciasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -85,13 +81,12 @@ class MotivosDenunciasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $motivo_denuncia = Motivos_Denuncias::findOrFail($id);
         $motivo_denuncia->update($request->all());
 
@@ -103,7 +98,7 @@ class MotivosDenunciasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -115,5 +110,4 @@ class MotivosDenunciasController extends Controller
 
         return redirect('motivo_denuncias');
     }
-
 }

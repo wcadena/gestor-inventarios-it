@@ -26,7 +26,8 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sendResetLinkEmail(Request $request)
@@ -48,16 +49,18 @@ class ForgotPasswordController extends Controller
     /**
      * Get the response for a successful password reset link.
      *
-     * @param  string  $response
+     * @param string $response
+     *
      * @return mixed
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
         if ($request->expectsJson()) {
             return response()->json([
-                'status' => trans($response)
+                'status' => trans($response),
             ]);
         }
+
         return back()->with('status', trans($response));
     }
 
@@ -66,13 +69,15 @@ class ForgotPasswordController extends Controller
      *
      * @param Request $request
      * @param $response
+     *
      * @return mixed
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         if ($request->expectsJson()) {
-            return new JsonResponse(['email' => trans($response) ], 422);
+            return new JsonResponse(['email' => trans($response)], 422);
         }
+
         return back()->withErrors(
             ['email' => trans($response)]
         );

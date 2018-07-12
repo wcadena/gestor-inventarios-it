@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers\api;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
-
 use App\InformeMantenimientoPreventivo;
-use App\InformeMantenimientoPreventivoCategoria;
-use App\InformeMantenimientoPreventivoTecnico;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class InformeMantenimientoPreventivoController extends ApiController
 {
     public function __construct()
     {
-      $this->middleware('client.credentials')->only(['store', 'resend']);
-      $this->middleware('auth:api')->only(['show'])->except(['store', 'verify', 'resend']);
+        $this->middleware('client.credentials')->only(['store', 'resend']);
+        $this->middleware('auth:api')->only(['show'])->except(['store', 'verify', 'resend']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +22,7 @@ class InformeMantenimientoPreventivoController extends ApiController
     public function index()
     {
         $usuarios = $informes = InformeMantenimientoPreventivo::all();
+
         return $this->showAll($usuarios);
     }
 
@@ -42,7 +39,8 @@ class InformeMantenimientoPreventivoController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,20 +51,20 @@ class InformeMantenimientoPreventivoController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    
     public function show(InformeMantenimientoPreventivo $info)
     {
         return $this->showOne($info);
-        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +75,9 @@ class InformeMantenimientoPreventivoController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +88,8 @@ class InformeMantenimientoPreventivoController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

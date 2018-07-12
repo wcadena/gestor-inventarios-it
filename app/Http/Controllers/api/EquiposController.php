@@ -6,7 +6,6 @@ use App\Equipos;
 use App\Http\Controllers\ApiController;
 use App\Transformers\EquiposTransformer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class EquiposController extends ApiController
 {
@@ -14,15 +13,15 @@ class EquiposController extends ApiController
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend','notificacion']);
-        $this->middleware('auth:api')->except([ 'verify', 'resend']);
+        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion']);
+        $this->middleware('auth:api')->except(['verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');*/
-
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +47,8 @@ class EquiposController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -59,23 +59,24 @@ class EquiposController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Equipos $equipos)
     {
-       //dd($equipos);
+        //dd($equipos);
         return $this->showOne($equipos);
     }
 
-    public function equipo_no_serie(Request $request){
+    public function equipo_no_serie(Request $request)
+    {
         $reglas = [
             'no_serie' => 'required|max:255',
         ];
         $this->validate($request, $reglas);
 
-
-        $equipo = Equipos::where('no_serie',"like", '%'.$request->no_serie."%")->firstOrFail();
+        $equipo = Equipos::where('no_serie', 'like', '%'.$request->no_serie.'%')->firstOrFail();
 
         return $this->showOne($equipo);
     }
@@ -83,7 +84,8 @@ class EquiposController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,8 +96,9 @@ class EquiposController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,7 +109,8 @@ class EquiposController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

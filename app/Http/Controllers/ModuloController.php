@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Modulo;
 use Illuminate\Http\Request;
 use Session;
 
 class ModuloController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +43,6 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-
         Modulo::create($request->all());
 
         Session::flash('flash_message', '¡Modulo añadido!');
@@ -57,7 +53,7 @@ class ModuloController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -71,7 +67,7 @@ class ModuloController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -85,13 +81,12 @@ class ModuloController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-
         $modulo = Modulo::findOrFail($id);
         $modulo->update($request->all());
 
@@ -103,7 +98,7 @@ class ModuloController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */

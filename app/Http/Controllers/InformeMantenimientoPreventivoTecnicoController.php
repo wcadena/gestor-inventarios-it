@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\InformeMantenimientoPreventivoTecnico;
 use App\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class InformeMantenimientoPreventivoTecnicoController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +34,9 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
      */
     public function create()
     {
-        $tecnico = User::orderBy('name','asc')->pluck('name','id');
-        return view('directory.tecnico.create', compact('tecnico'));
+        $tecnico = User::orderBy('name', 'asc')->pluck('name', 'id');
 
+        return view('directory.tecnico.create', compact('tecnico'));
     }
 
     /**
@@ -52,15 +48,15 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
     {
         $equipo_id = Session::get('equipo_id');
 
-        if($equipo_id==null){
+        if ($equipo_id == null) {
             return redirect('equipos');
         }
 
         $this->validate($request, [
-            'user_id' => 'required',
+            'user_id'               => 'required',
             'informe_manto_prev_id' => 'required',
         ]);
-        
+
         InformeMantenimientoPreventivoTecnico::create($request->all());
 
         Session::flash('flash_message', 'InformeMantenimientoPreventivoTecnico added!');
@@ -71,7 +67,7 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -85,7 +81,7 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -99,13 +95,12 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $tecnico = InformeMantenimientoPreventivoTecnico::findOrFail($id);
         $tecnico->update($request->all());
 
@@ -117,7 +112,7 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -129,5 +124,4 @@ class InformeMantenimientoPreventivoTecnicoController extends Controller
 
         return redirect('tecnico');
     }
-
 }

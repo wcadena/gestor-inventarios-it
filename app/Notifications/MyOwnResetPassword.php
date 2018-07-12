@@ -2,15 +2,12 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
 
 class MyOwnResetPassword extends Notification
 {
-
     /**
      * The password reset token.
      *
@@ -21,7 +18,8 @@ class MyOwnResetPassword extends Notification
     /**
      * Create a notification instance.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function __construct($token)
@@ -32,7 +30,8 @@ class MyOwnResetPassword extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return array|string
      */
     public function via($notifiable)
@@ -43,12 +42,13 @@ class MyOwnResetPassword extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(Lang::get('adminlte_lang::message.notifiableaction'))
             ->line(Lang::get('adminlte_lang::message.notifiableline1'))
             ->action(Lang::get('adminlte_lang::message.notifiableaction'), url(config('app.url').route('password.reset', $this->token, false)))

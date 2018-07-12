@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Denuncias;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class DenunciasController extends Controller
@@ -47,7 +43,6 @@ class DenunciasController extends Controller
      */
     public function store(Request $request)
     {
-        
         Denuncias::create($request->all());
 
         Session::flash('flash_message', 'Denuncias added!');
@@ -58,7 +53,7 @@ class DenunciasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -72,7 +67,7 @@ class DenunciasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -86,13 +81,12 @@ class DenunciasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $denuncia = Denuncias::findOrFail($id);
         $denuncia->update($request->all());
 
@@ -104,7 +98,7 @@ class DenunciasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -116,5 +110,4 @@ class DenunciasController extends Controller
 
         return redirect('denuncias');
     }
-
 }

@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Equipos;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\RepoNovedades;
 use App\RepoNovedadesDetalle;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use League\Flysystem\Exception;
@@ -17,13 +13,12 @@ use Session;
 
 class RepoNovedadesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:usuario;administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
-
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,13 +29,9 @@ class RepoNovedadesController extends Controller
         $equipo_id = Session::get('custodio_id');
 
         $repo_novedades = RepoNovedades::paginate(15);
-        if($equipo_id!=null){
-
-            $repo_novedades = RepoNovedades::where('custodio_id','=',$equipo_id)->paginate(15);
+        if ($equipo_id != null) {
+            $repo_novedades = RepoNovedades::where('custodio_id', '=', $equipo_id)->paginate(15);
         }
-
-
-
 
         return view('directory.repo_novedades.index', compact('repo_novedades'));
     }
@@ -63,12 +54,13 @@ class RepoNovedadesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'correo' => 'required|email|max:255',
-            'observaciones' => 'required|max:255',
-            'equipos' => 'required',
+            'correo'          => 'required|email|max:255',
+            'observaciones'   => 'required|max:255',
+            'equipos'         => 'required',
             'fecha_novedades' => 'required|date',
         ]);
-        try{
+
+        try {
             DB::beginTransaction();
             //dd($request);
             $rep = RepoNovedades::create($request->all());
@@ -76,13 +68,12 @@ class RepoNovedadesController extends Controller
             $rep->save();
             //////////////////////////////////////////////
             $equipos = Input::get('equipos');
-            if(is_array($equipos))
-            {
-                foreach ($equipos as $equipo){
+            if (is_array($equipos)) {
+                foreach ($equipos as $equipo) {
                     $equipo = Equipos::findOrFail($equipo)->toArray();
                     //dd($equipo);
-                    $equipo['id_equipos']=$equipo['id'];
-                    $equipo['repo_novedades_id']=$rep->id;
+                    $equipo['id_equipos'] = $equipo['id'];
+                    $equipo['repo_novedades_id'] = $rep->id;
 
                     //dd($equipo);
                     unset($equipo['id']);
@@ -90,7 +81,7 @@ class RepoNovedadesController extends Controller
                 }
                 // do stuff with checked friends
                 Session::flash('flash_message', 'RepoNovedades added!');
-            }else{
+            } else {
                 Session::flash('flash_message', 'Error RepoNovedades added!');
                 DB::rollback();
             }
@@ -98,13 +89,12 @@ class RepoNovedadesController extends Controller
             //$custorm['id_equipos']=$equip3->id;
             //RepoNovedadesDetalle::create($custorm);
             //////////////////////////////////////////////
-            Session::put('custodio_id',$request->input('custodio_id'));
-
+            Session::put('custodio_id', $request->input('custodio_id'));
 
             DB::commit();
-            return redirect('custodio_custom/'.$request->input('custodio_id'));
 
-        }catch (Exception $e){
+            return redirect('custodio_custom/'.$request->input('custodio_id'));
+        } catch (Exception $e) {
             DB::rollback();
         }
     }
@@ -112,7 +102,7 @@ class RepoNovedadesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -126,7 +116,7 @@ class RepoNovedadesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -140,13 +130,12 @@ class RepoNovedadesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $repo_novedade = RepoNovedades::findOrFail($id);
         $repo_novedade->update($request->all());
 
@@ -158,16 +147,16 @@ class RepoNovedadesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function destroy($id)
     {
         $repo_novedade = RepoNovedades::findOrFail($id);
-        $id_custodio= $repo_novedade->custodio_id;
+        $id_custodio = $repo_novedade->custodio_id;
 
-        foreach ($repo_novedade->reponovedadedetalleshm as $repo){
+        foreach ($repo_novedade->reponovedadedetalleshm as $repo) {
             //dd($repo);
             $repo->delete();
         }
@@ -178,5 +167,4 @@ class RepoNovedadesController extends Controller
 
         return redirect('custodio_custom/'.$id_custodio);
     }
-
 }

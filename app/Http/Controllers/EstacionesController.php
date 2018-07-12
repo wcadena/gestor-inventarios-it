@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Estaciones;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class EstacionesController extends Controller
@@ -17,6 +13,7 @@ class EstacionesController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,10 +45,10 @@ class EstacionesController extends Controller
     {
         $request->validate([
             'nombre_largo' => 'required',
-            'pais' => 'required',
-            'estacion' => 'required',
-            'estacion' => 'required',
-            'empresa' => 'required',
+            'pais'         => 'required',
+            'estacion'     => 'required',
+            'estacion'     => 'required',
+            'empresa'      => 'required',
         ]);
         Estaciones::create($request->all());
 
@@ -63,7 +60,7 @@ class EstacionesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -77,7 +74,7 @@ class EstacionesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -91,7 +88,7 @@ class EstacionesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -99,10 +96,10 @@ class EstacionesController extends Controller
     {
         $request->validate([
             'nombre_largo' => 'required',
-            'pais' => 'required',
-            'estacion' => 'required',
-            'estacion' => 'required',
-            'empresa' => 'required',
+            'pais'         => 'required',
+            'estacion'     => 'required',
+            'estacion'     => 'required',
+            'empresa'      => 'required',
         ]);
         $estacione = Estaciones::findOrFail($id);
         $estacione->update($request->all());
@@ -115,7 +112,7 @@ class EstacionesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -127,5 +124,4 @@ class EstacionesController extends Controller
 
         return redirect('estaciones');
     }
-
 }

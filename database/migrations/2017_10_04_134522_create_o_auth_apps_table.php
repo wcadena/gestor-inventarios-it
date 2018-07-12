@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOAuthAppsTable extends Migration
 {
@@ -18,7 +18,7 @@ class CreateOAuthAppsTable extends Migration
             $table->string('token_secret', 100)->nullable();
             $table->string('client_secret', 100)->nullable();
             $table->integer('client_id')->unsigned();
-            $table->string('activo',1)->default(\App\OAuthApp::AUTH_INACTIVO);
+            $table->string('activo', 1)->default(\App\OAuthApp::AUTH_INACTIVO);
             $table->string('token_type')->nullable();
             $table->date('expires_in')->nullable();
             $table->string('access_token')->nullable();

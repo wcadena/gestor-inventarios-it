@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEmpresasTable extends Migration
 {
@@ -14,15 +14,13 @@ class CreateEmpresasTable extends Migration
     public function up()
     {
         Schema::create('empresas', function (Blueprint $table) {
-
-            $table->string("empresa")->unique();
+            $table->string('empresa')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
         $e = new \App\Empresa();
         $e->empresa = 'Avianca EC';
         $e->save();
-
     }
 
     /**

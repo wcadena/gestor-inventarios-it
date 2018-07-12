@@ -16,5 +16,5 @@ class Empresa extends Model
     protected $primaryKey = 'empresa';
     public $incrementing = false;
 
-    protected $fillable = ['empresa','formula_codigo'];
+    protected $fillable = ['empresa', 'formula_codigo'];
 }

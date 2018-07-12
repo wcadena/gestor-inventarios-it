@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Permiso;
 use Illuminate\Http\Request;
 use Session;
 
 class PermisoController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +43,6 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-
         Permiso::create($request->all());
 
         Session::flash('flash_message', '¡Permiso añadido!');
@@ -57,7 +53,7 @@ class PermisoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -71,7 +67,7 @@ class PermisoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -85,13 +81,12 @@ class PermisoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-
         $permiso = Permiso::findOrFail($id);
         $permiso->update($request->all());
 
@@ -103,7 +98,7 @@ class PermisoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */

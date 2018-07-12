@@ -18,22 +18,22 @@ class Puesto extends Model
     public $transformer = PuestoTransformer::class;
 
     protected $fillable = [
-        'ubicacion_id','codigo','detalle','x','y','estado'
+        'ubicacion_id', 'codigo', 'detalle', 'x', 'y', 'estado',
     ];
-
 
     public static function getENUM($tabla)
     {
-        $type = DB::select( DB::raw("SHOW COLUMNS FROM puestos WHERE Field = '".$tabla."'") )[0]->Type;
+        $type = DB::select(DB::raw("SHOW COLUMNS FROM puestos WHERE Field = '".$tabla."'"))[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
-        $enum = array();
-        foreach( explode(',', $matches[1]) as $value )
-        {
-            $v = trim( $value, "'" );
+        $enum = [];
+        foreach (explode(',', $matches[1]) as $value) {
+            $v = trim($value, "'");
             $enum = array_add($enum, $v, $v);
         }
+
         return $enum;
     }
+
     public static function generarCodigo()
     {
         return str_random(36);
@@ -53,6 +53,4 @@ class Puesto extends Model
     {
         return $this->hasOne('App\Ubicacion', 'id', 'ubicacion_id');
     }
-
-
 }

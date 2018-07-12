@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class UsuarioLogController extends Controller
@@ -18,6 +14,7 @@ class UsuarioLogController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,10 +34,9 @@ class UsuarioLogController extends Controller
      */
     public function create()
     {
+        $empresa = Empresa::orderBy('empresa', 'asc')->pluck('empresa', 'empresa');
 
-        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
-
-        return view('directory.usuario.create',compact('empresa'));
+        return view('directory.usuario.create', compact('empresa'));
     }
 
     /**
@@ -65,7 +61,7 @@ class UsuarioLogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -79,7 +75,7 @@ class UsuarioLogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -87,31 +83,31 @@ class UsuarioLogController extends Controller
     {
         $usuario = User::find($id);
 
-        if ($usuario == null){
+        if ($usuario == null) {
             Session::flash('flash_message', 'Usuario No encontrado!');
+
             return redirect('usuario');
         }
-        $empresa = Empresa::orderBy('empresa','asc')->pluck('empresa','empresa');
+        $empresa = Empresa::orderBy('empresa', 'asc')->pluck('empresa', 'empresa');
 
-        return view('directory.usuario.edit', compact('empresa','usuario'));
+        return view('directory.usuario.edit', compact('empresa', 'usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $usuario = User::findOrFail($id);
 
-        if($request['password'] != null ){
+        if ($request['password'] != null) {
             $req = $request->all();
             $req['password'] = bcrypt($req['password']);
-        }else{
+        } else {
             $req = $request->except('password');
         }
         $req['verified'] = User::USUARIO_VERIFICADO;
@@ -126,7 +122,7 @@ class UsuarioLogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -138,5 +134,4 @@ class UsuarioLogController extends Controller
 
         return redirect('usuario');
     }
-
 }

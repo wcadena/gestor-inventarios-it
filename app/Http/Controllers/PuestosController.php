@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Puesto;
-use App\Ubicacion;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class PuestosController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:system;planta_fisica');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +43,6 @@ class PuestosController extends Controller
      */
     public function store(Request $request)
     {
-
         Puesto::create($request->all());
 
         Session::flash('flash_message', 'Puesto added!');
@@ -59,7 +53,7 @@ class PuestosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -73,7 +67,7 @@ class PuestosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -87,13 +81,12 @@ class PuestosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-
         $puesto = Puesto::findOrFail($id);
         $puesto->update($request->all());
 
@@ -105,7 +98,7 @@ class PuestosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -117,7 +110,4 @@ class PuestosController extends Controller
 
         return redirect('puesto');
     }
-
-
-
 }

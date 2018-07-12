@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Areas;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class AreasController extends Controller
@@ -17,6 +13,7 @@ class AreasController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +56,7 @@ class AreasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -73,7 +70,7 @@ class AreasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -87,7 +84,7 @@ class AreasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -107,7 +104,7 @@ class AreasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -119,5 +116,4 @@ class AreasController extends Controller
 
         return redirect('areas');
     }
-
 }

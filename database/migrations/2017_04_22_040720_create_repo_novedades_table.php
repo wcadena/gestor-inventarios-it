@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateRepoNovedadesTable extends Migration
 {
@@ -18,13 +18,13 @@ class CreateRepoNovedadesTable extends Migration
             $table->integer('custodio_id')->unsigned();
             $table->foreign('custodio_id')->references('id')->on('custodios');
 
-            $table->date("fecha_novedades");
+            $table->date('fecha_novedades');
 
-            $table->string("correo");
+            $table->string('correo');
 
-            $table->enum('novedad', ['Asignación', 'Reasignación','Baja']);
+            $table->enum('novedad', ['Asignación', 'Reasignación', 'Baja']);
 
-            $table->string("observaciones");
+            $table->string('observaciones');
 
             $table->integer('antiguo_custodio_id')->unsigned();
             $table->foreign('antiguo_custodio_id')->references('id')->on('custodios');

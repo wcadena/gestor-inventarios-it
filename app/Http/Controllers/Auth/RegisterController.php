@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 /**
- * Class RegisterController
- * @package %%NAMESPACE%%\Http\Controllers\Auth
+ * Class RegisterController.
  */
 class RegisterController extends Controller
 {
@@ -56,45 +55,48 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => 'required|max:255',
-            'username' => 'sometimes|required|max:255|unique:users',
-            'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'name'           => 'required|max:255',
+            'username'       => 'sometimes|required|max:255|unique:users',
+            'email'          => 'required|email|max:255|unique:users',
+            'password'       => 'required|min:6|confirmed',
             'first_name'     => 'required|max:255',
-            'last_name'     => 'required|max:255',
-            'terms'    => 'required',
+            'last_name'      => 'required|max:255',
+            'terms'          => 'required',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
         $fields = [
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'first_name'    => $data['first_name'],
-            'last_name'    => $data['last_name'],
-            'username'    => $data['username'],
-            'rol' =>'registrado',
-            'empresa' =>'Avianca EC',
-            'token' =>User::generarVerificationToken(),
+            'name'               => $data['name'],
+            'email'              => $data['email'],
+            'first_name'         => $data['first_name'],
+            'last_name'          => $data['last_name'],
+            'username'           => $data['username'],
+            'rol'                => 'registrado',
+            'empresa'            => 'Avianca EC',
+            'token'              => User::generarVerificationToken(),
             'verification_token' => User::generarVerificationToken(),
-            'password' => bcrypt($data['password']),
+            'password'           => bcrypt($data['password']),
         ];
-        if (config('auth.providers.users.field','email') === 'username' && isset($data['username'])) {
+        if (config('auth.providers.users.field', 'email') === 'username' && isset($data['username'])) {
             $fields['username'] = $data['username'];
         }
+
         return User::create($fields);
     }
 }

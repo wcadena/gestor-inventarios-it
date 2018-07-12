@@ -6,7 +6,6 @@ use App\Custodios;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Lang;
 
 class NotificaCustodioCambio extends Mailable
@@ -32,8 +31,6 @@ class NotificaCustodioCambio extends Mailable
      */
     public function build()
     {
-
         return $this->markdown('emails.NotificaCustodioEmail')->subject(Lang::get('message.notifica_correo'));
-
     }
 }

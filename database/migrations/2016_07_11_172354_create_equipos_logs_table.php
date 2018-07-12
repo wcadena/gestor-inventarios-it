@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateEquiposLogsTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateEquiposLogsTable extends Migration
         Schema::create('equipos_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_equipos')->unsigned();
-            $table->enum('acciondb', ['crear', 'actualizar','editar','borrar']);
+            $table->enum('acciondb', ['crear', 'actualizar', 'editar', 'borrar']);
             ////////////////
             $table->integer('modelo_equipo_id')->unsigned();
             ////////////////
@@ -30,18 +30,18 @@ class CreateEquiposLogsTable extends Migration
             $table->integer('check_list_id')->unsigned()->nullable();
 
             $table->binary('imagen');
-            $table->integer("num_cajas");
-            $table->string("sociedad");
-            $table->string("no_serie");
-            $table->string("codigo_barras");
-            $table->string("codigo_avianca");
-            $table->string("codigo_otro");
-            $table->string("descripcion");
-            $table->string("ip");
-            $table->enum('estado', ['BUENO', 'MALO','NUEVO']);
-            $table->enum('estatus', ['VIGENTE', 'BODEGA','BAJA']);
-            $table->enum("garantia", ['SI', 'NO']);
-            $table->string("observaciones");
+            $table->integer('num_cajas');
+            $table->string('sociedad');
+            $table->string('no_serie');
+            $table->string('codigo_barras');
+            $table->string('codigo_avianca');
+            $table->string('codigo_otro');
+            $table->string('descripcion');
+            $table->string('ip');
+            $table->enum('estado', ['BUENO', 'MALO', 'NUEVO']);
+            $table->enum('estatus', ['VIGENTE', 'BODEGA', 'BAJA']);
+            $table->enum('garantia', ['SI', 'NO']);
+            $table->string('observaciones');
             $table->timestamps();
             $table->softDeletes();
         });

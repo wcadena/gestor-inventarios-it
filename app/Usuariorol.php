@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +22,7 @@ class Usuariorol extends Pivot
     {
         return $this->belongsTo('App\User');
     }
+
     public function rols()
     {
         return $this->belongsTo('App\Rol');

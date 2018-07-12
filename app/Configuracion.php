@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class Configuracion extends Model
 {
-   use SoftDeletes;
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['atributo','tipo','valores_fuente',"fijo",'valor','empresa'];
+    protected $fillable = ['atributo', 'tipo', 'valores_fuente', 'fijo', 'valor', 'empresa'];
 
     protected static function boot()
     {
@@ -22,16 +22,17 @@ class Configuracion extends Model
 
     public static function getENUM($tabla)
     {
-        $type = DB::select( DB::raw("SHOW COLUMNS FROM configuracions WHERE Field = '".$tabla."'") )[0]->Type;
+        $type = DB::select(DB::raw("SHOW COLUMNS FROM configuracions WHERE Field = '".$tabla."'"))[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
-        $enum = array();
-        foreach( explode(',', $matches[1]) as $value )
-        {
-            $v = trim( $value, "'" );
+        $enum = [];
+        foreach (explode(',', $matches[1]) as $value) {
+            $v = trim($value, "'");
             $enum = array_add($enum, $v, $v);
         }
+
         return $enum;
     }
+
     public function empresaxc()
     {
         return $this->hasOne('App\Empresa', 'empresa', 'empresa');

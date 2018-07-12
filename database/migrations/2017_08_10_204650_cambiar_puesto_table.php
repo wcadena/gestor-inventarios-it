@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CambiarPuestoTable extends Migration
 {
@@ -10,6 +10,7 @@ class CambiarPuestoTable extends Migration
     {
         \Illuminate\Support\Facades\DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
+
     /**
      * Run the migrations.
      *
@@ -19,7 +20,7 @@ class CambiarPuestoTable extends Migration
     {
         Schema::table('puestos', function (Blueprint $table) {
             //
-            $table->string("codigo")->unique()->change();
+            $table->string('codigo')->unique()->change();
         });
     }
 

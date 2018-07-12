@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Configuracion;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Session;
 
 class ConfiguracionController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +43,6 @@ class ConfiguracionController extends Controller
      */
     public function store(Request $request)
     {
-        
         Configuracion::create($request->all());
 
         Session::flash('flash_message', 'Configuracion added!');
@@ -58,7 +53,7 @@ class ConfiguracionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -72,7 +67,7 @@ class ConfiguracionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -86,13 +81,12 @@ class ConfiguracionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
         $config = Configuracion::findOrFail($id);
         $config->update($request->all());
 
@@ -104,7 +98,7 @@ class ConfiguracionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
      */
@@ -116,5 +110,4 @@ class ConfiguracionController extends Controller
 
         return redirect('config');
     }
-
 }

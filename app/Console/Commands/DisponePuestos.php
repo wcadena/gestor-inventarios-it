@@ -44,27 +44,25 @@ class DisponePuestos extends Command
         $arguments = $this->arguments();
 
         $puestos = PuestoCustodios::all();
-        $encerados=0;
-        foreach ($puestos as $puesto){
+        $encerados = 0;
+        foreach ($puestos as $puesto) {
             $ahorita = Carbon::now();
             //dd($ahorita);
 
-            $tiempoPuesto =new Carbon($puesto->fecha_inicio);
+            $tiempoPuesto = new Carbon($puesto->fecha_inicio);
 
-            $dato=$ahorita->diffInHours($tiempoPuesto);
-            $encerados=0;
-            if($dato>=$puesto->horas_trabajadas){
-                $p = Puesto::where('id','=',$puesto->puesto_id)->firstOrFail();
-                $p->estado='LIBRE';
+            $dato = $ahorita->diffInHours($tiempoPuesto);
+            $encerados = 0;
+            if ($dato >= $puesto->horas_trabajadas) {
+                $p = Puesto::where('id', '=', $puesto->puesto_id)->firstOrFail();
+                $p->estado = 'LIBRE';
                 $p->save();
                 $puesto->delete();
                 $encerados++;
             }
-                //1->addHours($puesto->horas_trabajadas);
+            //1->addHours($puesto->horas_trabajadas);
             //dd($tiempoPuesto);1
         }
         $this->info('Todos los puestos han sido puestos en libertad si ya paso el tiempo, se enceraron ('.$encerados.')');
-
-
     }
 }
