@@ -29,7 +29,8 @@
         "simplesoftwareio/simple-qrcode": "^1.5",
         "spatie/laravel-fractal": "^5.2",
         "vinkla/pusher": "^3.1",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "zizaco/entrust": "^1.9"
     },
     "require-dev": {
 		"filp/whoops": "~2.0",

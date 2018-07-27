@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Modulo;
 use App\Permiso;
 use App\Permisorol;
+use App\Permission;
 use App\Rol;
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -26,7 +28,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = Rol::paginate(15);
+        $rol = Role::paginate(15);
 
         return view('directory.rol.index', compact('rol'));
     }
@@ -38,7 +40,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        $modulo = Modulo::all();
+        $modulo = Permission::all();
         /* foreach($modulo AS $item){
              dd($item->permisos);
          }*/
@@ -59,10 +61,10 @@ class RolController extends Controller
             'permisos_r'  => 'required',
         ]);
 
-        try {
+        /*try {
             DB::beginTransaction();
             //dd($request);
-            $rol = Rol::create($request->all());
+            $rol = Role::create($request->all());
             $rol->save();
             //////////////////////////////////////////////
             $equipos = Input::get('permisos_r');
@@ -86,7 +88,7 @@ class RolController extends Controller
             return redirect('roles');
         } catch (Exception $e) {
             DB::rollback();
-        }
+        }*/
     }
 
     /**
@@ -98,7 +100,7 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        $rol = Rol::findOrFail($id);
+        $rol = Role::findOrFail($id);
 
         return view('directory.rol.show', compact('rol'));
     }
@@ -112,7 +114,7 @@ class RolController extends Controller
      */
     public function edit($id)
     {
-        $rol = Rol::findOrFail($id);
+        $rol = Role::findOrFail($id);
         $modulo = Modulo::all();
 
         return view('directory.rol.edit', compact('rol', 'modulo'));
@@ -132,7 +134,7 @@ class RolController extends Controller
             'descripcion' => 'required|max:255',
             'permisos_r'  => 'required',
         ]);
-
+/*
         try {
             DB::beginTransaction();
             //dd($request);
@@ -171,6 +173,7 @@ class RolController extends Controller
         }
 
         return redirect('roles');
+*/
     }
 
     /**
@@ -182,7 +185,7 @@ class RolController extends Controller
      */
     public function destroy($id)
     {
-        Rol::destroy($id);
+        Role::destroy($id);
 
         Session::flash('flash_message', '¡Rol Borrado!');
 

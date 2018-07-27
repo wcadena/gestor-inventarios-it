@@ -111,8 +111,27 @@ class User extends Authenticatable
         return $this->empresa;
     }
 
-    public function roles()
+    public function scopeRolesActivo($query,$rol)
+
     {
-        return $this->belongsToMany('App\Rol', 'usuariorols')->using('App\Usuariorol');
+
+        return $query->whereIn('user_codsec', Role::find($rol)->users->pluck('user_codsec'));
+
+    }
+
+    /**
+
+     * para los roles del paw solamente
+
+     */
+
+    public function roles()
+
+    {
+
+        return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
+        // return $this->belongsToMany('App\Rol', 'usuariorols')->using('App\Usuariorol');
+        //return $this->belongsToMany('App\Role');
+
     }
 }
