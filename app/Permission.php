@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Zizaco\Entrust\EntrustPermission;
 

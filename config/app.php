@@ -232,7 +232,7 @@ return [
          * composer require milon/barcode
          */
         Milon\Barcode\BarcodeServiceProvider::class,
-        /**
+        /*
          * para los roles
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
@@ -330,7 +330,7 @@ return [
          */
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
-        /**
+        /*
          * para los roles
          */
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,

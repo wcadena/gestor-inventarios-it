@@ -27,17 +27,16 @@ class AuthEmpleado
      * @param \Closure                 $next
      *
      * @return mixed
-     */
+     */
     /**
-         * The Guard implementation.
-         *
-         *
-         *
-         * @var Guard
-         */
+     * The Guard implementation.
+     *
+     *
+     *
+     * @var Guard
+     */
     protected $auth;
-
-
+
     /**
      * Create a new filter instance.
      *
@@ -47,23 +46,21 @@ class AuthEmpleado
      *
      * @return void
      */
-
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }
-
-
+
     public function handle($request, Closure $next, $role)
     {
-        $rol_emp = $this->auth->user()->rol;
-        $verificado = $this->auth->user()->verified;
+        $rol_emp = $this->auth->user()->rol;
+        $verificado = $this->auth->user()->verified;
         if ($verificado == 0) {
-            Session::flash('flash_message', 'El usuario no esta activado, verifique su correo ('.$this->auth->user()->email.'), o coloque este enlace para reenviar mensaje: "'.url('users/'.$this->auth->user()->id.'/resend').'" o Solicite a un administrador que actualice su perfil.');
+            Session::flash('flash_message', 'El usuario no esta activado, verifique su correo ('.$this->auth->user()->email.'), o coloque este enlace para reenviar mensaje: "'.url('users/'.$this->auth->user()->id.'/resend').'" o Solicite a un administrador que actualice su perfil.');
             //.(new UserApiController($this->auth->user()))->resend($this->auth->user()));
             return redirect()->action('HomeController@index')                //->route('login')                ->with('alert', trans('home.alert1', ['name' => $rol_emp, 'name2' => $role]));
         }
-        /*             * verifica el permiso con el rol             */
+        /*             * verifica el permiso con el rol             */
         if (!str_contains($role, $rol_emp)) {
             if ($rol_emp == 'registrado') {
                 Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Solicitar activacion a un Administrador.');
