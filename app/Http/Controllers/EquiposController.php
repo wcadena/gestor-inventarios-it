@@ -106,9 +106,9 @@ class EquiposController extends Controller
     public function store(Requests\EquiposRequest $request)
     {
 
-            /**
-             * si encuentra uno con serie identica.
-             */
+        /**
+         * si encuentra uno con serie identica.
+         */
         $equipo_exist = Equipos::where('no_serie', '=', Input::get('no_serie'))->get();
 
         if ($equipo_exist->count() > 1) {

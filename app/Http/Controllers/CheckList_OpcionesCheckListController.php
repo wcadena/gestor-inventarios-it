@@ -94,19 +94,19 @@ class CheckList_OpcionesCheckListController extends Controller
         /*
                // return "Hola!!!!";
                 //return redirect('checklist_opcionescheck');
-        
+
                 $rules = array(
                     'valor1'       => 'required',
                     //'nerd_level' => 'required|numeric'
                 );
                 $validator = \Validator::make(Input::all(), $rules);
-        
+
                 // process the login
                 if ($validator->fails()) {
                     return "Dato incompleto, o no hay ";
                 } else {
                     $checklist_opcionescheck->update($request->all());
-        
+
                     Session::flash('flash_message', 'CheckList_OpcionesCheckList updated!');
                     return "Actualizado !!!";
                 }*/

@@ -134,46 +134,46 @@ class RolController extends Controller
             'descripcion' => 'required|max:255',
             'permisos_r'  => 'required',
         ]);
-/*
-        try {
-            DB::beginTransaction();
-            //dd($request);
-
-            $rol = Rol::findOrFail($id);
-            $rol->update($request->all());
-            //////////////////////////////////////////////
-            $perdel = Permisorol::where('rol_id', '=', $rol->id)->get();
-            foreach ($perdel as $borraras2) {
-                // da error aca, no se puede borrar tabla pivote de manera que se de softdelete, es mas, por favor llenar deleta_at y
-                //observar que no cambia nada, se deberia borrar hard y usar $rol->permiso->pivot->delete(), consulatar en documentacion.
-                $borraras2->delete();
-            }
-            //dd($perdel);
-            $equipos = Input::get('permisos_r');
-            if (is_array($equipos)) {
-                foreach ($equipos as $equipo) {
-                    $permiso = Permiso::findOrFail($equipo)->toArray();
-                    //dd($equipo);
-                    $permi_rol['permiso_id'] = $permiso['id'];
-                    $permi_rol['rol_id'] = $rol->id;
-                    //Permisorol::create($permi_rol);
+        /*
+                try {
+                    DB::beginTransaction();
+                    //dd($request);
+        
+                    $rol = Rol::findOrFail($id);
+                    $rol->update($request->all());
+                    //////////////////////////////////////////////
+                    $perdel = Permisorol::where('rol_id', '=', $rol->id)->get();
+                    foreach ($perdel as $borraras2) {
+                        // da error aca, no se puede borrar tabla pivote de manera que se de softdelete, es mas, por favor llenar deleta_at y
+                        //observar que no cambia nada, se deberia borrar hard y usar $rol->permiso->pivot->delete(), consulatar en documentacion.
+                        $borraras2->delete();
+                    }
+                    //dd($perdel);
+                    $equipos = Input::get('permisos_r');
+                    if (is_array($equipos)) {
+                        foreach ($equipos as $equipo) {
+                            $permiso = Permiso::findOrFail($equipo)->toArray();
+                            //dd($equipo);
+                            $permi_rol['permiso_id'] = $permiso['id'];
+                            $permi_rol['rol_id'] = $rol->id;
+                            //Permisorol::create($permi_rol);
+                        }
+                        // do stuff with checked friends
+                        Session::flash('flash_message', 'Permisos Rol updated!');
+                    } else {
+                        Session::flash('flash_message', 'Error Permisos Rol updated!');
+                        DB::rollback();
+                    }
+        
+                    DB::commit();
+        
+                    return redirect('roles');
+                } catch (Exception $e) {
+                    DB::rollback();
                 }
-                // do stuff with checked friends
-                Session::flash('flash_message', 'Permisos Rol updated!');
-            } else {
-                Session::flash('flash_message', 'Error Permisos Rol updated!');
-                DB::rollback();
-            }
-
-            DB::commit();
-
-            return redirect('roles');
-        } catch (Exception $e) {
-            DB::rollback();
-        }
-
-        return redirect('roles');
-*/
+        
+                return redirect('roles');
+        */
     }
 
     /**
