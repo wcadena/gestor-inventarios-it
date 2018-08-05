@@ -233,8 +233,6 @@ CREATE TABLE `configuracions` (
 -- Volcado de datos para la tabla `configuracions`
 --
 
-INSERT INTO `configuracions` (`id`, `atributo`, `tipo`, `valores_fuente`, `fijo`, `valor`, `created_at`, `updated_at`, `deleted_at`, `empresa`) VALUES
-(1, 'CUSTODIO_BODEGA', 'texto', '', 'FIJO', '1', '2016-07-13 02:56:11', '2016-07-13 02:56:11', NULL, 'Avianca Ec');
 
 -- --------------------------------------------------------
 
@@ -315,8 +313,6 @@ CREATE TABLE `empresas` (
 -- Volcado de datos para la tabla `empresas`
 --
 
-INSERT INTO `empresas` (`empresa`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('Avianca EC', '2017-09-29 12:31:36', '2017-09-29 12:31:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -536,94 +532,14 @@ CREATE TABLE `jobs` (
 -- Estructura de tabla para la tabla `migrations`
 --
 
-CREATE TABLE `migrations` (
+/*CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
+*/
 --
 -- Volcado de datos para la tabla `migrations`
 --
-
-INSERT INTO `migrations` (`migration`, `batch`) VALUES
-('2014_10_12_000000_create_users_table', 1),
-('2014_10_12_100000_create_password_resets_table', 1),
-('2016_05_09_033253_create_events_table', 1),
-('2016_05_10_154524_create_arbols_table', 1),
-('2016_05_10_154736_create_motivos__denuncias_table', 1),
-('2016_05_10_180125_CreateArbolPadrinosTable', 1),
-('2016_05_10_180545_crear_denuncias_table', 1),
-('2016_05_11_234952_create_posts_table', 1),
-('2016_07_06_133251_create_modelo_equipos_table', 2),
-('2016_07_06_133335_create_orden_de_compras_table', 2),
-('2016_07_06_133403_create_custodios_table', 2),
-('2016_07_06_133435_create_estaciones_table', 2),
-('2016_07_06_133529_create_areas_table', 2),
-('2016_07_06_173333_create_check_lists_table', 2),
-('2016_07_06_173701_create_opciones_check_lists_table', 2),
-('2016_07_06_174853_create_check_list__opciones_check_lists_table', 2),
-('2016_07_06_180221_add_token', 2),
-('2016_07_06_182234_create_equipos_table', 2),
-('2016_07_06_205004_add_softdeleteordencompra', 3),
-('2016_07_07_165949_cambiarCustodio', 4),
-('2016_07_07_225053_aumentarcampoidentificadorChecklist', 5),
-('2016_07_08_024916_aumentarcampoidentificadorChecklist_op', 6),
-('2016_07_08_151508_aumentarcampoequipos', 7),
-('2016_07_08_164036_aumentarcampoidentificadorChecklist_op2', 7),
-('2016_07_11_172354_create_equipos_logs_table', 8),
-('2016_07_12_212936_create_configuracions_table', 9),
-('2016_07_30_004104_aumentarCampos', 10),
-('2016_06_01_000001_create_oauth_auth_codes_table', 11),
-('2016_06_01_000002_create_oauth_access_tokens_table', 11),
-('2016_06_01_000003_create_oauth_refresh_tokens_table', 11),
-('2016_06_01_000004_create_oauth_clients_table', 11),
-('2016_06_01_000005_create_oauth_personal_access_clients_table', 11),
-('2017_04_06_172517_create_bitacoras_table', 0),
-('2017_04_22_040720_create_repo_novedades_table', 0),
-('2017_04_22_152017_create_repo_novedades_detalles_table', 0),
-('2017_05_15_190634_alter_estacion_table', 12),
-('2017_05_15_192101_create_ubicacion_table', 12),
-('2017_05_15_200000_create_informe_mantenimiento_preventivo_categorias_table', 12),
-('2017_05_15_200142_create_informe_mantenimiento_preventivos_table', 12),
-('2017_05_15_203632_create_informe_mantenimiento_preventivo_tecnicos_table', 12),
-('2017_07_23_000105_softDeleteUsuario', 12),
-('2017_07_24_143343_alter_user_facebook', 12),
-('2017_08_05_185646_alter_table_bitacoras', 12),
-('2017_08_05_192847_alter_table_equipos', 12),
-('2017_08_05_193329_alter_table_equipos2', 12),
-('2017_08_05_194233_alter_table_equipos_logs', 12),
-('2017_08_05_200742_alter_table_chklisOpcheck', 12),
-('2017_08_05_225412_alter_table_reponovedades', 12),
-('2017_08_10_194318_puestos_table', 12),
-('2017_08_10_200907_puestos_personas_table', 12),
-('2017_08_10_201959_cambiar_ubicacion_table', 12),
-('2017_08_10_204650_cambiar_puesto_table', 12),
-('2017_08_12_072927_cambiarpuestospersonasTabla', 12),
-('2017_09_06_091619_create_busquedas_table', 13),
-('2017_09_07_191456_add_rol_to_users_table', 13),
-('2017_09_07_203832_add_contable_to_equipos_table', 13),
-('2017_09_08_131936_add_verificado_to_users_table', 13),
-('2017_09_09_084655_add_usuarioActivosFijos_yPlantaFisica_to_users_table', 13),
-('2017_09_09_103000_add_garantiaHP_campos_to_equipos_table', 13),
-('2017_09_09_190759_add_garantiaHP_campos_to_equiposLog_table', 13),
-('2017_09_09_203809_create_jobs_table', 13),
-('2017_09_10_083153_create_failed_jobs_table', 13),
-('2017_09_10_191915_create_cache_table', 14),
-('2017_09_11_124402_add_correos_notificacion_custodios_table', 15),
-('2017_09_11_124453_add_documentoIdentificacion_users_table', 15),
-('2017_09_19_204458_add_acceso_custodio_table', 16),
-('2017_09_19_211439_create_notifications_table', 16),
-('2017_09_21_182022_create_empresas_table', 16),
-('2017_09_21_193956_add_empresa_usuarios_table', 16),
-('2017_09_22_191222_add_empresa_areas_table', 16),
-('2017_09_22_191358_add_empres_configuration_areas_table', 16),
-('2017_09_22_191548_add_usuario_equipos_table', 16),
-('2017_09_22_191652_add_empresa_estaciones_table', 16),
-('2017_09_22_200206_borrar_padrino_users_table', 16),
-('2017_09_25_135053_normalizar_equipos_custodios', 16),
-('2017_10_04_134522_create_o_auth_apps_table', 17);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `modelo_equipos`

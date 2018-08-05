@@ -236,6 +236,10 @@ return [
          * para los roles
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
+        /**
+         * para el setup
+         */
+        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
 
     ],
 

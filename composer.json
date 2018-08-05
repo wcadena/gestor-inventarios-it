@@ -26,6 +26,7 @@
         "mpociot/laravel-firebase-sync": "^1.0",
         "nesbot/carbon": "^1.22",
         "pusher/pusher-php-server": "^3.0",
+        "rachidlaasri/laravel-installer": "^4.0",
         "simplesoftwareio/simple-qrcode": "^1.5",
         "spatie/laravel-fractal": "^5.2",
         "vinkla/pusher": "^3.1",
