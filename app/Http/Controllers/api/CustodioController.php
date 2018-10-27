@@ -106,8 +106,8 @@ class CustodioController extends ApiController
                 return $this->showMessage('Este Custodio no tiene correo configurado', 404);
             }
             Mail::to($custodios)
-                //->queue(new NotificaCustodioCambio($custodios));
-                ->send(new NotificaCustodioCambio($custodios));
+                ->queue(new NotificaCustodioCambio($custodios));
+                //->send(new NotificaCustodioCambio($custodios));
 
             $custodios->notificado = Custodios::CUSTODIO_NO_NOTIFICADO;
             $custodios->save();

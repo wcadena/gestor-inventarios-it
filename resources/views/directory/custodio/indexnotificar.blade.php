@@ -119,8 +119,8 @@
 
             $('.notifica_mailSend_masivo').click(function (e) {
                 e.preventDefault();
-                alert("Activar '->queue(new NotificaCustodioCambio($custodios));', solo para servidores linux con consola ");
-                return  $(this).hide();
+                //alert("Activar '->queue(new NotificaCustodioCambio($custodios));', solo para servidores linux con consola ");
+                //return  $(this).hide();
                 if (confirm('¿Mandar mensajes masivos a todos los usuarios?')) {
                     var correos = [];
                     @foreach($custodio as $item)
