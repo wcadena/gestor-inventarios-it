@@ -806,7 +806,7 @@
     <p class=MsoNormal align=center style='margin-right:31.65pt;text-align:center;
   line-height:6.3pt;mso-line-height-rule:exactly'><span style='font-size:5.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>AEROGAL</span></p>
+  Arial'>Ecuatask</span></p>
    </td>
    <td width=108 valign=bottom style='width:81.0pt;padding:0cm 0cm 0cm 0cm;
   height:11.35pt'>
@@ -1276,7 +1276,7 @@
   0cm 0cm 0cm 0cm;height:9.85pt'>
     <p class=MsoNormal style='margin-left:9.0pt;mso-line-height-alt:0pt'><span
              style='font-size:4.5pt;mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:Arial'>AEROGAL</span></p>
+  mso-fareast-font-family:Arial'>Ecuatask</span></p>
    </td>
    <td width=8 valign=bottom style='width:6.0pt;border-top:none;border-left:
   none;border-bottom:solid #333 1.0pt;border-right:solid #333 1.0pt;
@@ -3100,7 +3100,7 @@
   height:5.4pt'>
     <p class=MsoNormal style='mso-line-height-alt:0pt'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:4.0pt;mso-bidi-font-size:10.0pt;font-family:
-  "Arial",sans-serif;mso-fareast-font-family:Arial'>(&Aacute;Årea que Entrega)</span></b></p>
+  "Arial",sans-serif;mso-fareast-font-family:Arial'>(&Aacute;ÔøΩrea que Entrega)</span></b></p>
    </td>
    <td width=43 valign=bottom style='width:32.0pt;border:none;mso-border-left-alt:
   solid #F2F2F2 1.0pt;background:#F2F2F2;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
@@ -3124,7 +3124,7 @@
   solid #F2F2F2 1.0pt;background:#F2F2F2;padding:0cm 0cm 0cm 0cm;height:5.4pt'>
     <p class=MsoNormal style='margin-left:1.0pt;mso-line-height-alt:0pt'><b
              style='mso-bidi-font-weight:normal'><span style='font-size:4.0pt;mso-bidi-font-size:
-  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>(&Aacute;Årea
+  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:Arial'>(&Aacute;ÔøΩrea
   que Recibe)</span></b></p>
    </td>
    <td width=104 valign=bottom style='width:78.0pt;border:none;border-right:
@@ -4028,7 +4028,7 @@
     <p class=MsoNormal style='margin-left:1.0pt;line-height:5.15pt;mso-line-height-rule:
   exactly'><b style='mso-bidi-font-weight:normal'><span style='font-size:4.5pt;
   mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  Arial'>&Aacute;ÅREA:</span></b></p>
+  Arial'>&Aacute;ÔøΩREA:</span></b></p>
    </td>
    <td width=223 colspan=4 valign=bottom style='width:167.0pt;border:none;
   border-right:solid #333 1.0pt;padding:0cm 0cm 0cm 0cm;height:5.9pt'>

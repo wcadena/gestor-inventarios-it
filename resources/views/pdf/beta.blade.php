@@ -4313,7 +4313,7 @@ ES-TRAD'>pertenece </span></span><span class=Bodytext22><span lang=ES-TRAD
                                                               style='color:black;mso-fareast-language:ES-TRAD'>el </span></span><span
                 class=Bodytext23><span lang=ES-TRAD style='color:black;mso-fareast-language:
 ES-TRAD'>activo fijo, </span></span><span class=Bodytext2><span lang=ES-TRAD
-                                                                style='color:black;mso-fareast-language:ES-TRAD'>TACA, AVIANCA, AEROGAL.</span></span></p>
+                                                                style='color:black;mso-fareast-language:ES-TRAD'>TACA, AVIANCA, Ecuatask.</span></span></p>
 
     <p class=Bodytext21 style='margin-left:0cm;text-indent:0cm;mso-list:l1 level1 lfo2;
 tab-stops:19.7pt;background:transparent'><![if !supportLists]><span
@@ -9016,7 +9016,7 @@ ES-TRAD'>pertenece </span></span><span class=Bodytext22><span lang=ES-TRAD
                                                               style='color:black;mso-fareast-language:ES-TRAD'>el </span></span><span
                 class=Bodytext23><span lang=ES-TRAD style='color:black;mso-fareast-language:
 ES-TRAD'>activo fijo, </span></span><span class=Bodytext2><span lang=ES-TRAD
-                                                                style='color:black;mso-fareast-language:ES-TRAD'>TACA, AVIANCA, AEROGAL.</span></span></p>
+                                                                style='color:black;mso-fareast-language:ES-TRAD'>TACA, AVIANCA, Ecuatask.</span></span></p>
 
     <p class=Bodytext21 style='margin-left:0cm;text-indent:0cm;mso-list:l1 level1 lfo2;
 tab-stops:19.7pt;background:transparent'><![if !supportLists]><span

@@ -293,7 +293,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <a href="@lang('home.url')"></a><b>@lang('home.sesinvetecu')</b></a>. Sistema de Inventario de Activos y sus Usuarios.<br/>
                     <strong>Copyright &copy; 2016 <a href="http://acacha.org">Acacha.org</a>.</strong> Created by <a href="#">Wagner Cadena</a>.
                     <br/>
-                    Desarrollo <a href="#">Aerogal</a>
+                    Desarrollo <a href="#">Ecuatask</a>
 
                 </p>
 

@@ -89,7 +89,7 @@ return [
     'creadopor4'           => 'Created by',
     'autor'                => 'Wagner Cadena',
     'equipo1c'             => 'Desarrollo',
-    'equipo2c'             => 'Aerogal',
+    'equipo2c'             => 'Ecuatask',
     'mensaje_custodio'     => '{0} No hay mensajes pendientes|{1} Hay un mensaje pendiente|[2,*] Hay :custodios mensajes pendientes',
     'mensaje_custodio_a'   => '{1} Un Custodio|[2,*] Hay :custodios Custodios',
     'mensaje_custodio_b'   => 'Pendientes de enviar la Notificación',
