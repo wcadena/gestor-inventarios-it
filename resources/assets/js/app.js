@@ -45,7 +45,7 @@ const app = new Vue({
 
 // confirmar si podemos usar el SW
 if ( navigator.serviceWorker ) {
-
+  console.log("Para cargar!!!!!!!!!!!!!!!!!!");
   navigator.serviceWorker.register('/sw.js');
 
 
