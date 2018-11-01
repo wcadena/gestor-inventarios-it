@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js install
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add parse-json
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/mssql-tools/bin:/opt/mssql-tools/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EPROTO: protocol error, symlink '../bin/acorn' -> '/home/vagrant/code/inventarios3/node_modules/acorn/.bin/acorn'
+  Error: EPROTO: protocol error, symlink '../cli.js' -> '/home/vagrant/code/inventarios3/node_modules/autoprefixer/node_modules/browserslist/.bin/browserslist'
 
 npm manifest: 
   {
@@ -30,35 +30,38 @@ npm manifest:
       "lint": "./node_modules/.bin/eslint --ext .js,.vue resources/assets/js"
     },
     "devDependencies": {
-      "acacha-forms": "^0.1.4",
+      "acacha-forms": "^1.0.10",
       "admin-lte": "^2.4.8",
-      "axios": "^0.15.3",
-      "babel-eslint": "^7.1.1",
-      "bootstrap-less": "3.3.7",
-      "bootstrap-sass": "3.3.7",
-      "cross-env": "^3.2.3",
-      "eslint": "^3.14.1",
-      "eslint-config-standard": "^6.2.1",
-      "eslint-friendly-formatter": "^2.0.7",
-      "eslint-loader": "^1.6.1",
-      "eslint-plugin-html": "^2.0.0",
-      "eslint-plugin-promise": "^3.4.0",
-      "eslint-plugin-standard": "^2.0.1",
+      "axios": "^0.18.0",
+      "babel-eslint": "^10.0.1",
+      "bootstrap-less": "^3.3.8",
+      "bootstrap-sass": "^3.3.7",
+      "cross-env": "^5.2.0",
+      "eslint": "^5.8.0",
+      "eslint-config-standard": "^12.0.0",
+      "eslint-friendly-formatter": "^4.0.1",
+      "eslint-loader": "^2.1.1",
+      "eslint-plugin-html": "^4.0.6",
+      "eslint-plugin-promise": "^4.0.1",
+      "eslint-plugin-standard": "^4.0.0",
       "font-awesome": "^4.7.0",
       "icheck": "^1.0.2",
-      "ionicons":"",
-      "jquery": "^3.1.1",
-      "jquery-chosen":"^1.1.0",
-      "laravel-mix": "0.*",
-      "lodash": "^4.17.4",
-      "select2": "^4.0.3",
-      "select2-bootstrap-theme":"^0.1.0-beta.10",
-      "toastr": "^2.1.2",
-      "vue": "^2.1.10"
+      "ionicons": "^4.4.6",
+      "jquery": "^3.3.1",
+      "jquery-chosen": "^1.1.0",
+      "parse-json":"^4.0.0",
+      "laravel-mix": "^2.1.14",
+      "less": "^3.8.1",
+      "less-loader": "^4.1.0",
+      "lodash": "^4.17.11",
+      "select2": "^4.0.6-rc.1",
+      "select2-bootstrap-theme": "^0.1.0-beta.10",
+      "toastr": "^2.1.4",
+      "vue": "^2.5.17"
     },
     "dependencies": {
-      "autocomplete-vue": "^1.0.3",
-      "octicons": "^6.0.1"
+      "autocomplete-vue": "^1.1.0",
+      "octicons": "^8.1.0"
     }
   }
 
