@@ -1,0 +1,1 @@
+$(".chosen-select").chosen({no_results_text:"Oops, no lo encontramos!"});

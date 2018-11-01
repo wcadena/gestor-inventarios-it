@@ -27,10 +27,13 @@
     "eslint-plugin-standard": "^2.0.1",
     "font-awesome": "^4.7.0",
     "icheck": "^1.0.2",
+    "ionicons":"",
     "jquery": "^3.1.1",
+    "jquery-chosen":"^1.1.0",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
     "select2": "^4.0.3",
+    "select2-bootstrap-theme":"^0.1.0-beta.10",
     "toastr": "^2.1.2",
     "vue": "^2.1.10"
   },
