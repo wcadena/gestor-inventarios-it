@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js add select2-bootstrap-theme
+  /usr/bin/node /usr/share/yarn/bin/yarn.js install
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/mssql-tools/bin:/opt/mssql-tools/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EPROTO: protocol error, symlink '../bin/ansi-html' -> '/home/vagrant/code/inventarios3/node_modules/ansi-html/.bin/ansi-html'
+  Error: EPROTO: protocol error, symlink '../bin/acorn' -> '/home/vagrant/code/inventarios3/node_modules/acorn/.bin/acorn'
 
 npm manifest: 
   {
@@ -31,7 +31,7 @@ npm manifest:
     },
     "devDependencies": {
       "acacha-forms": "^0.1.4",
-      "admin-lte": "^2.3.11",
+      "admin-lte": "^2.4.8",
       "axios": "^0.15.3",
       "babel-eslint": "^7.1.1",
       "bootstrap-less": "3.3.7",

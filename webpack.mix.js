@@ -12,7 +12,8 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'js')
-    .js('resources/assets/js/app-landing.js', 'js/app-landing.js')
+  .js('resources/assets/js/sw.js', 'sw.js')
+   .js('resources/assets/js/app-landing.js', 'js/app-landing.js')
     .sass('resources/assets/sass/app.scss', 'html/css')
     .less('node_modules/bootstrap-less/bootstrap/bootstrap.less', 'html/css/bootstrap.css')
     .less('resources/assets/less/adminlte-app.less','html/css/adminlte-app.css')
@@ -56,5 +57,5 @@ mix.js('resources/assets/js/app.js', 'js')
 ;
 
 if (mix.config.inProduction) {
-    mix.version();
+    //mix.version();
 }

@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "acacha-forms": "^0.1.4",
-    "admin-lte": "^2.3.11",
+    "admin-lte": "^2.4.8",
     "axios": "^0.15.3",
     "babel-eslint": "^7.1.1",
     "bootstrap-less": "3.3.7",

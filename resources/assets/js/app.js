@@ -37,3 +37,17 @@ Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+
+ if ( 'serviceWorker' in navigator ) {
+     console.log('Podemos usarlo!');
+ }
+
+// confirmar si podemos usar el SW
+if ( navigator.serviceWorker ) {
+
+  navigator.serviceWorker.register('/sw.js');
+
+
+}
+
