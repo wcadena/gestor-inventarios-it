@@ -37,17 +37,31 @@ Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
 const app = new Vue({
     el: '#app'
 });
+import _ from 'lodash';
 
-
- if ( 'serviceWorker' in navigator ) {
-     console.log('Podemos usarlo!');
- }
-
-// confirmar si podemos usar el SW
-if ( navigator.serviceWorker ) {
-  console.log("Para cargar!!!!!!!!!!!!!!!!!!");
-  navigator.serviceWorker.register('/sw.js');
-
-
+function init() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        console.log('SW registered: ', registration);
+      }).catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+    });
+  }
+  if ( navigator.serviceWorker ) {
+    navigator.serviceWorker.register('/sw.js')
+      .then( reg => {
+         setTimeout(() => {
+             reg.sync.register('posteo-gatitos');
+             console.log('Se enviaron fotos de gatitos al server');
+         }, 3000);
+        Notification.requestPermission().then( result => {
+          console.log(result);
+          reg.showNotification('Hola Mundo!');
+        });
+      });
+  }
 }
+init();
 

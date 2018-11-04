@@ -1,4 +1,15 @@
 const { mix } = require('laravel-mix');
+const workboxPlugin = require('workbox-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+/*
+ |--------------------------------------------------------------------------
+ | Package.json
+ |--------------------------------------------------------------------------
+ */
+
+const package = require('./package.json');
+const dependencies = Object.keys(package.dependencies);
 
 /*
  |--------------------------------------------------------------------------
@@ -12,7 +23,6 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'js')
-  .js('resources/assets/js/sw.js', 'sw.js')
    .js('resources/assets/js/app-landing.js', 'js/app-landing.js')
     .sass('resources/assets/sass/app.scss', 'html/css')
     .less('node_modules/bootstrap-less/bootstrap/bootstrap.less', 'html/css/bootstrap.css')
@@ -54,6 +64,54 @@ mix.js('resources/assets/js/app.js', 'js')
 
     .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
     .setPublicPath('html')
+  .options({
+    extractVueStyles: true,
+    processCssUrls: true,
+    uglify: {},
+    purifyCss: false,
+    //purifyCss: {},
+    postCss: [require('autoprefixer')],
+    clearConsole: false
+  })
+  .webpackConfig({
+    plugins: [
+      new workboxPlugin.GenerateSW({
+        globDirectory: `${__dirname}/html`,
+        globPatterns: [
+          '**/*.{html,css,js}',
+          'fonts/**/*.*'
+        ],
+        //  swSrc: './src/sw.js',
+        swDest: path.join(`${__dirname}/html`, 'sw.js'),
+        clientsClaim: true,
+        skipWaiting: true,
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp(`${process.env.APP_URL}`),
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheName: `${process.env.APP_NAME}-${process.env.APP_ENV}`
+            }
+          },
+          {
+            urlPattern: new RegExp('https://fonts.(googleapis|gstatic).com'),
+            handler: 'cacheFirst',
+            options: {
+              cacheName: 'google-fonts'
+            }
+          }
+        ]
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: path.join(`${__dirname}/html`, 'webpack-report.html'),
+        openAnalyzer: false,
+        logLevel: 'silent'
+      }),
+    ]
+  })
+  .sourceMaps(!mix.inProduction())
+  .disableNotifications()
 ;
 
 if (mix.config.inProduction) {
