@@ -75,17 +75,17 @@ mix.js('resources/assets/js/app.js', 'js')
   })
   .webpackConfig({
     plugins: [
-      new workboxPlugin.GenerateSW({
+      new workboxPlugin.InjectManifest({
         globDirectory: `${__dirname}/html`,
         globPatterns: [
           '**/*.{html,css,js}',
           'fonts/**/*.*'
         ],
-        //  swSrc: './src/sw.js',
+        swSrc: 'resources/assets/js/sw.js',
         swDest: path.join(`${__dirname}/html`, 'sw.js'),
-        clientsClaim: true,
-        skipWaiting: true,
-        runtimeCaching: [
+        //clientsClaim: true,
+        //skipWaiting: true,
+        /*runtimeCaching: [
           {
             urlPattern: new RegExp(`${process.env.APP_URL}`),
             handler: 'staleWhileRevalidate',
@@ -100,7 +100,11 @@ mix.js('resources/assets/js/app.js', 'js')
               cacheName: 'google-fonts'
             }
           }
-        ]
+        ]*/
+        modifyUrlPrefix: {
+          // Remove a '/dist' prefix from the URLs:
+          '//js/': '/js/'
+        }
       }),
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
@@ -115,5 +119,5 @@ mix.js('resources/assets/js/app.js', 'js')
 ;
 
 if (mix.config.inProduction) {
-    //mix.version();
+    mix.version();
 }
