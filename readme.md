@@ -1,6 +1,6 @@
 # Sistema de Inventarios de Activos Fijos con Laravel 5.5
 
-Sistema de inventarios de Activos Fijos con Laravel 5.5 , proyectado para RestFull, uso de IONIC y JAVA
+Sistema de inventarios de Activos Fijos con Laravel 5.5 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
 Si necesitas una demostracion escribe a wcadena@outlook.com, antes te invito a que veas la parte del wiki que aumente:
 [Instalación](https://github.com/wcadena/inventarioFinalApp/wiki/Instalaci%C3%B3n)
 
