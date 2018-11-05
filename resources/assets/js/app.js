@@ -49,7 +49,7 @@ function init() {
          }, 3000);
         Notification.requestPermission().then( result => {
           console.log(result);
-          reg.showNotification('Hola Mundo!');
+          //reg.showNotification('Hola Mundo!');
         });
       });
   }

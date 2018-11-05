@@ -73,49 +73,6 @@ mix.js('resources/assets/js/app.js', 'js')
     postCss: [require('autoprefixer')],
     clearConsole: false
   })
-  .webpackConfig({
-    plugins: [
-      new workboxPlugin.InjectManifest({
-        globDirectory: `${__dirname}/html`,
-        globPatterns: [
-          '**/*.{html,css,js}',
-          'fonts/**/*.*'
-        ],
-        swSrc: 'resources/assets/js/sw.js',
-        swDest: path.join(`${__dirname}/html`, 'sw.js'),
-        //clientsClaim: true,
-        //skipWaiting: true,
-        /*runtimeCaching: [
-          {
-            urlPattern: new RegExp(`${process.env.APP_URL}`),
-            handler: 'staleWhileRevalidate',
-            options: {
-              cacheName: `${process.env.APP_NAME}-${process.env.APP_ENV}`
-            }
-          },
-          {
-            urlPattern: new RegExp('https://fonts.(googleapis|gstatic).com'),
-            handler: 'cacheFirst',
-            options: {
-              cacheName: 'google-fonts'
-            }
-          }
-        ]*/
-        modifyUrlPrefix: {
-          // Remove a '/dist' prefix from the URLs:
-          '//js/': '/js/'
-        }
-      }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: path.join(`${__dirname}/html`, 'webpack-report.html'),
-        openAnalyzer: false,
-        logLevel: 'silent'
-      }),
-    ]
-  })
-  .sourceMaps(!mix.inProduction())
-  .disableNotifications()
 ;
 
 if (mix.config.inProduction) {

@@ -47,17 +47,17 @@
                  <li><a href="{{ url('puesto') }}"><i class='glyphicon glyphicon-pushpin'></i> <span>Puestos</span></a></li>
                  <li><a href="{{ url('informes') }}"><i class='glyphicon glyphicon-eye-open'></i> <span>Informes</span></a></li>
              @endif
-             <li class="treeview">
+             <li class="treeview-old">
                  <a href="#"><i class='fa fa-link'></i> <span>@lang('home.menrepM')</span> <i class="fa fa-angle-left pull-right"></i></a>
-                 <ul class="treeview-menu">
+                 <ul class="treeview-menu-old">
                      <li><a href="{{ url('reporte1') }}"><i class='glyphicon glyphicon-stats'></i> <span>@lang('home.menrep1')</span></a></li>
                      <li><a href="{{ url('reporteEstaciones/1') }}"><i class='glyphicon glyphicon-stats'></i> <span>@lang('home.menrep2')</span></a></li>
                  </ul>
              </li>
              @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
-                 <li class="treeview">
+                 <li class="treeview-old">
                      <a href="#"><i class="glyphicon glyphicon-wrench"></i> <span>@lang('home.men13')</span> <i class="fa fa-angle-left pull-right"></i></a>
-                     <ul class="treeview-menu">
+                     <ul class="treeview-menu-old">
                          <li><a href="{{ url('usuario') }}"><i class='glyphicon glyphicon-user'></i> <span>@lang('home.men7') </span></a></li>
                          @if(str_contains(Auth::getUser()->rol, ['system']))
                          <li><a href="{{ url('garantiasHP') }}"><i class='glyphicon glyphicon glyphicon-barcode'></i> <span>@lang('home.garantiasHP') </span></a></li>
