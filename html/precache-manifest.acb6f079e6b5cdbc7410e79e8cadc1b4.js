@@ -1,11 +1,27 @@
 self.__precacheManifest = [
   {
-    "revision": "3cd2457cf0125eb2c11840aaf0350622",
-    "url": "plugins/datatables/extensions/ColVis/examples/index.html"
+    "revision": "99fa57d5ee86115d2c7276180b885b6e",
+    "url": "plugins/datatables/extensions/ColVis/examples/mouseover.html"
   },
   {
     "revision": "43d5c718339efeb1177aff722d72669d",
     "url": "fonts/vendor/ionicons/dist/ionicons.woff2"
+  },
+  {
+    "revision": "eee18f733ae36bb5d6fc32cf199624f2",
+    "url": "webpack-report.html"
+  },
+  {
+    "revision": "14fcc154e97b4076a6d159a376e51f6f",
+    "url": "sw.js"
+  },
+  {
+    "revision": "bf42184289a1f8759e988eb2aad61d4b",
+    "url": "precache-manifest.bf42184289a1f8759e988eb2aad61d4b.js"
+  },
+  {
+    "revision": "bd351e4b9402b27d5df584285cd93966",
+    "url": "precache-manifest.a28c0cac64b02dec8ee38bd903e6d205.js"
   },
   {
     "revision": "af68fc9aa8832d9683a437eeea431ae3",
@@ -226,22 +242,6 @@ self.__precacheManifest = [
   {
     "revision": "366d0aacb55f4929cc50bb977abec674",
     "url": "plugins/select2/i18n/de.js"
-  },
-  {
-    "revision": "cbf897a0ae53b0cffbbe3f50d8b1b136",
-    "url": "plugins/select2/i18n/da.js"
-  },
-  {
-    "revision": "a68bcd293adcd6d9ac0b8527c9b39189",
-    "url": "plugins/select2/i18n/cs.js"
-  },
-  {
-    "revision": "2eaad4eb1950a0d542812c58d30c93dd",
-    "url": "plugins/select2/i18n/ca.js"
-  },
-  {
-    "revision": "89cba4df3c8694fcb33098dd1646cac1",
-    "url": "plugins/select2/i18n/bg.js"
   },
   {
     "revision": "22356dcac799a0152ee8f7734a5dcf6c",
@@ -1512,16 +1512,16 @@ self.__precacheManifest = [
     "url": "plugins/datatables/extensions/ColVis/examples/group_columns.html"
   },
   {
-    "revision": "498dc667b34eb0fddc31c4e92330d1aa",
-    "url": "plugins/select2/i18n/az.js"
+    "revision": "3cd2457cf0125eb2c11840aaf0350622",
+    "url": "plugins/datatables/extensions/ColVis/examples/index.html"
   },
   {
     "revision": "5dc4a1ae48ddbcf19b9a14a340c90ea9",
     "url": "plugins/datatables/extensions/ColVis/examples/jqueryui.html"
   },
   {
-    "revision": "99fa57d5ee86115d2c7276180b885b6e",
-    "url": "plugins/datatables/extensions/ColVis/examples/mouseover.html"
+    "revision": "cbf897a0ae53b0cffbbe3f50d8b1b136",
+    "url": "plugins/select2/i18n/da.js"
   },
   {
     "revision": "d3ec0ada594eaf8b2cca2d7c0aca5820",
@@ -2660,11 +2660,27 @@ self.__precacheManifest = [
     "url": "plugins/select2/i18n/ar.js"
   },
   {
+    "revision": "498dc667b34eb0fddc31c4e92330d1aa",
+    "url": "plugins/select2/i18n/az.js"
+  },
+  {
+    "revision": "89cba4df3c8694fcb33098dd1646cac1",
+    "url": "plugins/select2/i18n/bg.js"
+  },
+  {
+    "revision": "2eaad4eb1950a0d542812c58d30c93dd",
+    "url": "plugins/select2/i18n/ca.js"
+  },
+  {
+    "revision": "a68bcd293adcd6d9ac0b8527c9b39189",
+    "url": "plugins/select2/i18n/cs.js"
+  },
+  {
     "url": "/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.ttf?e18bbf611f2a2e43afc071aa2f4e1512"
   },
   {
     "revision": "5d098c133d28a4a048a7",
-    "url": "/js/app.js"
+    "url": "//js/app.js"
   },
   {
     "revision": "6a6a41df18b8970635c5422e4a4ac938",
@@ -2985,22 +3001,22 @@ self.__precacheManifest = [
   },
   {
     "revision": "8ef003f8b185ba0ec709",
-    "url": "/js/app-landing.js"
+    "url": "//js/app-landing.js"
   },
   {
     "revision": "5d098c133d28a4a048a7",
-    "url": "/css/toastr.css"
+    "url": "//css/toastr.css"
   },
   {
     "revision": "5d098c133d28a4a048a7",
-    "url": "/css/bootstrap.css"
+    "url": "//css/bootstrap.css"
   },
   {
     "revision": "5d098c133d28a4a048a7",
-    "url": "/css/app.css"
+    "url": "//css/app.css"
   },
   {
     "revision": "5d098c133d28a4a048a7",
-    "url": "/css/adminlte-app.css"
+    "url": "//css/adminlte-app.css"
   }
 ];
