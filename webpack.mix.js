@@ -43,7 +43,8 @@ mix.js('resources/assets/js/app.js', 'js')
     ], 'html/css/all-landing.css')
     .scripts([
         'node_modules/jquery-chosen/chosen.jquery.js',
-        'resources/assets/js/app_master.js'
+        'resources/assets/js/app_master.js',
+        'resources/assets/js/adminlte/Tree.js'
     ], 'html/js/all.js')
 
     //APP RESOURCES
@@ -73,8 +74,52 @@ mix.js('resources/assets/js/app.js', 'js')
     postCss: [require('autoprefixer')],
     clearConsole: false
   })
+  .webpackConfig({
+    plugins: [
+      new workboxPlugin.InjectManifest({
+        globDirectory: `${__dirname}/html`,
+        globPatterns: [
+          '**/*.{html,css,js}',
+          'fonts/**/*.*'
+        ],
+        swSrc: 'resources/assets/js/sw.js',
+        swDest: path.join(`${__dirname}/html`, 'sw.js'),
+        modifyUrlPrefix: {
+          '/': ''
+        },
+        //clientsClaim: true,
+        //skipWaiting: true,
+        /*runtimeCaching: [
+          {
+            urlPattern: new RegExp(`${process.env.APP_URL}`),
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheName: `${process.env.APP_NAME}-${process.env.APP_ENV}`
+            }
+          },
+          {
+            urlPattern: new RegExp('https://fonts.(googleapis|gstatic).com'),
+            handler: 'cacheFirst',
+            options: {
+              cacheName: 'google-fonts'
+            }
+          }
+        ]*/
+
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: path.join(`${__dirname}/html`, 'webpack-report.html'),
+        openAnalyzer: false,
+        logLevel: 'silent'
+      }),
+    ]
+  })
+  .sourceMaps(!mix.inProduction())
+  .disableNotifications()
 ;
 
 if (mix.config.inProduction) {
     mix.version();
+    mix.minify();
 }

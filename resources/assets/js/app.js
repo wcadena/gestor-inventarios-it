@@ -56,3 +56,6 @@ function init() {
 }
 init();
 
+$('.sidebar-menu').tree({
+  // Any options here
+})
