@@ -11,14 +11,14 @@ class ContactosTableSeeder extends Seeder
      */
     public function run()
     {
-
+        Auth::login(App\User::inRandomOrder()->first());
         if(\App\Empresa::where('empresa' ,'=','Avianca EC')->first() == null ){
             \Illuminate\Support\Facades\DB::table('empresas')->insert([
                 'empresa' => 'Avianca EC',
                 'formula_codigo' => '/AV[a-zA-Z0-9]{8,10}/',
             ]);
         }
-        if(App\Configuracion::withoutGlobalScopes()->where('empresa' ,'=','Avianca EC')->Config('CUSTODIO_BODEGA') == null){
+        if(App\Configuracion::where('empresa' ,'=','Avianca EC')->Config('CUSTODIO_BODEGA') == null){
             \Illuminate\Support\Facades\DB::table('configuracions')->insert([
                 'id'    => 1,
                 'atributo'  => 'CUSTODIO_BODEGA',
@@ -29,8 +29,8 @@ class ContactosTableSeeder extends Seeder
                 'empresa'   =>  'Avianca Ec'
             ]);
         }
-
-        factory(App\Custodios::class, 20)->create();
+        factory(App\Custodios::class, 100)->create();
+        factory(App\Equipos::class, 100)->create();
         factory(App\User::class, 1)->create();
     }
 }

@@ -64,7 +64,7 @@ class EquiposRequest extends FormRequest
                 }*/
                 $empresa = Empresa::where('empresa', '=', Input::get('empresa_procede1'))->first();
 
-                if (!preg_match($empresa->formula_codigo, $value)) {
+                if ($empresa->formula_codigo != '' && !preg_match($empresa->formula_codigo, $value)) {
                     $fail(':attribute NO cumple con estructura de codigo de empresa!('.$empresa->formula_codigo.')');
                 }
             }],
