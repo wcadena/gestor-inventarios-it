@@ -1,8 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-
+$area_id_glb9;
 $factory->define(App\Equipos::class, function (Faker $faker) {
+    $this->area_id_glb9 = App\Areas::inRandomOrder()->first()->id;
     return [
         'modelo_equipo_id'         =>function () {
             return App\ModeloEquipo::inRandomOrder()->first()->id;
@@ -17,10 +18,18 @@ $factory->define(App\Equipos::class, function (Faker $faker) {
             return App\Estaciones::inRandomOrder()->first()->id;
         },
         'area_id'         =>function () {
-            return App\Areas::inRandomOrder()->first()->id;
+            return $this->area_id_glb9;
         },
         'check_list_id'         =>function () {
-            return App\CheckList::inRandomOrder()->first()->id;
+            $checklistmod = new \App\CheckList();
+            $checklistmod->area_id = $this->area_id_glb9;
+            $checklistmod->user_id = App\User::inRandomOrder()->first()->id;
+            $checklistmod->id_check_lists = uniqid('CHK-');
+            $checklistmod->unik_check_lists = Uuid::generate();
+            $checklistmod->save();
+            $dathui0091 = new \App\Http\Controllers\CheckListController();
+            $utill77563 = $dathui0091->crearChecklist($this->area_id_glb9, $checklistmod->id);
+            return $checklistmod->id;
         },
         'num_cajas'         =>$faker->randomDigit             ,
         'sociedad'         =>'Avianca Ec',

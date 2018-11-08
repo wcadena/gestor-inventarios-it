@@ -29,8 +29,8 @@ class ContactosTableSeeder extends Seeder
                 'empresa'   =>  'Avianca Ec'
             ]);
         }
-        factory(App\Custodios::class, 100)->create();
-        factory(App\Equipos::class, 100)->create();
+        factory(App\Custodios::class, 10)->create();
+        factory(App\Equipos::class, 500)->create();
         factory(App\User::class, 1)->create();
     }
 }

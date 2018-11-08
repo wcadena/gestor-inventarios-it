@@ -260,33 +260,6 @@ INSERT INTO `opciones_check_lists` (`id`, `area_id`, `atributo`, `mandatorio`, `
 (61, 5, 'I. EXPLORER 10', 'NO', 'si-no', NULL, NULL),
 (62, 5, 'SKY CHAIN', 'NO', 'si-no', NULL, NULL);
 
-INSERT INTO `check_lists` (`id`, `area_id`, `user_id`, `created_at`, `updated_at`, `deleted_at`, `id_check_lists`, `unik_check_lists`) VALUES
-(1657, 46, 23,'2016-07-24 20:59:32', '2016-07-24 20:59:32', NULL, 'CHK-5794e5e4afff0', '9c75f070-51b7-11e6-bb9c-ffabd166f5ba'),
-(1658, 49, 23,'2016-07-24 20:59:32', '2016-07-24 20:59:32', NULL, 'CHK-5794e5e4b55e2', '9c7924c0-51b7-11e6-90b1-83aae0abb2f4'),
-(1659, 49, 23,'2016-07-24 20:59:32', '2016-07-24 20:59:32', NULL, 'CHK-5794e5e4b790b', '9c7a8480-51b7-11e6-b9c3-5920ece1a556'),
-(1660, 23,23, '2016-07-24 20:59:32', '2016-07-24 20:59:32', NULL, 'CHK-5794e5e4b9c34', '9c7be400-51b7-11e6-8c66-4556acef682d');
-
-INSERT INTO `check_list__opciones_check_lists` (`id`, `check_list_id`, `opciones_check_list_id`, `valor1`, `valor2`, `valor3`, `valor4`, `valor5`, `valor6`, `valor7`, `valor8`, `valor9`, `valor10`, `created_at`, `updated_at`, `deleted_at`, `tipo`, `atributo`) VALUES
-(69, 1657, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:13:20', '2016-07-30 04:13:20', NULL, 'text', 'Usuario'),
-(70, 1657, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:13:21', '2016-07-30 04:13:23', '2016-07-30 04:13:23', 'text', 'Usuario'),
-(71, 1658, 9, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:22', '2016-07-30 04:30:22', NULL, 'si-no', 'HOST EN DOMINIO AVIANCA.LOC'),
-(72, 1658, 11, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'WINDOWS'),
-(73, 1658, 12, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'OFFICE'),
-(74, 1658, 13, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'ADOBE READER'),
-(75, 1658, 14, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'WINZIP / WINRAR'),
-(76, 1658, 15, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'MAIL'),
-(77, 1658, 16, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'KASPERSKY ACT / AGE_CON'),
-(78, 1658, 17, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'PRINTER LOCAL/RED'),
-(79, 1658, 18, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'ACTUALIZACIONES / WSUS'),
-(80, 1658, 19, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'RESPALDOS'),
-(81, 1658, 20, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'ACCESOS CARPETAS COMPARTIDAS'),
-(82, 1658, 21, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'ACCESOS LINKS AVTA'),
-(83, 1658, 22, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'ADOBE FLASH'),
-(84, 1658, 23, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'LYNC'),
-(85, 1658, 24, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'VPN SOLO LAPTOP'),
-(86, 1658, 25, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'FIREFOX'),
-(87, 1658, 26, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'TELNET CLIENT'),
-(88, 1658, 27, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2016-07-30 04:30:23', '2016-07-30 04:30:23', NULL, 'si-no', 'SCCM SETUP')
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
 
