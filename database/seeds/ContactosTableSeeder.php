@@ -12,21 +12,21 @@ class ContactosTableSeeder extends Seeder
     public function run()
     {
         Auth::login(App\User::inRandomOrder()->first());
-        if(\App\Empresa::where('empresa' ,'=','Avianca EC')->first() == null ){
+        if (\App\Empresa::where('empresa', '=', 'Avianca EC')->first() == null) {
             \Illuminate\Support\Facades\DB::table('empresas')->insert([
-                'empresa' => 'Avianca EC',
+                'empresa'        => 'Avianca EC',
                 'formula_codigo' => '/AV[a-zA-Z0-9]{8,10}/',
             ]);
         }
-        if(App\Configuracion::where('empresa' ,'=','Avianca EC')->Config('CUSTODIO_BODEGA') == null){
+        if (App\Configuracion::where('empresa', '=', 'Avianca EC')->Config('CUSTODIO_BODEGA') == null) {
             \Illuminate\Support\Facades\DB::table('configuracions')->insert([
-                'id'    => 1,
-                'atributo'  => 'CUSTODIO_BODEGA',
-                'tipo' => 'texto',
-                'valores_fuente'    =>  'FIJO',
-                'fijo'  =>  1,
-                'valor' => null,
-                'empresa'   =>  'Avianca Ec'
+                'id'                => 1,
+                'atributo'          => 'CUSTODIO_BODEGA',
+                'tipo'              => 'texto',
+                'valores_fuente'    => 'FIJO',
+                'fijo'              => 1,
+                'valor'             => null,
+                'empresa'           => 'Avianca Ec',
             ]);
         }
         factory(App\Custodios::class, 10)->create();

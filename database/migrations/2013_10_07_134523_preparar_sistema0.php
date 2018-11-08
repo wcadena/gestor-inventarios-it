@@ -1,8 +1,9 @@
 <?php
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
 
-class PrepararSistema0 extends Migration {
+class PrepararSistema0 extends Migration
+{
     /**
      * Run the migrations.
      *

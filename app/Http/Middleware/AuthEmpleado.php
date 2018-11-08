@@ -36,7 +36,7 @@ class AuthEmpleado
      * @var Guard
      */
     protected $auth;
-
+
     /**
      * Create a new filter instance.
      *
@@ -50,7 +50,7 @@ class AuthEmpleado
     {
         $this->auth = $auth;
     }
-
+
     public function handle($request, Closure $next, $role)
     {
         $rol_emp = $this->auth->user()->rol;
