@@ -148,7 +148,7 @@ class CustodioController extends ApiController
         //return 'Hello World';
         //dd($custodios);
         $campos = $request->all();
-        $campos['image'] = $request->image->store('');
+        $campos['image'] = $request->image->store('','images');
 
         $custodios = Custodios::create($campos);
 
