@@ -21,6 +21,7 @@ $factory->define(App\Equipos::class, function (Faker $faker) {
             return $this->area_id_glb9;
         },
         'check_list_id'         =>function () {
+            \Illuminate\Support\Facades\Session::flash('Crear_checklist', 'Crear_checklist');
             $checklistmod = new \App\CheckList();
             $checklistmod->area_id = $this->area_id_glb9;
             $checklistmod->user_id = App\User::inRandomOrder()->first()->id;
