@@ -107,7 +107,7 @@ class CustodioController extends ApiController
             }
             Mail::to($custodios)
                 ->queue(new NotificaCustodioCambio($custodios));
-                //->send(new NotificaCustodioCambio($custodios));
+            //->send(new NotificaCustodioCambio($custodios));
 
             $custodios->notificado = Custodios::CUSTODIO_NO_NOTIFICADO;
             $custodios->save();
@@ -148,7 +148,7 @@ class CustodioController extends ApiController
         //return 'Hello World';
         //dd($custodios);
         $campos = $request->all();
-        $campos['image'] = $request->image->store('','images');
+        $campos['image'] = $request->image->store('', 'images');
 
         $custodios = Custodios::create($campos);
 

@@ -16,15 +16,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name'         =>$faker->name,
-        'first_name'         =>$faker->firstName,
-        'last_name'         =>$faker->lastName,
-        'rol'         =>'system',
-        'username'         =>$faker->userName,
-        'email'         =>$faker->companyEmail,
-        'password'         =>bcrypt('secret'),
-        'created_at'         =>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'         =>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'empresa'         =>'Avianca EC',
+        'name'               => $faker->name,
+        'first_name'         => $faker->firstName,
+        'last_name'          => $faker->lastName,
+        'rol'                => 'system',
+        'username'           => $faker->userName,
+        'email'              => $faker->companyEmail,
+        'password'           => bcrypt('secret'),
+        'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'empresa'            => 'Avianca EC',
     ];
 });

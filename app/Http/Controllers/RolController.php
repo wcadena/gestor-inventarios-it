@@ -138,7 +138,7 @@ class RolController extends Controller
                 try {
                     DB::beginTransaction();
                     //dd($request);
-        
+
                     $rol = Rol::findOrFail($id);
                     $rol->update($request->all());
                     //////////////////////////////////////////////
@@ -164,14 +164,14 @@ class RolController extends Controller
                         Session::flash('flash_message', 'Error Permisos Rol updated!');
                         DB::rollback();
                     }
-        
+
                     DB::commit();
-        
+
                     return redirect('roles');
                 } catch (Exception $e) {
                     DB::rollback();
                 }
-        
+
                 return redirect('roles');
         */
     }

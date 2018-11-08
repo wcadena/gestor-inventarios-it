@@ -50,7 +50,7 @@ class UbicacionController extends Controller
         ]);
 
         $ubica = $request->all();
-        $ubica['imagen'] = $request->imagen->store('','images');
+        $ubica['imagen'] = $request->imagen->store('', 'images');
 
         Ubicacion::create($ubica);
 
@@ -106,7 +106,7 @@ class UbicacionController extends Controller
 
         $ubica = $request->all();
         if ($request->imagen != null) {
-            $ubica['imagen'] = $request->imagen->store('','images');
+            $ubica['imagen'] = $request->imagen->store('', 'images');
         } else {
             $ubica['imagen'] = $ubicacion->imagen;
         }

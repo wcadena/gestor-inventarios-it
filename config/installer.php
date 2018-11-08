@@ -15,12 +15,12 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '7.2.0'
+        'minPhpVersion' => '7.2.0',
     ],
     'final' => [
-        'key' => true,
-        'publish' => false
-    ],    
+        'key'     => true,
+        'publish' => false,
+    ],
     'requirements' => [
         'php' => [
             'openssl',
@@ -47,7 +47,7 @@ return [
     'permissions' => [
         'storage/framework/'     => '775',
         'storage/logs/'          => '775',
-        'bootstrap/cache/'       => '775'
+        'bootstrap/cache/'       => '775',
     ],
 
     /*
@@ -116,7 +116,7 @@ return [
             ],
             'dump' => [
                 'data' => 'Dumping a not found message.',
-            ]
+            ],
         ],
     ],
 
