@@ -208,7 +208,7 @@ return [
         /*
         *menu services solo php 7
         */
-        //Spatie\Menu\Laravel\MenuServiceProvider::class,
+        Spatie\Menu\Laravel\MenuServiceProvider::class,
         /*
          * pusher
          */
@@ -316,7 +316,7 @@ return [
         /*
         *menu services solo php 7
         */
-        //'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
+        'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
         /*
          * pusher
          */

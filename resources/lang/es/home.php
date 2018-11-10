@@ -48,6 +48,7 @@ return [
     'men11'                => 'Orden de Compra',
     'men12'                => 'Estaciones',
     'men13'                => 'Configuraciones',
+    'menSystem'            => 'System',
     'menrepM'              => 'Reportes',
     'menrep1'              => 'Reporte Total',
     'menrep2'              => 'Reporte Estaciones',
