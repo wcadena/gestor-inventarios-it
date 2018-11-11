@@ -287,3 +287,8 @@ Route::get('imagenUbicacion', 'UbicacionController@daImagen');
 
 Route::resource('roles', 'RolController');
 Route::resource('empresa', 'EmpresaController');
+
+
+Route::resource('proyecto', 'ProyectoController');
+//php artisan crud:controller ProyectoController --crud-name=proyecto --model-name=Proyecto --view-path="directory"
+//php artisan crud:view proyecto --fields="name#string; descripcion#text" --view-path="directory" --form-helper=laravelcollective

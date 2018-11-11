@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Editar %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
+                    <div class="card-header">Editar proyecto #{{ $proyecto->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
+                        <a href="{{ url('/proyecto') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -21,13 +21,16 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            {{ csrf_field() }}
+                        {!! Form::model($proyecto, [
+                            'method' => 'PATCH',
+                            'url' => ['/proyecto', $proyecto->id],
+                            'class' => 'form-horizontal',
+                            'files' => true
+                        ]) !!}
 
-                            @include ('%%viewTemplateDir%%.form', ['formMode' => 'edit'])
+                        @include ('directory.proyecto.form', ['formMode' => 'edit'])
 
-                        </form>
+                        {!! Form::close() !!}
 
                     </div>
                 </div>

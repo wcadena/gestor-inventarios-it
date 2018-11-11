@@ -7,20 +7,20 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">%%modelName%% {{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
+                    <div class="card-header">proyecto {{ $proyecto->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                        <a href="{{ url('/proyecto') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
+                        <a href="{{ url('/proyecto/' . $proyecto->id . '/edit') }}" title="Edit proyecto"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['%%routeGroup%%%%crudName%%', $%%crudNameSingular%%->%%primaryKey%%],
+                            'url' => ['proyecto', $proyecto->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Borrar', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm',
-                                    'title' => 'Borrar %%modelName%%',
+                                    'title' => 'Borrar proyecto',
                                     'onclick'=>'return confirm("Confirma Borrar?")'
                             ))!!}
                         {!! Form::close() !!}
@@ -31,9 +31,9 @@
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $%%crudNameSingular%%->%%primaryKey%% }}</td>
+                                        <th>ID</th><td>{{ $proyecto->id }}</td>
                                     </tr>
-                                    %%formBodyHtmlForShowView%%
+                                    <tr><th> Name </th><td> {{ $proyecto->name }} </td></tr><tr><th> Descripcion </th><td> {{ $proyecto->descripcion }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -7,13 +7,13 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">%%crudNameCap%%</div>
+                    <div class="card-header">Proyecto</div>
                     <div class="card-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/create') }}" class="btn btn-success btn-sm" title="Nuevo %%modelName%%">
+                        <a href="{{ url('/proyecto/create') }}" class="btn btn-success btn-sm" title="Nuevo proyecto">
                             <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/%%routeGroup%%%%viewName%%', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/proyecto', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                             <span class="input-group-append">
@@ -30,26 +30,26 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th>%%formHeadingHtml%%<th>@lang('fo.Actions')</th>
+                                        <th>#</th><th>Name</th><th>Descripcion</th><th>@lang('fo.Actions')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($%%crudName%% as $item)
+                                @foreach($proyecto as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->%%primaryKey%% }}</td>
-                                        %%formBodyHtml%%
+                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                        <td>{{ $item->name }}</td><td>{{ $item->descripcion }}</td>
                                         <td>
-                                            <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%%) }}" title="Ver %%modelName%%"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                            <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                            <a href="{{ url('/proyecto/' . $item->id) }}" title="Ver proyecto"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/proyecto/' . $item->id . '/edit') }}" title="Edit proyecto"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/%%routeGroup%%%%viewName%%', $item->%%primaryKey%%],
+                                                'url' => ['/proyecto', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Borrar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-sm',
-                                                        'title' => 'Delete %%modelName%%',
+                                                        'title' => 'Delete proyecto',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
@@ -58,7 +58,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $%%crudName%%->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $proyecto->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

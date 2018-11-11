@@ -3,6 +3,7 @@
 namespace app;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -17,24 +18,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Proyecto extends Model
 {
+    use SoftDeletes;
     /**
      * @var array
      */
     protected $fillable = ['name', 'descripcion', 'decoracion', 'tipo', 'created_at', 'updated_at', 'deleted_at'];
 
-    /**
-     * The storage format of the model's date columns.
-     * 
-     * @var string
-     */
-    protected $dateFormat = 'U';
-
-    /**
-     * The connection name for the model.
-     * 
-     * @var string
-     */
-    protected $connection = 'mysql';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
