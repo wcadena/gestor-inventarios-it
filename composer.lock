@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deec2fec87b5f779afd885e9f3b10906",
+    "content-hash": "949eb85679b815b03d118a624b2f35ea",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -5710,6 +5710,62 @@
                 "UUID RFC4122"
             ],
             "time": "2017-09-03T23:32:05+00:00"
+        },
+        {
+            "name": "wuwx/laravel-autonumber",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wuwx/laravel-autonumber.git",
+                "reference": "a2ef3c0b0c79b0c0da7eb3f5c14973cea816962a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wuwx/laravel-autonumber/zipball/a2ef3c0b0c79b0c0da7eb3f5c14973cea816962a",
+                "reference": "a2ef3c0b0c79b0c0da7eb3f5c14973cea816962a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^5.1|^5.2|^5.3|^5.4",
+                "illuminate/database": "^5.1|^5.2|^5.3|^5.4",
+                "illuminate/support": "^5.1|^5.2|^5.3|^5.4",
+                "php": ">=5.6.4 || ^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Wuwx\\LaravelAutoNumber\\AutoNumberServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wuwx\\LaravelAutoNumber\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wu Weixin",
+                    "email": "wuweixin@gmail.com"
+                },
+                {
+                    "name": "Alfa Adhitya",
+                    "email": "alfa2159@gmail.com"
+                }
+            ],
+            "description": "Laravel package to create autonumber for Eloquent model",
+            "homepage": "https://github.com/wuwx/laravel-autonumber",
+            "keywords": [
+                "autonumber",
+                "eloquent",
+                "laravel"
+            ],
+            "time": "2018-11-06T00:36:39+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

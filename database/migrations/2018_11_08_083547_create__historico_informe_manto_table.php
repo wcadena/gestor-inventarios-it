@@ -13,7 +13,7 @@ class CreateHistoricoInformeMantoTable extends Migration
      */
     public function up()
     {
-        Schema::create('informe_manto_historico', function (Blueprint $table) {
+        Schema::create('informe_manto_historicos', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('user_id')->unsigned();
@@ -45,6 +45,6 @@ class CreateHistoricoInformeMantoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyecto_seccions');
+        Schema::dropIfExists('informe_manto_historicos');
     }
 }

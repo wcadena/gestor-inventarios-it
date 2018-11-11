@@ -33,6 +33,7 @@
         "spatie/laravel-menu": "^3.2",
         "vinkla/pusher": "^3.1",
         "webpatser/laravel-uuid": "^3.0",
+        "wuwx/laravel-autonumber": "^2.0",
         "zizaco/entrust": "^1.9"
     },
     "require-dev": {
