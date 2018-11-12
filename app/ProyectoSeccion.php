@@ -3,6 +3,7 @@
 namespace app;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @property int $id
@@ -55,4 +56,35 @@ class ProyectoSeccion extends Model
     {
         return $this->hasMany('app\InformeProyectosSeccion');
     }
+    /**
+     * Scope a query Proyectos
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeProyectoId($query,$proyecto_id)
+    {
+        return $query->where('proyecto_id', '=', $proyecto_id);
+    }
+
+    /**
+     * para dar el enum
+     *  `tipo` enum('titulo','seccion')
+     *   `principal` enum('si','no')
+     * @param $tabla
+     * @return array
+     */
+    public static function getENUM($tabla)
+    {
+        $type = DB::select(DB::raw("SHOW COLUMNS FROM proyecto_seccions WHERE Field = '".$tabla."'"))[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $enum = [];
+        foreach (explode(',', $matches[1]) as $value) {
+            $v = trim($value, "'");
+            $enum = array_add($enum, $v, $v);
+        }
+
+        return $enum;
+    }
+
 }

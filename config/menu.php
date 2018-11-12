@@ -59,7 +59,7 @@ Menu::macro('sidebar', function () {
         ->url('home', "<i class='glyphicon glyphicon-home'></i> <span>".trans('home.men1')."</span>")
         ->url('equipos', "<i class='glyphicon glyphicon-print'></i> <span>".trans('home.men2')."</span>")
         ->url('custodio', "<i class='glyphicon glyphicon-user'></i> <span>".trans('home.men3')."</span>")
-        ->url('proyecto', "<i class='glyphicon glyphicon-user'></i> <span>".trans('Proyectos')."</span>")
+        ->url('proyecto', "<i class='glyphicon glyphicon-book'></i> <span>".trans('Proyectos')."</span>")
         ->addIf(str_contains(Auth::getUser()->rol, ['planta_fisica','system']),Link::toUrl('ubicacion', "<i class='glyphicon glyphicon-wrench'></i> <span>".trans('Ubicaciones')."</span>"))
         ->addIf(str_contains(Auth::getUser()->rol, ['planta_fisica','system']),Link::toUrl('puesto', "<i class='glyphicon glyphicon-pushpin'></i> <span>".trans('Puestos')."</span>"))
         ->addIf(str_contains(Auth::getUser()->rol, ['planta_fisica','system']),Link::toUrl('informes', "<i class='glyphicon glyphicon-eye-open'></i> <span>".trans('Informes')."</span>"))

@@ -292,3 +292,7 @@ Route::resource('empresa', 'EmpresaController');
 Route::resource('proyecto', 'ProyectoController');
 //php artisan crud:controller ProyectoController --crud-name=proyecto --model-name=Proyecto --view-path="directory"
 //php artisan crud:view proyecto --fields="name#string; descripcion#text" --view-path="directory" --form-helper=laravelcollective
+
+Route::resource('proyecto/{proyecto_id}/proyecto_seccion', 'ProyectoSeccionController');
+//php artisan crud:controller ProyectoSeccionController --crud-name=proyecto_seccion --model-name=ProyectoSeccion --view-path="directory"
+//php artisan crud:view proyecto_seccion --fields="proyecto_id#integer; name#string; descripcion#text;tipo#select#options={"titulo": "Titulo", "seccion": "Seccion"};orden#integer" --view-path="directory"  	 	--form-helper=laravelcollective
