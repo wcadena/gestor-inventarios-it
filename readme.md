@@ -1,7 +1,7 @@
 # Sistema de Gestión de Inventarios de Activos Fijos con Laravel 5.5
 
-Sistema de gestión de inventarios de Activos Fijos con Laravel 5.5 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
-Si necesitas una demostracion escribe a wcadena@outlook.com, antes te invito a que veas la parte del wiki que aumente:
+Sistema de gestión de inventarios de Activos Fijos con Laravel 5.7 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
+Si necesitas una demostracion escribe a wcadena@outlook.com, antes te invito a que veas la parte del wiki que aumenté:
 [Instalación](https://github.com/wcadena/inventarioFinalApp/wiki/Instalaci%C3%B3n)
 
 ## Modulos existentes
@@ -25,7 +25,7 @@ Administra los activos , CRUD de activos
 Administra los modelos
 
 ### Movimiento
-
+Administra Movimiento de Activos.
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
