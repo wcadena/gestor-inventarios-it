@@ -1,12 +1,29 @@
 {
-    "name": "laravel/laravel",
+    "name": "wcadena/gestorInventarios",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Gestor de Inventarios de area de Sistemas.",
+    "homepage": "https://ecuatask.com/",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "css",
+        "js",
+        "less",
+        "responsive",
+        "back-end",
+        "web",
+        "admin"
     ],
-    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wagner Alexander Cadena Lastra",
+            "email": "wcadena@outlook.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/wcadena/inventarioFinalApp/issues"
+    },
+    "license": "EPL-1.0",
     "require": {
         "php": "^7.1.3",
         "acacha/admin-lte-template-laravel": "^6.0",
