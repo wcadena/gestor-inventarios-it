@@ -240,11 +240,11 @@ return [
          * para el setup
          */
         RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
-        /**
+        /*
          * para las ordenes tengan un autonumber o un secuencial autonumerico
          */
         Wuwx\LaravelAutoNumber\AutoNumberServiceProvider::class,
-        /**
+        /*
          * para generar GeneratorServiceProvider el modelador de base de datos
          */
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,

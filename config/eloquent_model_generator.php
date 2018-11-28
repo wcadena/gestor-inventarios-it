@@ -9,9 +9,8 @@ return [
         'date_format'     => 'U',
         'connection'      => 'mysql',
         'backup'          => true,
-        'db_types' => [
+        'db_types'        => [
             'enum' => 'string',
         ],
     ],
 ];
-

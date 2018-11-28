@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Proyecto;
 use Illuminate\Http\Request;
 
@@ -48,9 +45,8 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        
         $requestData = $request->all();
-        
+
         Proyecto::create($requestData);
 
         return redirect('proyecto')->with('flash_message', 'Proyecto added!');
@@ -59,7 +55,7 @@ class ProyectoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -73,7 +69,7 @@ class ProyectoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -88,15 +84,14 @@ class ProyectoController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param int                      $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        
         $requestData = $request->all();
-        
+
         $proyecto = Proyecto::findOrFail($id);
         $proyecto->update($requestData);
 
@@ -106,7 +101,7 @@ class ProyectoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
