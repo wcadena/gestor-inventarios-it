@@ -45,15 +45,13 @@ class ReporteController extends Controller
 
     public function excelEstaciones($estacione_id)
     {
-
-
         Session::flash('flash_estacione_id', $estacione_id);
+
         return Excel::download(new EquiposExport(), 'EquiposExport_data.xlsx');
     }
 
     public function excel()
     {
-
         return Excel::download(new Equipos2Export(), 'EquiposExport_total.xlsx');
     }
 

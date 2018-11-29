@@ -10,7 +10,7 @@ use Wuwx\LaravelAutoNumber\AutoNumberTrait;
 class InformeMantenimientoPreventivo extends Model
 {
     use SoftDeletes;
-    use AutoNumberTrait;//para autonumerico
+    use AutoNumberTrait; //para autonumerico
 
     public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;
     protected $table = 'informe_manto_prevs';
@@ -34,8 +34,8 @@ class InformeMantenimientoPreventivo extends Model
         return [
             'no_orden' => [
                 'format' => Auth::user()->empresa.'.?', // autonumber format. '?' will be replaced with the generated number.
-                'length' => 5 // The number of digits in an autonumber
-            ]
+                'length' => 5, // The number of digits in an autonumber
+            ],
         ];
     }
 

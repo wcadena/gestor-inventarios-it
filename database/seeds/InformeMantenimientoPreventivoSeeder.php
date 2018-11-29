@@ -20,136 +20,136 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
         }
         if (App\Proyecto::where('name', '=', 'Sitio Web')->first() == null) {
             \Illuminate\Support\Facades\DB::table('proyectos')->insert([
-                'name'          => 'Sitio Web',
+                'name'                     => 'Sitio Web',
                 'descripcion'              => 'Sitio Web la la la',
-                'decoracion'    => '',
-                'tipo'              => 'lista',//lista por el momento debe ser el standard
+                'decoracion'               => '',
+                'tipo'                     => 'lista', //lista por el momento debe ser el standard
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Sitio Web')->first()->id,
-                'name'              => 'Nueva funcionalidad Web y Mobil',
-                'descripcion'    => '',
-                'tipo'              => 'titulo',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 1,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Nueva funcionalidad Web y Mobil',
+                'descripcion'          => '',
+                'tipo'                 => 'titulo', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 1,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Sitio Web')->first()->id,
-                'name'              => 'Urgente',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 2,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Urgente',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 2,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Sitio Web')->first()->id,
-                'name'              => 'Medio',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 3,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Medio',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 3,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Sitio Web')->first()->id,
-                'name'              => 'Bajo',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 4,
-                'principal' => 'si',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Bajo',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 4,
+                'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
         }
 
         if (App\Proyecto::where('name', '=', 'Soporte IT')->first() == null) {
             \Illuminate\Support\Facades\DB::table('proyectos')->insert([
-                'name'          => 'Soporte IT',
+                'name'                     => 'Soporte IT',
                 'descripcion'              => 'Soporte IT bla bla bla',
-                'decoracion'    => '',
-                'tipo'              => 'lista',//lista por el momento debe ser el standard
+                'decoracion'               => '',
+                'tipo'                     => 'lista', //lista por el momento debe ser el standard
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Soporte IT')->first()->id,
-                'name'              => 'Urgente',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 1,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Urgente',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 1,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Soporte IT')->first()->id,
-                'name'              => 'Medio',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 2,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Medio',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 2,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Soporte IT')->first()->id,
-                'name'              => 'Bajo',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 3,
-                'principal' => 'si',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Bajo',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 3,
+                'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
         }
 
         if (App\Proyecto::where('name', '=', 'Desarrollo')->first() == null) {
             \Illuminate\Support\Facades\DB::table('proyectos')->insert([
-                'name'          => 'Desarrollo',
+                'name'                     => 'Desarrollo',
                 'descripcion'              => 'Desarrollo IT bla bla bla',
-                'decoracion'    => '',
-                'tipo'              => 'lista',//lista por el momento debe ser el standard
+                'decoracion'               => '',
+                'tipo'                     => 'lista', //lista por el momento debe ser el standard
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-                'name'              => 'Backlog',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 1,
-                'principal' => 'si',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Backlog',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 1,
+                'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-                'name'              => 'To do',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 2,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'To do',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 2,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-                'name'              => 'In Progress',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 3,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'In Progress',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 3,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-                'name'              => 'QA',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 4,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'QA',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 4,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
                 'proyecto_id'          => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-                'name'              => 'Done',
-                'descripcion'    => '',
-                'tipo'              => 'seccion',//es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-                'orden' => 5,
-                'principal' => 'no',//solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'name'                 => 'Done',
+                'descripcion'          => '',
+                'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
+                'orden'                => 5,
+                'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
             ]);
         }
 

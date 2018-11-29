@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProyectoInformeMantoTable extends Migration
 {
@@ -22,7 +22,7 @@ class CreateProyectoInformeMantoTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('name');
-            $table->string('descripcion');//un lugar para poner mucho mas texto sobre el proyecto
+            $table->string('descripcion'); //un lugar para poner mucho mas texto sobre el proyecto
             $table->string('decoracion');
             $table->enum('tipo', ['titulo', 'seccion'])->default('seccion');
             $table->integer('orden');

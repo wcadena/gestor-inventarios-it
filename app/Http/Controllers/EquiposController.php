@@ -363,16 +363,15 @@ class EquiposController extends Controller
             'custodio_id'  => 'required',
         ]);
         $CUSTODIO_BODEGA = Configuracion::Config('CUSTODIO_BODEGA');
-        if(is_null(Custodios::find($CUSTODIO_BODEGA))){
+        if (is_null(Custodios::find($CUSTODIO_BODEGA))) {
             $message = Lang::get('message.notifica_custodio_bodega_error');
             /* This works and the form is filled with the correct data after it  redirects me back */
-            return Redirect::back()->withErrors(array('CUSTODIO_BODEGA' => $message))->withSettings($request->all());
+            return Redirect::back()->withErrors(['CUSTODIO_BODEGA' => $message])->withSettings($request->all());
         }
         $equipos = $request->input('equipoidfull');
         $nuevo_custodio = $request->input('custodio_id');
         $obj_custodio = Custodios::findOrFail($nuevo_custodio);
         $nombre_responsable2 = $obj_custodio->nombre_responsable;
-
 
         try {
             DB::beginTransaction();

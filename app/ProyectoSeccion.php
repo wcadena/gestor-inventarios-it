@@ -29,14 +29,14 @@ class ProyectoSeccion extends Model
 
     /**
      * The storage format of the model's date columns.
-     * 
+     *
      * @var string
      */
     protected $dateFormat = 'U';
 
     /**
      * The connection name for the model.
-     * 
+     *
      * @var string
      */
     protected $connection = 'mysql';
@@ -56,13 +56,15 @@ class ProyectoSeccion extends Model
     {
         return $this->hasMany('app\InformeProyectosSeccion');
     }
+
     /**
-     * Scope a query Proyectos
+     * Scope a query Proyectos.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeProyectoId($query,$proyecto_id)
+    public function scopeProyectoId($query, $proyecto_id)
     {
         return $query->where('proyecto_id', '=', $proyecto_id);
     }
@@ -70,8 +72,10 @@ class ProyectoSeccion extends Model
     /**
      * para dar el enum
      *  `tipo` enum('titulo','seccion')
-     *   `principal` enum('si','no')
+     *   `principal` enum('si','no').
+     *
      * @param $tabla
+     *
      * @return array
      */
     public static function getENUM($tabla)
@@ -86,5 +90,4 @@ class ProyectoSeccion extends Model
 
         return $enum;
     }
-
 }
