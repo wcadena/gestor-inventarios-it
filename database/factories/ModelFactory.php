@@ -26,5 +26,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
         'empresa'            => 'Avianca EC',
+        'token'              => App\User::generarVerificationToken(),
+        'verification_token' => App\User::generarVerificationToken(),
+        'verified'           => App\User::USUARIO_VERIFICADO,
     ];
 });
