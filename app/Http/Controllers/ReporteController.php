@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Equipos;
+use App\Exports\Equipos2Export;
+use App\Exports\EquiposExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -44,28 +46,15 @@ class ReporteController extends Controller
     public function excelEstaciones($estacione_id)
     {
 
-        //return view('directory.reporte.repo1excel', compact('equipos'));
-        Session::flash('flash_estacione_id', $estacione_id);
 
-        Excel::create('Reporte_por_estaciones', function ($excel) {
-            $excel->sheet('Maquinas', function ($sheet) {
-                $equipos = Equipos::where('estacione_id', Session::get('flash_estacione_id'))->get();
-                $sheet->loadView('directory.reporte.repo1excel', compact('equipos'));
-            });
-        })->download('xls');
+        Session::flash('flash_estacione_id', $estacione_id);
+        return Excel::download(new EquiposExport(), 'EquiposExport_data.xlsx');
     }
 
     public function excel()
     {
 
-        //return view('directory.reporte.repo1excel', compact('equipos'));
-
-        Excel::create('Reporte_Total', function ($excel) {
-            $excel->sheet('Maquinas', function ($sheet) {
-                $equipos = Equipos::get();
-                $sheet->loadView('directory.reporte.repo1excel', compact('equipos'));
-            });
-        })->download('xls');
+        return Excel::download(new Equipos2Export(), 'EquiposExport_total.xlsx');
     }
 
     /**
