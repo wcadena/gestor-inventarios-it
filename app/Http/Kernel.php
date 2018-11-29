@@ -55,7 +55,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'               => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth'               => \App\Http\Middleware\Authenticate::class,
         'auth.basic'         => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings'           => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can'                => \Illuminate\Auth\Middleware\Authorize::class,
@@ -76,5 +76,21 @@ class Kernel extends HttpKernel
         'role'       => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability'    => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+    ];
+
+    /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Authenticate::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
     ];
 }

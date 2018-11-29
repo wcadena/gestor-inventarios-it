@@ -9,4 +9,5 @@ return [
     'notifica_correo'                    => 'Notificacion de Cambio de Equipos de activos fijos',
     'notifica_correo_line1'              => 'Se a realizado un cambio de Equipo en el sistema de activos fijos.',
     'notifica_correo_fin'                => 'Revice el correo adjunto de los equipos asignado a usted.',
+    'notifica_custodio_bodega_error'     => 'Error, el custodio de la bodega por defecto no existe, por favor revisar el valor por defecto de ID custodio.',
 ];

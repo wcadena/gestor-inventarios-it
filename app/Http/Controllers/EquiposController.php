@@ -22,6 +22,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\ImageManagerStatic as Image;
 use League\Flysystem\Exception;
@@ -360,11 +362,17 @@ class EquiposController extends Controller
             'equipoidfull' => 'required',
             'custodio_id'  => 'required',
         ]);
+        $CUSTODIO_BODEGA = Configuracion::Config('CUSTODIO_BODEGA');
+        if(is_null(Custodios::find($CUSTODIO_BODEGA))){
+            $message = Lang::get('message.notifica_custodio_bodega_error');
+            /* This works and the form is filled with the correct data after it  redirects me back */
+            return Redirect::back()->withErrors(array('CUSTODIO_BODEGA' => $message))->withSettings($request->all());
+        }
         $equipos = $request->input('equipoidfull');
         $nuevo_custodio = $request->input('custodio_id');
         $obj_custodio = Custodios::findOrFail($nuevo_custodio);
         $nombre_responsable2 = $obj_custodio->nombre_responsable;
-        $CUSTODIO_BODEGA = Configuracion::Config('CUSTODIO_BODEGA');
+
 
         try {
             DB::beginTransaction();
