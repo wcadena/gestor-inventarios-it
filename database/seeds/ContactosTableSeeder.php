@@ -33,7 +33,7 @@ class ContactosTableSeeder extends Seeder
 
         factory(App\Equipos::class, 250)->create();
         factory(App\User::class, 1)->create();
-        $custodio = App\Configuracion::where('empresa', '=', 'Avianca EC')->where('atributo','=','CUSTODIO_BODEGA')->first();
+        $custodio = App\Configuracion::where('empresa', '=', 'Avianca EC')->where('atributo', '=', 'CUSTODIO_BODEGA')->first();
         $custodio->valor = App\Custodios::inRandomOrder()->first()->id;
         $custodio->save();
     }
