@@ -1,3 +1,4 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/wcadena/inventarioFinalApp?branch=master)](https://bettercodehub.com/)
 # Sistema de Gestión de Inventarios de Activos Fijos con Laravel 5.7
 
 Sistema de gestión de inventarios de Activos Fijos con Laravel 5.7 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
