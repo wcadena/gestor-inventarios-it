@@ -18,6 +18,7 @@ class AlterTableChklisOpcheck extends Migration
 
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {
             $table->string('valor1', 255)->nullable()->change();
             $table->string('valor2', 255)->nullable()->change();

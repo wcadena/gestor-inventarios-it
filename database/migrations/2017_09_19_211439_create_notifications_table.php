@@ -13,6 +13,7 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('notifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('type');

@@ -18,12 +18,14 @@ class AddEmpresaUsuariosTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('users', function (Blueprint $table) {
             $table->string('empresa');
         });
 
         $affected = DB::update('update users set empresa = ?', ['Avianca Ec']);
 
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('empresa')->references('empresa')->on('empresas');
         });

@@ -13,6 +13,7 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('queue');

@@ -18,6 +18,7 @@ class AddCorreosNotificacionCustodiosTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('custodios', function (Blueprint $table) {
             $table->string('email')->nullable();
             $table->integer('notificado')->default(0)->nullable()->unsigned();

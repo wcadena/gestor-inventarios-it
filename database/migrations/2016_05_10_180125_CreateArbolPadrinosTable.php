@@ -12,6 +12,7 @@ class CreateArbolPadrinosTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('arbol__padrinos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();

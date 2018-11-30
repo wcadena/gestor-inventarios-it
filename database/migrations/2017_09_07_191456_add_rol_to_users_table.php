@@ -18,6 +18,7 @@ class AddRolToUsersTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('users', function (Blueprint $table) {
             //$table->enum('rol', ['usuario','administrador','system','encargado_activos_fijos','registrado'])->change();
             DB::statement("ALTER TABLE `users` CHANGE `rol` `rol` ENUM('usuario','administrador','system','encargado_activos_fijos','registrado') CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;");

@@ -13,6 +13,7 @@ class CreateOAuthAppsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('o_auth_apps', function (Blueprint $table) {
             $table->string('id', 100)->primary();
             $table->string('token_secret', 100)->nullable();

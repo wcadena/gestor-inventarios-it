@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use ReflectionException;
 use Tests\TestCase;
@@ -22,6 +23,10 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        ///////////////////////////////////////////////////////////////
+        $path = base_path('utils'.DIRECTORY_SEPARATOR.'inventario.sql');
+        DB::unprepared(file_get_contents($path));
+
         App::setLocale('en');
     }
 

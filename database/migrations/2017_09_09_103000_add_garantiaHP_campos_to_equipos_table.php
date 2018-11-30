@@ -18,6 +18,7 @@ class AddGarantiaHPCamposToEquiposTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('equipos', function (Blueprint $table) {
             $table->string('hp_warrantyLevel')->nullable();
             $table->string('hp_endDate')->nullable();

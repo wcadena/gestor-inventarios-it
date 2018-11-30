@@ -12,6 +12,7 @@ class AumentarcampoidentificadorChecklist extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('check_lists', function (Blueprint $table) {
             $table->string('id_check_lists');
             $table->uuid('unik_check_lists');

@@ -12,6 +12,7 @@ class CreateCustodiosTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('custodios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pais');

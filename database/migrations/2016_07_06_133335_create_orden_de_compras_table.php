@@ -12,6 +12,7 @@ class CreateOrdenDeComprasTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('orden_de_compras', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ordenCompra');

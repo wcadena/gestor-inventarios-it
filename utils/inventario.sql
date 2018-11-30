@@ -600,7 +600,7 @@ CREATE TABLE `notifications` (
 --
 -- Estructura de tabla para la tabla `oauth_access_tokens`
 --
-
+/*
 CREATE TABLE `oauth_access_tokens` (
   `id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -694,7 +694,7 @@ CREATE TABLE `oauth_refresh_tokens` (
 --
 -- Volcado de datos para la tabla `oauth_refresh_tokens`
 --
-
+*/
 
 -- --------------------------------------------------------
 
@@ -1143,7 +1143,7 @@ ALTER TABLE `motivos__denuncias`
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
   ADD KEY `notifications_notifiable_id_notifiable_type_index` (`notifiable_id`,`notifiable_type`);
-
+/*
 --
 -- Indices de la tabla `oauth_access_tokens`
 --
@@ -1177,7 +1177,7 @@ ALTER TABLE `oauth_personal_access_clients`
 ALTER TABLE `oauth_refresh_tokens`
   ADD PRIMARY KEY (`id`),
   ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
-
+*/
 --
 -- Indices de la tabla `opciones_check_lists`
 --

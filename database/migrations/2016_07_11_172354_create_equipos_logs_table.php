@@ -12,6 +12,7 @@ class CreateEquiposLogsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('equipos_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_equipos')->unsigned();

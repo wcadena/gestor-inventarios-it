@@ -12,6 +12,7 @@ class CreateCheckListsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('check_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('area_id')->unsigned();

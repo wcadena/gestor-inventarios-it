@@ -12,6 +12,7 @@ class CreateInformeMantenimientoPreventivoCategoriasTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('informe_manto_prev_cates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('categoria');

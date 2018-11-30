@@ -18,6 +18,7 @@ class AlterTableEquiposLogs extends Migration
 
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('equipos_logs', function (Blueprint $table) {
             //
             $table->string('ip', 255)->nullable()->change();

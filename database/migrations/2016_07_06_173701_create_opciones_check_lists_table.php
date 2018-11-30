@@ -12,6 +12,7 @@ class CreateOpcionesCheckListsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('opciones_check_lists', function (Blueprint $table) {
             $table->increments('id');
             ////////////////

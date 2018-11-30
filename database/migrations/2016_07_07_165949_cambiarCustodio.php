@@ -12,6 +12,7 @@ class CambiarCustodio extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('custodios', function (Blueprint $table) {
             $table->string('nombre_responsable');
             $table->string('area_piso');

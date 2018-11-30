@@ -13,11 +13,13 @@ class AddEmpresConfigurationAreasTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('configuracions', function (Blueprint $table) {
             $table->string('empresa');
         });
         $affected = DB::update('update configuracions set empresa = ?', ['Avianca Ec']);
 
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('configuracions', function (Blueprint $table) {
             $table->foreign('empresa')->references('empresa')->on('empresas');
         });

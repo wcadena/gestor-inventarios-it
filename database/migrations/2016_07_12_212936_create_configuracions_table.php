@@ -12,6 +12,7 @@ class CreateConfiguracionsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('configuracions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('atributo');

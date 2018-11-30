@@ -12,6 +12,7 @@ class CreateArbolsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('arbols', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_comun');

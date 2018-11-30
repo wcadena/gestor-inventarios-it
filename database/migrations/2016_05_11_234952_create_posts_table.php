@@ -12,6 +12,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_comun');

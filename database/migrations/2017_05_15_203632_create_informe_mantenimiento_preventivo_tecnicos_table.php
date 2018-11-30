@@ -12,6 +12,7 @@ class CreateInformeMantenimientoPreventivoTecnicosTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('informe_manto_prev_tecs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();

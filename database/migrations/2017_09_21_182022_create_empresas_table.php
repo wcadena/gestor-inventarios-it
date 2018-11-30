@@ -13,14 +13,17 @@ class CreateEmpresasTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('empresas', function (Blueprint $table) {
             $table->string('empresa')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
-        $e = new \App\Empresa();
-        $e->empresa = 'Avianca EC';
-        $e->save();
+        if(env('DB_MIGRACIONES', 'false')=='false'){
+            $e = new \App\Empresa();
+            $e->empresa = 'Avianca EC';
+            $e->save();
+        }
     }
 
     /**

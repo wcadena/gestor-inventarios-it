@@ -12,6 +12,7 @@ class CreateBitacorasTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('bitacoras', function (Blueprint $table) {
             $table->increments('id');
 

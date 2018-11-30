@@ -12,6 +12,7 @@ class CreateModeloEquiposTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('modelo_equipos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('modelo');

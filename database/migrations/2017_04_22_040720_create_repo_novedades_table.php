@@ -12,6 +12,7 @@ class CreateRepoNovedadesTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::create('repo_novedades', function (Blueprint $table) {
             $table->increments('id');
 

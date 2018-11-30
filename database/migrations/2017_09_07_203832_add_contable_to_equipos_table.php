@@ -18,6 +18,7 @@ class AddContableToEquiposTable extends Migration
      */
     public function up()
     {
+        if(env('DB_MIGRACIONES', 'false')=='false')
         Schema::table('equipos', function (Blueprint $table) {
             $table->string('codigo_contable')->nullable();
         });
