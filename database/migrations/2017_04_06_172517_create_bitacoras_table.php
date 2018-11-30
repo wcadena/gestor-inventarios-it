@@ -12,30 +12,31 @@ class CreateBitacorasTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::create('bitacoras', function (Blueprint $table) {
-            $table->increments('id');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('bitacoras', function (Blueprint $table) {
+                $table->increments('id');
 
-            $table->integer('id_equipos')->unsigned();
-            $table->foreign('id_equipos')->references('id')->on('equipos');
+                $table->integer('id_equipos')->unsigned();
+                $table->foreign('id_equipos')->references('id')->on('equipos');
 
-            $table->string('titulo');
-            $table->date('fecha_ingreso');
+                $table->string('titulo');
+                $table->date('fecha_ingreso');
 
-            $table->integer('custodio_id')->unsigned();
-            $table->foreign('custodio_id')->references('id')->on('custodios');
+                $table->integer('custodio_id')->unsigned();
+                $table->foreign('custodio_id')->references('id')->on('custodios');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+                $table->integer('user_id')->unsigned();
+                $table->foreign('user_id')->references('id')->on('users');
 
-            $table->string('problema');
-            $table->string('solucion');
+                $table->string('problema');
+                $table->string('solucion');
 
-            $table->enum('estado', ['enviado', 'recibido', 'en_reparacion', 'espera_repuesto', 'reparado', 'para_dar_baja', 'en_garantía']);
+                $table->enum('estado', ['enviado', 'recibido', 'en_reparacion', 'espera_repuesto', 'reparado', 'para_dar_baja', 'en_garantía']);
 
-            $table->timestamps();
-            $table->softDeletes();
-        });
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

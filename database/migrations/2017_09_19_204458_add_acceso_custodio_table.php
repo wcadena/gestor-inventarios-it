@@ -13,19 +13,20 @@ class AddAccesoCustodioTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('custodios', function (Blueprint $table) {
-            $table->string('verification_token')->nullable();
-            $table->string('token')->nullable()->unique();
-            $table->integer('direccion_preferida')->default(1)->unsigned();
-            $table->string('longitud_1')->nullable();
-            $table->string('latitud_1')->nullable();
-            $table->string('longitud_2')->nullable();
-            $table->string('latitud_2')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('telefono_celular_notificacion')->nullable();
-            $table->string('slack_id')->nullable();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('custodios', function (Blueprint $table) {
+                $table->string('verification_token')->nullable();
+                $table->string('token')->nullable()->unique();
+                $table->integer('direccion_preferida')->default(1)->unsigned();
+                $table->string('longitud_1')->nullable();
+                $table->string('latitud_1')->nullable();
+                $table->string('longitud_2')->nullable();
+                $table->string('latitud_2')->nullable();
+                $table->string('whatsapp')->nullable();
+                $table->string('telefono_celular_notificacion')->nullable();
+                $table->string('slack_id')->nullable();
+            });
+        }
     }
 
     /**

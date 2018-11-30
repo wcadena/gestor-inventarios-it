@@ -13,7 +13,6 @@ class CreateProyectoInformeMantoTableU extends Migration
      */
     public function up()
     {
-
         Schema::create('informe_proyectos_seccions', function (Blueprint $table) {
             $table->increments('id');
 

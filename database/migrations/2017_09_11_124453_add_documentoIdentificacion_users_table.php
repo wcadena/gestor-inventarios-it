@@ -18,10 +18,11 @@ class AddDocumentoIdentificacionUsersTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('documentoIdentificacion')->nullable();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('documentoIdentificacion')->nullable();
+            });
+        }
     }
 
     /**

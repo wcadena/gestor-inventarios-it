@@ -18,11 +18,12 @@ class CambiarUbicacionTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('ubicacions', function (Blueprint $table) {
-            //
-            $table->integer('area_id')->unsigned()->nullable()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('ubicacions', function (Blueprint $table) {
+                //
+                $table->integer('area_id')->unsigned()->nullable()->change();
+            });
+        }
     }
 
     /**

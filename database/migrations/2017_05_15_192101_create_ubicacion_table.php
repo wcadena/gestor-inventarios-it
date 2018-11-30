@@ -12,24 +12,25 @@ class CreateUbicacionTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::create('ubicacions', function (Blueprint $table) {
-            $table->increments('id');
-            ////////////////
-            $table->integer('estacione_id')->unsigned();
-            $table->foreign('estacione_id')->references('id')->on('estaciones');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('ubicacions', function (Blueprint $table) {
+                $table->increments('id');
+                ////////////////
+                $table->integer('estacione_id')->unsigned();
+                $table->foreign('estacione_id')->references('id')->on('estaciones');
 
-            $table->string('edificio');
-            $table->string('piso');
-            ////////////////
-            $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('id')->on('areas');
+                $table->string('edificio');
+                $table->string('piso');
+                ////////////////
+                $table->integer('area_id')->unsigned();
+                $table->foreign('area_id')->references('id')->on('areas');
 
-            $table->string('imagen')->nullable();
+                $table->string('imagen')->nullable();
 
-            $table->timestamps();
-            $table->softDeletes();
-        });
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

@@ -12,21 +12,22 @@ class CreateCustodiosTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::create('custodios', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('pais');
-            $table->string('ciudad');
-            $table->string('direccion');
-            $table->string('area-piso');
-            $table->string('documentoIdentificacion');
-            $table->string('cargo');
-            $table->string('compania');
-            $table->string('telefono');
-            $table->enum('estado', ['ACTIVO', 'INACTIVO']);
-            $table->softDeletes();
-            $table->timestamps();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('custodios', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('pais');
+                $table->string('ciudad');
+                $table->string('direccion');
+                $table->string('area-piso');
+                $table->string('documentoIdentificacion');
+                $table->string('cargo');
+                $table->string('compania');
+                $table->string('telefono');
+                $table->enum('estado', ['ACTIVO', 'INACTIVO']);
+                $table->softDeletes();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
