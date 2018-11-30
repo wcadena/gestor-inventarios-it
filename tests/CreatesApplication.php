@@ -58,7 +58,7 @@ trait CreatesApplication
         }
 
         if (class_exists('Mockery')) {
-            Mockery::close();
+            \Mockery::close();
         }
 
         $this->afterApplicationCreatedCallbacks = [];
