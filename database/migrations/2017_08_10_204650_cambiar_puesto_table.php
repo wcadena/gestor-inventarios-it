@@ -18,11 +18,12 @@ class CambiarPuestoTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('puestos', function (Blueprint $table) {
-            //
-            $table->string('codigo')->unique()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('puestos', function (Blueprint $table) {
+                //
+                $table->string('codigo')->unique()->change();
+            });
+        }
     }
 
     /**

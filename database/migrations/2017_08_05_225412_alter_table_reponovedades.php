@@ -18,11 +18,12 @@ class AlterTableReponovedades extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('repo_novedades_detalles', function (Blueprint $table) {
-            //
-            $table->binary('imagen')->nullable()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('repo_novedades_detalles', function (Blueprint $table) {
+                //
+                $table->binary('imagen')->nullable()->change();
+            });
+        }
     }
 
     /**

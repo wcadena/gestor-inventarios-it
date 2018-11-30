@@ -12,12 +12,13 @@ class CreateEstacionesTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::create('estaciones', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('estacion');
-            $table->timestamps();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('estaciones', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('estacion');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

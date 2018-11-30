@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 /**
- * Class AdminUserSeeder
+ * Class AdminUserSeeder.
  */
 class AdminUserSeeder extends Seeder
 {

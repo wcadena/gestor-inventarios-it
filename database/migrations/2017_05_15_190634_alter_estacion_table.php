@@ -12,11 +12,12 @@ class AlterEstacionTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('estaciones', function (Blueprint $table) {
-            $table->enum('pais', ['ECUADOR', 'COLOMBIA', 'EL SALVADOR']);
-            $table->string('nombre_largo');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('estaciones', function (Blueprint $table) {
+                $table->enum('pais', ['ECUADOR', 'COLOMBIA', 'EL SALVADOR']);
+                $table->string('nombre_largo');
+            });
+        }
     }
 
     /**

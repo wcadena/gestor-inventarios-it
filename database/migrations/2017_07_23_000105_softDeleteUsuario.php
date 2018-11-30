@@ -13,11 +13,12 @@ class SoftDeleteUsuario extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

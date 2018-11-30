@@ -13,11 +13,12 @@ class AddVerificadoToUsersTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('verified')->default(\App\User::USUARIO_NO_VERIFICADO);
-            $table->string('verification_token')->nullable();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('verified')->default(\App\User::USUARIO_NO_VERIFICADO);
+                $table->string('verification_token')->nullable();
+            });
+        }
     }
 
     /**

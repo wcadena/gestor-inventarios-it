@@ -12,16 +12,17 @@ class CreateModeloEquiposTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::create('modelo_equipos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('modelo');
-            $table->string('fabricante');
-            $table->integer('garantia_anios');
-            $table->string('tipo_equipo');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('modelo_equipos', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('modelo');
+                $table->string('fabricante');
+                $table->integer('garantia_anios');
+                $table->string('tipo_equipo');
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
+        }
     }
 
     /**

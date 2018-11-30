@@ -13,17 +13,19 @@ class AddEmpresaAreasTable extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('areas', function (Blueprint $table) {
-            $table->string('empresa');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('areas', function (Blueprint $table) {
+                $table->string('empresa');
+            });
+        }
 
         $affected = DB::update('update areas set empresa = ?', ['Avianca Ec']);
 
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('areas', function (Blueprint $table) {
-            $table->foreign('empresa')->references('empresa')->on('empresas');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('areas', function (Blueprint $table) {
+                $table->foreign('empresa')->references('empresa')->on('empresas');
+            });
+        }
     }
 
     /**

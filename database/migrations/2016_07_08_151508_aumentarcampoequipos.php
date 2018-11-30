@@ -12,23 +12,24 @@ class Aumentarcampoequipos extends Migration
      */
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('equipos', function (Blueprint $table) {
-            /*$table->string('ard_cid');
-            $table->string('ard_office');
-            $table->string('ard_atid');
-            $table->string('atid_proprinter_asociado');
-            $table->string('cm');
-            $table->string('fm');
-            $table->string('sape');
-            $table->integer('equipo_id_impresora1')->unsigned()->nullable();
-            $table->integer('equipo_id_impresora2')->unsigned()->nullable();
-            $table->integer('equipo_id_equipo1')->unsigned()->nullable();
-            $table->integer('equipo_id_equipo2')->unsigned()->nullable();
-            $table->string('observaciones1');
-            $table->string('observaciones2');
-            //$table->foreign('equipo_id')->references('id')->on('equipos');*/
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('equipos', function (Blueprint $table) {
+                /*$table->string('ard_cid');
+                $table->string('ard_office');
+                $table->string('ard_atid');
+                $table->string('atid_proprinter_asociado');
+                $table->string('cm');
+                $table->string('fm');
+                $table->string('sape');
+                $table->integer('equipo_id_impresora1')->unsigned()->nullable();
+                $table->integer('equipo_id_impresora2')->unsigned()->nullable();
+                $table->integer('equipo_id_equipo1')->unsigned()->nullable();
+                $table->integer('equipo_id_equipo2')->unsigned()->nullable();
+                $table->string('observaciones1');
+                $table->string('observaciones2');
+                //$table->foreign('equipo_id')->references('id')->on('equipos');*/
+            });
+        }
     }
 
     /**

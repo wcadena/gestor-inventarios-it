@@ -18,10 +18,11 @@ class AlterTableBitacoras extends Migration
 
     public function up()
     {
-        if(env('DB_MIGRACIONES', 'false')=='false')
-        Schema::table('bitacoras', function (Blueprint $table) {
-            $table->string('solucion', 255)->nullable()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('bitacoras', function (Blueprint $table) {
+                $table->string('solucion', 255)->nullable()->change();
+            });
+        }
     }
 
     /**
