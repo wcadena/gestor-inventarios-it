@@ -23,10 +23,6 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        ///////////////////////////////////////////////////////////////
-        $path = base_path('utils'.DIRECTORY_SEPARATOR.'inventario.sql');
-        DB::unprepared(file_get_contents($path));
-
         App::setLocale('en');
     }
 
