@@ -5,6 +5,11 @@ language: php
 
 php:
   - '7.1'
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS inventarios_2;'
+  
+services:
+  - mysql
   
 before_script:
   - composer self-update
