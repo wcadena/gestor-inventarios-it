@@ -1,29 +1,19 @@
-os:
-  - linux
-
 language: php
 
 php:
-  - '7.1'
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS inventarios_2;'
+  - 5.6
 
-services:
-  - mysql
-  
 before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database inventario_test;'
   - composer self-update
   - composer install --no-interaction
-  - cp .env.travis .env
-#  - pear install pear/PHP_CodeSniffer
-#  - phpenv rehash
-#  - nvm install 7.7.1
-#  - npm install npm@latest -g
-#  - npm install -g jshint
-#  - npm install
-  
+  - php artisan migrate
+  - php artisan db:seed
+
 script:
-  - vendor/bin/phpunit --coverage-text
-#  - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
-#  - npm run production
-#  - jshint resources/assets/js/modules/*
+  - vendor/bin/phpunit
+  - codecov
+env:
+    global:
+        - CODECOV_TOKEN: 4b7c0b42-504a-4564-ba5d-d31c344d63ca
