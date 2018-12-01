@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
 
 trait CreatesApplication
@@ -18,9 +17,10 @@ trait CreatesApplication
     }
 
     private static $configurationApp = null;
-    public static function initialize(){
 
-        if(is_null(self::$configurationApp)){
+    public static function initialize()
+    {
+        if (is_null(self::$configurationApp)) {
             $app = require __DIR__.'/../bootstrap/app.php';
 
             //$app->loadEnvironmentFrom('.env.travis');
@@ -29,13 +29,14 @@ trait CreatesApplication
 
             if (config('database.default') == 'sqlite') {
                 $db = app()->make('db');
-                $db->connection()->getPdo()->exec("pragma foreign_keys=1");
+                $db->connection()->getPdo()->exec('pragma foreign_keys=1');
             }
 
             Artisan::call('migrate');
             //Artisan::call('db:seed');
 
             self::$configurationApp = $app;
+
             return $app;
         }
 
@@ -48,7 +49,6 @@ trait CreatesApplication
             foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
                 call_user_func($callback);
             }
-
         }
 
         $this->setUpHasRun = false;
