@@ -169,9 +169,11 @@ class AcachaAdminLTELaravelTest extends TestCase
             'terms'                 => 'true',
             'password'              => 'passw0RD',
             'password_confirmation' => 'passw0RD',
+            'first_name'            => 'Marcowww',
+            'last_name'             => 'Salad',
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(422);
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Sergi Tur Badenas',
@@ -234,7 +236,7 @@ class AcachaAdminLTELaravelTest extends TestCase
         ]);
 
         $response->assertStatus(422)->assertJson([
-            'email' => 'These credentials do not match our records.',
+            'email' => 'Estas credenciales no coinciden con nuestros registros.',
         ]);
     }
 
@@ -251,8 +253,8 @@ class AcachaAdminLTELaravelTest extends TestCase
         ]);
 
         $response->assertStatus(422)->assertJson([
-            'email'    => ['The email field is required.'],
-            'password' => ['The password field is required.'],
+            'email'    => ['El email es necesario como campo.'],
+            'password' => ['El password es necesario como campo.'],
         ]);
     }
 
