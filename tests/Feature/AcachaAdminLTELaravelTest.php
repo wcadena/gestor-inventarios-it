@@ -167,6 +167,7 @@ class AcachaAdminLTELaravelTest extends TestCase
             'name'                  => 'Sergi Tur Badenas',
             'email'                 => 'sergiturbadenas@gmail.com',
             'terms'                 => 'true',
+            'username'              => 'msalad',
             'password'              => 'passw0RD',
             'password_confirmation' => 'passw0RD',
             'first_name'            => 'Marcowww',
