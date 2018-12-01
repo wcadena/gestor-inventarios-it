@@ -84,7 +84,7 @@ return [
         'testing' => [
             'driver'         => 'mysql',
             'host'           => env('DB_TEST_HOST', 'localhost'),
-            'database'       => env('DB_TEST_DATABASE', 'inventario_test'),
+            'database'       => env('DB_TEST_DATABASE', 'inventarios_2'),
             'username'       => env('DB_TEST_USERNAME', 'homestead'),
             'password'       => env('DB_TEST_PASSWORD', 'secret'),
             'charset'        => 'utf8mb4',
