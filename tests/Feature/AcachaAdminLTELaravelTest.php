@@ -174,7 +174,7 @@ class AcachaAdminLTELaravelTest extends TestCase
             'last_name'             => 'Salad',
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(302);
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Sergi Tur Badenas',
@@ -196,15 +196,19 @@ class AcachaAdminLTELaravelTest extends TestCase
             'password_confirmation' => '',
         ]);
 
-        $response->assertStatus(422)->assertJson([
-            'name'          => ['El name es necesario como campo.'],
-            'email'         => ['El email es necesario como campo.'],
-            'password'      => ['El password es necesario como campo.'],
-            'terms'         => ['The terms field is required.'],
-            'first_name'    => ['El first name es necesario como campo'],
-            'last_name'     => ['El last name es necesario como campo'],
-            'terms'         => ['El terms es necesario como campo.'],
-        ]);
+        $response->assertStatus(422)->assertJson(
+            ['error'         =>
+                [
+                    'name'          => ['El name es necesario como campo.'],
+                    'email'         => ['El email es necesario como campo.'],
+                    'password'      => ['El password es necesario como campo.'],
+                    'terms'         => ['The terms field is required.'],
+                    'first_name'    => ['El first name es necesario como campo.'],
+                    'last_name'     => ['El last name es necesario como campo.'],
+                    'terms'         => ['El terms es necesario como campo.'],
+                ],
+                'code'         =>  422
+            ],false);
     }
 
     /**
