@@ -22,7 +22,7 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        App::setLocale('en');
+        App::setLocale('es');
     }
 
     /**
