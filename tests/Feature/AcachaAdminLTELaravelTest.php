@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
@@ -153,7 +154,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testUserApi()
     {
-        $this->urlReturns302('/api/users');
+        $this->urlReturns200('/api/users');
     }
 
     /**
@@ -194,10 +195,13 @@ class AcachaAdminLTELaravelTest extends TestCase
         ]);
 
         $response->assertStatus(422)->assertJson([
-            'name'     => ['The name field is required.'],
-            'email'    => ['The email field is required.'],
-            'password' => ['The password field is required.'],
-            'terms'    => ['The terms field is required.'],
+            'name'          => ['El name es necesario como campo.'],
+            'email'         => ['El email es necesario como campo.'],
+            'password'      => ['El password es necesario como campo.'],
+            'terms'         => ['The terms field is required.'],
+            'first_name'    => ['El first name es necesario como campo'],
+            'last_name'     => ['El last name es necesario como campo' ],
+            'terms'         => ['El terms es necesario como campo.'],
         ]);
     }
 
@@ -208,11 +212,11 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLogin()
     {
-        $user = factory(\App\User::class)->create(['password' => Hash::make('passw0RD')]);
+        $user = factory(User::class, 1)->create();
 
         $response = $this->json('POST', '/login', [
             'email'    => $user->email,
-            'password' => 'passw0RD',
+            'password' => 'secret',
         ]);
 
         $response->assertStatus(302);
