@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Hash;
 use ReflectionException;
 use Tests\TestCase;
 
@@ -200,7 +199,7 @@ class AcachaAdminLTELaravelTest extends TestCase
             'password'      => ['El password es necesario como campo.'],
             'terms'         => ['The terms field is required.'],
             'first_name'    => ['El first name es necesario como campo'],
-            'last_name'     => ['El last name es necesario como campo' ],
+            'last_name'     => ['El last name es necesario como campo'],
             'terms'         => ['El terms es necesario como campo.'],
         ]);
     }
