@@ -197,8 +197,7 @@ class AcachaAdminLTELaravelTest extends TestCase
         ]);
 
         $response->assertStatus(422)->assertJson(
-            ['error'         =>
-                [
+            ['error'         => [
                     'name'          => ['El name es necesario como campo.'],
                     'email'         => ['El email es necesario como campo.'],
                     'password'      => ['El password es necesario como campo.'],
@@ -207,8 +206,8 @@ class AcachaAdminLTELaravelTest extends TestCase
                     'last_name'     => ['El last name es necesario como campo.'],
                     'terms'         => ['El terms es necesario como campo.'],
                 ],
-                'code'         =>  422
-            ],false);
+                'code'         => 422,
+            ], false);
     }
 
     /**
