@@ -153,7 +153,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testUserApi()
     {
-        $this->urlReturns302('/api/user');
+        $this->urlReturns302('/api/users');
     }
 
     /**
