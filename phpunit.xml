@@ -7,7 +7,7 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="true"
+         stopOnFailure="false"
          timeoutForSmallTests="1"
          timeoutForMediumTests="5"
          timeoutForLargeTests="10"
