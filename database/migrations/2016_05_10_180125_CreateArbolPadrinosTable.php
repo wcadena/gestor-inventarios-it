@@ -12,16 +12,18 @@ class CreateArbolPadrinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('arbol__padrinos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            ////////////////
-            $table->integer('arbol_id')->unsigned();
-            $table->foreign('arbol_id')->references('id')->on('arbols');
-            ////////////////
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('arbol__padrinos', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                ////////////////
+                $table->integer('arbol_id')->unsigned();
+                $table->foreign('arbol_id')->references('id')->on('arbols');
+                ////////////////
+                $table->integer('user_id')->unsigned();
+                $table->foreign('user_id')->references('id')->on('users');
+            });
+        }
     }
 
     /**

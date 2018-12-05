@@ -13,16 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->enum('rol', ['system', 'administrator']);
-            $table->enum('padrino', ['Avianca BOG', 'Avianca SAL', 'Avianca ECU', 'Avianca']);
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('users', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->enum('rol', ['system', 'administrator']);
+                $table->enum('padrino', ['Avianca BOG', 'Avianca SAL', 'Avianca ECU', 'Avianca']);
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,19 +13,21 @@ class CreateBusquedasTable extends Migration
      */
     public function up()
     {
-        Schema::create('busquedas', function (Blueprint $table) {
-            $table->increments('id');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('busquedas', function (Blueprint $table) {
+                $table->increments('id');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('palabra_q');
-            $table->string('instancia');
-            $table->string('instancia_id');
-            $table->string('dato');
+                $table->integer('user_id')->unsigned();
+                $table->foreign('user_id')->references('id')->on('users');
+                $table->string('palabra_q');
+                $table->string('instancia');
+                $table->string('instancia_id');
+                $table->string('dato');
 
-            $table->timestamps();
-            $table->softDeletes();
-        });
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

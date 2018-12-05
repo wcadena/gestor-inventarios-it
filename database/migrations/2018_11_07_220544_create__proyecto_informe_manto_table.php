@@ -32,23 +32,6 @@ class CreateProyectoInformeMantoTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
-        Schema::create('informe_proyectos_seccions', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->integer('informe_manto_prev_id')->unsigned();
-            $table->foreign('informe_manto_prev_id')->references('id')->on('informe_manto_prevs')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('proyecto_seccion_id')->unsigned();
-            $table->foreign('proyecto_seccion_id')->references('id')->on('proyecto_seccions')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->enum('tipo', ['titulo_seccion', 'elemento_seccion'])->default('elemento_seccion');
-            $table->integer('orden');
-
-            $table->timestamps();
-            $table->softDeletes();
-        });
     }
 
     /**
@@ -59,6 +42,5 @@ class CreateProyectoInformeMantoTable extends Migration
     public function down()
     {
         Schema::dropIfExists('proyecto_seccions');
-        Schema::dropIfExists('informe_proyectos_seccions');
     }
 }

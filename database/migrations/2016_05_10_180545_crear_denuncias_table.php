@@ -12,19 +12,21 @@ class CrearDenunciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('denuncias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->binary('imagen');
-            $table->string('descripcion');
-            $table->string('lugar');
-            $table->double('lat', 20, 10);
-            $table->double('lng', 20, 10);
-            ////////////////
-            $table->integer('motivo_den_id')->unsigned();
-            $table->foreign('motivo_den_id')->references('id')->on('motivos__denuncias');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('denuncias', function (Blueprint $table) {
+                $table->increments('id');
+                $table->binary('imagen');
+                $table->string('descripcion');
+                $table->string('lugar');
+                $table->double('lat', 20, 10);
+                $table->double('lng', 20, 10);
+                ////////////////
+                $table->integer('motivo_den_id')->unsigned();
+                $table->foreign('motivo_den_id')->references('id')->on('motivos__denuncias');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

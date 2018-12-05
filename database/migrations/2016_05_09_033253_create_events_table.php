@@ -12,14 +12,16 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->increments('id');
-            $table->bigInteger('facebook_id')->nullable()->unsigned()->index();
-            $table->string('name')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('country')->nullable();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('events', function (Blueprint $table) {
+                $table->increments('id');
+                $table->bigInteger('facebook_id')->nullable()->unsigned()->index();
+                $table->string('name')->nullable();
+                $table->string('city')->nullable();
+                $table->string('state')->nullable();
+                $table->string('country')->nullable();
+            });
+        }
     }
 
     /**

@@ -12,9 +12,11 @@ class AumentarcampoidentificadorChecklistOp2 extends Migration
      */
     public function up()
     {
-        Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {
-            $table->string('atributo');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {
+                $table->string('atributo');
+            });
+        }
     }
 
     /**

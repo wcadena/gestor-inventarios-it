@@ -12,10 +12,12 @@ class AddToken extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->uuid('token');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->uuid('token');
+            });
+        }
     }
 
     /**

@@ -12,18 +12,20 @@ class CreateOpcionesCheckListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('opciones_check_lists', function (Blueprint $table) {
-            $table->increments('id');
-            ////////////////
-            $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('id')->on('areas');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('opciones_check_lists', function (Blueprint $table) {
+                $table->increments('id');
+                ////////////////
+                $table->integer('area_id')->unsigned();
+                $table->foreign('area_id')->references('id')->on('areas');
 
-            $table->string('atributo');
-            $table->enum('mandatorio', ['SI', 'NO']);
-            $table->enum('tipo', ['si-no', 'text', 'equipo_id', 'fecha', 'si-no&version', 'ip', 'equipo_id&texto']);
+                $table->string('atributo');
+                $table->enum('mandatorio', ['SI', 'NO']);
+                $table->enum('tipo', ['si-no', 'text', 'equipo_id', 'fecha', 'si-no&version', 'ip', 'equipo_id&texto']);
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
+        }
     }
 
     /**

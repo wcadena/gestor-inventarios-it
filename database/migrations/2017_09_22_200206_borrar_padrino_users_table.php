@@ -13,9 +13,11 @@ class BorrarPadrinoUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('padrino');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('padrino');
+            });
+        }
     }
 
     /**
@@ -25,8 +27,10 @@ class BorrarPadrinoUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('users', function (Blueprint $table) {
+                //
+            });
+        }
     }
 }

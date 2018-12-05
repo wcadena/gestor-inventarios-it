@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistoricoInformeMantoTable extends Migration
+class CreateProyectoInformeMantoTableU extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,10 @@ class CreateHistoricoInformeMantoTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('informe_manto_historicos');
-        Schema::create('informe_manto_historicos', function (Blueprint $table) {
+        Schema::create('informe_proyectos_seccions', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->integer('informe_manto_prev_id')->unsigned();
-            $table->foreign('informe_manto_prev_id')->references('id')->on('informe_manto_prevs')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->string('accion');
-            /*$table->integer('informe_manto_prev_id')->unsigned();
             $table->foreign('informe_manto_prev_id')->references('id')->on('informe_manto_prevs')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->integer('proyecto_seccion_id')->unsigned();
@@ -33,7 +25,7 @@ class CreateHistoricoInformeMantoTable extends Migration
 
             $table->enum('tipo', ['titulo_seccion', 'elemento_seccion'])->default('elemento_seccion');
             $table->integer('orden');
-*/
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -46,6 +38,6 @@ class CreateHistoricoInformeMantoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('informe_manto_historicos');
+        Schema::dropIfExists('informe_proyectos_seccions');
     }
 }

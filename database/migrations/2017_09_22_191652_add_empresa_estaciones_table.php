@@ -13,14 +13,18 @@ class AddEmpresaEstacionesTable extends Migration
      */
     public function up()
     {
-        Schema::table('estaciones', function (Blueprint $table) {
-            $table->string('empresa');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('estaciones', function (Blueprint $table) {
+                $table->string('empresa');
+            });
+        }
         $affected = DB::update('update estaciones set empresa = ?', ['Avianca Ec']);
 
-        Schema::table('estaciones', function (Blueprint $table) {
-            $table->foreign('empresa')->references('empresa')->on('empresas');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('estaciones', function (Blueprint $table) {
+                $table->foreign('empresa')->references('empresa')->on('empresas');
+            });
+        }
     }
 
     /**

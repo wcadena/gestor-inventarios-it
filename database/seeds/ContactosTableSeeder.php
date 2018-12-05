@@ -12,7 +12,7 @@ class ContactosTableSeeder extends Seeder
     public function run()
     {
         Auth::login(App\User::inRandomOrder()->first());
-        factory(App\Custodios::class, 10)->create();
+        factory(App\Custodios::class, 5)->create();
         if (\App\Empresa::where('empresa', '=', 'Avianca EC')->first() == null) {
             \Illuminate\Support\Facades\DB::table('empresas')->insert([
                 'empresa'        => 'Avianca EC',
@@ -31,7 +31,7 @@ class ContactosTableSeeder extends Seeder
             ]);
         }
 
-        factory(App\Equipos::class, 250)->create();
+        factory(App\Equipos::class, 10)->create();
         factory(App\User::class, 1)->create();
         $custodio = App\Configuracion::where('empresa', '=', 'Avianca EC')->where('atributo', '=', 'CUSTODIO_BODEGA')->first();
         $custodio->valor = App\Custodios::inRandomOrder()->first()->id;

@@ -12,12 +12,14 @@ class CreateMotivosDenunciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('motivos__denuncias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_denuncia');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('motivos__denuncias', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('nombre_denuncia');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

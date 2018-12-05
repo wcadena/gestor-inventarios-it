@@ -12,15 +12,17 @@ class CreateCheckListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('check_lists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('id')->on('areas');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('check_lists', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('area_id')->unsigned();
+                $table->foreign('area_id')->references('id')->on('areas');
+                $table->integer('user_id')->unsigned();
+                $table->foreign('user_id')->references('id')->on('users');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

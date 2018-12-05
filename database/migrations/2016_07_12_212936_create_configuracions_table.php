@@ -12,16 +12,18 @@ class CreateConfiguracionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configuracions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('atributo');
-            $table->enum('tipo', ['texto', 'lista', 'num']);
-            $table->string('valores_fuente');
-            $table->enum('fijo', ['FIJO', 'MOVIL']);
-            $table->string('valor');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('configuracions', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('atributo');
+                $table->enum('tipo', ['texto', 'lista', 'num']);
+                $table->string('valores_fuente');
+                $table->enum('fijo', ['FIJO', 'MOVIL']);
+                $table->string('valor');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

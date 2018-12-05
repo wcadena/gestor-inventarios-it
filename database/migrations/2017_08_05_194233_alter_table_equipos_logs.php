@@ -18,14 +18,16 @@ class AlterTableEquiposLogs extends Migration
 
     public function up()
     {
-        Schema::table('equipos_logs', function (Blueprint $table) {
-            //
-            $table->string('ip', 255)->nullable()->change();
-            $table->string('codigo_barras', 255)->nullable()->change();
-            $table->string('codigo_avianca', 255)->nullable()->change();
-            $table->string('codigo_otro', 255)->nullable()->change();
-            $table->integer('num_cajas')->nullable()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('equipos_logs', function (Blueprint $table) {
+                //
+                $table->string('ip', 255)->nullable()->change();
+                $table->string('codigo_barras', 255)->nullable()->change();
+                $table->string('codigo_avianca', 255)->nullable()->change();
+                $table->string('codigo_otro', 255)->nullable()->change();
+                $table->integer('num_cajas')->nullable()->change();
+            });
+        }
     }
 
     /**

@@ -13,11 +13,13 @@ class CreateCacheTable extends Migration
      */
     public function up()
     {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->unique();
-            $table->text('value');
-            $table->integer('expiration');
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('cache', function (Blueprint $table) {
+                $table->string('key')->unique();
+                $table->text('value');
+                $table->integer('expiration');
+            });
+        }
     }
 
     /**

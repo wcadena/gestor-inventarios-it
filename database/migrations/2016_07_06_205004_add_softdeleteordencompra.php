@@ -12,10 +12,12 @@ class AddSoftdeleteordencompra extends Migration
      */
     public function up()
     {
-        Schema::table('orden_de_compras', function (Blueprint $table) {
-            //
-            $table->softDeletes();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('orden_de_compras', function (Blueprint $table) {
+                //
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

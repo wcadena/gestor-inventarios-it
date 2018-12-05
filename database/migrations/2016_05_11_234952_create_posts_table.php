@@ -12,18 +12,20 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_comun');
-            $table->string('nombre_cientifico');
-            $table->boolean('patrimonial');
-            $table->text('descripcion');
-            $table->string('historia');
-            $table->string('lat');
-            $table->string('lng');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('nombre_comun');
+                $table->string('nombre_cientifico');
+                $table->boolean('patrimonial');
+                $table->text('descripcion');
+                $table->string('historia');
+                $table->string('lat');
+                $table->string('lng');
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
+        }
     }
 
     /**

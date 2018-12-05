@@ -81,6 +81,19 @@ return [
             'prefix'         => '',
             'prefix_indexes' => true,
         ],
+        'testing' => [
+            'driver'         => 'mysql',
+            'host'           => env('DB_HOST', 'localhost'),
+            'database'       => env('DB_DATABASE', 'inventarios_2'),
+            'username'       => env('DB_USERNAME', 'homestead'),
+            'password'       => env('DB_PASSWORD', 'secret'),
+            'charset'        => 'utf8mb4',
+            'collation'      => 'utf8mb4_unicode_ci',
+            'prefix'         => '',
+            'prefix_indexes' => true,
+            'strict'         => false, /*true,*/
+            'engine'         => null,
+        ],
 
     ],
 

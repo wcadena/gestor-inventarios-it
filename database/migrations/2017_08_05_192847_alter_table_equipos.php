@@ -18,12 +18,14 @@ class AlterTableEquipos extends Migration
 
     public function up()
     {
-        Schema::table('equipos', function (Blueprint $table) {
-            $table->string('ip', 255)->nullable()->change();
-            $table->string('codigo_barras', 255)->nullable()->change();
-            $table->string('codigo_avianca', 255)->nullable()->change();
-            $table->string('codigo_otro', 255)->nullable()->change();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('equipos', function (Blueprint $table) {
+                $table->string('ip', 255)->nullable()->change();
+                $table->string('codigo_barras', 255)->nullable()->change();
+                $table->string('codigo_avianca', 255)->nullable()->change();
+                $table->string('codigo_otro', 255)->nullable()->change();
+            });
+        }
     }
 
     /**

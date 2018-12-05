@@ -13,22 +13,24 @@ class PuestosPersonasTable extends Migration
      */
     public function up()
     {
-        Schema::create('puestos_custodios', function (Blueprint $table) {
-            $table->increments('id');
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::create('puestos_custodios', function (Blueprint $table) {
+                $table->increments('id');
 
-            ////////////////
-            $table->integer('puesto_id')->unsigned()->nullable();
-            $table->foreign('puesto_id')->references('id')->on('puestos');
+                ////////////////
+                $table->integer('puesto_id')->unsigned()->nullable();
+                $table->foreign('puesto_id')->references('id')->on('puestos');
 
-            $table->integer('custodio_id')->unsigned();
-            $table->foreign('custodio_id')->references('id')->on('custodios');
-            ////////////////
-            $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_fin');
-            $table->dateTime('horas_trabajadas');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+                $table->integer('custodio_id')->unsigned();
+                $table->foreign('custodio_id')->references('id')->on('custodios');
+                ////////////////
+                $table->dateTime('fecha_inicio');
+                $table->dateTime('fecha_fin');
+                $table->dateTime('horas_trabajadas');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

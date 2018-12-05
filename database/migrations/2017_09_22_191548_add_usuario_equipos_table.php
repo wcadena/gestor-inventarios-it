@@ -13,9 +13,11 @@ class AddUsuarioEquiposTable extends Migration
      */
     public function up()
     {
-        Schema::table('equipos_logs', function (Blueprint $table) {
-            $table->integer('id_users')->unsigned();
-        });
+        if (env('DB_MIGRACIONES', 'false') == 'false') {
+            Schema::table('equipos_logs', function (Blueprint $table) {
+                $table->integer('id_users')->unsigned();
+            });
+        }
         echo '[1]';
     }
 
