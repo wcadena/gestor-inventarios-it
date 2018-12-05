@@ -25,7 +25,6 @@ class AcachaAdminLTELaravelTest extends TestCase
         App::setLocale('es');
     }
 
-
     /**
      * Set up before class.
      */
@@ -184,7 +183,7 @@ class AcachaAdminLTELaravelTest extends TestCase
     }
 
     /**
-     * Test logout 1
+     * Test logout 1.
      */
     public function testLogout()
     {
@@ -192,6 +191,7 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $response->assertStatus(302);
     }
+
     /**
      * Test user registration required fields.
      *
@@ -212,18 +212,19 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $response->assertStatus(422)->assertJson(
             [
-                "error" =>[
-                    "name"          => ["El name es necesario como campo." ],
-                    "username"      => ["El username es necesario como campo."],
-                    "email"         => ["El email es necesario como campo." ],
-                    "password"      => ["El password es necesario como campo." ],
-                    "first_name"    => ["El first name es necesario como campo."    ],
-                    "last_name"     => ["El last name es necesario como campo."   ],
-                    "terms"         => ["El terms es necesario como campo."  ]
+                'error' => [
+                    'name'          => ['El name es necesario como campo.'],
+                    'username'      => ['El username es necesario como campo.'],
+                    'email'         => ['El email es necesario como campo.'],
+                    'password'      => ['El password es necesario como campo.'],
+                    'first_name'    => ['El first name es necesario como campo.'],
+                    'last_name'     => ['El last name es necesario como campo.'],
+                    'terms'         => ['El terms es necesario como campo.'],
                 ],
-                "code"=>422
+                'code'=> 422,
             ], false);
     }
+
     /**
      * Test login.
      *
@@ -240,8 +241,9 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $response->assertStatus(302);
     }
+
     /**
-     * Test logout 1
+     * Test logout 1.
      */
     public function testLogout2()
     {
@@ -280,11 +282,11 @@ class AcachaAdminLTELaravelTest extends TestCase
         ]);
 
         $response->assertStatus(422)->assertExactJson([
-            "code"=>422,
-            "error"     =>[
-                "email"     =>   ["El email es necesario como campo."],
-                "password"  =>  ["El password es necesario como campo."]
-            ]
+            'code'      => 422,
+            'error'     => [
+                'email'     => ['El email es necesario como campo.'],
+                'password'  => ['El password es necesario como campo.'],
+            ],
         ]);
     }
 
@@ -305,7 +307,7 @@ class AcachaAdminLTELaravelTest extends TestCase
         $expectedOutput = 'File '.resource_path($viewPath).' created';
         //Log::info($expectedOutput);
         //Log::info(trim($resultAsText));
-       // $this->assertEquals($expectedOutput, trim($resultAsText));
+        // $this->assertEquals($expectedOutput, trim($resultAsText));
         $this->assertFileExists(resource_path($viewPath));
         $this->callArtisanMakeView($view);
         $resultAsText = Artisan::output();
