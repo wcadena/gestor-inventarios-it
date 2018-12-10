@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
@@ -26,6 +27,7 @@ class ProjectTest extends TestCase
      */
     public function testIndexProyectodeuntipo()
     {
+		$faker = Factory::create();
         $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
         $test = Auth::loginUsingId($user[0]->id, true);
         if(Auth::check()){
