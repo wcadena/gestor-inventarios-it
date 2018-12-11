@@ -23,6 +23,7 @@ class ProyectoSeccionController extends Controller
         } else {
             $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->paginate($perPage);
         }
+
         return view('directory.proyecto_seccion.index', compact('proyecto_seccion', 'proyecto'));
     }
 
@@ -47,14 +48,13 @@ class ProyectoSeccionController extends Controller
     {
         $requestData = $request->all();
 
-        if(is_null($requestData['orden'])){
-            $requestData['orden'] = $proyecto->proyectoSeccions->max('orden')+1;
+        if (is_null($requestData['orden'])) {
+            $requestData['orden'] = $proyecto->proyectoSeccions->max('orden') + 1;
         }
-
 
         ProyectoSeccion::create($requestData);
 
-        return redirect()->route('proyecto.proyecto_seccion.index',[$proyecto])->with('flash_message', 'ProyectoSeccion added!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto])->with('flash_message', 'ProyectoSeccion added!');
     }
 
     /**
@@ -95,7 +95,7 @@ class ProyectoSeccionController extends Controller
 
         $proyectoSeccion->update($requestData);
 
-        return redirect()->route('proyecto.proyecto_seccion.index',[$proyecto])->with('flash_message', 'ProyectoSeccion updated!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto])->with('flash_message', 'ProyectoSeccion updated!');
     }
 
     /**
@@ -109,6 +109,6 @@ class ProyectoSeccionController extends Controller
     {
         $proyecto_seccion->delete();
 
-        return redirect()->route('proyecto.proyecto_seccion.index',[$proyecto_seccion->proyecto])->with('flash_message', 'ProyectoSeccion deleted!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto_seccion->proyecto])->with('flash_message', 'ProyectoSeccion deleted!');
     }
 }
