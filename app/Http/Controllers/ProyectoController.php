@@ -12,6 +12,7 @@ class ProyectoController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * Display a listing of the resource.
      *

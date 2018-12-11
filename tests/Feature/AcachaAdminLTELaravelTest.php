@@ -6,7 +6,6 @@ use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use ReflectionException;
 use Tests\TestCase;
 
@@ -86,6 +85,7 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $response->assertStatus($code);
     }
+
     /**
      * Test logout 1.
      */
@@ -95,6 +95,7 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $response->assertStatus(302);
     }
+
     /**
      * Test landing page.
      *
