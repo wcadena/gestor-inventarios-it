@@ -3,8 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @{{--@include('admin.sidebar')--}}
-
+            {{--@include('admin.sidebar')--}}
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Crear Nuevo proyecto</div>

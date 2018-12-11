@@ -41,7 +41,7 @@ class InformeMantoHistorico extends Model
      */
     public function informeMantoPrev()
     {
-        return $this->belongsTo('app\InformeMantoPrev');
+        return $this->belongsTo('App\InformeMantoPrev');
     }
 
     /**
@@ -49,6 +49,6 @@ class InformeMantoHistorico extends Model
      */
     public function user()
     {
-        return $this->belongsTo('app\User');
+        return $this->belongsTo('App\User');
     }
 }

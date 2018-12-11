@@ -3,6 +3,7 @@
 namespace app;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\DB;
  */
 class ProyectoSeccion extends Model
 {
+    use SoftDeletes;
     /**
      * @var array
      */
@@ -46,7 +48,7 @@ class ProyectoSeccion extends Model
      */
     public function proyecto()
     {
-        return $this->belongsTo('app\Proyecto');
+        return $this->belongsTo('App\Proyecto');
     }
 
     /**
@@ -54,7 +56,7 @@ class ProyectoSeccion extends Model
      */
     public function informeProyectosSeccions()
     {
-        return $this->hasMany('app\InformeProyectosSeccion');
+        return $this->hasMany('App\InformeProyectosSeccion');
     }
 
     /**

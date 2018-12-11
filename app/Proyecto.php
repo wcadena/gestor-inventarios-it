@@ -29,6 +29,6 @@ class Proyecto extends Model
      */
     public function proyectoSeccions()
     {
-        return $this->hasMany('app\ProyectoSeccion');
+        return $this->hasMany('App\ProyectoSeccion');
     }
 }

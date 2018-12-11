@@ -40,7 +40,7 @@
 
                     </div>
                 </div>
-                <a href="{{ URL::route('proyecto_seccion.index', ['proyecto_id' => $proyecto->id]) }}"
+                <a href="{{ URL::route('proyecto.proyecto_seccion.index', ['proyecto' => $proyecto]) }}"
                    title="Secciones del proyecto" class="btn btn-success btn-sm"><i aria-hidden="true" class="fa fa-book"></i> Secciones
                 </a>
             </div>
