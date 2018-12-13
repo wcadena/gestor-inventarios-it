@@ -27,10 +27,10 @@ class AddToken extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('users', 'token')) {
+        /*if (Schema::hasColumn('users', 'token')) {
             Schema::table('users', function (Blueprint $table) {
                 $table->dropColumn('token');
             });
-        }
+        }*/
     }
 }
