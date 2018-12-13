@@ -28,6 +28,6 @@ class CreateEstacionesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('estaciones');
+        Schema::dropIfExists('estaciones');
     }
 }

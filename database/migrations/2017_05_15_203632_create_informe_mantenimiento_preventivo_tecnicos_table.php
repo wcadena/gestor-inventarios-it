@@ -32,6 +32,7 @@ class CreateInformeMantenimientoPreventivoTecnicosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('informe_manto_prev_tecs');
+        Schema::dropIfExists('informe_manto_prev_tecs');
+        //Schema::dropIfExists('informe_manto_prevs');
     }
 }

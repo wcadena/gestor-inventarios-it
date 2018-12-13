@@ -40,6 +40,6 @@ class CreateUbicacionTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ubicacions');
+        Schema::dropIfExists('ubicacions');
     }
 }

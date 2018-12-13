@@ -41,6 +41,6 @@ class PuestosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('puestos');
+        Schema::dropIfExists('puestos');
     }
 }

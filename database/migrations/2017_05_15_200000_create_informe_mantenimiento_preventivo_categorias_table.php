@@ -29,6 +29,6 @@ class CreateInformeMantenimientoPreventivoCategoriasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('informe_manto_prev_cates');
+        Schema::dropIfExists('informe_manto_prev_cates');
     }
 }

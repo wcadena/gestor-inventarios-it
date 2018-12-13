@@ -37,6 +37,6 @@ class CreateCustodiosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('custodios');
+        Schema::dropIfExists('custodios');
     }
 }

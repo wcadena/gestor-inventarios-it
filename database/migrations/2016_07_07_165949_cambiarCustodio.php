@@ -28,9 +28,10 @@ class CambiarCustodio extends Migration
      */
     public function down()
     {
-        Schema::table('custodios', function (Blueprint $table) {
-            //
-            $table->dropColumn('nombre_responsable');
-        });
+        if (Schema::hasColumn('custodios', 'nombre_responsable')) {
+            Schema::table('custodios', function (Blueprint $table) {
+                $table->dropColumn('nombre_responsable');
+            });
+        }
     }
 }

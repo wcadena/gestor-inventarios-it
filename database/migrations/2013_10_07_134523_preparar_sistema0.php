@@ -32,6 +32,8 @@ class PrepararSistema0 extends Migration
      */
     public function down()
     {
-        Schema::drop('codigos_postales');
+        Schema::dropIfExists('informe_manto_historicos');
+        Schema::dropIfExists('informe_manto_prevs');
+        Schema::dropIfExists('users');
     }
 }

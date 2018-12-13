@@ -37,6 +37,6 @@ class CreateArbolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('arbols');
+        Schema::dropIfExists('arbols');
     }
 }

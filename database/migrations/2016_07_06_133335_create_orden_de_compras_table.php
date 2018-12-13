@@ -29,6 +29,6 @@ class CreateOrdenDeComprasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('orden_de_compras');
+        Schema::dropIfExists('orden_de_compras');
     }
 }

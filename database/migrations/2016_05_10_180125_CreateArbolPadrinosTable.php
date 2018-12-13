@@ -33,8 +33,6 @@ class CreateArbolPadrinosTable extends Migration
      */
     public function down()
     {
-        Schema::table('arbol__padrinos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('arbol__padrinos');
     }
 }

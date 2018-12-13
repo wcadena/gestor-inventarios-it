@@ -38,6 +38,6 @@ class CreateCheckListOpcionesCheckListsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('check_list__opciones_check_lists');
+        Schema::dropIfExists('check_list__opciones_check_lists');
     }
 }
