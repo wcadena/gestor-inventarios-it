@@ -5,6 +5,7 @@ php:
 
 before_script:
   - cp .env.travis .env
+  - cp .env.travis .env.testing
   - mysql -e 'create database inventarios_2;'
   - composer self-update
   - composer install --no-interaction
