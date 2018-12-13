@@ -2,7 +2,7 @@
  <form method="post" @submit.prevent="submit" @keydown="clearErrors($event.target.name)">
   <div class="alert alert-success text-center" v-show="form.succeeded" id="result"> {{ trans('adminlte_lang_message.registered') }} <i class="fa fa-refresh fa-spin"></i> {{ trans('adminlte_lang_message.entering') }}</div>
   <div class="form-group has-feedback " :class="{ 'has-error': form.errors.has('name') }">
-   <input type="text" class="form-control" :placeholder="trans('form.name')" name="name" value="" v-model="form.name" autofocus/>
+   <input type="text" class="form-control" :placeholder="trans('adminlte_lang_message.fullname')" name="name" value="" v-model="form.name" autofocus/>
    <span class="glyphicon glyphicon-user form-control-feedback"></span>
    <transition name="fade">
     <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
@@ -78,43 +78,46 @@ import Form from 'acacha-forms'
 import initialitzeIcheck from './InitializeIcheck'
 import redirect from './redirect'
 
-export default {
-  mixins: [initialitzeIcheck, redirect],
-  data: function () {
-    return {
-      form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '',  last_name: '' ,username : ''})
-    }
-  },
-  watch: {
-    'form.terms': function (value) {
-      if (value) {
-        $('input').iCheck('check')
-      } else {
-        $('input').iCheck('uncheck')
+  export default {
+    mixins: [initialitzeIcheck, redirect],
+    data: function () {
+      return {
+        form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
       }
-    }
-  },
-  methods: {
-    submit () {
-      this.form.post('/register')
-       .then(response => {
-         var component = this;
-         setTimeout(function(){
-           component.redirect(response)
-         }, 2500);
-       })
-       .catch(error => {
-         console.log(this.trans('adminlte_lang_message.registererror') + ':' + error)
-       })
     },
-    clearErrors (name) {
-      if (name === 'password_confirmation') {
-        name = 'password'
-        this.form.errors.clear('password_confirmation')
+    watch: {
+      'form.terms': function (value) {
+        if (value) {
+          $('input').iCheck('check')
+        } else {
+          $('input').iCheck('uncheck')
+        }
       }
-      this.form.errors.clear(name)
+    },
+    methods: {
+      submit () {
+        this.form.post('/register')
+          .then(response => {
+            var component = this;
+            setTimeout(function(){
+              component.redirect(response)
+            }, 2500);
+          })
+          .catch(error => {
+            console.log(this.trans('adminlte_lang_message.registererror') + ':' + error)
+          })
+      },
+      clearErrors (name) {
+        if (name === 'password_confirmation') {
+          name = 'password'
+          this.form.errors.clear('password_confirmation')
+        }
+        this.form.errors.clear(name)
+      }
+    },
+    mounted () {
+      this.initialitzeICheck('terms')
     }
   }
-}
 
 </script>

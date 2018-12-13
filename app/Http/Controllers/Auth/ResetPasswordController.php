@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\JsonResponse;
 
 class ResetPasswordController extends Controller
 {
@@ -26,8 +27,7 @@ class ResetPasswordController extends Controller
     /**
      * Reset the given user's password.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function reset(Request $request)
@@ -38,7 +38,8 @@ class ResetPasswordController extends Controller
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $response = $this->broker()->reset(
-            $this->credentials($request), function ($user, $password) {
+            $this->credentials($request),
+            function ($user, $password) {
                 $this->resetPassword($user, $password);
             }
         );
@@ -55,18 +56,16 @@ class ResetPasswordController extends Controller
      * Get the response for a successful password reset.
      *
      * @param  \Illuminate\Http\Request
-     * @param string $response
-     *
+     * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetResponse(Request $request, $response)
     {
         if ($request->expectsJson()) {
             return response()->json([
-                'status' => trans($response),
+                'status' => trans($response)
             ]);
         }
-
         return redirect($this->redirectPath())
             ->with('status', trans($response));
     }
@@ -75,16 +74,14 @@ class ResetPasswordController extends Controller
      * Get the response for a failed password reset.
      *
      * @param  \Illuminate\Http\Request
-     * @param string $response
-     *
+     * @param  string  $response
      * @return mixed
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
         if ($request->expectsJson()) {
-            return new JsonResponse(['email' => trans($response)], 422);
+            return new JsonResponse(['email' => trans($response) ], 422);
         }
-
         return redirect()->back()
             ->withInput($request->only('email'))
             ->withErrors(['email' => trans($response)]);
@@ -95,9 +92,8 @@ class ResetPasswordController extends Controller
      *
      * If no token is present, display the link request form.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param string|null              $token
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
     public function showResetForm(Request $request, $token = null)

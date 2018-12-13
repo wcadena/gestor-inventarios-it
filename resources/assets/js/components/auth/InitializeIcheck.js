@@ -1,20 +1,17 @@
 export default {
-  mounted () {
-    this.initialitzeICheck();
-  },
   methods: {
-    initialitzeICheck () {
-      var component = this;
-      $('input').iCheck({
+    initialitzeICheck (field) {
+      var component = this
+      $('input[name=' + field + ']').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
         increaseArea: '20%'
       }).on('ifChecked', function (event) {
-        component.form.setField('terms', true);
-        component.form.errors.clear('terms');
+        component.form.setField(field, true)
+        component.form.errors.clear(field)
       }).on('ifUnchecked', function (event) {
-        component.form.setField('terms', '');
-      });
+        component.form.setField(field, '')
+      })
     }
   }
-};
+}

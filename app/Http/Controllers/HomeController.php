@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class HomeController.
+ * Class HomeController
+ * @package App\Http\Controllers
  */
 class HomeController extends Controller
 {
