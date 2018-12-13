@@ -62,6 +62,6 @@ return [
     | routes in your app.
     */
 
-    'install_routes' => true
+    'install_routes' => true,
 
 ];
