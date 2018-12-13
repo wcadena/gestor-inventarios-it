@@ -37,7 +37,6 @@ class AddEmpresaEquiposTable extends Migration
      */
     public function down()
     {
-
         Schema::table('equipos', function (Blueprint $table) {
             $table->dropForeign(['empresa_procede1']);
             $table->dropColumn('empresa_procede1');

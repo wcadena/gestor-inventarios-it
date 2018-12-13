@@ -54,7 +54,6 @@ class CreateInformeMantenimientoPreventivosTable extends Migration
      */
     public function down()
     {
-
         if (Schema::hasColumn('informe_manto_prevs', 'informe_manto_prev_cate_id')) {
             Schema::table('informe_manto_prevs', function (Blueprint $table) {
                 //$table->dropForeign(['informe_manto_prev_cate_id']);
@@ -80,7 +79,5 @@ class CreateInformeMantenimientoPreventivosTable extends Migration
                 $table->dropColumn('informe_manto_prev_id');
             });
         }
-
-
     }
 }
