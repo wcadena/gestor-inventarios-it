@@ -63,7 +63,8 @@ class LoginController extends Controller
     /**
      * Attempt to log the user into the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     protected function attemptLogin(Request $request)
@@ -71,9 +72,10 @@ class LoginController extends Controller
         if ($this->username() === 'email') {
             return $this->attemptLoginAtAuthenticatesUsers($request);
         }
-        if (! $this->attemptLoginAtAuthenticatesUsers($request)) {
+        if (!$this->attemptLoginAtAuthenticatesUsers($request)) {
             return $this->attempLoginUsingUsernameAsAnEmail($request);
         }
+
         return false;
     }
 
@@ -81,6 +83,7 @@ class LoginController extends Controller
      * Attempt to log the user into application using username as an email.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     protected function attempLoginUsingUsernameAsAnEmail(Request $request)
