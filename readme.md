@@ -1,4 +1,8 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/wcadena/inventarioFinalApp?branch=master)](https://bettercodehub.com/)
+[![StyleCI](https://github.styleci.io/repos/98135155/shield?branch=master)](https://github.styleci.io/repos/98135155)
+[![Build Status](https://travis-ci.org/wcadena/inventarioFinalApp.svg?branch=master)](https://travis-ci.org/wcadena/inventarioFinalApp)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wcadena/inventarioFinalApp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wcadena/inventarioFinalApp/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/wcadena/inventarioFinalApp/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 # Sistema de Gestión de Inventarios de Activos Fijos con Laravel 5.7
 
 Sistema de gestión de inventarios de Activos Fijos con Laravel 5.7 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
@@ -28,12 +32,3 @@ Administra los modelos
 ### Movimiento
 Administra Movimiento de Activos.
 
-
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
