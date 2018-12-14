@@ -82,7 +82,7 @@ import redirect from './redirect'
     mixins: [initialitzeIcheck, redirect],
     data: function () {
       return {
-        form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
+       form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '',  last_name: '' ,username : ''})
       }
     },
     watch: {
