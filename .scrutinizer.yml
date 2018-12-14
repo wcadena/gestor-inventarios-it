@@ -41,3 +41,10 @@ build:
                     file: laravel-test-examples-coverage
                     format: clover
             - php-scrutinizer-run
+    nodes:
+        analysis:
+            tests:
+                override:
+                    # Add the respective Scrutinizer analysis for your language like
+                    #- js-scrutinizer-run
+                    - php-scrutinizer-run
