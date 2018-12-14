@@ -13,7 +13,6 @@ const workboxPlugin = require('workbox-webpack-plugin');
 
 mix.js('resources/assets/js/app.js', 'html/js')
    .js('resources/assets/js/app-landing.js', 'html/js/app-landing.js')
-   .sourceMaps()
    .combine([
        'resources/assets/css/bootstrap.min.css',
        'resources/assets/css/font-awesome.min.css',
@@ -60,9 +59,6 @@ mix.js('resources/assets/js/app.js', 'html/js')
       new workboxPlugin.InjectManifest({
         swSrc: 'resources/assets/js/sw.js',
         swDest: path.join(`${__dirname}/html`, 'sw.js'),
-        modifyUrlPrefix: {
-          '/': ''
-        },
         //clientsClaim: true,
         //skipWaiting: true,
         /*runtimeCaching: [
@@ -91,5 +87,6 @@ mix.js('resources/assets/js/app.js', 'html/js')
 if (mix.config.inProduction) {
   mix.version();
   mix.minify();
+  mix.babel();
 }
 
