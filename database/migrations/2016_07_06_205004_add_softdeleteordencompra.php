@@ -27,9 +27,11 @@ class AddSoftdeleteordencompra extends Migration
      */
     public function down()
     {
-        Schema::table('orden_de_compras', function (Blueprint $table) {
-            //
-            $table->dropColumn('deleted_at');
-        });
+        if (Schema::hasColumn('orden_de_compras', 'deleted_at')) {
+            Schema::table('orden_de_compras', function (Blueprint $table) {
+                //
+                $table->dropColumn('deleted_at');
+            });
+        }
     }
 }

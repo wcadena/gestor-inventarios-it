@@ -27,9 +27,15 @@ class AumentarcampoidentificadorChecklist extends Migration
      */
     public function down()
     {
-        Schema::table('check_lists', function (Blueprint $table) {
-            $table->dropColumn('id_check_lists');
-            $table->dropColumn('unik_check_lists');
-        });
+        if (Schema::hasColumn('check_lists', 'id_check_lists')) {
+            Schema::table('check_lists', function (Blueprint $table) {
+                $table->dropColumn('id_check_lists');
+            });
+        }
+        if (Schema::hasColumn('check_lists', 'unik_check_lists')) {
+            Schema::table('check_lists', function (Blueprint $table) {
+                $table->dropColumn('unik_check_lists');
+            });
+        }
     }
 }

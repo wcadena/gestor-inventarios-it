@@ -23,7 +23,7 @@
 
                         {!! Form::model($proyecto_seccion, [
                             'method' => 'PATCH',
-                            'url' => ['/proyecto_seccion', $proyecto_seccion->id],
+                            'route' =>  array('proyecto.proyecto_seccion.update', $proyecto,$proyecto_seccion),
                             'class' => 'form-horizontal',
                             'files' => true
                         ]) !!}

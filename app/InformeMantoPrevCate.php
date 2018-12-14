@@ -38,6 +38,6 @@ class InformeMantoPrevCate extends Model
      */
     public function informeMantoPrevs()
     {
-        return $this->hasMany('app\InformeMantoPrev');
+        return $this->hasMany('App\InformeMantoPrev');
     }
 }

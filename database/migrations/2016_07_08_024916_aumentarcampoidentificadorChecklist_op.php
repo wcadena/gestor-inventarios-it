@@ -26,8 +26,10 @@ class AumentarcampoidentificadorChecklistOp extends Migration
      */
     public function down()
     {
-        Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {
-            $table->dropColumn('tipo');
-        });
+        if (Schema::hasColumn('check_list__opciones_check_lists', 'tipo')) {
+            Schema::table('check_list__opciones_check_lists', function (Blueprint $table) {
+                $table->dropColumn('tipo');
+            });
+        }
     }
 }

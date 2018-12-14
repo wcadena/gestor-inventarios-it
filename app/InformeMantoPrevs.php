@@ -61,7 +61,7 @@ class InformeMantoPrevs extends Model
      */
     public function area()
     {
-        return $this->belongsTo('app\Area');
+        return $this->belongsTo('App\Area');
     }
 
     /**
@@ -69,7 +69,7 @@ class InformeMantoPrevs extends Model
      */
     public function custodio()
     {
-        return $this->belongsTo('app\Custodio');
+        return $this->belongsTo('App\Custodio');
     }
 
     /**

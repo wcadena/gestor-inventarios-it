@@ -33,6 +33,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin user migration
+    |--------------------------------------------------------------------------
+    |
+    | Allow the migration to add a unique nullable username field to the users
+    | table
+    */
+
+    'add_nullable_username' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Admin user seeder name
     |--------------------------------------------------------------------------
     |
@@ -40,5 +51,17 @@ return [
     */
 
     'AdminUserSeeder' => 'AdminUserSeeder.php',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Install routes
+    |--------------------------------------------------------------------------
+    |
+    | The package Service Providers installs some routes like authorization routes (Auth::route)
+    | and /home. You could disable this routes with this option but remember then to manage the
+    | routes in your app.
+    */
+
+    'install_routes' => true,
 
 ];

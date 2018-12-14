@@ -46,6 +46,6 @@ class CreateBitacorasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bitacoras');
+        Schema::dropIfExists('bitacoras');
     }
 }

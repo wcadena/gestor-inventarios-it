@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ProyectoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authEmp:system');
+    }
+
     /**
      * Display a listing of the resource.
      *

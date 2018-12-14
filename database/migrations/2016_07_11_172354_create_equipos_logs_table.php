@@ -56,6 +56,6 @@ class CreateEquiposLogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('equipos_logs');
+        Schema::dropIfExists('equipos_logs');
     }
 }

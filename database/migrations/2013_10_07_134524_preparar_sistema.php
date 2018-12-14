@@ -22,6 +22,7 @@ class PrepararSistema extends Migration
      */
     public function down()
     {
-        Schema::drop('codigos_postales');
+        Schema::dropIfExists('codigos_postales');
+        //Schema::dropIfExists('users');
     }
 }

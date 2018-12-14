@@ -27,9 +27,15 @@ class AlterEstacionTable extends Migration
      */
     public function down()
     {
-        Schema::table('estaciones', function (Blueprint $table) {
-            $table->dropColumn('pais');
-            $table->dropColumn('nombre_largo');
-        });
+        if (Schema::hasColumn('estaciones', 'pais')) {
+            Schema::table('estaciones', function (Blueprint $table) {
+                $table->dropColumn('pais');
+            });
+        }
+        if (Schema::hasColumn('estaciones', 'nombre_largo')) {
+            Schema::table('estaciones', function (Blueprint $table) {
+                $table->dropColumn('nombre_largo');
+            });
+        }
     }
 }

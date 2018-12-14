@@ -1,16 +1,5 @@
 const { mix } = require('laravel-mix');
 const workboxPlugin = require('workbox-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-/*
- |--------------------------------------------------------------------------
- | Package.json
- |--------------------------------------------------------------------------
- */
-
-const package = require('./package.json');
-const dependencies = Object.keys(package.dependencies);
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -22,49 +11,41 @@ const dependencies = Object.keys(package.dependencies);
  |
  */
 
-mix.js('resources/assets/js/app.js', 'js')
-   .js('resources/assets/js/app-landing.js', 'js/app-landing.js')
-    .sass('resources/assets/sass/app.scss', 'html/css')
-    .less('node_modules/bootstrap-less/bootstrap/bootstrap.less', 'html/css/bootstrap.css')
-    .less('resources/assets/less/adminlte-app.less','html/css/adminlte-app.css')
-    .less('node_modules/toastr/toastr.less','html/css/toastr.css')
-    .combine([
-        'html/css/app.css',
-        'node_modules/admin-lte/dist/css/skins/_all-skins.css',
-        'html/css/adminlte-app.css',
-        'node_modules/icheck/skins/square/blue.css',
-        'html/css/toastr.css',
-        'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
-        'node_modules/jquery-chosen/chosen.css',
-    ], 'html/css/all.css')
-    .combine([
-        'html/css/bootstrap.css',
-        'resources/assets/css/main.css'
-    ], 'html/css/all-landing.css')
-    .scripts([
-        'node_modules/jquery-chosen/chosen.jquery.js',
-        'resources/assets/js/app_master.js',
-        'resources/assets/js/adminlte/Tree.js'
-    ], 'html/js/all.js')
+mix.js('resources/assets/js/app.js', 'html/js')
+   .js('resources/assets/js/app-landing.js', 'html/js/app-landing.js')
+   .sourceMaps()
+   .combine([
+       'resources/assets/css/bootstrap.min.css',
+       'resources/assets/css/font-awesome.min.css',
+       'resources/assets/css/ionicons.min.css',
+       'node_modules/admin-lte/dist/css/AdminLTE.min.css',
+       'node_modules/admin-lte/dist/css/skins/_all-skins.css',
+       'node_modules/icheck/skins/square/blue.css'
+   ], 'html/css/all.css')
+   .combine([
+       'resources/assets/css/bootstrap.min.css',
+       'resources/assets/css/pratt_landing.min.css'
+   ], 'html/css/all-landing.css')
+   // PACKAGE (ADMINLTE-LARAVEL) RESOURCES
+   .copy('resources/assets/img/*.*','html/img/')
+   //VENDOR RESOURCES
+   .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
+   .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
+   .copy('node_modules/bootstrap/fonts/*.*','html/fonts/')
+   .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
+   .copy('node_modules/admin-lte/dist/img','html/img')
+   .copy('node_modules/admin-lte/plugins','html/plugins')
+   .copy('node_modules/icheck/skins/square/blue.png','html/css')
+   .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
 
-    //APP RESOURCES
-    .copy('resources/assets/img/*.*','html/img')
-    //VENDOR RESOURCES
-    .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
-    .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
-    .copy('node_modules/admin-lte/bootstrap/fonts/*.*','html/fonts/bootstrap')
-    .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
-    .copy('node_modules/admin-lte/dist/img','html/img')
-    .copy('node_modules/admin-lte/plugins','html/plugins')
-    .copy('node_modules/icheck/skins/square/blue.png','html/css')
-    .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
-    .copy('node_modules/select2/dist/css/select2.min.css','html/css')
-    .copy('node_modules/select2/dist/js/select2.min.js','html/js')
-    .copy('node_modules/jquery-chosen/chosen-sprite.png','html/css')
-    .copy('node_modules/jquery-chosen/chosen-sprite@2x.png','html/css')
+  // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
+   .copy('node_modules/select2/dist/css/select2.min.css','html/css')
+   .copy('node_modules/select2/dist/js/select2.min.js','html/js')
+   //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
+   .copy('node_modules/chart.js/Chart.min.js','html/plugins/chartjs')
+   .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','html/plugins/datepicker')
 
-    .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
-    .setPublicPath('html')
+  .setPublicPath('html')
   .options({
     extractVueStyles: true,
     processCssUrls: true,
@@ -77,11 +58,6 @@ mix.js('resources/assets/js/app.js', 'js')
   .webpackConfig({
     plugins: [
       new workboxPlugin.InjectManifest({
-        globDirectory: `${__dirname}/html`,
-        globPatterns: [
-          '**/*.{html,css,js}',
-          'fonts/**/*.*'
-        ],
         swSrc: 'resources/assets/js/sw.js',
         swDest: path.join(`${__dirname}/html`, 'sw.js'),
         modifyUrlPrefix: {
@@ -106,20 +82,14 @@ mix.js('resources/assets/js/app.js', 'js')
           }
         ]*/
 
-      }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: path.join(`${__dirname}/html`, 'webpack-report.html'),
-        openAnalyzer: false,
-        logLevel: 'silent'
-      }),
+      })
     ]
   })
   .sourceMaps(!mix.inProduction())
-  .disableNotifications()
-;
+  .disableNotifications();
 
 if (mix.config.inProduction) {
-    mix.version();
-    mix.minify();
+  mix.version();
+  mix.minify();
 }
+

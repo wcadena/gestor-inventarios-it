@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Proyecto_seccion</div>
                     <div class="card-body">
-                        <a href="{{ URL::route('proyecto_seccion.create', ['proyecto_id' => $proyecto_id]) }}" class="btn btn-success btn-sm" title="Nuevo proyecto_seccion">
+                        <a href="{{ URL::route('proyecto.proyecto_seccion.create', ['proyecto' => $proyecto]) }}" class="btn btn-success btn-sm" title="Nuevo proyecto_seccion">
                             <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
@@ -39,11 +39,11 @@
                                         <td>{{ $loop->iteration or $item->id }}</td>
                                         <td>{{ $item->proyecto_id }}</td><td>{{ $item->name }}</td><td>{{ $item->descripcion }}</td>
                                         <td>
-                                            <a href="{{ url('/proyecto_seccion/' . $item->id) }}" title="Ver proyecto_seccion"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                            <a href="{{ url('/proyecto_seccion/' . $item->id . '/edit') }}" title="Edit proyecto_seccion"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                            <a href="{{ URL::route('proyecto.proyecto_seccion.show', ['proyecto' => $proyecto,'proyecto_seccion' =>$item]) }}" title="Ver proyecto_seccion"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('proyecto/'.$item->proyecto_id .'/proyecto_seccion/' . $item->id . '/edit') }}" title="Edit proyecto_seccion"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/proyecto_seccion', $item->id],
+                                                'route' => array('proyecto.proyecto_seccion.destroy', $proyecto,$item),
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Borrar', array(

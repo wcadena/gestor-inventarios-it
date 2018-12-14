@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h1>Informes <a href="{{ url('informes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Informe</a></h1>
+    <h1>Informes
+        <a href="{{ url('informes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Seccion</a>
+        <span class="pull-right">&nbsp;</span>
+        <a href="{{ url('informes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Informe</a>
+    </h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

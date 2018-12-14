@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Proyecto;
 use App\ProyectoSeccion;
 use Illuminate\Http\Request;
 
@@ -12,18 +13,18 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request, $proyecto_id)
+    public function index(Request $request, Proyecto $proyecto)
     {
         $keyword = $request->get('search');
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto_id)->latest()->paginate($perPage);
+            $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->paginate($perPage);
         } else {
-            $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto_id)->latest()->paginate($perPage);
+            $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->paginate($perPage);
         }
 
-        return view('directory.proyecto_seccion.index', compact('proyecto_seccion', 'proyecto_id'));
+        return view('directory.proyecto_seccion.index', compact('proyecto_seccion', 'proyecto'));
     }
 
     /**
@@ -31,9 +32,9 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create($proyecto_id)
+    public function create(Proyecto $proyecto)
     {
-        return view('directory.proyecto_seccion.create', compact('proyecto_id'));
+        return view('directory.proyecto_seccion.create', compact('proyecto'));
     }
 
     /**
@@ -43,13 +44,17 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request, $proyecto_id)
+    public function store(Request $request, Proyecto $proyecto)
     {
         $requestData = $request->all();
 
+        if (is_null($requestData['orden'])) {
+            $requestData['orden'] = $proyecto->proyectoSeccions->max('orden') + 1;
+        }
+
         ProyectoSeccion::create($requestData);
 
-        return redirect('proyecto_seccion')->with('flash_message', 'ProyectoSeccion added!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto])->with('flash_message', 'ProyectoSeccion added!');
     }
 
     /**
@@ -59,11 +64,9 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id, $proyecto_id)
+    public function show(Proyecto $proyecto, ProyectoSeccion $proyectoSeccion)
     {
-        $proyecto_seccion = ProyectoSeccion::findOrFail($id);
-
-        return view('directory.proyecto_seccion.show', compact('proyecto_seccion', 'proyecto_id'));
+        return view('directory.proyecto_seccion.show', compact('proyectoSeccion', 'proyecto'));
     }
 
     /**
@@ -73,11 +76,9 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit($id, $proyecto_id)
+    public function edit(Proyecto $proyecto, ProyectoSeccion $proyecto_seccion)
     {
-        $proyecto_seccion = ProyectoSeccion::findOrFail($id);
-
-        return view('directory.proyecto_seccion.edit', compact('proyecto_seccion', 'proyecto_id'));
+        return view('directory.proyecto_seccion.edit', compact('proyecto_seccion', 'proyecto'));
     }
 
     /**
@@ -88,14 +89,13 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id, $proyecto_id)
+    public function update(Request $request, Proyecto $proyecto, ProyectoSeccion $proyectoSeccion)
     {
         $requestData = $request->all();
 
-        $proyecto_seccion = ProyectoSeccion::findOrFail($id);
-        $proyecto_seccion->update($requestData);
+        $proyectoSeccion->update($requestData);
 
-        return redirect('proyecto_seccion')->with('flash_message', 'ProyectoSeccion updated!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto])->with('flash_message', 'ProyectoSeccion updated!');
     }
 
     /**
@@ -105,10 +105,10 @@ class ProyectoSeccionController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id, $proyecto_id)
+    public function destroy($id, ProyectoSeccion $proyecto_seccion)
     {
-        ProyectoSeccion::destroy($id);
+        $proyecto_seccion->delete();
 
-        return redirect('proyecto_seccion')->with('flash_message', 'ProyectoSeccion deleted!');
+        return redirect()->route('proyecto.proyecto_seccion.index', [$proyecto_seccion->proyecto])->with('flash_message', 'ProyectoSeccion deleted!');
     }
 }

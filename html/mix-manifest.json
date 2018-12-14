@@ -1,13 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/bootstrap.css": "/css/bootstrap.css",
-    "/css/adminlte-app.css": "/css/adminlte-app.css",
-    "/css/toastr.css": "/css/toastr.css",
-    "/css/app.css": "/css/app.css",
+    "/vue-styles.css": "/vue-styles.css",
     "/js/app-landing.js": "/js/app-landing.js",
     "/css/all.css": "/css/all.css",
     "/css/all-landing.css": "/css/all-landing.css",
-    "/js/all.js": "/js/all.js",
     "/img/app-bg.png": "/img/app-bg.png",
     "/img/arrow1.png": "/img/arrow1.png",
     "/img/arrow2.png": "/img/arrow2.png",
@@ -55,10 +51,9 @@
     "/css/skins/skin-yellow.css": "/css/skins/skin-yellow.css",
     "/css/skins/skin-yellow.min.css": "/css/skins/skin-yellow.min.css",
     "/css/blue.png": "/css/blue.png",
-    "/css/select2-bootstrap.min.css": "/css/select2-bootstrap.min.css",
+    "/css/blue@2x.png": "/css/blue@2x.png",
     "/css/select2.min.css": "/css/select2.min.css",
     "/js/select2.min.js": "/js/select2.min.js",
-    "/css/chosen-sprite.png": "/css/chosen-sprite.png",
-    "/css/chosen-sprite@2x.png": "/css/chosen-sprite@2x.png",
-    "/css/blue@2x.png": "/css/blue@2x.png"
+    "/plugins/chartjs/Chart.min.js": "/plugins/chartjs/Chart.min.js",
+    "/plugins/datepicker/bootstrap-datepicker.min.js": "/plugins/datepicker/bootstrap-datepicker.min.js"
 }

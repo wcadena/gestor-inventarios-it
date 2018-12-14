@@ -90,6 +90,7 @@ class LoginController extends Controller
     {
         return $this->guard()->attempt(
             ['email' => $request->input('username'), 'password' => $request->input('password')],
-            $request->has('remember'));
+            $request->has('remember')
+        );
     }
 }
