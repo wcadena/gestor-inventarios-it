@@ -54,5 +54,6 @@
     "/css/blue@2x.png": "/css/blue@2x.png",
     "/css/select2.min.css": "/css/select2.min.css",
     "/js/select2.min.js": "/js/select2.min.js",
-    "/js/Chart.min.js": "/js/Chart.min.js"
+    "/plugins/chartjs/Chart.min.js": "/plugins/chartjs/Chart.min.js",
+    "/plugins/datepicker/bootstrap-datepicker.min.js": "/plugins/datepicker/bootstrap-datepicker.min.js"
 }
