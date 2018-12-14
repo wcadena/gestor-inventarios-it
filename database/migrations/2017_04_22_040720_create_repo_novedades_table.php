@@ -48,6 +48,6 @@ class CreateRepoNovedadesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('repo_novedades');
+        Schema::dropIfExists('repo_novedades');
     }
 }

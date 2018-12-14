@@ -34,7 +34,8 @@ class AddRolToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('rol', ['system', 'administrator']);
+            //$table->enum('rol', ['system', 'administrator']);
+            DB::statement("ALTER TABLE `users` CHANGE `rol` `rol` ENUM('system','administrator') CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;");
         });
     }
 }

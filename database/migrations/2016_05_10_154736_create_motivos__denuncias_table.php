@@ -29,6 +29,6 @@ class CreateMotivosDenunciasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('motivos__denuncias');
+        Schema::dropIfExists('motivos__denuncias');
     }
 }

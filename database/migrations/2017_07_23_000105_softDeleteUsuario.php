@@ -28,9 +28,11 @@ class SoftDeleteUsuario extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropColumn('deleted_at');
-        });
+        if (Schema::hasColumn('users', 'deleted_at')) {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->dropColumn('deleted_at');
+            });
+        }
     }
 }

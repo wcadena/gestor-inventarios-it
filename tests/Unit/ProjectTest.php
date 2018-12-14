@@ -27,8 +27,7 @@ class ProjectTest extends TestCase
     public function testIndexProyectodeuntipo()
     {
         $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
-        $test = Auth::loginUsingId($user[0]->id, true);
+        $test = Auth::loginUsingId(\App\User::where('rol', 'system')->first()->id, true);
         if (Auth::check()) {
             $response = $this->get('/proyecto');
             $response->assertStatus(200);

@@ -13,12 +13,11 @@
          timeoutForLargeTests="10"
 >
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
-
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -33,7 +32,9 @@
         <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
         <env name="DB_CONNECTION" value="testing"/>
+        <env name="MAIL_DRIVER" value="log"/>
         <env name="APP_KEY" value="base64:FisRDsQB2Hae/1va/sToIvgAhICbPiLRPjlH2Q3LNe8="/>
     </php>
 </phpunit>

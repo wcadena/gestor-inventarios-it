@@ -54,6 +54,30 @@ class CreateInformeMantenimientoPreventivosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('informe_manto_prevs');
+        if (Schema::hasColumn('informe_manto_prevs', 'informe_manto_prev_cate_id')) {
+            Schema::table('informe_manto_prevs', function (Blueprint $table) {
+                //$table->dropForeign(['informe_manto_prev_cate_id']);
+                $table->dropColumn('informe_manto_prev_cate_id');
+            });
+        }
+        if (Schema::hasColumn('informe_manto_prevs', 'area_id')) {
+            Schema::table('informe_manto_prevs', function (Blueprint $table) {
+                //$table->dropForeign(['area_id']);
+                $table->dropColumn('area_id');
+            });
+        }
+        if (Schema::hasColumn('informe_manto_prevs', 'custodio_id')) {
+            Schema::table('informe_manto_prevs', function (Blueprint $table) {
+                //$table->dropForeign(['custodio_id']);
+                $table->dropColumn('custodio_id');
+            });
+        }
+
+        if (Schema::hasColumn('informe_manto_prev_tecs', 'informe_manto_prev_id')) {
+            Schema::table('informe_manto_prev_tecs', function (Blueprint $table) {
+                $table->dropForeign(['informe_manto_prev_id']);
+                $table->dropColumn('informe_manto_prev_id');
+            });
+        }
     }
 }

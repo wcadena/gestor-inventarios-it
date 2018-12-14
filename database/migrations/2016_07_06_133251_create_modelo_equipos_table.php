@@ -32,6 +32,6 @@ class CreateModeloEquiposTable extends Migration
      */
     public function down()
     {
-        Schema::drop('modelo_equipos');
+        Schema::dropIfExists('modelo_equipos');
     }
 }

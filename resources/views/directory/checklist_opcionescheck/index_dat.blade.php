@@ -160,7 +160,7 @@
     @include('layouts.partials.scripts')
     <script src="{{ asset('/js/select2.min.js') }}"></script>
     <!-- bootstrap datepicker -->
-    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
     <!-- InputMask -->
     <script src="{{ asset('/plugins/input-mask/jquery.inputmask.js') }}"></script>
     <script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
