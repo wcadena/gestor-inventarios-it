@@ -24,8 +24,6 @@ build:
         before:
             - mysql -uroot -e 'CREATE DATABASE scrutinizer'
     tests:
-        - php-scrutinizer-run
-        - js-scrutinizer-run
         before:
             - chmod -R 777 storage
             - chmod -R 777 bootstrap/cache
@@ -42,3 +40,5 @@ build:
                 coverage:
                     file: laravel-test-examples-coverage
                     format: clover
+            - php-scrutinizer-run
+            - js-scrutinizer-run
