@@ -167,7 +167,7 @@ class EquiposController extends Controller
         $equipo = \Illuminate\Support\Facades\Session::put('equipo_id', $id);
         $equipo = Equipos::findOrFail($id);
 
-        if ($equipo->modelo_equipoxc->fabricante == 'HP' &&
+        if ($equipo->modelo_equipoxc->fabricante == 'HP_noseUSa' &&
             $equipo->hp_warrantyLevel == null) {
             $http = new Client();
             $res = $http->request('GET', 'https://support.hp.com/hp-pps-services/os/getWarrantyInfo?serialnum='.$equipo->no_serie.'&counpurchase=es&cc=es&lc=es&redirectPage=WarrantyResult'
