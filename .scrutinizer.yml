@@ -41,4 +41,3 @@ build:
                     file: laravel-test-examples-coverage
                     format: clover
             - php-scrutinizer-run
-            - js-scrutinizer-run
