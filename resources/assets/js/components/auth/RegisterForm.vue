@@ -112,7 +112,7 @@ import redirect from './redirect'
           })
           .catch(error => {
             console.log(this.trans('adminlte_lang_message.registererror') + ':' + error)
-           this.errores =  error.response.data;
+            this.errores =  error.response.data;
           })
       },
       clearErrors (name) {
@@ -121,6 +121,7 @@ import redirect from './redirect'
           this.form.errors.clear('password_confirmation')
         }
         this.form.errors.clear(name)
+        errores:[]
       }
     },
     mounted () {

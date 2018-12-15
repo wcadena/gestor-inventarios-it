@@ -18,6 +18,11 @@
    <div class="col-xs-2">
    </div><!-- /.col -->
   </div>
+  <ul v-if="errores" class="list-group">
+   <li  v-for=" error in errores" class="list-group-item list-group-item-danger " role="alert">
+    {{ error  }}
+   </li>
+  </ul>
  </form>
 </template>
 
@@ -31,7 +36,8 @@ export default {
   data: function () {
     return {
       form: new Form({ email: ''}),
-      result: ''
+      result: '',
+      errores:[]
     }
   },
   methods: {
@@ -42,12 +48,15 @@ export default {
        })
        .catch(error => {
          console.log(this.trans('adminlte_lang_message.sendpassword') + ':' + error)
+         this.errores =  error.response.data;
        })
     },
     clearErrors (name) {
+     console.log(111);
       this.form.errors.clear(name)
       this.form.succeeded = false
       this.result = ''
+      errores:[]
     }
   },
   mounted () {
