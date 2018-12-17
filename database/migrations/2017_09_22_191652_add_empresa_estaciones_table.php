@@ -34,8 +34,8 @@ class AddEmpresaEstacionesTable extends Migration
      */
     public function down()
     {
-        Schema::table('estaciones', function (Blueprint $table) {
-            //
-        });
+        if (Schema::hasColumn('estaciones', 'empresa')) {
+            DB::statement('ALTER TABLE estaciones  DROP FOREIGN KEY estaciones_empresa_foreign, DROP empresa;');
+        }
     }
 }

@@ -35,8 +35,8 @@ class AddEmpresaAreasTable extends Migration
      */
     public function down()
     {
-        Schema::table('areas', function (Blueprint $table) {
-            //
-        });
+        if (Schema::hasColumn('areas', 'empresa')) {
+            DB::statement('ALTER TABLE areas  DROP FOREIGN KEY areas_empresa_foreign, DROP empresa;');
+            }
     }
 }
