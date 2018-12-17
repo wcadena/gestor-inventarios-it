@@ -11,7 +11,7 @@ use Laravel\Passport\HasApiTokens;
 class Busqueda extends Model
 {
     use SoftDeletes;
-    use Notifiable, HasApiTokens;
+    use HasApiTokens;
 
     public $transformer = BusquedaTransformer::class;
 

@@ -41,7 +41,7 @@ class Equipos extends Model
         return $enum;
     }
 
-    public static function getCustodio()
+    public static function getCustodio($tabla)
     {
         $type = DB::select(DB::raw("select count(*) ,custodio_id from equipos_logs group by custodio_id '".$tabla."'"))[0]->Type;
         preg_match('/^enum\((.*)\)$/', $type, $matches);
