@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Areas;
 use App\Http\Controllers\ApiController;
-use Illuminate\Http\Request;
 
 class AreasController extends ApiController
 {
@@ -33,8 +32,6 @@ class AreasController extends ApiController
         return $this->showAll($areas);
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -46,6 +43,4 @@ class AreasController extends ApiController
     {
         return $this->showOne($areas);
     }
-
-
 }

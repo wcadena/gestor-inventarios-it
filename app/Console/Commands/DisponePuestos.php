@@ -40,7 +40,6 @@ class DisponePuestos extends Command
      */
     public function handle()
     {
-
         $puestos = PuestoCustodios::all();
         $encerados = 0;
         foreach ($puestos as $puesto) {

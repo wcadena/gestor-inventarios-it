@@ -80,5 +80,4 @@ class CheckList_OpcionesCheckListController extends ApiController
         //dd($equipos);
         return $this->showOne($checkList_OpcionesCheckList);
     }
-
 }
