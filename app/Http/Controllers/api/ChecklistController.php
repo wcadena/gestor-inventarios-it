@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\CheckList;
 use App\Http\Controllers\ApiController;
-use Illuminate\Http\Request;
 
 class ChecklistController extends ApiController
 {
@@ -33,8 +32,6 @@ class ChecklistController extends ApiController
         return $this->showAll($equipos);
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -47,5 +44,4 @@ class ChecklistController extends ApiController
         //dd($equipos);
         return $this->showOne($checkList);
     }
-
 }

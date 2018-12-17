@@ -28,7 +28,7 @@ class AddEmpresaUsuariosTable extends Migration
 
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('users', function (Blueprint $table) {
-                    $table->foreign('empresa')->references('empresa')->on('empresas');
+                $table->foreign('empresa')->references('empresa')->on('empresas');
             });
         }
     }

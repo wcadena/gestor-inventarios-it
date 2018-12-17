@@ -37,6 +37,6 @@ class AddEmpresaAreasTable extends Migration
     {
         if (Schema::hasColumn('areas', 'empresa')) {
             DB::statement('ALTER TABLE areas  DROP FOREIGN KEY areas_empresa_foreign, DROP empresa;');
-            }
+        }
     }
 }
