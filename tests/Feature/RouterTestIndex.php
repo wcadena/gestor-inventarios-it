@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
-
 class RouterTestIndex extends TestCase
 {
     use DatabaseMigrations;
@@ -72,10 +71,12 @@ class RouterTestIndex extends TestCase
 
         $response->assertStatus($code);
     }
+
     ///////////////////////////////////////////////////////////
     /// /////////////////////////////////////////////////////////
     /// ///////////////////////////////////////////////////
     /// //////////////////////////////////////////////////////////
+
     /**
      * Test areas.index.
      *
@@ -85,6 +86,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/areas');
     }
+
     /**
      * Test bitacora.index.
      *
@@ -94,6 +96,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/bitacora');
     }
+
     /**
      * Test checklist.index.
      *
@@ -103,6 +106,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/checklist');
     }
+
     /**
      * Test checklist_opcionescheck.index.
      *
@@ -112,6 +116,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/checklist_opcionescheck');
     }
+
     /**
      * Test config.index.
      *
@@ -121,6 +126,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/config');
     }
+
     /**
      * Test custodio.index.
      *
@@ -130,6 +136,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/custodio');
     }
+
     /**
      * Test empresa.index.
      *
@@ -139,6 +146,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/empresa');
     }
+
     /**
      * Test equipos.index.
      *
@@ -148,6 +156,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/equipos');
     }
+
     /**
      * Test equiposerching.index.
      *
@@ -157,6 +166,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/equiposerching');
     }
+
     /**
      * Test estaciones.index.
      *
@@ -166,6 +176,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/estaciones');
     }
+
     /**
      * Test informes.index.
      *
@@ -175,6 +186,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/informes');
     }
+
     /**
      * Test modelo.index.
      *
@@ -184,6 +196,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/modelo');
     }
+
     /**
      * Test passport.clients.index.
      *
@@ -193,6 +206,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/oauth/clients');
     }
+
     /**
      * Test passport.personal.tokens.index.
      *
@@ -202,6 +216,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/oauth/personal-access-tokens');
     }
+
     /**
      * Test passport.scopes.index.
      *
@@ -211,6 +226,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/oauth/scopes');
     }
+
     /**
      * Test passport.tokens.index.
      *
@@ -220,6 +236,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/oauth/tokens');
     }
+
     /**
      * Test opciones_check.index.
      *
@@ -229,6 +246,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/opciones_check');
     }
+
     /**
      * Test orden.index.
      *
@@ -238,6 +256,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/orden');
     }
+
     /**
      * Test postSearch.index.
      *
@@ -247,6 +266,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/postSearch');
     }
+
     /**
      * Test proyecto.index.
      *
@@ -256,6 +276,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/proyecto');
     }
+
     /**
      * Test proyecto.proyecto_seccion.index.
      *
@@ -265,6 +286,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/proyecto/{proyecto}/proyecto_seccion');
     }
+
     /**
      * Test puesto.index.
      *
@@ -274,6 +296,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/puesto');
     }
+
     /**
      * Test repo_novedades.index.
      *
@@ -283,6 +306,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/repo_novedades');
     }
+
     /**
      * Test reporte1.index.
      *
@@ -292,6 +316,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/reporte1');
     }
+
     /**
      * Test roles.index.
      *
@@ -301,6 +326,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/roles');
     }
+
     /**
      * Test tecnico.index.
      *
@@ -310,6 +336,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/tecnico');
     }
+
     /**
      * Test ubicacion.index.
      *
@@ -319,6 +346,7 @@ class RouterTestIndex extends TestCase
     {
         $this->urlReturns302('/ubicacion');
     }
+
     /**
      * Test usuario.index.
      *
