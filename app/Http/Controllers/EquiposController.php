@@ -98,8 +98,10 @@ class EquiposController extends Controller
 
     /**
      * @param Requests\EquiposRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Requests\EquiposRequest $request)
     {

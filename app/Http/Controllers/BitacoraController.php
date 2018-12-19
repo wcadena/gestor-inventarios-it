@@ -57,6 +57,7 @@ class BitacoraController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
@@ -87,6 +88,7 @@ class BitacoraController extends Controller
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -98,6 +100,7 @@ class BitacoraController extends Controller
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -117,6 +120,7 @@ class BitacoraController extends Controller
     /**
      * @param $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, Request $request)
@@ -134,6 +138,7 @@ class BitacoraController extends Controller
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

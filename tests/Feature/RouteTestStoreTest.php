@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Faker\Factory;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RouteTestStoreTest extends TestCase
@@ -79,6 +78,7 @@ class RouteTestStoreTest extends TestCase
     }
 
     ////////////////////////////////////////////////////
+
     /**
      * Test areas.create.
      *
@@ -88,6 +88,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/areas/create');
     }
+
     /**
      * Test bitacora.create.
      *
@@ -97,6 +98,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns302('/bitacora/create');
     }
+
     /**
      * Test checklist.create.
      *
@@ -106,6 +108,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/checklist/create');
     }
+
     /**
      * Test checklist_opcionescheck.create.
      *
@@ -115,6 +118,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/checklist_opcionescheck/create');
     }
+
     /**
      * Test config.create.
      *
@@ -124,6 +128,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/config/create');
     }
+
     /**
      * Test custodio.create.
      *
@@ -133,6 +138,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/custodio/create');
     }
+
     /**
      * Test empresa.create.
      *
@@ -142,6 +148,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/empresa/create');
     }
+
     /**
      * Test equipos.create.
      *
@@ -161,6 +168,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/estaciones/create');
     }
+
     /**
      * Test informes.create.
      *
@@ -170,6 +178,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/informes/create');
     }
+
     /**
      * Test modelo.create.
      *
@@ -179,6 +188,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/modelo/create');
     }
+
     /**
      * Test opciones_check.create.
      *
@@ -188,6 +198,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/opciones_check/create');
     }
+
     /**
      * Test orden.create.
      *
@@ -197,6 +208,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/orden/create');
     }
+
     /**
      * Test proyecto.create.
      *
@@ -216,6 +228,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/puesto/create');
     }
+
     /**
      * Test repo_novedades.create.
      *
@@ -225,6 +238,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/repo_novedades/create');
     }
+
     /**
      * Test reporte1.create.
      *
@@ -234,6 +248,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/reporte1/create');
     }
+
     /**
      * Test roles.create.
      *
@@ -243,6 +258,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/roles/create');
     }
+
     /**
      * Test tecnico.create.
      *
@@ -252,6 +268,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/tecnico/create');
     }
+
     /**
      * Test ubicacion.create.
      *
@@ -261,6 +278,7 @@ class RouteTestStoreTest extends TestCase
     {
         $this->urlReturns200('/ubicacion/create');
     }
+
     /**
      * Test usuario.create.
      *
