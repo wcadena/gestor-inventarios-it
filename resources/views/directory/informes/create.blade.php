@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Create New Informe</h1>
+    <h1>Crear nuevo Informe</h1>
     <hr/>
 
     {!! Form::open(['url' => 'informes', 'class' => 'form-horizontal']) !!}

@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Model Factories
+| User Factories
 |--------------------------------------------------------------------------
 |
 | Here you may define all of your model factories. Model factories give

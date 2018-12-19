@@ -2,17 +2,22 @@
 
 namespace Tests\Feature;
 
-use Faker\Factory;
-use Illuminate\Support\Facades\App;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
-class RouterTestIndexIn200 extends TestCase
+class RouterTestIndexTest extends TestCase
 {
-   // use DatabaseTransactions;
+    use DatabaseMigrations;
 
+    /**
+     * Set up tests.
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        App::setLocale('es');
+    }
 
     /**
      * Test url returns 200.
@@ -67,24 +72,10 @@ class RouterTestIndexIn200 extends TestCase
         $response->assertStatus($code);
     }
 
-    /**
-     * Test login.
-     *
-     * @return void
-     */
-    public function testLogin()
-    {
-        $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
-        $response = $this->json('POST', '/login', [
-            'email'    => $user[0]->email,
-            'password' => 'passw0RD',
-        ]);
-
-        $response->assertStatus(302);
-    }
-
-    ////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    /// /////////////////////////////////////////////////////////
+    /// ///////////////////////////////////////////////////
+    /// //////////////////////////////////////////////////////////
 
     /**
      * Test areas.index.
@@ -93,7 +84,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testareas_index()
     {
-        $this->urlReturns200('/areas');
+        $this->urlReturns302('/areas');
     }
 
     /**
@@ -103,7 +94,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testbitacora_index()
     {
-        $this->urlReturns200('/bitacora');
+        $this->urlReturns302('/bitacora');
     }
 
     /**
@@ -113,7 +104,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testchecklist_index()
     {
-        $this->urlReturns200('/checklist');
+        $this->urlReturns302('/checklist');
     }
 
     /**
@@ -123,7 +114,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testchecklist_opcionescheck_index()
     {
-        $this->urlReturns200('/checklist_opcionescheck');
+        $this->urlReturns302('/checklist_opcionescheck');
     }
 
     /**
@@ -133,7 +124,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testconfig_index()
     {
-        $this->urlReturns200('/config');
+        $this->urlReturns302('/config');
     }
 
     /**
@@ -143,7 +134,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testcustodio_index()
     {
-        $this->urlReturns200('/custodio');
+        $this->urlReturns302('/custodio');
     }
 
     /**
@@ -153,7 +144,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testempresa_index()
     {
-        $this->urlReturns200('/empresa');
+        $this->urlReturns302('/empresa');
     }
 
     /**
@@ -163,9 +154,18 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testequipos_index()
     {
-        $this->urlReturns200('/equipos');
+        $this->urlReturns302('/equipos');
     }
 
+    /**
+     * Test equiposerching.index.
+     *
+     * @return void
+     */
+    public function testequiposerching_index()
+    {
+        $this->urlReturns302('/equiposerching');
+    }
 
     /**
      * Test estaciones.index.
@@ -174,7 +174,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testestaciones_index()
     {
-        $this->urlReturns200('/estaciones');
+        $this->urlReturns302('/estaciones');
     }
 
     /**
@@ -184,7 +184,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testinformes_index()
     {
-        $this->urlReturns200('/informes');
+        $this->urlReturns302('/informes');
     }
 
     /**
@@ -194,7 +194,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testmodelo_index()
     {
-        $this->urlReturns200('/modelo');
+        $this->urlReturns302('/modelo');
     }
 
     /**
@@ -204,7 +204,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testpassport_clients_index()
     {
-        $this->urlReturns200('/oauth/clients');
+        $this->urlReturns302('/oauth/clients');
     }
 
     /**
@@ -214,7 +214,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testpassport_personal_tokens_index()
     {
-        $this->urlReturns200('/oauth/personal-access-tokens');
+        $this->urlReturns302('/oauth/personal-access-tokens');
     }
 
     /**
@@ -224,7 +224,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testpassport_scopes_index()
     {
-        $this->urlReturns200('/oauth/scopes');
+        $this->urlReturns302('/oauth/scopes');
     }
 
     /**
@@ -234,7 +234,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testpassport_tokens_index()
     {
-        $this->urlReturns200('/oauth/tokens');
+        $this->urlReturns302('/oauth/tokens');
     }
 
     /**
@@ -244,7 +244,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testopciones_check_index()
     {
-        $this->urlReturns200('/opciones_check');
+        $this->urlReturns302('/opciones_check');
     }
 
     /**
@@ -254,9 +254,18 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testorden_index()
     {
-        $this->urlReturns200('/orden');
+        $this->urlReturns302('/orden');
     }
 
+    /**
+     * Test postSearch.index.
+     *
+     * @return void
+     */
+    public function testpostSearch_index()
+    {
+        $this->urlReturns302('/postSearch');
+    }
 
     /**
      * Test proyecto.index.
@@ -265,7 +274,17 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testproyecto_index()
     {
-        $this->urlReturns200('/proyecto');
+        $this->urlReturns302('/proyecto');
+    }
+
+    /**
+     * Test proyecto.proyecto_seccion.index.
+     *
+     * @return void
+     */
+    public function testproyecto_proyecto_seccion_index()
+    {
+        $this->urlReturns302('/proyecto/{proyecto}/proyecto_seccion');
     }
 
     /**
@@ -275,7 +294,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testpuesto_index()
     {
-        $this->urlReturns200('/puesto');
+        $this->urlReturns302('/puesto');
     }
 
     /**
@@ -285,7 +304,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testrepo_novedades_index()
     {
-        $this->urlReturns200('/repo_novedades');
+        $this->urlReturns302('/repo_novedades');
     }
 
     /**
@@ -295,7 +314,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testreporte1_index()
     {
-        $this->urlReturns200('/reporte1');
+        $this->urlReturns302('/reporte1');
     }
 
     /**
@@ -305,7 +324,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testroles_index()
     {
-        $this->urlReturns200('/roles');
+        $this->urlReturns302('/roles');
     }
 
     /**
@@ -315,7 +334,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testtecnico_index()
     {
-        $this->urlReturns200('/tecnico');
+        $this->urlReturns302('/tecnico');
     }
 
     /**
@@ -325,7 +344,7 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testubicacion_index()
     {
-        $this->urlReturns200('/ubicacion');
+        $this->urlReturns302('/ubicacion');
     }
 
     /**
@@ -335,6 +354,6 @@ class RouterTestIndexIn200 extends TestCase
      */
     public function testusuario_index()
     {
-        $this->urlReturns200('/usuario');
+        $this->urlReturns302('/usuario');
     }
 }
