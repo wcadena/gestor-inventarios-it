@@ -40,9 +40,6 @@ class DisponePuestos extends Command
      */
     public function handle()
     {
-        //
-        $arguments = $this->arguments();
-
         $puestos = PuestoCustodios::all();
         $encerados = 0;
         foreach ($puestos as $puesto) {
@@ -52,7 +49,6 @@ class DisponePuestos extends Command
             $tiempoPuesto = new Carbon($puesto->fecha_inicio);
 
             $dato = $ahorita->diffInHours($tiempoPuesto);
-            $encerados = 0;
             if ($dato >= $puesto->horas_trabajadas) {
                 $p = Puesto::where('id', '=', $puesto->puesto_id)->firstOrFail();
                 $p->estado = 'LIBRE';

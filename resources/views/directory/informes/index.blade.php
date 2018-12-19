@@ -3,7 +3,6 @@
 @section('content')
 
     <h1>Informes
-        <a href="{{ url('informes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Seccion</a>
         <span class="pull-right">&nbsp;</span>
         <a href="{{ url('informes/create') }}" class="btn btn-primary pull-right btn-sm">Add New Informe</a>
     </h1>

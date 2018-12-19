@@ -5,13 +5,12 @@ namespace App;
 use App\Transformers\BusquedaTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class Busqueda extends Model
 {
     use SoftDeletes;
-    use Notifiable, HasApiTokens;
+    use HasApiTokens;
 
     public $transformer = BusquedaTransformer::class;
 

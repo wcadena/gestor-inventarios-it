@@ -40,8 +40,8 @@ class AddEmpresaUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        if (Schema::hasColumn('users', 'empresa')) {
+            DB::statement('ALTER TABLE users  DROP FOREIGN KEY users_empresa_foreign, DROP empresa;');
+        }
     }
 }

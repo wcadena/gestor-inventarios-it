@@ -5,6 +5,7 @@ namespace App;
 use App\Transformers\CheckList_OpcionesCheckListTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class CheckList_OpcionesCheckList extends Model
 {

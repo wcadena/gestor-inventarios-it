@@ -37,6 +37,11 @@
     <button type="submit" class="btn btn-primary btn-block btn-flat" v-text="trans('adminlte_lang_message.buttonsign')" :disabled="form.errors.any()"><i v-if="form.submitting" class="fa fa-refresh fa-spin"></i></button>
    </div>
   </div>
+  <ul v-if="errores" class="list-group">
+   <li  v-for=" error in errores" class="list-group-item list-group-item-danger " role="alert">
+    {{ error  }}
+   </li>
+  </ul>
  </form>
 </template>
 
@@ -57,6 +62,7 @@
       }
       return {
         form: form,
+        errores:[]
       }
     },
     props: {
@@ -103,6 +109,7 @@
           })
           .catch(error => {
             console.log(this.trans('adminlte_lang_message.loginerror') + ':' + error)
+           this.errores =  error.response.data;
           })
       },
       adddomain: function () {
@@ -118,6 +125,7 @@
           name = this.name
         }
         this.form.errors.clear(name)
+        errores:[]
       }
     },
     mounted () {

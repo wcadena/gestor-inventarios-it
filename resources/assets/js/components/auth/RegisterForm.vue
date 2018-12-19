@@ -66,6 +66,12 @@
   <div v-if="form.errors.has('terms')" class="form-group has-feedback" :class="{ 'has-error': form.errors.has('terms') }">
    <span class="help-block" v-if="form.errors.has('terms')" v-text="form.errors.get('terms')"></span>
   </div>
+  <ul v-if="errores" class="list-group">
+   <li  v-for=" error in errores" class="list-group-item list-group-item-danger " role="alert">
+    {{ error  }}
+    </li>
+  </ul>
+
  </form>
 
 </template>
@@ -82,7 +88,8 @@ import redirect from './redirect'
     mixins: [initialitzeIcheck, redirect],
     data: function () {
       return {
-       form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '',  last_name: '' ,username : ''})
+       form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '', first_name: '',  last_name: '' ,username : ''}),
+       errores:[]
       }
     },
     watch: {
@@ -105,6 +112,7 @@ import redirect from './redirect'
           })
           .catch(error => {
             console.log(this.trans('adminlte_lang_message.registererror') + ':' + error)
+            this.errores =  error.response.data;
           })
       },
       clearErrors (name) {
@@ -113,6 +121,7 @@ import redirect from './redirect'
           this.form.errors.clear('password_confirmation')
         }
         this.form.errors.clear(name)
+        errores:[]
       }
     },
     mounted () {
