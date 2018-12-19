@@ -2,18 +2,17 @@
 
 namespace Tests\Feature;
 
+use Faker\Factory;
+use Illuminate\Support\Facades\App;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RouterTestIndexIn200 extends TestCase
 {
-    /**
-     * Set up tests.
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        App::setLocale('es');
-    }
+   // use DatabaseTransactions;
+
 
     /**
      * Test url returns 200.
@@ -167,15 +166,6 @@ class RouterTestIndexIn200 extends TestCase
         $this->urlReturns200('/equipos');
     }
 
-    /**
-     * Test equiposerching.index.
-     *
-     * @return void
-     */
-    public function testequiposerching_index()
-    {
-        $this->urlReturns200('/equiposerching');
-    }
 
     /**
      * Test estaciones.index.
@@ -267,15 +257,6 @@ class RouterTestIndexIn200 extends TestCase
         $this->urlReturns200('/orden');
     }
 
-    /**
-     * Test postSearch.index.
-     *
-     * @return void
-     */
-    public function testpostSearch_index()
-    {
-        $this->urlReturns200('/postSearch');
-    }
 
     /**
      * Test proyecto.index.
@@ -285,16 +266,6 @@ class RouterTestIndexIn200 extends TestCase
     public function testproyecto_index()
     {
         $this->urlReturns200('/proyecto');
-    }
-
-    /**
-     * Test proyecto.proyecto_seccion.index.
-     *
-     * @return void
-     */
-    public function testproyecto_proyecto_seccion_index()
-    {
-        $this->urlReturns200('/proyecto/{proyecto}/proyecto_seccion');
     }
 
     /**
