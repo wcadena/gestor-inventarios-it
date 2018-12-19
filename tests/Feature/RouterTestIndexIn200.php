@@ -3,16 +3,12 @@
 namespace Tests\Feature;
 
 use Faker\Factory;
-use Illuminate\Support\Facades\App;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RouterTestIndexIn200 extends TestCase
 {
-   // use DatabaseTransactions;
-
+    // use DatabaseTransactions;
 
     /**
      * Test url returns 200.
@@ -166,7 +162,6 @@ class RouterTestIndexIn200 extends TestCase
         $this->urlReturns200('/equipos');
     }
 
-
     /**
      * Test estaciones.index.
      *
@@ -256,7 +251,6 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/orden');
     }
-
 
     /**
      * Test proyecto.index.
