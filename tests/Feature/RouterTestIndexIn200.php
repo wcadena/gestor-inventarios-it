@@ -2,15 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RouterTestIndexIn200 extends TestCase
 {
-
-
     /**
      * Set up tests.
      */
@@ -72,6 +67,7 @@ class RouterTestIndexIn200 extends TestCase
 
         $response->assertStatus($code);
     }
+
     /**
      * Test login.
      *
@@ -90,6 +86,7 @@ class RouterTestIndexIn200 extends TestCase
     }
 
     ////////////////////////////////////////////////////
+
     /**
      * Test areas.index.
      *
@@ -99,6 +96,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/areas');
     }
+
     /**
      * Test bitacora.index.
      *
@@ -108,6 +106,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/bitacora');
     }
+
     /**
      * Test checklist.index.
      *
@@ -117,6 +116,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/checklist');
     }
+
     /**
      * Test checklist_opcionescheck.index.
      *
@@ -126,6 +126,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/checklist_opcionescheck');
     }
+
     /**
      * Test config.index.
      *
@@ -135,6 +136,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/config');
     }
+
     /**
      * Test custodio.index.
      *
@@ -144,6 +146,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/custodio');
     }
+
     /**
      * Test empresa.index.
      *
@@ -153,6 +156,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/empresa');
     }
+
     /**
      * Test equipos.index.
      *
@@ -162,6 +166,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/equipos');
     }
+
     /**
      * Test equiposerching.index.
      *
@@ -171,6 +176,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/equiposerching');
     }
+
     /**
      * Test estaciones.index.
      *
@@ -180,6 +186,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/estaciones');
     }
+
     /**
      * Test informes.index.
      *
@@ -189,6 +196,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/informes');
     }
+
     /**
      * Test modelo.index.
      *
@@ -198,6 +206,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/modelo');
     }
+
     /**
      * Test passport.clients.index.
      *
@@ -207,6 +216,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/oauth/clients');
     }
+
     /**
      * Test passport.personal.tokens.index.
      *
@@ -216,6 +226,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/oauth/personal-access-tokens');
     }
+
     /**
      * Test passport.scopes.index.
      *
@@ -225,6 +236,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/oauth/scopes');
     }
+
     /**
      * Test passport.tokens.index.
      *
@@ -234,6 +246,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/oauth/tokens');
     }
+
     /**
      * Test opciones_check.index.
      *
@@ -243,6 +256,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/opciones_check');
     }
+
     /**
      * Test orden.index.
      *
@@ -252,6 +266,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/orden');
     }
+
     /**
      * Test postSearch.index.
      *
@@ -261,6 +276,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/postSearch');
     }
+
     /**
      * Test proyecto.index.
      *
@@ -270,6 +286,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/proyecto');
     }
+
     /**
      * Test proyecto.proyecto_seccion.index.
      *
@@ -279,6 +296,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/proyecto/{proyecto}/proyecto_seccion');
     }
+
     /**
      * Test puesto.index.
      *
@@ -288,6 +306,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/puesto');
     }
+
     /**
      * Test repo_novedades.index.
      *
@@ -297,6 +316,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/repo_novedades');
     }
+
     /**
      * Test reporte1.index.
      *
@@ -306,6 +326,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/reporte1');
     }
+
     /**
      * Test roles.index.
      *
@@ -315,6 +336,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/roles');
     }
+
     /**
      * Test tecnico.index.
      *
@@ -324,6 +346,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/tecnico');
     }
+
     /**
      * Test ubicacion.index.
      *
@@ -333,6 +356,7 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/ubicacion');
     }
+
     /**
      * Test usuario.index.
      *
@@ -342,5 +366,4 @@ class RouterTestIndexIn200 extends TestCase
     {
         $this->urlReturns200('/usuario');
     }
-
 }
