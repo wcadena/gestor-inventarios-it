@@ -86,6 +86,7 @@ class RouterTestIndexTest extends TestCase
 
         $response->assertStatus(302);
     }
+
     /**
      * Test areas.index.
      *
@@ -285,8 +286,6 @@ class RouterTestIndexTest extends TestCase
     {
         $this->urlReturns302('/proyecto');
     }
-
-
 
     /**
      * Test puesto.index.
