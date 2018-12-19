@@ -286,15 +286,7 @@ class RouterTestIndexTest extends TestCase
         $this->urlReturns302('/proyecto');
     }
 
-    /**
-     * Test proyecto.proyecto_seccion.index.
-     *
-     * @return void
-     */
-    public function testproyecto_proyecto_seccion_index()
-    {
-        $this->urlReturns302('/proyecto/{proyecto}/proyecto_seccion');
-    }
+
 
     /**
      * Test puesto.index.
