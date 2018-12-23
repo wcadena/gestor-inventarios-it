@@ -17,6 +17,7 @@ class ProjectTest extends TestCase
 
         $response->assertStatus(302);
     }
+
     /**
      * A basic test example.
      *
