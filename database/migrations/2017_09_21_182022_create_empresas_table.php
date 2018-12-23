@@ -22,7 +22,7 @@ class CreateEmpresasTable extends Migration
         }
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             $e = new \App\Empresa();
-            $e->empresa = 'Avianca EC';
+            $e->empresa = env('EMP_PRINCIPAL', 'Ecuatask');
             $e->save();
         }
     }

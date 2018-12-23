@@ -39,9 +39,7 @@ class EquiposController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -51,9 +49,7 @@ class EquiposController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -101,9 +97,11 @@ class EquiposController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param Requests\EquiposRequest $request
      *
-     * @return Response
+     * @throws \Exception
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Requests\EquiposRequest $request)
     {

@@ -11,8 +11,8 @@ class NormalizarEquiposCustodios extends Migration
      */
     public function up()
     {
-        $affected = DB::update('update equipos set sociedad = ?', ['Avianca Ec']);
-        $affected = DB::update('update custodios set 	compania = ?', ['Avianca Ec']);
+        $affected = DB::update('update equipos set sociedad = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
+        $affected = DB::update('update custodios set 	compania = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
     }
 
     /**

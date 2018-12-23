@@ -36,7 +36,7 @@ $factory->define(App\Equipos::class, function (Faker $faker) {
             return $checklistmod->id;
         },
         'num_cajas'             => $faker->randomDigit,
-        'sociedad'              => 'Avianca Ec',
+        'sociedad'              => (env('EMP_PRINCIPAL', 'Ecuatask')),
         'no_serie'              => $faker->swiftBicNumber,
         'codigo_barras'         => $faker->ean13,
         'descripcion'           => $faker->text,

@@ -24,7 +24,7 @@ class AddEmpresaUsuariosTable extends Migration
             });
         }
 
-        $affected = DB::update('update users set empresa = ?', ['Avianca Ec']);
+        $affected = DB::update('update users set empresa = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
 
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('users', function (Blueprint $table) {

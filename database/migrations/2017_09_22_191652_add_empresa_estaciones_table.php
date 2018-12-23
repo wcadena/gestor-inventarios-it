@@ -18,7 +18,7 @@ class AddEmpresaEstacionesTable extends Migration
                 $table->string('empresa');
             });
         }
-        $affected = DB::update('update estaciones set empresa = ?', ['Avianca Ec']);
+        $affected = DB::update('update estaciones set empresa = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
 
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('estaciones', function (Blueprint $table) {

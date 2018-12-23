@@ -19,7 +19,7 @@ class AddEmpresaAreasTable extends Migration
             });
         }
 
-        $affected = DB::update('update areas set empresa = ?', ['Avianca Ec']);
+        $affected = DB::update('update areas set empresa = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
 
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('areas', function (Blueprint $table) {
