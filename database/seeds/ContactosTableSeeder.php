@@ -27,7 +27,7 @@ class ContactosTableSeeder extends Seeder
                 'valores_fuente'    => 'FIJO',
                 'fijo'              => 1,
                 'valor'             => App\Custodios::inRandomOrder()->first()->id,
-                'empresa'           => 'Avianca Ec',
+                'empresa'           => (env('EMP_PRINCIPAL', 'Ecuatask')),
             ]);
         }
 

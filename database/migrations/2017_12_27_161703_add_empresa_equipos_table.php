@@ -16,7 +16,7 @@ class AddEmpresaEquiposTable extends Migration
         Schema::table('equipos', function (Blueprint $table) {
             $table->string('empresa_procede1')->nullable();
         });
-        $affected = DB::update('update equipos set empresa_procede1 = ?', ['Avianca Ec']);
+        $affected = DB::update('update equipos set empresa_procede1 = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
         Schema::table('equipos', function (Blueprint $table) {
             $table->foreign('empresa_procede1')->references('empresa')->on('empresas');
         });
@@ -24,7 +24,7 @@ class AddEmpresaEquiposTable extends Migration
         Schema::table('equipos_logs', function (Blueprint $table) {
             $table->string('empresa_procede1')->nullable();
         });
-        $affected = DB::update('update equipos_logs set empresa_procede1 = ?', ['Avianca Ec']);
+        $affected = DB::update('update equipos_logs set empresa_procede1 = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
         Schema::table('equipos_logs', function (Blueprint $table) {
             $table->foreign('empresa_procede1')->references('empresa')->on('empresas');
         });

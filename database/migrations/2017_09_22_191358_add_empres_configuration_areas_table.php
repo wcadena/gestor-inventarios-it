@@ -18,7 +18,7 @@ class AddEmpresConfigurationAreasTable extends Migration
                 $table->string('empresa');
             });
         }
-        $affected = DB::update('update configuracions set empresa = ?', ['Avianca Ec']);
+        $affected = DB::update('update configuracions set empresa = ?', [(env('EMP_PRINCIPAL', 'Ecuatask'))]);
 
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('configuracions', function (Blueprint $table) {

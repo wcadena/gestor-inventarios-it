@@ -9,7 +9,7 @@ $factory->define(App\Custodios::class, function (Faker $faker) {
         'direccion'                       => $faker->address,
         'documentoIdentificacion'         => $faker->randomNumber($nbDigits = null, $strict = false),
         'cargo'                           => $faker->jobTitle,
-        'compania'                        => 'Avianca Ec',
+        'compania'                        => (env('EMP_PRINCIPAL', 'Ecuatask')),
         'telefono'                        => $faker->phoneNumber,
         'estado'                          => 'ACTIVO',
         'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
