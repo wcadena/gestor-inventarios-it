@@ -13,6 +13,11 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->withSession(['foo' => 'bar'])
+            ->visit('/')
+            ->see('Hello, '.$user->name);
     }
 }
