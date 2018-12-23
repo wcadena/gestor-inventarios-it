@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
                 $table->string('name');
                 $table->string('email')->unique();
                 $table->enum('rol', ['system', 'administrator']);
-                $table->enum('padrino', ['Avianca BOG', 'Avianca SAL', 'Avianca ECU', 'Avianca']);
+                $table->enum('padrino', [env('EMP_PRINCIPAL', 'Ecuatask')]);
                 $table->string('password');
                 $table->rememberToken();
                 $table->timestamps();

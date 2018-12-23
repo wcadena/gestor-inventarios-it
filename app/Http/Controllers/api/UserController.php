@@ -54,7 +54,7 @@ class UserController extends ApiController
 
         $campos['first_name'] = ($request->name);
         $campos['last_name'] = ($request->name);
-        $campos['empresa'] = ('Avianca EC');
+        $campos['empresa'] = (env('EMP_PRINCIPAL', 'Ecuatask'));
         $campos['username'] = ($request->email);
 
         $campos['password'] = bcrypt($request->password);

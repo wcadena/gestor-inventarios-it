@@ -1,6 +1,7 @@
 /node_modules
 /html/hot
 /html/storage
+/html/.well-known
 /storage/*.key
 /vendor
 /.idea

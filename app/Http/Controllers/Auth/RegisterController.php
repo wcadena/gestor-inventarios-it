@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'last_name'          => $data['last_name'],
             'username'           => $data['username'],
             'rol'                => 'registrado',
-            'empresa'            => 'Avianca EC',
+            'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
             'token'              => User::generarVerificationToken(),
             'verification_token' => User::generarVerificationToken(),
             'password'           => bcrypt($data['password']),

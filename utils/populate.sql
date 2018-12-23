@@ -1,5 +1,5 @@
 INSERT INTO `empresas` (`empresa`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('Avianca EC', '2017-09-29 12:31:36', '2017-09-29 12:31:36', NULL);
+('__EMP_PRINCIPAL__', '2017-09-29 12:31:36', '2017-09-29 12:31:36', NULL);
 INSERT INTO `configuracions` (`id`, `atributo`, `tipo`, `valores_fuente`, `fijo`, `valor`, `created_at`, `updated_at`, `deleted_at`, `empresa`) VALUES
 (1, 'CUSTODIO_BODEGA', 'texto', '', 'FIJO', '1', '2016-07-13 02:56:11', '2016-07-13 02:56:11', NULL, 'Avianca Ec');
 
