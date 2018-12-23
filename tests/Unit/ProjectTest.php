@@ -9,6 +9,15 @@ use Tests\TestCase;
 class ProjectTest extends TestCase
 {
     /**
+     * Test logout 1.
+     */
+    public function testLogout0()
+    {
+        $response = $this->json('POST', '/logout');
+
+        $response->assertStatus(302);
+    }
+    /**
      * A basic test example.
      *
      * @return void
