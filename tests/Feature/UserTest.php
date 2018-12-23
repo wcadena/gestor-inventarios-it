@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -13,7 +14,7 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(User::class)->create();
 
         $this->actingAs($user)
             ->withSession(['foo' => 'bar'])
