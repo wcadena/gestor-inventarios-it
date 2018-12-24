@@ -85,3 +85,11 @@ Menu::macro('sidebar', function () {
         )*/
         ->setActiveFromRequest();
 });
+
+Menu::macro('sidebar_opciones', function () {
+    return $menuPrincipl = Menu::adminlteMenu()
+        ->add(
+            Menu::fullsubmenuConfiguracions()
+        )
+        ->setActiveFromRequest();
+});

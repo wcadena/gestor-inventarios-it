@@ -9,25 +9,13 @@
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">{{ trans('adminlte_lang::message.recentactivity') }}</h3>
-            <ul class='control-sidebar-menu'>
-                <li>
-                    <a href='javascript::;'>
-                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">{{ trans('adminlte_lang::message.birthday') }}</h4>
-                            <p>{{ trans('adminlte_lang::message.birthdaydate') }}</p>
-                        </div>
-                    </a>
-                </li>
-            </ul><!-- /.control-sidebar-menu -->
+            <h3 class="control-sidebar-heading">Proyectos</h3>
 
-            <h3 class="control-sidebar-heading">{{ trans('adminlte_lang::message.progress') }}</h3>
             <ul class='control-sidebar-menu'>
                 <li>
                     <a href='javascript::;'>
                         <h4 class="control-sidebar-subheading">
-                            {{ trans('adminlte_lang::message.customtemplate') }}
+                            Proyectos Completados
                             <span class="label label-danger pull-right">70%</span>
                         </h4>
                         <div class="progress progress-xxs">
@@ -36,24 +24,27 @@
                     </a>
                 </li>
             </ul><!-- /.control-sidebar-menu -->
+            <!-- desarrollo -->
+            <hr />
+            <h3 class="control-sidebar-heading">@lang('home.equipo1c') <a href="#">@lang('home.equipo2c')</a></h3>
+
+            <div class="menu-info">
+                <h4 class="control-sidebar-subheading">@lang('home.Copyrightw1')</h4>
+                @lang('home.creadopor4')
+                <a href="https://github.com/wcadena/inventarioFinalApp" target="_blank">@lang('home.autor')</a>.
+            </div>
+            <hr />
+            <div class="menu-info">
+                <a href="@lang('home.url')"></a><b>@lang('home.sesinvetecu')</b></a>. @lang('home.footer1j').<br/>
+            </div>
+                <!-- /.control-sidebar-menu -->
 
         </div><!-- /.tab-pane -->
         <!-- Stats tab content -->
         <div class="tab-pane" id="control-sidebar-stats-tab">{{ trans('adminlte_lang::message.statstab') }}</div><!-- /.tab-pane -->
         <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading">{{ trans('adminlte_lang::message.generalset') }}</h3>
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        {{ trans('adminlte_lang::message.reportpanel') }}
-                        <input type="checkbox" class="pull-right" {{ trans('adminlte_lang::message.checked') }} />
-                    </label>
-                    <p>
-                        {{ trans('adminlte_lang::message.informationsettings') }}
-                    </p>
-                </div><!-- /.form-group -->
-            </form>
+            {{Menu::sidebar_opciones()}}
         </div><!-- /.tab-pane -->
     </div>
 </aside><!-- /.control-sidebar
