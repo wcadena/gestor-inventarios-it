@@ -60,7 +60,7 @@ mix.js('resources/assets/js/app.js', 'html/js')
     plugins: [
       new workboxPlugin.InjectManifest({
         cacheId: 'pwa',
-        filename: 'service-worker.js',
+        filename: 'sw.js',
         staticFileGlobs: ['public/**/*.{css,eot,svg,ttf,woff,woff2,js,html}'],
         minify: true,
         stripPrefix: 'html/',
