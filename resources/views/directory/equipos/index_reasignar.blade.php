@@ -9,7 +9,6 @@
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
 
-
 @endsection
 @section('content')
 
@@ -186,7 +185,7 @@
         window.onload = function() {
             $(function () {
 
-                $.fn.select2.defaults.set( "theme", "bootstrap" );
+                $.fn.select2.defaults.set( "theme", "classic" );
 
                 //alert("hola");
 
