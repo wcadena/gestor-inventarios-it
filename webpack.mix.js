@@ -1,7 +1,5 @@
 const { mix } = require('laravel-mix');
 const workboxPlugin = require('workbox-webpack-plugin');
-var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,37 +12,37 @@ var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
  */
 
 mix.js('resources/assets/js/app.js', 'html/js')
-   .js('resources/assets/js/app-landing.js', 'html/js/app-landing.js')
-   .combine([
-       'resources/assets/css/bootstrap.min.css',
-       'resources/assets/css/font-awesome.min.css',
-       'resources/assets/css/ionicons.min.css',
-       'node_modules/admin-lte/dist/css/AdminLTE.min.css',
-       'node_modules/admin-lte/dist/css/skins/_all-skins.css',
-       'node_modules/icheck/skins/square/blue.css'
-   ], 'html/css/all.css')
-   .combine([
-       'resources/assets/css/bootstrap.min.css',
-       'resources/assets/css/pratt_landing.min.css'
-   ], 'html/css/all-landing.css')
-   // PACKAGE (ADMINLTE-LARAVEL) RESOURCES
-   .copy('resources/assets/img/*.*','html/img/')
-   //VENDOR RESOURCES
-   .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
-   .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
-   .copy('node_modules/bootstrap/fonts/*.*','html/fonts/')
-   .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
-   .copy('node_modules/admin-lte/dist/img','html/img')
-   .copy('node_modules/admin-lte/plugins','html/plugins')
-   .copy('node_modules/icheck/skins/square/blue.png','html/css')
-   .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
+  .js('resources/assets/js/app-landing.js', 'html/js/app-landing.js')
+  .sourceMaps()
+  .combine([
+    'resources/assets/css/bootstrap.min.css',
+    'resources/assets/css/font-awesome.min.css',
+    'resources/assets/css/ionicons.min.css',
+    'node_modules/admin-lte/dist/css/AdminLTE.min.css',
+    'node_modules/admin-lte/dist/css/skins/_all-skins.css',
+    'node_modules/icheck/skins/square/blue.css'
+  ], 'html/css/all.css')
+  .combine([
+    'resources/assets/css/bootstrap.min.css',
+    'resources/assets/css/pratt_landing.min.css'
+  ], 'html/css/all-landing.css')
+  // PACKAGE (ADMINLTE-LARAVEL) RESOURCES
+  .copy('resources/assets/img/*.*','html/img/')
+  //VENDOR RESOURCES
+  .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
+  .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
+  .copy('node_modules/bootstrap/fonts/*.*','html/fonts/')
+  .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
+  .copy('node_modules/admin-lte/dist/img','html/img')
+  .copy('node_modules/admin-lte/plugins','html/plugins')
+  .copy('node_modules/icheck/skins/square/blue.png','html/css')
+  .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
 
   // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
-   .copy('node_modules/select2/dist/css/select2.min.css','html/css')
-   .copy('node_modules/select2/dist/js/select2.min.js','html/js')
-   //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
-   .copy('node_modules/chart.js/Chart.min.js','html/plugins/chartjs')
-   .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','html/plugins/datepicker')
+  .copy('node_modules/select2/dist/css/select2.min.css','html/css')
+  .copy('node_modules/select2/dist/js/select2.min.js','html/js')
+  //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
+  .copy('node_modules/chart.js/Chart.min.js','html/js')
 
   .setPublicPath('html')
   .options({
@@ -59,30 +57,30 @@ mix.js('resources/assets/js/app.js', 'html/js')
   .webpackConfig({
     plugins: [
       new workboxPlugin.InjectManifest({
-        cacheId: 'pwa',
-        filename: 'sw.js',
-        staticFileGlobs: ['public/**/*.{css,eot,svg,ttf,woff,woff2,js,html}'],
-        minify: true,
-        stripPrefix: 'html/',
-        handleFetch: true,
-        dynamicUrlToDependencies: { //you should add the path to your blade files here so they can be cached
-          //and have full support for offline first (example below)
-          '/': ['resources/views/welcome.blade.php','resources/views/home.blade.php'],
-          // '/posts': ['resources/views/posts.blade.php']
+        swSrc: 'resources/assets/js/sw.js',
+        swDest: path.join(`${__dirname}/html`, 'sw.js'),
+        modifyUrlPrefix: {
+          '/': ''
         },
-        staticFileGlobsIgnorePatterns: [/\.map$/, /mix-manifest\.json$/, /manifest\.json$/, /service-worker\.js$/],
-        navigateFallback: '/',
-        runtimeCaching: [
+        //clientsClaim: true,
+        //skipWaiting: true,
+        /*runtimeCaching: [
           {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
-            handler: 'cacheFirst'
+            urlPattern: new RegExp(`${process.env.APP_URL}`),
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheName: `${process.env.APP_NAME}-${process.env.APP_ENV}`
+            }
           },
           {
-            urlPattern: /^https:\/\/www\.thecocktaildb\.com\/images\/media\/drink\/(\w+)\.jpg/,
-            handler: 'cacheFirst'
+            urlPattern: new RegExp('https://fonts.(googleapis|gstatic).com'),
+            handler: 'cacheFirst',
+            options: {
+              cacheName: 'google-fonts'
+            }
           }
-        ],
-        // importScripts: ['./js/push_message.js']
+        ]*/
+
       })
     ]
   })
@@ -92,6 +90,4 @@ mix.js('resources/assets/js/app.js', 'html/js')
 if (mix.config.inProduction) {
   mix.version();
   mix.minify();
-  mix.babel();
 }
-
