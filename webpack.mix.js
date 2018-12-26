@@ -40,7 +40,7 @@ mix.js('resources/assets/js/app.js', 'html/js')
   // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
    .copy('node_modules/select2/dist/css/select2.min.css','html/css')
    .copy('node_modules/select2/dist/js/select2.min.js','html/js')
-   //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
+   //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css') 
    .copy('node_modules/chart.js/Chart.min.js','html/plugins/chartjs')
    .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','html/plugins/datepicker')
 
