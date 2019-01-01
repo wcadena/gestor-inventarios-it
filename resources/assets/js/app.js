@@ -56,17 +56,3 @@ function init() {
 }
 init();
 
-$('.sidebar-menu').tree({
-  // Any options here
-});
-
-$('.sidebar-toggle').on('click',function(){
-
-  var cls =  $('body').hasClass('sidebar-collapse');
-  if(cls == true){
-    $('body').removeClass('sidebar-collapse');
-  } else {
-    $('body').addClass('sidebar-collapse');
-  }
-
-});

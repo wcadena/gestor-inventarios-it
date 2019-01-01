@@ -16,7 +16,7 @@
     "theme_color": "#da532c",
     "background_color": "#da532c",
     "display": "standalone",
-    "start_url": "https://inventario.ecuatask.com/",
+    "start_url": "https://devinventario.ecuatask.com/",
     "orientation": "portrait",
     "scope": "/",
     "display": "standalone",

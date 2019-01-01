@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 
 <section class="content-header">
-    <h1>
+    <h1 class="hidden-xs">
         @yield('contentheader_title', trans('home.init1'))
         <small>@yield('contentheader_description',trans('home.init2'))</small>
     </h1>
