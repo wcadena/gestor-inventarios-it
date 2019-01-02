@@ -52,9 +52,10 @@ class InformeMantenimientoPreventivoController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'no_orden'        => 'required',
-            'fecha_ejecucion' => 'required',
-            'requerimiento'   => 'required',
+            'fecha_solicitud'   => 'required',
+            'requerimiento'     => 'required',
+            'observacion'       => 'required',
+            'publico_privado'   => 'required',
         ];
         $this->validate($request, $reglas);
 

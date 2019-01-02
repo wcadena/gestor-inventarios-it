@@ -1,5 +1,14 @@
 @extends('layouts.master')
+@section('htmlheader')
 
+    @include('layouts.partials.htmlheader')
+
+    <!-- Select2 -->
+
+    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+@endsection
 @section('content')
 
     <h1>Crear nuevo Informe</h1>
@@ -7,11 +16,17 @@
 
     {!! Form::open(['url' => 'informes', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('requerimiento') ? 'has-error' : ''}}">
+                {!! Form::label('requerimiento', 'Titulo Requerimiento: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('requerimiento', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('requerimiento', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
                 {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-
-                    {{ Form::select('custodio_id', $custodios, null, ['class' => 'form-control']) }}
+                    {{ Form::select('custodio_id', $custodios, (isset(Auth::user()->custodio))?Auth::user()->custodio->id:null, ['class' => 'form-control']) }}
                     {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -22,60 +37,41 @@
                     {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('no_orden') ? 'has-error' : ''}}">
-                {!! Form::label('no_orden', 'No Orden: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('no_orden', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('no_orden', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+
             <div class="form-group {{ $errors->has('fecha_solicitud') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_solicitud', 'Fecha Solicitud: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::date('fecha_solicitud', null, ['class' => 'form-control']) !!}
+                    {!! Form::date('fecha_solicitud', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
                     {!! $errors->first('fecha_solicitud', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha_ejecucion') ? 'has-error' : ''}}">
-                {!! Form::label('fecha_ejecucion', 'Fecha Ejecucion: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::date('fecha_ejecucion', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('fecha_ejecucion', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('hora_inicio') ? 'has-error' : ''}}">
-                {!! Form::label('hora_inicio', 'Hora Inicio: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::time('hora_inicio', \Carbon\Carbon::now()->toTimeString(), ['class' => 'form-control']) !!}
-                    {!! $errors->first('hora_inicio', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('hora_fin') ? 'has-error' : ''}}">
-                {!! Form::label('hora_fin', 'Hora Fin: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::time('hora_fin', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('hora_fin', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
             <div class="form-group {{ $errors->has('informe_manto_prev_cate_id') ? 'has-error' : ''}}">
-                {!! Form::label('informe_manto_prev_cate_id', 'Informe Manto Prev Cate Id: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('informe_manto_prev_cate_id', 'Categoria: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {{ Form::select('informe_manto_prev_cate_id', $categoria_mant, null, ['class' => 'form-control']) }}
                     {!! $errors->first('informe_manto_prev_cate_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('requerimiento') ? 'has-error' : ''}}">
-                {!! Form::label('requerimiento', 'Requerimiento: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
+                {!! Form::label('observacion', 'Descripción : ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('requerimiento', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('requerimiento', '<p class="help-block">:message</p>') !!}
+                    {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('observacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
 
                     {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
 
                     {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
 
+            <div class="form-group {{ $errors->has('informe_manto_prev_tecs') ? 'has-error' : ''}}">
+                {!! Form::label('informe_manto_prev_tecs', 'Tecnicos : ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
+                    {!! $errors->first('informe_manto_prev_tecs', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
 
     <div class="form-group">
@@ -92,5 +88,151 @@
             @endforeach
         </ul>
     @endif
+
+@endsection
+
+@section('scripts')
+
+    @include('layouts.partials.scripts')
+
+    <script src="{{ asset('/js/select2.min.js') }}"></script>
+
+    <script>
+
+      function redirect (url) {
+
+        var ua        = navigator.userAgent.toLowerCase(),
+
+          isIE      = ua.indexOf('msie') !== -1,
+
+          version   = parseInt(ua.substr(4, 2), 10);
+
+
+
+        // Internet Explorer 8 and lower
+
+        if (isIE && version < 9) {
+
+          var link = document.createElement('a');
+
+          link.href = url;
+
+          document.body.appendChild(link);
+
+          link.click();
+
+        }
+
+
+
+        // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
+
+        else {
+
+          window.location.href = url;
+
+        }
+
+      }
+
+      window.onload = function() {
+        $(function () {
+
+          $.fn.select2.defaults.set( "theme", "classic" );
+
+          //alert("hola");
+
+          $('.zxsdfgsd33').click(function (e) {
+
+            e.preventDefault();
+
+            var a = $('#equipoidf').val();
+
+            var b = $('#sxxxdw3wsfg').attr('href');
+
+            var c = b.replace('{idzx3er}', a);
+
+            redirect(c);
+
+
+          });
+
+          ///////////////////////////////////////////////////////////////////////////////////
+
+
+          $('.id_serchf').select2({
+
+            // Activamos la opcion "Tags" del plugin
+
+
+            language: "es",
+
+            placeholder: "Select Avianca Code",
+
+            tags: true,
+
+            tokenSeparators: [','],
+
+            templateResult: formatState,
+
+            ajax: {
+
+              dataType: 'json',
+
+              url: '{{ url("tags") }}',
+
+              delay: 250,
+
+              data: function (params) {
+
+                return {
+
+                  term: params.term
+
+                }
+
+              },
+
+              processResults: function (data, page) {
+
+                return {
+
+                  results: data
+
+                };
+
+              },
+
+            }
+
+          });
+
+          ///////////////////////////////////////////////////////////////////////////////////////////
+
+          function formatState(state) {
+
+            if (!state.id) {
+              return state.text;
+            }
+
+            var $state = $(
+              '<span>' + state.id + ":" + state.text + '</span>'
+            );
+
+            return $state;
+
+          };
+
+
+          ///////////////////////////////////////////////////////////////////////////////////////
+
+
+        });
+      };
+
+
+
+
+    </script>
 
 @endsection
