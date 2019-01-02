@@ -70,6 +70,17 @@
                 </div>
             </div>
 
+    <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
+        {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-4">
+            {{ Form::select('custodio_id', \App\Custodios::all()->pluck('nombre_responsable','id'), null, ['class' => 'form-control']) }}
+            {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-sm-2">
+            <a href="{{ url('custodio/create') }}" class="btn btn-primary pull-right btn-sm">@lang('form.addnew') @lang('fo.Custodio')</a>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
