@@ -48,7 +48,7 @@ class UsuarioLogController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:users,username',
-            'email' => 'required|unique:users,email',
+            'email'    => 'required|unique:users,email',
         ]);
         $req = $request->all();
         $req['password'] = bcrypt($req['password']);
@@ -109,8 +109,8 @@ class UsuarioLogController extends Controller
         $usuario = User::findOrFail($id);
         $request->validate([
             'custodio_id' => 'required|unique:users,custodio_id,'.$usuario->id,
-            'username' => 'required|unique:users,username,'.$usuario->id,
-            'email' => 'required|unique:users,email,'.$usuario->id,
+            'username'    => 'required|unique:users,username,'.$usuario->id,
+            'email'       => 'required|unique:users,email,'.$usuario->id,
         ]);
         if ($request['password'] != null) {
             $req = $request->all();
