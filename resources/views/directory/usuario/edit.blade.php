@@ -97,4 +97,10 @@
         </ul>
     @endif
 
+    <div class="list-group">
+        @foreach( \App\Role::all() as $rol)
+            <li class="list-group-item">{{($rol->display_name)}} @if($usuario->hasRole($rol->name))  @else @endif</li>
+        @endforeach
+    </div>
+
 @endsection
