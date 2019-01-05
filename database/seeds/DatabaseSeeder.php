@@ -19,7 +19,5 @@ class DatabaseSeeder extends Seeder
         $this->call(InformeMantenimientoPreventivoSeeder::class);
 
         \Illuminate\Database\Eloquent\Model::reguard();
-
-
     }
 }
