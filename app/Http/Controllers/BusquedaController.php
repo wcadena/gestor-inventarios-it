@@ -38,15 +38,16 @@ class BusquedaController extends Controller
         $term = str_replace(' ', '%', "$term");
         $term_mat = strtok($term, '%');
 
-        $this->busquedaCustodio($term,$term_mat);
-        $this->busquedaEquipo($term,$term_mat);
+        $this->busquedaCustodio($term, $term_mat);
+        $this->busquedaEquipo($term, $term_mat);
 
         $busqueda = Busqueda::paginate(15);
 
         return view('directory.buscar.index', compact('busqueda'));
     }
 
-    private function busquedaCustodio($term, $term_mat){
+    private function busquedaCustodio($term, $term_mat)
+    {
         /*
                  * custodio
                  */
@@ -82,7 +83,9 @@ class BusquedaController extends Controller
          * fin custodio
          */
     }
-    private function busquedaEquipo($term, $term_mat){
+
+    private function busquedaEquipo($term, $term_mat)
+    {
         /*
                  * equipo
                  */
@@ -124,6 +127,7 @@ class BusquedaController extends Controller
          * fin equipo
          */
     }
+
     /**
      * Show the form for creating a new resource.
      *
