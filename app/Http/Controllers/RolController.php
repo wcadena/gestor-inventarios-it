@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Modulo;
-use App\Permiso;
-use App\Permisorol;
 use App\Permission;
-use App\Rol;
 use App\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Session;
 
 class RolController extends Controller
@@ -40,12 +35,51 @@ class RolController extends Controller
      */
     public function create()
     {
-        $modulo = Permission::all();
-        /* foreach($modulo AS $item){
-             dd($item->permisos);
-         }*/
+        $config = config('laratrust_seeder.role_structure');
+        $userPermission = config('laratrust_seeder.permission_structure');
+        $mapPermission = collect(config('laratrust_seeder.permissions_map'));
+        $faker = \Faker\Factory::create();
+        $USER_EMAIL = 'wcadena@outlook.com';
 
-        return view('directory.rol.create', compact('modulo'));
+        foreach ($config as $key => $modules) {
+            if(Role::where('name',$key)->count()==0){
+                // Create a new role
+                $role = \App\Role::create([
+                    'name'         => $key,
+                    'display_name' => ucwords(str_replace('_', ' ', $key)),
+                    'description'  => ucwords(str_replace('_', ' ', $key)),
+                ]);
+            }else{
+                $role = Role::where('name',$key)->first();
+            }
+            $permissions = [];
+
+            // Reading role permission modules
+            foreach ($modules as $module => $value) {
+                foreach (explode(',', $value) as $p => $perm) {
+
+                    $permissionValue = $mapPermission->get($perm);
+                    if(Permission::where('name',$permissionValue.'-'.$module)->count()==0){
+                        $permissions[] = \App\Permission::firstOrCreate([
+                            'name'         => $permissionValue.'-'.$module,
+                            'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
+                            'description'  => ucfirst($permissionValue).' '.ucfirst($module),
+                        ])->id;
+                    }else{
+                        $permissions[] = Permission::where('name',$permissionValue.'-'.$module)->first()->id;
+                    }
+                }
+            }
+
+            // Attach all permissions to the role
+            $role->permissions()->sync($permissions);
+        }
+
+
+
+        Session::flash('flash_message', '¡Roles Agregados!');
+
+        return redirect('roles');
     }
 
     /**
