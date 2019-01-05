@@ -15,11 +15,11 @@
                 <div class="panel-heading">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
-                            Personal Access Tokens
+                            Token de Acceso Personal
                         </span>
 
                         <a class="action-link" @click="showCreateTokenForm">
-                            Create New Token
+                            Crear Nuevo Token
                         </a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Create Token Modal -->
-        <div class="modal fade" id="modal-create-token" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-create-token" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Access Token Modal -->
-        <div class="modal fade" id="modal-access-token" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-access-token" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
