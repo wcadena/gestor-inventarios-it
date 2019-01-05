@@ -20,6 +20,7 @@ class LaratrustSeeder extends Seeder
         $userPermission = config('laratrust_seeder.permission_structure');
         $mapPermission = collect(config('laratrust_seeder.permissions_map'));
         $faker = \Faker\Factory::create();
+        $USER_EMAIL = 'wcadena@outlook.com';
         foreach ($config as $key => $modules) {
 
             // Create a new role
@@ -55,9 +56,10 @@ class LaratrustSeeder extends Seeder
             // Create default user for each role
             $user = \App\User::create([
 
-                'name'     => ucwords(str_replace('_', ' ', $key)),
-                'email'    => $key.'@app.com',
-                'password' => bcrypt('password'),
+
+                'name'     => ($key == 'superadministrator')?env('ADMIN_USER', 'wcadena'):ucwords(str_replace('_', ' ', $key)),
+                'email'    => ($key == 'superadministrator')?env('ADMIN_EMAIL', $USER_EMAIL):$key.'@app.com',
+                'password' => ($key == 'superadministrator')?bcrypt(env('ADMIN_PWD', '123456')):bcrypt('password'),
 
                 'first_name'         => $faker->firstName,
                 'last_name'          => $faker->lastName,
