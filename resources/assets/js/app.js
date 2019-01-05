@@ -34,6 +34,10 @@ Vue.component(
 
 Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
 
+//Vue.component('roles-permisos', require('./components/directorio/roles/RolesPermisos.vue'));
+Vue.component('permiso', require('./components/directorio/roles/Permiso'));
+Vue.component('rol', require('./components/directorio/roles/Rol'));
+
 const app = new Vue({
     el: '#app'
 });
