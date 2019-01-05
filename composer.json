@@ -50,12 +50,12 @@
         "pusher/pusher-http-laravel": "^4.2",
         "pusher/pusher-php-server": "^3.2",
         "rachidlaasri/laravel-installer": "^4.0",
+        "santigarcor/laratrust": "^5.0",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "spatie/laravel-fractal": "^5.4",
         "spatie/laravel-menu": "^3.2",
         "webpatser/laravel-uuid": "^3.0",
-        "wuwx/laravel-autonumber": "^2.0",
-        "zizaco/entrust": "^1.9"
+        "wuwx/laravel-autonumber": "^2.0"
     },
     "require-dev": {
         "aiiro/laravel-factory-generator": "^0.0.3",

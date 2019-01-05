@@ -71,7 +71,6 @@ Route::get('tags', function (Illuminate\Http\Request  $request) {
     foreach ($tags as $id => $tag) {
         $valid_tags[] = ['id' => $id, 'text' => $tag];
     }
-
     return \Response::json($valid_tags);
 });
 
