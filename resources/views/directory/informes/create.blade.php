@@ -65,11 +65,11 @@
 
                     {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
 
-            <div class="form-group {{ $errors->has('informe_manto_prev_tecs') ? 'has-error' : ''}}">
-                {!! Form::label('informe_manto_prev_tecs', 'Tecnicos : ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('_tec_user_id') ? 'has-error' : ''}}">
+                {!! Form::label('_tec_user_id', 'Tecnicos : ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
-                    {!! $errors->first('informe_manto_prev_tecs', '<p class="help-block">:message</p>') !!}
+                    {{Form::select('_tec_user_id[]', array(), '',array('id' => '_tec_user_id','class' => 'id_serchf form-control','multiple'=>'multiple')) }}
+                    {!! $errors->first('_tec_user_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
@@ -99,114 +99,39 @@
 
     <script>
 
-      function redirect (url) {
-
-        var ua        = navigator.userAgent.toLowerCase(),
-
-          isIE      = ua.indexOf('msie') !== -1,
-
-          version   = parseInt(ua.substr(4, 2), 10);
-
-
-
-        // Internet Explorer 8 and lower
-
-        if (isIE && version < 9) {
-
-          var link = document.createElement('a');
-
-          link.href = url;
-
-          document.body.appendChild(link);
-
-          link.click();
-
-        }
-
-
-
-        // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
-
-        else {
-
-          window.location.href = url;
-
-        }
-
-      }
-
       window.onload = function() {
         $(function () {
 
           $.fn.select2.defaults.set( "theme", "classic" );
 
-          //alert("hola");
 
-          $('.zxsdfgsd33').click(function (e) {
-
-            e.preventDefault();
-
-            var a = $('#equipoidf').val();
-
-            var b = $('#sxxxdw3wsfg').attr('href');
-
-            var c = b.replace('{idzx3er}', a);
-
-            redirect(c);
-
-
-          });
 
           ///////////////////////////////////////////////////////////////////////////////////
 
 
           $('.id_serchf').select2({
-
             // Activamos la opcion "Tags" del plugin
-
-
             language: "es",
-
-            placeholder: "Select Avianca Code",
-
+            placeholder: "Tecnico",
             tags: true,
-
             tokenSeparators: [','],
-
             templateResult: formatState,
-
             ajax: {
-
               dataType: 'json',
-
               url: '{{ url("tags") }}',
-
               delay: 250,
-
               data: function (params) {
-
                 return {
-
                   term: params.term
-
                 }
-
               },
-
               processResults: function (data, page) {
-
                 return {
-
                   results: data
-
                 };
-
               },
-
             }
-
           });
-
           ///////////////////////////////////////////////////////////////////////////////////////////
 
           function formatState(state) {
