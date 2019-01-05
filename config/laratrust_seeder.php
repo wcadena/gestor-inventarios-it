@@ -26,8 +26,16 @@ return [
             'profile'             => 'r,u',
         ],
         'administrator' => [
-            'users'   => 'c,r,u,d',
-            'profile' => 'r,u',
+            'equipos'             => 'c,r,u,d',
+            'custodios'           => 'c,r,u,d',
+            'proyectos'           => 'c,r,u,d',
+            'ubicaciones'         => 'c,r,u,d',
+            'puestos'             => 'c,r,u,d',
+            'informes'            => 'c,r,u,d',
+            'reportes'            => 'c,r,u,d',
+            'users'               => 'c,r,u,d',
+            'acl'                 => 'c,r,u,d',
+            'profile'             => 'r,u',
         ],
         'user' => [
             'profile' => 'r,u',

@@ -256,7 +256,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testroles_create()
     {
-        $this->urlReturns200('/roles/create');
+        $this->urlReturns302('/roles/create');
     }
 
     /**
