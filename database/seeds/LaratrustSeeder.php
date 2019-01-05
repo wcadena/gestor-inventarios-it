@@ -56,10 +56,9 @@ class LaratrustSeeder extends Seeder
             // Create default user for each role
             $user = \App\User::create([
 
-
-                'name'     => ($key == 'superadministrator')?env('ADMIN_USER', 'wcadena'):ucwords(str_replace('_', ' ', $key)),
-                'email'    => ($key == 'superadministrator')?env('ADMIN_EMAIL', $USER_EMAIL):$key.'@app.com',
-                'password' => ($key == 'superadministrator')?bcrypt(env('ADMIN_PWD', '123456')):bcrypt('password'),
+                'name'     => ($key == 'superadministrator') ? env('ADMIN_USER', 'wcadena') : ucwords(str_replace('_', ' ', $key)),
+                'email'    => ($key == 'superadministrator') ? env('ADMIN_EMAIL', $USER_EMAIL) : $key.'@app.com',
+                'password' => ($key == 'superadministrator') ? bcrypt(env('ADMIN_PWD', '123456')) : bcrypt('password'),
 
                 'first_name'         => $faker->firstName,
                 'last_name'          => $faker->lastName,
