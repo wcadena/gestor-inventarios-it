@@ -68,12 +68,10 @@
             <div class="form-group {{ $errors->has('_tec_user_id') ? 'has-error' : ''}}">
                 {!! Form::label('_tec_user_id', 'Tecnicos : ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {{Form::select('_tec_user_id[]', array(), '',array('id' => '_tec_user_id','class' => 'id_serchf form-control','multiple'=>'multiple')) }}
+                    {{Form::select('_tec_user_id[]', array(), '',array('id' => '_tec_user_id','class' => 'tec_user_sel form-control','multiple'=>'multiple')) }}
                     {!! $errors->first('_tec_user_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-    {{(\App\Role::where('name','tecnico')->first()->users->pluck('name', 'id'))}}
-
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
@@ -103,27 +101,11 @@
       window.onload = function() {
         $(function () {
 
-          $.fn.select2.defaults.set( "theme", "classic" );
-
-
-
-          ///////////////////////////////////////////////////////////////////////////////////
-
-          fetch( '{{ route('role.user', \App\Role::where('name','tecnico')->first()) }}' )
-            .then( resp => resp.json())
-            .then( respObj => {
-              console.log(respObj);
-              console.log(respObj.page);
-              console.log(respObj.per_page);
-            });
-
-          $('.id_serchf').select2({
+          $('.tec_user_sel').select2({
             // Activamos la opcion "Tags" del plugin
             language: "es",
             placeholder: "Tecnico",
-            tags: true,
-            tokenSeparators: [','],
-            templateResult: formatState,
+           templateResult: formatState,
             ajax: {
               dataType: 'json',
               url: '{{ route('role.user', \App\Role::where('name','tecnico')->first()) }}',
@@ -135,37 +117,25 @@
               },
               processResults: function (data, page) {
                 return {
-                  results: data
+                  results: data.data
                 };
               },
             }
           });
-          ///////////////////////////////////////////////////////////////////////////////////////////
 
           function formatState(state) {
-
-            if (!state.id) {
-              return state.text;
+            if (!state.identificador) {
+              return state.identificador;
             }
 
             var $state = $(
-              '<span>' + state.id + ":" + state.text + '</span>'
+              '<span>' + state.identificador + ":" + state.nombre + '</span>'
             );
 
             return $state;
 
           };
-
-
-          ///////////////////////////////////////////////////////////////////////////////////////
-
-
         });
       };
-
-
-
-
     </script>
-
 @endsection

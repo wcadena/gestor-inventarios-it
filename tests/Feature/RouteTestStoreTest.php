@@ -170,12 +170,23 @@ class RouteTestStoreTest extends TestCase
     }
 
     /**
+     * Test roles.create.
+     *
+     * @return void
+     */
+    public function testroles_create()
+    {
+        $this->urlReturns302('/roles/create');
+    }
+
+    /**
      * Test informes.create.
      *
      * @return void
      */
     public function testinformes_create()
     {
+        //crear primero perfiles
         $this->urlReturns200('/informes/create');
     }
 
@@ -249,15 +260,7 @@ class RouteTestStoreTest extends TestCase
         $this->urlReturns200('/reporte1/create');
     }
 
-    /**
-     * Test roles.create.
-     *
-     * @return void
-     */
-    public function testroles_create()
-    {
-        $this->urlReturns302('/roles/create');
-    }
+
 
     /**
      * Test tecnico.create.
