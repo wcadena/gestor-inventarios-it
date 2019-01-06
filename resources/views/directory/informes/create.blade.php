@@ -109,6 +109,13 @@
 
           ///////////////////////////////////////////////////////////////////////////////////
 
+          fetch( '{{ route('role.user', \App\Role::where('name','tecnico')->first()) }}' )
+            .then( resp => resp.json())
+            .then( respObj => {
+              console.log(respObj);
+              console.log(respObj.page);
+              console.log(respObj.per_page);
+            });
 
           $('.id_serchf').select2({
             // Activamos la opcion "Tags" del plugin
