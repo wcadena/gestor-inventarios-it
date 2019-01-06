@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\ApiController;
 use App\Role;
-use Illuminate\Http\Request;
 
 class RoleController extends ApiController
 {
@@ -47,10 +46,11 @@ class RoleController extends ApiController
 
     /**
      * @param Role $role
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index_user(Role $role){
+    public function index_user(Role $role)
+    {
         return $this->showAll($role->users);
     }
-
 }

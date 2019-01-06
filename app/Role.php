@@ -7,7 +7,6 @@ use Laratrust\Models\LaratrustRole;
 
 class Role extends LaratrustRole
 {
-
     public $transformer = RoleTransformer::class;
 
     protected $fillable = ['name', 'display_name', 'description'];
