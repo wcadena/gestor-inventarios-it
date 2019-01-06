@@ -260,8 +260,6 @@ class RouteTestStoreTest extends TestCase
         $this->urlReturns200('/reporte1/create');
     }
 
-
-
     /**
      * Test tecnico.create.
      *

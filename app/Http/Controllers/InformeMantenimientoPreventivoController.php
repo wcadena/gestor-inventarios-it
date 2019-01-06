@@ -28,7 +28,7 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function index()
     {
-        $informes = InformeMantenimientoPreventivo::orderby('id','desc')->paginate(15);
+        $informes = InformeMantenimientoPreventivo::orderby('id', 'desc')->paginate(15);
 
         return view('directory.informes.index', compact('informes'));
     }
@@ -72,7 +72,7 @@ class InformeMantenimientoPreventivoController extends Controller
                 foreach ($tecnicos as $tecnico) {
                     $tecnico_x = User::findOrFail($tecnico)->toArray();
 
-                    $tecnico_x['user_id']               = $tecnico_x['id'];
+                    $tecnico_x['user_id'] = $tecnico_x['id'];
                     $tecnico_x['informe_manto_prev_id'] = $inf->id;
                     unset($tecnico['id']);
                     InformeMantenimientoPreventivoTecnico::create($tecnico);
@@ -82,6 +82,7 @@ class InformeMantenimientoPreventivoController extends Controller
             }
             //////////////////////////////////////////////
             DB::commit();
+
             return redirect('informes');
         } catch (Exception $e) {
             DB::rollback();
