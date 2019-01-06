@@ -7,7 +7,10 @@ use App\Custodios;
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -25,7 +28,7 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function index()
     {
-        $informes = InformeMantenimientoPreventivo::paginate(15);
+        $informes = InformeMantenimientoPreventivo::orderby('id','desc')->paginate(15);
 
         return view('directory.informes.index', compact('informes'));
     }
@@ -55,11 +58,34 @@ class InformeMantenimientoPreventivoController extends Controller
             'fecha_solicitud'   => 'required',
             'requerimiento'     => 'required',
             'observacion'       => 'required',
-            'publico_privado'   => 'required',
+
         ];
         $this->validate($request, $reglas);
 
-        InformeMantenimientoPreventivo::create($request->all());
+        try {
+            DB::beginTransaction();
+            //dd($request);
+            $inf = InformeMantenimientoPreventivo::create($request->all());
+            //////////////////////////////////////////////
+            $tecnicos = Input::get('tecnicos');
+            if (is_array($tecnicos)) {
+                foreach ($tecnicos as $tecnico) {
+                    $tecnico_x = User::findOrFail($tecnico)->toArray();
+
+                    $tecnico_x['user_id']               = $tecnico_x['id'];
+                    $tecnico_x['informe_manto_prev_id'] = $inf->id;
+                    unset($tecnico['id']);
+                    InformeMantenimientoPreventivoTecnico::create($tecnico);
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Tecnicos added!');
+            }
+            //////////////////////////////////////////////
+            DB::commit();
+            return redirect('informes');
+        } catch (Exception $e) {
+            DB::rollback();
+        }
 
         Session::flash('flash_message', 'InformeMantenimientoPreventivo added!');
 

@@ -59,4 +59,5 @@ class InformeMantenimientoPreventivo extends Model
     {
         return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
     }
+
 }

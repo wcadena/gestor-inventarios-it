@@ -97,7 +97,7 @@ return [
     'formula_codigo'  => 'Formula de etiqueta',
     'empresa'         => 'Empresa',
     'formula_codigo'  => 'Formula de etiqueta',
-    ''                => '',
+    'Tecnicos'        => 'Técnicos',
     ''                => '',
 
 ];

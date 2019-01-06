@@ -19,7 +19,12 @@
                 @php $x++;@endphp
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('informes', $item->id) }}">{{ $item->custodioxc->nombre_responsable }}</a></td><td>{{ $item->areaxc->area }}</td><td>{{ $item->requerimiento }}</td>
+                    <td>
+                        <a href="{{ url('informes', $item->id) }}">
+                            {{ $item->custodioxc->nombre_responsable }}
+                        </a>
+                    </td>
+                    <td>{{ $item->areaxc->area }}</td><td>{{ $item->requerimiento }}</td>
                     <td>
                         <a href="{{ url('informes/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

@@ -64,14 +64,37 @@
                     {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
 
                     {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
+                {!! Form::hidden('vinculo', Webpatser\Uuid\Uuid::generate()) !!}
+    <div class="form-group {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
+        {!! Form::label('tecnico', trans('fo.Tecnicos'), ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! $errors->first('tecnicos', '<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> :message
+</div>') !!}
+            <div class="table {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>@lang('form.sno')</th>
+                        <th>@lang('form.name')</th>
+                    </thead>
+                    <tbody>
+                    @php $x=0; @endphp
 
-            <div class="form-group {{ $errors->has('_tec_user_id') ? 'has-error' : ''}}">
-                {!! Form::label('_tec_user_id', 'Tecnicos : ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {{Form::select('_tec_user_id[]', array(), '',array('id' => '_tec_user_id','class' => 'tec_user_sel form-control','multiple'=>'multiple')) }}
-                    {!! $errors->first('_tec_user_id', '<p class="help-block">:message</p>') !!}
-                </div>
+                    @foreach(\App\Role::where('name','tecnico')->first()->users as $item)
+                        @php $x++;@endphp
+                        <tr>
+                            <td>{{ Form::checkbox('tecnicos[]', $item->id, false) }}</td>
+                            <td>{{ $item->name }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
             </div>
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
@@ -96,46 +119,5 @@
 
     <script src="{{ asset('/js/select2.min.js') }}"></script>
 
-    <script>
 
-      window.onload = function() {
-        $(function () {
-
-          $('.tec_user_sel').select2({
-            // Activamos la opcion "Tags" del plugin
-            language: "es",
-            placeholder: "Tecnico",
-           templateResult: formatState,
-            ajax: {
-              dataType: 'json',
-              url: '{{ route('role.user', \App\Role::where('name','tecnico')->first()) }}',
-              delay: 250,
-              data: function (params) {
-                return {
-                  term: params.term
-                }
-              },
-              processResults: function (data, page) {
-                return {
-                  results: data.data
-                };
-              },
-            }
-          });
-
-          function formatState(state) {
-            if (!state.identificador) {
-              return state.identificador;
-            }
-
-            var $state = $(
-              '<span>' + state.identificador + ":" + state.nombre + '</span>'
-            );
-
-            return $state;
-
-          };
-        });
-      };
-    </script>
 @endsection
