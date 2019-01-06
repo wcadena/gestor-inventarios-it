@@ -119,7 +119,7 @@
             templateResult: formatState,
             ajax: {
               dataType: 'json',
-              url: '{{ url("tags") }}',
+              url: '{{ route('role.user', \App\Role::where('name','tecnico')->first()) }}',
               delay: 250,
               data: function (params) {
                 return {
