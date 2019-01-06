@@ -42,31 +42,30 @@ class RolController extends Controller
         $USER_EMAIL = 'wcadena@outlook.com';
 
         foreach ($config as $key => $modules) {
-            if(Role::where('name',$key)->count()==0){
+            if (Role::where('name', $key)->count() == 0) {
                 // Create a new role
                 $role = \App\Role::create([
                     'name'         => $key,
                     'display_name' => ucwords(str_replace('_', ' ', $key)),
                     'description'  => ucwords(str_replace('_', ' ', $key)),
                 ]);
-            }else{
-                $role = Role::where('name',$key)->first();
+            } else {
+                $role = Role::where('name', $key)->first();
             }
             $permissions = [];
 
             // Reading role permission modules
             foreach ($modules as $module => $value) {
                 foreach (explode(',', $value) as $p => $perm) {
-
                     $permissionValue = $mapPermission->get($perm);
-                    if(Permission::where('name',$permissionValue.'-'.$module)->count()==0){
+                    if (Permission::where('name', $permissionValue.'-'.$module)->count() == 0) {
                         $permissions[] = \App\Permission::firstOrCreate([
                             'name'         => $permissionValue.'-'.$module,
                             'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
                             'description'  => ucfirst($permissionValue).' '.ucfirst($module),
                         ])->id;
-                    }else{
-                        $permissions[] = Permission::where('name',$permissionValue.'-'.$module)->first()->id;
+                    } else {
+                        $permissions[] = Permission::where('name', $permissionValue.'-'.$module)->first()->id;
                     }
                 }
             }
@@ -74,8 +73,6 @@ class RolController extends Controller
             // Attach all permissions to the role
             $role->permissions()->sync($permissions);
         }
-
-
 
         Session::flash('flash_message', '¡Roles Agregados!');
 
