@@ -72,6 +72,7 @@
                     {!! $errors->first('_tec_user_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+    {{(\App\Role::where('name','tecnico')->first()->users->pluck('name', 'id'))}}
 
 
     <div class="form-group">

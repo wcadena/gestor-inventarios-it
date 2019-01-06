@@ -37,6 +37,13 @@ return [
             'acl'                 => 'c,r,u,d',
             'profile'             => 'r,u',
         ],
+        'tecnico' => [
+            'equipos'             => 'c,r,u,d',
+            'custodios'           => 'c,r,u,d',
+            'proyectos'           => 'c,r,u,d',
+            'informes'            => 'c,r,u,d',
+            'profile'             => 'r,u',
+        ],
         'user' => [
             'profile' => 'r,u',
         ],
