@@ -19,8 +19,8 @@
                     name="informe_proyectos_seccions_inf[]"
                     class="chosen-select form-control"
                     multiple="multiple">
+                <option value="---" selected>General</option>
                 @foreach(\App\Proyecto::all() as $proyecto)
-                    <option value="---">General</option>
                     @if($proyecto->count()>0)
                 <optgroup label="{{$proyecto->name}}">
                     @foreach($proyecto->proyectoSeccions as $seccions)
