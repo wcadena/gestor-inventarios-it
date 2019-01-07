@@ -7,10 +7,13 @@ use App\Custodios;
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
+use App\InformeProyectosSeccion;
+use App\ProyectoSeccion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -74,11 +77,35 @@ class InformeMantenimientoPreventivoController extends Controller
 
                     $tecnico_x['user_id'] = $tecnico_x['id'];
                     $tecnico_x['informe_manto_prev_id'] = $inf->id;
-                    unset($tecnico['id']);
-                    InformeMantenimientoPreventivoTecnico::create($tecnico);
+                    unset($tecnico_x['id']);
+                    InformeMantenimientoPreventivoTecnico::create($tecnico_x);
                 }
                 // do stuff with checked friends
                 Session::flash('flash_message', 'Tecnicos added!');
+            }
+            //////////////////////////////////////////////
+            $proyectos = Input::get('informe_proyectos_seccions_inf');
+            if (is_array($proyectos)) {
+                foreach ($proyectos as $proyecto) {
+                    Log::info($proyecto);
+                    if($proyecto != '---'){
+                        $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
+                        Log::info($proyecto);
+                        $proyecto_x = $proyecto_x_met->toArray();
+
+                        $proyecto_x['proyecto_seccion_id'] = $proyecto_x['id'];
+                        $proyecto_x['informe_manto_prev_id'] = $inf->id;
+                        $proyecto_x['tipo'] = 'elemento_seccion';
+
+                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions))?$proyecto_x_met->informeProyectosSeccions->max('orden'):1;
+
+                        unset($proyecto_x['id']);
+
+                        InformeProyectosSeccion::create($proyecto_x);
+                    }
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Secciones added!');
             }
             //////////////////////////////////////////////
             DB::commit();

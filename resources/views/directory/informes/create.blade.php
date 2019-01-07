@@ -1,12 +1,8 @@
 @extends('layouts.master')
 @section('htmlheader')
-
     @include('layouts.partials.htmlheader')
-
     <!-- Select2 -->
-
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
 
 @endsection
 @section('content')
@@ -16,55 +12,77 @@
 
     {!! Form::open(['url' => 'informes', 'class' => 'form-horizontal']) !!}
 
-            <div class="form-group {{ $errors->has('requerimiento') ? 'has-error' : ''}}">
-                {!! Form::label('requerimiento', 'Titulo Requerimiento: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('requerimiento', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('requerimiento', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
-                {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {{ Form::select('custodio_id', $custodios, (isset(Auth::user()->custodio))?Auth::user()->custodio->id:null, ['class' => 'form-control']) }}
-                    {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
-                {!! Form::label('area_id', 'Area Id: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {{ Form::select('area_id', $areas, null, ['class' => 'form-control']) }}
-                    {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+    <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
+        {!! Form::label('informe_proyectos_seccions_inf', 'Seccion: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            <select id="informe_proyectos_seccions_inf"
+                    name="informe_proyectos_seccions_inf[]"
+                    class="chosen-select form-control"
+                    multiple="multiple">
+                @foreach(\App\Proyecto::all() as $proyecto)
+                    <option value="---">General</option>
+                    @if($proyecto->count()>0)
+                <optgroup label="{{$proyecto->name}}">
+                    @foreach($proyecto->proyectoSeccions as $seccions)
+                        @if($seccions->tipo == 'seccion')
+                        <option value="{{$seccions->id}}">{{$seccions->name}}</option>
+                        @endif
+                    @endforeach
+                </optgroup>
+                    @endif
+                @endforeach
+            </select>
 
-            <div class="form-group {{ $errors->has('fecha_solicitud') ? 'has-error' : ''}}">
-                {!! Form::label('fecha_solicitud', 'Fecha Solicitud: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::date('fecha_solicitud', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
-                    {!! $errors->first('fecha_solicitud', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('informe_manto_prev_cate_id') ? 'has-error' : ''}}">
-                {!! Form::label('informe_manto_prev_cate_id', 'Categoria: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {{ Form::select('informe_manto_prev_cate_id', $categoria_mant, null, ['class' => 'form-control']) }}
-                    {!! $errors->first('informe_manto_prev_cate_id', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
-                {!! Form::label('observacion', 'Descripción : ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('observacion', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+            {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
 
+    <div class="form-group {{ $errors->has('requerimiento') ? 'has-error' : ''}}">
+        {!! Form::label('requerimiento', 'Titulo Requerimiento: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('requerimiento', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('requerimiento', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
+        {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {{ Form::select('custodio_id', $custodios, (isset(Auth::user()->custodio))?Auth::user()->custodio->id:null, ['class' => 'form-control']) }}
+            {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
+        {!! Form::label('area_id', 'Area Id: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {{ Form::select('area_id', $areas, null, ['class' => 'form-control']) }}
+            {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
 
-                    {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
-
-                    {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
-                {!! Form::hidden('vinculo', Webpatser\Uuid\Uuid::generate()) !!}
+    <div class="form-group {{ $errors->has('fecha_solicitud') ? 'has-error' : ''}}">
+        {!! Form::label('fecha_solicitud', 'Fecha Solicitud: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::date('fecha_solicitud', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+            {!! $errors->first('fecha_solicitud', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('informe_manto_prev_cate_id') ? 'has-error' : ''}}">
+        {!! Form::label('informe_manto_prev_cate_id', 'Categoria: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {{ Form::select('informe_manto_prev_cate_id', $categoria_mant, null, ['class' => 'form-control']) }}
+            {!! $errors->first('informe_manto_prev_cate_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
+        {!! Form::label('observacion', 'Descripción : ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('observacion', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
+    {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
+    {!! Form::hidden('vinculo', Webpatser\Uuid\Uuid::generate()) !!}
     <div class="form-group {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
         {!! Form::label('tecnico', trans('fo.Tecnicos'), ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
@@ -119,5 +137,16 @@
 
     <script src="{{ asset('/js/select2.min.js') }}"></script>
 
+    <script>
+      $(function () {
+        $.fn.select2.defaults.set("theme", "classic");
+        $('#informe_proyectos_seccions_inf').select2({
+          multiple: true,
+          language: "es",
+          placeholder: "Select Avianca Code",
+          tags: true,
+        });
+      });
+    </script>
 
 @endsection
