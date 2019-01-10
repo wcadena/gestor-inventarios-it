@@ -13,13 +13,13 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#da532c",
-    "background_color": "#da532c",
+    "theme_color": "#3570C1",
+    "background_color": "#3570C1",
     "display": "standalone",
     "start_url": "https://devinventario.ecuatask.com/",
     "orientation": "portrait",
     "scope": "/",
     "display": "standalone",
-    "background_color": "#dd4b39",
-    "theme_color": "#dd4b39"
+    "background_color": "#3570C1",
+    "theme_color": "#3570C1"
 }

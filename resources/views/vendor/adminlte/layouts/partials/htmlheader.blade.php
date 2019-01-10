@@ -7,10 +7,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-    <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#da532c">
+    <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#3570C1">
     <meta name="apple-mobile-web-app-title" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
     <meta name="application-name" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
-    <meta name="theme-color" content="#da532c">
+    <meta name="theme-color" content="#3570C1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
