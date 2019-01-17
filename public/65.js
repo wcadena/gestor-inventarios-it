@@ -3630,6 +3630,12 @@ var login = auth.login,
 				axios.post('/api/login', formpost, {}).then(function (response) {
 					localStorage.setItem('user', JSON.stringify(user));
 					localStorage.setItem('token', response.data.data.token);
+					axios.post('/login', formpost, {}).then(function (response) {
+						console.log('Authentication!!!!');
+					}).catch(function (error) {
+						console.log('Error on Authentication');
+						self.message = error.response.data.data;
+					});
 					self.$router.push("/default/dashboard/ecommerce");
 				}).catch(function (error) {
 					console.log('Error on Authentication');

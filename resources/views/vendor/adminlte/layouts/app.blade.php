@@ -6,7 +6,7 @@
 @show
 
 <body class="skin-blue sidebar-mini">
-<div id="app" v-cloak>
+<div id="app">
     <div class="wrapper">
 
     @include('adminlte::layouts.partials.mainheader')
