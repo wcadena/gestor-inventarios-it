@@ -300,4 +300,6 @@ Route::get('/vue', function () {
     return view('vue');
 });
 
-Route::get('{any}', function () { return view('vue'); })->where('any','.*');
+Route::get('{any}', function () {
+    return view('vue');
+})->where('any', '.*');
