@@ -1,11 +1,11 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add filepond
+  /usr/bin/node /usr/share/yarn/bin/yarn.js install
 
 PATH: 
   /home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
 
 Yarn version: 
-  1.12.3
+  1.13.0-20181121.1436
 
 Node version: 
   8.12.0
