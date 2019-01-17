@@ -99,15 +99,15 @@ export default {
 					grant_type: 'password',
 					client_id : '1',
 					client_secret :'C6xNix1O3DimSEwUp8UFHWM166PYkEvk1RpfrAv2',
-					username :'admin@admin.com',
-					password : 'admin',
+					username :this.email,
+					password : this.password,
 					scope : '*'
 				 });
 			axios.post('/oauth/token/', formpost, {
 				//headers: { 'Authorization': + basicAuth },
-				headers: {
+				/*headers: {
 					'Access-Control-Allow-Origin': '*',
-				},
+				},*/
 			}).then(function(response) {
 				console.log('Authenticated');
 				console.log(response);
