@@ -14,6 +14,7 @@
 					/>
 					<h2 class="mb-3">{{$t('message.loginToAdmin')}}</h2>
 					<p class="fs-14">{{$t('message.enterUsernameAndPasswordToAccessControlPanelOf')}} {{brand}}.</p>
+					<v-badge v-if="message != ''" class="error">{{message}}</v-badge>
 					<v-form v-model="valid" class="mb-4">
 						<v-text-field 
 							label="E-mail ID" 
@@ -68,6 +69,7 @@ export default {
       checkbox: false,
       valid: false,
       email: "admin@admin.com",
+	  message:'',
       emailRules: [
         v => !!v || "E-mail is required",
         v =>
@@ -84,6 +86,7 @@ export default {
     submit() {
 
 		if (this.valid) {
+			this.message ='';
 			console.log('Intenta Loguear');
 			const user = {
 				email: this.email,
@@ -103,17 +106,15 @@ export default {
 					password : this.password,
 					scope : '*'
 				 });
+			var self = this;
 			axios.post('/oauth/token/', formpost, {
-				//headers: { 'Authorization': + basicAuth },
-				/*headers: {
-					'Access-Control-Allow-Origin': '*',
-				},*/
 			}).then(function(response) {
 				console.log('Authenticated');
 				console.log(response);
 			}).catch(function(error) {
-				console.log('Error on Authentication');
-				console.log(error);
+				//console.log('Error on Authentication');
+				//console.log(error.response.data.message);
+				self.message = error.response.data.message;
 			});
 		}
 		//this.$router.push("/dashboard/home");

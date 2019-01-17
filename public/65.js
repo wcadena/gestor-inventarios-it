@@ -3564,6 +3564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -3588,6 +3589,7 @@ var login = auth.login,
 			checkbox: false,
 			valid: false,
 			email: "admin@admin.com",
+			message: '',
 			emailRules: [function (v) {
 				return !!v || "E-mail is required";
 			}, function (v) {
@@ -3607,6 +3609,7 @@ var login = auth.login,
 		submit: function submit() {
 
 			if (this.valid) {
+				this.message = '';
 				console.log('Intenta Loguear');
 				var user = {
 					email: this.email,
@@ -3626,17 +3629,14 @@ var login = auth.login,
 					password: this.password,
 					scope: '*'
 				});
-				axios.post('/oauth/token/', formpost, {
-					//headers: { 'Authorization': + basicAuth },
-					/*headers: {
-     	'Access-Control-Allow-Origin': '*',
-     },*/
-				}).then(function (response) {
+				var self = this;
+				axios.post('/oauth/token/', formpost, {}).then(function (response) {
 					console.log('Authenticated');
 					console.log(response);
 				}).catch(function (error) {
-					console.log('Error on Authentication');
-					console.log(error);
+					//console.log('Error on Authentication');
+					//console.log(error.response.data.message);
+					self.message = error.response.data.message;
 				});
 			}
 			//this.$router.push("/dashboard/home");
@@ -3694,6 +3694,12 @@ var render = function() {
                   "."
               )
             ]),
+            _vm._v(" "),
+            _vm.message != ""
+              ? _c("v-badge", { staticClass: "error" }, [
+                  _vm._v(_vm._s(_vm.message))
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "v-form",
