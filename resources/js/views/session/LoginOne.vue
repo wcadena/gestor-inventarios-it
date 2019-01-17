@@ -99,22 +99,18 @@ export default {
 			console.log('A Autenticar!!!');
 			const querystring = require('querystring');
 			let formpost = querystring.stringify({
-					grant_type: 'password',
-					client_id : '1',
-					client_secret :'C6xNix1O3DimSEwUp8UFHWM166PYkEvk1RpfrAv2',
-					username :this.email,
+					email :this.email,
 					password : this.password,
-					scope : '*'
+					remember : this.checkbox,
 				 });
 			var self = this;
-			axios.post('/oauth/token/', formpost, {
+			axios.post('/login', formpost, {
 			}).then(function(response) {
 				console.log('Authenticated');
 				console.log(response);
 			}).catch(function(error) {
 				//console.log('Error on Authentication');
-				//console.log(error.response.data.message);
-				self.message = error.response.data.message;
+				self.message = error.response.data.email;
 			});
 		}
 		//this.$router.push("/dashboard/home");
