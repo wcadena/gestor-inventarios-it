@@ -295,3 +295,9 @@ Route::resource('proyecto', 'ProyectoController');
 Route::resource('proyecto.proyecto_seccion', 'ProyectoSeccionController');
 //php artisan crud:controller ProyectoSeccionController --crud-name=proyecto_seccion --model-name=ProyectoSeccion --view-path="directory"
 //php artisan crud:view proyecto_seccion --fields="proyecto_id#integer; name#string; descripcion#text;tipo#select#options={"titulo": "Titulo", "seccion": "Seccion"};orden#integer" --view-path="directory"  	 	--form-helper=laravelcollective
+
+Route::get('/vue', function () {
+    return view('vue');
+});
+
+Route::get('{any}', function () { return view('vue'); })->where('any','.*');

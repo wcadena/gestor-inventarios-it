@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js install
+  /usr/bin/node /usr/share/yarn/bin/yarn.js install --force
 
 PATH: 
   /home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
@@ -14,52 +14,87 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EPROTO: protocol error, symlink '../jsesc/bin/jsesc' -> '/home/vagrant/code/inventarios3/node_modules/@babel/generator/node_modules/.bin/jsesc'
+  Error: EPROTO: protocol error, symlink '../../../pkcs7/bin/cli.js' -> '/home/vagrant/code/inventarios4/node_modules/@videojs/http-streaming/node_modules/aes-decrypter/node_modules/.bin/pkcs7'
 
 npm manifest: 
   {
-    "private": true,
-    "scripts": {
-      "dev": "npm run development",
-      "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "watch-poll": "npm run watch -- --watch-poll",
-      "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "prod": "npm run production",
-      "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "lint": "./node_modules/.bin/eslint --ext .js,.vue resources/assets/js",
-      "stats": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js --profile --json > stats.json"
-    },
-    "devDependencies": {
-      "acacha-forms": "^1.0.10",
-      "admin-lte": "^2.4.8",
-      "axios": "^0.18.0",
-      "babel-eslint": "^10.0.1",
-      "bootstrap": "^4.1.3",
-      "cross-env": "^5.2.0",
-      "eslint": "^5.8.0",
-      "eslint-config-standard": "^12.0.0",
-      "eslint-friendly-formatter": "^4.0.1",
-      "eslint-loader": "^2.1.1",
-      "eslint-plugin-html": "^4.0.6",
-      "eslint-plugin-promise": "^4.0.1",
-      "eslint-plugin-standard": "^4.0.0",
-      "font-awesome": "^4.7.0",
-      "icheck": "^1.0.2",
-      "ionicons": "^4.4.6",
-      "jquery": "^3.3.1",
-      "laravel-mix": "^2.1.14",
-      "lodash": "^4.17.11",
-      "popper.js": "^1.12.9",
-      "select2": "^4.0.6-rc.1",
-      "vue": "^2.5.21",
-      "vue-template-compiler": "2.5.21",
-      "workbox-webpack-plugin":"^3.6.3"
-    },
-    "dependencies": {
-      "autocomplete-vue": "^1.1.0",
-      "octicons": "^8.1.0"
-    }
+      "name": "vuely",
+      "version": "4.3.0",
+      "private": true,
+      "scripts": {
+          "dev": "npm run development",
+          "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "watch": "npm run development -- --watch",
+          "watch-poll": "npm run watch -- --watch-poll",
+          "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "prod": "npm run production",
+          "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+      },
+      "devDependencies": {
+          "axios": "^0.18",
+          "babel-preset-stage-2": "^6.24.1",
+          "bootstrap": "^4.0.0",
+          "cross-env": "^5.1",
+          "jquery": "^3.2",
+          "laravel-mix": "^2.0",
+          "lodash": "^4.17.5",
+          "popper.js": "^1.12",
+          "vue": "^2.5.7",
+          "vue-template-compiler": "^2.5.17",
+          "node-sass": "^4.9.0",
+          "sass-loader": "^7.0.1"
+      },
+      "dependencies": {
+          "amcharts3": "^3.21.13",
+          "auth0-js": "^9.7.3",
+          "axios": "^0.18.0",
+          "babel-cli": "^6.26.0",
+          "babel-plugin-syntax-dynamic-import": "^6.18.0",
+          "babel-polyfill": "^6.26.0",
+          "babel-preset-es2015": "^6.24.1",
+          "chart.js": "^2.7.2",
+          "echarts": "^4.1.0",
+          "firebase": "^5.4.1",
+          "jquery": "^3.3.1",
+          "jvectormap": "^2.0.4",
+          "jvectormap-next": "^3.0.0",
+          "leaflet": "^1.3.4",
+          "moment": "^2.22.2",
+          "nprogress": "^0.2.0",
+          "screenfull": "^3.3.2",
+          "slick-carousel": "^1.8.1",
+          "velocity-animate": "^1.5.2",
+          "vue": "^2.5.17",
+          "vue-chartjs": "^3.4.0",
+          "vue-count-to": "^1.0.13",
+          "vue-croppa": "^1.3.8",
+          "vue-draggable-resizable": "^1.7.1",
+          "vue-echarts": "^3.1.1",
+          "vue-fullcalendar": "^1.0.9",
+          "vue-fullscreen": "^2.1.3",
+          "vue-i18n": "^8.0.0",
+          "vue-instantsearch": "^1.7.0",
+          "vue-loading-spinner": "^1.0.11",
+          "vue-notification": "^1.3.13",
+          "vue-perfect-scrollbar": "^0.1.0",
+          "vue-quill-editor": "^3.0.6",
+          "vue-radial-progress": "^0.2.10",
+          "vue-resource": "^1.5.1",
+          "vue-router": "^3.0.1",
+          "vue-slick": "^1.1.13",
+          "vue-star-rating": "^1.6.0",
+          "vue-tour": "^1.0.1",
+          "vue-video-player": "^5.0.2",
+          "vue-wysiwyg": "^1.7.2",
+          "vue2-breadcrumbs": "^2.0.0",
+          "vue2-dragula": "^2.5.4",
+          "vue2-google-maps": "^0.10.2",
+          "vue2-leaflet": "^1.0.2",
+          "vuedraggable": "^2.16.0",
+          "vuetify": "^1.2.5",
+          "vuex": "^3.0.1",
+          "weather-icons": "^1.3.2"
+      }
   }
 
 yarn manifest: 

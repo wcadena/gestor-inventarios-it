@@ -1,0 +1,183 @@
+/*============ Session ==========*/
+.session-wrapper {
+  position: relative;
+  height: 100%;
+  .session-left {
+    background-image: url("/static/img/login.jpg");
+    background-size: auto auto;
+    background-size: cover;
+    text-align: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    .slick-slider {
+      width: 31.25rem; //500px
+      .slick-dots {
+        li {
+          &.slick-active {
+            color: $light;
+          }
+          button:before {
+            color: $light;
+          }
+        }
+      }
+    }
+  }
+  .session-right {
+    margin-left: 31.25rem; //500px;
+    .session-table-cell {
+      padding-top: 5rem; //80px;
+      .session-content {
+        max-width: 31.25rem; //500px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+.slider-content {
+  img {
+    @include border(4px solid, $light, top bottom left right);
+    display: inline-block !important;
+  }
+  p {
+    font-weight: 600;
+    font-size: 1.125rem; //18px;
+    line-height: 1.6;
+  }
+}
+.slider-content, .session-social-links  {
+  * {
+    color: $light;
+  }
+}
+.session-social-links {
+  ul {
+    li {
+      margin-bottom: 1.25rem; //20px;
+    }
+  }
+  .session-icon {
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+  }
+}
+.bg-sc {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    padding: 4rem 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+}
+.lock-screen-wrapper {
+  background-image: url("/static/img/lock-bg.png");
+  @extend .bg-sc;
+}
+.lock-screen-block {
+  .input-group, input[type="password"] {
+    label {
+      color: $light !important;
+    }
+  }
+  .input-group__details::before {
+    background-color: $light !important;
+  }
+}
+// Pricing 2 
+.pricing-wrapper {
+  .app-card-content {
+    h2 {
+      @include border(1px solid, $gray-lighter, bottom);
+      padding: 1.25rem;
+    }
+  }
+}
+.list-group-flush {
+  .list-group-item, li {
+    @include border(1px solid, $gray-lighter, bottom);
+    padding: 0.9375rem 0; //15px 0;
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+// sign up 2
+.session-banner {
+  background-image: url("/static/img/login-signup2.png");
+  @extend .bg-sc;
+}
+.session-block {
+  background-color: $light;
+  padding: 3.125rem; //50px;
+  border-radius: 10px;
+  box-shadow: 0 12px 34px 0 rgba(0,0,0,0.5);
+  .log-link {
+    a {
+      text-decoration: none;
+      color: $gray-light;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+.block-center {
+  transform: translate3d(0%, 50%, 0);
+}
+
+// Responsive 
+@media (max-width: 1200px) {
+  .session-wrapper {
+    .session-left {
+      .slick-slider {
+        width: 25rem; //400px;
+      }
+    }
+    .session-right {
+      margin-left: 25rem; //400px;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .session-wrapper {
+    .session-right {
+      .session-content {
+        max-width: 18.75rem !important; //300px;
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .session-wrapper {
+    .session-left {
+      display: none;
+    }
+    .session-right {
+      margin-left: 0;
+      .session-table-cell {
+        padding: 1.875rem 1.875rem 0; //30px
+      }
+      .session-content {
+        max-width: 27.5rem !important; //440px;
+      }
+    }
+  }
+}

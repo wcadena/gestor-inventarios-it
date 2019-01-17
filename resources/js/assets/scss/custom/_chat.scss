@@ -1,0 +1,98 @@
+/*================ Chat Layout =================*/
+
+.chat-layout {
+   .v-toolbar {
+      box-shadow: $header-box-shadow;
+   }
+   .chat-main {
+      .v-toolbar__content {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         .media {
+            margin-top: 0.5rem;
+         }
+         .chat-head-right {
+            .v-icon {
+               font-size: 1.25rem;
+            }
+         }
+      }
+   }
+}
+
+.chat-content {
+   .v-list {
+      .v-list__tile {
+         height: auto;
+         padding: 1rem;
+      }
+      .grayish-blue {
+         .v-list__tile {
+            h6 {
+               color: $aqua-bg !important;
+            }
+            span {
+               color: $light !important;
+            }
+         }
+      }
+   }
+}
+
+/*========================== Responsive ==================*/
+
+@media(max-width:959px) and (min-width:320px) {
+   .chat-layout {
+      .v-toolbar {
+         .v-toolbar__content {
+            height: 64px !important;
+         }
+      }
+      .chat-sidebar {
+         display: none !important;
+      }
+      .select-user,
+      .ham-menu-icon {
+         display: block !important;
+      }
+   }
+   .chat-content {
+      .v-toolbar {
+         .v-toolbar__title,
+         i {
+            font-size: 1rem;
+         }
+      }
+      .chat-sidebar-scroll {
+         height: calc(100vh - 112px) !important;
+      }
+      .v-list {
+         .v-list__tile {
+            padding: 0.75rem 1rem;
+         }
+      }
+   }
+}
+
+@media(max-width:599px) and (min-width:320px) {
+   .chat-layout {
+      .v-toolbar {
+         .v-toolbar__content {
+            padding: 0 0.5rem !important;
+            .chat-head-left{
+               margin-right:0.625rem;
+            }
+            .chat-head-right {
+               text-align: right;
+               .video-icon{
+                  display:none;
+               }
+               .v-btn {
+                  margin: 0 2px !important;
+               }
+            }
+         }
+      }
+   }
+}

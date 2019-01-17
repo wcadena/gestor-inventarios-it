@@ -1,0 +1,71 @@
+/*============= Buttons Scss =============*/
+.btn-gradient-primary {
+  background: $btn-gradient-primary;
+  * {
+    color: $light;
+  }
+}
+.btn-gradient-pink {
+  background: $btn-gradient-pink;
+  * {
+    color: $light;
+  }
+}
+.btn-gradient-success {
+  background: $btn-gradient-success;
+  * {
+    color: $light;
+  }
+}
+.btn-gradient-warning {
+  background: $btn-gradient-warning;
+  * {
+    color: $light;
+  }
+}
+.btn-gradient-purple {
+  background: $btn-gradient-purple;
+  * {
+    color: $light;
+  }
+}
+// Simple Button Style
+.btn-primary {
+  background-color: $btn-primary !important;
+  * {
+    color: $light;
+  }
+}
+.btn-success {
+  background-color: $btn-success !important;
+  * {
+    color: $light;
+  }
+}
+.btn-info {
+  background-color: $btn-info !important;
+  * {
+    color: $light;
+  }
+}
+.btn-warning {
+  background-color: $btn-warning !important;
+  * {
+    color: $light;
+  }
+}
+.btn-danger {
+  background-color: $btn-danger !important;
+  * {
+    color: $light;
+  }
+}
+.btn-icon {
+  font-weight: $btn-font-weight;
+  border-radius: $btn-border-radius;
+	i {
+		font-size: $btn-icon-font-size;
+		margin-right: 0.625rem; //10px;
+    font-weight: $btn-font-weight;
+	}
+}

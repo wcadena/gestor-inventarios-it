@@ -1,0 +1,358 @@
+/*================= App Boxed Layout ===============*/
+
+.app-boxed-layout {
+   background: linear-gradient(151deg, #0835ea, #ea1408, #082bea);
+   background-size: 600% 600%;
+   -webkit-animation: Gradient 15s ease infinite;
+   -moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+	.quick-link{
+		display:none;
+	}
+   .app-container {
+      margin: 0 auto;
+      .Vuely-toolbar.v-toolbar {
+         position: static !important;
+         background-color: transparent !important;
+         box-shadow: none;
+         padding: 1rem 0;
+         .site-logo-wrap {
+            .site-logo-img {
+               background-color: transparent !important;
+               padding: 0;
+            }
+         }
+         .search-bar,
+         .mobile-search {
+            display: none;
+         }
+         .v-btn,
+         .v-menu {
+            i {
+               color: $light !important;
+            }
+         }
+      }
+      .v-content {
+         padding: 0 !important;
+         overflow: hidden;
+         margin: 0 1rem;
+         box-shadow: -1px 3px 18px rgba(0, 0, 0, 0.3);
+         .horizontal-menu {
+            position: static;
+            margin: 0;
+            height: 4.688rem;
+            align-items: center;
+            padding-right: 1.5rem;
+            >ul {
+               li {
+                  &:hover {
+                     >a {
+                        color: $primary !important;
+                        span,
+                        i,
+                        &:after {
+                           color: $primary !important;
+                        }
+                     }
+                  }
+               }
+               >li {
+                  >a {
+                     height: 4.688rem;
+                     i {
+                        font-size: 1.5rem;
+                     }
+                  }
+                  &.nav-item-active,
+                  .sub-menu,
+                  .sub-menu .nav-item>.sub-menu-child,
+                  .sub-menu-child .nav-item>.sub-menu-sub-child {
+                     &:after {
+                        content: "";
+                        position: absolute;
+                        border: 9px solid rgba(0, 0, 0, 1);
+                        border-color: transparent transparent $light $light;
+                        box-shadow: -3px 3.5px 7px rgba(204, 204, 204, 0.25);
+                        z-index: 4;
+                        transition: all 0.2s ease;
+                     }
+                  }
+                  .sub-menu,
+                  .sub-menu-child,
+                  .sub-menu-sub-child {
+                     box-shadow: 0 0 15px 1px rgba(69, 65, 78, .2);
+                     border-radius: 5px;
+                     transform: translateY(2rem);
+                     transition: transform 0.2s ease-in;
+                  }
+                  .sub-menu {
+                     top: 4.75rem;
+                     left: 1.5rem;
+                     >.nav-item {
+                        position: relative;
+                        &:after {
+                           content: "";
+                           left: 0;
+                           top: 0;
+                           bottom: 0;
+                           @include border(5px solid, $primary, left);
+                           position: absolute;
+                           opacity: 0;
+                           transition: all 0.3s ease-in-out;
+                        }
+                        &:hover {
+                           &:after {
+                              opacity: 1;
+                           }
+                        }
+                     }
+                     li {
+                        &:first-child {
+                           .nav-link {
+                              border-radius: 5px 5px 0 0;
+                           }
+                        }
+                        &:last-child {
+                           .nav-link {
+                              border-radius: 0 0 5px 5px;
+                           }
+                        }
+                        .deep-level {
+                           width: 400px !important;
+                        }
+                     }
+                     &:after {
+                        top: -0.5rem;
+                        left: 2rem;
+                        transform: rotate(135deg);
+                     }
+                     .nav-item {
+                        .nav-link {
+                           display: flex;
+                           align-items: center;
+                        }
+                        >.sub-menu-child {
+                           left: 12.8rem;
+                           width: 100%;
+                           &:after {
+                              top: 1rem;
+                              left: -0.5rem;
+                              transform: rotate(45deg);
+                           }
+                           li {
+                              .sub-menu-sub-child {
+                                 width: 75%;
+                                 left: 12rem;
+                                 li {
+                                    &:hover {
+                                       >.nav-link {
+                                          color: $primary !important;
+                                          span,
+                                          i {
+                                             color: $primary !important;
+                                          }
+                                       }
+                                    }
+                                 }
+                                 &:after {
+                                    top: 1rem;
+                                    left: -0.5rem;
+                                    transform: rotate(45deg);
+                                 }
+                              }
+                              &:hover {
+                                 >.sub-menu-sub-child {
+                                    transform: translateY(0rem);
+                                 }
+                              }
+                           }
+                        }
+                        &:hover {
+                           >.sub-menu-child {
+                              transform: translateY(0rem);
+                           }
+                        }
+                     }
+                  }
+                  &:hover {
+                     .sub-menu {
+                        transform: translateY(0);
+                     }
+                  }
+                  &.nav-item-active {
+                     &:hover {
+                        &:after {
+                           content: none;
+                        }
+                     }
+                     >.nav-link {
+                        &:after,
+                        span,
+                        i {
+                           color: $primary !important;
+                        }
+                     }
+                     &:after {
+                        top: 4rem;
+                        left: 3.55rem;
+                        transform: rotate(-45deg);
+                     }
+                  }
+               }
+            }
+            .search-bar {
+               .v-input__control {
+                  max-height: 1rem;
+               }
+            }
+         }
+         .app-content{
+            overflow-x:hidden;
+            background-color: $base; 
+         }
+      }
+   }
+   .v-footer {
+      background-color: transparent !important;
+      display: block;
+      padding: 1rem 0;
+      margin: 0 1rem;
+      height: auto !important;
+      .v-btn {
+         margin: 0;
+         font-size: ($font-size-sm - 0.1rem);
+      }
+      * {
+         color: $light;
+      }
+   }
+   .active-user-wrap {
+      >div {
+         height: 100%;
+      }
+   }
+   .chat-box-main{
+      height:70vh !important;
+	}
+	@media(min-width:960px){
+      .v-menu.user-block-wrap{
+         display:inline-block !important;
+      }
+   }
+   /*=============== Responsive ===================*/
+   @media (min-width: 1600px) {
+      .app-container {
+         width: 1600px;
+      }
+   }
+    @media (max-width: 1250px) {
+      .horizontal-menu {
+         >ul.nav {
+            >li {
+               >a {
+                  font-size: 0.875rem;
+                  padding: 0.875rem 1rem;
+                  i {
+                     font-size: 0.875rem;
+                  }
+               }
+            }
+         }
+      }
+   }
+   @media (max-width: 1150px) {
+      .horizontal-menu {
+         .search-bar {
+            display: none;
+         }
+         .mobile-search {
+            display: block !important;
+         }
+      }
+   }
+   @media (max-width:959px) and (min-width:320px) {
+      .Vuely-toolbar {
+         padding: 0.875rem 1rem !important;
+         .mobile-search {
+            display: none !important;
+         }
+      }
+      .horizontal-menu {
+         display: flex;
+         justify-content: space-between;
+         padding: 0 !important;
+         height: 3.5rem !important;
+         ul.nav,
+         .search-bar {
+            display: none;
+         }
+         .ham-menu-sm {
+            display: block !important;
+         }
+      }
+      .app-content {
+         height: calc(100vh - 163px);
+      }
+      .app-footer {
+         justify-content: center !important;
+         ul.footer-menu {
+            display: none;
+         }
+      }
+      .inbox {
+         .inbox-content-scroll {
+            height: calc(100vh - 285px) !important;
+         }
+         .inbox-detail-scroll {
+            height: calc(100vh - 313px) !important;
+         }
+         .inbox-head .inbox-sidebar-scroll {
+            height: calc(100vh - 260px) !important;
+         }
+      }
+      .chat-wrapper {
+         .chat-area-scroll {
+            height: calc(100vh - 290px) !important;
+         }
+      }
+      .chat-content .chat-sidebar-scroll {
+         height: calc(100vh - 162px) !important;
+      }
+   }
+   @media(max-width:599px) and (min-width: 320px) {
+      .Vuely-toolbar {
+         .navbar-right {
+            .v-btn--icon {
+               height: 2rem;
+               width: 2rem;
+            }
+         }
+      }
+      .chat-wrapper{
+         .chat-head .chat-head-left{
+            width:68%;
+         }
+      }
+   }
+   &.boxed-v2{
+      overflow:hidden;
+      background-image: url(/static/img/bg-1.jpg);
+      background-size: cover !important;
+      background-position: center center !important;
+		background-repeat: no-repeat !important;
+		-webkit-animation: none !important;
+		-moz-animation: none !important;
+		animation:none !important;
+      .activity-widget{
+         .activity-scroll{
+            @media(max-width:1450px) and (min-width:1200px){
+               height:375px !important;
+            }
+            @media(max-width:1200px) and (min-width:960px){
+               height:310px !important;
+            }
+         }
+      }
+   }
+}

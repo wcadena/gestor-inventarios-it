@@ -1,0 +1,53 @@
+/*=========== Search Bar ============*/
+
+.search-bar {
+   flex: inherit;
+   width: 225px;
+   display:flex;
+   align-items:center;
+   transition: width 0.3s ease-in-out;
+   min-height: 40px !important;
+   margin-left: 0.5rem;
+   &:focus-within {
+      width: 250px !important;
+   }
+   border: 1px solid $border-color;
+   .v-input__prepend-outer {
+      margin: 0 !important;
+      padding: 0.5rem 0.75rem;
+   }
+   .v-input__control {
+      min-height: auto !important;
+      .v-input__slot{
+         margin:0;
+         padding:0;
+      }
+   }
+}
+
+// Mobile Search 
+.search-form-wrap {
+   transform: translateY(-100%);
+   transition: all 0.5s ease-in-out;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.9);
+   z-index: 999;
+   opacity: 0;
+   .close-btn {
+      position: absolute;
+      right: 0.5rem;
+      top: 2rem;
+   }
+   .centered {
+      height: 100%;
+      padding: 0 1.875rem; //0 30px;
+   }
+   &.search-slide {
+      transform: translateY(0);
+      opacity: 1;
+   }
+}

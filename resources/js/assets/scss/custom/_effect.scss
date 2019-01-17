@@ -1,0 +1,177 @@
+/*============ Effect Scss ============*/
+.dash-card, .border-0.app-card {
+    i,
+    .dash-icon {
+        transform: translateY(0px);
+        transition: transform 0.4s ease 0s, opacity 0.4s ease 0s;
+    }
+    &:hover {
+        i,
+        .dash-icon {
+            transform: translate3d(0px, -0.6rem, 0px);
+            opacity: 0.9;
+        }
+    }
+}
+/*=========== Back To Top Css ===========*/
+.vm-back-top-inner {
+	background: $back-to-top-bg;
+	border-radius: 100% !important;
+	width: 60px;
+	height: 60px;
+}
+.vm-back-top-inner i:before {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -12px;
+}
+.vm-back-top:hover i:before {
+	-webkit-animation: arrow-up 500ms linear 200ms infinite alternate;/* Chrome, Safari, Opera */
+	animation: arrow-up 500ms linear 200ms infinite alternate;
+}
+@-webkit-keyframes arrow-up {
+	0%   { top: 0px; }
+	50%   { top: 7px; }
+	100% { top: 14px; }
+}
+@-moz-keyframes arrow-up {
+	0%   { top: 0px; }
+	50%   { top: 7px; }
+	100% { top: 14px; }
+}
+@-o-keyframes arrow-up {
+	0%   { top: 0px; }
+	50%   { top: 7px; }
+	100% { top: 14px; }
+}
+@keyframes arrow-up {
+	0%   { top: 0px; }
+	50%   { top: 7px; }
+	100% { top: 14px; }
+}
+/*=========== Loader css ===========*/
+.spinwrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $loader-overlay;
+}
+.spinner {
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+}
+.cube1, .cube2 {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: cubemove 2s infinite ease-in-out;
+  animation: cubemove 2s infinite ease-in-out;
+}
+.cube1 {
+  background: $loader-bg-1;
+  -webkit-animation: cubemove 2s infinite ease-in-out;
+  animation: cubemove 2s infinite ease-in-out;
+}
+.cube2 {
+  background: $loader-bg-2;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+@-webkit-keyframes cubemove {
+  25% {
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  }
+  50% {
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  }
+  75% {
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@keyframes cubemove {
+  25% {
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  }
+  50% {
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  }
+  50.1% {
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  }
+  75% {
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  }
+  100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}
+/*========== Tour ==========*/
+.v-step {
+	z-index: 99;
+	background-color: $light !important;
+	color: $gray-dark !important;
+	width: 17.5rem; //280px;
+	&[x-placement^="left"] {
+		.v-step__arrow {
+			border-left-color: $light !important;
+		}   
+	}
+	&[x-placement^="right"] {
+		.v-step__arrow {
+			border-right-color: $light !important;
+		} 
+	}
+	&[x-placement^="top"] {
+		.v-step__arrow {
+			border-top-color: $light !important;
+		} 
+	}
+	&[x-placement^="bottom"] {
+		.v-step__arrow {
+			border-bottom-color: $light !important;
+		} 
+	}
+	.v-step__button {
+		background: $primary !important;
+		&:hover {
+			color: $light;
+		}
+	}
+	@media (max-width:1263px) {
+		display:none !important;
+	}
+}
+/*================ Weather widget =================*/
+.weather-widget .weather-head {
+  background-image: $weather-bg;
+  background-size: cover;
+  background-repeat:repeat;
+  -moz-animation: animatedBackground 25s infinite ease;
+  -o-animation: animatedBackground 25s infinite ease;
+  -webkit-animation: animatedBackground 25s infinite ease;
+  animation: animatedBackground 25s infinite ease;
+}
+@keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  1% { background-position: 0 0; }
+  50% { background-position: -1000px 0; }
+  51% { background-position: -1000px 0; }
+  99% { background-position: 0 0; }
+  100% { background-position: 0 0; }
+}

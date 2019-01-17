@@ -1,0 +1,196 @@
+/*=========== Dark Version ==========*/
+
+.theme--dark {
+   * {
+      color: $dark-bg-color !important;
+      border-color:$dark-border-color !important;
+   }
+   p {
+      color: $gray-light;
+   }
+   span {
+      color: $gray-light;
+   }
+   .top-news-wrap .slider-btn-wrap .slick-arrow:before{
+      color:$light !important;
+   }
+   .app-boxed-layout .app-container .v-content .app-content{
+      background-color:transparent !important
+   }
+   .v-content__wrap {
+      background: url(/static/img/dark-layout-bg.png) center center;
+   }
+   .grayish-blue,
+   .shop-wrapper .sidebar-filter-wrap .ais-refinement-list__count {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+   }
+   .app-card,
+   .dash-card,
+   .navbar-default,
+   .dash-card-wrap,
+   .dash-card-light,
+   .comp-full-calendar,
+   .session-block,
+   .card-base,
+   .inbox-listing ul>li:nth-child(2n),
+   .fixed-pricing,
+   .dropzone,
+   .card,
+   .v-step {
+      background-color: $dark-bg !important;
+      border-color: $dark-border-color;
+   }
+   .v-step {
+		.v-step__arrow{
+			border-color:transparent !important;
+		}
+      &[x-placement^="left"] {
+         .v-step__arrow {
+            border-left-color: $dark-bg !important;
+         }
+      }
+      &[x-placement^="right"] {
+         .v-step__arrow {
+            border-right-color: $dark-bg !important;
+         }
+      }
+      &[x-placement^="top"] {
+         .v-step__arrow {
+            border-top-color: $dark-bg !important;
+         }
+      }
+      &[x-placement^="bottom"] {
+         .v-step__arrow {
+            border-bottom-color: $dark-bg !important;
+         }
+      }
+   }
+   .v-list,
+   .inbox .inbox-content-wrap .search-mail .v-text-field--solo {
+      background: $dark-bg !important;
+   }
+   .navigation-drawer,
+   .social-share-wrap .social-icon,
+   .horizontal-menu,
+   .horizontal-menu .sub-menu,
+   .horizontal-menu .sub-menu-child,
+   .app-event-calendar .tab-content-wrap .app-event-item,
+   .datatable__actions,
+   .app-card-action .v-list__tile,
+   .quote-widget {
+      background-color: $dark-bg !important;
+   }
+   .ql-snow.ql-toolbar button,
+   .ql-snow .ql-toolbar button,
+   .chip,
+   .plan-info,
+   .grey.lighten-2,
+   .quciklink-dropdown,
+   .notification-dropdown,
+   .language-dropdown,
+   .userblock-dropdown,
+   .notification-wrap .v-avatar,
+   .app-event-calendar .tab-content-wrap .app-event-item:hover,
+   .app-card-action {
+      background-color: $dark-bg-container !important;
+   }
+   .loader-overlay,
+   .search,
+   figure.img-wrapper::after {
+      background: rgba(44, 54, 68, 0.8);
+   }
+   .v-table,
+   .app-selectbox select,
+   .app-selectbox-sm select,
+   .v-navigation-drawer,
+   .v-card,
+   .v-toolbar {
+      background-color: $dark-bg;
+   }
+   .app-selectbox:before,
+   .app-selectbox-sm:before {
+      border-top-color: $dark-bg-color;
+   }
+   .v-table thead tr,
+   .v-table tbody tr:nth-child(even),
+   .booking-info-wrap .app-full-content ul li:hover,
+   .inbox .inbox-content-wrap .search-mail,
+   .support-widget-wrap ul li:not(:nth-child(2)) {
+      background-color: #434f5a !important;
+   }
+   .v-table tbody tr:hover:not(.datatable__expand-row),
+   .horizontal-menu>ul li:hover>a,
+   .v-tabs__bar,
+   code,
+   .stepper {
+      background-color: rgba(0, 0, 0, 0.1) !important;
+   }
+   .quciklink-dropdown,
+   .notification-dropdown,
+   .language-dropdown,
+   .userblock-dropdown {
+      .dropdown-content {
+         .dropdown-list .v-list__tile,
+         .dropdown-list .v-list__tile:hover {
+            background-color: $dark-bg !important;
+         }
+      }
+   }
+   .v-btn.error--text {
+      i {
+         color: $danger !important;
+      }
+   }
+   .badge.floating:before,
+   .activity-widget li {
+      border-color: $dark-bg-container;
+   }
+   .horizontal-menu {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+   }
+   .app-boxed-layout .content,
+   .v-navigation-drawer .navigation .v-list,
+   .inner-toolbar .v-list {
+      background-color: transparent !important;
+   }
+   .horizontal-menu ul li {
+      &.nav-item-active,
+      .sub-menu,
+      .sub-menu .nav-item>.sub-menu-child,
+      .sub-menu-child .nav-item>.sub-menu-sub-child {
+         &:after {
+            border-color: transparent transparent $dark-bg $dark-bg !important;
+            box-shadow: -3px 3.5px 7px rgba(5, 0, 0, 0.25) !important;
+         }
+      }
+   }
+   .chat-bubble,
+   .event-tab.active a {
+      color: $body-color !important;
+   }
+   .sidebar-filter,
+   .header-filter {
+      .v-list {
+         >div:nth-child(2) {
+            .v-list__tile--link {
+               border: 1px solid $light !important;
+               &:after {
+                  border-color: $light;
+               }
+            }
+         }
+      }
+   }
+   .v-text-field,
+   .dropzone,
+   .input-group,
+   .ais-range-input__input,
+   .trending-news-widegt .trending-block{
+      border-color: $light !important;
+   }
+   .chat-bubble.even {
+      span {
+         color: rgba(0, 0, 0, 0.8) !important;
+      }
+   }
+}

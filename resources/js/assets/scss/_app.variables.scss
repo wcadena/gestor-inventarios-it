@@ -1,0 +1,198 @@
+/*========== Custome Variable ==========*/
+// App Global Font Size
+$html-font-size:              16px;
+
+//App Background Scale
+$primary: 						      #5D92F4 !default;
+$secondary:         			  #82b1ff !default;
+$success: 						      #00D014 !default;
+$info: 							        #00D0BD !default;
+$warning: 						      #FFB70F !default;
+$danger: 						        #FF3739 !default;
+$pink:                      #FA0055 !default;
+$blue:                      #2E62FF !default;
+$purple:                    #2B314A !default;
+$light:             			  #FFFFFF !default;
+$dark:              			  #000000 !default;
+$base:                      #F4F7FA !default;
+$base-light:                #FAFAFA !default;
+
+// App Text Scale
+$gray-dark: 					      #464D69 !default;
+$gray:                      #727891 !default;
+$gray-light: 					      #A5A7B2 !default;
+$gray-lighter: 					    #DDE6F3 !default;          
+
+//App Theme Color
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "blue":       $blue,
+), $theme-colors);
+
+// Settings for the `<body>` element.
+$body-bg:                       $base;
+$body-color:                    $gray-dark;
+$font-family-base:              'Heebo', sans-serif;
+$border-color:                  #EBEDF2;
+
+// Setting for the Typograpgy elements.
+
+$font-size-base:                1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                  1.25rem !default;
+$font-size-sm:                 .875rem !default;
+
+$font-weight-light:             300;
+$font-weight-normal:            400;
+$font-weight-semi-bold:         500;
+$font-weight-bold:              700;
+
+// Setting For Heading Element
+$h1-font-size:                  1.75rem !default;      // 28px
+$h2-font-size:                  1.5rem !default;       // 24px
+$h3-font-size:                  1.375rem !default;     // 22px
+$h4-font-size:                  1.125rem !default;     // 20px
+$h5-font-size:                  1rem !default;         // 16px
+$h6-font-size:                  0.875rem !default;     // 14px
+
+// Gradient Theme Color
+$light-primary:                 linear-gradient(180deg, #5D92F4 0%, #09203F 100%); // Primary
+$light-pink:                   	linear-gradient(180deg, #B91372 0%, #33080D 100%); // Pink
+$light-success:                 linear-gradient(180deg, #00D0BD 0%, #007ADF 100%); // success
+$light-purple:                  linear-gradient(0deg, #F53844 0%, #42378F 100%);// purple
+$light-warning:                 linear-gradient(0deg, #B02E0C 0%, #FFB70F 100%); // warning
+$light-gray:                    linear-gradient(180deg, #09203F 0%, #537895 100%);
+
+
+// App Custom Card
+$card-bg: 						          #FFF;
+$card-border-radius: 			      0px;
+$card-border: 					        1px solid #EBECEF;
+$card-spacing: 					        1.25rem 1.25rem;//20px 20px
+$card-margin-bottom: 			      0rem; //0px
+$card-shadow:                   0 1px 15px 1px rgba(69,65,78,0.08);
+$card-hover-shadow:             none;
+
+// Card Title
+$card-title-color: 				      $gray-dark;
+$card-title-font-size: 			    1rem; //22px;
+$card-title-transform: 			    capitalize;
+$card-title-weight: 			      500;
+$card-title-spacing:            1rem 1.25rem;//16px 20px
+$card-title-border:             none;
+$card-footer-spacing:           1rem 1.25rem;//16px 20px
+
+// Card Contextual link
+$contextual-link-size: 			    1.25rem;//20px
+$contextual-link-color: 		    $gray-light;
+
+// Breadcrumb Variable
+$breadcrumb-font-weight:        500;
+$breadcrumb-font-color:         $gray-dark;
+$breadcrumb-font-size:          1.5rem; //24px;
+
+// Dashboard Tooltip Title
+$d-title-color:                $gray-dark;
+$d-title-font-size:            0.8125rem; //13px;
+$d-title-transform:            uppercase;
+
+// Dark theme
+$dark-bg:                      #2c3644;
+$dark-bg-color:                #fff;
+$dark-bg-container:            #303030;
+$dark-border-color:            rgba(0, 0, 0, 0.2);
+
+// Label Variable
+$label-spacing:                 0.2rem 0.5rem 0.1rem;
+$label-font-color:              $light;
+$label-font-size:               75%;
+$label-font-weight:             400;
+$label-transform:               uppercase;
+$label-border-radius:           0.25rem;
+
+$label-primary:                $light-primary;
+$label-success:                $light-success;
+$label-pink:                   $light-pink;
+$label-warning:                $light-warning;
+$label-purple:                 $light-purple;
+
+// Button Gradient Variable
+$btn-gradient-primary:        $light-primary;
+$btn-gradient-success:        $light-success;
+$btn-gradient-pink:           $light-pink;
+$btn-gradient-warning:        $light-warning;
+$btn-gradient-purple:         $light-purple;
+
+// Button Simple Variable
+$btn-primary:                 $primary;
+$btn-secondary:               $secondary;
+$btn-success:                 $success;
+$btn-info:                    $info;
+$btn-warning:                 $warning;
+$btn-danger:                  $danger;
+
+$btn-font-weight:             500;
+$btn-icon-font-size:          1.125rem;
+$btn-border-radius:           3px;
+
+// Input Variable
+$input-border-color:           #D7DCE4;
+
+// Sidebar Variable
+
+$sidebar-bg:                   #2E3344;
+$sidebar-width:                250px;
+$sidebar-nav-color:            #1D2433;
+$sidebar-nav-text-size:        14px;
+$sidebar-nav-active-color:     $light;
+$sidebar-nav-active-bg:        $primary;
+$sidebar-nav-spacing:          10px;
+$sidebar-nav-font-weight:      400;
+$sidebar-box-shadow:           0 0 10px 0 rgba(0,0,0,0.5);
+$sidebar-subnav-font-size:     $sidebar-nav-text-size;
+$sidebar-subnav-font-color:    $sidebar-nav-color;
+$sidebar-icon-color:           $primary;
+
+//Heder Variable
+
+$header-box-shadow:             0 4px 15px 0 rgba(0,0,0,0.09);
+
+// Back To Top Variable
+$back-to-top-bg:               $primary;
+
+// Loader Variable
+$loader-bg-1:                  $warning;
+$loader-bg-2:                  $primary;
+$loader-overlay:               rgba(255, 255, 255, 0.9);
+
+// Dragula
+$dragula-bg:                   $primary;
+$dragula-color:                $light;
+
+// Calender Variable
+$calender-head-bg:             $primary;
+$calender-event-bg:            $danger;
+
+// Horizontal Menu sidebar Variable
+$hoz-menu-bg:                     $light;
+$hoz-nav-link-color:              $body-color;
+$hoz-nav-font-size:               0.875rem; //14px
+$hoz-nav-link-spacing:            0.9375rem 1.563rem 0.9375rem 1.563rem; //15px 30px;
+$hoz-nav-link-hover-bg:           $base-light;
+$hoz-menu-height:                 3.125rem; //50px;
+$hoz-sub-menu-width:              12rem;
+$hoz-box-shadow:                  0 2px 10px 0 rgba(204,204,204,0.5);
+$hoz-sub-menu-box-shadow:         0 2px 15px 0 rgba(0,0,0,0.09);
+
+//Custom-bg
+$aqua-bg:                         #DFEAFF;
+
+//weather bg
+$weather-bg:                      url('/static/img/weather-1.jpg');

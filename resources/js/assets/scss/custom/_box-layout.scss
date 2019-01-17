@@ -1,0 +1,29 @@
+/*========== Box Layout Scss =========*/
+.box-layout {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  width: 1170px !important;
+  .d-lg-half-block,
+  .d-md-block,
+  .d-lg-block,
+  .d-sm-block {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .b-50 {
+    max-width: 50% !important;
+    flex-basis: 50% !important;
+  }
+  .b-100 {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .Vuely-toolbar, .horizontal-menu {
+    width: 1170px;
+    left: inherit;
+    right: inherit;
+  }
+  .navigation-drawer--fixed {
+    position: absolute;
+  }
+}

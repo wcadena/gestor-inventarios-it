@@ -1,0 +1,77 @@
+/*========== Label Scss ==========*/
+
+.v-badge {
+   display: inline-block;
+   padding: $label-spacing;
+   font-size: $label-font-size;
+   font-weight: $label-font-weight;
+   color: $label-font-color;
+   text-align: center;
+   white-space: nowrap;
+   border-radius: $label-border-radius;
+   text-transform: $label-transform;
+   &.rounded {
+      border-radius: 50% !important;
+      min-height: 0.75rem;
+      min-width: 0.75rem;
+      padding: 0 !important;
+   }
+   &.floating {
+      position: absolute;
+      right: 0;
+      top: 1.75rem;
+      &:before {
+         position: absolute;
+         content: "";
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         border-radius: 50% !important;
+         border: 2px solid #fff;
+      }
+   }
+}
+
+//Select Box
+.app-selectbox {
+   width: 100%;
+   border-radius: 4px;
+   overflow: hidden;
+   position: relative;
+   height: 52px;
+   box-shadow: 0 1px 15px 1px rgba(69, 65, 78, 0.08);
+   &:before {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      top: 50%;
+      margin-top: -0.09em;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border: 0.3em solid transparent;
+      border-top-color: #464D69;
+   }
+   select {
+      padding: 0.3125rem 0.5rem; //5px 8px;
+      box-shadow: none;
+      background-color: $light;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-transform: capitalize;
+      height: 52px !important;
+      cursor: pointer;
+      &:focus {
+         outline: none;
+      }
+   }
+}
+
+.app-selectbox-sm {
+   @extend .app-selectbox;
+   height: calc(2.25rem + 2px) !important;
+   select {
+      height: calc(2.25rem + 2px) !important;
+   }
+}

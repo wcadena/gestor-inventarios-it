@@ -1,0 +1,105 @@
+/*======== Main Scss ========*/
+.app-card {
+	background-color: $card-bg;
+	border-radius: $card-border-radius;
+	margin-bottom: $card-margin-bottom;
+	box-shadow: $card-shadow;
+	transition: all .4s ease-in-out 0s;
+	position: relative;
+	height:100%;
+	overflow: hidden;
+	.app-card-title {
+		position: relative;
+		padding: $card-title-spacing;
+		border-bottom: $card-title-border;
+		display:flex;
+		align-items:center;
+		justify-content: space-between;
+		h3, .app-title {
+			font-size: $card-title-font-size;
+			color: $card-title-color;
+			text-transform: $card-title-transform;
+			font-weight: $card-title-weight;
+			margin: 0;
+		}
+	}
+	.app-contextual-link {
+		.v-btn {
+			.v-icon {
+			color: $contextual-link-color;
+			}
+		}
+	}
+	.app-card-content {
+		padding: $card-spacing;
+	}
+	.app-full-content {
+		padding: 0;
+	}
+	.app-footer {
+		padding: $card-footer-spacing;
+		border-top: $card-border;
+		.v-btn{
+			margin:0;
+		}
+	}
+	&:hover {
+		box-shadow: $card-hover-shadow;
+	}
+}
+
+.app-card-action{
+	background-color:$base-light !important;
+	overflow: hidden;
+	.v-list__tile{
+		height:40px;
+		font-size: 0.875rem;
+		margin:0.3125rem;
+		background-color: $light;
+		box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.02);
+		span{
+			transition:all 0.4s ease-in-out;
+		}
+		&:hover{
+			background-color: $light !important;
+			span{
+				color:$primary !important;
+			}
+		}
+	}
+}
+
+.content {
+  overflow-y: hidden;
+}
+.dash-title {
+	margin: 0.9375rem 0; //15px;
+	span {
+		color: $d-title-color;
+		font-size: $d-title-font-size;
+		text-transform: $d-title-transform;
+		letter-spacing: 2px;
+		font-weight: bold;
+		a {
+			vertical-align: 2px;
+			i {
+			font-size: $d-title-font-size;
+			color: $gray-dark;
+			margin-left: 5px;
+			}
+		}
+	}
+}
+.dash-card-wrap, .card {
+	transition: all 0.4s ease-in-out 0s;
+	&:hover {
+		box-shadow: $card-hover-shadow;
+	}
+}
+#nprogress .bar {
+  	background: $danger !important;
+}
+#nprogress .spinner-icon {
+	border-top-color: $danger !important;
+	border-left-color: $danger !important;
+}

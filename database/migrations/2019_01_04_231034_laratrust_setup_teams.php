@@ -12,49 +12,58 @@ class LaratrustSetupTeams extends Migration
      */
     public function up()
     {
+
+        if (!Schema::hasColumn('teams', 'id')) {
+            Schema::create('teams', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->unique();
+                $table->string('display_name')->nullable();
+                $table->string('description')->nullable();
+                $table->timestamps();
+            });
+        }
         // Create table for storing teams
-        Schema::create('teams', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
 
-        Schema::table('role_user', function (Blueprint $table) {
-            // Drop role foreign key and primary key
-            $table->dropForeign(['role_id']);
-            $table->dropPrimary(['user_id', 'role_id', 'user_type']);
+        if (!Schema::hasColumn('role_user', 'team_id')) {
+            Schema::table('role_user', function (Blueprint $table) {
+                // Drop role foreign key and primary key
+                $table->dropForeign(['role_id']);
+                $table->dropPrimary(['user_id', 'role_id', 'user_type']);
 
-            // Add team_id column
-            $table->unsignedInteger('team_id')->nullable();
+                // Add team_id column
+                $table->unsignedInteger('team_id')->nullable();
 
-            // Create foreign keys
-            $table->foreign('role_id')->references('id')->on('roles')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('team_id')->references('id')->on('teams')
-                ->onUpdate('cascade')->onDelete('cascade');
+                // Create foreign keys
+                $table->foreign('role_id')->references('id')->on('roles')
+                    ->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('team_id')->references('id')->on('teams')
+                    ->onUpdate('cascade')->onDelete('cascade');
 
-            // Create a unique key
-            $table->unique(['user_id', 'role_id', 'user_type', 'team_id']);
-        });
+                // Create a unique key
+                $table->unique(['user_id', 'role_id', 'user_type', 'team_id']);
+            });
 
-        Schema::table('permission_user', function (Blueprint $table) {
-            // Drop permission foreign key and primary key
-            $table->dropForeign(['permission_id']);
-            $table->dropPrimary(['permission_id', 'user_id', 'user_type']);
+        }
+        if (Schema::hasColumn('permission_user', 'team_id')) {
+            Schema::table('permission_user', function (Blueprint $table) {
+                // Drop permission foreign key and primary key
+                $table->dropForeign(['permission_id']);
+                $table->dropPrimary(['permission_id', 'user_id', 'user_type']);
 
-            $table->foreign('permission_id')->references('id')->on('permissions')
-                ->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('permission_id')->references('id')->on('permissions')
+                    ->onUpdate('cascade')->onDelete('cascade');
 
-            // Add team_id column
-            $table->unsignedInteger('team_id')->nullable();
+                // Add team_id column
+                $table->unsignedInteger('team_id')->nullable();
 
-            $table->foreign('team_id')->references('id')->on('teams')
-                ->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('team_id')->references('id')->on('teams')
+                    ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unique(['user_id', 'permission_id', 'user_type', 'team_id']);
-        });
+                $table->unique(['user_id', 'permission_id', 'user_type', 'team_id']);
+            });
+        }
+
+
     }
 
     /**

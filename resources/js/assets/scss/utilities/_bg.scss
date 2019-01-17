@@ -1,0 +1,109 @@
+/*=========== Background Utilities ==========*/
+
+.gradient-primary {
+   background: $light-primary;
+   * {
+      color: $light;
+   }
+}
+
+.gradient-success {
+   background: $light-success;
+   * {
+      color: $light;
+   }
+}
+
+.gradient-pink {
+   background: $light-pink;
+   * {
+      color: $light;
+   }
+}
+
+.gradient-warning {
+   background: $light-warning;
+   * {
+      color: $light;
+   }
+}
+
+.gradient-purple {
+   background: $light-purple;
+   * {
+      color: $light;
+   }
+}
+
+.facebook-bg {
+   background-color: #4766CE;
+}
+
+.google-bg {
+   background-color: #CB2929;
+}
+
+.instagram-bg {
+   background-color: #FF37CF;
+}
+
+.linkedin-bg {
+   background-color: #247897;
+}
+
+.twitter-bg {
+   background-color: #3CB1F1;
+}
+
+.github-bg {
+   background-color: #6f574e;
+}
+
+.facebook {
+   .v-icon,
+   i {
+      color: #3B5998 !important;
+   }
+}
+
+.google {
+   .v-icon,
+   i {
+      color: #D82218 !important;
+   }
+}
+
+.twitter {
+   .v-icon,
+   i {
+      color: #1FA2FA !important;
+   }
+}
+
+.linkedin {
+   .v-icon,
+   i {
+      color: #4875B4 !important;
+   }
+}
+
+.instagram {
+   .v-icon,
+   i {
+      color: #F45DA0 !important;
+   }
+}
+
+.grayish-blue {
+   background-color: $gray-dark !important;
+}
+
+.aqua-bg {
+   background-color: $aqua-bg;
+}
+
+// Simple Brand Background Color
+@each $color,
+$value in $theme-colors {
+   @include bg-variant(".bg-#{$color}", $value);
+}

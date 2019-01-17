@@ -1,0 +1,93 @@
+/*============ User Scss ===========*/
+.user-image {
+  img {
+    box-shadow: 0 7px 14px 0 rgba(0,0,0,0.21);
+  }
+}
+.social-list {
+  ul {
+    li {
+      padding: 0 10px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+.profile-top {
+  overflow: hidden;
+}
+.profile-bottom {
+  margin-top: -50px;
+}
+.profile-body {
+  .layout {
+    > .flex {
+      display: initial;
+      > .flex {
+        padding: 0;
+      }
+    }
+  }
+}
+.user-activity {
+  padding: 0.9375rem; //15px;
+  ul {
+    li {
+      @include border(2px solid, $gray-lighter, right);
+      padding: 0 0.625rem; //10px;
+      &:last-child {
+        border: none;
+      }
+      span {
+        font-size: 1.375rem; //22px;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+.overlap {
+    position: absolute;
+    right: -32px;
+    top: -30px;
+}
+.media-listing {
+  .media {
+    padding: 1.25rem; //20px;
+  }
+}
+@media (max-width: 1199px) and (min-width: 960px) {
+  .media-full {
+    width: 100%;
+    display: block;
+    img {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .media-body {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 767px) and (min-width: 320px) {
+  .media-full {
+    width: 100%;
+    display: block;
+    img {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .media-body {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 588px) and (min-width: 320px) {
+  .user-activity ul li {
+    display: block;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid $gray-lighter;
+    padding: 10px;
+  }
+}

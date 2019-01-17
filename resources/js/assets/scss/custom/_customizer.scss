@@ -1,0 +1,38 @@
+/*=========== Right Sidebar ============*/
+.app-customizer {
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99) 0s;
+  top: 72px;
+}
+.customizer-toggle {
+  border: medium none;
+  color: $light !important;
+  cursor: pointer;
+  height: 45px;
+  left: -45px;
+  line-height: 48px;
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  width: 45px;
+  text-decoration: none;
+}
+.spin-icon{
+  -webkit-animation: spin-icon 2s infinite linear;
+  animation: spin-icon 2s infinite linear;
+} 
+.input-group.input-group--selection-controls.switch {
+  .input-group--selection-controls__toggle {
+    left: 5px;
+  }
+  .input-group--selection-controls__ripple::after {
+    left: 60%;
+  }
+}
+@media(max-width:768px) {
+  .app-customizer {
+    display: none !important;
+  }
+}

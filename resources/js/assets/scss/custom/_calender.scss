@@ -1,0 +1,37 @@
+/*============== Calender =============*/
+.comp-full-calendar {
+  max-width: 100% !important;
+  .full-calendar-header {
+    background-color: $calender-head-bg;
+    padding: 1.875rem; //30px;
+    color: $light !important;
+    .prev-month , .next-month {
+      font-size: 1.5rem;
+      vertical-align: middle;
+      margin: 0 10px;
+      background-color: $calender-event-bg;
+      padding: 1px 13px;
+      border-radius: 50%;
+      text-align: center;
+      display: inline-block;
+    }
+    .title {
+      vertical-align: middle;
+    }
+  }
+  .full-calendar-body {
+    margin-top: 0;
+    .weeks {
+      .week {
+        padding: 1.875rem 0.625rem; //30px 10px;
+      }
+    }
+    .dates .dates-events .events-week .events-day .event-box .event-item {
+      background-color: $calender-event-bg;
+      height: 30px;
+      line-height: 30px;
+      color: $light;
+      font-size: 1rem;
+    }
+  }
+}

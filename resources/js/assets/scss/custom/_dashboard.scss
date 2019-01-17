@@ -1,0 +1,253 @@
+/*========= Dashboard Scss ==========*/
+
+.breadcrumbs {
+   h2 {
+      font-weight: $breadcrumb-font-weight;
+      color: $breadcrumb-font-color;
+      font-size: $breadcrumb-font-size;
+   }
+}
+
+.border-rad-sm.overflow-hidden {
+   .flex {
+      &:first-child {
+         border-bottom-left-radius: $card-border-radius;
+         overflow: hidden;
+      }
+      &:last-child {
+         border-bottom-right-radius: $card-border-radius;
+         overflow: hidden;
+      }
+   }
+}
+
+.dash-card {
+   color: $light;
+   border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dash-icon {
+   font-size: $h1-font-size;
+}
+
+.dash-card-wrap {
+   background-color: $light;
+   border: $card-border;
+   box-shadow: $card-shadow;
+   .dash-card-light {
+      border-right: 1px solid $input-border-color;
+      float: left;
+      text-align: center;
+      padding: 1.25rem;
+      width: 33.3%;
+      &:last-child {
+         border-right: none;
+      }
+      h2 {
+         font-size: 1.625rem; //26px;
+         margin: 0;
+      }
+      p {
+         font-size: 1rem;
+         margin-bottom: 0.5rem;
+      }
+   }
+}
+
+.chart-stat {
+   position: absolute;
+   right: 0;
+   left: 0;
+   text-align: center;
+   top: 40%;
+   font-size: 1.625rem; //26px;
+   font-weight: 400;
+}
+
+.ladgend-wrapper {
+   p {
+      margin-right: 8px;
+      display: inline-block;
+      span {
+         color: $gray;
+      }
+   }
+   .ladgend {
+      width: 25px;
+      display: inline-block;
+      height: 10px;
+      border-radius: 30px;
+      margin-right: 5px;
+      &.ladgend-warning {
+         background: $light-warning;
+      }
+      &.ladgend-success {
+         background: $light-success;
+      }
+      &.ladgend-pink {
+         background: $light-pink;
+      }
+   }
+}
+
+.v-list {
+   padding: 0;
+   .listing {
+      border-bottom: $card-border;
+      padding: 0.625rem 0; //10px 0;
+      &:last-child {
+         border-bottom: none;
+      }
+   }
+}
+
+/* ======== Loader ====================*/
+
+.loader-overlay {
+   position: absolute;
+   background: rgba(255, 255, 255, 0.8);
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0px;
+   align-items: center;
+   overflow: hidden;
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+}
+
+/*============================ Web Analytic Dashboard =============================*/
+
+.card-list {
+   padding: 0;
+   >div {
+      padding: 0;
+      border-bottom: $card-border;
+      .v-list__tile {
+         padding: 0.875rem 1.25rem;
+         height: auto;
+      }
+      &:last-child {
+         margin-bottom: 0;
+      }
+   }
+   .v-progress-linear {
+      border-radius: 10px;
+   }
+}
+
+/*=============== Toaster ===================*/
+
+.mini-toastr {
+   font-family: $font-family-base !important;
+   .mini-toastr__notification {
+      opacity: .9;
+      border-radius: 3px;
+      .mini-toastr-notification__title {
+         font-weight: 600;
+         font-size: 1.5rem;
+      }
+      .mini-toastr-notification__message {
+         padding: 0px;
+      }
+      &.-success {
+         background-color: $success;
+      }
+      &.-error {
+         background-color: $danger;
+      }
+      &.-warn {
+         background-color: $warning;
+      }
+      &.-info {
+         background-color: $info;
+      }
+   }
+}
+.layout.row .flex >div{
+   height:100%;
+}
+.today-weather,.welcome-message,.col-height-auto >div,.profile-head ,.quote-widget,.height-auto{
+    height:auto !important;
+}
+.grid-list-xl{
+    max-width:inherit !important;
+}
+/*========== Dashboard Responsive ==========*/
+
+@media (max-width: 1456px) and (min-width: 960px) {
+   .server-load {
+      .px-4 {
+         padding: 0 !important;
+      }
+   }
+}
+
+@media (max-width: 1200px) {
+   .theme-layouts {
+      >div {
+         &:nth-of-type(3) {
+            display: none;
+         }
+      }
+   }
+}
+
+@media (max-width: 1263px) {
+   .theme-layouts {
+      >div {
+         &:nth-of-type(2) {
+            display: none;
+         }
+      }
+   }
+}
+
+@media (max-width: 1340px) and (min-width: 1100px) {
+   .v-table {
+      .label {
+         padding: 0.25rem 0.2rem;
+      }
+   }
+}
+
+@media (max-width: 599px) {
+   .breadcrumbs {
+      padding: 0;
+   }
+}
+
+@media (max-width: 520px) {
+   .dash-card-wrap .dash-card-light {
+      width: 100%;
+   }
+   .label {
+      padding: 0.15rem 0.2rem !important;
+      font-size: 70% !important;
+   }
+}
+
+@media (max-width: 400px) {
+   .breadcrumbs h2 {
+      font-size: 1rem;
+   }
+}
+
+/*====================== Ecommerce ========================*/
+
+@media(max-width:1260px) {
+   .sales-widget {
+      #bar-chart {
+         height: 225px !important;
+      }
+   }
+}
+
+@media(max-width:991px) {
+   .sales-widget {
+      .cart-wrap {
+         padding:0 !important;
+      }
+   }
+}

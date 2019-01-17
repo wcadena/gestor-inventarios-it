@@ -1,0 +1,13 @@
+/*======== All Brand Text Color Is Mention Here =======*/
+@include text-emphasis-variant('.text-primary', $primary);
+@include text-emphasis-variant('.text-secondary', $secondary);
+@include text-emphasis-variant('.text-success', $success);
+@include text-emphasis-variant('.text-info', $info);
+@include text-emphasis-variant('.text-warning', $warning);
+@include text-emphasis-variant('.text-danger', $danger);
+@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+@include text-emphasis-variant('.text-gray', $gray);
+@include text-emphasis-variant('.text-gray-light', $gray-light);
+@include text-emphasis-variant('.text-gray-lighter', $gray-lighter);
+// @include text-emphasis-variant('.text-blue', $blue);
+@include text-emphasis-variant('.text-pink', $pink);
