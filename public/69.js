@@ -87,7 +87,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.spinner {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  height: 100vh;\n  width: 100vw;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n", ""]);
+exports.push([module.i, "\n.spinner {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  width: 100vw;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\r\n", ""]);
 
 // exports
 

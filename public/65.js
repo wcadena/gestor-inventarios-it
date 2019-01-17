@@ -3627,12 +3627,13 @@ var login = auth.login,
 					remember: this.checkbox
 				});
 				var self = this;
-				axios.post('/login', formpost, {}).then(function (response) {
-					console.log('Authenticated');
-					console.log(response);
+				axios.post('/api/login', formpost, {}).then(function (response) {
+					localStorage.setItem('user', JSON.stringify(user));
+					localStorage.setItem('token', response.data.data.token);
+					self.$router.push("/default/dashboard/ecommerce");
 				}).catch(function (error) {
-					//console.log('Error on Authentication');
-					self.message = error.response.data.email;
+					console.log('Error on Authentication');
+					self.message = error.response.data.data;
 				});
 			}
 			//this.$router.push("/dashboard/home");

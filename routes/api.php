@@ -26,6 +26,8 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 Route::resource('role', 'api\RoleController', ['only' => ['index', 'show']]);
 Route::get('role/user/{role}', 'api\RoleController@index_user')->name('role.user');
 
+Route::post('login', 'api\UserController@login');
+Route::post('register', 'api\UserController@register');
 Route::resource('users', 'api\UserController', ['excepto' => 'create,edit']);
 Route::get('users/role/{user}', 'api\UserController@index_role')->name('user.role');
 

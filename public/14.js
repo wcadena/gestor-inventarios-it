@@ -87,7 +87,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.leaflet-container[data-v-89f7c4ca] {\n  z-index: 1;\n}\n", ""]);
+exports.push([module.i, "\n.leaflet-container[data-v-89f7c4ca] {\r\n  z-index: 1;\n}\r\n", ""]);
 
 // exports
 

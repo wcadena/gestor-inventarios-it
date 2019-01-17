@@ -87,7 +87,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.v-card--reveal {\n  align-items: center;\n  bottom: 0;\n  justify-content: center;\n  opacity: .5;\n  position: absolute;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.v-card--reveal {\r\n  align-items: center;\r\n  bottom: 0;\r\n  justify-content: center;\r\n  opacity: .5;\r\n  position: absolute;\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
