@@ -35,7 +35,7 @@
         "spatie/laravel-fractal": "^5.4",
         "spatie/laravel-menu": "^3.2",
         "webpatser/laravel-uuid": "^3.0",
-        "wuwx/laravel-autonumber": "^2.0",
+        "wuwx/laravel-autonumber": "^2.0"
     },
     "require-dev": {
         "aiiro/laravel-factory-generator": "^0.0.3",
@@ -44,7 +44,7 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0",
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "classmap": [
