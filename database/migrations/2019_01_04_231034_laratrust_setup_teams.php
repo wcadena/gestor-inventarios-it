@@ -12,7 +12,6 @@ class LaratrustSetupTeams extends Migration
      */
     public function up()
     {
-
         if (!Schema::hasColumn('teams', 'id')) {
             Schema::create('teams', function (Blueprint $table) {
                 $table->increments('id');
@@ -42,7 +41,6 @@ class LaratrustSetupTeams extends Migration
                 // Create a unique key
                 $table->unique(['user_id', 'role_id', 'user_type', 'team_id']);
             });
-
         }
         if (Schema::hasColumn('permission_user', 'team_id')) {
             Schema::table('permission_user', function (Blueprint $table) {
@@ -62,8 +60,6 @@ class LaratrustSetupTeams extends Migration
                 $table->unique(['user_id', 'permission_id', 'user_type', 'team_id']);
             });
         }
-
-
     }
 
     /**
