@@ -70,10 +70,14 @@ class UserController extends ApiController
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
+        $input['empresa'] = (env('EMP_PRINCIPAL', 'Ecuatask'));
+        $input['token'] = User::generarVerificationToken();
+        $input['verification_token'] = User::generarVerificationToken();
+        $input['rol'] = 'registrado';
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['name'] =  $user->name;
-        return response()->json(['success'=>$success], $this-> successStatus);
+        return $this->showOne($user, 201);
     }
 
     /**

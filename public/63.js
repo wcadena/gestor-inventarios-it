@@ -3624,10 +3624,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
         var self = this;
         axios.post('/api/register', formpost, {}).then(function (response) {
-          user.token = response.data.data.token;
-          self.$store.dispatch("signInUser", user);
+          //user.token = response.data.data.token;
+          //self.$store.dispatch("signInUser", user );
           //axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
-          self.$router.push("/default/dashboard/ecommerce");
+          self.$router.push("/session/login");
         }).catch(function (error) {
           console.log('Error on Authentication');
           self.message = error.response.data.data;
