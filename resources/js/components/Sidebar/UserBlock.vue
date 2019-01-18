@@ -77,7 +77,7 @@ export default {
 	},
   methods: {
     logoutUser() {
-      this.$store.dispatch("logoutUserFromFirebase", this.$router);
+      this.$store.dispatch("logoutUser", this.$router);
 	 },
 	 getMenuLink(path) {
 		 return '/' + getCurrentAppLayout(this.$router) +  path;

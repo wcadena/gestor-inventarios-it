@@ -70,6 +70,15 @@ export default new Router({
 				title: 'message.resetPassword',
 				breadcrumb: 'Session / Reset Password'
 			}
+		},
+		{
+			path: '/custodio',
+			component: ResetPassword,
+			meta: {
+				title: 'message.resetPassword',
+				breadcrumb: 'Session / Reset Password'
+			}
+
 		}
 	]
 })

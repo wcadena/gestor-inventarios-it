@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://reactify.theironnetwork.org/data/'
+    baseURL: ''
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let instance = axios.create({
-    baseURL: 'http://reactify.theironnetwork.org/data/'
+    baseURL: ''
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';

@@ -54,6 +54,8 @@
 import { mapGetters } from "vuex";
 import SessionSliderWidget from "Components/Widgets/SessionSlider";
 import AppConfig from "Constants/AppConfig";
+import { mapMutations } from 'vuex'
+
 
 import AuthService from "../../auth/AuthService";
 
@@ -76,7 +78,7 @@ export default {
           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
           "E-mail must be valid"
       ],
-      password: "secret",
+      password: "admin",
       passwordRules: [v => !!v || "Password is required"],
       appLogo: AppConfig.appLogo2,
       brand: AppConfig.brand
@@ -90,12 +92,10 @@ export default {
 			console.log('Intenta Loguear');
 			const user = {
 				email: this.email,
-				password: this.password
+				password: this.password,
+				token : ''
 			};
-			/*this.$store.dispatch("signupUserInFirebase", {
-				user,
-				router: this.$router
-			});*/
+
 			console.log('A Autenticar!!!');
 			const querystring = require('querystring');
 			let formpost = querystring.stringify({
@@ -106,22 +106,15 @@ export default {
 			var self = this;
 			axios.post('/api/login', formpost, {
 			}).then(function(response) {
-				localStorage.setItem('user', JSON.stringify(user));
-				localStorage.setItem('token', response.data.data.token);
-				axios.post('/login', formpost, {
-				}).then(function(response) {
-					console.log('Authentication!!!!');
-				}).catch(function(error) {
-					console.log('Error on Authentication');
-					self.message = error.response.data.data;
-				});
+				user.token = response.data.data.token;
+				self.$store.dispatch("signInUser", user );
+				//axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
 				self.$router.push("/default/dashboard/ecommerce");
 			}).catch(function(error) {
 				console.log('Error on Authentication');
 				self.message = error.response.data.data;
 			});
 		}
-		//this.$router.push("/dashboard/home");
     },
 	  onCreateAccount() {
 		  this.$router.push("/session/sign-up");
@@ -129,6 +122,9 @@ export default {
 	  signinUser() {
 		  this.$router.push("/dashboard/home");
 	  },
+	  ...mapMutations({
+		  add: 'signInUser' // map `this.add()` to `this.$store.commit('increment')`
+	  })
   }
 };
 </script>

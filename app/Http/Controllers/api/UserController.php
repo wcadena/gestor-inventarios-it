@@ -41,6 +41,7 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function login(){
+        //https://medium.com/techcompose/create-rest-api-in-laravel-with-authentication-using-passport-133a1678a876
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')-> accessToken;

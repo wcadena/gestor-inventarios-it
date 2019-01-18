@@ -6,7 +6,7 @@
 @show
 
 <body class="skin-blue sidebar-mini">
-<div id="app">
+<div id="app_old">
     <div class="wrapper">
 
     @include('adminlte::layouts.partials.mainheader')

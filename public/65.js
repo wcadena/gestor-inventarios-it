@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://reactify.theironnetwork.org/data/'
+    baseURL: ''
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';
@@ -3514,6 +3514,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Components_Widgets_SessionSlider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Components_Widgets_SessionSlider__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Constants_AppConfig__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_AuthService__ = __webpack_require__(518);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -3565,6 +3567,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -3596,7 +3599,7 @@ var login = auth.login,
 				return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || "E-mail must be valid"
 				);
 			}],
-			password: "secret",
+			password: "admin",
 			passwordRules: [function (v) {
 				return !!v || "Password is required";
 			}],
@@ -3605,7 +3608,7 @@ var login = auth.login,
 		};
 	},
 
-	methods: {
+	methods: _extends({
 		submit: function submit() {
 
 			if (this.valid) {
@@ -3613,12 +3616,10 @@ var login = auth.login,
 				console.log('Intenta Loguear');
 				var user = {
 					email: this.email,
-					password: this.password
+					password: this.password,
+					token: ''
 				};
-				/*this.$store.dispatch("signupUserInFirebase", {
-    	user,
-    	router: this.$router
-    });*/
+
 				console.log('A Autenticar!!!');
 				var querystring = __webpack_require__(516);
 				var formpost = querystring.stringify({
@@ -3628,21 +3629,15 @@ var login = auth.login,
 				});
 				var self = this;
 				axios.post('/api/login', formpost, {}).then(function (response) {
-					localStorage.setItem('user', JSON.stringify(user));
-					localStorage.setItem('token', response.data.data.token);
-					axios.post('/login', formpost, {}).then(function (response) {
-						console.log('Authentication!!!!');
-					}).catch(function (error) {
-						console.log('Error on Authentication');
-						self.message = error.response.data.data;
-					});
+					user.token = response.data.data.token;
+					self.$store.dispatch("signInUser", user);
+					//axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
 					self.$router.push("/default/dashboard/ecommerce");
 				}).catch(function (error) {
 					console.log('Error on Authentication');
 					self.message = error.response.data.data;
 				});
 			}
-			//this.$router.push("/dashboard/home");
 		},
 		onCreateAccount: function onCreateAccount() {
 			this.$router.push("/session/sign-up");
@@ -3650,7 +3645,9 @@ var login = auth.login,
 		signinUser: function signinUser() {
 			this.$router.push("/dashboard/home");
 		}
-	}
+	}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])({
+		add: 'signInUser' // map `this.add()` to `this.$store.commit('increment')`
+	}))
 });
 
 /***/ }),

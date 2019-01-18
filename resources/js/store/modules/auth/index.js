@@ -7,31 +7,30 @@ import Nprogress from 'nprogress';
 import router from '../../../router';
 
 const state = {
-    //user: localStorage.getItem('user'),
-    isUserSigninWithAuth0: Boolean(localStorage.getItem('isUserSigninWithAuth0'))
+    user: localStorage.getItem('user'),
+
+    //isUserSigninWithAuth0: Boolean(localStorage.getItem('isUserSigninWithAuth0'))
 }
 
 // getters
 const getters = {
-    /*getUser: state => {
+    getUser: state => {
         return state.user;
-    },*/
-    isUserSigninWithAuth0: state => {
-        return state.isUserSigninWithAuth0;
     }
+
 }
 
 // actions
 const actions = {
 
-    logoutUserFromFirebase(context) {
-                context.commit('loginUserFailure', error);
+    logout(context) {
+        context.commit('loginUserFailure', error);
     },
-    signInUserWithAuth0(context, payload) {
-        context.commit('signInUserWithAuth0Success', payload);
+    signInUser(context, payload) {
+        context.commit('signInUser', payload);
     },
-    signOutUserFromAuth0(context) {
-        context.commit('signOutUserFromAuth0Success');
+    signOutUser(context) {
+        context.commit('signOutUserSuccess');
     }
 }
 
@@ -44,14 +43,15 @@ const mutations = {
         router.push("/session/login");
     },
 
-    signInUserWithAuth0Success(state, user) {
+    signInUser(state, user,token) {
         state.user = user;
         localStorage.setItem('user',JSON.stringify(user));
-        state.isUserSigninWithAuth0 = true;
+        state.isUserSignin = true;
     },
-    signOutUserFromAuth0Success(state) {
-        state.user = null
-        localStorage.removeItem('user')
+    signOutUserSuccess(state) {
+        state.user = null;
+        state.token = null;
+        localStorage.removeItem('user');
     }
 }
 
