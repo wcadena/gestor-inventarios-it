@@ -37,6 +37,13 @@
 							type="password" 
 							required
 						></v-text-field>
+						<v-text-field
+								label="Re Password"
+								v-model="c_password"
+								:rules="c_passwordRules"
+								type="password"
+								required
+						></v-text-field>
 						<v-btn large @click="submit" block color="primary" class="mb-3">{{$t('message.signUp')}}</v-btn>
 						<p>{{$t('message.bySigningUpYouAgreeTo')}} {{brand}}</p>
 						<router-link to="">{{$t('message.termsOfService')}}</router-link>
@@ -59,20 +66,22 @@ export default {
   data() {
     return {
       valid: false,
-      name: "",
+      name: "wagner",
       nameRules: [
         v => !!v || "Name is required",
         v => v.length <= 20 || "Name must be less than 20 characters"
       ],
-      email: "",
+      email: "wcadena@outllook.es",
       emailRules: [
         v => !!v || "E-mail is required",
         v =>
           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
           "E-mail must be valid"
       ],
-      password: "",
+      password: "123456",
+	  c_password: "123456",
       passwordRules: [v => !!v || "Password is required"],
+	  c_passwordRules: [v => !!v || "Password is required"],
       appLogo: AppConfig.appLogo2,
       brand: AppConfig.brand
     };
@@ -85,11 +94,26 @@ export default {
           email: this.email,
           password: this.password
         };
-        this.$store.dispatch("signupUserInFirebase", {
-          userDetail,
-          router: this.$router
-        });
-      }
+		  const querystring = require('querystring');
+		  let formpost = querystring.stringify({
+			  name :this.name,
+			  email :this.email,
+			  password : this.password,
+			  c_password : this.c_password,
+			  remember : this.checkbox,
+		  });
+		  var self = this;
+		  axios.post('/api/register', formpost, {
+		  }).then(function(response) {
+			  user.token = response.data.data.token;
+			  self.$store.dispatch("signInUser", user );
+			  //axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
+			  self.$router.push("/default/dashboard/ecommerce");
+		  }).catch(function(error) {
+			  console.log('Error on Authentication');
+			  self.message = error.response.data.data;
+		  });
+        }
     }
   }
 };

@@ -3562,6 +3562,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3573,21 +3580,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       valid: false,
-      name: "",
+      name: "wagner",
       nameRules: [function (v) {
         return !!v || "Name is required";
       }, function (v) {
         return v.length <= 20 || "Name must be less than 20 characters";
       }],
-      email: "",
+      email: "wcadena@outllook.es",
       emailRules: [function (v) {
         return !!v || "E-mail is required";
       }, function (v) {
         return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || "E-mail must be valid"
         );
       }],
-      password: "",
+      password: "123456",
+      c_password: "123456",
       passwordRules: [function (v) {
+        return !!v || "Password is required";
+      }],
+      c_passwordRules: [function (v) {
         return !!v || "Password is required";
       }],
       appLogo: __WEBPACK_IMPORTED_MODULE_1_Constants_AppConfig__["a" /* default */].appLogo2,
@@ -3603,9 +3614,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           email: this.email,
           password: this.password
         };
-        this.$store.dispatch("signupUserInFirebase", {
-          userDetail: userDetail,
-          router: this.$router
+        var querystring = __webpack_require__(516);
+        var formpost = querystring.stringify({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          c_password: this.c_password,
+          remember: this.checkbox
+        });
+        var self = this;
+        axios.post('/api/register', formpost, {}).then(function (response) {
+          user.token = response.data.data.token;
+          self.$store.dispatch("signInUser", user);
+          //axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
+          self.$router.push("/default/dashboard/ecommerce");
+        }).catch(function (error) {
+          console.log('Error on Authentication');
+          self.message = error.response.data.data;
         });
       }
     }
@@ -3715,6 +3740,22 @@ var render = function() {
                       _vm.password = $$v
                     },
                     expression: "password"
+                  }
+                }),
+                _vm._v(" "),
+                _c("v-text-field", {
+                  attrs: {
+                    label: "Re Password",
+                    rules: _vm.c_passwordRules,
+                    type: "password",
+                    required: ""
+                  },
+                  model: {
+                    value: _vm.c_password,
+                    callback: function($$v) {
+                      _vm.c_password = $$v
+                    },
+                    expression: "c_password"
                   }
                 }),
                 _vm._v(" "),
