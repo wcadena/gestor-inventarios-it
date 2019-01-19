@@ -40,3 +40,36 @@
       </div>
     </div>
 </template>
+<script>
+  import AppConfig from "Constants/AppConfig";
+  import { mapMutations } from 'vuex'
+
+  export default {
+    components: {
+
+    },
+    data() {
+      return {
+        checkbox: false,
+        valid: false,
+        email: "admin@admin.com",
+        message:'',
+        emailRules: [
+          v => !!v || "E-mail is required",
+          v =>
+            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+            "E-mail must be valid"
+        ],
+        password: "admin",
+        passwordRules: [v => !!v || "Password is required"],
+        appLogo: AppConfig.appLogo2,
+        brand: AppConfig.brand
+      };
+    },
+    methods: {
+      ...mapMutations({
+        add: ['signInUser','logoutUser'] // map `this.add()` to `this.$store.commit('increment')`
+      })
+    }
+  };
+</script>

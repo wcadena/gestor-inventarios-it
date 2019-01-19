@@ -141,7 +141,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(2173)
 /* template */
 var __vue_template__ = __webpack_require__(2108)
 /* template functional */
@@ -1097,6 +1097,91 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-39b55748", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 2173:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Constants_AppConfig__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(16);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {},
+  data: function data() {
+    return {
+      checkbox: false,
+      valid: false,
+      email: "admin@admin.com",
+      message: '',
+      emailRules: [function (v) {
+        return !!v || "E-mail is required";
+      }, function (v) {
+        return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || "E-mail must be valid"
+        );
+      }],
+      password: "admin",
+      passwordRules: [function (v) {
+        return !!v || "Password is required";
+      }],
+      appLogo: __WEBPACK_IMPORTED_MODULE_0_Constants_AppConfig__["a" /* default */].appLogo2,
+      brand: __WEBPACK_IMPORTED_MODULE_0_Constants_AppConfig__["a" /* default */].brand
+    };
+  },
+
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapMutations */])({
+    add: ['signInUser', 'logoutUser'] // map `this.add()` to `this.$store.commit('increment')`
+  }))
+});
 
 /***/ })
 
