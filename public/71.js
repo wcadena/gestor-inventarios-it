@@ -99,6 +99,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
+      var user = JSON.parse(localStorage.getItem('user'));
+      console.log(user);
+      console.log('A Autenticar!!!');
+      var querystring = __webpack_require__(515);
+      var formpost = querystring.stringify({
+        email: user.email,
+        password: this.password
+      });
+      console.log(formpost);
+      console.log('Submit');
+      var self = this;
+      axios.post('/api/login', formpost, {}).then(function (response) {
+        console.log('Submit post');
+        user.token = response.data.data.token;
+        self.$store.dispatch("signInUser", user);
+        //axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
+        self.$router.push("/default/dashboard/ecommerce");
+      }).catch(function (error) {
+        console.log('Error on Authentication');
+        self.message = error.response.data.data;
+      });
     }
   }
 });
@@ -178,6 +199,12 @@ var render = function() {
                         "v-form",
                         {
                           staticClass: "mb-4",
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.onSubmit($event)
+                            }
+                          },
                           model: {
                             value: _vm.valid,
                             callback: function($$v) {

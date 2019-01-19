@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: ''
+    baseURL: 'http://reactify.theironnetwork.org/data/'
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';
@@ -3614,7 +3614,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           email: this.email,
           password: this.password
         };
-        var querystring = __webpack_require__(516);
+        var querystring = __webpack_require__(515);
         var formpost = querystring.stringify({
           name: this.name,
           email: this.email,

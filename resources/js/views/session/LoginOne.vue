@@ -92,7 +92,7 @@ export default {
 			console.log('Intenta Loguear');
 			const user = {
 				email: this.email,
-				password: this.password,
+				//password: this.password,
 				token : ''
 			};
 
@@ -123,7 +123,7 @@ export default {
 		  this.$router.push("/dashboard/home");
 	  },
 	  ...mapMutations({
-		  add: 'signInUser' // map `this.add()` to `this.$store.commit('increment')`
+		  add: ['signInUser','logoutUser'] // map `this.add()` to `this.$store.commit('increment')`
 	  })
   }
 };

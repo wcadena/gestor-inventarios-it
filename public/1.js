@@ -35261,7 +35261,7 @@ exports.calculateCategoryInterval = calculateCategoryInterval;
 
 var isObject = __webpack_require__(23),
     now = __webpack_require__(1680),
-    toNumber = __webpack_require__(515);
+    toNumber = __webpack_require__(516);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';

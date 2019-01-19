@@ -14,7 +14,7 @@
               <img class="rounded-circle img-responsive" src="/static/avatars/user-9.jpg" width="143" height="143">
             </div>
             <h2 class="white--text">Jerry Cummings</h2>
-            <v-form v-model="valid" class="mb-4">
+            <v-form v-model="valid" class="mb-4" v-on:submit.prevent="onSubmit" >
               <v-text-field 
                 label="Password" 
                 v-model="password" 
@@ -42,6 +42,28 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      const user = JSON.parse(localStorage.getItem('user'));
+      console.log(user);
+      console.log('A Autenticar!!!');
+      const querystring = require('querystring');
+      let formpost = querystring.stringify({
+        email : user.email,
+        password : this.password,
+      });
+      console.log(formpost);
+      console.log('Submit');
+      var self = this;
+      axios.post('/api/login', formpost, {
+      }).then(function(response) {
+        console.log('Submit post');
+        user.token = response.data.data.token;
+        self.$store.dispatch("signInUser", user );
+        //axios.post('/login', formpost, {			}).then(function(response) {					console.log('Authentication!!!!');				}).catch(function(error) {					console.log('Error on Authentication');					self.message = error.response.data.data;				});
+        self.$router.push("/default/dashboard/ecommerce");
+      }).catch(function(error) {
+        console.log('Error on Authentication');
+        self.message = error.response.data.data;
+      });
     }
   }
 };

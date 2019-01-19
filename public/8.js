@@ -307,7 +307,7 @@ module.exports.Rectangle = __webpack_require__(1454);
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: ''
+    baseURL: 'http://reactify.theironnetwork.org/data/'
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';

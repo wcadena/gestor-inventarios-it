@@ -51,6 +51,7 @@ export default new Router({
 			path: '/session/lock-screen',
 			component: LockScreen,
 			meta: {
+				requiresAuth: true,
 				title: 'Lock Screen',
 				breadcrumb: 'Session / Lock Screen'
 			}

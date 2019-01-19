@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: ''
+    baseURL: 'http://reactify.theironnetwork.org/data/'
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';
@@ -3616,12 +3616,12 @@ var login = auth.login,
 				console.log('Intenta Loguear');
 				var user = {
 					email: this.email,
-					password: this.password,
+					//password: this.password,
 					token: ''
 				};
 
 				console.log('A Autenticar!!!');
-				var querystring = __webpack_require__(516);
+				var querystring = __webpack_require__(515);
 				var formpost = querystring.stringify({
 					email: this.email,
 					password: this.password,
@@ -3646,7 +3646,7 @@ var login = auth.login,
 			this.$router.push("/dashboard/home");
 		}
 	}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])({
-		add: 'signInUser' // map `this.add()` to `this.$store.commit('increment')`
+		add: ['signInUser', 'logoutUser'] // map `this.add()` to `this.$store.commit('increment')`
 	}))
 });
 

@@ -1045,7 +1045,7 @@ module.exports.Rectangle = __webpack_require__(1454);
 
 
 var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: ''
+    baseURL: 'http://reactify.theironnetwork.org/data/'
 });
 
 instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';
@@ -56334,7 +56334,7 @@ exports.calculateCategoryInterval = calculateCategoryInterval;
 
 var isObject = __webpack_require__(23),
     now = __webpack_require__(1680),
-    toNumber = __webpack_require__(515);
+    toNumber = __webpack_require__(516);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
