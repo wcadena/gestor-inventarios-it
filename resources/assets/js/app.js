@@ -9,6 +9,17 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+/**para vuetify
+ *
+ */
+import 'babel-polyfill'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+
+Vue.use(Vuetify)
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

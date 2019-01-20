@@ -82,7 +82,9 @@ mix.js('resources/assets/js/app.js', 'html/js')
     ]
   })
   .sourceMaps(!mix.inProduction())
-  .disableNotifications();
+  .disableNotifications()
+
+;
 
 if (mix.config.inProduction) {
   mix.version();
