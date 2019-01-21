@@ -10,6 +10,7 @@
     <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#3570C1">
     <meta name="apple-mobile-web-app-title" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
     <meta name="application-name" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <meta name="theme-color" content="#3570C1">
 
     <!-- CSRF Token -->
