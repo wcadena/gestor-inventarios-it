@@ -38,7 +38,6 @@
 
     @include('adminlte::layouts.partials.scripts_auth')
 
-    @include('adminlte::auth.terms')
 
 </body>
 
