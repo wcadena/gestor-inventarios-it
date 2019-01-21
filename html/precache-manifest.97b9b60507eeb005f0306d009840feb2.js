@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "56666b0952941c8f1009",
+    "revision": "1840537136326ea6e237",
     "url": "/vue-styles.css"
   },
   {
-    "revision": "56666b0952941c8f1009",
+    "revision": "1840537136326ea6e237",
     "url": "//js/app.js"
   },
   {
