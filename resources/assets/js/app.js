@@ -43,6 +43,8 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+Vue.component('upload-files', require('./components/UploadFiles.vue'));
+
 Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
 
 //Vue.component('roles-permisos', require('./components/directorio/roles/RolesPermisos.vue'));

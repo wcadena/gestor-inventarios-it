@@ -4,6 +4,7 @@
 /html/storage
 /html/.well-known
 /storage/*.key
+/storage/*files
 /vendor
 /.idea
 /.vagrant
