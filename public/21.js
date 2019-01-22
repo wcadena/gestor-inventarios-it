@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 1413:
+/***/ 1414:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33,9 +33,9 @@ var ChartConfig = {
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2096)
+var __vue_script__ = __webpack_require__(2097)
 /* template */
-var __vue_template__ = __webpack_require__(2097)
+var __vue_template__ = __webpack_require__(2098)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75,14 +75,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2096:
+/***/ 2097:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Constants_chart_config__ = __webpack_require__(1413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Constants_chart_config__ = __webpack_require__(1414);
 //
 //
 //
@@ -127,7 +127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 2097:
+/***/ 2098:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

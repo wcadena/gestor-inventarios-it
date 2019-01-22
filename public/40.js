@@ -6,9 +6,9 @@ webpackJsonp([40],{
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2023)
+var __vue_script__ = __webpack_require__(2024)
 /* template */
-var __vue_template__ = __webpack_require__(2024)
+var __vue_template__ = __webpack_require__(2025)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2023:
+/***/ 2024:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -209,7 +209,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 /***/ }),
 
-/***/ 2024:
+/***/ 2025:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

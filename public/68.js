@@ -1,18 +1,18 @@
 webpackJsonp([68],{
 
-/***/ 1400:
+/***/ 1401:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(1985)
+  __webpack_require__(1986)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(1987)
+var __vue_script__ = __webpack_require__(1988)
 /* template */
-var __vue_template__ = __webpack_require__(1988)
+var __vue_template__ = __webpack_require__(1989)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,13 +52,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 1985:
+/***/ 1986:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1986);
+var content = __webpack_require__(1987);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 1986:
+/***/ 1987:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -87,14 +87,14 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.v-card--reveal {\r\n  align-items: center;\r\n  bottom: 0;\r\n  justify-content: center;\r\n  opacity: .5;\r\n  position: absolute;\r\n  width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.v-card--reveal {\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  bottom: 0;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  opacity: .5;\r\n  position: absolute;\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 1987:
+/***/ 1988:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -220,7 +220,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 1988:
+/***/ 1989:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

@@ -6,9 +6,9 @@ webpackJsonp([19],{
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2151)
+var __vue_script__ = __webpack_require__(2153)
 /* template */
-var __vue_template__ = __webpack_require__(2153)
+var __vue_template__ = __webpack_require__(2155)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2151:
+/***/ 2153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -116,7 +116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.videojs = __WEBPACK_IMPORTED_MODULE_0_video_js___default.a;
 // hls plugin for videojs6
-__webpack_require__(2152);
+__webpack_require__(2154);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -203,7 +203,7 @@ __webpack_require__(2152);
 
 /***/ }),
 
-/***/ 2152:
+/***/ 2154:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var require;var require;/**
@@ -21823,7 +21823,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2153:
+/***/ 2155:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

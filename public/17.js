@@ -6,9 +6,9 @@ webpackJsonp([17],{
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2122)
+var __vue_script__ = __webpack_require__(2124)
 /* template */
-var __vue_template__ = __webpack_require__(2125)
+var __vue_template__ = __webpack_require__(2127)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,12 +48,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2122:
+/***/ 2124:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(2123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(2125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
 //
 //
@@ -139,7 +139,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 2123:
+/***/ 2125:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -559,7 +559,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }
 
   if (true) {
-    var Sortable = __webpack_require__(2124);
+    var Sortable = __webpack_require__(2126);
     module.exports = buildDraggable(Sortable);
   } else if (typeof define == "function" && define.amd) {
     define(['sortablejs'], function (Sortable) {
@@ -573,7 +573,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 2124:
+/***/ 2126:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
@@ -2926,7 +2926,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 2125:
+/***/ 2127:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

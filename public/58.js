@@ -8,7 +8,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(2014)
+var __vue_template__ = __webpack_require__(2015)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2014:
+/***/ 2015:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

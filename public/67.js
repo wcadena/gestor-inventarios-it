@@ -1,18 +1,18 @@
 webpackJsonp([67],{
 
-/***/ 1401:
+/***/ 1402:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(1989)
+  __webpack_require__(1990)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(1991)
+var __vue_script__ = __webpack_require__(1992)
 /* template */
-var __vue_template__ = __webpack_require__(1992)
+var __vue_template__ = __webpack_require__(1993)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,13 +52,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 1989:
+/***/ 1990:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1990);
+var content = __webpack_require__(1991);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 1990:
+/***/ 1991:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -87,14 +87,14 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.v-navigation-drawer[data-v-a861ed94] {\n\ttransition: none;\n}\n.lightbox[data-v-a861ed94] {\n\tbox-shadow: 0 0 20px inset rgba(0, 0, 0, 0.2);\n\tbackground-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 72px);\n}\n.bottom-gradient[data-v-a861ed94] {\n\tbackground-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 72px);\n}\n.repeating-gradient[data-v-a861ed94] {\n\tbackground-image: repeating-linear-gradient(-45deg,\n\t\trgba(255,0,0,.25),\n\t\trgba(255,0,0,.25) 5px,\n\t\trgba(0,0,255,.25) 5px,\n\t\trgba(0,0,255,.25) 10px\n\t);\n}\n", ""]);
+exports.push([module.i, "\n.v-navigation-drawer[data-v-a861ed94] {\n\t-webkit-transition: none;\n\ttransition: none;\n}\n.lightbox[data-v-a861ed94] {\n\t-webkit-box-shadow: 0 0 20px inset rgba(0, 0, 0, 0.2);\n\t        box-shadow: 0 0 20px inset rgba(0, 0, 0, 0.2);\n\tbackground-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 72px);\n}\n.bottom-gradient[data-v-a861ed94] {\n\tbackground-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 72px);\n}\n.repeating-gradient[data-v-a861ed94] {\n\tbackground-image: repeating-linear-gradient(-45deg,\n\t\trgba(255,0,0,.25),\n\t\trgba(255,0,0,.25) 5px,\n\t\trgba(0,0,255,.25) 5px,\n\t\trgba(0,0,255,.25) 10px\n\t);\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 1991:
+/***/ 1992:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -324,7 +324,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 1992:
+/***/ 1993:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

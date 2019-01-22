@@ -1,14 +1,14 @@
 webpackJsonp([63],{
 
-/***/ 1403:
+/***/ 1404:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2159)
+var __vue_script__ = __webpack_require__(2161)
 /* template */
-var __vue_template__ = __webpack_require__(2160)
+var __vue_template__ = __webpack_require__(2162)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 1416:
+/***/ 1417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66,7 +66,7 @@ instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token
 
 /***/ }),
 
-/***/ 1434:
+/***/ 1435:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3305,15 +3305,15 @@ var slick$1 = /*#__PURE__*/Object.freeze({
 
 /***/ }),
 
-/***/ 1533:
+/***/ 1534:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(1534)
+var __vue_script__ = __webpack_require__(1535)
 /* template */
-var __vue_template__ = __webpack_require__(1535)
+var __vue_template__ = __webpack_require__(1536)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -3353,13 +3353,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 1534:
+/***/ 1535:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(1434);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Api__ = __webpack_require__(1416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(1435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Api__ = __webpack_require__(1417);
 //
 //
 //
@@ -3431,7 +3431,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 1535:
+/***/ 1536:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3504,12 +3504,12 @@ if (false) {
 
 /***/ }),
 
-/***/ 2159:
+/***/ 2161:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Components_Widgets_SessionSlider__ = __webpack_require__(1533);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Components_Widgets_SessionSlider__ = __webpack_require__(1534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Components_Widgets_SessionSlider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Components_Widgets_SessionSlider__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Constants_AppConfig__ = __webpack_require__(107);
 //
@@ -3639,7 +3639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 2160:
+/***/ 2162:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

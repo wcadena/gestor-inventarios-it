@@ -1,18 +1,18 @@
 webpackJsonp([69],{
 
-/***/ 1408:
+/***/ 1409:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(2169)
+  __webpack_require__(2171)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(2171)
+var __vue_script__ = __webpack_require__(2173)
 /* template */
-var __vue_template__ = __webpack_require__(2172)
+var __vue_template__ = __webpack_require__(2174)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,13 +52,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 2169:
+/***/ 2171:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(2170);
+var content = __webpack_require__(2172);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 2170:
+/***/ 2172:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -87,14 +87,14 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.spinner {\r\n  position: absolute;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  width: 100vw;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.spinner {\r\n  position: absolute;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  height: 100vh;\r\n  width: 100vw;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 2171:
+/***/ 2173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -117,7 +117,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 2172:
+/***/ 2174:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
