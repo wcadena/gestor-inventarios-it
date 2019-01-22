@@ -37,32 +37,34 @@ class UserController extends ApiController
     }
 
     /**
-     * login api
+     * login api.
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(){
+    public function login()
+    {
         //https://medium.com/techcompose/create-rest-api-in-laravel-with-authentication-using-passport-133a1678a876
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')-> accessToken;
+            $success['token'] = $user->createToken('MyApp')->accessToken;
+
             return $this->showMessage($success);
-        }
-        else{
+        } else {
             return $this->showMessage('Unauthorised', 404);
         }
     }
+
     /**
-     * Register api
+     * Register api.
      *
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
+            'name'       => 'required',
+            'email'      => 'required|email',
+            'password'   => 'required',
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
@@ -75,8 +77,9 @@ class UserController extends ApiController
         $input['verification_token'] = User::generarVerificationToken();
         $input['rol'] = 'registrado';
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')-> accessToken;
-        $success['name'] =  $user->name;
+        $success['token'] = $user->createToken('MyApp')->accessToken;
+        $success['name'] = $user->name;
+
         return $this->showOne($user, 201);
     }
 
