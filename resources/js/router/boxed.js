@@ -369,6 +369,7 @@ export default {
          meta: {
             requiresAuth: true,
             title: 'message.menu',
+            name: 'menu',
             breadcrumb: 'UI Elements / Menu'
          }
       },

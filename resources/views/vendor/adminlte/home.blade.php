@@ -9,7 +9,6 @@
 	<div class="container-fluid spark-screen">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">

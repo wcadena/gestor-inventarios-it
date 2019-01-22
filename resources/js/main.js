@@ -41,7 +41,7 @@ import App from './App'
 import router from './router'
 
 // themes
-import primaryTheme from './themes/primaryTheme';
+import primaryTheme from  './themes/primaryTheme';
 
 // store
 import { store } from './store/store';
@@ -138,3 +138,9 @@ new Vue({
 	render: h => h(App),
 	components: { App }
 }).$mount('#app')
+
+new Vue({
+	i18n,
+	components: { App }
+}).$mount('#app-old')
+
