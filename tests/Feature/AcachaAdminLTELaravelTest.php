@@ -224,11 +224,8 @@ class AcachaAdminLTELaravelTest extends TestCase
             [
                 'error' => [
                     'name'          => ['El name es necesario como campo.'],
-                    'username'      => ['El username es necesario como campo.'],
                     'email'         => ['El email es necesario como campo.'],
                     'password'      => ['El password es necesario como campo.'],
-                    'first_name'    => ['El first name es necesario como campo.'],
-                    'last_name'     => ['El last name es necesario como campo.'],
                     'terms'         => ['El terms es necesario como campo.'],
                 ],
                 'code'=> 422,
