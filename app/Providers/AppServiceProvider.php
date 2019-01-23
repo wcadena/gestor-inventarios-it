@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local', 'testing')) {
         }
         $this->app->bind('path.public', function () {
-            return base_path().'/html';
+            return base_path().'/public';
         });
     }
 }

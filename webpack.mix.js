@@ -12,8 +12,8 @@ const { VueLoaderPlugin } = require('vue-loader');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'html/js')
-  .js('resources/assets/js/app-landing.js', 'html/js/app-landing.js')
+mix.js('resources/assets/js/app.js', 'public/js')
+  .js('resources/assets/js/app-landing.js', 'public/js/app-landing.js')
   .combine([
     'resources/assets/css/bootstrap.min.css',
     'resources/assets/css/font-awesome.min.css',
@@ -21,31 +21,31 @@ mix.js('resources/assets/js/app.js', 'html/js')
     'node_modules/admin-lte/dist/css/AdminLTE.min.css',
     'node_modules/admin-lte/dist/css/skins/_all-skins.css',
     'node_modules/icheck/skins/square/blue.css'
-  ], 'html/css/all.css')
+  ], 'public/css/all.css')
   .combine([
     'resources/assets/css/bootstrap.min.css',
     'resources/assets/css/pratt_landing.min.css'
-  ], 'html/css/all-landing.css')
+  ], 'public/css/all-landing.css')
   // PACKAGE (ADMINLTE-LARAVEL) RESOURCES
-  .copy('resources/assets/img/*.*','html/img/')
+  .copy('resources/assets/img/*.*','public/img/')
   //VENDOR RESOURCES
-  .copy('node_modules/font-awesome/fonts/*.*','html/fonts/')
-  .copy('node_modules/ionicons/dist/fonts/*.*','html/fonts/')
-  .copy('node_modules/bootstrap/fonts/*.*','html/fonts/')
-  .copy('node_modules/admin-lte/dist/css/skins/*.*','html/css/skins')
-  .copy('node_modules/admin-lte/dist/img','html/img')
-  .copy('node_modules/admin-lte/plugins','html/plugins')
-  .copy('node_modules/icheck/skins/square/blue.png','html/css')
-  .copy('node_modules/icheck/skins/square/blue@2x.png','html/css')
+  .copy('node_modules/font-awesome/fonts/*.*','public/fonts/')
+  .copy('node_modules/ionicons/dist/fonts/*.*','public/fonts/')
+  .copy('node_modules/bootstrap/fonts/*.*','public/fonts/')
+  .copy('node_modules/admin-lte/dist/css/skins/*.*','public/css/skins')
+  .copy('node_modules/admin-lte/dist/img','public/img')
+  .copy('node_modules/admin-lte/plugins','public/plugins')
+  .copy('node_modules/icheck/skins/square/blue.png','public/css')
+  .copy('node_modules/icheck/skins/square/blue@2x.png','public/css')
 
-  // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
-  .copy('node_modules/select2/dist/css/select2.min.css','html/css')
-  .copy('node_modules/select2/dist/js/select2.min.js','html/js')
-  //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','html/css')
-  .copy('node_modules/chart.js/Chart.min.js','html/plugins/chartjs')
-  .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','html/plugins/datepicker')
+  // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
+  .copy('node_modules/select2/dist/css/select2.min.css','public/css')
+  .copy('node_modules/select2/dist/js/select2.min.js','public/js')
+  //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
+  .copy('node_modules/chart.js/Chart.min.js','public/plugins/chartjs')
+  .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','public/plugins/datepicker')
 
-  .setPublicPath('html')
+  .setPublicPath('public')
   .options({
     extractVueStyles: true,
     processCssUrls: true,
@@ -59,7 +59,7 @@ mix.js('resources/assets/js/app.js', 'html/js')
     plugins: [
       new workboxPlugin.InjectManifest({
         swSrc: 'resources/assets/js/sw.js',
-        swDest: path.join(`${__dirname}/html`, 'sw.js'),
+        swDest: path.join(`${__dirname}/public`, 'sw.js'),
         //clientsClaim: true,
         //skipWaiting: true,
         /*runtimeCaching: [
