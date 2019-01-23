@@ -1,5 +1,6 @@
 const { mix } = require('laravel-mix');
 const workboxPlugin = require('workbox-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

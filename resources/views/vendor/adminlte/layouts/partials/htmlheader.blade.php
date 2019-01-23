@@ -16,6 +16,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
+    <link href="{{ asset('/vue-styles.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ mix('/css/all.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
