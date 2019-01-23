@@ -305,3 +305,14 @@ Route::resource('proyecto', 'ProyectoController');
 Route::resource('proyecto.proyecto_seccion', 'ProyectoSeccionController');
 //php artisan crud:controller ProyectoSeccionController --crud-name=proyecto_seccion --model-name=ProyectoSeccion --view-path="directory"
 //php artisan crud:view proyecto_seccion --fields="proyecto_id#integer; name#string; descripcion#text;tipo#select#options={"titulo": "Titulo", "seccion": "Seccion"};orden#integer" --view-path="directory"  	 	--form-helper=laravelcollective
+ //////////////////////////////////////////////
+/// del template nuevo
+/// ///////////////////////////////////////////
+
+// Example Routes
+Route::view('/', 'landing');
+Route::match(['get', 'post'], '/dashboard', function(){
+    return view('dashboard');
+});
+Route::view('/examples/plugin', 'examples.plugin');
+Route::view('/examples/blank', 'examples.blank');

@@ -52,7 +52,9 @@ Menu::macro('adminlteDefaultMenu', function ($content) {
 
 Menu::macro('sidebar', function () {
     return $menuPrincipl = Menu::adminlteMenu()
-        ->add(Html::raw(trans('adminlte_lang::message.header'))->addParentClass('header'))
+
+        ->add(Html::raw(trans('adminlte_lang::message.header'))->addParentClass('nav-main'))
+        ->add(Link::to('/', 'Home')->addClass('xnav-main-link'))
         ->url('home', "<i class='glyphicon glyphicon-home'></i> <span>".trans('home.men1').'</span>')
         ->url('equipos', "<i class='glyphicon glyphicon-print'></i> <span>".trans('home.men2').'</span>')
         ->url('custodio', "<i class='glyphicon glyphicon-user'></i> <span>".trans('home.men3').'</span>')

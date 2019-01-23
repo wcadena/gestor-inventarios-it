@@ -1,6 +1,5 @@
-const { mix } = require('laravel-mix');
-const workboxPlugin = require('workbox-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const mix = require('laravel-mix');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,84 +11,27 @@ const { VueLoaderPlugin } = require('vue-loader');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-  .js('resources/assets/js/app-landing.js', 'public/js/app-landing.js')
-  .combine([
-    'resources/assets/css/bootstrap.min.css',
-    'resources/assets/css/font-awesome.min.css',
-    'resources/assets/css/ionicons.min.css',
-    'node_modules/admin-lte/dist/css/AdminLTE.min.css',
-    'node_modules/admin-lte/dist/css/skins/_all-skins.css',
-    'node_modules/icheck/skins/square/blue.css'
-  ], 'public/css/all.css')
-  .combine([
-    'resources/assets/css/bootstrap.min.css',
-    'resources/assets/css/pratt_landing.min.css'
-  ], 'public/css/all-landing.css')
-  // PACKAGE (ADMINLTE-LARAVEL) RESOURCES
-  .copy('resources/assets/img/*.*','public/img/')
-  //VENDOR RESOURCES
-  .copy('node_modules/font-awesome/fonts/*.*','public/fonts/')
-  .copy('node_modules/ionicons/dist/fonts/*.*','public/fonts/')
-  .copy('node_modules/bootstrap/fonts/*.*','public/fonts/')
-  .copy('node_modules/admin-lte/dist/css/skins/*.*','public/css/skins')
-  .copy('node_modules/admin-lte/dist/img','public/img')
-  .copy('node_modules/admin-lte/plugins','public/plugins')
-  .copy('node_modules/icheck/skins/square/blue.png','public/css')
-  .copy('node_modules/icheck/skins/square/blue@2x.png','public/css')
+mix
+    /* CSS */
+    .sass('resources/assets/sass/main.scss', 'public/css/dashmix.css')
+    .sass('resources/assets/sass/dashmix/themes/xeco.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xinspire.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xmodern.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xsmooth.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xwork.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xdream.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xpro.scss', 'public/css/themes/')
+    .sass('resources/assets/sass/dashmix/themes/xplay.scss', 'public/css/themes/')
 
-  // .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
-  .copy('node_modules/select2/dist/css/select2.min.css','public/css')
-  .copy('node_modules/select2/dist/js/select2.min.js','public/js')
-  //.copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css','public/css')
-  .copy('node_modules/chart.js/Chart.min.js','public/plugins/chartjs')
-  .copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','public/plugins/datepicker')
+    /* JS */
+    .js('resources/assets/js/laravel/app.js', 'public/js/laravel.app.js')
+    .js('resources/assets/js/dashmix/app.js', 'public/js/dashmix.app.js')
 
-  .setPublicPath('public')
-  .options({
-    extractVueStyles: true,
-    processCssUrls: true,
-    uglify: {},
-    purifyCss: false,
-    //purifyCss: {},
-    postCss: [require('autoprefixer')],
-    clearConsole: false
-  })
-  .webpackConfig({
-    plugins: [
-      new workboxPlugin.InjectManifest({
-        swSrc: 'resources/assets/js/sw.js',
-        swDest: path.join(`${__dirname}/public`, 'sw.js'),
-        //clientsClaim: true,
-        //skipWaiting: true,
-        /*runtimeCaching: [
-          {
-            urlPattern: new RegExp(`${process.env.APP_URL}`),
-            handler: 'staleWhileRevalidate',
-            options: {
-              cacheName: `${process.env.APP_NAME}-${process.env.APP_ENV}`
-            }
-          },
-          {
-            urlPattern: new RegExp('https://fonts.(googleapis|gstatic).com'),
-            handler: 'cacheFirst',
-            options: {
-              cacheName: 'google-fonts'
-            }
-          }
-        ]*/
+    /* Tools */
+    .browserSync('localhost:8000')
+    .disableNotifications()
 
-      })
-    ]
-  })
-  .sourceMaps(!mix.inProduction())
-  .disableNotifications()
-
-;
-
-if (mix.config.inProduction) {
-  mix.version();
-  mix.minify();
-  mix.babel();
-}
-
+    /* Options */
+    .options({
+        processCssUrls: false
+    });
