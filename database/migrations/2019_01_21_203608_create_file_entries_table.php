@@ -18,6 +18,7 @@ class CreateFileEntriesTable extends Migration
         Schema::create('file_entries', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('vinculo');
+            $table->uuid('vinculo_padre');
             $table->string('filename');
             $table->string('mime');
             $table->string('path');

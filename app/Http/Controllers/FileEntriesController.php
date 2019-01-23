@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Webpatser\Uuid\Uuid;
 
 class FileEntriesController extends Controller
 {
@@ -29,6 +30,10 @@ class FileEntriesController extends Controller
             $input['path'] = $path;
             $input['size'] = $file->getClientSize();
             $input['user_id'] = Auth::user()->id;
+            $input['imageable_type'] = Input::get('imageable_type');
+            $input['imageable_id'] = Input::get('imageable_id');
+            $input['vinculo_padre'] = Input::get('vinculo_padre');
+            $input['vinculo'] = Uuid::generate();
             $file = FileEntry::create($input);
 
             return response()->json([

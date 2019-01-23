@@ -8,7 +8,7 @@
                     <div class="card-header">Add files</div>
 
                     <div class="card-body">
-                        <upload-files :input_name="'users[]'" :post_url="'files/upload-file'"></upload-files>
+                        <upload-files :input_name="'users[]'" :post_url="'files/upload-file'"  :imageable_type="test" :imageable_id="123"  :vinculo_padre="wcadena-q"></upload-files>
                     </div>
                 </div>
             </div>

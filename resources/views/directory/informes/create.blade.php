@@ -82,7 +82,8 @@
     </div>
     {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
     {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
-    {!! Form::hidden('vinculo', Webpatser\Uuid\Uuid::generate()) !!}
+    @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
+    {!! Form::hidden('vinculo',$vinculo_global_info ) !!}
     <div class="form-group {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
         {!! Form::label('tecnico', trans('fo.Tecnicos'), ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
@@ -120,6 +121,19 @@
         </div>
     </div>
     {!! Form::close() !!}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Add files</div>
+
+                    <div class="card-body">
+                        <upload-files :input_name="'users[]'" :post_url="'files/upload-file'"  :imageable_type="'informes'"  :vinculo_padre="'{{$vinculo_global_info}}'"></upload-files>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @if ($errors->any())
         <ul class="alert alert-danger">

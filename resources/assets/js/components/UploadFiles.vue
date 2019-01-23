@@ -3,21 +3,24 @@
         <div class="large-12 medium-12 small-12 filezone">
             <input type="file" id="files" ref="files" multiple v-on:change="handleFiles()"/>
             <p>
-                Drop your files here <br>or click to search
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Suelta tus archivos aquí <br>o click para buscar.
             </p>
         </div>
         <div v-for="(file, key) in files" class="file-listing">
             <img class="preview" v-bind:ref="'preview'+parseInt(key)"/>
             {{ file.name }}
             <div class="success-container" v-if="file.id > 0">
-                Success
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Listo
                 <input type="hidden" :name="input_name" :value="file.id"/>
             </div>
             <div class="remove-container" v-else>
-                <a class="remove" v-on:click="removeFile(key)">Remove</a>
+                <a class="remove" v-on:click="removeFile(key)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Quitar
+                </a>
             </div>
         </div>
-        <a class="submit-button" v-on:click="submitFiles()" v-show="files.length > 0">Submit</a>
+        <a class="btn btn-default btn-lg"  v-on:click="submitFiles()" v-show="files.length > 0" v-bind:class="[subiendo_datos ? 'disabled' : '']" >
+            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> {{ subiendo_datos ? 'Enviando' : 'Enviar' }}</a>
     </div>
 </template>
 
@@ -74,26 +77,14 @@
         color: red;
         cursor: pointer;
     }
-
-    a.submit-button{
-        display: block;
-        margin: auto;
-        text-align: center;
-        width: 200px;
-        padding: 10px;
-        text-transform: uppercase;
-        background-color: #CCC;
-        color: white;
-        font-weight: bold;
-        margin-top: 20px;
-    }
 </style>
 <script>
   export default {
-    props: ['input_name', 'post_url'],
+    props: ['input_name', 'post_url','imageable_type','imageable_id','vinculo_padre'],
     data() {
       return {
-        files: []
+        files: [],
+        subiendo_datos: false
       }
     },
     methods: {
@@ -126,12 +117,16 @@
         this.getImagePreviews();
       },
       submitFiles() {
+        this.subiendo_datos = true;
         for( let i = 0; i < this.files.length; i++ ){
           if(this.files[i].id) {
             continue;
           }
           let formData = new FormData();
           formData.append('file', this.files[i]);
+          formData.append('imageable_type', this.imageable_type);
+          formData.append('imageable_id', this.imageable_id);
+          formData.append('vinculo_padre', this.vinculo_padre);
           axios.post('/' + this.post_url,
             formData,
             {
@@ -143,8 +138,10 @@
             this.files[i].id = data['data']['id'];
             this.files.splice(i, 1, this.files[i]);
             console.log('success');
+            this.subiendo_datos = false;
           }.bind(this)).catch(function(data) {
             console.log('error');
+            this.subiendo_datos = false;
           });
         }
       }
