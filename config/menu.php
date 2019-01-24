@@ -34,6 +34,7 @@ Menu::macro('ConfiguracionsSystem', function () {
 
 Menu::macro('sidebar_new', function () {
     return Menu::new()->addClass('nav-main')
+        ->setActiveFromRequest()
         ->add(Link::to('home', '<i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                                 <span class="nav-main-link-name">'.trans('home.men1').'</span>
                                 ')->addClass('nav-main-link')
@@ -43,6 +44,7 @@ Menu::macro('sidebar_new', function () {
                                 <span class="nav-main-link-name">'.trans('home.men2').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
+
         )
         ->add(Link::to('custodio', '<i class="nav-main-link-icon fa fa-users"></i>
                                 <span class="nav-main-link-name">'.trans('home.men3').'</span>

@@ -1,18 +1,9 @@
 @extends('layouts.master')
 
-@section('htmlheader')
 
-@include('layouts.partials.htmlheader')
-
-        <!-- Select2 -->
-
-<link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
-
-
+@section('css_before')
+    <link href="{{ asset('js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
-
-
 
 @section('contentheader_aqui', 'Equipos')
 
@@ -134,11 +125,12 @@
 
 @endsection
 
-@section('scripts')
+@section('js_after')
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/select2/js/select2.min.js') }}"></script>
 
-    @include('layouts.partials.scripts')
-
-    <script src="{{ asset('/js/select2.min.js') }}"></script>
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('select2'); });</script>
 
     <script>
 
@@ -218,7 +210,7 @@
 
                 tokenSeparators: [','],
 
-                templateResult: formatState,
+                //templateResult: formatState,
 
                 ajax: {
 
@@ -281,5 +273,9 @@
 
 
     </script>
-
+    <script>
+      jQuery(function(){
+        Dashmix.helpers('select2');
+      });
+    </script>
 @endsection
