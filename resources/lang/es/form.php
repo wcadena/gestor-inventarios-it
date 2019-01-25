@@ -13,12 +13,12 @@ return [
     |
     */
     'buscar'           => 'Buscar',
-    'update'           => 'Actualizar',
-    'delete'           => 'Borrar',
+    'update'           => '<i class="fa fa-redo text-primary mr-1"></i>Actualizar',
+    'delete'           => '<i class="fa fa-times text-danger mr-1"></i>Borrar',
     'update2'          => 'Actualizando',
     'update_modificar' => 'Abrir & Modificar',
-    'deletee'          => 'Borrar',
-    'addnew'           => 'Añadir ',
+    'deletee'          => '<i class="fa fa-times text-danger mr-1"></i>Borrar',
+    'addnew'           => '<i class="fa fa-plus text-success mr-1"></i>Añadir ',
     'sno'              => '#',
     'equipos'          => 'Equipos',
     'reqeq'            => 'Reasignar Equipo',

@@ -9,53 +9,32 @@
 
 @section('content')
 
-
-
-    <h1>@lang('form.equipos')<a href="{{ url('equipos/create') }}" class="btn btn-primary pull-right btn-sm">@lang('form.addnew') Equipo</a></h1>
-
-
-
-
-
-
-
-    <fieldset>
-
-        <div class="form-group" >
-
-            <div class="input-group">
-
-             <span class="input-group-btn">
-
-                <a  id="sxxxdw3wsfg"  class="zxsdfgsd33" href="{{ url('equipos/{idzx3er}/edit') }}">
-
-                    <button class="zxsdfgsd33 btn btn-default" type="button">@lang('form.buscar')</button>
-
-                </a>
-
-              </span>
-
-                {{Form::select('equipoidf', array(), '',array('id' => 'equipoidf','class' => 'id_serchf form-control')) }}
-
-
-
+    <!-- Full Table -->
+    <div class="block block-rounded block-bordered">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">@lang('form.equipos')</h3>
+            <div class="block-options">
+                <button type="button" class="btn-block-option">
+                    <a href="{{ url('equipos/create') }}" class="btn btn-hero-primary js-click-ripple-enabled"><i class="si si-plus"></i> Equipo</a>
+                </button>
             </div>
-
-            <label for="equipoid">@lang('form.equipos') </label>
-
-
-
-
-
         </div>
+        <div class="block-content">
+            <p>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <a  id="sxxxdw3wsfg"  class="btn btn-primary zxsdfgsd33" href="{{ url('equipos/{idzx3er}/edit') }}">
+                            <span class="zxsdfgsd33" ><i class="fa fa-search mr-1"></i> @lang('form.buscar')</span>
+                        </a>
+                    </div>
+                    {!!Form::select('equipoidf', array(), '',array('id' => 'equipoidf','class' => 'id_serchf form-control')) !!}
+                </div>
+            </div>
+            </p>
+            <div class="table-responsive">
 
 
-
-    </fieldset>
-
-
-
-    <div class="table">
 
         <table class="table table-bordered table-striped table-hover">
 
@@ -89,7 +68,7 @@
 
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
 
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
 
                         </a> /
 
@@ -103,7 +82,7 @@
 
                         ]) !!}
 
-                            {!! Form::submit(trans('form.deletee'), ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::button(__('form.deletee'), ['class' => 'btn btn-sm btn-light m-1','type' => 'submit']) !!}
 
                         {!! Form::close() !!}
 
@@ -119,9 +98,11 @@
 
         <div class="pagination"> {!! $equipos->render() !!} </div>
 
+
+
+            </div>
+        </div>
     </div>
-
-
 
 @endsection
 
