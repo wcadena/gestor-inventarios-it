@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Dashmix - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>{{env('APP_NAME', 'Laravel')}} - @yield('htmlheader_title', env('APP_TITLE_PAGE', 'Your title here')) </title>
 
-        <meta name="description" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="description" content="@yield('htmlheader_description', env('APP_TITLE_PAGE', 'Your title here'))">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
