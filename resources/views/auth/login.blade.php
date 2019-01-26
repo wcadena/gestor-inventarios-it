@@ -54,13 +54,10 @@
                             </div>
                             <div class="form-group d-sm-flex justify-content-sm-between align-items-sm-center text-center text-sm-left">
                                 <div class="custom-control custom-checkbox custom-control-primary">
-
-                                    <label class="custom-control-label" for="login-remember-me">{{ __('Recuerdame') }}</label>
-
-                                    <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-
+                                    <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="remember">{{ __('Recuerdame') }}</label>
                                 </div>
+
                                 <div class="font-w600 font-size-sm py-1">
                                     <a href="javascript:void(0)">Forgot Password?</a>
                                 </div>
@@ -78,19 +75,6 @@
                             </div>
                         </form>
                         <!-- END Sign In Form -->
-                    </div>
-                    <div class="block-content bg-body">
-                        <div class="d-flex justify-content-center text-center push">
-                            <a class="item item-circle item-tiny mr-1 bg-default" data-toggle="theme" data-theme="default" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xwork" data-toggle="theme" data-theme="assets/css/themes/xwork.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xmodern" data-toggle="theme" data-theme="assets/css/themes/xmodern.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xeco" data-toggle="theme" data-theme="assets/css/themes/xeco.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xsmooth" data-toggle="theme" data-theme="assets/css/themes/xsmooth.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xinspire" data-toggle="theme" data-theme="assets/css/themes/xinspire.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xdream" data-toggle="theme" data-theme="assets/css/themes/xdream.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny mr-1 bg-xpro" data-toggle="theme" data-theme="assets/css/themes/xpro.min.css" href="#"></a>
-                            <a class="item item-circle item-tiny bg-xplay" data-toggle="theme" data-theme="assets/css/themes/xplay.min.css" href="#"></a>
-                        </div>
                     </div>
                 </div>
                 <!-- END Sign In Block -->
