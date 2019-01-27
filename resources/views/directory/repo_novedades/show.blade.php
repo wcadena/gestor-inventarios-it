@@ -45,7 +45,7 @@
                     <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td><td>{{ $item->no_serie }}</td><td>{{ $item->estado }}</td>
                     <td>
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
                         </a>
                     </td>
                 </tr>

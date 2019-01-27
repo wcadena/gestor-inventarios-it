@@ -26,7 +26,7 @@
                         <tr>
                             <td>{{ $custodio->id }}</td> <td> {{ $custodio->nombre_responsable }} </td><td> {{ $custodio->ciudad }} </td><td> {{ $custodio->direccion }} </td>
                             <td><a href="{{ url('custodio/' . $custodio->id . '/edit') }}">
-                                    <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                                    <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
                                 </a></td>
                         </tr>
                         </tbody>
@@ -191,7 +191,7 @@
                     </td>
                     <td>
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
                         </a>
                     </td>
                 </tr>

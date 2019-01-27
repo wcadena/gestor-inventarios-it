@@ -114,7 +114,7 @@
 
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
 
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
 
                         </a>
 

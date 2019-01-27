@@ -66,7 +66,7 @@
 
                         <a href="{{ url($linkhref.'/' . $item->instancia_id. '/edit') }}">
 
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
 
                         </a> /
 
@@ -80,7 +80,7 @@
 
                         ]) !!}
 
-                        {!! Form::submit(trans('form.deletee'), ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::button(__('form.deletee'), ['class' => 'btn btn-sm btn-light m-1','type' => 'submit']) !!}
 
                         {!! Form::close() !!}
 
