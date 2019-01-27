@@ -153,7 +153,7 @@
                                 <span class="text-white-75">D</span><span class="text-white">x</span>
                             </span>
                             <span class="smini-hidden">
-                                <span class="text-white-75">Dash</span><span class="text-white">mix</span>
+                                <span class="text-white-75">Ecua</span><span class="text-white">Inventarios</span>
                             </span>
                         </a>
                         <!-- END Logo -->

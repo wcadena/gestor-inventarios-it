@@ -10,7 +10,7 @@
                         <!-- Header -->
                         <div class="mb-2 text-center">
                             <a class="link-fx font-w700 font-size-h1" href="index.html">
-                                <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                                <span class="text-dark">Ecua</span><span class="text-primary">Inventarios</span>
                             </a>
                             <p class="text-uppercase font-w700 font-size-sm text-muted">Sign In</p>
                         </div>
