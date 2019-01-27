@@ -49,7 +49,7 @@ return [
         ],
         'uploads' => [
             'driver' => 'local',
-            'root' => storage_path().'/files/uploads',
+            'root'   => storage_path().'/files/uploads',
         ],
         'public' => [
             'driver'     => 'local',

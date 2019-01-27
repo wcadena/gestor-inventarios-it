@@ -4,8 +4,6 @@ use Spatie\Menu\Html;
 use Spatie\Menu\Laravel\Link;
 use Spatie\Menu\Laravel\Menu;
 
-
-
 Menu::macro('ConfiguracionsSystem', function () {
     return Menu::new()->addClass('nav-main-submenu')
         ->prepend('<a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
@@ -57,7 +55,7 @@ Menu::macro('sidebar_new', function () {
             ->addParentClass('nav-main-item')
         )
         ->addIf(str_contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
-            Html::raw("Planta Fisica")->addParentClass('nav-main-heading'))
+            Html::raw('Planta Fisica')->addParentClass('nav-main-heading'))
         ->addIf(str_contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
             Link::to('/ubicacion', '<i class="nav-main-link-icon fa fa-map-marked-alt"></i>
                                 <span class="nav-main-link-name">'.trans('Ubicaciones').'</span>
@@ -76,15 +74,12 @@ Menu::macro('sidebar_new', function () {
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->add( Menu::reportes()
+        ->add(Menu::reportes()
             ->addParentClass('nav-main-item'))
-        ->add( Menu::fullsubmenuConfiguracions()
+        ->add(Menu::fullsubmenuConfiguracions()
             ->addParentClass('nav-main-item'))
-        ->add( Menu::ConfiguracionsSystem()
-            ->addParentClass('nav-main-item'))
-
-
-        ;
+        ->add(Menu::ConfiguracionsSystem()
+            ->addParentClass('nav-main-item'));
 });
 
 Menu::macro('reportes', function () {
@@ -93,7 +88,7 @@ Menu::macro('reportes', function () {
                                 <i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                                 <span class="nav-main-link-name">Reportes</span>
                             </a>')
-        ->addIf(str_contains(Auth::getUser()->rol, [ 'system']),
+        ->addIf(str_contains(Auth::getUser()->rol, ['system']),
             Link::to('/reporte1', '<i class="nav-main-link-icon fa fa-chart-bar"></i>
                                 <span class="nav-main-link-name">'.trans('home.menrep1').'</span>
                                 ')->addClass('nav-main-link')
@@ -104,8 +99,7 @@ Menu::macro('reportes', function () {
                                 <span class="nav-main-link-name">'.trans('home.menrep2').'</span>
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
-        )
-        ;
+        );
 });
 
 Menu::macro('fullsubmenuConfiguracions', function () {
@@ -167,6 +161,5 @@ Menu::macro('fullsubmenuConfiguracions', function () {
                                 <span class="nav-main-link-name">'.trans('home.men12').'</span>
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
-        )
-        ;
+        );
 });
