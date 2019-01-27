@@ -34,69 +34,67 @@
             </p>
             <div class="table-responsive">
 
+                <table class="table table-bordered table-striped table-hover">
 
+                    <thead>
 
-        <table class="table table-bordered table-striped table-hover">
+                    <tr>
 
-            <thead>
+                        <th>@lang('form.sno')</th><th>Modelo</th><th>Custodio</th><th>Estacione</th><th>Actions</th>
 
-                <tr>
+                    </tr>
 
-                    <th>@lang('form.sno')</th><th>Modelo</th><th>Custodio</th><th>Estacione</th><th>Actions</th>
+                    </thead>
 
-                </tr>
+                    <tbody>
 
-            </thead>
+                    @php $x=0; @endphp
 
-            <tbody>
+                    @foreach($equipos as $item)
 
-            @php $x=0; @endphp
+                        @php $x++;@endphp
 
-            @foreach($equipos as $item)
+                        <tr>
 
-                @php $x++;@endphp
+                            <td>{{ $x }}</td>
 
-                <tr>
+                            <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td>
+                            <td>{{ $item->custodioxc['nombre_responsable'] }}</td>
+                            <td>{{ $item->estacionxc->estacion }}</td>
 
-                    <td>{{ $x }}</td>
+                            <td>
 
-                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td>
-                    <td>{{ $item->custodioxc['nombre_responsable'] }}</td>
-                    <td>{{ $item->estacionxc->estacion }}</td>
+                                <a href="{{ url('equipos/' . $item->id . '/edit') }}">
 
-                    <td>
+                                    <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
 
-                        <a href="{{ url('equipos/' . $item->id . '/edit') }}">
+                                </a> /
 
-                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
+                                {!! Form::open([
 
-                        </a> /
+                                    'method'=>'DELETE',
 
-                        {!! Form::open([
+                                    'url' => ['equipos', $item->id],
 
-                            'method'=>'DELETE',
+                                    'style' => 'display:inline'
 
-                            'url' => ['equipos', $item->id],
+                                ]) !!}
 
-                            'style' => 'display:inline'
+                                {!! Form::button(__('form.deletee'), ['class' => 'btn btn-sm btn-light m-1','type' => 'submit']) !!}
 
-                        ]) !!}
+                                {!! Form::close() !!}
 
-                            {!! Form::button(__('form.deletee'), ['class' => 'btn btn-sm btn-light m-1','type' => 'submit']) !!}
+                            </td>
 
-                        {!! Form::close() !!}
+                        </tr>
 
-                    </td>
+                    @endforeach
 
-                </tr>
+                    </tbody>
 
-            @endforeach
+                </table>
 
-            </tbody>
-
-        </table>
-
-        <div class="pagination"> {!! $equipos->render() !!} </div>
+                <div class="pagination"> {!! $equipos->render() !!} </div>
 
 
 
@@ -115,139 +113,139 @@
 
     <script>
 
-        function redirect (url) {
+      function redirect (url) {
 
-            var ua        = navigator.userAgent.toLowerCase(),
+        var ua        = navigator.userAgent.toLowerCase(),
 
-                    isIE      = ua.indexOf('msie') !== -1,
+          isIE      = ua.indexOf('msie') !== -1,
 
-                    version   = parseInt(ua.substr(4, 2), 10);
-
-
-
-            // Internet Explorer 8 and lower
-
-            if (isIE && version < 9) {
-
-                var link = document.createElement('a');
-
-                link.href = url;
-
-                document.body.appendChild(link);
-
-                link.click();
-
-            }
+          version   = parseInt(ua.substr(4, 2), 10);
 
 
 
-            // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
+        // Internet Explorer 8 and lower
 
-            else {
+        if (isIE && version < 9) {
 
-                window.location.href = url;
+          var link = document.createElement('a');
 
-            }
+          link.href = url;
+
+          document.body.appendChild(link);
+
+          link.click();
 
         }
 
-        $(function () {
+
+
+        // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
+
+        else {
+
+          window.location.href = url;
+
+        }
+
+      }
+
+      $(function () {
 
 
 
-            //alert("hola");
+        //alert("hola");
 
-            $('.zxsdfgsd33').click(function (e) {
+        $('.zxsdfgsd33').click(function (e) {
 
-                e.preventDefault();
+          e.preventDefault();
 
-                var a = $('#equipoidf').val();
+          var a = $('#equipoidf').val();
 
-                var b = $('#sxxxdw3wsfg').attr('href');
+          var b = $('#sxxxdw3wsfg').attr('href');
 
-                var c = b.replace('{idzx3er}', a );
+          var c = b.replace('{idzx3er}', a );
 
-               redirect(c);
-
-
-
-            });
-
-            ///////////////////////////////////////////////////////////////////////////////////
-
-
-
-            $('.id_serchf').select2({
-
-                // Activamos la opcion "Tags" del plugin
-
-
-
-                language: "es",
-
-                placeholder: "Select Avianca Code",
-
-                tags: true,
-
-                tokenSeparators: [','],
-
-                //templateResult: formatState,
-
-                ajax: {
-
-                    dataType: 'json',
-
-                    url: '{{ url("tags") }}',
-
-                    delay: 250,
-
-                    data: function(params) {
-
-                        return {
-
-                            term: params.term
-
-                        }
-
-                    },
-
-                    processResults: function (data, page) {
-
-                        return {
-
-                            results: data
-
-                        };
-
-                    },
-
-                }
-
-            });
-
-            ///////////////////////////////////////////////////////////////////////////////////////////
-
-            function formatState (state) {
-
-                if (!state.id) { return state.text; }
-
-                var $state = $(
-
-                        '<span>'+state.id+":" + state.text + '</span>'
-
-                );
-
-                return $state;
-
-            };
-
-
-
-            ///////////////////////////////////////////////////////////////////////////////////////
+          redirect(c);
 
 
 
         });
+
+        ///////////////////////////////////////////////////////////////////////////////////
+
+
+
+        $('.id_serchf').select2({
+
+          // Activamos la opcion "Tags" del plugin
+
+
+
+          language: "es",
+
+          placeholder: "Select Avianca Code",
+
+          tags: true,
+
+          tokenSeparators: [','],
+
+          //templateResult: formatState,
+
+          ajax: {
+
+            dataType: 'json',
+
+            url: '{{ url("tags") }}',
+
+            delay: 250,
+
+            data: function(params) {
+
+              return {
+
+                term: params.term
+
+              }
+
+            },
+
+            processResults: function (data, page) {
+
+              return {
+
+                results: data
+
+              };
+
+            },
+
+          }
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        function formatState (state) {
+
+          if (!state.id) { return state.text; }
+
+          var $state = $(
+
+            '<span>'+state.id+":" + state.text + '</span>'
+
+          );
+
+          return $state;
+
+        };
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+      });
 
 
 
