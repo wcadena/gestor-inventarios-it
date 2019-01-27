@@ -9,5 +9,5 @@ class FileEntry extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['vinculo','vinculo_padre','filename', 'mime', 'path', 'size','user_id','tipo','imageable_type','imageable_id'];
+    protected $fillable = ['vinculo', 'vinculo_padre', 'filename', 'mime', 'path', 'size', 'user_id', 'tipo', 'imageable_type', 'imageable_id'];
 }
