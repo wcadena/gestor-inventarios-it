@@ -1,7 +1,7 @@
 @extends('layouts.simple')
 @section('content')
     <!-- Page Content -->
-    <div class="bg-image" style="background-image: url('assets/media/photos/photo19@2x.jpg');" id="app">
+    <div class="bg-image" style="background-image: url('{{asset('media/photos/photo19@2x.jpg'}}');" id="app">
         <div class="row no-gutters justify-content-center bg-primary-dark-op">
             <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                 <!-- Sign In Block -->

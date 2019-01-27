@@ -12,6 +12,7 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
     public function run()
     {
         Auth::login(App\User::inRandomOrder()->first());
+        $faker = \Faker\Factory::create();
 
         if (\App\InformeMantoPrevCate::where('categoria', '=', 'Informe')->first() == null) {
             \Illuminate\Support\Facades\DB::table('informe_manto_prev_cates')->insert([
@@ -24,6 +25,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'descripcion'              => 'Sitio Web la la la',
                 'decoracion'               => '',
                 'tipo'                     => 'lista', //lista por el momento debe ser el standard
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -33,6 +36,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'titulo', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 1,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -42,6 +47,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 2,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -51,6 +58,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 3,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -60,6 +69,9 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 4,
                 'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
         }
 
@@ -69,6 +81,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'descripcion'              => 'Soporte IT bla bla bla',
                 'decoracion'               => '',
                 'tipo'                     => 'lista', //lista por el momento debe ser el standard
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -78,6 +92,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 1,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -87,6 +103,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 2,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -96,6 +114,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 3,
                 'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
         }
 
@@ -105,6 +125,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'descripcion'              => 'Desarrollo IT bla bla bla',
                 'decoracion'               => '',
                 'tipo'                     => 'lista', //lista por el momento debe ser el standard
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -114,6 +136,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 1,
                 'principal'            => 'si', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -123,6 +147,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 2,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -132,6 +158,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 3,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -141,6 +169,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 4,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
 
             \Illuminate\Support\Facades\DB::table('proyecto_seccions')->insert([
@@ -150,6 +180,8 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
                 'tipo'                 => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
                 'orden'                => 5,
                 'principal'            => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+                'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at'         => $faker->date($format = 'Y-m-d'),
             ]);
         }
 
