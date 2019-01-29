@@ -13,8 +13,8 @@
     {!! Form::open(['url' => 'modelo', 'class' => 'form-horizontal']) !!}
 
                 <div class="form-group {{ $errors->has('modelo') ? 'has-error' : ''}}">
-                {!! Form::label('modelo', 'Modelo: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('modelo', 'Modelo: ', ['class' => 'control-label']) !!}
+                <div class="ekihk">
 
                     <autocomplete-vue
                             url="{{url('tags_model_modelo')}}"
@@ -34,22 +34,22 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('fabricante') ? 'has-error' : ''}}">
-                {!! Form::label('fabricante', trans('fo.fabricante'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('fabricante', trans('fo.fabricante'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::text('fabricante', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('fabricante', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('garantia_anios') ? 'has-error' : ''}}">
-                {!! Form::label('garantia_anios', trans('fo.garantia_anios'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('garantia_anios', trans('fo.garantia_anios'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::number('garantia_anios', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('garantia_anios', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('tipo_equipo') ? 'has-error' : ''}}">
-                {!! Form::label('tipo_equipo', trans('fo.tipo_equipo'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('tipo_equipo', trans('fo.tipo_equipo'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     <code>*'DESKTOP','LAPTOP','CPU','CLON','IMPRESORA LASER','IMPRESORA MATRICIAL',etc...</code>
                     <autocomplete-vue
                             url="{{url('tags_model_tipo')}}"

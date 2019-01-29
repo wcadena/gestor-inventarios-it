@@ -18,8 +18,8 @@
 
     @php( $campo = 'rol' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
@@ -27,8 +27,8 @@
 
     @php( $campo = 'descripcion' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, trans('fo.'.title_case($campo)).':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>

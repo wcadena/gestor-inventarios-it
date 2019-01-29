@@ -12,16 +12,16 @@
     ]) !!}
 
         <div class="form-group {{ $errors->has('area') ? 'has-error' : ''}}">
-        {!! Form::label('area', trans('fo.area'), ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('area', trans('fo.area'), ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('area', null, ['class' => 'form-control']) !!}
             {!! $errors->first('area', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group {{ $errors->has('empresa') ? 'has-error' : ''}}">
-        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('empresa', null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
             {!! $errors->first('empresa', '<p class="help-block">:message</p>') !!}
         </div>

@@ -88,30 +88,30 @@
     {!! Form::hidden('custodio_id', $custodio->id, ['class' => 'form-control']) !!}
 
     <div class="form-group {{ $errors->has('correo') ? 'has-error' : ''}}">
-        {!! Form::label('correo', 'Correo: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('correo', 'Correo: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('correo', $custodio->email, ['class' => 'form-control']) !!}
             {!! $errors->first('correo', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('fecha_novedades') ? 'has-error' : ''}}">
-        {!! Form::label('fecha_novedades', 'Fecha Novedades: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('fecha_novedades', 'Fecha Novedades: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::date('fecha_novedades', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
             {!! $errors->first('fecha_novedades', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group {{ $errors->has('novedad') ? 'has-error' : ''}}">
-        {!! Form::label('novedad', 'Novedad: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('novedad', 'Novedad: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::select('novedad', \App\RepoNovedades::getENUM('novedad'), null, ['class' => 'chosen-select form-control']) !!}
             {!! $errors->first('novedad', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('antiguo_custodio_id') ? 'has-error' : ''}} ">
-        {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'control-label']) !!}
+        <div class="ekihk">
 
             {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'chosen-select form-control']) }}
             {!! $errors->first('antiguo_custodio_id', '<p class="help-block">:message</p>') !!}
@@ -119,22 +119,22 @@
     </div>
 
     <div class="form-group {{ $errors->has('observaciones') ? 'has-error' : ''}}">
-        {!! Form::label('observaciones', 'Observaciones: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('observaciones', 'Observaciones: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::textarea('observaciones', null, ['class' => 'form-control']) !!}
             {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
-        {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('estado', 'Estado: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::select('estado', \App\RepoNovedades::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
             {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('traslado_custodio_id') ? 'has-error' : ''}} ">
-        {!! Form::label('traslado_custodio_id', "Responsable Traslado", ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('traslado_custodio_id', "Responsable Traslado", ['class' => 'control-label']) !!}
+        <div class="ekihk">
 
             {{ Form::select('traslado_custodio_id', $custodios, null, ['class' => 'chosen-select form-control']) }}
             {!! $errors->first('traslado_custodio_id', '<p class="help-block">:message</p>') !!}

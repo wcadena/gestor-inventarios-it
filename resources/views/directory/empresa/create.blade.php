@@ -18,8 +18,8 @@
 
     @php( $campo = 'empresa' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, trans('fo.'.$campo).':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, trans('fo.'.$campo).':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
@@ -28,8 +28,8 @@
 
     @php( $campo = 'formula_codigo' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, trans('fo.'.$campo).':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, trans('fo.'.$campo).':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>

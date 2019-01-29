@@ -7,14 +7,14 @@
             <div class="hero-inner">
                 <div class="content content-full text-center">
                     <h1 class="display-4 font-w700 mb-2">
-                        Dash<span class="text-primary">mix</span> <span class="font-w300">+ Laravel</span>
+                        Ecua<span class="text-primary">Inventario</span> <span class="font-w300"> Gestor de Inventarios</span>
                     </h1>
                     <h2 class="h3 font-w300 text-muted mb-5 invisible" data-toggle="appear" data-timeout="150">
-                        Welcome to the starter kit! Build something amazing!
+                        Bienvenido al Sistema de Gestión de Inventarios de IT.
                     </h2>
                     <span class="m-2 d-inline-block invisible" data-toggle="appear" data-timeout="300">
-                        <a class="btn btn-hero-success" href="/dashboard">
-                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Enter Dashboard
+                        <a class="btn btn-hero-success" href="/login">
+                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Ingrese al Sistema
                         </a>
                     </span>
                 </div>

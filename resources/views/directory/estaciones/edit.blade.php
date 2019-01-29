@@ -12,29 +12,29 @@
     ]) !!}
 
                 <div class="form-group {{ $errors->has('nombre_largo') ? 'has-error' : ''}}">
-                {!! Form::label('nombre_largo', trans('fo.nombre_largo'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('nombre_largo', trans('fo.nombre_largo'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::text('nombre_largo', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('nombre_largo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('pais') ? 'has-error' : ''}}">
-                {!! Form::label('pais', trans('fo.pais'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('pais', trans('fo.pais'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::select('pais', \App\Estaciones::getENUM('pais'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('pais', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('estacion') ? 'has-error' : ''}}">
-                {!! Form::label('estacion', trans('fo.estacion'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                {!! Form::label('estacion', trans('fo.estacion'), ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::text('estacion', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('estacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
     <div class="form-group {{ $errors->has('empresa') ? 'has-error' : ''}}">
-        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('empresa', null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
             {!! $errors->first('empresa', '<p class="help-block">:message</p>') !!}
         </div>

@@ -12,38 +12,38 @@
 
     @php( $campo = 'estacione_id' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {{ Form::select($campo,  \App\Estaciones::all()->pluck('estacion','id'), null, ['class' => 'chosen-select form-control']) }}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('edificio') ? 'has-error' : ''}}">
-        {!! Form::label('edificio', 'Edificio: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('edificio', 'Edificio: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('edificio', null, ['class' => 'form-control']) !!}
             {!! $errors->first('edificio', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('piso') ? 'has-error' : ''}}">
-        {!! Form::label('piso', 'Piso: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label('piso', 'Piso: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('piso', null, ['class' => 'form-control']) !!}
             {!! $errors->first('piso', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     @php( $campo = 'area_id' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {{ Form::select($campo,  \App\Areas::all()->pluck('area','id'), null, ['class' => 'chosen-select form-control']) }}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     @php( $campo = 'imagen' )
     <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::file($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
         </div>
