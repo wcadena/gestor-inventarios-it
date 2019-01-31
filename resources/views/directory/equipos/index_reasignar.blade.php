@@ -44,11 +44,11 @@
 
               </span>
 
-                <div class="form-group {{ $errors->has('equipoidfull') ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('equipoidfull') ? ' form-control-alt is-invalid' : ''}}">
 
                     <div>
                         {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
-                        {!! $errors->first('equipoidfull', '<p class="help-block">:message</p>') !!}
+                        {!! $errors->first('equipoidfull', '<p class="invalid-feedback">:message</p>') !!}
                     </div>
                 </div>
 

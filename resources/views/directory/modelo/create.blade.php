@@ -12,7 +12,7 @@
 
     {!! Form::open(['url' => 'modelo', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('modelo') ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('modelo') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('modelo', 'Modelo: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
 
@@ -30,24 +30,24 @@
                             :classes="{ wrapper: 'panel panel-default ', input: 'form-control', list: 'data-list list-group', item: 'data-list-item list-group-item' }"
                             placeholder="Modelo"
                     ></autocomplete-vue>
-                    {!! $errors->first('modelo', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('modelo', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fabricante') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('fabricante') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('fabricante', trans('fo.fabricante'), ['class' => 'control-label']) !!}
                 <div class="ekihk">
                     {!! Form::text('fabricante', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('fabricante', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('fabricante', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('garantia_anios') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('garantia_anios') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('garantia_anios', trans('fo.garantia_anios'), ['class' => 'control-label']) !!}
                 <div class="ekihk">
                     {!! Form::number('garantia_anios', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('garantia_anios', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('garantia_anios', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('tipo_equipo') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('tipo_equipo') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('tipo_equipo', trans('fo.tipo_equipo'), ['class' => 'control-label']) !!}
                 <div class="ekihk">
                     <code>*'DESKTOP','LAPTOP','CPU','CLON','IMPRESORA LASER','IMPRESORA MATRICIAL',etc...</code>
@@ -66,7 +66,7 @@
                             placeholder="Tipo de equipo"
                     ></autocomplete-vue>
 
-                {!! $errors->first('tipo_equipo', '<p class="help-block">:message</p>') !!}
+                {!! $errors->first('tipo_equipo', '<p class="invalid-feedback">:message</p>') !!}
                     <!--https://github.com/BosNaufal/vue2-autocomplete -->
 
 

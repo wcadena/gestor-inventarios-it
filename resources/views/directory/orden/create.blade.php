@@ -16,18 +16,18 @@
 
 
 
-                <div class="form-group {{ $errors->has('ordenCompra') ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('ordenCompra') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('ordenCompra', 'Orden de compra: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
                     {!! Form::text('ordenCompra', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('ordenCompra', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('ordenCompra', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha_compra') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('fecha_compra') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('fecha_compra', 'Fecha Compra: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
                     {!! Form::text('fecha_compra', null, ['class' => 'form-control','id'=>'fecha_compra']) !!}
-                    {!! $errors->first('fecha_compra', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('fecha_compra', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
 

@@ -24,13 +24,13 @@
            'method' => 'POST',
            'class' => 'sidebar-form'
        ]) !!}
-        <div class="input-group  {{ $errors->has('q') ? 'has-error' : ''}} ">
+        <div class="input-group  {{ $errors->has('q') ? ' form-control-alt is-invalid' : ''}} ">
             {!! Form::text('q', null, ['class' => 'form-control','placeholder' =>  trans('adminlte_lang::message.search')]) !!}
             <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
         </div>
-    {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
+    {!! $errors->first('q', '<p class="invalid-feedback">:message</p>') !!}
     {!! Form::close() !!}
         <!-- /.search form -->
 

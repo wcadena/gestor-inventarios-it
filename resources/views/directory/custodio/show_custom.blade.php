@@ -87,57 +87,57 @@
 
     {!! Form::hidden('custodio_id', $custodio->id, ['class' => 'form-control']) !!}
 
-    <div class="form-group {{ $errors->has('correo') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('correo') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('correo', 'Correo: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::text('correo', $custodio->email, ['class' => 'form-control']) !!}
-            {!! $errors->first('correo', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('correo', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('fecha_novedades') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('fecha_novedades') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('fecha_novedades', 'Fecha Novedades: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::date('fecha_novedades', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
-            {!! $errors->first('fecha_novedades', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('fecha_novedades', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('novedad') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('novedad') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('novedad', 'Novedad: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::select('novedad', \App\RepoNovedades::getENUM('novedad'), null, ['class' => 'chosen-select form-control']) !!}
-            {!! $errors->first('novedad', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('novedad', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('antiguo_custodio_id') ? 'has-error' : ''}} ">
+    <div class="form-group {{ $errors->has('antiguo_custodio_id') ? ' form-control-alt is-invalid' : ''}} ">
         {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'control-label']) !!}
         <div class="ekihk">
 
             {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'chosen-select form-control']) }}
-            {!! $errors->first('antiguo_custodio_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('antiguo_custodio_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('observaciones') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('observaciones') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('observaciones', 'Observaciones: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::textarea('observaciones', null, ['class' => 'form-control']) !!}
-            {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('observaciones', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('estado') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('estado', 'Estado: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::select('estado', \App\RepoNovedades::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
-            {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('traslado_custodio_id') ? 'has-error' : ''}} ">
+    <div class="form-group {{ $errors->has('traslado_custodio_id') ? ' form-control-alt is-invalid' : ''}} ">
         {!! Form::label('traslado_custodio_id', "Responsable Traslado", ['class' => 'control-label']) !!}
         <div class="ekihk">
 
             {{ Form::select('traslado_custodio_id', $custodios, null, ['class' => 'chosen-select form-control']) }}
-            {!! $errors->first('traslado_custodio_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('traslado_custodio_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
     <div class="form-group">
@@ -150,7 +150,7 @@
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Warning!</strong> :message
 </div>') !!}
-    <div class="table {{ $errors->has('equipos') ? 'has-error' : ''}}">
+    <div class="table {{ $errors->has('equipos') ? ' form-control-alt is-invalid' : ''}}">
         <table class="table table-bordered table-striped table-hover">
             <thead>
             <tr>

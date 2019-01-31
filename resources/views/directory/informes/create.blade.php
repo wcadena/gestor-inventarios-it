@@ -12,7 +12,7 @@
 
     {!! Form::open(['url' => 'informes', 'class' => 'form-horizontal']) !!}
 
-    <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('area_id') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('informe_proyectos_seccions_inf', 'Seccion: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             <select id="informe_proyectos_seccions_inf"
@@ -33,65 +33,65 @@
                 @endforeach
             </select>
 
-            {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('area_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('requerimiento') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('requerimiento') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('requerimiento', 'Titulo Requerimiento: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::text('requerimiento', null, ['class' => 'form-control']) !!}
-            {!! $errors->first('requerimiento', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('requerimiento', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('custodio_id') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('custodio_id') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {{ Form::select('custodio_id', $custodios, (isset(Auth::user()->custodio))?Auth::user()->custodio->id:null, ['class' => 'form-control']) }}
-            {!! $errors->first('custodio_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('custodio_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('area_id') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('area_id') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('area_id', 'Area Id: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {{ Form::select('area_id', $areas, null, ['class' => 'form-control']) }}
-            {!! $errors->first('area_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('area_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('fecha_solicitud') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('fecha_solicitud') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('fecha_solicitud', 'Fecha Solicitud: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::date('fecha_solicitud', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
-            {!! $errors->first('fecha_solicitud', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('fecha_solicitud', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('informe_manto_prev_cate_id') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('informe_manto_prev_cate_id') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('informe_manto_prev_cate_id', 'Categoria: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {{ Form::select('informe_manto_prev_cate_id', $categoria_mant, null, ['class' => 'form-control']) }}
-            {!! $errors->first('informe_manto_prev_cate_id', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('informe_manto_prev_cate_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('observacion') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('observacion', 'Descripción : ', ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
-            {!! $errors->first('observacion', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('observacion', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
     {!! Form::hidden('solucion', ' ', ['class' => 'form-control']) !!}
     {!! Form::hidden('resolucion', ' ', ['class' => 'form-control']) !!}
     @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
     {!! Form::hidden('vinculo',$vinculo_global_info ) !!}
-    <div class="form-group {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('tecnicos') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('tecnico', trans('fo.Tecnicos'), ['class' => 'control-label']) !!}
         <div class="ekihk">
             {!! $errors->first('tecnicos', '<div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Warning!</strong> :message
 </div>') !!}
-            <div class="table {{ $errors->has('tecnicos') ? 'has-error' : ''}}">
+            <div class="table {{ $errors->has('tecnicos') ? ' form-control-alt is-invalid' : ''}}">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                     <tr>
