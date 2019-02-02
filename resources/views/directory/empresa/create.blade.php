@@ -40,7 +40,7 @@
 
         <div class="col-sm-offset-3 col-sm-3">
 
-            {!! Form::submit(trans('fo.Create'), ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::button(__('<i class="fa fa-fw fa-save mr-1"></i> Crear'), ['class' => 'btn btn-block btn-hero-primary','type' => 'submit']) !!}
 
         </div>
 
