@@ -71,7 +71,7 @@
                         <div class="table">
 
                             <table class="table table-bordered table-striped table-hover">
-                                
+
                                 <thead>
                                 <tr>
                                     <th>ID.</th> <th>Fecha</th><th>Observacion</th><th>Antiguo Custodio</th>
