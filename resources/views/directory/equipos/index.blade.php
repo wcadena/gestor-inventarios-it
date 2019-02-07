@@ -252,9 +252,4 @@
 
 
     </script>
-    <script>
-      jQuery(function(){
-        Dashmix.helpers('select2');
-      });
-    </script>
 @endsection
