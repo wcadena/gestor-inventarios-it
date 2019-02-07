@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="font-w600 font-size-sm py-1">
-                                    <a href="javascript:void(0)">Forgot Password?</a>
+                                    <a href="{{('/password/reset')}}">Forgot Password?</a> | <a href="{{route('register')}}">{{ __('Register') }}</a>
                                 </div>
                             </div>
                             <div class="form-group text-center">
