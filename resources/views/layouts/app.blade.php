@@ -1,80 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>{{env('APP_NAME', 'Laravel')}} - @yield('htmlheader_title', env('APP_TITLE_PAGE', 'Your title here')) </title>
+
+    <meta name="description" content="@yield('htmlheader_description', env('APP_TITLE_PAGE', 'Your title here'))">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Icons -->
+    <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
+    <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Fonts and Styles -->
+    @yield('css_before')
+    <link rel="stylesheet" id="css-main" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700">
+    <link rel="stylesheet" id="css-theme" href="{{ mix('/css/dashmix.css') }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
+<!-- <link rel="stylesheet" href="{{ mix('/css/themes/xwork.css') }}"> -->
+@yield('css_after')
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<!-- Scripts -->
+    <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<!-- Page Container -->
+<!--
+    Available classes for #page-container:
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+GENERIC
 
-                    </ul>
+    'enable-cookies'                            Remembers active color theme between pages (when set through color theme helper Template._uiHandleTheme())
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+SIDEBAR & SIDE OVERLAY
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+    'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
+    'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
+    'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
+    'sidebar-dark'                              Dark themed sidebar
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
+    'side-overlay-o'                            Visible Side Overlay by default
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
+
+    'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
+
+HEADER
+
+    ''                                          Static Header if no class is added
+    'page-header-fixed'                         Fixed Header
+
+
+Footer
+
+    ''                                          Static Footer if no class is added
+    'page-footer-fixed'                         Fixed Footer (please have in mind that the footer has a specific height when is fixed)
+
+HEADER STYLE
+
+    ''                                          Classic Header style if no class is added
+    'page-header-dark'                          Dark themed Header
+    'page-header-glass'                         Light themed Header with transparency by default
+                                                (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
+    'page-header-glass page-header-dark'         Dark themed Header with transparency by default
+                                                (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
+
+MAIN CONTENT LAYOUT
+
+    ''                                          Full width Main Content if no class is added
+    'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
+    'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
+-->
+<div id="page-container">
+    <!-- Main Container -->
+    <main id="main-container">
+        @yield('content')
+    </main>
+    <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<!-- Dashmix Core JS -->
+<script src="{{ mix('/js/dashmix.app.js') }}"></script>
+
+<!-- Laravel Original JS -->
+<script src="{{ mix('/js/laravel.app.js') }}"></script>
+
+@yield('js_after')
 </body>
 </html>
