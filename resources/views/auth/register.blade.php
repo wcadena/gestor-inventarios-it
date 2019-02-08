@@ -1,5 +1,7 @@
 @extends('layouts.simple')
 @section('content')
+
+
 <!-- Page Content -->
 <div class="bg-image" style="background-image: url('{{ asset('/media/photos/photo14@2x.jpg')}}');">
     <div class="row no-gutters justify-content-center bg-black-75">
@@ -15,7 +17,18 @@
                         <p class="text-uppercase font-w700 font-size-sm text-muted">{{ __('Register') }}</p>
                     </div>
                     <!-- END Header -->
-
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <ul class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <!-- Sign Up Form -->
                     <!-- jQuery Validation (.js-validation-signup class is initialized in js/pages/op_auth_signup.min.js which was auto compiled from _es6/pages/op_auth_signup.js) -->
                     <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
@@ -81,8 +94,8 @@
                         <div class="form-group text-center">
                             <a class="font-w600 font-size-sm" href="#" data-toggle="modal" data-target="#modal-terms">Terms &amp; Conditions</a>
                             <div class="custom-control custom-checkbox custom-control-primary">
-                                <input type="checkbox" class="custom-control-input" id="signup-terms" name="signup-terms">
-                                <label class="custom-control-label" for="signup-terms">I agree</label>
+                                <input type="checkbox" class="custom-control-input" id="terms" name="terms">
+                                <label class="custom-control-label" for="terms">I agree</label>
                             </div>
                         </div>
                         <div class="form-group text-center">
