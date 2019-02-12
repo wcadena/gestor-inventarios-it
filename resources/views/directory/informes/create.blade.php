@@ -1,10 +1,12 @@
 @extends('layouts.master')
-@section('htmlheader')
-    @include('layouts.partials.htmlheader')
-    <!-- Select2 -->
-    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
+
+@section('css_before')
+    <link href="{{ asset('js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
+
+@section('contentheader_aqui', 'Equipos')
+
 @section('content')
 
     <h1>Crear nuevo Informe</h1>
@@ -22,13 +24,13 @@
                 <option value="---" selected>General</option>
                 @foreach(\App\Proyecto::all() as $proyecto)
                     @if($proyecto->count()>0)
-                <optgroup label="{{$proyecto->name}}">
-                    @foreach($proyecto->proyectoSeccions as $seccions)
-                        @if($seccions->tipo == 'seccion')
-                        <option value="{{$seccions->id}}">{{$seccions->name}}</option>
-                        @endif
-                    @endforeach
-                </optgroup>
+                        <optgroup label="{{$proyecto->name}}">
+                            @foreach($proyecto->proyectoSeccions as $seccions)
+                                @if($seccions->tipo == 'seccion')
+                                    <option value="{{$seccions->id}}">{{$seccions->name}}</option>
+                                @endif
+                            @endforeach
+                        </optgroup>
                     @endif
                 @endforeach
             </select>
@@ -145,13 +147,15 @@
 
 @endsection
 
-@section('scripts')
+@section('js_after')
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/select2/js/select2.min.js') }}"></script>
 
-    @include('layouts.partials.scripts')
-
-    <script src="{{ asset('/js/select2.min.js') }}"></script>
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('select2'); });</script>
 
     <script>
+
       $(function () {
         $.fn.select2.defaults.set("theme", "classic");
         $('#informe_proyectos_seccions_inf').select2({
