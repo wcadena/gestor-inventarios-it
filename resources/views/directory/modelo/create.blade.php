@@ -1,10 +1,8 @@
 @extends('layouts.master')
-@section('htmlheader')
-@include('layouts.partials.htmlheader')
-        <!-- Select2
-<link href="{{ asset('/plugins/jQueryUI/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
--->
-@endsection
+
+
+@section('contentheader_aqui', 'Modelos')
+
 @section('content')
 
     <h1>@lang('fo.Create New Modelo')</h1>
@@ -92,13 +90,5 @@
             @endforeach
         </ul>
     @endif
-
-@endsection
-
-    @section('scripts')
-    @include('layouts.partials.scripts')
-            <!-- jquery ui
-    <script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>-->
 
 @endsection
