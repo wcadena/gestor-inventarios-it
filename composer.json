@@ -21,13 +21,11 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/wcadena/inventarioFinalApp/issues"
+        "issues": "https://github.com/wcadena/gestor-inventarios-it/issues"
     },
     "license": "EPL-1.0",
     "require": {
         "php": "^7.1.3",
-        "acacha/admin-lte-template-laravel": "^6.0",
-        "almasaeed2010/adminlte": "^2.4",
         "appzcoder/crud-generator": "^3.0",
         "barryvdh/laravel-cors": "^0.11.2",
         "barryvdh/laravel-dompdf": "^0.8.3",
