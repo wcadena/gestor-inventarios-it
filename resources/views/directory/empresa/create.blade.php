@@ -70,7 +70,3 @@
 
 @endsection
 
-@section('scripts')
-    @include('layouts.partials.scripts')
-    <!-- bootstrap datepicker -->
-@endsection
