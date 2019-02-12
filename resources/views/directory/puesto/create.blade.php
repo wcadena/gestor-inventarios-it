@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 
+@section('css_before')
+    <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+@endsection
+
+@section('contentheader_aqui', 'Puesto')
 
 @section('content')
 
@@ -111,18 +116,14 @@
 
 @endsection
 
-@section('scripts')
-    @include('layouts.partials.scripts')
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#fecha_compra').datepicker({
-                format: 'yyyy-mm-dd'
-            });
+@section('js_after')
+    <!-- Page JS  bootstrap datepicker -->
+    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
-        });
-    </script>
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('datepicker'); });</script>
+
+
     <script type="text/javascript">
         function setImagen(){
             var ubicacion_id = $( "#ubicacion_id" ).val();
