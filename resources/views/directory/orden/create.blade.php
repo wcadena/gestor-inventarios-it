@@ -1,9 +1,13 @@
 @extends('layouts.master')
 
 
+@section('css_before')
+    <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+@endsection
+
+@section('contentheader_aqui', 'Orden')
 
 @section('content')
-
 
 
     <h1>Create New Orden</h1>
@@ -26,7 +30,7 @@
             <div class="form-group {{ $errors->has('fecha_compra') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('fecha_compra', 'Fecha Compra: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::text('fecha_compra', null, ['class' => 'form-control','id'=>'fecha_compra']) !!}
+                    {!! Form::text('fecha_compra', null, ['class' => 'js-datepicker form-control','id'=>'fecha_compra']) !!}
                     {!! $errors->first('fecha_compra', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -63,20 +67,13 @@
     @endif
 
 
-
 @endsection
 
-@section('scripts')
-    @include('layouts.partials.scripts')
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#fecha_compra').datepicker({
-                format: 'yyyy-mm-dd'
-            });
+@section('js_after')
+    <!-- Page JS  bootstrap datepicker -->
+    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
-        });
-    </script>
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('datepicker'); });</script>
 
 @endsection
