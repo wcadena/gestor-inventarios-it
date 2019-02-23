@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     //adminlte_routes
-    Route::get('files', 'FileEntriesController@index');
+    /*Route::get('files', 'FileEntriesController@index');
     Route::get('files/create', 'FileEntriesController@create');
     Route::post('files/upload-file', 'FileEntriesController@uploadFile');
 
@@ -32,8 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
         if (file_exists($path)) {
             return Response::download($path);
         }
-    });
+    });*/
+
 });
+Route::resource('file', 'FileEntriesController');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/home', 'HomeController@index');

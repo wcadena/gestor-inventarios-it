@@ -22,6 +22,7 @@ class FileEntriesController extends Controller
     //
     public function uploadFile(Request $request)
     {
+        dd($request);
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 
@@ -48,6 +49,28 @@ class FileEntriesController extends Controller
         return response()->json([
             'success' => false,
         ], 500);
+    }
+    public function store(Request $request)
+    {
+        $file = Input::file('file');
+        $filename = $file->getClientOriginalName();
+
+        $path = hash('sha256', time());
+
+        if (Storage::disk('uploads')->put($path.'/'.$filename, File::get($file))) {
+            $input['filename'] = $filename;
+            $input['mime'] = $file->getClientMimeType();
+            $input['path'] = $path;
+            $input['size'] = $file->getClientSize();
+            $input['user_id'] = Auth::user()->id;
+            $input['imageable_type'] = Input::get('imageable_type');
+            $input['imageable_id'] = Input::get('imageable_id');
+            $input['vinculo_padre'] = Input::get('vinculo_padre');
+            $input['vinculo'] = Uuid::generate();
+            $file = FileEntry::create($input);
+
+        }
+
     }
 
     public function create()
