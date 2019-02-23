@@ -42,7 +42,7 @@
                     <div class="ekihk">
                         <select id="informe_proyectos_seccions_inf"
                                 name="informe_proyectos_seccions_inf[]"
-                                class="form-control js-select2" style="width: 100%;" data-placeholder="Choose one.."
+                                class="chosen-select form-control"
                                 multiple="multiple">
                             <option value="---" selected>General</option>
                             @foreach(\App\Proyecto::all() as $proyecto)
@@ -110,42 +110,193 @@
                 @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
                 {!! Form::hidden('vinculo',$vinculo_global_info ) !!}
                 <div class="form-group {{ $errors->has('tecnicos') ? ' form-control-alt is-invalid' : ''}}">
+                    {!! Form::label('tecnico', trans('fo.Tecnicos'), ['class' => 'control-label']) !!}
                     <div class="ekihk">
                         {!! $errors->first('tecnicos', '<div class="alert alert-warning alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <strong>Warning!</strong> :message
             </div>') !!}
-                        {{--tecnicos ini--}}
-                        <div class="form-group row items-push mb-0">
-                            @php $x=0; @endphp
+                        <div class="table {{ $errors->has('tecnicos') ? ' form-control-alt is-invalid' : ''}}">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>@lang('form.sno')</th>
+                                    <th>@lang('form.name')</th>
+                                </thead>
+                                <tbody>
+                                @php $x=0; @endphp
 
-                            @foreach(\App\Role::where('name','tecnico')->first()->users as $item)
-                                @php $x++;@endphp
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="custom-control custom-block custom-control-primary">
-                                        {{ Form::checkbox('tecnicos[]', $item->id, false,['class' => 'custom-control-input', 'id' =>'dm-project-new-people-'.$x]) }}
+                                @foreach(\App\Role::where('name','tecnico')->first()->users as $item)
+                                    @php $x++;@endphp
+                                    <tr>
+                                        <td>{{ Form::checkbox('tecnicos[]', $item->id, false) }}</td>
+                                        <td>{{ $item->name }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
 
-                                        <label class="custom-control-label" for="dm-project-new-people-{{$x}}">
-                                <span class="d-flex align-items-center">
-                                    <img class="img-avatar img-avatar48" src="{{ asset('media/avatars/avatar14.jpg') }}" alt="">
-                                    <span class="ml-2">
-                                        <span class="font-w700">{{ $item->name }}</span>
-                                        <span class="d-block font-size-sm text-muted">{{ $item->email }}</span>
-                                    </span>
-                                </span>
-                                        </label>
-                                        <span class="custom-block-indicator">
-                               <i class="fa fa-check"></i>
-                            </span>
-                                    </div>
-                                </div>
-                            @endforeach
                         </div>
-                        {{-- file:///D:/Users/wcade/Documents/ecuatask_digitalOcean/laravel-template/Dashmix%201.5%20by%20pixelcave/01%20-%20Dashmix%20Source%20(HTML)/src/be_pages_projects_create.html --}}
-                        {{--tecnicos fin--}}
                     </div>
                 </div>
-
+{{--tecnicos ini--}}
+                <div class="form-group row items-push mb-0">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-1" name="dm-project-new-people-1">
+                            <label class="custom-control-label" for="dm-project-new-people-1">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar8.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Judy Ford</span>
+                                                                <span class="d-block font-size-sm text-muted">Web Designer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-2" name="dm-project-new-people-2">
+                            <label class="custom-control-label" for="dm-project-new-people-2">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar9.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Jack Estrada</span>
+                                                                <span class="d-block font-size-sm text-muted">Web Developer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-3" name="dm-project-new-people-3">
+                            <label class="custom-control-label" for="dm-project-new-people-3">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar10.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Jose Parker</span>
+                                                                <span class="d-block font-size-sm text-muted">Graphic Designer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-4" name="dm-project-new-people-4">
+                            <label class="custom-control-label" for="dm-project-new-people-4">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar4.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Amanda Powell</span>
+                                                                <span class="d-block font-size-sm text-muted">Developer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-5" name="dm-project-new-people-5">
+                            <label class="custom-control-label" for="dm-project-new-people-5">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar5.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Judy Ford</span>
+                                                                <span class="d-block font-size-sm text-muted">Marketing</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-6" name="dm-project-new-people-6">
+                            <label class="custom-control-label" for="dm-project-new-people-6">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar11.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Jack Greene</span>
+                                                                <span class="d-block font-size-sm text-muted">Designer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-7" name="dm-project-new-people-7">
+                            <label class="custom-control-label" for="dm-project-new-people-7">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar15.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Jeffrey Shaw</span>
+                                                                <span class="d-block font-size-sm text-muted">Marketing</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-8" name="dm-project-new-people-8">
+                            <label class="custom-control-label" for="dm-project-new-people-8">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar14.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Jose Parker</span>
+                                                                <span class="d-block font-size-sm text-muted">Mobile Developer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="custom-control custom-block custom-control-primary">
+                            <input type="checkbox" class="custom-control-input" id="dm-project-new-people-9" name="dm-project-new-people-9">
+                            <label class="custom-control-label" for="dm-project-new-people-9">
+                                                        <span class="d-flex align-items-center">
+                                                            <img class="img-avatar img-avatar48" src="assets/media/avatars/avatar2.jpg" alt="">
+                                                            <span class="ml-2">
+                                                                <span class="font-w700">Carol White</span>
+                                                                <span class="d-block font-size-sm text-muted">Lawyer</span>
+                                                            </span>
+                                                        </span>
+                            </label>
+                            <span class="custom-block-indicator">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                        </div>
+                    </div>
+                </div>
+                {{-- file:///D:/Users/wcade/Documents/ecuatask_digitalOcean/laravel-template/Dashmix%201.5%20by%20pixelcave/01%20-%20Dashmix%20Source%20(HTML)/src/be_pages_projects_create.html --}}
+                {{--tecnicos fin--}}
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-3">
@@ -153,19 +304,12 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-                @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
                 <div class="container">
                     <div class="block-content">
-                        <form action="/file" class="dropzone" enctype="multipart/form-data" >
-                            @csrf
+                        <form action="/file-upload" class="dropzone">
                             <div class="fallback">
-                                <input name="files" type="file" multiple />
+                                <input name="file" type="file" multiple />
                             </div>
-                            <input type="hidden" name="vinculo_padre" value="{{$vinculo_global_info}}"/>
-                            <input type="hidden" name="imageable_type" value="informes"/>
-                            <input type="hidden" name="imageable_id" value="{{$vinculo_global_info}}"/>
-
-
                         </form>
                     </div>
                 </div>
@@ -190,5 +334,18 @@
 
     <!-- Page JS Helpers (Slick Slider Plugin) -->
     <script>jQuery(function(){ Dashmix.helpers('select2'); });</script>
+
+    <script>
+
+      $(function () {
+        $.fn.select2.defaults.set("theme", "classic");
+        $('#informe_proyectos_seccions_inf').select2({
+          multiple: true,
+          language: "es",
+          placeholder: "Select Avianca Code",
+          tags: true,
+        });
+      });
+    </script>
 
 @endsection

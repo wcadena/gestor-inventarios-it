@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -67,10 +66,6 @@ class Handler extends ExceptionHandler
     public function handleException($request, Exception $exception)
     {
         if (config('app.debug') && !$request->is('api/*')) {
-            if ($exception instanceof TokenMismatchException) {
-                Session::flash('TokenMismatchException_ev', true);
-                return redirect('/login?TokenMismatchException_ev=true');
-            }
             return parent::render($request, $exception);
         }
         if ($exception instanceof ValidationException) {
