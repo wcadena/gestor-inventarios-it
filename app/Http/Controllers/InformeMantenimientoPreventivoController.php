@@ -13,7 +13,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Log;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -87,7 +86,6 @@ class InformeMantenimientoPreventivoController extends Controller
             $proyectos = Input::get('informe_proyectos_seccions_inf');
             if (is_array($proyectos)) {
                 foreach ($proyectos as $proyecto) {
-
                     if ($proyecto != '---') {
                         $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
                         $proyecto_x = $proyecto_x_met->toArray();
@@ -99,7 +97,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
-                       
+
                         InformeProyectosSeccion::create($proyecto_x);
                     }
                 }
