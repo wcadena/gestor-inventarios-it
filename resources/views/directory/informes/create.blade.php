@@ -153,7 +153,6 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-                @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
                 <div class="container">
                     <div class="block-content">
                         {!! Form::open(['url' => 'files', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}

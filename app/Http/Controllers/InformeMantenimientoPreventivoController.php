@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Areas;
 use App\Custodios;
+use App\FileEntry;
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
@@ -47,7 +48,7 @@ class InformeMantenimientoPreventivoController extends Controller
         $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
         $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
 
-        return view('directory.informes.create', compact('dtos', 'custodios', 'areas', 'categoria_mant'));
+        return view('directory.informes.create', compact( 'custodios', 'areas', 'categoria_mant'));
     }
 
     /**
@@ -99,7 +100,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
-                       
+
                         InformeProyectosSeccion::create($proyecto_x);
                     }
                 }
@@ -107,6 +108,9 @@ class InformeMantenimientoPreventivoController extends Controller
                 Session::flash('flash_message', 'Secciones added!');
             }
             //////////////////////////////////////////////
+            /// coloca los archivos con informe
+            /// //////////////////////////////////////////\
+            FileEntry::where('vinculo_padre','=',$inf->vinculo)->update(['imageable_id'=>$inf->id]);
             DB::commit();
 
             return redirect('informes');
@@ -128,9 +132,14 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function show($id)
     {
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
+        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
+
+
         $informe = InformeMantenimientoPreventivo::findOrFail($id);
 
-        return view('directory.informes.show', compact('informe'));
+        return view('directory.informes.show', compact('informe', 'custodios', 'areas', 'categoria_mant'));
     }
 
     /**
