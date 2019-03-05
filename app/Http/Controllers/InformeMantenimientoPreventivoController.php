@@ -87,10 +87,9 @@ class InformeMantenimientoPreventivoController extends Controller
             $proyectos = Input::get('informe_proyectos_seccions_inf');
             if (is_array($proyectos)) {
                 foreach ($proyectos as $proyecto) {
-                    Log::info($proyecto);
+
                     if ($proyecto != '---') {
                         $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
-                        Log::info($proyecto);
                         $proyecto_x = $proyecto_x_met->toArray();
 
                         $proyecto_x['proyecto_seccion_id'] = $proyecto_x['id'];
@@ -100,7 +99,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
-
+                       
                         InformeProyectosSeccion::create($proyecto_x);
                     }
                 }

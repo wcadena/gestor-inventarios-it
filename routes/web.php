@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     });*/
 
 });
-Route::resource('file', 'FileEntriesController');
+Route::resource('files', 'FileEntriesController');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/home', 'HomeController@index');

@@ -156,17 +156,14 @@
                 @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
                 <div class="container">
                     <div class="block-content">
-                        <form action="/file" class="dropzone" enctype="multipart/form-data" >
-                            @csrf
+                        {!! Form::open(['url' => 'files', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}
                             <div class="fallback">
                                 <input name="files" type="file" multiple />
                             </div>
                             <input type="hidden" name="vinculo_padre" value="{{$vinculo_global_info}}"/>
                             <input type="hidden" name="imageable_type" value="informes"/>
                             <input type="hidden" name="imageable_id" value="{{$vinculo_global_info}}"/>
-
-
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
 
