@@ -68,4 +68,11 @@ class InformeMantenimientoPreventivo extends Model
     {
         return $this->hasMany('App\InformeProyectosSeccion','informe_manto_prev_id');
     }
+    /**
+     * Get the post's image or file.
+     */
+    public function image()
+    {
+        return $this->morphOne('App\FileEntry', 'imageable');
+    }
 }

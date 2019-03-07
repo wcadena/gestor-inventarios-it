@@ -157,20 +157,67 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-                @php $vinculo_global_info = Webpatser\Uuid\Uuid::generate();@endphp
-                <div class="container">
-                    <div class="block-content">
-                        {!! Form::open(['url' => 'files', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}
-                        <div class="fallback">
-                            <input name="files" type="file" multiple />
+
+                <!-- Block Tabs With Options Default Style -->
+                <div class="block block-rounded block-bordered">
+                    <ul class="nav nav-tabs nav-tabs-block align-items-center" data-toggle="tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#btabswo-static-home">Subir Archivos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#btabswo-static-profile">Editar Archivos</a>
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <div class="block-options pl-3 pr-2">
+                                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="block-content tab-content">
+                        <div class="tab-pane active" id="btabswo-static-home" role="tabpanel">
+                            <div class="block-content">
+                                {!! Form::open(['url' => 'files', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}
+                                <div class="fallback">
+                                    <input name="files" type="file" multiple />
+                                </div>
+                                <input type="hidden" name="vinculo_padre" value="{{$vinculo_global_info}}"/>
+                                <input type="hidden" name="imageable_type" value="informes"/>
+                                <input type="hidden" name="imageable_id" value="{{$vinculo_global_info}}"/>
+                                {!! Form::close() !!}
+                            </div>
+
                         </div>
-                        <input type="hidden" name="vinculo_padre" value="{{$vinculo_global_info}}"/>
-                        <input type="hidden" name="imageable_type" value="informes"/>
-                        <input type="hidden" name="imageable_id" value="{{$vinculo_global_info}}"/>
-                        {!! Form::close() !!}
+                        <div class="tab-pane" id="btabswo-static-profile" role="tabpanel">
+                            <h4 class="font-w400">Editar Archivos</h4>
+                            <!-- Image Rotate Left -->
+                            <div class="row items-push">
+                                {{($informe->image)}}
+                                <div class="col-md-4 animated fadeIn">
+                                    <div class="options-container fx-item-rotate-l">
+                                        <img class="img-fluid options-item" src="/media/photos/photo4.jpg" alt="">
+                                        <div class="options-overlay bg-black-75">
+                                            <div class="options-overlay-content">
+                                                <h3 class="h4 text-white mb-2">Main Title</h3>
+                                                <h4 class="h6 text-white-75 mb-3">More Information</h4>
+                                                <a class="btn btn-sm btn-primary" href="javascript:void(0)">
+                                                    <i class="fa fa-pencil-alt mr-1"></i> Edit
+                                                </a>
+                                                <a class="btn btn-sm btn-danger" href="javascript:void(0)">
+                                                    <i class="fa fa-times mr-1"></i> Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- END Image Rotate Left -->
+                        </div>
                     </div>
                 </div>
-                @if ($errors->any())
+                <!-- END Block Tabs With Options Default Style -->
+            @if ($errors->any())
                     <ul class="alert alert-danger">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -189,6 +236,6 @@
     <script src="{{ asset('js/plugins/dropzone/dropzone.min.js')}}"></script>
 
     <!-- Page JS Helpers (Slick Slider Plugin) -->
-    <script>jQuery(function(){ Dashmix.helpers('select2'); });</script>
+    <script>jQuery(function(){ Dashmix.helpers(['core-bootstrap-tooltip', 'core-bootstrap-tabs','select2']); });</script>
 
 @endsection
