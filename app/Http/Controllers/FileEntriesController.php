@@ -50,6 +50,7 @@ class FileEntriesController extends Controller
             'success' => false,
         ], 500);
     }
+
     public function store(Request $request)
     {
         $file = Input::file('file');
@@ -68,9 +69,7 @@ class FileEntriesController extends Controller
             $input['vinculo_padre'] = Input::get('vinculo_padre');
             $input['vinculo'] = Uuid::generate();
             $file = FileEntry::create($input);
-
         }
-
     }
 
     public function create()

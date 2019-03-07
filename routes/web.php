@@ -33,7 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
             return Response::download($path);
         }
     });*/
-
 });
 Route::resource('files', 'FileEntriesController');
 

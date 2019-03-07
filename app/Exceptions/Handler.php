@@ -69,8 +69,10 @@ class Handler extends ExceptionHandler
         if (config('app.debug') && !$request->is('api/*')) {
             if ($exception instanceof TokenMismatchException) {
                 Session::flash('TokenMismatchException_ev', true);
+
                 return redirect('/login?TokenMismatchException_ev=true');
             }
+
             return parent::render($request, $exception);
         }
         if ($exception instanceof ValidationException) {
