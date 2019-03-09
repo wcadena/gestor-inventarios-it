@@ -72,8 +72,8 @@ class InformeMantenimientoPreventivo extends Model
     /**
      * Get the post's image or file.
      */
-    public function image()
+    public function images()
     {
-        return $this->morphOne('App\FileEntry', 'imageable');
+        return $this->morphMany('App\FileEntry', 'imageable');
     }
 }

@@ -155,12 +155,12 @@
                 {!! Form::close() !!}
                 <div class="container">
                     <div class="block-content">
-                        {!! Form::open(['url' => 'files', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}
+                        {!! Form::open(['url' => 'files/file', 'class' => 'dropzone','enctype' =>'multipart/form-data']) !!}
                             <div class="fallback">
                                 <input name="files" type="file" multiple />
                             </div>
                             <input type="hidden" name="vinculo_padre" value="{{$vinculo_global_info}}"/>
-                            <input type="hidden" name="imageable_type" value="informes"/>
+                            <input type="hidden" name="imageable_type" value="informe_proyectos_seccion"/>
                             <input type="hidden" name="imageable_id" value="{{$vinculo_global_info}}"/>
                         {!! Form::close() !!}
                     </div>

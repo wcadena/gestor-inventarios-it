@@ -24,7 +24,7 @@
         <link rel="stylesheet" id="css-theme" href="{{ mix('/css/dashmix.css') }}">
 
         <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" href="{{ mix('/css/themes/xwork.css') }}"> -->
+        <!-- <link rel="stylesheet" href="{{ mix('/css/themes/xdream.css') }}"> -->
         @yield('css_after')
 
         <!-- Scripts -->
@@ -92,7 +92,7 @@
         <script src="{{ mix('/js/dashmix.app.js') }}"></script>
 
         <!-- Laravel Original JS -->
-        <script src="{{ mix('/js/laravel.app.js') }}"></script>
+        <script src="{{ mix('/js/inventarios.app.js') }}"></script>
 
         @yield('js_after')
     </body>
