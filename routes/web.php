@@ -38,7 +38,6 @@ Route::prefix('files')->name('files.')->group(function () {
     Route::resource('file', 'FileEntriesController');
 });
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/home', 'HomeController@index');
 /*
