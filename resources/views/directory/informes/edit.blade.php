@@ -201,10 +201,19 @@
                                             <div class="options-overlay-content">
                                                 <h3 class="h4 text-white mb-2">{{$filesxcv->filename}}</h3>
                                                 <h4 class="h6 text-white-75 mb-3">{{$filesxcv->mime}}</h4>
+                                                {!! Form::open([
 
-                                                <a class="btn btn-sm btn-danger" href="javascript:void(0)">
-                                                    <i class="fa fa-times mr-1"></i> Borrar
-                                                </a>
+                                                                                    'method'=>'DELETE',
+
+                                                                                    'url' => ['files/file', $filesxcv->id],
+
+                                                                                    'style' => 'display:inline'
+
+                                                                                ]) !!}
+
+                                                {!! Form::button(__('form.deletee'), ['class' => 'btn btn-sm btn-light m-1','type' => 'submit']) !!}
+
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
                                     </div>

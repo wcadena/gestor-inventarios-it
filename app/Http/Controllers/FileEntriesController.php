@@ -13,6 +13,11 @@ use Webpatser\Uuid\Uuid;
 
 class FileEntriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authEmp:system');
+    }
     /**
      * muestra todos los files.
      *
@@ -77,5 +82,17 @@ class FileEntriesController extends Controller
         $filesxcv2 = FileEntry::findOrFail($id);
         //dd($filesxcv2);
         return Storage::disk('uploads')->download($filesxcv2->path.DIRECTORY_SEPARATOR.$filesxcv2->filename);
+    }
+
+    /**
+     * borrar a
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id)
+    {
+        $filesxcv2 = FileEntry::findOrFail($id);
+        Storage::disk('uploads')->download($filesxcv2->path.DIRECTORY_SEPARATOR.$filesxcv2->filename);
+        FileEntry::destroy($id);
     }
 }
