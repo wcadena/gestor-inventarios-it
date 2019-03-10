@@ -92,6 +92,6 @@ class HomeController extends Controller
              */
         });
 
-        return view('home', compact('maquinas', 'usuarios', 'equipos_asignados', 'custodios', 'pie_estaciones'));
+        return view('adminlte::home', compact('maquinas', 'usuarios', 'equipos_asignados', 'custodios', 'pie_estaciones'));
     }
 }

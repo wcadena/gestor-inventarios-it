@@ -1,13 +1,9 @@
 @extends('layouts.master')
 
 
-@section('css_before')
-    <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
-@endsection
-
-@section('contentheader_aqui', 'Orden')
 
 @section('content')
+
 
 
     <h1>Create New Orden</h1>
@@ -20,18 +16,18 @@
 
 
 
-                <div class="form-group {{ $errors->has('ordenCompra') ? ' form-control-alt is-invalid' : ''}}">
-                {!! Form::label('ordenCompra', 'Orden de compra: ', ['class' => 'control-label']) !!}
-                <div class="ekihk">
+                <div class="form-group {{ $errors->has('ordenCompra') ? 'has-error' : ''}}">
+                {!! Form::label('ordenCompra', 'Orden de compra: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
                     {!! Form::text('ordenCompra', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('ordenCompra', '<p class="invalid-feedback">:message</p>') !!}
+                    {!! $errors->first('ordenCompra', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha_compra') ? ' form-control-alt is-invalid' : ''}}">
-                {!! Form::label('fecha_compra', 'Fecha Compra: ', ['class' => 'control-label']) !!}
-                <div class="ekihk">
-                    {!! Form::text('fecha_compra', null, ['class' => 'js-datepicker form-control','id'=>'fecha_compra']) !!}
-                    {!! $errors->first('fecha_compra', '<p class="invalid-feedback">:message</p>') !!}
+            <div class="form-group {{ $errors->has('fecha_compra') ? 'has-error' : ''}}">
+                {!! Form::label('fecha_compra', 'Fecha Compra: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('fecha_compra', null, ['class' => 'form-control','id'=>'fecha_compra']) !!}
+                    {!! $errors->first('fecha_compra', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
@@ -67,13 +63,20 @@
     @endif
 
 
+
 @endsection
 
-@section('js_after')
-    <!-- Page JS  bootstrap datepicker -->
-    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+@section('scripts')
+    @include('layouts.partials.scripts')
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#fecha_compra').datepicker({
+                format: 'yyyy-mm-dd'
+            });
 
-    <!-- Page JS Helpers (Slick Slider Plugin) -->
-    <script>jQuery(function(){ Dashmix.helpers('datepicker'); });</script>
+        });
+    </script>
 
 @endsection

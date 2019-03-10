@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ $custodio->id }}</td> <td> {{ $custodio->nombre_responsable }} </td><td> {{ $custodio->ciudad }} </td><td> {{ $custodio->area_piso }} </td>
                     <td><a href="{{ url('custodio/' . $custodio->id . '/edit') }}">
-                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
                         </a></td>
                 </tr>
             </tbody>    
@@ -52,7 +52,7 @@
                     <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td><td>{{ $item->no_serie }}</td><td>{{ $item->estado }}</td>
                     <td>
                         <a href="{{ url('equipos/' . $item->id . '/edit') }}">
-                            <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
+                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
                         </a>
                     </td>
                 </tr>
