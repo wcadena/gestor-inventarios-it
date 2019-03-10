@@ -1,5 +1,5 @@
-## Contribuir a gestor-inventarios-it
-Damos las gracias y bienvenidas sean todas las correcciones y mejoras en el desarrollo del código de gestor-inventarios-it, pruebas y documentación. 
+## Contribuir a InventarioFinalApp
+Damos las gracias y bienvenidas sean todas las correcciones y mejoras en el desarrollo del código de InventarioFinalApp, pruebas y documentación. 
 Esta guía detalla como contribuir en el proyecto de una manera que sea eficiente para toda la comunidad.
 
 
@@ -15,7 +15,7 @@ Esta guía detalla como contribuir en el proyecto de una manera que sea eficient
 
 ### 1. Prerequisitos 
 
-1.1 [Leer el Manual de gestor-inventarios-it](/docs/gestor-inventarios-it.docx) 
+1.1 [Leer el Manual de InventarioFinalApp](/docs/InventarioFinalApp.docx) 
 En costrucción 
 
 1.2 Tener clara la normalización de código fuente
@@ -27,15 +27,15 @@ En costrucción
 
 ### 2. Preparación de ambiente local
 
-2.1 Realizar Fork del repositorio https://github.com/wcadena/gestor-inventarios-it a tu cuenta GitHub
+2.1 Realizar Fork del repositorio https://github.com/wcadena/inventarioFinalApp a tu cuenta GitHub
 
 2.2 Clonar el proyecto forkeado desde tu cuenta GitHub. Ejemplo:
   ```console
-  https://github.com/wcadena/gestor-inventarios-it.git
+  https://github.com/wcadena/inventarioFinalApp.git
   ```
 2.3 Agregar el repositorio padre como origen remoto. Ejemplo:
   ```console
-  git remote add upstream https://github.com/wcadena/gestor-inventarios-it.git
+  git remote add upstream https://github.com/wcadena/inventarioFinalApp.git
   ```
 2.4 Luego de clonado el proyecto, crear la rama beta para empezar a trabajar. Ejemplo:
   ```console
@@ -130,7 +130,7 @@ contáctese con nosotros al correo wcadena@outlook.com
 
 ## Traducción
 
-Las traducciones se hacen a partir del [repo original](https://github.com/wcadena/gestor-inventarios-it). Los aportes de traducción pueden ser de diferentes maneras:
+Las traducciones se hacen a partir del [repo original](https://github.com/wcadena/inventarioFinalApp). Los aportes de traducción pueden ser de diferentes maneras:
 
  1. Traducir los términos pendientes o nuevos.
  2. Corregir traducciones existentes.
@@ -141,7 +141,7 @@ Sin embargo, al traducir queremos utilizar un español internacional.
 
 ## Flujo de Trabajo
 
- 1. Busca una traducción pendiente en la columna TODO: [ver traducciones pendientes](https://github.com/wcadena/gestor-inventarios-it/pendientes).
+ 1. Busca una traducción pendiente en la columna TODO: [ver traducciones pendientes](https://github.com/wcadena/inventarioFinalApp/pendientes).
  2. Asegúrate que nadie esté trabajando en él (te puedes dar cuenta viendo que no haya nadie asignado ni nadie ha comentado que está trabajando).
  3. Sigue las reglas descritas abajo y crea tu PR.
 

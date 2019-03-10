@@ -16,7 +16,7 @@ return [
     'foot1'                => '. Sistema de Inventarios ',
     'foot0'                => 'Avianca',
     'foot2'                => 'SES Ecuador',
-    'foot3'                => 'Created by <a href="http://www.ecuatask.com">Wagner Cadena</a>',
+    'foot3'                => 'Created by <a href="http://www.ecuatask.com">Wagner Cadena</a> Template tomado de <a href="https://github.com/acacha/adminlte-laravel">Github</a>',
     'init1'                => 'Sistema de Inventario de máquinas',
     'init2'                => '',
     'init3'                => 'Esta aquí',
