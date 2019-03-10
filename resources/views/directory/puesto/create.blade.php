@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 
+@section('css_before')
+    <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+@endsection
+
+@section('contentheader_aqui', 'Puesto')
 
 @section('content')
 
@@ -17,42 +22,42 @@
 
 
     @php( $campo = 'ubicacion_id' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {{ Form::select($campo, \App\Ubicacion::all()->pluck('edificio','id'), null, ['class' => 'chosen-select form-control','id' => $campo ]) }}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
 
 
     @php( $campo = 'codigo' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, \App\Puesto::generarCodigo(), ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
     @php( $campo = 'detalle' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
 
 
     @php( $campo = 'estado' )
-    <div class="form-group {{ $errors->has($campo) ? 'has-error' : ''}}">
-        {!! Form::label($campo, $campo.':', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {{ Form::select($campo, \App\Puesto::getENUM('estado'), null, ['class' => 'chosen-select form-control']) }}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
@@ -69,12 +74,12 @@
     @php( $campo = 'x' )
 
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
 
     @php( $campo = 'y' )
 
             {!! Form::text($campo, null, ['class' => 'form-control','id'=>$campo]) !!}
-            {!! $errors->first($campo, '<p class="help-block">:message</p>') !!}
+            {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
 
 
     <div class="form-group">
@@ -111,18 +116,14 @@
 
 @endsection
 
-@section('scripts')
-    @include('layouts.partials.scripts')
-    <!-- bootstrap datepicker -->
-    <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#fecha_compra').datepicker({
-                format: 'yyyy-mm-dd'
-            });
+@section('js_after')
+    <!-- Page JS  bootstrap datepicker -->
+    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
-        });
-    </script>
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('datepicker'); });</script>
+
+
     <script type="text/javascript">
         function setImagen(){
             var ubicacion_id = $( "#ubicacion_id" ).val();

@@ -62,7 +62,7 @@ class BitacoraController extends Controller
      */
     public function store(Request $request)
     {
-        $request->input('fecha_ingreso', Carbon::createFromFormat('Y-m-d', $request->get('fecha_ingreso')));
+        $request->input('fecha_ingreso', Carbon::createFromFormat('d/m/Y', $request->get('fecha_ingreso')));
 
         $BI = Bitacora::create($request->all());
         //dd($BI);
@@ -126,7 +126,7 @@ class BitacoraController extends Controller
     public function update($id, Request $request)
     {
         $bitacora = Bitacora::findOrFail($id);
-        $request->input('fecha_ingreso', Carbon::createFromFormat('Y-m-d', $request->get('fecha_ingreso')));
+        $request->input('fecha_ingreso', Carbon::createFromFormat('d/m/Y', $request->get('fecha_ingreso')));
 
         $bitacora->update($request->all());
 

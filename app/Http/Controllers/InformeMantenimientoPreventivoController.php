@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Areas;
 use App\Custodios;
+use App\FileEntry;
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
@@ -13,7 +14,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Log;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -47,7 +47,7 @@ class InformeMantenimientoPreventivoController extends Controller
         $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
         $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
 
-        return view('directory.informes.create', compact('dtos', 'custodios', 'areas', 'categoria_mant'));
+        return view('directory.informes.create', compact('custodios', 'areas', 'categoria_mant'));
     }
 
     /**
@@ -87,17 +87,15 @@ class InformeMantenimientoPreventivoController extends Controller
             $proyectos = Input::get('informe_proyectos_seccions_inf');
             if (is_array($proyectos)) {
                 foreach ($proyectos as $proyecto) {
-                    Log::info($proyecto);
-                    if($proyecto != '---'){
+                    if ($proyecto != '---') {
                         $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
-                        Log::info($proyecto);
                         $proyecto_x = $proyecto_x_met->toArray();
 
                         $proyecto_x['proyecto_seccion_id'] = $proyecto_x['id'];
                         $proyecto_x['informe_manto_prev_id'] = $inf->id;
                         $proyecto_x['tipo'] = 'elemento_seccion';
 
-                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions))?$proyecto_x_met->informeProyectosSeccions->max('orden'):1;
+                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
 
@@ -108,6 +106,9 @@ class InformeMantenimientoPreventivoController extends Controller
                 Session::flash('flash_message', 'Secciones added!');
             }
             //////////////////////////////////////////////
+            /// coloca los archivos con informe
+            /// //////////////////////////////////////////\
+            FileEntry::where('vinculo_padre', '=', $inf->vinculo)->update(['imageable_id'=>$inf->id]);
             DB::commit();
 
             return redirect('informes');
@@ -129,9 +130,13 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function show($id)
     {
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
+        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
+
         $informe = InformeMantenimientoPreventivo::findOrFail($id);
 
-        return view('directory.informes.show', compact('informe'));
+        return view('directory.informes.show', compact('informe', 'custodios', 'areas', 'categoria_mant'));
     }
 
     /**

@@ -28,7 +28,7 @@ class InformeProyectosSeccion extends Model
      *
      * @var string
      */
-    protected $dateFormat = 'U';
+    //protected $dateFormat = 'U';
 
     /**
      * The connection name for the model.

@@ -7,25 +7,25 @@
 
     {!! Form::open(['url' => 'areas', 'class' => 'form-horizontal']) !!}
 
-    <div class="form-group {{ $errors->has('area') ? 'has-error' : ''}}">
-        {!! Form::label('area', 'Area: ', ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has('area') ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label('area', 'Area: ', ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('area', null, ['class' => 'form-control']) !!}
-            {!! $errors->first('area', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('area', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('empresa') ? 'has-error' : ''}}">
-        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
+    <div class="form-group {{ $errors->has('empresa') ? ' form-control-alt is-invalid' : ''}}">
+        {!! Form::label('empresa', trans('form.empresa'), ['class' => 'control-label']) !!}
+        <div class="ekihk">
             {!! Form::text('empresa', Auth::user()->empresa, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
-            {!! $errors->first('empresa', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('empresa', '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
 
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit(trans('fo.Create'), ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::button(__('<i class="fa fa-fw fa-save mr-1"></i> Crear'), ['class' => 'btn btn-block btn-hero-primary','type' => 'submit']) !!}
         </div>
     </div>
     {!! Form::close() !!}

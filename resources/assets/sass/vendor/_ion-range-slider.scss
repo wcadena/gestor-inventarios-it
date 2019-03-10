@@ -1,0 +1,54 @@
+//
+// Ion Range Slider
+//
+// Overwrite/Extend styles
+// --------------------------------------------------
+
+.irs {
+    &-line {
+        height: 5px;
+        background: $body-bg;
+        border: none;
+        border-radius: $border-radius-lg;
+    }
+
+    &-bar {
+        height: 5px;
+        border: none;
+        background: theme-color("primary");
+
+        &-edge {
+            height: 5px;
+            border: none;
+            background: theme-color("primary");
+            border-radius: $border-radius-lg 0 0 $border-radius-lg;
+        }
+    }
+
+    &-slider {
+        top: 25px;
+        width: 20px;
+        height: 20px;
+        border: none;
+        background: $white;
+        border-radius: 50%;
+        box-shadow: 0 1px 5px rgba(0,0,0,.35);
+
+        @include hover {
+            background: $white;
+            box-shadow: 0 1px 5px rgba(0,0,0,.75);
+        }
+    }
+
+    &-from,
+    &-to,
+    &-single {
+        color: $white;
+        font-size: .75rem;
+        background: theme-color("primary");
+    }
+
+    &-grid-pol {
+        background: theme-color("primary");
+    }
+}

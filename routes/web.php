@@ -11,6 +11,7 @@
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,16 +23,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     //adminlte_routes
-    Route::get('files', 'FileEntriesController@index');
+    /*Route::get('files', 'FileEntriesController@index');
     Route::get('files/create', 'FileEntriesController@create');
     Route::post('files/upload-file', 'FileEntriesController@uploadFile');
 
-    Route::get('files/{path_file}/{file}', function($path_file = null, $file = null) {
+    Route::get('files/{path_file}/{file}', function ($path_file = null, $file = null) {
         $path = storage_path().'/files/uploads/'.$path_file.'/'.$file;
-        if(file_exists($path)) {
+        if (file_exists($path)) {
             return Response::download($path);
         }
-    });
+    });*/
+});
+Route::prefix('files')->name('files.')->group(function () {
+    Route::resource('file', 'FileEntriesController');
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +170,7 @@ Route::get('tags_model_tipo', function (Illuminate\Http\Request  $request) {
     $tags = App\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')
         ->select(DB::raw('tipo_equipo'))
         ->groupby('tipo_equipo')
-    ->get();
+        ->get();
 
     return response()->json($tags, 200);
 });
@@ -305,3 +309,14 @@ Route::resource('proyecto', 'ProyectoController');
 Route::resource('proyecto.proyecto_seccion', 'ProyectoSeccionController');
 //php artisan crud:controller ProyectoSeccionController --crud-name=proyecto_seccion --model-name=ProyectoSeccion --view-path="directory"
 //php artisan crud:view proyecto_seccion --fields="proyecto_id#integer; name#string; descripcion#text;tipo#select#options={"titulo": "Titulo", "seccion": "Seccion"};orden#integer" --view-path="directory"  	 	--form-helper=laravelcollective
+//////////////////////////////////////////////
+/// del template nuevo
+/// ///////////////////////////////////////////
+
+// Example Routes
+Route::view('/', 'landing');
+Route::match(['get', 'post'], '/dashboard', function () {
+    return view('dashboard');
+});
+Route::view('/examples/plugin', 'examples.plugin');
+Route::view('/examples/blank', 'examples.blank');
