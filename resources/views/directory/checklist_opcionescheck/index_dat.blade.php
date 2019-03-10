@@ -42,9 +42,9 @@
                         </td>
                     @elseif($item->tipo=='fecha')
                         @if($item->valor1=='')
-                            <td>{{Form::date('name', '',array('id' => 'valor1-'.$item->id,'class' => 'form-control datepicker7892' ,'data-inputmask' =>"'alias': 'mm/dd/yyyy'", 'data-mask' ))}}</td>
+                            <td>{{Form::date('name', '',array('id' => 'valor1-'.$item->id,'class' => 'form-control js-datepicker' ,'data-inputmask' =>"'alias': 'mm/dd/yyyy'", 'data-mask' ))}}</td>
                         @else
-                              <td>{{Form::date('name', $item->valor1,array('id' => 'valor1-'.$item->id,'class' => 'form-control datepicker7892' ,'data-inputmask' =>"'alias': 'mm/dd/yyyy'", 'data-mask' ))}}</td>
+                              <td>{{Form::date('name', $item->valor1,array('id' => 'valor1-'.$item->id,'class' => 'form-control js-datepicker' ,'data-inputmask' =>"'alias': 'mm/dd/yyyy'", 'data-mask' ))}}</td>
                         @endif
                     @elseif($item->tipo=='si-no&version')
                         <td>{{ Form::select('valor1', array('SI' => 'SI', 'NO' => 'NO'),$item->valor1,array('id' => 'valor1-'.$item->id,'class' => 'form-control')) }}
@@ -139,7 +139,7 @@
                             'url' => ['checklist_opcionescheck', $item->id],
                             'style' => 'display:inline',							 							 'id' => 'formDel-'.$item->id
                         ]) !!}
-                            
+
                         {!! Form::close() !!}
                     </td>
                     {!! Form::open([
@@ -179,9 +179,7 @@
 
     <script>
         $(function () {
-            $('.datepicker7892').datepicker({
-                autoclose: true
-            });
+
             $(".ipmask667").inputmask();
             $.ajaxSetup({
                 headers: {
@@ -193,9 +191,9 @@
                 e.preventDefault();
                 var a= $(this).parents("tr");
                 var id = (a.data('id'));
-                
+
                 var $btn = $(this).button('loading');
-                
+
                 var url =$("#form-"+id).attr("action");
                 var $post             = {};
                 $post.valor1            = $('#valor1-' +id).val();
@@ -209,7 +207,7 @@
                 $post.valor9            = $('#valor9-' +id).val();
                 $post.valor10           = $('#valor10-' +id).val();
                 $post._token        = $('#token-' +id).val();
-                
+
                 $.ajax({
                     type: "PATCH",
                     url: url,
@@ -228,7 +226,7 @@
                         $btn.button('reset');
                     }
                 });
-                
+
             });						/**/                /////////////////////////////////////////                // business logic...
             //////////////////////////////////////////////////////////////////
             $('#exampleModal').on('show.bs.modal', function (event) {

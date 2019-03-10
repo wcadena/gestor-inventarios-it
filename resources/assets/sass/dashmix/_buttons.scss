@@ -1,0 +1,70 @@
+//
+// Buttons
+// --------------------------------------------------
+
+.btn {
+    font-family: $font-family-base;
+
+    &.btn-square { border-radius: 0; }
+    &.btn-rounded { border-radius: 2rem; }
+
+    .si,
+    .fa {
+        position: relative;
+        top: 1px;
+    }
+
+    &.btn-sm .fa { top: 0; }
+}
+
+// Hero variant buttons
+.btn-hero-primary {
+    @include button-hero-variant(theme-color("primary"));
+}
+
+.btn-hero-secondary {
+    @include button-hero-variant(theme-color("secondary"));
+}
+
+.btn-hero-success {
+    @include button-hero-variant(theme-color("success"));
+}
+
+.btn-hero-info {
+    @include button-hero-variant(theme-color("info"));
+}
+
+.btn-hero-warning {
+    @include button-hero-variant(theme-color("warning"));
+}
+
+.btn-hero-danger {
+    @include button-hero-variant(theme-color("danger"));
+}
+
+.btn-hero-dark {
+    @include button-hero-variant(theme-color("dark"));
+}
+
+.btn-hero-light {
+    @include button-hero-variant(theme-color("light"));
+}
+
+// Hero size variant buttons
+.btn-hero-lg {
+  @include button-size($btn-hero-padding-y-lg, $btn-hero-padding-x-lg, $font-size-sm, $btn-line-height, $btn-hero-border-radius);
+}
+
+.btn-hero-sm {
+  @include button-size($btn-hero-padding-y-sm, $btn-hero-padding-x-sm, $font-size-sm, $btn-line-height, $btn-hero-border-radius);
+}
+
+// Used for buttons that adapt to light/dark header and sidebar variations
+.btn-dual {
+    @include button-dual-variant(darken($body-color, 22%), darken($body-bg, 10%));
+}
+
+.page-header-dark #page-header .btn-dual,
+.sidebar-dark #sidebar .btn-dual {
+    @include button-dual-variant($white, theme-color("primary-dark"));
+}

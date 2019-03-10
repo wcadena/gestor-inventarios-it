@@ -1,134 +1,106 @@
 @extends('layouts.master')
 
-@section('htmlheader')
 
-    @include('layouts.partials.htmlheader')
-
-    <!-- Select2 -->
-
-    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
-
+@section('css_before')
+    <link href="{{ asset('js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
+
+@section('contentheader_aqui', 'Equipos')
+
 @section('content')
 
-
-
-    <h1>@lang('form.equipos') de {{$nombre_responsable2}}<a href="{{ url('equipos/create') }}" class="btn btn-primary pull-right btn-sm">@lang('form.addnew') Equipo</a></h1>
-
-
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-    <fieldset>
-
-        <div class="form-group" >
+    <!-- Full Table -->
+    <div class="block block-rounded block-bordered">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">@lang('form.equipos') de <a href="{{ url('custodio', $custodio_id) }}">{{$nombre_responsable2}} <i class="fa fa-user-circle"></i></a></h3>
+            <div class="block-options">
+                <button type="button" class="btn-block-option">
+                    <a href="{{ url('equipos/create') }}" class="btn btn-hero-primary js-click-ripple-enabled"><i class="si si-plus"></i> Equipo</a>
+                </button>
+            </div>
+        </div>
+        <div class="block-content">
+            <p>
             {!! Form::open([
                             'method'=>'POST',
                             'url' => ['reasignarindexecho']
                         ]) !!}
-            <div class="input-group">
-
-             <span class="input-group-btn">
-
-
-
-                    {!! Form::submit('Asignar Equipos', ['class' => ' btn btn-default']) !!}
-
-
-
-              </span>
-
-                <div class="form-group {{ $errors->has('equipoidfull') ? 'has-error' : ''}}">
-
-                    <div>
-                        {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
-                        {!! $errors->first('equipoidfull', '<p class="help-block">:message</p>') !!}
+            <div class="form-group {{ $errors->has('equipoidfull') ? ' form-control-alt is-invalid' : ''}}">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                       {!! Form::button(__('<i class="fa fa-fw fa-save mr-1"></i> Asignar Equipos'), ['class' => 'btn btn-block btn-hero-primary','type' => 'submit']) !!}
                     </div>
+                    {{Form::select('equipoidfull[]', array(), '',array('id' => 'equipoidfull','class' => 'doremfg67y id_serchf form-control','multiple'=>'multiple')) }}
+                    {!! $errors->first('equipoidfull', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
-
-
-
-
-
-                {{ Form::hidden('custodio_id', $custodio_id) }}
-
-
-
             </div>
+            </p>
+            {{ Form::hidden('custodio_id', $custodio_id) }}
             {!! Form::close() !!}
-            <label for="equipoid">Equipo </label>
+            @if ($errors->any())
+                <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <div class="table-responsive">
 
+                <table class="table table-bordered table-striped table-hover">
 
+                    <thead>
 
+                    <tr>
 
+                        <th>@lang('form.sno')</th><th>Sociedad</th><th>No. RPM (Cód.Barras)</th>
 
+                        <th>@lang('form.codint')</th>
+
+                        <th>Descripción (Marca - Modelo)</th><th>@lang('form.noser')</th><th>Estado<th>Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    @php $x=0; @endphp
+
+                    @foreach($equipos as $item)
+
+                        @php $x++;@endphp
+
+                        <tr>
+
+                            <td>{{ $x }}</td>
+
+                            <td>{{ $item->sociedad }}</td><td><a href="{{ url('equipos', $item->id) }}">{{ $item->codigo_barras }}</a></td>
+
+                            <td>{{ $item->codigo_avianca }}</td>
+
+                            <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td><td>{{ $item->no_serie }}</td><td>{{ $item->estado }}</td>
+
+                            <td>
+
+                                <a href="{{ url('equipos/' . $item->id . '/edit') }}">
+
+                                    <button type="submit" class="btn btn-sm btn-light m-1">@lang('form.update')</button>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    @endforeach
+
+                    </tbody>
+
+                </table>
+
+                <div class="pagination"> {!! $equipos->render() !!} </div>
+            </div>
         </div>
-
-
-
-    </fieldset>
-
-    <div class="table">
-
-        <table class="table table-bordered table-striped table-hover">
-
-            <thead>
-
-            <tr>
-
-                <th>@lang('form.sno')</th><th>Sociedad</th><th>No. RPM (Cód.Barras)</th>
-
-                <th>@lang('form.codint')</th>
-
-                <th>Descripción (Marca - Modelo)</th><th>@lang('form.noser')</th><th>Estado<th>Actions</th>
-
-            </tr>
-
-            </thead>
-
-            <tbody>
-
-            @php $x=0; @endphp
-
-            @foreach($equipos as $item)
-
-                @php $x++;@endphp
-
-                <tr>
-
-                    <td>{{ $x }}</td>
-
-                    <td>{{ $item->sociedad }}</td><td><a href="{{ url('equipos', $item->id) }}">{{ $item->codigo_barras }}</a></td>
-
-                    <td>{{ $item->codigo_avianca }}</td>
-
-                    <td>{{ $item->modelo_equipoxc->modelo }}-{{ $item->modelo_equipoxc->fabricante }} {{ $item->descripcion }}</td><td>{{ $item->no_serie }}</td><td>{{ $item->estado }}</td>
-
-                    <td>
-
-                        <a href="{{ url('equipos/' . $item->id . '/edit') }}">
-
-                            <button type="submit" class="btn btn-primary btn-xs">@lang('form.update')</button>
-
-                        </a>
-
-                    </td>
-
-                </tr>
-
-            @endforeach
-
-            </tbody>
-
-        </table>
-
-        <div class="pagination"> {!! $equipos->render() !!} </div>
 
     </div>
 
@@ -138,144 +110,146 @@
 
 
 
-@section('scripts')
+@section('js_after')
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/select2/js/select2.min.js') }}"></script>
 
-    @include('layouts.partials.scripts')
+    <!-- Page JS Helpers (Slick Slider Plugin) -->
+    <script>jQuery(function(){ Dashmix.helpers('select2'); });</script>
 
-    <script src="{{ asset('/js/select2.min.js') }}"></script>
 
     <script>
 
-        function redirect (url) {
+      function redirect (url) {
 
-            var ua        = navigator.userAgent.toLowerCase(),
+        var ua        = navigator.userAgent.toLowerCase(),
 
-                isIE      = ua.indexOf('msie') !== -1,
+          isIE      = ua.indexOf('msie') !== -1,
 
-                version   = parseInt(ua.substr(4, 2), 10);
-
-
-
-            // Internet Explorer 8 and lower
-
-            if (isIE && version < 9) {
-
-                var link = document.createElement('a');
-
-                link.href = url;
-
-                document.body.appendChild(link);
-
-                link.click();
-
-            }
+          version   = parseInt(ua.substr(4, 2), 10);
 
 
 
-            // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
+        // Internet Explorer 8 and lower
 
-            else {
+        if (isIE && version < 9) {
 
-                window.location.href = url;
+          var link = document.createElement('a');
 
-            }
+          link.href = url;
+
+          document.body.appendChild(link);
+
+          link.click();
 
         }
 
-        window.onload = function() {
-            $(function () {
-
-                $.fn.select2.defaults.set( "theme", "classic" );
-
-                //alert("hola");
-
-                $('.zxsdfgsd33').click(function (e) {
-
-                    e.preventDefault();
-
-                    var a = $('#equipoidf').val();
-
-                    var b = $('#sxxxdw3wsfg').attr('href');
-
-                    var c = b.replace('{idzx3er}', a);
-
-                    redirect(c);
 
 
-                });
+        // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like IE8 & lower does)
 
-                ///////////////////////////////////////////////////////////////////////////////////
+        else {
+
+          window.location.href = url;
+
+        }
+
+      }
+
+      window.onload = function() {
+        $(function () {
+
+          $.fn.select2.defaults.set( "theme", "classic" );
+
+          //alert("hola");
+
+          $('.zxsdfgsd33').click(function (e) {
+
+            e.preventDefault();
+
+            var a = $('#equipoidf').val();
+
+            var b = $('#sxxxdw3wsfg').attr('href');
+
+            var c = b.replace('{idzx3er}', a);
+
+            redirect(c);
 
 
-                $('.id_serchf').select2({
+          });
 
-                    // Activamos la opcion "Tags" del plugin
+          ///////////////////////////////////////////////////////////////////////////////////
 
 
-                    language: "es",
+          $('.id_serchf').select2({
 
-                    placeholder: "Select Avianca Code",
+            // Activamos la opcion "Tags" del plugin
 
-                    tags: true,
 
-                    tokenSeparators: [','],
+            language: "es",
 
-                    templateResult: formatState,
+            placeholder: "Select Avianca Code",
 
-                    ajax: {
+            tags: true,
 
-                        dataType: 'json',
+            tokenSeparators: [','],
 
-                        url: '{{ url("tags") }}',
+            templateResult: formatState,
 
-                        delay: 250,
+            ajax: {
 
-                        data: function (params) {
+              dataType: 'json',
 
-                            return {
+              url: '{{ url("tags") }}',
 
-                                term: params.term
+              delay: 250,
 
-                            }
+              data: function (params) {
 
-                        },
+                return {
 
-                        processResults: function (data, page) {
+                  term: params.term
 
-                            return {
+                }
 
-                                results: data
+              },
 
-                            };
+              processResults: function (data, page) {
 
-                        },
+                return {
 
-                    }
-
-                });
-
-                ///////////////////////////////////////////////////////////////////////////////////////////
-
-                function formatState(state) {
-
-                    if (!state.id) {
-                        return state.text;
-                    }
-
-                    var $state = $(
-                        '<span>' + state.id + ":" + state.text + '</span>'
-                    );
-
-                    return $state;
+                  results: data
 
                 };
 
+              },
 
-                ///////////////////////////////////////////////////////////////////////////////////////
+            }
+
+          });
+
+          ///////////////////////////////////////////////////////////////////////////////////////////
+
+          function formatState(state) {
+
+            if (!state.id) {
+              return state.text;
+            }
+
+            var $state = $(
+              '<span>' + state.id + ":" + state.text + '</span>'
+            );
+
+            return $state;
+
+          };
 
 
-            });
-        };
+          ///////////////////////////////////////////////////////////////////////////////////////
+
+
+        });
+      };
 
 
 

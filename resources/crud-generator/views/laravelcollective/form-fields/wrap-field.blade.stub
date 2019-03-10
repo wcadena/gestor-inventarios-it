@@ -1,5 +1,5 @@
-<div class="form-group {{ $errors->has('%1$s') ? 'has-error' : ''}}">
+<div class="form-group {{ $errors->has('%1$s') ? ' form-control-alt is-invalid' : ''}}">
     {!! Form::label('%1$s', %2$s, ['class' => 'control-label']) !!}
     %3$s
-    {!! $errors->first('%1$s', '<p class="help-block">:message</p>') !!}
+    {!! $errors->first('%1$s', '<p class="invalid-feedback">:message</p>') !!}
 </div>

@@ -1,0 +1,65 @@
+//
+// Lists
+// --------------------------------------------------
+
+// Base List
+.list {
+    @include list-unstyled;
+
+    > li {
+        position: relative;
+    }
+
+    &.list-simple > li,
+    &-li-push > li {
+        margin-bottom: 1.25rem;
+    }
+
+    &.list-simple-mini > li,
+    &-li-push-sm > li {
+        margin-bottom: .625rem;
+    }
+}
+
+// Activity
+.list-activity {
+    > li {
+        margin-bottom: .75rem;
+        padding-bottom: .375rem;
+        padding-left: 2rem;
+        border-bottom: 1px solid $body-bg;
+
+        > i:first-child {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.25rem;
+            line-height: 1.25rem;
+            text-align: center;
+        }
+    }
+
+    > li:last-child {
+        border-bottom: none;
+    }
+}
+
+// Events
+.list-events > li {
+    margin-bottom: .25rem;
+    padding: .5rem;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    background-color: theme-color('info-light');
+    border-right: .125rem dashed rgba(0,0,0,.15);
+    transition: transform .3s ease-out;
+    border-radius: $border-radius-sm;
+
+    @include hover {
+        cursor: move;
+        border-left-color: rgba(0,0,0,.3);
+        transform: translateX(.25rem);
+    }
+}
