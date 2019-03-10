@@ -427,10 +427,10 @@
                 <div class="content py-0">
                     <div class="row font-size-sm">
                         <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-right">
-                            Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://goo.gl/vNS3I" target="_blank">pixelcave</a>
+                            Creado <i class="fa fa-heart text-danger"></i> por <a class="font-w600" href="#" target="_blank">Wágner Cadena</a>
                         </div>
                         <div class="col-sm-6 order-sm-1 text-center text-sm-left">
-                            <a class="font-w600" href="https://goo.gl/mDBqx1" target="_blank">Dashmix</a> &copy; <span data-toggle="year-copy">2018</span>
+                            <a class="font-w600" href="#" target="_blank">Ecuatask</a> &copy; <span data-toggle="year-copy">2019</span>
                         </div>
                     </div>
                 </div>
