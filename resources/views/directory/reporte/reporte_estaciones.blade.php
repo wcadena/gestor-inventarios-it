@@ -1,60 +1,57 @@
 @extends('layouts.master')
 
 
-@section('css_before')
-    <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
-@endsection
-
-@section('contentheader_aqui', 'Reportes')
-
 @section('content')
 
-    <!-- Full Table -->
-    <div class="block block-rounded block-bordered">
-        <div class="block-header block-header-default">
-            <h3 class="block-title">@lang('home.menrep2') / @lang('form.equipos')</h3>
-            <div class="block-options">
-                <button type="button" class="btn-block-option">
-                    <a href="{{ url('reporte1excelEstaciones/'.$estacione_id) }}" class="btn btn-hero-primary js-click-ripple-enabled"><i class="far fa-file-excel"></i> @lang('rep.Excel')</a>
-                </button>
-            </div>
+    <link href="{{ asset('https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <style>
+        .scroll-area{
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+    </style>
+    <section class="content">
+        <div class="list-group">
+            @foreach($estaciones as $item)
+            <a href="{{url('reporteEstaciones/'.$item->estacione_id)}}" class="list-group-item @if($item->estacione_id == $estacione_id) active @endif">
+                <h5 class="list-group-item-heading">{{$item->estacion}}</h5>
+                <p class="list-group-item-text">Tiene {{$item->Contador}} equipos</p>
+            </a>
+            @endforeach
         </div>
-        <section class="content">
-            <div class="list-group">
-                @foreach($estaciones as $item)
-                    <a href="{{url('reporteEstaciones/'.$item->estacione_id)}}" class="list-group-item @if($item->estacione_id == $estacione_id) active @endif">
-                        <h5 class="list-group-item-heading">{{$item->estacion}}</h5>
-                        <p class="list-group-item-text">Tiene {{$item->Contador}} equipos</p>
-                    </a>
-                @endforeach
-            </div>
-        </section>
-        <div class="block-content">
-            <div class=" scroll-area">
-                @php( $link_d=true)
-                @include('directory.reporte.repo1excel')
-            </div>
-        </div>
+    </section>
+    <h1>@lang('home.menrep2') / @lang('form.equipos') <a href="{{ url('reporte1excelEstaciones/'.$estacione_id) }}" class="btn btn-primary pull-right btn-sm"><i class='fa fa-file-excel-o'></i> Excel</a></h1>
+
+
+    <div class=" scroll-area">
+        @php( $link_d=true)
+        @include('directory.reporte.repo1excel')
     </div>
+
 @endsection
 
 
-@section('js_after')
+@section('scripts')
+    @include('layouts.partials.scripts')
 
-    <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Tabla -->
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
 
     <script>
-      window.onload = function() {
-        $(function () {
-          $('#repoTable').DataTable();
-        });
-      }
+
+        window.onload = function() {
+            $(function () {
+
+                $('#repoTable').DataTable();
+
+            });
+        }
     </script>
 @endsection
-
-
-
 
 
 

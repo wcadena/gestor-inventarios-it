@@ -1,8 +1,8 @@
 /node_modules
 /node_modules_otro
-/public/hot
-/public/storage
-/public/.well-known
+/html/hot
+/html/storage
+/html/.well-known
 /storage/*.key
 /storage/*files
 /vendor
