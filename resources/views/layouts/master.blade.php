@@ -1,1 +1,1 @@
-@include('adminlte::layouts.app')
+@include('layouts.backend')

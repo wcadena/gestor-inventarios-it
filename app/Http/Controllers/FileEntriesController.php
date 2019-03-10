@@ -8,23 +8,44 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Image;
 use Webpatser\Uuid\Uuid;
 
 class FileEntriesController extends Controller
 {
-    public function index() {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authEmp:system');
+    }
+
+    /**
+     * muestra todos los files.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
         $files = FileEntry::all();
 
         return view('directory.files.index', compact('files'));
     }
-    //
-    public function uploadFile(Request $request) {
+
+    /**
+     * guarda un archivo.
+     *
+     * @param Request $request
+     *
+     * @throws \Exception
+     */
+    public function store(Request $request)
+    {
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 
-        $path = hash( 'sha256', time());
+        $path = hash('sha256', time());
 
-        if(Storage::disk('uploads')->put($path.'/'.$filename,  File::get($file))) {
+        if (Storage::disk('uploads')->put($path.'/'.$filename, File::get($file))) {
             $input['filename'] = $filename;
             $input['mime'] = $file->getClientMimeType();
             $input['path'] = $path;
@@ -35,17 +56,46 @@ class FileEntriesController extends Controller
             $input['vinculo_padre'] = Input::get('vinculo_padre');
             $input['vinculo'] = Uuid::generate();
             $file = FileEntry::create($input);
-
-            return response()->json([
-                'success' => true,
-                'id' => $file->id
-            ], 200);
         }
-        return response()->json([
-            'success' => false
-        ], 500);
     }
-    public function create() {
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
         return view('directory.files.create');
+    }
+
+    /**
+     * para mostrar los archivos.
+     *
+     * @param $vinculo
+     *
+     * @return mixed
+     */
+    /*public function imageshow($vinculo)
+    {
+        return Image::make(storage_path() . '/avatars/' . $id . '/' . $image)->response();
+    }*/
+    public function show($id)
+    {
+        $filesxcv2 = FileEntry::findOrFail($id);
+        //dd($filesxcv2);
+        return Storage::disk('uploads')->download($filesxcv2->path.DIRECTORY_SEPARATOR.$filesxcv2->filename);
+    }
+
+    /**
+     * borrar a.
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id)
+    {
+        $filesxcv2 = FileEntry::findOrFail($id);
+        Storage::disk('uploads')->download($filesxcv2->path.DIRECTORY_SEPARATOR.$filesxcv2->filename);
+        FileEntry::destroy($id);
     }
 }

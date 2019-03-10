@@ -1,0 +1,84 @@
+//
+// FullCalendar
+//
+// Overwrite/Extend styles
+// --------------------------------------------------
+
+.fc-bootstrap4 {
+    a.fc-event:not([href]):not([tabindex]) {
+        color: $body-color-dark;
+    }
+
+    .fc-event {
+        padding-left: .25rem;
+        padding-right: .125rem;
+        font-weight: 600;
+        color: $body-color-dark;
+        border: 1px solid theme-color('info-light');
+        border-radius: 0;
+
+        @include hover {
+            color: $body-color;
+        }
+    }
+
+    .fc-event,
+    .fc-event-dot {
+        background-color: theme-color('info-light');
+    }
+
+    thead th.fc-day-header {
+        padding-top: .375rem;
+        padding-bottom: .375rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        background-color: $body-bg-light;
+    }
+
+    th,
+    td,
+    thead,
+    tbody,
+    .fc-divider,
+    .fc-row,
+    .fc-content,
+    .fc-popover,
+    .fc-list-view,
+    .fc-list-heading td,
+    .fc-list-table.table {
+        border-color: $body-bg-dark;
+    }
+
+    .fc-divider,
+    .fc-list-heading td,
+    .fc-popover .fc-header {
+        background: $body-bg;
+    }
+
+    .fc-today {
+        background: $body-bg-light;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .fc-toolbar {
+            .fc-left,
+            .fc-center,
+            .fc-right {
+                padding: .25rem 0;
+                display: block;
+                float: none;
+                text-align: center;
+
+                .btn-group {
+                    margin-top: .25rem;
+                    margin-bottom: .25rem;
+                }
+            }
+
+            > * > * {
+                float: none;
+            }
+        }
+    }
+}

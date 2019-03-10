@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Mail\UserCreated;
 use App\User;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -55,6 +56,14 @@ class AppServiceProvider extends ServiceProvider
                 return false;
             }
         });
+        //local de carbon
+        \Carbon\Carbon::setlocale(LC_TIME, config('app.locale'));
+        \Carbon\Carbon::setLocale(config('app.locale'));
+        //Custom Polymorphic Types
+        Relation::morphMap([
+            'informe_proyectos_seccion' => 'App\InformeMantenimientoPreventivo',
+            //'videos' => 'App\Video',
+        ]);
     }
 
     /**
@@ -67,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local', 'testing')) {
         }
         $this->app->bind('path.public', function () {
-            return base_path().'/html';
+            return base_path().'/public';
         });
     }
 }
