@@ -26,9 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('files/create', 'FileEntriesController@create');
     Route::post('files/upload-file', 'FileEntriesController@uploadFile');
 
-    Route::get('files/{path_file}/{file}', function ($path_file = null, $file = null) {
+    Route::get('files/{path_file}/{file}', function($path_file = null, $file = null) {
         $path = storage_path().'/files/uploads/'.$path_file.'/'.$file;
-        if (file_exists($path)) {
+        if(file_exists($path)) {
             return Response::download($path);
         }
     });

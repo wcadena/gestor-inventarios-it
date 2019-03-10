@@ -88,7 +88,7 @@ class InformeMantenimientoPreventivoController extends Controller
             if (is_array($proyectos)) {
                 foreach ($proyectos as $proyecto) {
                     Log::info($proyecto);
-                    if ($proyecto != '---') {
+                    if($proyecto != '---'){
                         $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
                         Log::info($proyecto);
                         $proyecto_x = $proyecto_x_met->toArray();
@@ -97,7 +97,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['informe_manto_prev_id'] = $inf->id;
                         $proyecto_x['tipo'] = 'elemento_seccion';
 
-                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
+                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions))?$proyecto_x_met->informeProyectosSeccions->max('orden'):1;
 
                         unset($proyecto_x['id']);
 

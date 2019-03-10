@@ -12,22 +12,19 @@ use Webpatser\Uuid\Uuid;
 
 class FileEntriesController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $files = FileEntry::all();
 
         return view('directory.files.index', compact('files'));
     }
-
     //
-    public function uploadFile(Request $request)
-    {
+    public function uploadFile(Request $request) {
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 
-        $path = hash('sha256', time());
+        $path = hash( 'sha256', time());
 
-        if (Storage::disk('uploads')->put($path.'/'.$filename, File::get($file))) {
+        if(Storage::disk('uploads')->put($path.'/'.$filename,  File::get($file))) {
             $input['filename'] = $filename;
             $input['mime'] = $file->getClientMimeType();
             $input['path'] = $path;
@@ -41,17 +38,14 @@ class FileEntriesController extends Controller
 
             return response()->json([
                 'success' => true,
-                'id'      => $file->id,
+                'id' => $file->id
             ], 200);
         }
-
         return response()->json([
-            'success' => false,
+            'success' => false
         ], 500);
     }
-
-    public function create()
-    {
+    public function create() {
         return view('directory.files.create');
     }
 }
