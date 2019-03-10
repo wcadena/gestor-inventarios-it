@@ -7,18 +7,18 @@
 
     {!! Form::open(['url' => 'tecnico', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-                {!! Form::label('user_id', 'User Id: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+                <div class="form-group {{ $errors->has('user_id') ? ' form-control-alt is-invalid' : ''}}">
+                {!! Form::label('user_id', 'User Id: ', ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {{ Form::select('user_id', $tecnico, null, ['class' => 'form-control']) }}
-                    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('user_id', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('informe_manto_prev_id') ? 'has-error' : ''}}">
-                {!! Form::label('informe_manto_prev_id', 'Informe Manto Prev Id: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
+            <div class="form-group {{ $errors->has('informe_manto_prev_id') ? ' form-control-alt is-invalid' : ''}}">
+                {!! Form::label('informe_manto_prev_id', 'Informe Manto Prev Id: ', ['class' => 'control-label']) !!}
+                <div class="ekihk">
                     {!! Form::number('informe_manto_prev_id', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('informe_manto_prev_id', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('informe_manto_prev_id', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
 

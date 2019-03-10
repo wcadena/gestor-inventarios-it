@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Areas;
 use App\Custodios;
+use App\FileEntry;
 use App\InformeMantenimientoPreventivo;
 use App\InformeMantenimientoPreventivoCategoria;
 use App\InformeMantenimientoPreventivoTecnico;
+use App\InformeProyectosSeccion;
+use App\ProyectoSeccion;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -25,7 +31,7 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function index()
     {
-        $informes = InformeMantenimientoPreventivo::paginate(15);
+        $informes = InformeMantenimientoPreventivo::orderby('id', 'desc')->paginate(15);
 
         return view('directory.informes.index', compact('informes'));
     }
@@ -41,7 +47,7 @@ class InformeMantenimientoPreventivoController extends Controller
         $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
         $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
 
-        return view('directory.informes.create', compact('dtos', 'custodios', 'areas', 'categoria_mant'));
+        return view('directory.informes.create', compact('custodios', 'areas', 'categoria_mant'));
     }
 
     /**
@@ -52,13 +58,63 @@ class InformeMantenimientoPreventivoController extends Controller
     public function store(Request $request)
     {
         $reglas = [
-            'no_orden'        => 'required',
-            'fecha_ejecucion' => 'required',
-            'requerimiento'   => 'required',
+            'fecha_solicitud'   => 'required',
+            'requerimiento'     => 'required',
+            'observacion'       => 'required',
+
         ];
         $this->validate($request, $reglas);
 
-        InformeMantenimientoPreventivo::create($request->all());
+        try {
+            DB::beginTransaction();
+            //dd($request);
+            $inf = InformeMantenimientoPreventivo::create($request->all());
+            //////////////////////////////////////////////
+            $tecnicos = Input::get('tecnicos');
+            if (is_array($tecnicos)) {
+                foreach ($tecnicos as $tecnico) {
+                    $tecnico_x = User::findOrFail($tecnico)->toArray();
+
+                    $tecnico_x['user_id'] = $tecnico_x['id'];
+                    $tecnico_x['informe_manto_prev_id'] = $inf->id;
+                    unset($tecnico_x['id']);
+                    InformeMantenimientoPreventivoTecnico::create($tecnico_x);
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Tecnicos added!');
+            }
+            //////////////////////////////////////////////
+            $proyectos = Input::get('informe_proyectos_seccions_inf');
+            if (is_array($proyectos)) {
+                foreach ($proyectos as $proyecto) {
+                    if ($proyecto != '---') {
+                        $proyecto_x_met = ProyectoSeccion::findOrFail($proyecto);
+                        $proyecto_x = $proyecto_x_met->toArray();
+
+                        $proyecto_x['proyecto_seccion_id'] = $proyecto_x['id'];
+                        $proyecto_x['informe_manto_prev_id'] = $inf->id;
+                        $proyecto_x['tipo'] = 'elemento_seccion';
+
+                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
+
+                        unset($proyecto_x['id']);
+
+                        InformeProyectosSeccion::create($proyecto_x);
+                    }
+                }
+                // do stuff with checked friends
+                Session::flash('flash_message', 'Secciones added!');
+            }
+            //////////////////////////////////////////////
+            /// coloca los archivos con informe
+            /// //////////////////////////////////////////\
+            FileEntry::where('vinculo_padre', '=', $inf->vinculo)->update(['imageable_id'=>$inf->id]);
+            DB::commit();
+
+            return redirect('informes');
+        } catch (Exception $e) {
+            DB::rollback();
+        }
 
         Session::flash('flash_message', 'InformeMantenimientoPreventivo added!');
 
@@ -74,9 +130,13 @@ class InformeMantenimientoPreventivoController extends Controller
      */
     public function show($id)
     {
+        $custodios = Custodios::orderBy('nombre_responsable', 'asc')->pluck('nombre_responsable', 'id');
+        $areas = Areas::orderBy('area', 'asc')->pluck('area', 'id');
+        $categoria_mant = InformeMantenimientoPreventivoCategoria::orderBy('categoria', 'asc')->pluck('categoria', 'id');
+
         $informe = InformeMantenimientoPreventivo::findOrFail($id);
 
-        return view('directory.informes.show', compact('informe'));
+        return view('directory.informes.show', compact('informe', 'custodios', 'areas', 'categoria_mant'));
     }
 
     /**

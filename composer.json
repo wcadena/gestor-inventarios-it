@@ -1,5 +1,5 @@
 {
-    "name": "wcadena/gestorInventarios",
+    "name": "wcadena/gestor-inventarios-it",
     "type": "project",
     "description": "Gestor de Inventarios de area de Sistemas.",
     "homepage": "https://ecuatask.com/",
@@ -21,13 +21,11 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/wcadena/inventarioFinalApp/issues"
+        "issues": "https://github.com/wcadena/gestor-inventarios-it/issues"
     },
     "license": "EPL-1.0",
     "require": {
         "php": "^7.1.3",
-        "acacha/admin-lte-template-laravel": "^6.0",
-        "almasaeed2010/adminlte": "^2.4",
         "appzcoder/crud-generator": "^3.0",
         "barryvdh/laravel-cors": "^0.11.2",
         "barryvdh/laravel-dompdf": "^0.8.3",
@@ -50,12 +48,12 @@
         "pusher/pusher-http-laravel": "^4.2",
         "pusher/pusher-php-server": "^3.2",
         "rachidlaasri/laravel-installer": "^4.0",
+        "santigarcor/laratrust": "^5.0",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "spatie/laravel-fractal": "^5.4",
         "spatie/laravel-menu": "^3.2",
         "webpatser/laravel-uuid": "^3.0",
-        "wuwx/laravel-autonumber": "^2.0",
-        "zizaco/entrust": "^1.9"
+        "wuwx/laravel-autonumber": "^2.0"
     },
     "require-dev": {
         "aiiro/laravel-factory-generator": "^0.0.3",

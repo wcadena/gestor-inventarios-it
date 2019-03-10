@@ -1,44 +1,30 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-poll": "npm run watch -- --watch-poll",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "./node_modules/.bin/eslint --ext .js,.vue resources/assets/js",
-    "stats": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js --profile --json > stats.json"
-  },
-  "devDependencies": {
-    "acacha-forms": "^1.0.10",
-    "admin-lte": "^2.4.8",
-    "axios": "^0.18.0",
-    "babel-eslint": "^10.0.1",
-    "bootstrap": "^4.1.3",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.8.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-html": "^4.0.6",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "font-awesome": "^4.7.0",
-    "icheck": "^1.0.2",
-    "ionicons": "^4.4.6",
-    "jquery": "^3.3.1",
-    "laravel-mix": "^2.1.14",
-    "lodash": "^4.17.11",
-    "popper.js": "^1.12.9",
-    "select2": "^4.0.6-rc.1",
-    "vue": "^2.5.21",
-    "vue-template-compiler": "2.5.21",
-    "workbox-webpack-plugin":"^3.6.3"
-  },
-  "dependencies": {
-    "autocomplete-vue": "^1.1.0",
-    "octicons": "^8.1.0"
-  }
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "axios": "^0.18.0",
+        "bootstrap": "^4.1.3",
+        "browser-sync": "^2.26.3",
+        "browser-sync-webpack-plugin": "^2.2.2",
+        "cross-env": "^5.2.0",
+        "jquery": "^3.3.1",
+        "laravel-mix": "^3.0.0",
+        "lodash": "^4.17.11",
+        "popper.js": "^1.14.6",
+        "vue": "^2.5.17"
+    },
+    "dependencies": {
+        "jquery-scroll-lock": "^3.1.3",
+        "jquery.appear": "^1.0.1",
+        "simplebar": "^2.6.1",
+        "js-cookie": "^2.2.0"
+    }
 }

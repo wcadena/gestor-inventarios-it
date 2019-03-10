@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Zizaco\Entrust\EntrustRole;
+use App\Transformers\RoleTransformer;
+use Laratrust\Models\LaratrustRole;
 
-class Role extends EntrustRole
+class Role extends LaratrustRole
 {
-    protected $fillable = [
-        'name', 'display_name', 'description',
-    ];
+    public $transformer = RoleTransformer::class;
+
+    protected $fillable = ['name', 'display_name', 'description'];
 
     public function users()
     {

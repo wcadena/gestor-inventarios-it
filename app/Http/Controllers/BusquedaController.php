@@ -33,13 +33,25 @@ class BusquedaController extends Controller
             'q' => 'required',
         ];
         $this->validate($request, $reglas);
-        /*
-         * custodio
-         */
         Busqueda::where('id', 'like', '%%')->delete();
         $term = strtoupper($request->q) ?: '';
         $term = str_replace(' ', '%', "$term");
         $term_mat = strtok($term, '%');
+
+        $this->busquedaCustodio($term, $term_mat);
+        $this->busquedaEquipo($term, $term_mat);
+
+        $busqueda = Busqueda::paginate(15);
+
+        return view('directory.buscar.index', compact('busqueda'));
+    }
+
+    private function busquedaCustodio($term, $term_mat)
+    {
+        /*
+                 * custodio
+                 */
+
         $tags = Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
         orwhere('cargo', 'like', '%'.$term.'%')->
         orwhere('area_piso', 'like', '%'.$term.'%')->get();
@@ -70,9 +82,13 @@ class BusquedaController extends Controller
         /*
          * fin custodio
          */
+    }
+
+    private function busquedaEquipo($term, $term_mat)
+    {
         /*
-         * equipo
-         */
+                 * equipo
+                 */
         $tags = Equipos::where('no_serie', 'like', '%'.$term.'%')->
         orwhere('codigo_barras', 'like', '%'.$term.'%')->
         orwhere('codigo_otro', 'like', '%'.$term.'%')->
@@ -110,9 +126,6 @@ class BusquedaController extends Controller
         /*
          * fin equipo
          */
-        $busqueda = Busqueda::paginate(15);
-
-        return view('directory.buscar.index', compact('busqueda'));
     }
 
     /**

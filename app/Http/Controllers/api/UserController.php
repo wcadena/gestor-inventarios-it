@@ -167,4 +167,9 @@ class UserController extends ApiController
 
         return $this->showMessage('El correo de verificación se ha reenviado');
     }
+
+    public function index_role(User $user)
+    {
+        return $this->showAll($user->roles);
+    }
 }

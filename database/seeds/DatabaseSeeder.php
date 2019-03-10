@@ -11,9 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(LaratrustSeeder::class);
         // $this->call(UsersTableSeeder::class);
         \Illuminate\Database\Eloquent\Model::unguard();
-
+        $this->call(AdminUserSeeder::class);
         $this->call(ContactosTableSeeder::class);
         $this->call(InformeMantenimientoPreventivoSeeder::class);
 

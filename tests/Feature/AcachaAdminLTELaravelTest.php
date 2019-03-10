@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Artisan;
-use ReflectionException;
 use Tests\TestCase;
 
 /**
@@ -224,11 +222,8 @@ class AcachaAdminLTELaravelTest extends TestCase
             [
                 'error' => [
                     'name'          => ['El name es necesario como campo.'],
-                    'username'      => ['El username es necesario como campo.'],
                     'email'         => ['El email es necesario como campo.'],
                     'password'      => ['El password es necesario como campo.'],
-                    'first_name'    => ['El first name es necesario como campo.'],
-                    'last_name'     => ['El last name es necesario como campo.'],
                     'terms'         => ['El terms es necesario como campo.'],
                 ],
                 'code'=> 422,
@@ -298,73 +293,5 @@ class AcachaAdminLTELaravelTest extends TestCase
                 'password'  => ['El password es necesario como campo.'],
             ],
         ]);
-    }
-
-    /**
-     * Test make:view command.
-     */
-    public function testMakeViewCommand()
-    {
-        $view = 'ehqwiqweiohqweihoqweiohqweiojhqwejioqwejjqwe';
-        $viewPath = 'views/'.$view.'.blade.php';
-
-        try {
-            unlink(resource_path($view));
-        } catch (\Exception $e) {
-        }
-        $this->callArtisanMakeView($view);
-        $resultAsText = Artisan::output();
-        $expectedOutput = 'File '.resource_path($viewPath).' created';
-        //Log::info($expectedOutput);
-        //Log::info(trim($resultAsText));
-        // $this->assertEquals($expectedOutput, trim($resultAsText));
-        $this->assertFileExists(resource_path($viewPath));
-        $this->callArtisanMakeView($view);
-        $resultAsText = Artisan::output();
-        //$this->assertEquals('File already exists', trim($resultAsText));
-        unlink(resource_path($viewPath));
-    }
-
-    /**
-     * Create view using make:view command.
-     *
-     * @param $view
-     */
-    protected function callArtisanMakeView($view)
-    {
-        Artisan::call('make:view', [
-            'name' => $view,
-        ]);
-    }
-
-    /**
-     * Test adminlte:admin command.
-     *
-     * @group
-     */
-    public function testAdminlteAdminCommand()
-    {
-        $seed = database_path('seeds/AdminUserSeeder.php');
-
-        try {
-            unlink($seed);
-        } catch (\Exception $e) {
-        }
-        $this->callAdminlteAdminCommand();
-        $this->assertFileExists($seed);
-    }
-
-    /**
-     * Call adminlte:admin command.
-     */
-    protected function callAdminlteAdminCommand()
-    {
-        try {
-            Artisan::call('adminlte:admin');
-        } catch (ReflectionException $re) {
-            passthru('composer dumpautoload');
-            sleep(2);
-            $this->callAdminlteAdminCommand();
-        }
     }
 }

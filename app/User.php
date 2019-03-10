@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Passport\HasApiTokens;
 use Mpociot\Firebase\SyncsWithFirebase;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use Notifiable, HasApiTokens, SoftDeletes;
     use SyncsWithFirebase;
 
@@ -27,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'first_name', 'last_name', 'rol', 'username', 'password', 'email', 'verification_token', 'token', 'facebook_user_id', 'empresa', 'verified',
+        'name', 'first_name', 'last_name', 'rol', 'username', 'password', 'email', 'verification_token', 'token', 'facebook_user_id', 'empresa', 'verified', 'custodio_id',
     ];
 
     /**
@@ -124,5 +126,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
         // return $this->belongsToMany('App\Rol', 'usuariorols')->using('App\Usuariorol');
         //return $this->belongsToMany('App\Role');
+    }
+
+    /**
+     * para asignar un custodio al usuario.
+     */
+    public function custodio()
+    {
+        return $this->hasOne('App\Custodios', 'id', 'custodio_id');
     }
 }

@@ -1,72 +1,67 @@
 @extends('layouts.master')
 
-@section('htmlheader')
 
-    @include('layouts.partials.htmlheader')
-
-    <!-- Select2 -->
-
-    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
-
-
+@section('css_before')
+    <link href="{{ asset('js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
-
-
 
 @section('contentheader_aqui', 'Equipos')
 
 @section('content')
 
 
+    <div class="block block-rounded block-bordered">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Garantía de @lang('form.equipos')</h3>
+        </div>
+        <div class="block-content">
 
-    <h1>@lang('form.equipos') Garantía</h1>
+            <div class="table-responsive">
 
+                <table class="table table-bordered table-striped table-hover">
 
-    <div class="table">
+                    <thead>
 
-        <table class="table table-bordered table-striped table-hover">
+                    <tr>
 
-            <thead>
+                        <th>@lang('form.sno')</th><th>Modelo</th><th>Custodio</th><th>Estacione</th><th>Garantía</th>
 
-            <tr>
+                    </tr>
 
-                <th>@lang('form.sno')</th><th>Modelo</th><th>Custodio</th><th>Estacione</th><th>Garantía</th>
+                    </thead>
 
-            </tr>
+                    <tbody>
 
-            </thead>
+                    @php $x=0; @endphp
 
-            <tbody>
+                    @foreach($equipos as $item)
 
-            @php $x=0; @endphp
+                        @php $x++;@endphp
 
-            @foreach($equipos as $item)
+                        <tr>
 
-                @php $x++;@endphp
+                            <td>{{ $x }}</td>
 
-                <tr>
+                            <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td>
+                            <td>{{ $item->custodioxc['nombre_responsable'] }}</td>
+                            <td>{{ $item->estacionxc->estacion }}</td>
 
-                    <td>{{ $x }}</td>
+                            <td>{{$item->hp_endDate}}
+                                <iframe src="{{ url('equipos', $item->id) }}"></iframe>
+                            </td>
 
-                    <td><a href="{{ url('equipos', $item->id) }}">{{ $item->modelo_equipoxc->modelo }}</a></td>
-                    <td>{{ $item->custodioxc['nombre_responsable'] }}</td>
-                    <td>{{ $item->estacionxc->estacion }}</td>
+                        </tr>
 
-                    <td>{{$item->hp_endDate}}
-                        <iframe src="{{ url('equipos', $item->id) }}"></iframe>
-                    </td>
+                    @endforeach
 
-                </tr>
+                    </tbody>
 
-            @endforeach
+                </table>
 
-            </tbody>
+                <div class="pagination"> {!! $equipos->render() !!} </div>
 
-        </table>
-
-        <div class="pagination"> {!! $equipos->render() !!} </div>
-
+            </div>
+        </div>
     </div>
 
 

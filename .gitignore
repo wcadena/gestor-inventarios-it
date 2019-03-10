@@ -1,8 +1,10 @@
 /node_modules
-/html/hot
-/html/storage
-/html/.well-known
+/node_modules_otro
+/public/hot
+/public/storage
+/public/.well-known
 /storage/*.key
+/storage/*files
 /vendor
 /.idea
 /.vagrant

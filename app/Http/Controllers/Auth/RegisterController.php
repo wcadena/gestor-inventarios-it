@@ -26,16 +26,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        return view('adminlte::auth.register');
-    }
-
-    /**
      * Where to redirect users after login / registration.
      *
      * @var string
@@ -63,11 +53,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name'           => 'required|max:255',
-            'username'       => 'sometimes|required|max:255|unique:users',
+            //'username'       => 'sometimes|required|max:255|unique:users',
             'email'          => 'required|email|max:255|unique:users',
             'password'       => 'required|min:6|confirmed',
-            'first_name'     => 'required|max:255',
-            'last_name'      => 'required|max:255',
+            //'first_name'     => 'required|max:255',
+            //'last_name'      => 'required|max:255',
             'terms'          => 'required',
         ]);
     }
@@ -84,9 +74,9 @@ class RegisterController extends Controller
         $fields = [
             'name'               => $data['name'],
             'email'              => $data['email'],
-            'first_name'         => $data['first_name'],
-            'last_name'          => $data['last_name'],
-            'username'           => $data['username'],
+            'first_name'         => '--',
+            'last_name'          => '--',
+            'username'           => $data['email'],
             'rol'                => 'registrado',
             'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
             'token'              => User::generarVerificationToken(),

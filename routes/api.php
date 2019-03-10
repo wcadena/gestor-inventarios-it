@@ -23,8 +23,11 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_api_routes
 });*/
+Route::resource('role', 'api\RoleController', ['only' => ['index', 'show']]);
+Route::get('role/user/{role}', 'api\RoleController@index_user')->name('role.user');
 
 Route::resource('users', 'api\UserController', ['excepto' => 'create,edit']);
+Route::get('users/role/{user}', 'api\UserController@index_role')->name('user.role');
 
 Route::get('users/verificar', 'api\UserController@verify');
 

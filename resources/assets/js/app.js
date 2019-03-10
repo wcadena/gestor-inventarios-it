@@ -9,6 +9,17 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+/**para vuetify
+ *
+ */
+import 'babel-polyfill'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+
+Vue.use(Vuetify)
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,7 +43,13 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+Vue.component('upload-files', require('./components/UploadFiles.vue'));
+
 Vue.component('autocomplete-vue', require('./components/vue-autocomplete.vue'));
+
+//Vue.component('roles-permisos', require('./components/directorio/roles/RolesPermisos.vue'));
+Vue.component('permiso', require('./components/directorio/roles/Permiso'));
+Vue.component('rol', require('./components/directorio/roles/Rol'));
 
 const app = new Vue({
     el: '#app'
@@ -58,15 +75,4 @@ init();
 
 $('.sidebar-menu').tree({
   // Any options here
-});
-
-$('.sidebar-toggle').on('click',function(){
-
-  var cls =  $('body').hasClass('sidebar-collapse');
-  if(cls == true){
-    $('body').removeClass('sidebar-collapse');
-  } else {
-    $('body').addClass('sidebar-collapse');
-  }
-
 });
