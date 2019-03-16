@@ -13,14 +13,23 @@
  </td>
 </tr>
 <tr>
- <td colspan="3" class="font-w600 text-left">Firma responsable de traslado</td>
- <td colspan="2" class="text-right d-none d-sm-table-cell">&nbsp;</td>
+ <td colspan="3" class="font-w600 text-left">
+  <p class="font-w600 mb-1">Responsable de traslado</p>
+  <div class="text-muted font-size-sm small ">&nbsp;</div>
+ </td>
+ <td colspan="2" class="text-right d-none d-sm-table-cell">Firma</td>
 </tr>
 <tr>
- <td colspan="3" class="font-w600 text-left">Firma Antiguo responsable</td>
- <td colspan="2" class="text-right d-none d-sm-table-cell">&nbsp;</td>
+ <td colspan="3" class="font-w600 text-left">
+  <p class="font-w600 mb-1">Antiguo responsable</p>
+  <div class="text-muted font-size-sm small ">&nbsp;</div>
+  </td>
+ <td colspan="2" class="text-right d-none d-sm-table-cell">Firma</td>
 </tr>
 <tr>
- <td colspan="3" class="font-w700 text-uppercase text-left bg-body-light">Firma Nuevo responsable</td>
- <td colspan="2" class="text-right d-none d-sm-table-cell">&nbsp;</td>
+ <td colspan="3" class="font-w700 text-left bg-body-light">
+  <p class="font-w600 mb-1">Nuevo responsable</p>
+  <div class="text-muted font-size-sm small ">&nbsp;</div>
+ </td>
+ <td colspan="2" class="text-right d-none d-sm-table-cell">Firma</td>
 </tr>
