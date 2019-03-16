@@ -210,26 +210,6 @@ Route::get('oautho2', function (Illuminate\Http\Request  $request) {
     return view('oauth2');
 })->middleware('auth')->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
 
-Route::get('pusher', function (Request $request) {
-    Vinkla\Pusher\Facades\Pusher::trigger('my-channel', 'my-event', ['message' => 'Hola tewst laravel']);
-
-    $options = [
-        'cluster'   => 'us2',
-        'encrypted' => true,
-    ];
-    $pusher = new Pusher\Pusher(
-        'b320838d82f185dbab9d',
-        '552daa7dde66a26359ab',
-        '379930',
-        $options
-    );
-
-    $data['message'] = 'hello world';
-    $pusher->trigger('my-channel', 'my-event', $data);
-
-    return 'Manda mensaje pusher';
-});
-
 Route::get('fire-test', function (Request $request) {
     $DEFAULT_URL = env('FIRE_DATABASE_URL'); // 'https://inventario-352a6.firebaseio.com';
     $DEFAULT_TOKEN = env('FIRE_DATABASE_SECRET'); //'0KGnKhp8pLGa2Mtzm14KkOpENc1Sw5eQIagN33xQ'; //https://console.firebase.google.com/project/inventario-352a6/settings/serviceaccounts/databasesecrets?hl=es-419
