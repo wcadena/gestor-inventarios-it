@@ -18,6 +18,7 @@ class FileEntriesController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:system');
     }
+
     /**
      * muestra todos los files.
      *
@@ -85,8 +86,10 @@ class FileEntriesController extends Controller
     }
 
     /**
-     * borrar a
+     * borrar a.
+     *
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)

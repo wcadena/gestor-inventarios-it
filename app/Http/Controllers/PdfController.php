@@ -33,13 +33,12 @@ class PdfController extends Controller
         return $impresion;
     }
 
-
     public function invoiceCustom($token_unico)
     {
         $repono = RepoNovedades::where('token_unico', '=', $token_unico)->first();
         $date = $repono->fecha_novedades;
         $custodio = $repono->custodioxc;
-        $view = \View::make('pdf.custom.invoice', compact('custodio','repono', 'date'))->render();
+        $view = \View::make('pdf.custom.invoice', compact('custodio', 'repono', 'date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $impresion = $view;
@@ -47,5 +46,4 @@ class PdfController extends Controller
 
         return  $impresion;
     }
-
 }
