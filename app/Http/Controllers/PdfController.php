@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Custodios;
 use App\RepoNovedades;
-use Barryvdh\DomPDF\PDF;
 
 class PdfController extends Controller
 {
