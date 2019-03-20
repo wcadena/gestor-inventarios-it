@@ -2,13 +2,8 @@ language: php
 
 php:
   - 7.2
-  - 7.3
-  - 7.4snapshot
 
 before_script:
-  - composer self-update
-  - echo 'memory_limit = -1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - composer require "laravel/framework:${LARAVEL_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}"
   - cp .env.travis .env
   - cp .env.travis .env.testing
   - mysql -e 'create database inventarios_2;'
@@ -21,6 +16,5 @@ script:
   - vendor/bin/phpunit
 #  - codecov
 env:
-  - LARAVEL_VERSION=5.8.* PHPUNIT_VERSION=~7.0
     global:
         - CODECOV_TOKEN: 4b7c0b42-504a-4564-ba5d-d31c344d63ca
