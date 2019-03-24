@@ -42,6 +42,15 @@ $theme-colors: (
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
 $yiq-contrasted-threshold: 200 !default;
 
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-responsive-font-sizes:                false !default;
+$enable-validation-icons:                     false !default;
+
+
 // Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
@@ -95,7 +104,7 @@ $border-color:                darken($body-bg, 4%) !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:      "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 

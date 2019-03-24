@@ -33,6 +33,7 @@
 
     .custom-control-input:checked ~ .custom-control-label::after {
         transform: translateX(.75rem);
+        background-color: $white;
         box-shadow: -.125rem 0 .125rem rgba(0,0,0,.2);
     }
 }
@@ -90,6 +91,10 @@
 }
 
 // Add transitions to custom controls
+.custom-control-label::before {
+    border: none;
+}
+
 .custom-control-label::after {
     transition: transform .15s ease-out;
 }

@@ -4,51 +4,33 @@
 // Overwrite/Extend styles
 // --------------------------------------------------
 
-.irs {
-    &-line {
+.irs.irs--round {
+    .irs-line,
+    .irs-bar {
         height: 5px;
+    }
+
+    .irs-min,
+    .irs-max,
+    .irs-line,
+    .irs-grid-pol {
         background: $body-bg;
-        border: none;
-        border-radius: $border-radius-lg;
     }
 
-    &-bar {
-        height: 5px;
-        border: none;
-        background: theme-color("primary");
-
-        &-edge {
-            height: 5px;
-            border: none;
-            background: theme-color("primary");
-            border-radius: $border-radius-lg 0 0 $border-radius-lg;
-        }
+    .irs-handle {
+        border-color: theme-color("primary");
     }
 
-    &-slider {
-        top: 25px;
-        width: 20px;
-        height: 20px;
-        border: none;
-        background: $white;
-        border-radius: 50%;
-        box-shadow: 0 1px 5px rgba(0,0,0,.35);
-
-        @include hover {
-            background: $white;
-            box-shadow: 0 1px 5px rgba(0,0,0,.75);
-        }
+    .irs-from:before,
+    .irs-to:before,
+    .irs-single:before {
+        border-top-color: theme-color("primary");
     }
 
-    &-from,
-    &-to,
-    &-single {
-        color: $white;
-        font-size: .75rem;
-        background: theme-color("primary");
-    }
-
-    &-grid-pol {
+    .irs-bar,
+    .irs-from,
+    .irs-to,
+    .irs-single {
         background: theme-color("primary");
     }
 }

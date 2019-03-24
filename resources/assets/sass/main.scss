@@ -47,10 +47,12 @@
 @import 'bootstrap/media';
 @import 'bootstrap/list-group';
 @import 'bootstrap/close';
+@import 'bootstrap/toasts';
 @import 'bootstrap/modal';
 @import 'bootstrap/tooltip';
 @import 'bootstrap/popover';
 //@import 'bootstrap/carousel';
+@import 'bootstrap/spinners';
 @import 'bootstrap/utilities';
 @import 'bootstrap/print';
 
@@ -118,10 +120,12 @@
 @import 'vendor/ion-range-slider';
 @import 'vendor/jquery-sparkline';
 @import 'vendor/jvector-map';
+@import 'vendor/pw-strength';
 @import 'vendor/select2';
 @import 'vendor/simplemde';
 @import 'vendor/summernote';
 @import 'vendor/slick';
+@import 'vendor/nestable2';
 
 // User styles (your own styles/overrides)
 @import 'custom/main';
