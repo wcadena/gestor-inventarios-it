@@ -50,7 +50,8 @@ export default class Helpers {
            maxlength: () => this.maxlength(),
            rangeslider: () => this.rangeslider(),
            sparkline: () => this.sparkline(),
-           validation: () => this.validation()
+           validation: () => this.validation(),
+           'pw-strength': () => this.pwstrength()
        };
 
        if (helpers instanceof Array) {
@@ -78,7 +79,7 @@ export default class Helpers {
      */
 
     /*
-     * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/4.1/components/tooltips/
+     * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/4.3/components/tooltips/
      *
      * Helpers.run('core-bootstrap-tooltip');
      *
@@ -101,7 +102,7 @@ export default class Helpers {
     }
 
     /*
-     * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/4.1/components/popovers/
+     * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/4.3/components/popovers/
      *
      * Helpers.run('core-bootstrap-popover');
      *
@@ -125,7 +126,7 @@ export default class Helpers {
     }
 
     /*
-     * Bootstrap Tab, for examples you can check out http://getbootstrap.com/docs/4.1/components/navs/#tabs
+     * Bootstrap Tab, for examples you can check out https://getbootstrap.com/docs/4.3/components/navs/#tabs
      *
      * Helpers.run('core-bootstrap-tabs');
      *
@@ -909,9 +910,12 @@ export default class Helpers {
     static rangeslider() {
         // Init Ion Range Slider (with .js-rangeslider class)
         jQuery('.js-rangeslider:not(.js-rangeslider-enabled)').each((index, element) => {
+            let el = jQuery(element);
+
             // Add .js-rangeslider-enabled class to tag it as activated and init it
             jQuery(element).addClass('js-rangeslider-enabled').ionRangeSlider({
-                input_values_separator: ';'
+                input_values_separator: ';',
+                skin: el.data('skin') || 'round'
             });
         });
     }
@@ -1047,6 +1051,42 @@ export default class Helpers {
                 jQuery(el).parents('.form-group').find('.is-invalid').removeClass('is-invalid');
                 jQuery(el).remove();
             }
+        });
+    }
+
+    /*
+     * Password Strength Meter, for more examples you can check out https://github.com/ablanco/jquery.pwstrength.bootstrap
+     *
+     * Helpers.run('pw-strength');
+     *
+     * Example usage:
+     *
+     * <div class="js-pw-strength-container form-group">
+     *     <label for="example-pw-strength1">Password</label>
+     *     <input type="password" class="js-pw-strength form-control" id="example-pw-strength1" name="example-pw-strength1">
+     *     <div class="js-pw-strength-progress pw-strength-progress mt-1"></div>
+     *     <p class="js-pw-strength-feedback form-text mb-0"></p>
+     * </div>
+     *
+     */
+    static pwstrength() {
+        // Init Password Strength Meter (with .js-pw-strength class)
+        jQuery('.js-pw-strength:not(.js-pw-strength-enabled)').each((index, element) => {
+            let el          = jQuery(element);
+            let container   = el.parents('.js-pw-strength-container');
+            let progress    = jQuery('.js-pw-strength-progress', container);
+            let verdict     = jQuery('.js-pw-strength-feedback', container);
+
+            // Add .js-pw-strength-enabled class to tag it as activated and init it
+            el.addClass('js-pw-strength-enabled').pwstrength({
+                ui: {
+                    container: container,
+                    viewports: {
+                        progress: progress,
+                        verdict: verdict
+                    }
+                }
+            });
         });
     }
 }

@@ -51,7 +51,7 @@ class MyOwnResetPassword extends Notification
         return (new MailMessage())
             ->subject(Lang::get('adminlte_lang::message.notifiableaction'))
             ->line(Lang::get('adminlte_lang::message.notifiableline1'))
-            ->action(Lang::get('adminlte_lang::message.notifiableaction'), url(config('app.url').route('password.reset', $this->token, false)))
+            ->action(Lang::get('adminlte_lang::message.notifiableaction'), url(config('app.url').route('password.reset', ['token' => $this->token], false)))
             ->line(Lang::get('adminlte_lang::message.notifiableline2'));
     }
 }

@@ -39,8 +39,3 @@
         }
     }
 }
-
-// Temporary fix for custom form controls when labels are empty (bug introduced in Bootstrap 4.1.1)
-.custom-control-label {
-    vertical-align: top;
-}

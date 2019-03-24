@@ -507,6 +507,21 @@
         @include custom-control-variant($body-bg-dark, $brand-primary);
     }
 
+    .custom-control-input {
+        &:checked ~ .custom-control-label::before {
+            @include gradient-bg($brand-primary);
+            border-color: $brand-primary;
+        }
+
+        &:focus ~ .custom-control-label::before {
+            box-shadow: 0 0 0 1px $white, $input-btn-focus-box-shadow;
+        }
+
+        &:not(:disabled):active ~ .custom-control-label::before {
+            background-color: $brand-lighter;
+        }
+    }
+
     .custom-select {
         border-color: $input-border-color;
 
@@ -544,8 +559,8 @@
         }
     }
 
-    @include form-validation-state("valid", theme-color('success'));
-    @include form-validation-state("invalid", theme-color('danger'));
+    @include form-validation-state("valid", theme-color('success'), false);
+    @include form-validation-state("invalid", theme-color('danger'), false);
 
     .form-control.form-control-alt {
         border-color: $body-bg;
@@ -1038,26 +1053,28 @@
     }
 
     // Ion Range Slider
-    .irs {
-        &-line {
+    .irs.irs--round {
+        .irs-min,
+        .irs-max,
+        .irs-line,
+        .irs-grid-pol {
             background: $body-bg;
         }
 
-        &-bar {
-            background: $brand-primary;
-
-            &-edge {
-                background: $brand-primary;
-            }
+        .irs-handle {
+            border-color: $brand-primary;
         }
 
-        &-from,
-        &-to,
-        &-single {
-            background: $brand-primary;
+        .irs-from:before,
+        .irs-to:before,
+        .irs-single:before {
+            border-top-color: $brand-primary;
         }
 
-        &-grid-pol {
+        .irs-bar,
+        .irs-from,
+        .irs-to,
+        .irs-single {
             background: $brand-primary;
         }
     }
@@ -1137,5 +1154,22 @@
             border-top-color: $body-bg-dark;
             background-color: $body-bg-light;
         }
+    }
+
+    // Nestable2
+    .dd-handle {
+        color: $body-color;
+        background: $body-bg-light;
+        border-color: $body-bg-dark;
+
+        &:hover {
+            color: $body-color-dark;
+        }
+    }
+
+    .dd-empty,
+    .dd-placeholder {
+        border-color: $brand-darker;
+        background: $brand-lighter;
     }
 }
