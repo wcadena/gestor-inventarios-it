@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProyectoSeccionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
+    }
     /**
      * Display a listing of the resource.
      *
