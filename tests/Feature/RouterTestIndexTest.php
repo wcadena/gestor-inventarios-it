@@ -10,14 +10,7 @@ class RouterTestIndexTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /**
-     * Set up tests.
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-        App::setLocale('es');
-    }
+
 
     /**
      * Test url returns 200.

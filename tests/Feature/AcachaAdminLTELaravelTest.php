@@ -38,6 +38,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function urlReturns200($url)
     {
+        echo 'a2';
         $this->urlReturnsCode($url, 200);
     }
 
@@ -79,8 +80,9 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function urlReturnsCode($url, $code)
     {
+        echo 'a3';
         $response = $this->get($url);
-
+        echo 'a4';
         $response->assertStatus($code);
     }
 
@@ -101,6 +103,7 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLandingPage()
     {
+        echo 'xx1';
         $this->urlReturns200('/');
     }
 
