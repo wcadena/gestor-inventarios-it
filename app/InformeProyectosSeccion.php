@@ -42,7 +42,7 @@ class InformeProyectosSeccion extends Model
      */
     public function informeMantoPrev()
     {
-        return $this->belongsTo('App\InformeMantoPrev');
+        return $this->belongsTo('App\InformeMantoPrevs');
     }
 
     /**

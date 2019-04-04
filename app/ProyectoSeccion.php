@@ -48,7 +48,7 @@ class ProyectoSeccion extends Model
      */
     public function proyecto()
     {
-        return $this->belongsTo('App\Proyecto');
+        return $this->hasOne('App\Proyecto');
     }
 
     /**
