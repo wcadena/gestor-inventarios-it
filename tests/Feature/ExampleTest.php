@@ -22,6 +22,7 @@ class ExampleTest extends TestCase
     {
         passthru('composer dumpautoload');
     }
+
     /**
      * A basic test example.
      *
