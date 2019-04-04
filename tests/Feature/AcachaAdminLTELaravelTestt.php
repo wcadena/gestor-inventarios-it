@@ -10,7 +10,7 @@ use Tests\TestCase;
 /**
  * Class AcachaAdminLTELaravelTest.
  */
-class AcachaAdminLTELaravelTest extends TestCase
+class AcachaAdminLTELaravelTestt extends TestCase
 {
     use DatabaseMigrations;
 
