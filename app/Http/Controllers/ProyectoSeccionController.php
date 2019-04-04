@@ -13,6 +13,7 @@ class ProyectoSeccionController extends Controller
         $this->middleware('auth');
         $this->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,6 @@ class ProyectoSeccionController extends Controller
     public function index(Request $request, Proyecto $proyecto)
     {
         $keyword = $request->get('search');
-
 
         if (!empty($keyword)) {
             $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->get();
