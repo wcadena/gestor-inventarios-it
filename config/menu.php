@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Spatie\Menu\Html;
 use Spatie\Menu\Laravel\Link;
 use Spatie\Menu\Laravel\Menu;
-use \Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 
 Menu::macro('ConfiguracionsSystem', function () {
     return Menu::new()->addClass('nav-main-submenu')
