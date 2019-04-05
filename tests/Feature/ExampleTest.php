@@ -3,26 +3,10 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * Set up tests.
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-        App::setLocale('es');
-    }
-
-    /**
-     * Set up before class.
-     */
-    public static function setUpBeforeClass()
-    {
-        passthru('composer dumpautoload');
-    }
-
     /**
      * A basic test example.
      *

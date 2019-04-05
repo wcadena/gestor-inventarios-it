@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Validation\Rule;
+//use Illuminate\Validation\Rule;
 
 return [
 
@@ -67,7 +67,7 @@ return [
                 'environment_custom'    => 'required_if:environment,other|max:50',
                 'app_debug'             => [
                     'required',
-                    Rule::in(['true', 'false']),
+                    //Rule::in(['true', 'false']),
                 ],
                 'app_log_level'         => 'required|string|max:50',
                 'app_url'               => 'required|url',

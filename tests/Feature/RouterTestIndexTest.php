@@ -3,11 +3,21 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
 class RouterTestIndexTest extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+     * Set up tests.
+     */
+    public function setUp():void
+    {
+        parent::setUp();
+        App::setLocale('es');
+    }
 
     /**
      * Test url returns 200.
