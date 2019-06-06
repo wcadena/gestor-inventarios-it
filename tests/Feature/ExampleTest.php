@@ -6,24 +6,24 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
- /* inicio
-     * Set up tests.
-     * /
-    public function setUp(): void
-    {
-        parent::setUp();
-        App::setLocale('es');
-    }
+    /* inicio
+        * Set up tests.
+        * /
+       public function setUp(): void
+       {
+           parent::setUp();
+           App::setLocale('es');
+       }
 
-    /**
-     * Set up before class.
-     * /
-    public static function setUpBeforeClass()
-    {
-        passthru('composer dumpautoload');
-    }
+       /**
+        * Set up before class.
+        * /
+       public static function setUpBeforeClass()
+       {
+           passthru('composer dumpautoload');
+       }
 fin
- */
+    */
 
     /**
      * A basic test example.
