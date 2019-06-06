@@ -4,9 +4,9 @@
 # {{ $greeting }}
 @else
 @if ($level == 'error')
-# @lang('adminlte_lang::message.whoops')
+# @lang('message.whoops')
 @else
-# @lang('adminlte_lang::message.hello')
+# @lang('message.hello')
 @endif
 @endif
 
@@ -45,14 +45,14 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('adminlte_lang::message.regards'),<br>{{ config('app.name') }}
+@lang('message.regards'),<br>{{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}
 @isset($actionText)
 @component('mail::subcopy')
 
-@lang('adminlte_lang::message.mensajecorreo', ['actionText' => $actionText, 'actionUrl' => $actionUrl])
+@lang('message.mensajecorreo', ['actionText' => $actionText, 'actionUrl' => $actionUrl])
 
 @endcomponent
 @endisset

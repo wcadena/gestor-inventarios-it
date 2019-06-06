@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
+@section('htmlheader_title')
+  {{ trans('message.home') }}
+@endsection
 
+@section('contentheader_aqui', 'Oauth2')
 
-@section('main-content')
+@section('content')
   <h1>Passport</h1>
   <example></example>
   <h4>Para entrar desde otra aplicacion como facebbok</h4>

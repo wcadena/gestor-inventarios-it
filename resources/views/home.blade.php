@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('htmlheader_title')
-    {{ trans('adminlte_lang::message.home') }}
+    {{ trans('message.home') }}
 @endsection
 
 @section('contentheader_aqui', 'Equipos')
@@ -14,7 +14,7 @@
                     <div class="col-md-6 d-md-flex align-items-md-center">
                         <div class="py-4 py-md-0 text-center text-md-left js-appear-enabled animated fadeIn" data-toggle="appear">
                             <h1 class="font-size-h2 mb-2">Dashboard</h1>
-                            <h2 class="font-size-lg font-w400 text-muted mb-0">{{ trans('adminlte_lang::message.logged') }} {{\Illuminate\Support\Facades\Auth::user()->name}}</h2>
+                            <h2 class="font-size-lg font-w400 text-muted mb-0">{{ trans('message.logged') }} {{\Illuminate\Support\Facades\Auth::user()->name}}</h2>
                         </div>
                     </div>
                     <div class="col-md-6 d-md-flex align-items-md-center">

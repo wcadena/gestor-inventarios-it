@@ -260,7 +260,7 @@
                                 </div>
                                 <div class="p-2">
                                     <a class="dropdown-item" href="{{ url('/usuario/'.Auth::user()->id.'') }}">
-                                        <i class="far fa-fw fa-user mr-1"></i> {{ trans('adminlte_lang::message.profile') }}
+                                        <i class="far fa-fw fa-user mr-1"></i> {{ trans('message.profile') }}
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                         <span><i class="far fa-fw fa-envelope mr-1"></i> Inbox</span>
@@ -283,7 +283,7 @@
                                     <a href="{{ url('/logout') }}" class="dropdown-item" id="logout"
                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> {{ trans('adminlte_lang::message.signout') }}
+                                        <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> {{ trans('message.signout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
