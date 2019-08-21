@@ -1,5 +1,7 @@
 language: php
 
+services: mongodb
+
 php:
   - 7.2
 
