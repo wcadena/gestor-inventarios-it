@@ -7,10 +7,10 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
+         stopOnFailure="true"
          timeoutForSmallTests="1"
-         timeoutForMediumTests="5"
-         timeoutForLargeTests="10"
+         timeoutForMediumTests="2"
+         timeoutForLargeTests="3"
 >
     <testsuites>
         <testsuite name="Feature">
