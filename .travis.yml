@@ -9,8 +9,8 @@ before_script:
   - mysql -e 'create database inventarios_2;'
   - composer self-update
   - composer install --no-interaction
-#  - php artisan migrate
-#  - php artisan db:seed
+  - php artisan migrate
+  - php artisan db:seed
 
 script:
   - vendor/bin/phpunit
