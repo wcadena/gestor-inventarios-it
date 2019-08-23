@@ -68,9 +68,10 @@ class RouteTestStoreTest extends TestCase
     public function testLogin()
     {
         $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
+        $correo = $faker->email;
+        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
         $response = $this->json('POST', '/login', [
-            'email'    => $user[0]->email,
+            'email'    => $correo,
             'password' => 'passw0RD',
         ]);
 
