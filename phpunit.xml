@@ -11,13 +11,18 @@
          timeoutForSmallTests="1"
          timeoutForMediumTests="2"
          timeoutForLargeTests="3"
+         verbose="true"
+         stopOnError="true"
+         stopOnIncomplete="true"
+         stopOnSkipped="true"
+         stopOnRisky="true"
 >
     <testsuites>
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php" phpVersion="7.1.3">./tests/Feature</directory>
         </testsuite>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="Test.php"  phpVersion="7.1.3">./tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>

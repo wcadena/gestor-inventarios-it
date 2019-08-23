@@ -2,13 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
 class RouterTestIndexTest extends TestCase
 {
-    use DatabaseMigrations;
 
     /**
      * Set up tests.
