@@ -11,7 +11,6 @@ before_script:
   - cp .env.travis .env.testing
   - sleep 15
   - mongo inventarios_2 --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
-  - mysql -e 'create database inventarios_2;'
   - composer self-update
   - composer install --no-interaction
   - php artisan migrate
