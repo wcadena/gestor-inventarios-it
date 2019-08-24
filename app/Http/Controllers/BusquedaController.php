@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Busqueda;
 use App\Custodios;
 use App\Equipos;
-use App\ModeloEquipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

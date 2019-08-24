@@ -8,13 +8,15 @@ use Tests\TestCase;
 
 class RouterTestIndexIn200Test extends TestCase
 {
-    private function loginuser(){
+    private function loginuser()
+    {
         $faker = Factory::create();
         $correo = $faker->email;
         $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
         return \App\User::where('email', $correo)->first();
     }
+
     // use DatabaseTransactions;
 
     /**

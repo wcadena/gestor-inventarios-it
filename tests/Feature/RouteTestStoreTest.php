@@ -3,21 +3,24 @@
 namespace Tests\Feature;
 
 use Faker\Factory;
-use Illuminate\Support\Facades\Session;
 use Tests\TestCase;
 
 class RouteTestStoreTest extends TestCase
 {
-    private function loginuser(){
+    private function loginuser()
+    {
         $faker = Factory::create();
         $correo = $faker->email;
         $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
         return \App\User::where('email', $correo)->first();
     }
-    private function loginuser_rol($rol){
+
+    private function loginuser_rol($rol)
+    {
         return \App\User::where('rol', $rol)->first();
     }
+
     /**
      * Test url returns 200.
      *
@@ -183,11 +186,10 @@ class RouteTestStoreTest extends TestCase
      * Test roles.create.
      *
      * @return void
-
-    public function testroles_create()
-    {
-        $this->actingAs($this->loginuser_rol('system'))->urlReturns200('/roles/create');
-    }*/
+     * public function testroles_create()
+     * {
+     * $this->actingAs($this->loginuser_rol('system'))->urlReturns200('/roles/create');
+     * }*/
 
     /**
      * Test informes.create.
