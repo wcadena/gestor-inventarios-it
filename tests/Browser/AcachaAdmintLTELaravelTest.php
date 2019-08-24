@@ -11,7 +11,6 @@ use Tests\DuskTestCase;
  */
 class AcachaAdmintLTELaravelTest extends DuskTestCase
 {
-
     /**
      * Test Landing Page.
      *
@@ -288,7 +287,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistration()
     {
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', 'Sergi Tur Badenas')
@@ -334,7 +332,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistrationRequiredFieldsDissappearsOnKeyDown()
     {
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', '')

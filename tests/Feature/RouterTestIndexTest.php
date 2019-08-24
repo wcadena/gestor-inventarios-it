@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class RouterTestIndexTest extends TestCase
 {
-
     /**
      * Set up tests.
      */

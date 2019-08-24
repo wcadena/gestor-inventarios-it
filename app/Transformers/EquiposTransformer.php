@@ -2,7 +2,6 @@
 
 namespace App\Transformers;
 
-use App\Custodios;
 use App\Equipos;
 use League\Fractal\TransformerAbstract;
 

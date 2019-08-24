@@ -11,7 +11,6 @@ use Tests\TestCase;
  */
 class AcachaAdminLTELaravelTest extends TestCase
 {
-
     /**
      * Set up tests.
      */
