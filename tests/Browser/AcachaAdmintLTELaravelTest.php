@@ -2,7 +2,6 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
@@ -12,8 +11,6 @@ use Tests\DuskTestCase;
  */
 class AcachaAdmintLTELaravelTest extends DuskTestCase
 {
-    use DatabaseMigrations;
-
     /**
      * Test Landing Page.
      *
@@ -290,7 +287,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistration()
     {
-        dump('testNewUserRegistration');
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', 'Sergi Tur Badenas')
@@ -315,8 +311,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistrationRequiredFields()
     {
-        dump('testNewUserRegistrationRequiredFields');
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', '')
@@ -338,8 +332,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistrationRequiredFieldsDissappearsOnKeyDown()
     {
-        dump('testNewUserRegistrationRequiredFieldsDissappearsOnKeyDown');
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', '')
