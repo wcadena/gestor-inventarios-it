@@ -288,7 +288,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistration()
     {
-        dump('testNewUserRegistration');
+
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', 'Sergi Tur Badenas')
@@ -313,8 +313,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistrationRequiredFields()
     {
-        dump('testNewUserRegistrationRequiredFields');
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('name', '')
@@ -336,7 +334,6 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
      */
     public function testNewUserRegistrationRequiredFieldsDissappearsOnKeyDown()
     {
-        dump('testNewUserRegistrationRequiredFieldsDissappearsOnKeyDown');
 
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')

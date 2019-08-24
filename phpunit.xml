@@ -7,15 +7,15 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="true"
+         stopOnFailure="false"
          timeoutForSmallTests="1"
          timeoutForMediumTests="2"
          timeoutForLargeTests="3"
          verbose="true"
-         stopOnError="true"
-         stopOnIncomplete="true"
-         stopOnSkipped="true"
-         stopOnRisky="true"
+         stopOnError="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         stopOnRisky="false"
 >
     <testsuites>
         <testsuite name="Feature">

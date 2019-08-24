@@ -169,9 +169,11 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testNewUserRegistration()
     {
+        $faker = Factory::create();
+        $correo = $faker->email;
         $response = $this->json('POST', '/register', [
             'name'                  => 'Sergi Tur Badenas',
-            'email'                 => 'sergiturbadenas@gmail.com',
+            'email'                 => $correo,
             'terms'                 => 'true',
             'username'              => 'msalad',
             'password'              => 'passw0RD',
@@ -184,7 +186,7 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Sergi Tur Badenas',
-            'email' => 'sergiturbadenas@gmail.com',
+            'email' => $correo,
         ]);
     }
 

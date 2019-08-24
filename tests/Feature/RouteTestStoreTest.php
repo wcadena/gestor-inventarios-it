@@ -3,10 +3,18 @@
 namespace Tests\Feature;
 
 use Faker\Factory;
+use Illuminate\Support\Facades\Session;
 use Tests\TestCase;
 
 class RouteTestStoreTest extends TestCase
 {
+    private function loginuser(){
+        $faker = Factory::create();
+        $correo = $faker->email;
+        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+
+        return \App\User::where('email', $correo)->first();
+    }
     /**
      * Test url returns 200.
      *
@@ -67,11 +75,9 @@ class RouteTestStoreTest extends TestCase
      */
     public function testLogin()
     {
-        $faker = Factory::create();
-        $correo = $faker->email;
-        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+        $user = $this->loginuser();
         $response = $this->json('POST', '/login', [
-            'email'    => $correo,
+            'email'    => $user->email,
             'password' => 'passw0RD',
         ]);
 
@@ -87,7 +93,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testareas_create()
     {
-        $this->urlReturns200('/areas/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/areas/create');
     }
 
     /**
@@ -107,7 +113,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testchecklist_create()
     {
-        $this->urlReturns200('/checklist/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/checklist/create');
     }
 
     /**
@@ -117,7 +123,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testchecklist_opcionescheck_create()
     {
-        $this->urlReturns200('/checklist_opcionescheck/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/checklist_opcionescheck/create');
     }
 
     /**
@@ -127,7 +133,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testconfig_create()
     {
-        $this->urlReturns200('/config/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/config/create');
     }
 
     /**
@@ -137,7 +143,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testcustodio_create()
     {
-        $this->urlReturns200('/custodio/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/custodio/create');
     }
 
     /**
@@ -147,7 +153,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testempresa_create()
     {
-        $this->urlReturns200('/empresa/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/empresa/create');
     }
 
     /**
@@ -157,7 +163,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testequipos_create()
     {
-        $this->urlReturns200('/equipos/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/equipos/create');
     }
 
     /**
@@ -167,7 +173,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testestaciones_create()
     {
-        $this->urlReturns200('/estaciones/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/estaciones/create');
     }
 
     /**
@@ -177,7 +183,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testroles_create()
     {
-        $this->urlReturns302('/roles/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/roles/create');
     }
 
     /**
@@ -188,7 +194,7 @@ class RouteTestStoreTest extends TestCase
     public function testinformes_create()
     {
         //crear primero perfiles
-        $this->urlReturns200('/informes/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/informes/create');
     }
 
     /**
@@ -198,7 +204,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testmodelo_create()
     {
-        $this->urlReturns200('/modelo/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/modelo/create');
     }
 
     /**
@@ -208,7 +214,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testopciones_check_create()
     {
-        $this->urlReturns200('/opciones_check/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/opciones_check/create');
     }
 
     /**
@@ -218,7 +224,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testorden_create()
     {
-        $this->urlReturns200('/orden/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/orden/create');
     }
 
     /**
@@ -228,7 +234,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testproyecto_create()
     {
-        $this->urlReturns200('/proyecto/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/proyecto/create');
     }
 
     /**
@@ -238,7 +244,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testpuesto_create()
     {
-        $this->urlReturns200('/puesto/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/puesto/create');
     }
 
     /**
@@ -248,7 +254,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testrepo_novedades_create()
     {
-        $this->urlReturns200('/repo_novedades/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/repo_novedades/create');
     }
 
     /**
@@ -258,7 +264,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testreporte1_create()
     {
-        $this->urlReturns200('/reporte1/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/reporte1/create');
     }
 
     /**
@@ -268,7 +274,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testtecnico_create()
     {
-        $this->urlReturns200('/tecnico/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/tecnico/create');
     }
 
     /**
@@ -278,7 +284,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testubicacion_create()
     {
-        $this->urlReturns200('/ubicacion/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/ubicacion/create');
     }
 
     /**
@@ -288,6 +294,6 @@ class RouteTestStoreTest extends TestCase
      */
     public function testusuario_create()
     {
-        $this->urlReturns200('/usuario/create');
+        $this->actingAs($this->loginuser())->urlReturns200('/usuario/create');
     }
 }
