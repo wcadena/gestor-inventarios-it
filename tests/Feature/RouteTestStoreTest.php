@@ -15,6 +15,9 @@ class RouteTestStoreTest extends TestCase
 
         return \App\User::where('email', $correo)->first();
     }
+    private function loginuser_rol($rol){
+        return \App\User::where('rol', $rol)->first();
+    }
     /**
      * Test url returns 200.
      *
@@ -183,7 +186,7 @@ class RouteTestStoreTest extends TestCase
      */
     public function testroles_create()
     {
-        $this->actingAs($this->loginuser())->urlReturns200('/roles/create');
+        $this->actingAs($this->loginuser_rol('system'))->urlReturns200('/roles/create');
     }
 
     /**
