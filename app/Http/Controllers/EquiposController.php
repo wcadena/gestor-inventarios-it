@@ -21,7 +21,6 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
@@ -109,36 +108,36 @@ class EquiposController extends Controller
         /**
          * si encuentra uno con serie identica.
          */
-        $equipo_exist = Equipos::where('no_serie', '=', Input::get('no_serie'))->get();
+        $equipo_exist = Equipos::where('no_serie', '=', $request->no_serie)->get();
 
         if ($equipo_exist->count() > 1) {
-            Session::flash('flash_message', 'Equipos con un numero de serie ya existente: '.Input::get('no_serie').', Se ha abierto el equipo existente, verificar datos.');
+            Session::flash('flash_message', 'Equipos con un numero de serie ya existente: '.$request->no_serie.', Se ha abierto el equipo existente, verificar datos.');
 
             return redirect('equipos/'.$equipo_exist->first()->id.'/edit');
         }
 
-        session(['areas_default' => Input::get('area_id')]);
+        session(['areas_default' => $request->area_id]);
         $nerd = new CheckList();
-        $nerd->area_id = Input::get('area_id');
+        $nerd->area_id = $request->area_id;
         $nerd->user_id = Auth::id();
         $nerd->id_check_lists = uniqid('CHK-');
         $nerd->unik_check_lists = Uuid::generate();
         $nerd->save();
         $dathui009 = new CheckListController();
-        $utill77563 = $dathui009->crearChecklist(Input::get('area_id'), $nerd->id);
+        $utill77563 = $dathui009->crearChecklist($request->area_id, $nerd->id);
         $custorm = $request->all();
         $custorm['check_list_id'] = $nerd->id;
 
-        $file = Input::file('imagen'); //la imagen se lee aca
+        $file = $request->file('imagen'); //la imagen se lee aca
 
-        if (Input::hasFile('imagen')) {
+        if ($request->hasFile('imagen')) {
             $img = Image::make($file)->resize(600, 400);
             Response::make($img->encode('jpeg'));
             $custorm['imagen'] = $img;
         }
 
         $equip3 = Equipos::create($custorm);
-        $custodio_n = Custodios::find(Input::get('custodio_id'));
+        $custodio_n = Custodios::find($request->custodio_id);
         $custodio_n->notificado = Custodios::CUSTODIO_NOTIFICADO;
         $custodio_n->save();
         $custorm['id_equipos'] = $equip3->id;
@@ -280,15 +279,15 @@ class EquiposController extends Controller
     public function update($id, Requests\EquiposRequest $request)
     {
         if ($request->check_list_id == '') {
-            Input::flashOnly('check_list_id');
+            $request->flashOnly('check_list_id');
         }
 
         $equipo = Equipos::findOrFail($id);
 
-        $file = Input::file('imagen'); //la imagen se lee aca
+        $file = $request->file('imagen'); //la imagen se lee aca
 
         $custorm0 = $request->all();
-        if (Input::hasFile('imagen')) {
+        if ($request->hasFile('imagen')) {
             $img = Image::make($file)->resize(600, 400);
             Response::make($img->encode('jpeg'));
             $custorm0['imagen'] = $img;
@@ -301,7 +300,7 @@ class EquiposController extends Controller
         $equipo->update($custorm0);
         //dd($equipo);
 
-        $custodio_n2 = Custodios::find(Input::get('custodio_id'));
+        $custodio_n2 = Custodios::find($request->custodio_id);
         $custodio_n2->notificado = Custodios::CUSTODIO_NOTIFICADO;
         $custodio_n2->save();
 

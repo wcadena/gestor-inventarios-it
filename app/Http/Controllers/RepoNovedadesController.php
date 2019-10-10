@@ -7,7 +7,6 @@ use App\RepoNovedades;
 use App\RepoNovedadesDetalle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use League\Flysystem\Exception;
 use Session;
 
@@ -67,7 +66,7 @@ class RepoNovedadesController extends Controller
             $rep->token_unico = RepoNovedades::generarUnico();
             $rep->save();
             //////////////////////////////////////////////
-            $equipos = Input::get('equipos');
+            $equipos = $request->equipos;
             if (is_array($equipos)) {
                 foreach ($equipos as $equipo) {
                     $equipo = Equipos::findOrFail($equipo)->toArray();

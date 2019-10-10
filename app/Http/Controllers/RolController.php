@@ -98,7 +98,7 @@ class RolController extends Controller
             $rol = Role::create($request->all());
             $rol->save();
             //////////////////////////////////////////////
-            $equipos = Input::get('permisos_r');
+            $equipos = $request->permisos_r;
             if (is_array($equipos)) {
                 foreach ($equipos as $equipo) {
                     $permiso = Permiso::findOrFail($equipo)->toArray();
@@ -180,7 +180,7 @@ class RolController extends Controller
                         $borraras2->delete();
                     }
                     //dd($perdel);
-                    $equipos = Input::get('permisos_r');
+                    $equipos = $request->permisos_r;
                     if (is_array($equipos)) {
                         foreach ($equipos as $equipo) {
                             $permiso = Permiso::findOrFail($equipo)->toArray();
