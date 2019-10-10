@@ -32,6 +32,7 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.5",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "^6.2",
         "laravel/passport": "^7.5",
         "laravel/tinker": "^1.0",
