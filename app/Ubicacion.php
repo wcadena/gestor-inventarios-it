@@ -5,12 +5,10 @@ namespace App;
 use App\Transformers\UbicacionTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Mpociot\Firebase\SyncsWithFirebase;
 
 class Ubicacion extends Model
 {
     use SoftDeletes;
-    use SyncsWithFirebase;
 
     public $transformer = UbicacionTransformer::class;
     protected $dates = ['ubicacion'];

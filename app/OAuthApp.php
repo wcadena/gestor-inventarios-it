@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Mpociot\Firebase\SyncsWithFirebase;
 
 class OAuthApp extends Model
 {
-    use SyncsWithFirebase;
 
     const AUTH_ACTIVO = '1';
     const AUTH_INACTIVO = '0';
