@@ -1,11 +1,11 @@
 /*!
- * Cropper.js v1.5.1
+ * Cropper.js v1.5.4
  * https://fengyuanchen.github.io/cropperjs
  *
  * Copyright 2015-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2019-03-10T09:55:53.729Z
+ * Date: 2019-08-03T08:38:42.128Z
  */
 
 'use strict';
@@ -66,7 +66,7 @@ function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
-var IS_BROWSER = typeof window !== 'undefined';
+var IS_BROWSER = typeof window !== 'undefined' && typeof window.document !== 'undefined';
 var WINDOW = IS_BROWSER ? window : {};
 var IS_TOUCH_DEVICE = IS_BROWSER ? 'ontouchstart' in WINDOW.document.documentElement : false;
 var HAS_POINTER_EVENT = IS_BROWSER ? 'PointerEvent' in WINDOW : false;
@@ -119,6 +119,7 @@ var EVENT_ZOOM = 'zoom'; // Mime types
 var MIME_TYPE_JPEG = 'image/jpeg'; // RegExps
 
 var REGEXP_ACTIONS = /^e|w|s|n|se|sw|ne|nw|all|crop|move|zoom$/;
+var REGEXP_DATA_URL = /^data:/;
 var REGEXP_DATA_URL_JPEG = /^data:image\/jpeg;base64,/;
 var REGEXP_TAG_NAME = /^img|canvas$/i; // Misc
 // Inspired by the default width and height of a canvas element.
@@ -1520,9 +1521,11 @@ var render = {
 
 var preview = {
   initPreview: function initPreview() {
-    var crossOrigin = this.crossOrigin;
+    var element = this.element,
+        crossOrigin = this.crossOrigin;
     var preview = this.options.preview;
     var url = crossOrigin ? this.crossOriginUrl : this.url;
+    var alt = element.alt || 'The image to preview';
     var image = document.createElement('img');
 
     if (crossOrigin) {
@@ -1530,6 +1533,7 @@ var preview = {
     }
 
     image.src = url;
+    image.alt = alt;
     this.viewBox.appendChild(image);
     this.viewBoxImage = image;
 
@@ -1540,7 +1544,7 @@ var preview = {
     var previews = preview;
 
     if (typeof preview === 'string') {
-      previews = this.element.ownerDocument.querySelectorAll(preview);
+      previews = element.ownerDocument.querySelectorAll(preview);
     } else if (preview.querySelector) {
       previews = [preview];
     }
@@ -1560,6 +1564,7 @@ var preview = {
       }
 
       img.src = url;
+      img.alt = alt;
       /**
        * Override img element styles
        * Add `display:block` to avoid margin top issue
@@ -3223,13 +3228,23 @@ function () {
       if (!options.checkOrientation || !window.ArrayBuffer) {
         this.clone();
         return;
-      } // Read ArrayBuffer from Data URL of JPEG images directly for better performance.
+      } // Detect the mime type of the image directly if it is a Data URL
 
 
-      if (REGEXP_DATA_URL_JPEG.test(url)) {
-        this.read(dataURLToArrayBuffer(url));
+      if (REGEXP_DATA_URL.test(url)) {
+        // Read ArrayBuffer from Data URL of JPEG images directly for better performance
+        if (REGEXP_DATA_URL_JPEG.test(url)) {
+          this.read(dataURLToArrayBuffer(url));
+        } else {
+          // Only a JPEG image may contains Exif Orientation information,
+          // the rest types of Data URLs are not necessary to check orientation at all.
+          this.clone();
+        }
+
         return;
-      }
+      } // 1. Detect the mime type of the image by a XMLHttpRequest.
+      // 2. Load the image as ArrayBuffer for reading orientation if its a JPEG image.
+
 
       var xhr = new XMLHttpRequest();
       var clone = this.clone.bind(this);
@@ -3244,6 +3259,7 @@ function () {
       xhr.ontimeout = clone;
 
       xhr.onprogress = function () {
+        // Abort the request directly if it not a JPEG image for better performance
         if (xhr.getResponseHeader('content-type') !== MIME_TYPE_JPEG) {
           xhr.abort();
         }
@@ -3307,19 +3323,16 @@ function () {
     value: function clone() {
       var element = this.element,
           url = this.url;
-      var crossOrigin;
-      var crossOriginUrl;
+      var crossOrigin = element.crossOrigin;
+      var crossOriginUrl = url;
 
       if (this.options.checkCrossOrigin && isCrossOriginURL(url)) {
-        crossOrigin = element.crossOrigin;
+        if (!crossOrigin) {
+          crossOrigin = 'anonymous';
+        } // Bust cache when there is not a "crossOrigin" property (#519)
 
-        if (crossOrigin) {
-          crossOriginUrl = url;
-        } else {
-          crossOrigin = 'anonymous'; // Bust cache when there is not a "crossOrigin" property
 
-          crossOriginUrl = addTimestamp(url);
-        }
+        crossOriginUrl = addTimestamp(url);
       }
 
       this.crossOrigin = crossOrigin;
@@ -3331,6 +3344,7 @@ function () {
       }
 
       image.src = crossOriginUrl || url;
+      image.alt = element.alt || 'The image to crop';
       this.image = image;
       image.onload = this.start.bind(this);
       image.onerror = this.stop.bind(this);
@@ -3342,11 +3356,13 @@ function () {
     value: function start() {
       var _this2 = this;
 
-      var image = this.isImg ? this.element : this.image;
+      var image = this.image;
       image.onload = null;
       image.onerror = null;
-      this.sizing = true;
-      var IS_SAFARI = WINDOW.navigator && /^(?:.(?!chrome|android))*safari/i.test(WINDOW.navigator.userAgent);
+      this.sizing = true; // Match all browsers that use WebKit as the layout engine in iOS devices,
+      // such as Safari for iOS, Chrome for iOS, and in-app browsers.
+
+      var isIOSWebKit = WINDOW.navigator && /(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(WINDOW.navigator.userAgent);
 
       var done = function done(naturalWidth, naturalHeight) {
         assign(_this2.imageData, {
@@ -3358,10 +3374,10 @@ function () {
         _this2.sized = true;
 
         _this2.build();
-      }; // Modern browsers (except Safari)
+      }; // Most modern browsers (excepts iOS WebKit)
 
 
-      if (image.naturalWidth && !IS_SAFARI) {
+      if (image.naturalWidth && !isIOSWebKit) {
         done(image.naturalWidth, image.naturalHeight);
         return;
       }
@@ -3373,15 +3389,15 @@ function () {
       sizingImage.onload = function () {
         done(sizingImage.width, sizingImage.height);
 
-        if (!IS_SAFARI) {
+        if (!isIOSWebKit) {
           body.removeChild(sizingImage);
         }
       };
 
-      sizingImage.src = image.src; // iOS Safari will convert the image automatically
+      sizingImage.src = image.src; // iOS WebKit will convert the image automatically
       // with its orientation once append it into DOM (#279)
 
-      if (!IS_SAFARI) {
+      if (!isIOSWebKit) {
         sizingImage.style.cssText = 'left:0;' + 'max-height:none!important;' + 'max-width:none!important;' + 'min-height:0!important;' + 'min-width:0!important;' + 'opacity:0;' + 'position:absolute;' + 'top:0;' + 'z-index:-1;';
         body.appendChild(sizingImage);
       }

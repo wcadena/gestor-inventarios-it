@@ -6,7 +6,6 @@ use App\FileEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Webpatser\Uuid\Uuid;
@@ -40,7 +39,7 @@ class FileEntriesController extends Controller
      */
     public function store(Request $request)
     {
-        $file = Input::file('file');
+        $file = $request->file('file');
         $filename = $file->getClientOriginalName();
 
         $path = hash('sha256', time());
@@ -51,9 +50,9 @@ class FileEntriesController extends Controller
             $input['path'] = $path;
             $input['size'] = $file->getClientSize();
             $input['user_id'] = Auth::user()->id;
-            $input['imageable_type'] = Input::get('imageable_type');
-            $input['imageable_id'] = Input::get('imageable_id');
-            $input['vinculo_padre'] = Input::get('vinculo_padre');
+            $input['imageable_type'] = $request->imageable_type;
+            $input['imageable_id'] = $request->imageable_id;
+            $input['vinculo_padre'] = $request->vinculo_padre;
             $input['vinculo'] = Uuid::generate();
             $file = FileEntry::create($input);
         }

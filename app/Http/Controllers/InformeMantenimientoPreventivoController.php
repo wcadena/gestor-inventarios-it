@@ -13,7 +13,6 @@ use App\ProyectoSeccion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Session;
 
 class InformeMantenimientoPreventivoController extends Controller
@@ -70,7 +69,7 @@ class InformeMantenimientoPreventivoController extends Controller
             //dd($request);
             $inf = InformeMantenimientoPreventivo::create($request->all());
             //////////////////////////////////////////////
-            $tecnicos = Input::get('tecnicos');
+            $tecnicos = $request->tecnicos;
             if (is_array($tecnicos)) {
                 foreach ($tecnicos as $tecnico) {
                     $tecnico_x = User::findOrFail($tecnico)->toArray();
@@ -84,7 +83,7 @@ class InformeMantenimientoPreventivoController extends Controller
                 Session::flash('flash_message', 'Tecnicos added!');
             }
             //////////////////////////////////////////////
-            $proyectos = Input::get('informe_proyectos_seccions_inf');
+            $proyectos = $request->informe_proyectos_seccions_inf;
             if (is_array($proyectos)) {
                 foreach ($proyectos as $proyecto) {
                     if ($proyecto != '---') {

@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
-use Mpociot\Firebase\SyncsWithFirebase;
 
 class Puesto extends Model
 {
     use Notifiable, HasApiTokens, SoftDeletes;
-    use SyncsWithFirebase;
 
     public $transformer = PuestoTransformer::class;
 

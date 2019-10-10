@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\CheckList_OpcionesCheckList;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Input;
 use Session;
 
 class CheckList_OpcionesCheckListController extends Controller
@@ -90,7 +88,7 @@ class CheckList_OpcionesCheckListController extends Controller
                     'valor1'       => 'required',
                     //'nerd_level' => 'required|numeric'
                 );
-                $validator = \Validator::make(Input::all(), $rules);
+                $validator = \Validator::make($request->all(), $rules);
 
                 // process the login
                 if ($validator->fails()) {
@@ -125,9 +123,9 @@ class CheckList_OpcionesCheckListController extends Controller
     public function crearChecklist_option_storage(Request $request)
     {
         CheckList_OpcionesCheckList::create([
-            'check_list_id' => Input::get('check_list_id'),
-            'atributo'      => Input::get('atributo'),
-            'tipo'          => Input::get('tipo'),
+            'check_list_id' => $request->check_list_id,
+            'atributo'      => $request->atributo,
+            'tipo'          => $request->tipo,
         ]);
 
         return response()->json(['success' => true]);

@@ -5,12 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Mpociot\Firebase\SyncsWithFirebase;
 
 class Modulo extends Model
 {
     use Notifiable, HasApiTokens;
-    use SyncsWithFirebase;
 
     protected $fillable = [
         'modulo',

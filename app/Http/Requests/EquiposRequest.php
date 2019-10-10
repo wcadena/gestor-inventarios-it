@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Empresa;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class EquiposRequest extends FormRequest
 {
@@ -58,11 +57,11 @@ class EquiposRequest extends FormRequest
                     }
                 }*/
             }],
-            'codigo_avianca' => [function ($attribute, $value, $fail) {
+            'codigo_avianca' => [function ($attribute, $value, $fail) use ($request) {
                 /*if ($value <= 10) {
                     $fail(':attribute needs more cowbell!');
                 }*/
-                $empresa = Empresa::where('empresa', '=', Input::get('empresa_procede1'))->first();
+                $empresa = Empresa::where('empresa', '=', $request->empresa_procede1)->first();
 
                 if ($empresa->formula_codigo != '' && !preg_match($empresa->formula_codigo, $value)) {
                     $fail(':attribute NO cumple con estructura de codigo de empresa!('.$empresa->formula_codigo.')');

@@ -10,13 +10,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Passport\HasApiTokens;
-use Mpociot\Firebase\SyncsWithFirebase;
 
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
     use Notifiable, HasApiTokens, SoftDeletes;
-    use SyncsWithFirebase;
 
     public $transformer = UserTransformer::class;
 
