@@ -210,7 +210,6 @@ Route::get('oautho2', function (Illuminate\Http\Request  $request) {
     return view('oauth2');
 })->middleware('auth')->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
 
-
 Route::post('busqueda', 'BusquedaController@busqueda');
 Route::get('busqueda', 'BusquedaController@busqueda');
 

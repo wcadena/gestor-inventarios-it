@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class OAuthApp extends Model
 {
-
     const AUTH_ACTIVO = '1';
     const AUTH_INACTIVO = '0';
 
