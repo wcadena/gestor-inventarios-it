@@ -72,7 +72,7 @@ Route::post('checklist_editar/{area_id}/{checklist}', 'CheckListController@edita
 Route::resource('equiposerching', 'EquiposController@home');
 Route::resource('postSearch', 'EquiposController@postSearch');
 
-Route::get('tags', function (Illuminate\Http\Request  $request) {
+Route::get('tags', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\Equipos::where('no_serie', 'like', '%'.$term.'%')->
@@ -91,12 +91,12 @@ Route::get('tags', function (Illuminate\Http\Request  $request) {
 
 Route::resource('config', 'ConfiguracionController');
 
-Route::get('test', function (Illuminate\Http\Request  $request) {
+Route::get('test', function (Illuminate\Http\Request $request) {
     $dat = App\Configuracion::Config('CUSTODIO_BODEGA');
     dd($dat);
 });
 
-Route::get('tags_custodio', function (Illuminate\Http\Request  $request) {
+Route::get('tags_custodio', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
@@ -110,7 +110,7 @@ Route::get('tags_custodio', function (Illuminate\Http\Request  $request) {
     return \Response::json($valid_tags);
 });
 
-Route::get('tags_checklist', function (Illuminate\Http\Request  $request) {
+Route::get('tags_checklist', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
@@ -125,7 +125,7 @@ Route::get('tags_checklist', function (Illuminate\Http\Request  $request) {
     return \Response::json($valid_tags);
 });
 
-Route::get('tags_model', function (Illuminate\Http\Request  $request) {
+Route::get('tags_model', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
@@ -164,7 +164,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::delete('checklist_crear_option/{id}/delete', 'CheckList_OpcionesCheckListController@crearChecklist_option_delete');
 });
 
-Route::get('tags_model_tipo', function (Illuminate\Http\Request  $request) {
+Route::get('tags_model_tipo', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')
@@ -174,7 +174,7 @@ Route::get('tags_model_tipo', function (Illuminate\Http\Request  $request) {
 
     return response()->json($tags, 200);
 });
-Route::get('tags_model_modelo', function (Illuminate\Http\Request  $request) {
+Route::get('tags_model_modelo', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
     $tags = App\ModeloEquipo::where('modelo', 'like', '%'.$term.'%')
@@ -206,7 +206,7 @@ Route::resource('tecnico', 'InformeMantenimientoPreventivoTecnicoController');
 
 Route::post('users/store', 'api\UserController@store');
 
-Route::get('oautho2', function (Illuminate\Http\Request  $request) {
+Route::get('oautho2', function (Illuminate\Http\Request $request) {
     return view('oauth2');
 })->middleware('auth')->middleware('authEmp:administrador;system;planta_fisica;recursos_humanos;encargado_activos_fijos;sistemas');
 
