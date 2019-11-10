@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\OAuthApp;
 use GuzzleHttp\Client;
+use http\Client\Curl\User;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Http\Request;
 use GuzzleHttp\Stream\Stream;
+use Illuminate\Support\Facades\Auth;
+
 class Oauth2Controller extends Controller
 {
     public function __construct()
@@ -46,11 +50,9 @@ class Oauth2Controller extends Controller
 
         $response1 = $http->post('http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/token', [
             'form_params' => [
-                'grant_type' => 'password',
+                'grant_type' => 'authorization_code',
                 'client_id' => 'employee-service',
                 'client_secret' => 'ff7627e4-2f06-4924-a0c6-de34bbe0c4fd',
-                'username' => 'sara',
-                'password' => 'sara',
                 'redirect_uri' => 'http://inventarios.local/callback',
                 'code' => $request->code,
             ],
@@ -69,8 +71,12 @@ class Oauth2Controller extends Controller
 
             ],
         ]);
-        dd($resp,$response,$response->getBody()->read(1024));
+        $user = json_decode((string) $response->getBody(), true);
+        $us = \App\User::where('email',$user['email'])->firstorfail();
 
-        return redirect('oauth_final');
+        Auth::loginUsingId($us->id);
+        //dd($resp,$response,$response->getBody()->read(1024),$user);
+
+        return redirect('home');
     }
 }
