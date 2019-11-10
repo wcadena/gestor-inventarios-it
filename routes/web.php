@@ -232,6 +232,7 @@ Route::name('garantiasHP')->get('garantiasHP', 'EquiposController@garantiasHP');
 Route::get('/redirect', 'Auth\Oauth2Controller@redirect');
 
 Route::get('/callback', 'Auth\Oauth2Controller@callback');
+Route::get('/callback2', 'Auth\Oauth2Controller@callback2');
 
 Route::name('OauthFinal')->get('oauth_final', function (Request $request) {
     return view('oauth2_final');
