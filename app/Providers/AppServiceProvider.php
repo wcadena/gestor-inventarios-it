@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Intervention\Image\ImageManagerStatic;
+use Avdevs\Keycloak\KeycloakProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -65,6 +66,7 @@ class AppServiceProvider extends ServiceProvider
             //'videos' => 'App\Video',
         ]);
         $this->bootSpotifySocialite();
+        $this->bootKeycloakSocialite();
     }
 
     /**
@@ -89,6 +91,17 @@ class AppServiceProvider extends ServiceProvider
             function ($app) use ($socialite) {
                 $config = $app['config']['services.spotify'];
                 return $socialite->buildProvider(SpotifyProvider::class, $config);
+            }
+        );
+    }
+    private function bootKeycloakSocialite()
+    {
+        $socialite = $this->app->make('Laravel\Socialite\Contracts\Factory');
+        $socialite->extend(
+            'keycloak',
+            function ($app) use ($socialite) {
+                $config = $app['config']['services.keycloak'];
+                return new KeycloakProvider($config);
             }
         );
     }

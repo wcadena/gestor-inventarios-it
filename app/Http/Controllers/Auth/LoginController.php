@@ -37,12 +37,23 @@ class LoginController extends Controller
     }
     public function redirectToProvider()
     {
-        return Socialite::driver('spotify')->redirect();
+        return Socialite::driver('keycloak')
+            ->stateless()
+            ->scopes(['Client ID','Username','Client Host','Client IP Address']) // Array ex : name
+            ->redirect();
     }
     public function handleProviderCallback()
     {
         $user = Socialite::driver('spotify');
         dd($user);
+        $response = $userData->request('GET', '/api/user', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer '.$accessToken,
+            ],
+        ]);
+
+        dd($userData->email);
         // $user->token;
     }
 }

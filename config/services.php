@@ -52,8 +52,8 @@ return [
         'redirect' => 'http://inventarios.local/github/callback',
     ],
     'keycloak' => [
-        'authServerUrl'         => env('KEYCLOAK_AUTHSERVERURL'),
-        'realm'                 => env('KEYCLOAK_REALM'),
+        'authServerUrl'         => env('KEYCLOAK_AUTHSERVERURL','http://localhost:8080/auth'),
+        'realm'                 => env('KEYCLOAK_REALM','dev'),
         'clientId'              => env('KEYCLOAK_CLIENTID','employee-service'),
         'clientSecret'          => env('KEYCLOAK_CLIENTSECRET','ff7627e4-2f06-4924-a0c6-de34bbe0c4fd'),
         'redirectUri'           => env('KEYCLOAK_REDIRECTURI','http://inventarios.local/github/callback'),
