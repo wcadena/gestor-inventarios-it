@@ -12,14 +12,14 @@ class SpotifyProvider extends AbstractProvider implements ProviderInterface {
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase('http://localhost:8080/auth/realms/dev/protocol/openid-connect/auth', $state);
+        return $this->buildAuthUrlFromBase('http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/auth', $state);
     }
     /**
      * {@inheritdoc}
      */
     protected function getTokenUrl()
     {
-        return 'http://localhost:8080/auth/realms/dev/protocol/openid-connect/token';
+        return 'http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/token';
     }
     /**
      * {@inheritdoc}
@@ -46,7 +46,7 @@ class SpotifyProvider extends AbstractProvider implements ProviderInterface {
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get('http://localhost:8080/auth/realms/dev/protocol/openid-connect/token', [
+        $response = $this->getHttpClient()->get('http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/token', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
             ],
