@@ -43,6 +43,7 @@ class Oauth2Controller extends Controller
 
     public function callback(Request $request)
     {
+        dd($request);
         $token_oauth = OAuthApp::where('id', '=', session('_token'))->first();
         $http = new Client();
 

@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::prefix('files')->name('files.')->group(function () {
     Route::resource('file', 'FileEntriesController');
 });
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('github/callback', 'Auth\LoginController@handleProviderCallback');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/home', 'HomeController@index');

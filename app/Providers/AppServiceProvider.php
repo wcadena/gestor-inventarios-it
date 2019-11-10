@@ -64,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
             'informe_proyectos_seccion' => 'App\InformeMantenimientoPreventivo',
             //'videos' => 'App\Video',
         ]);
+        $this->bootSpotifySocialite();
     }
 
     /**
@@ -78,5 +79,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('path.public', function () {
             return base_path().'/public';
         });
+    }
+
+    private function bootSpotifySocialite()
+    {
+        $socialite = $this->app->make('Laravel\Socialite\Contracts\Factory');
+        $socialite->extend(
+            'spotify',
+            function ($app) use ($socialite) {
+                $config = $app['config']['services.spotify'];
+                return $socialite->buildProvider(SpotifyProvider::class, $config);
+            }
+        );
     }
 }

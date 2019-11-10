@@ -46,5 +46,20 @@ return [
         'secret'         => env('FIRE_DATABASE_SECRET'),
         'storage_bucket' => 'STORAGE_BUCKET', // Only used for JS integration
     ],
+    'spotify' => [
+        'client_id' => env('GITHUB_CLIENT_ID','employee-service'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET','ff7627e4-2f06-4924-a0c6-de34bbe0c4fd'),
+        'redirect' => 'http://inventarios.local/github/callback',
+    ],
+    'keycloak' => [
+        'authServerUrl'         => env('KEYCLOAK_AUTHSERVERURL'),
+        'realm'                 => env('KEYCLOAK_REALM'),
+        'clientId'              => env('KEYCLOAK_CLIENTID','employee-service'),
+        'clientSecret'          => env('KEYCLOAK_CLIENTSECRET','ff7627e4-2f06-4924-a0c6-de34bbe0c4fd'),
+        'redirectUri'           => env('KEYCLOAK_REDIRECTURI','http://inventarios.local/github/callback'),
+        'encryptionAlgorithm'   => env('KEYCLOAK_ENCRYPTIONALGORITHM'),
+        'encryptionKeyPath'     => env('KEYCLOAK_ENCRYPTIONKEYPATH'),
+        'encryptionKey'         => env('KEYCLOAK_ENCRYPTIONKEY'),
+    ]
 
 ];
