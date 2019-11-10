@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\OAuthApp;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-
+use GuzzleHttp\Stream\Stream;
 class Oauth2Controller extends Controller
 {
     public function __construct()
@@ -43,26 +42,34 @@ class Oauth2Controller extends Controller
 
     public function callback(Request $request)
     {
-        dd($request);
-        $token_oauth = OAuthApp::where('id', '=', session('_token'))->first();
         $http = new Client();
 
-        $response = $http->post(env('APP_URL').'/oauth/token', [
+        $response1 = $http->post('http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/token', [
             'form_params' => [
-                'grant_type'    => 'authorization_code',
-                'client_id'     => $token_oauth->client_id,
-                'client_secret' => $token_oauth->client_secret,
-                'redirect_uri'  => env('APP_URL').'/callback',
-                'code'          => $request->code,
+                'grant_type' => 'password',
+                'client_id' => 'employee-service',
+                'client_secret' => 'ff7627e4-2f06-4924-a0c6-de34bbe0c4fd',
+                'username' => 'sara',
+                'password' => 'sara',
+                'redirect_uri' => 'http://inventarios.local/callback',
+                'code' => $request->code,
             ],
         ]);
-        $token_oauth->activo = OAuthApp::AUTH_INACTIVO;
-        $recuperadoDelCallOauth = json_decode((string) $response->getBody(), true);
-        $token_oauth->token_type = $recuperadoDelCallOauth['token_type'];
-        $token_oauth->expires_in = $recuperadoDelCallOauth['expires_in'];
-        $token_oauth->access_token = $recuperadoDelCallOauth['access_token'];
-        $token_oauth->refresh_token = $recuperadoDelCallOauth['refresh_token'];
-        $token_oauth->save();
+        //dd(json_decode((string) $response->getBody(), true));
+        $resp = json_decode((string) $response1->getBody(), true);
+        //dd($resp['access_token']);
+        $resp =($resp['access_token']);
+        //return redirect('oauth_final');
+
+        //dd($resp);
+        $http2 = new Client();
+        $response = $http2->request('GET', 'http://10.10.6.116:8080/auth/realms/dev/protocol/openid-connect/userinfo', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$resp,
+
+            ],
+        ]);
+        dd($resp,$response,$response->getBody()->read(1024));
 
         return redirect('oauth_final');
     }
