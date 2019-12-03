@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\ApiController;
-use App\Ubicacion;
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 
 class UbicacionController extends ApiController

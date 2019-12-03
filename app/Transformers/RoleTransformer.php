@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Role;
+use App\Models\Role;
 use League\Fractal\TransformerAbstract;
 
 class RoleTransformer extends TransformerAbstract

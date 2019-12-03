@@ -1,26 +1,26 @@
 <?php
 
-use App\Bitacora;
+use App\Models\Bitacora;
 use Faker\Generator as Faker;
 
 $factory->define(Bitacora::class, function (Faker $faker) {
     return [
         'id_equipos' => function () {
-            factory(App\Equipos::class, 1)->create();
+            factory(App\Models\Equipos::class, 1)->create();
 
-            return App\ModeloEquipo::inRandomOrder()->first()->id;
+            return App\Models\ModeloEquipo::inRandomOrder()->first()->id;
         },
         'titulo'        => $faker->title,
         'fecha_ingreso' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'custodio_id'   => function () {
-            factory(App\Custodios::class, 1)->create();
+            factory(App\Models\Custodios::class, 1)->create();
 
-            return App\Custodios::inRandomOrder()->first()->id;
+            return App\Models\Custodios::inRandomOrder()->first()->id;
         },
         'user_id' => function () {
-            factory(App\User::class, 1)->create();
+            factory(App\Models\User::class, 1)->create();
 
-            return App\User::inRandomOrder()->first()->id;
+            return App\Models\User::inRandomOrder()->first()->id;
         },
         'problema'   => $faker->text,
         'solucion'   => $faker->text,

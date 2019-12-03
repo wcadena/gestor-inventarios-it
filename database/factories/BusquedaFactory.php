@@ -1,14 +1,14 @@
 <?php
 
-use App\Busqueda;
+use App\Models\Busqueda;
 use Faker\Generator as Faker;
 
 $factory->define(Busqueda::class, function (Faker $faker) {
     return [
         'user_id' => function () {
-            factory(App\User::class, 1)->create();
+            factory(App\Models\User::class, 1)->create();
 
-            return App\User::inRandomOrder()->first()->id;
+            return App\Models\User::inRandomOrder()->first()->id;
         },
         'palabra_q'    => $faker->word,
         'instancia'    => $faker->word,

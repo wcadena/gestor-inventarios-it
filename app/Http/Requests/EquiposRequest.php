@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Empresa;
+use App\Models\Empresa;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
@@ -63,7 +63,7 @@ class EquiposRequest extends FormRequest
                 }*/
                 $empresa = Empresa::where('empresa', '=', $request->empresa_procede1)->first();
 
-                if ($empresa->formula_codigo != '' && !preg_match($empresa->formula_codigo, $value)) {
+                if ($empresa->formula_codigo != '' && ! preg_match($empresa->formula_codigo, $value)) {
                     $fail(':attribute NO cumple con estructura de codigo de empresa!('.$empresa->formula_codigo.')');
                 }
             }],

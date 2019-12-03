@@ -13,7 +13,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Controllers\UserApiController;
-use App\User;
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Session;
@@ -62,7 +62,7 @@ class AuthEmpleado
             return redirect()->action('HomeController@index')                //->route('login')                ->with('alert', trans('home.alert1', ['name' => $rol_emp, 'name2' => $role]));
         }
         /*             * verifica el permiso con el rol             */
-        if (!str_contains($role, $rol_emp)) {
+        if (! str_contains($role, $rol_emp)) {
             if ($rol_emp == 'registrado') {
                 Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Solicitar activacion a un Administrador.');
             } elseif ($rol_emp == 'administrador') {

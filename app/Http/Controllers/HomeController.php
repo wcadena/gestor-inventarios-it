@@ -7,11 +7,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Configuracion;
-use App\Custodios;
-use App\Equipos;
-use App\OAuthApp;
-use App\User;
+use App\Models\Configuracion;
+use App\Models\Custodios;
+use App\Models\Equipos;
+use App\Models\OAuthApp;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

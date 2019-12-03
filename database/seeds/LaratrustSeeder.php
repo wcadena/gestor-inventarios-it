@@ -24,7 +24,7 @@ class LaratrustSeeder extends Seeder
         foreach ($config as $key => $modules) {
 
             // Create a new role
-            $role = \App\Role::create([
+            $role = \App\Models\Role::create([
                 'name'         => $key,
                 'display_name' => ucwords(str_replace('_', ' ', $key)),
                 'description'  => ucwords(str_replace('_', ' ', $key)),
@@ -38,7 +38,7 @@ class LaratrustSeeder extends Seeder
                 foreach (explode(',', $value) as $p => $perm) {
                     $permissionValue = $mapPermission->get($perm);
 
-                    $permissions[] = \App\Permission::firstOrCreate([
+                    $permissions[] = \App\Models\Permission::firstOrCreate([
                         'name'         => $permissionValue.'-'.$module,
                         'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
                         'description'  => ucfirst($permissionValue).' '.ucfirst($module),
@@ -54,7 +54,7 @@ class LaratrustSeeder extends Seeder
             $this->command->info("Creating '{$key}' user");
 
             // Create default user for each role
-            $user = \App\User::create([
+            $user = \App\Models\User::create([
 
                 'name'     => ($key == 'superadministrator') ? env('ADMIN_USER', 'wcadena') : ucwords(str_replace('_', ' ', $key)),
                 'email'    => ($key == 'superadministrator') ? env('ADMIN_EMAIL', $USER_EMAIL) : $key.'@app.com',
@@ -68,9 +68,9 @@ class LaratrustSeeder extends Seeder
                 'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-                'token'              => App\User::generarVerificationToken(),
-                'verification_token' => App\User::generarVerificationToken(),
-                'verified'           => App\User::USUARIO_VERIFICADO,
+                'token'              => App\Models\User::generarVerificationToken(),
+                'verification_token' => App\Models\User::generarVerificationToken(),
+                'verified'           => App\Models\User::USUARIO_VERIFICADO,
 
             ]);
 
@@ -78,12 +78,12 @@ class LaratrustSeeder extends Seeder
         }
 
         // Creating user with permissions
-        if (!empty($userPermission)) {
+        if (! empty($userPermission)) {
             foreach ($userPermission as $key => $modules) {
                 foreach ($modules as $module => $value) {
 
                     // Create default user for each permission set
-                    $user = \App\User::create([
+                    $user = \App\Models\User::create([
                         'name'           => ucwords(str_replace('_', ' ', $key)),
                         'email'          => $key.'@app.com',
                         'password'       => bcrypt('password'),
@@ -97,16 +97,16 @@ class LaratrustSeeder extends Seeder
                         'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                         'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                         'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-                        'token'              => App\User::generarVerificationToken(),
-                        'verification_token' => App\User::generarVerificationToken(),
-                        'verified'           => App\User::USUARIO_VERIFICADO,
+                        'token'              => App\Models\User::generarVerificationToken(),
+                        'verification_token' => App\Models\User::generarVerificationToken(),
+                        'verified'           => App\Models\User::USUARIO_VERIFICADO,
                     ]);
                     $permissions = [];
 
                     foreach (explode(',', $value) as $p => $perm) {
                         $permissionValue = $mapPermission->get($perm);
 
-                        $permissions[] = \App\Permission::firstOrCreate([
+                        $permissions[] = \App\Models\Permission::firstOrCreate([
                             'name'         => $permissionValue.'-'.$module,
                             'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
                             'description'  => ucfirst($permissionValue).' '.ucfirst($module),
@@ -133,9 +133,9 @@ class LaratrustSeeder extends Seeder
         DB::table('permission_role')->truncate();
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
-        \App\User::truncate();
-        \App\Role::truncate();
-        \App\Permission::truncate();
+        \App\Models\User::truncate();
+        \App\Models\Role::truncate();
+        \App\Models\Permission::truncate();
         Schema::enableForeignKeyConstraints();
     }
 }

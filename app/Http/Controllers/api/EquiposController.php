@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Equipos;
+use App\Models\Equipos;
 use App\Http\Controllers\ApiController;
 use App\Transformers\EquiposTransformer;
 use Illuminate\Http\Request;

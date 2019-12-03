@@ -12,9 +12,9 @@ class RouterTestIndexIn200Test extends TestCase
     {
         $faker = Factory::create();
         $correo = $faker->email;
-        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+        $user = factory(\App\Models\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
-        return \App\User::where('email', $correo)->first();
+        return \App\Models\User::where('email', $correo)->first();
     }
 
     // use DatabaseTransactions;
@@ -80,7 +80,7 @@ class RouterTestIndexIn200Test extends TestCase
     public function testLogin()
     {
         $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
+        $user = factory(\App\Models\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
         $response = $this->json('POST', '/login', [
             'email'    => $user[0]->email,
             'password' => 'passw0RD',

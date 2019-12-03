@@ -49,7 +49,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
     {
         dump('testLandingPageWithUserLogged');
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create();
+            $user = factory(\App\Models\User::class)->create();
             $browser->loginAs($user)
                 ->visit('/')
                 ->assertSee('Acacha')
@@ -87,7 +87,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
         dump('testLogin');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create(['password' => Hash::make('passw0RD')]);
+            $user = factory(\App\Models\User::class)->create(['password' => Hash::make('passw0RD')]);
             $browser->visit('/login')
                 ->type('email', $user->email)
                 ->type('password', 'passw0RD')
@@ -218,7 +218,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
     {
         dump('testHomePageForUnauthenticatedUsers');
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create();
+            $user = factory(\App\Models\User::class)->create();
             view()->share('user', $user);
             $browser->visit('/home')
                 ->pause(2000)
@@ -236,7 +236,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
         dump('testHomePageForAuthenticatedUsers');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create();
+            $user = factory(\App\Models\User::class)->create();
             view()->share('user', $user);
             $browser->loginAs($user)
                 ->visit('/home')
@@ -255,7 +255,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
     {
         dump('testLogout');
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create();
+            $user = factory(\App\Models\User::class)->create();
             view()->share('user', $user);
             $browser->loginAs($user)
                 ->visit('/home')
@@ -364,7 +364,7 @@ class AcachaAdmintLTELaravelTest extends DuskTestCase
         dump('testSendPasswordReset');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(\App\User::class)->create();
+            $user = factory(\App\Models\User::class)->create();
             $browser->visit('password/reset')
                 ->type('email', $user->email)
                 ->press('Send Password Reset Link')

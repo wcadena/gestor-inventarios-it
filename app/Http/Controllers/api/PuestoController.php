@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Custodios;
+use App\Models\Custodios;
 use App\Http\Controllers\ApiController;
-use App\Puesto;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -73,7 +73,7 @@ class PuestoController extends ApiController
         ];
         $this->validate($request, $reglas);
 
-        if (!$puesto->estado == 'OCUPADO') {
+        if (! $puesto->estado == 'OCUPADO') {
             return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
         $puesto->save();

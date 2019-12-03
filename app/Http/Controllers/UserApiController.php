@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\UserCreated;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use JWTAuth;
@@ -37,7 +37,7 @@ class UserApiController extends Controller
         $token = null;
 
         try {
-            if (!$token = JWTAuth::attempt($credentials)) {
+            if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['invalid_email_or_password'], 422);
             }
         } catch (JWTAuthException $e) {

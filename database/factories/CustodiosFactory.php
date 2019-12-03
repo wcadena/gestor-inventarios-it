@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Custodios::class, function (Faker $faker) {
+$factory->define(App\Models\Custodios::class, function (Faker $faker) {
     return [
         'pais'                            => 'Ecuador',
         'ciudad'                          => 'QUITO',

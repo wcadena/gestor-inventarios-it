@@ -32,7 +32,7 @@
             <div class="form-group {{ $errors->has('rol') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('rol', 'Rol: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('rol', \App\User::getENUM('rol'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('rol', \App\Models\User::getENUM('rol'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('rol', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>

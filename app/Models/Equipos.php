@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Scopes\EmpresaScope;
 use App\Transformers\EquiposTransformer;
@@ -57,41 +57,41 @@ class Equipos extends Model
     ////////////////////////////////////////////////////////////////////
     public function modelo_equipoxc()
     {
-        return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
+        return $this->hasOne(\App\Models\ModeloEquipo::class, 'id', 'modelo_equipo_id');
     }
 
     public function orden_de_compraxc()
     {
-        return $this->hasOne('App\OrdenDeCompra', 'id', 'orden_de_compra_id');
+        return $this->hasOne(\App\Models\OrdenDeCompra::class, 'id', 'orden_de_compra_id');
     }
 
     public function custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'custodio_id');
     }
 
     public function estacionxc()
     {
-        return $this->hasOne('App\Estaciones', 'id', 'estacione_id');
+        return $this->hasOne(\App\Models\Estaciones::class, 'id', 'estacione_id');
     }
 
     public function areaxc()
     {
-        return $this->hasOne('App\Areas', 'id', 'area_id');
+        return $this->hasOne(\App\Models\Areas::class, 'id', 'area_id');
     }
 
     public function check_listxc()
     {
-        return $this->hasOne('App\CheckList', 'id', 'check_list_id');
+        return $this->hasOne(\App\Models\CheckList::class, 'id', 'check_list_id');
     }
 
     public function equipos_logxc()
     {
-        return $this->hasOne('App\Equipos_log', 'id', 'id_equipos');
+        return $this->hasOne(\App\Models\Equipos_log::class, 'id', 'id_equipos');
     }
 
     public function equipos_reponovedadesdetalle()
     {
-        return $this->hasOne('App\RepoNovedadesDetalle', 'id_equipos', 'id');
+        return $this->hasOne(\App\Models\RepoNovedadesDetalle::class, 'id_equipos', 'id');
     }
 }

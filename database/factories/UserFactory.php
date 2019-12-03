@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -26,8 +26,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
         'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-        'token'              => App\User::generarVerificationToken(),
-        'verification_token' => App\User::generarVerificationToken(),
-        'verified'           => App\User::USUARIO_VERIFICADO,
+        'token'              => App\Models\User::generarVerificationToken(),
+        'verification_token' => App\Models\User::generarVerificationToken(),
+        'verified'           => App\Models\User::USUARIO_VERIFICADO,
     ];
 });

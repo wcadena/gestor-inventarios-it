@@ -1,6 +1,6 @@
 <?php
 
-use App\PermissionRole;
+use App\Models\PermissionRole;
 use Faker\Generator as Faker;
 
 $factory->define(PermissionRole::class, function (Faker $faker) {

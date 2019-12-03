@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Ubicacion;
+use App\Models\Ubicacion;
 use League\Fractal\TransformerAbstract;
 
 class UbicacionTransformer extends TransformerAbstract

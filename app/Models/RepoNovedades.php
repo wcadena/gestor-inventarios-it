@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,21 +37,21 @@ class RepoNovedades extends Model
 
     public function custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'custodio_id');
     }
 
     public function antiguo_custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'antiguo_custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'antiguo_custodio_id');
     }
 
     public function traslado_custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'traslado_custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'traslado_custodio_id');
     }
 
     public function reponovedadedetalleshm()
     {
-        return $this->hasMany('App\RepoNovedadesDetalle', 'repo_novedades_id', 'id');
+        return $this->hasMany(\App\Models\RepoNovedadesDetalle::class, 'repo_novedades_id', 'id');
     }
 }

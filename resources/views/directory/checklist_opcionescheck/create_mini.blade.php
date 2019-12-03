@@ -14,7 +14,7 @@
     <div class="form-group {{ $errors->has('tipo') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('tipo', 'Tipo: ', ['class' => 'control-label']) !!}
         <div class="ekihk">
-            {!! Form::select('tipo', \App\OpcionesCheckList::getENUM('tipo'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('tipo', \App\Models\OpcionesCheckList::getENUM('tipo'), null, ['class' => 'form-control']) !!}
 
             {!! $errors->first('tipo', '<p class="invalid-feedback">:message</p>') !!}
         </div>

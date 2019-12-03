@@ -23,7 +23,7 @@ class ProyectoController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        if (!empty($keyword)) {
+        if (! empty($keyword)) {
             $proyecto = Proyecto::latest()->paginate($perPage);
         } else {
             $proyecto = Proyecto::latest()->paginate($perPage);

@@ -2,8 +2,8 @@
 
 namespace App\Transformers;
 
-use App\Areas;
-use App\Custodios;
+use App\Models\Areas;
+use App\Models\Custodios;
 use League\Fractal\TransformerAbstract;
 
 class AreasTransformer extends TransformerAbstract

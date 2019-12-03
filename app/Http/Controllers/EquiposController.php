@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\Bitacora;
-use App\CheckList;
-use App\CheckList_OpcionesCheckList;
-use App\Configuracion;
-use App\Custodios;
-use App\Empresa;
-use App\Equipos;
-use App\Equipos_log;
-use App\Estaciones;
+use App\Models\Areas;
+use App\Models\Bitacora;
+use App\Models\CheckList;
+use App\Models\CheckList_OpcionesCheckList;
+use App\Models\Configuracion;
+use App\Models\Custodios;
+use App\Models\Empresa;
+use App\Models\Equipos;
+use App\Models\Equipos_log;
+use App\Models\Estaciones;
 use App\Http\Requests;
-use App\ModeloEquipo;
-use App\OrdenDeCompra;
-use App\User;
+use App\Models\ModeloEquipo;
+use App\Models\OrdenDeCompra;
+use App\Models\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -181,7 +181,7 @@ class EquiposController extends Controller
             $equipo->hp_warrantyResultRedirectUrl = $respuesta['warrantyResultRedirectUrl'];
             $equipo->empresa_procede1 = $respuesta['empresa_procede1'];
         }
-        if (!$equipo->hp_endDate == null) {
+        if (! $equipo->hp_endDate == null) {
             $fecha_caduca = Carbon::createFromFormat('Y-m-d', $equipo->hp_endDate);
             $diferenciaanios = Carbon::now()->diffInDays($fecha_caduca, false);
             if ($diferenciaanios < 0) {

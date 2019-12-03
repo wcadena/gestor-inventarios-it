@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\Custodios;
-use App\FileEntry;
-use App\InformeMantenimientoPreventivo;
-use App\InformeMantenimientoPreventivoCategoria;
-use App\InformeMantenimientoPreventivoTecnico;
+use App\Models\Areas;
+use App\Models\Custodios;
+use App\Models\FileEntry;
+use App\Models\InformeMantenimientoPreventivo;
+use App\Models\InformeMantenimientoPreventivoCategoria;
+use App\Models\InformeMantenimientoPreventivoTecnico;
 use App\InformeProyectosSeccion;
 use App\ProyectoSeccion;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
@@ -94,7 +94,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['informe_manto_prev_id'] = $inf->id;
                         $proyecto_x['tipo'] = 'elemento_seccion';
 
-                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
+                        $proyecto_x['orden'] = (! isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
 

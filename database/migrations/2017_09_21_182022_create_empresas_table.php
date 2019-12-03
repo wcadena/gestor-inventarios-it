@@ -21,7 +21,7 @@ class CreateEmpresasTable extends Migration
             });
         }
         if (env('DB_MIGRACIONES', 'false') == 'false') {
-            $e = new \App\Empresa();
+            $e = new \App\Models\Empresa();
             $e->empresa = env('EMP_PRINCIPAL', 'Ecuatask');
             $e->save();
         }

@@ -11,7 +11,7 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
      */
     public function run()
     {
-        Auth::login(App\User::inRandomOrder()->first());
+        Auth::login(App\Models\User::inRandomOrder()->first());
         $faker = \Faker\Factory::create();
 
         if (\App\InformeMantoPrevCate::where('categoria', '=', 'Informe')->first() == null) {
@@ -185,6 +185,6 @@ class InformeMantenimientoPreventivoSeeder extends Seeder
             ]);
         }
 
-        factory(App\InformeMantenimientoPreventivo::class, 2)->create();
+        factory(App\Models\InformeMantenimientoPreventivo::class, 2)->create();
     }
 }

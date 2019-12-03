@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
         $USER_EMAIL = 'wcadena@outlook.com';
 
         try {
-            factory(App\User::class)->create([
+            factory(App\Models\User::class)->create([
                     'name'     => env('ADMIN_USER', 'wcadena'),
                     'email'    => env('ADMIN_EMAIL', $USER_EMAIL),
                     'password' => bcrypt(env('ADMIN_PWD', '123456')), ]);

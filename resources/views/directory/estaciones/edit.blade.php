@@ -21,7 +21,7 @@
             <div class="form-group {{ $errors->has('pais') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('pais', trans('fo.pais'), ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('pais', \App\Estaciones::getENUM('pais'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('pais', \App\Models\Estaciones::getENUM('pais'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('pais', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\RoleTransformer;
 use Laratrust\Models\LaratrustRole;
@@ -13,6 +13,6 @@ class Role extends LaratrustRole
 
     public function users()
     {
-        return $this->belongsToMany('App\User', 'role_user', 'role_id', 'user_id');
+        return $this->belongsToMany(\App\Models\User::class, 'role_user', 'role_id', 'user_id');
     }
 }

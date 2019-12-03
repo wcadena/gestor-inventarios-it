@@ -11,7 +11,7 @@ class InformeMantenimientoPreventivoTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(\App\InformeMantenimientoPreventivo $info)
+    public function transform(\App\Models\InformeMantenimientoPreventivo $info)
     {
         return [
             'id'                         => (int) $info->id,
