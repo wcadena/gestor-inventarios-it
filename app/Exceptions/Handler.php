@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
 
     public function handleException($request, Exception $exception)
     {
-        if (config('app.debug') && !$request->is('api/*')) {
+        if (config('app.debug') && ! $request->is('api/*')) {
             if ($exception instanceof TokenMismatchException) {
                 Session::flash('TokenMismatchException_ev', true);
 

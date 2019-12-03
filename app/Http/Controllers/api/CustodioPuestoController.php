@@ -48,7 +48,7 @@ class CustodioPuestoController extends ApiController
             'estado'           => 'required|in:OCUPADO,RESERVADO,LIBRE',
         ];
         $this->validate($request, $rules);
-        if (!$puesto->estado == 'LIBRE') {
+        if (! $puesto->estado == 'LIBRE') {
             return $this->errorResponse('El puesto no está disponible', 409);
         }
         /********************************/
