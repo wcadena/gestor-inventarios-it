@@ -20,7 +20,7 @@ class Estaciones extends Model
 
     public function empresaxc()
     {
-        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+        return $this->hasOne(\App\Empresa::class, 'empresa', 'empresa');
     }
 
     public static function getENUM($tabla)

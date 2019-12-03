@@ -18,7 +18,7 @@ class Usuariorol extends Pivot
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     public function rols()

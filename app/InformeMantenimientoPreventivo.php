@@ -42,23 +42,23 @@ class InformeMantenimientoPreventivo extends Model
 
     public function areaxc()
     {
-        return $this->hasOne('App\Areas', 'id', 'area_id');
+        return $this->hasOne(\App\Areas::class, 'id', 'area_id');
     }
 
     public function custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'custodio_id');
+        return $this->hasOne(\App\Custodios::class, 'id', 'custodio_id');
     }
 
     public function informe_manto_prev_catexc()
     {
-        return $this->hasOne('App\User', 'id', 'informe_manto_prev_cate_id');
+        return $this->hasOne(\App\User::class, 'id', 'informe_manto_prev_cate_id');
     }
 
     ////////////////////////////////////////////////////////////////////
     public function modelo_equipoxc()
     {
-        return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
+        return $this->hasOne(\App\ModeloEquipo::class, 'id', 'modelo_equipo_id');
     }
 
     /**
@@ -66,7 +66,7 @@ class InformeMantenimientoPreventivo extends Model
      */
     public function informeProyectosSeccions()
     {
-        return $this->hasMany('App\InformeProyectosSeccion', 'informe_manto_prev_id');
+        return $this->hasMany(\App\InformeProyectosSeccion::class, 'informe_manto_prev_id');
     }
 
     /**
@@ -74,6 +74,6 @@ class InformeMantenimientoPreventivo extends Model
      */
     public function images()
     {
-        return $this->morphMany('App\FileEntry', 'imageable');
+        return $this->morphMany(\App\FileEntry::class, 'imageable');
     }
 }

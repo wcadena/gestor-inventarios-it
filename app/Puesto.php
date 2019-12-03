@@ -39,7 +39,7 @@ class Puesto extends Model
 
     public function modelo_equipoxc()
     {
-        return $this->hasOne('App\ModeloEquipo', 'id', 'modelo_equipo_id');
+        return $this->hasOne(\App\ModeloEquipo::class, 'id', 'modelo_equipo_id');
     }
 
     public function PuestoCustodios()
@@ -49,6 +49,6 @@ class Puesto extends Model
 
     public function ubicacions()
     {
-        return $this->hasOne('App\Ubicacion', 'id', 'ubicacion_id');
+        return $this->hasOne(\App\Ubicacion::class, 'id', 'ubicacion_id');
     }
 }

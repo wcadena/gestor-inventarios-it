@@ -16,6 +16,6 @@ class ModeloEquipo extends Model
 
     public function equiposhm()
     {
-        return $this->hasMany('App\Equipos', 'modelo_equipo_id', 'id');
+        return $this->hasMany(\App\Equipos::class, 'modelo_equipo_id', 'id');
     }
 }

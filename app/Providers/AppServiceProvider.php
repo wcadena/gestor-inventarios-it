@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
         \Carbon\Carbon::setLocale(config('app.locale'));
         //Custom Polymorphic Types
         Relation::morphMap([
-            'informe_proyectos_seccion' => 'App\InformeMantenimientoPreventivo',
+            'informe_proyectos_seccion' => \App\InformeMantenimientoPreventivo::class,
             //'videos' => 'App\Video',
         ]);
     }
