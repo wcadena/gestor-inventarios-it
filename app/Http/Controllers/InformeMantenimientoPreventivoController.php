@@ -94,7 +94,7 @@ class InformeMantenimientoPreventivoController extends Controller
                         $proyecto_x['informe_manto_prev_id'] = $inf->id;
                         $proyecto_x['tipo'] = 'elemento_seccion';
 
-                        $proyecto_x['orden'] = (!isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
+                        $proyecto_x['orden'] = (! isset($proyecto_x_met->informeProyectosSeccions)) ? $proyecto_x_met->informeProyectosSeccions->max('orden') : 1;
 
                         unset($proyecto_x['id']);
 

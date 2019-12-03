@@ -37,7 +37,7 @@ class UserApiController extends Controller
         $token = null;
 
         try {
-            if (!$token = JWTAuth::attempt($credentials)) {
+            if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['invalid_email_or_password'], 422);
             }
         } catch (JWTAuthException $e) {
