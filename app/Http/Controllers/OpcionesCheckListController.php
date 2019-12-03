@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\OpcionesCheckList;
+use App\Models\Areas;
+use App\Models\OpcionesCheckList;
 use Illuminate\Http\Request;
 use Session;
 

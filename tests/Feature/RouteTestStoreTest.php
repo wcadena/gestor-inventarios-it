@@ -11,14 +11,14 @@ class RouteTestStoreTest extends TestCase
     {
         $faker = Factory::create();
         $correo = $faker->email;
-        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+        $user = factory(\App\Models\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
-        return \App\User::where('email', $correo)->first();
+        return \App\Models\User::where('email', $correo)->first();
     }
 
     private function loginuser_rol($rol)
     {
-        return \App\User::where('rol', $rol)->first();
+        return \App\Models\User::where('rol', $rol)->first();
     }
 
     /**

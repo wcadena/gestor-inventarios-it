@@ -108,7 +108,7 @@
                 <div class="form-group {{ $errors->has('estado') ? ' form-control-alt is-invalid' : ''}}">
                     {!! Form::label('estado', trans('fo.estado'), ['class' => 'control-label']) !!}
                     <div class="ekihk">
-                        <?php echo Form::select('estado', \App\Custodios::getENUM('estado'), null, ['class' => 'form-control']); ?>
+                        <?php echo Form::select('estado', \App\Models\Custodios::getENUM('estado'), null, ['class' => 'form-control']); ?>
                         {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
                     </div>
                 </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Modulo;
-use App\Permission;
-use App\Role;
+use App\Models\Modulo;
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Session;
 
@@ -44,7 +44,7 @@ class RolController extends Controller
         foreach ($config as $key => $modules) {
             if (Role::where('name', $key)->count() == 0) {
                 // Create a new role
-                $role = \App\Role::create([
+                $role = \App\Models\Role::create([
                     'name'         => $key,
                     'display_name' => ucwords(str_replace('_', ' ', $key)),
                     'description'  => ucwords(str_replace('_', ' ', $key)),
@@ -59,7 +59,7 @@ class RolController extends Controller
                 foreach (explode(',', $value) as $p => $perm) {
                     $permissionValue = $mapPermission->get($perm);
                     if (Permission::where('name', $permissionValue.'-'.$module)->count() == 0) {
-                        $permissions[] = \App\Permission::firstOrCreate([
+                        $permissions[] = \App\Models\Permission::firstOrCreate([
                             'name'         => $permissionValue.'-'.$module,
                             'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
                             'description'  => ucfirst($permissionValue).' '.ucfirst($module),

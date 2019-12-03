@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -42,23 +42,23 @@ class InformeMantenimientoPreventivo extends Model
 
     public function areaxc()
     {
-        return $this->hasOne(\App\Areas::class, 'id', 'area_id');
+        return $this->hasOne(\App\Models\Areas::class, 'id', 'area_id');
     }
 
     public function custodioxc()
     {
-        return $this->hasOne(\App\Custodios::class, 'id', 'custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'custodio_id');
     }
 
     public function informe_manto_prev_catexc()
     {
-        return $this->hasOne(\App\User::class, 'id', 'informe_manto_prev_cate_id');
+        return $this->hasOne(\App\Models\User::class, 'id', 'informe_manto_prev_cate_id');
     }
 
     ////////////////////////////////////////////////////////////////////
     public function modelo_equipoxc()
     {
-        return $this->hasOne(\App\ModeloEquipo::class, 'id', 'modelo_equipo_id');
+        return $this->hasOne(\App\Models\ModeloEquipo::class, 'id', 'modelo_equipo_id');
     }
 
     /**
@@ -74,6 +74,6 @@ class InformeMantenimientoPreventivo extends Model
      */
     public function images()
     {
-        return $this->morphMany(\App\FileEntry::class, 'imageable');
+        return $this->morphMany(\App\Models\FileEntry::class, 'imageable');
     }
 }

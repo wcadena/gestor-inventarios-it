@@ -15,7 +15,7 @@ class AddVerificadoToUsersTable extends Migration
     {
         if (env('DB_MIGRACIONES', 'false') == 'false') {
             Schema::table('users', function (Blueprint $table) {
-                $table->string('verified')->default(\App\User::USUARIO_NO_VERIFICADO);
+                $table->string('verified')->default(\App\Models\User::USUARIO_NO_VERIFICADO);
                 $table->string('verification_token')->nullable();
             });
         }

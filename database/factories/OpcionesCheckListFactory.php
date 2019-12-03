@@ -1,6 +1,6 @@
 <?php
 
-use App\OpcionesCheckList;
+use App\Models\OpcionesCheckList;
 use Faker\Generator as Faker;
 
 $factory->define(OpcionesCheckList::class, function (Faker $faker) {

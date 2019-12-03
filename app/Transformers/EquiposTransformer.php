@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Equipos;
+use App\Models\Equipos;
 use League\Fractal\TransformerAbstract;
 
 class EquiposTransformer extends TransformerAbstract

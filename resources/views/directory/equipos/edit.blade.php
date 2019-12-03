@@ -224,7 +224,7 @@
                     <div class="form-group ">
                         {!! Form::label('estado', trans('form.estad2w'), ['class' => 'control-label'.($errors->has('estado') ? ' form-control-alt is-invalid' : '')]) !!}
                         <div class="ekihk">
-                            {!! Form::select('estado', \App\Equipos::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
+                            {!! Form::select('estado', \App\Models\Equipos::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
                             {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
@@ -232,14 +232,14 @@
                         {!! Form::label('estatus', trans('form.statyhs'), ['class' => 'control-label'.($errors->has('estatus') ? ' form-control-alt is-invalid' : '')]) !!}
                         <div class="ekihk">
 
-                            {!! Form::select('estatus', \App\Equipos::getENUM('estatus'), null, ['class' => 'chosen-select form-control']) !!}
+                            {!! Form::select('estatus', \App\Models\Equipos::getENUM('estatus'), null, ['class' => 'chosen-select form-control']) !!}
                             {!! $errors->first('estatus', '<p class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('garantia', trans('form.garantia'), ['class' => 'control-label']) !!}
                         <div class="ekihk">
-                            {!! Form::select('garantia', \App\Equipos::getENUM('garantia'), null, ['class' => 'chosen-select form-control'.($errors->has('garantia') ? ' form-control-alt is-invalid' : '')]) !!}
+                            {!! Form::select('garantia', \App\Models\Equipos::getENUM('garantia'), null, ['class' => 'chosen-select form-control'.($errors->has('garantia') ? ' form-control-alt is-invalid' : '')]) !!}
                             {!! $errors->first('garantia', '<p class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>

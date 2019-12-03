@@ -8,7 +8,7 @@
 
 namespace App\Transformers;
 
-use App\Busqueda;
+use App\Models\Busqueda;
 
 class BusquedaTransformer
 {

@@ -145,21 +145,21 @@
                         <div class="form-group ">
                             {!! Form::label('estado', 'Estado: ', ['class' => 'control-label']) !!}
                             <div class="ekihk">
-                                {!! Form::select('estado', \App\Equipos::getENUM('estado'), null, ['class' => 'chosen-select form-control'.($errors->has('estado') ? ' form-control-alt is-invalid' : '')]) !!}
+                                {!! Form::select('estado', \App\Models\Equipos::getENUM('estado'), null, ['class' => 'chosen-select form-control'.($errors->has('estado') ? ' form-control-alt is-invalid' : '')]) !!}
                                 {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
                             </div>
                         </div>
                         <div class="form-group ">
                             {!! Form::label('estatus', 'Estatus: ', ['class' => 'control-label']) !!}
                             <div class="ekihk">
-                                {!! Form::select('estatus', \App\Equipos::getENUM('estatus'), null, ['class' => 'chosen-select form-control'.($errors->has('estatus') ? ' form-control-alt is-invalid' : '')]) !!}
+                                {!! Form::select('estatus', \App\Models\Equipos::getENUM('estatus'), null, ['class' => 'chosen-select form-control'.($errors->has('estatus') ? ' form-control-alt is-invalid' : '')]) !!}
                                 {!! $errors->first('estatus', '<p class="invalid-feedback">:message</p>') !!}
                             </div>
                         </div>
                         <div class="form-group ">
                             {!! Form::label('garantia', 'Garantia: ', ['class' => 'control-label']) !!}
                             <div class="ekihk">
-                                {!! Form::select('garantia', \App\Equipos::getENUM('garantia'), null, ['class' => 'chosen-select form-control'.($errors->has('garantia') ? ' form-control-alt is-invalid' : '')]) !!}
+                                {!! Form::select('garantia', \App\Models\Equipos::getENUM('garantia'), null, ['class' => 'chosen-select form-control'.($errors->has('garantia') ? ' form-control-alt is-invalid' : '')]) !!}
                                 {!! $errors->first('garantia', '<p class="invalid-feedback">:message</p>') !!}
                             </div>
                         </div>

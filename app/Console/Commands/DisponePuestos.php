@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Puesto;
-use App\PuestoCustodios;
+use App\Models\Puesto;
+use App\Models\PuestoCustodios;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 

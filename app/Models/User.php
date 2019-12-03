@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Notifications\MyOwnResetPassword;
 use App\Transformers\UserTransformer;
@@ -84,7 +84,7 @@ class User extends Authenticatable
 
     public function empresaxc()
     {
-        return $this->hasOne(\App\Empresa::class, 'empresa', 'empresa');
+        return $this->hasOne(\App\Models\Empresa::class, 'empresa', 'empresa');
     }
 
     //////////////////////////////////////////////fin mutwadores
@@ -121,9 +121,9 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany(\App\Role::class, 'role_user', 'user_id', 'role_id');
+        return $this->belongsToMany(\App\Models\Role::class, 'role_user', 'user_id', 'role_id');
         // return $this->belongsToMany('App\Rol', 'usuariorols')->using('App\Usuariorol');
-        //return $this->belongsToMany('App\Role');
+        //return $this->belongsToMany('App\Models\Role');
     }
 
     /**
@@ -131,6 +131,6 @@ class User extends Authenticatable
      */
     public function custodio()
     {
-        return $this->hasOne(\App\Custodios::class, 'id', 'custodio_id');
+        return $this->hasOne(\App\Models\Custodios::class, 'id', 'custodio_id');
     }
 }

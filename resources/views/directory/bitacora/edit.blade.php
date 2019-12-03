@@ -58,7 +58,7 @@
             <div class="form-group {{ $errors->has('estado') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('estado', 'Estado: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('estado', \App\Bitacora::getENUM('estado'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('estado', \App\Models\Bitacora::getENUM('estado'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>

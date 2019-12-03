@@ -1,14 +1,14 @@
 <?php
 
-use App\Puesto;
+use App\Models\Puesto;
 use Faker\Generator as Faker;
 
 $factory->define(Puesto::class, function (Faker $faker) {
     return [
         'ubicacion_id' => function () {
-            factory(App\Ubicacion::class, 1)->create();
+            factory(App\Models\Ubicacion::class, 1)->create();
 
-            return App\Ubicacion::inRandomOrder()->first()->id;
+            return App\Models\Ubicacion::inRandomOrder()->first()->id;
         },
         'codigo'     => $faker->randomHtml(),
         'detalle'    => $faker->text,

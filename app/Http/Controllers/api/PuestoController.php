@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Custodios;
+use App\Models\Custodios;
 use App\Http\Controllers\ApiController;
-use App\Puesto;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Scopes\EmpresaTScope;
 use Illuminate\Database\Eloquent\Model;
@@ -35,7 +35,7 @@ class Configuracion extends Model
 
     public function empresaxc()
     {
-        return $this->hasOne(\App\Empresa::class, 'empresa', 'empresa');
+        return $this->hasOne(\App\Models\Empresa::class, 'empresa', 'empresa');
     }
 
     public function scopeConfig($query, $type)

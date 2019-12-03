@@ -75,7 +75,7 @@ Route::resource('postSearch', 'EquiposController@postSearch');
 Route::get('tags', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\Equipos::where('no_serie', 'like', '%'.$term.'%')->
+    $tags = App\Models\Equipos::where('no_serie', 'like', '%'.$term.'%')->
     orwhere('codigo_barras', 'like', '%'.$term.'%')->
     orwhere('codigo_otro', 'like', '%'.$term.'%')->
     orwhere('descripcion', 'like', '%'.$term.'%')->
@@ -92,14 +92,14 @@ Route::get('tags', function (Illuminate\Http\Request $request) {
 Route::resource('config', 'ConfiguracionController');
 
 Route::get('test', function (Illuminate\Http\Request $request) {
-    $dat = App\Configuracion::Config('CUSTODIO_BODEGA');
+    $dat = App\Models\Configuracion::Config('CUSTODIO_BODEGA');
     dd($dat);
 });
 
 Route::get('tags_custodio', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
+    $tags = App\Models\Custodios::where('nombre_responsable', 'like', '%'.$term.'%')->
     orwhere('cargo', 'like', '%'.$term.'%')->
     orwhere('area_piso', 'like', '%'.$term.'%')->pluck('nombre_responsable', 'id');
     $valid_tags = [];
@@ -113,7 +113,7 @@ Route::get('tags_custodio', function (Illuminate\Http\Request $request) {
 Route::get('tags_checklist', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
+    $tags = App\Models\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
     orwhere('valor2', 'like', '%'.$term.'%')->
     orwhere('valor3', 'like', '%'.$term.'%')->
     orwhere('valor4', 'like', '%'.$term.'%')->pluck('atributo', 'id');
@@ -128,7 +128,7 @@ Route::get('tags_checklist', function (Illuminate\Http\Request $request) {
 Route::get('tags_model', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
+    $tags = App\Models\CheckList_OpcionesCheckList::where('valor1', 'like', '%'.$term.'%')->
     orwhere('valor2', 'like', '%'.$term.'%')->
     orwhere('valor3', 'like', '%'.$term.'%')->
     orwhere('valor4', 'like', '%'.$term.'%')->pluck('atributo', 'id');
@@ -167,7 +167,7 @@ Route::group(['prefix' => 'api'], function () {
 Route::get('tags_model_tipo', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')
+    $tags = App\Models\ModeloEquipo::where('tipo_equipo', 'like', '%'.$term.'%')
         ->select(DB::raw('tipo_equipo'))
         ->groupby('tipo_equipo')
         ->get();
@@ -177,7 +177,7 @@ Route::get('tags_model_tipo', function (Illuminate\Http\Request $request) {
 Route::get('tags_model_modelo', function (Illuminate\Http\Request $request) {
     $term = $request->term ?: '';
     $term = str_replace(' ', '%', "$term");
-    $tags = App\ModeloEquipo::where('modelo', 'like', '%'.$term.'%')
+    $tags = App\Models\ModeloEquipo::where('modelo', 'like', '%'.$term.'%')
         ->select(DB::raw('modelo'))
         ->groupby('modelo')->get();
 

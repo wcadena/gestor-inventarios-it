@@ -1,19 +1,19 @@
 <?php
 
-use App\PuestosCustodio;
+use App\Models\PuestosCustodio;
 use Faker\Generator as Faker;
 
 $factory->define(PuestosCustodio::class, function (Faker $faker) {
     return [
         'puesto_id' => function () {
-            factory(App\Puesto::class, 1)->create();
+            factory(App\Models\Puesto::class, 1)->create();
 
-            return App\Puesto::inRandomOrder()->first()->id;
+            return App\Models\Puesto::inRandomOrder()->first()->id;
         },
         'custodio_id' => function () {
-            factory(App\Custodios::class, 1)->create();
+            factory(App\Models\Custodios::class, 1)->create();
 
-            return App\Custodios::inRandomOrder()->first()->id;
+            return App\Models\Custodios::inRandomOrder()->first()->id;
         },
         'fecha_inicio'     => $faker->date($format = 'Y-m-d', $max = 'now'),
         'fecha_fin'        => $faker->date($format = 'Y-m-d', $max = 'now'),

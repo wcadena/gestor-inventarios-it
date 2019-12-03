@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,11 +14,11 @@ class InformeMantenimientoPreventivoTecnico extends Model
 
     public function userxc()
     {
-        return $this->hasOne(\App\User::class, 'id', 'user_id');
+        return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
     }
 
     public function InformeMantenimientoPreventivoxc()
     {
-        return $this->hasOne(\App\InformeMantenimientoPreventivo::class, 'id', 'informe_manto_prev_id');
+        return $this->hasOne(\App\Models\InformeMantenimientoPreventivo::class, 'id', 'informe_manto_prev_id');
     }
 }

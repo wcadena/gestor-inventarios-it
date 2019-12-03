@@ -119,7 +119,7 @@
                         <div class="form-group row items-push mb-0">
                             @php $x=0; @endphp
 
-                            @foreach(\App\Role::where('name','tecnico')->first()->users as $item)
+                            @foreach(\App\Models\Role::where('name','tecnico')->first()->users as $item)
                                 @php $x++;@endphp
                                 <div class="col-md-6 col-xl-4">
                                     <div class="custom-control custom-block custom-control-primary">

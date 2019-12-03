@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Puesto;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 use Session;
 
