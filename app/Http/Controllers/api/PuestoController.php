@@ -73,7 +73,7 @@ class PuestoController extends ApiController
         ];
         $this->validate($request, $reglas);
 
-        if (!$puesto->estado == 'OCUPADO') {
+        if (! $puesto->estado == 'OCUPADO') {
             return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
         $puesto->save();
