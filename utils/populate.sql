@@ -258,7 +258,15 @@ INSERT INTO `opciones_check_lists` (`id`, `area_id`, `atributo`, `mandatorio`, `
 (59, 1, 'ARD', 'NO', 'si-no', NULL, NULL),
 (60, 1, 'I. EXPLORER 8 /9', 'NO', 'si-no', NULL, NULL),
 (61, 5, 'I. EXPLORER 10', 'NO', 'si-no', NULL, NULL),
-(62, 5, 'SKY CHAIN', 'NO', 'si-no', NULL, NULL);
+(62, 5, 'VERSION CLIENTE', 'NO', 'text', NULL, NULL);
+(63, 5, 'CPU', 'NO', 'si-no', NULL, NULL);
+(64, 5, 'BATERIA', 'NO', 'si-no', NULL, NULL);
+(65, 5, 'DISCOS', 'NO', 'si-no', NULL, NULL);
+(66, 5, 'GRAFICOS', 'NO', 'si-no', NULL, NULL);
+(67, 5, 'REDES', 'NO', 'si-no', NULL, NULL);
+(68, 5, 'SISTEMAS OPERATIVOS', 'NO', 'si-no', NULL, NULL);
+(68, 5, 'INFORMACION DEL SISTEMA', 'NO', 'si-no', NULL, NULL);
+(68, 5, 'PROGRAMAS INSTALADOS', 'NO', 'si-no', NULL, NULL);
 
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES

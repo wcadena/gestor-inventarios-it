@@ -120,6 +120,16 @@ class CheckList_OpcionesCheckListController extends Controller
         return 'Se borro exitosamente !!!';
     }
 
+    public function borrartipo($tipo)
+    {
+        $utilssacs = CheckList_OpcionesCheckList::where('atributo',$tipo)->get();
+        foreach ($utilssacs as $utilssac){
+            $utilssac->delete();
+        }
+
+        return response()->json(['success' => true]);
+    }
+
     public function crearChecklist_option_storage(Request $request)
     {
         CheckList_OpcionesCheckList::create([
