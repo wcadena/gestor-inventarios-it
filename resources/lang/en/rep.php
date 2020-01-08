@@ -22,4 +22,4 @@ return [
     'garantia'	           => 'Garantia',
     'observaciones'	      => 'Observaciones',
 
-    ];
+];
