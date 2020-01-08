@@ -68,7 +68,8 @@ class AuthEmpleado
             } elseif ($rol_emp == 'administrador') {
                 Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Cambie perfil a:'.$role.'.');
             }
-            {                Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Solicitar elevacion a un Administrador.');            }
+            
+            Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Solicitar elevacion a un Administrador.');            
 
             return redirect()->action('HomeController@index')                //->route('login')                ->with('alert', trans('home.alert1', ['name' => $rol_emp, 'name2' => $role]));
         }

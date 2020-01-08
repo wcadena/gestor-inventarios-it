@@ -14,7 +14,7 @@ class AcachaAdminLTELaravelTest extends TestCase
     /**
      * Set up tests.
      */
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         App::setLocale('es');

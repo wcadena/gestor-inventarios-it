@@ -122,8 +122,8 @@ class CheckList_OpcionesCheckListController extends Controller
 
     public function borrartipo($tipo)
     {
-        $utilssacs = CheckList_OpcionesCheckList::where('atributo',$tipo)->get();
-        foreach ($utilssacs as $utilssac){
+        $utilssacs = CheckList_OpcionesCheckList::where('atributo', $tipo)->get();
+        foreach ($utilssacs as $utilssac) {
             $utilssac->delete();
         }
 
