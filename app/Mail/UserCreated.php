@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Lang;
 
 class UserCreated extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public $user;
 
     /**

@@ -9,8 +9,9 @@ use Laravel\Passport\HasApiTokens;
 
 class Usuariorol extends Pivot
 {
-    use Notifiable, HasApiTokens, SoftDeletes;
-
+    use Notifiable;
+    use HasApiTokens;
+    use SoftDeletes;
     protected $fillable = [
         'rol_id',
         'user_id',

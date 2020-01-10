@@ -14,8 +14,8 @@ use Laravel\Passport\HasApiTokens;
 class Custodios extends Model
 {
     use SoftDeletes;
-    use Notifiable, HasApiTokens;
-
+    use Notifiable;
+    use HasApiTokens;
     protected static function boot()
     {
         parent::boot();

@@ -11,8 +11,9 @@ use Laravel\Passport\HasApiTokens;
 
 class Puesto extends Model
 {
-    use Notifiable, HasApiTokens, SoftDeletes;
-
+    use Notifiable;
+    use HasApiTokens;
+    use SoftDeletes;
     public $transformer = PuestoTransformer::class;
 
     protected $fillable = [
