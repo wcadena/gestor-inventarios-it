@@ -10,7 +10,9 @@ use Laravel\Passport\HasApiTokens;
 
 class PuestoCustodios extends Model
 {
-    use Notifiable, HasApiTokens, SoftDeletes;
+    use Notifiable;
+    use HasApiTokens;
+    use SoftDeletes;
     protected $table = 'puestos_custodios';
 
     public $transformer = PuestoCustodiosTransformer::class;

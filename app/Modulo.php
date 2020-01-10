@@ -8,8 +8,8 @@ use Laravel\Passport\HasApiTokens;
 
 class Modulo extends Model
 {
-    use Notifiable, HasApiTokens;
-
+    use Notifiable;
+    use HasApiTokens;
     protected $fillable = [
         'modulo',
         'activo',
