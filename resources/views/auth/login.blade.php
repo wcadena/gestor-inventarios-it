@@ -23,7 +23,7 @@
                             @csrf
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Username">
+                                    <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ env('ADMIN_EMAIL')?env('ADMIN_EMAIL'):old('email') }}" required autofocus placeholder="Username">
                                     <div class="input-group-append">
                                                     <span class="input-group-text">
                                                         <i class="fa fa-user-circle"></i>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password" >
+                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ env('ADMIN_PWD')}}" required placeholder="Password" >
                                     <div class="input-group-append">
                                                     <span class="input-group-text">
                                                         <i class="fa fa-asterisk"></i>
