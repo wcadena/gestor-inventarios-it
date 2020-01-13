@@ -85,7 +85,7 @@ class CheckList_OpcionesCheckListController extends ApiController
     {
         $request->validate([
             'opciones_check_list_id'     => 'required',
-            'check_list_id'     => 'required'
+            'check_list_id'              => 'required',
         ]);
         $utilssacs = CheckList_OpcionesCheckList::where('opciones_check_list_id', $request->opciones_check_list_id)
             ->where('check_list_id', $request->check_list_id)->get();
