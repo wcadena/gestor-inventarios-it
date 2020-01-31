@@ -16,6 +16,7 @@ class Custodios extends Model
     use SoftDeletes;
     use Notifiable;
     use HasApiTokens;
+
     protected static function boot()
     {
         parent::boot();

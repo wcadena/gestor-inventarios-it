@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateWorkspacesTable extends Migration
 {
@@ -18,7 +18,7 @@ class CreateWorkspacesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('created_by');
-            $table->string('lang',5)->default('en');
+            $table->string('lang', 5)->default('en');
             $table->timestamps();
         });
     }
