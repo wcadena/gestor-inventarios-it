@@ -15,7 +15,7 @@ class Client extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar','currant_workspace'
+        'name', 'email', 'password', 'avatar', 'currant_workspace',
     ];
 
     protected $hidden = [
@@ -27,34 +27,38 @@ class Client extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAllPermission(){
+    public function getAllPermission()
+    {
         return [
-            "create milestone",
-            "edit milestone",
-            "delete milestone",
-            "show milestone",
-            "create task",
-            "edit task",
-            "delete task",
-            "show task",
-            "move task",
-            "show activity",
-            "show uploading",
-            "show timesheet",
-            "show bug report",
-            "create bug report",
-            "edit bug report",
-            "delete bug report",
-            "move bug report",
+            'create milestone',
+            'edit milestone',
+            'delete milestone',
+            'show milestone',
+            'create task',
+            'edit task',
+            'delete task',
+            'show task',
+            'move task',
+            'show activity',
+            'show uploading',
+            'show timesheet',
+            'show bug report',
+            'create bug report',
+            'edit bug report',
+            'delete bug report',
+            'move bug report',
         ];
     }
 
-    public function getPermission($project_id){
-        $data = ClientProject::where('client_id','=',$this->id)->where('project_id','=',$project_id)->first();
-        return json_decode($data->permission,true);
+    public function getPermission($project_id)
+    {
+        $data = ClientProject::where('client_id', '=', $this->id)->where('project_id', '=', $project_id)->first();
+
+        return json_decode($data->permission, true);
     }
 
-    public function getGuard(){
+    public function getGuard()
+    {
         return $this->guard;
     }
 
@@ -62,9 +66,9 @@ class Client extends Authenticatable
     {
         return $this->belongsToMany('App\Workspace', 'client_workspaces', 'client_id', 'workspace_id');
     }
+
     public function currantWorkspace()
     {
         return $this->hasOne('App\Workspace', 'id', 'currant_workspace');
     }
-
 }

@@ -16,7 +16,7 @@ class BugReport extends Model
         'order',
     ];
 
-    public static $arrStatus   = [
+    public static $arrStatus = [
         'unconfirmed',
         'confirmed',
         'in progress',
@@ -43,5 +43,4 @@ class BugReport extends Model
     {
         return $this->hasMany('App\BugFile', 'bug_id', 'id')->orderBy('id', 'DESC');
     }
-
 }
