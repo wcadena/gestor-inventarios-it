@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendClientLoginDetail;
 use App\Project\Client;
 use App\Project\ClientProject;
 use App\Project\ClientWorkspace;
-use App\Mail\SendClientLoginDetail;
 use App\Project\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

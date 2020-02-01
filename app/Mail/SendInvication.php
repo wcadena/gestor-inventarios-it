@@ -7,12 +7,11 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendInvication extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public $user;
     public $project;
 
@@ -21,7 +20,7 @@ class SendInvication extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user,Project $project)
+    public function __construct(User $user, Project $project)
     {
         $this->user = $user;
         $this->project = $project;
