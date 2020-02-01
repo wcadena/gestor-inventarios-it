@@ -60,7 +60,8 @@ class HomeController extends Controller
                     $completeTask = UserProject::join('tasks', 'tasks.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.status', '=', 'done')->count();
                     $tasks = Task::select('tasks.*')->join('user_projects', 'tasks.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->orderBy('tasks.id', 'desc')->limit(4)->get();
                 } else {
-                    $totalBugs = UserProject::join('bug_reports', 'bug_reports.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.assign_to', '=', $userObj->id)->count();
+                    //$totalBugs = UserProject::join('bug_reports', 'bug_reports.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.assign_to', '=', $userObj->id)->count();
+                    $totalBugs = 10000;
                     $totalTask = UserProject::join('tasks', 'tasks.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.assign_to', '=', $userObj->id)->count();
                     $completeTask = UserProject::join('tasks', 'tasks.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.assign_to', '=', $userObj->id)->where('tasks.status', '=', 'done')->count();
                     $tasks = Task::select('tasks.*')->join('user_projects', 'tasks.project_id', '=', 'user_projects.project_id')->join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.assign_to', '=', $userObj->id)->orderBy('tasks.id', 'desc')->limit(4)->get();
@@ -78,7 +79,7 @@ class HomeController extends Controller
                 }
                 $arrProcessClass = ['text-success', 'text-primary', 'text-danger'];
 
-                $chartData = app('App\Http\Controllers\ProjectController')->getProjectChart(['workspace_id' => $currantWorkspace->id, 'duration' => 'week']);
+                $chartData = app('App\Http\Controllers\Project\ProjectController')->getProjectChart(['workspace_id' => $currantWorkspace->id, 'duration' => 'week']);
 
                 return view('project.home', compact('currantWorkspace', 'totalProject', 'totalBugs', 'totalTask', 'totalMembers', 'arrProcessLable', 'arrProcessPer', 'arrProcessClass', 'completeTask', 'tasks', 'chartData'));
             }

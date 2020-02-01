@@ -1,4 +1,4 @@
-@extends('project.layouts.main')
+@extends('layouts.master')
 
 @section('content')
 
@@ -125,8 +125,8 @@
                                     @foreach($tasks as $task)
                                         <tr>
                                             <td>
-                                                <div class="font-14 my-1"><a href="{{route('projects.task.board',[$currantWorkspace->slug,$task->project_id])}}" class="text-body">{{$task->title}}</a></div>
-                                                <span class="text-muted font-13">{{ __('Due in') }} {{\App\Utility::get_timeago(strtotime($task->due_date))}}</span>
+                                                <div class="font-14 my-1"><a href="{{route('project.projects.task.board',[$currantWorkspace->slug,$task->project_id])}}" class="text-body">{{$task->title}}</a></div>
+                                                <span class="text-muted font-13">{{ __('Due in') }} {{\App\Project\Utility::get_timeago(strtotime($task->due_date))}}</span>
                                             </td>
                                             <td>
                                                 <span class="text-muted font-13">{{ __('Status') }}</span> <br/>
