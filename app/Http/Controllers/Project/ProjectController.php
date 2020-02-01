@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendInvication;
+use App\Mail\SendLoginDetail;
+use App\Mail\SendWorkspaceInvication;
+use App\Mail\ShareProjectToClient;
 use App\Project\ActivityLog;
 use App\Project\BugComment;
 use App\Project\BugFile;
@@ -10,10 +14,6 @@ use App\Project\BugReport;
 use App\Project\Client;
 use App\Project\ClientProject;
 use App\Project\Comment;
-use App\Mail\SendInvication;
-use App\Mail\SendLoginDetail;
-use App\Mail\SendWorkspaceInvication;
-use App\Mail\ShareProjectToClient;
 use App\Project\Milestone;
 use App\Project\Project;
 use App\Project\ProjectFile;

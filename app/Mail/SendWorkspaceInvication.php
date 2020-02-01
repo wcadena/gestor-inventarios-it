@@ -7,20 +7,20 @@ use App\Workspace;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendWorkspaceInvication extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public $user;
     public $workspace;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user,Workspace $workspace)
+    public function __construct(User $user, Workspace $workspace)
     {
         $this->user = $user;
         $this->workspace = $workspace;
