@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\ClientProject;
-use App\Task;
-use App\UserProject;
-use App\UserWorkspace;
-use App\Utility;
+use App\Http\Controllers\Controller;
+use App\Project\ClientProject;
+use App\Project\Task;
+use App\Project\UserProject;
+use App\Project\UserWorkspace;
+use App\Project\Utility;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -32,7 +33,7 @@ class HomeController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         if ($currantWorkspace) {
             if ($userObj->getGuard() == 'client') {
-                $totalProject = ClientProject::join('projects', 'projects.id', '=', 'client_projects.project_id')->where('client_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->count();
+                $totalProject = ClientProjec::join('projects', 'projects.id', '=', 'client_projects.project_id')->where('client_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->count();
                 $totalBugs = ClientProject::join('bug_reports', 'bug_reports.project_id', '=', 'client_projects.project_id')->join('projects', 'projects.id', '=', 'client_projects.project_id')->where('projects.workspace', '=', $currantWorkspace->id)->count();
                 $totalTask = ClientProject::join('tasks', 'tasks.project_id', '=', 'client_projects.project_id')->join('projects', 'projects.id', '=', 'client_projects.project_id')->where('projects.workspace', '=', $currantWorkspace->id)->where('client_id', '=', $userObj->id)->count();
                 $completeTask = ClientProject::join('tasks', 'tasks.project_id', '=', 'client_projects.project_id')->join('projects', 'projects.id', '=', 'client_projects.project_id')->where('projects.workspace', '=', $currantWorkspace->id)->where('client_id', '=', $userObj->id)->where('tasks.status', '=', 'done')->count();

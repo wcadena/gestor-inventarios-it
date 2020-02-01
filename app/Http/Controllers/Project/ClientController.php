@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Client;
-use App\ClientProject;
-use App\ClientWorkspace;
+use App\Http\Controllers\Controller;
+use App\Project\Client;
+use App\Project\ClientProject;
+use App\Project\ClientWorkspace;
 use App\Mail\SendClientLoginDetail;
-use App\Utility;
+use App\Project\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;

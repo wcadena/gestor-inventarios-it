@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Task;
-use App\Utility;
-use Auth;
+use App\Http\Controllers\Controller;
+use App\Project\Task;
+use App\Project\Utility;
+use Illuminate\Support\Facades\Auth;
 
 class CalenderController extends Controller
 {

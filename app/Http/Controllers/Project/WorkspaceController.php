@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Project;
-use App\UserProject;
-use App\UserWorkspace;
-use App\Utility;
-use App\Workspace;
+use App\Http\Controllers\Controller;
+use App\Project\Project;
+use App\Project\UserProject;
+use App\Project\UserWorkspace;
+use App\Project\Utility;
+use App\Project\Workspace;
 use Auth;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;

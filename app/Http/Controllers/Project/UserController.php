@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Project;
 
+use App\Http\Controllers\Controller;
 use App\Mail\SendLoginDetail;
 use App\Mail\SendWorkspaceInvication;
-use App\Project;
-use App\User;
-use App\UserWorkspace;
-use App\Utility;
+use App\Project\Project;
+use App\Project\User;
+use App\Project\UserWorkspace;
+use App\Project\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

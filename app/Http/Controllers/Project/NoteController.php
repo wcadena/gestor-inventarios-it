@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Note;
-use App\Utility;
+use App\Http\Controllers\Controller;
+use App\Project\Note;
+use App\Project\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

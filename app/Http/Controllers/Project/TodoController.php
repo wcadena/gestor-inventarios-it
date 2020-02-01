@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Todo;
-use App\Utility;
+use App\Http\Controllers\Controller;
+use App\Project\Todo;
+use App\Project\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
