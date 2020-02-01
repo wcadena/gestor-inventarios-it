@@ -25,13 +25,13 @@
       @foreach($currantWorkspace->languages() as $lang)
         @if($currantLang != $lang)
         <!-- item-->
-          <a href="{{route('change_lang_workspace',[$currantWorkspace->id,$lang])}}" class="dropdown-item">
+          <a href="{{route('project.change_lang_workspace',[$currantWorkspace->id,$lang])}}" class="dropdown-item">
             <span class="align-middle">{{Str::upper($lang)}}</span>
           </a>
         @endif
       @endforeach
       @auth('web')
-      <a href="{{route('lang_workspace',[$currantWorkspace->slug,$currantWorkspace->lang])}}" class="dropdown-item notify-item">
+      <a href="{{route('project.lang_workspace',[$currantWorkspace->slug,$currantWorkspace->lang])}}" class="dropdown-item notify-item">
         <span class="align-middle">{{ __('Create & Customize') }}</span>
       </a>
       @endauth
@@ -44,7 +44,7 @@
     <div class="dropdown-menu dropdown-menu-right">
       @foreach(Auth::user()->workspace as $workspace)
 
-          <a href="@if($currantWorkspace->id == $workspace->id)#@else{{ route('change_workspace',$workspace->id) }}@endif" title="{{ $workspace->name }}" class="dropdown-item notify-item">
+          <a href="@if($currantWorkspace->id == $workspace->id)#@else{{ route('project.change_workspace',$workspace->id) }}@endif" title="{{ $workspace->name }}" class="dropdown-item notify-item">
             @if($currantWorkspace->id == $workspace->id)
               <i class="mdi mdi-check"></i>
             @endif
@@ -59,7 +59,7 @@
           </a>
           @if(isset($workspace->pivot->permission))
             @if($workspace->pivot->permission =='Owner')
-              <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{ __('Rename Workspace') }}" data-url="{{route('rename_workspace',$workspace->id)}}" class="edit-workspace"><i class="mdi mdi-pencil"></i></a>
+              <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{ __('Rename Workspace') }}" data-url="{{route('project.rename_workspace',$workspace->id)}}" class="edit-workspace"><i class="mdi mdi-pencil"></i></a>
             @endif
           @endif
 
@@ -80,7 +80,7 @@
                 <i class=" mdi mdi-delete-outline"></i>
                 <span>{{ __('Remove Me From This Workspace')}}</span>
               </a>
-              <form id="remove-workspace-form" action="{{ route('delete_workspace', ['id' => $currantWorkspace->id]) }}" method="POST" style="display: none;">
+              <form id="remove-workspace-form" action="{{ route('project.delete_workspace', ['id' => $currantWorkspace->id]) }}" method="POST" style="display: none;">
                 @csrf
                 @method('DELETE')
               </form>
@@ -89,7 +89,7 @@
                 <i class=" mdi mdi-delete-outline"></i>
                 <span>{{ __('Leave Me From This Workspace')}}</span>
               </a>
-              <form id="remove-workspace-form" action="{{ route('leave_workspace', ['id' => $currantWorkspace->id]) }}" method="POST" style="display: none;">
+              <form id="remove-workspace-form" action="{{ route('project.leave_workspace', ['id' => $currantWorkspace->id]) }}" method="POST" style="display: none;">
                 @csrf
                 @method('DELETE')
               </form>
@@ -99,16 +99,14 @@
           @if(Auth::user()->type == 'user')
         <div class="dropdown-divider"></div>
           @endif
-          <a href="@auth('web'){{ route('users.my.account') }}@elseauth{{ route('client.users.my.account') }}@endauth" class="dropdown-item has-icon">
+          <a href="@auth('web'){{ route('project.users.my.account') }}@elseauth{{ route('project.client.users.my.account') }}@endauth" class="dropdown-item has-icon">
               <i class="mdi mdi-account-circle mr-1"></i> {{ __('My Account')}}
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
               <i class="mdi mdi-logout mr-1"></i> {{ __('Logout') }}
           </a>
-          <form id="logout-form" action="@auth('web'){{ route('logout') }}@elseauth{{ route('client.logout') }}@endauth" method="POST" style="display: none;">
-              @csrf
-          </form>
+
     </div>
   </li>
 </ul>

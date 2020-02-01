@@ -12,7 +12,7 @@ class Task extends Model
 
     public function project()
     {
-        return $this->hasOne('App\Project', 'id', 'project_id');
+        return $this->hasOne('App\Project\Project', 'id', 'project_id');
     }
 
     public function user()
@@ -22,12 +22,12 @@ class Task extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Comment', 'task_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Project\Comment', 'task_id', 'id')->orderBy('id', 'DESC');
     }
 
     public function taskFiles()
     {
-        return $this->hasMany('App\TaskFile', 'task_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Project\TaskFile', 'task_id', 'id')->orderBy('id', 'DESC');
     }
 
     public function milestone()
@@ -41,6 +41,6 @@ class Task extends Model
 
     public function sub_tasks()
     {
-        return $this->hasMany('App\SubTask', 'task_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Project\SubTask', 'task_id', 'id')->orderBy('id', 'DESC');
     }
 }

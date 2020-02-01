@@ -74,6 +74,10 @@ class Kernel extends HttpKernel
         /*
          * de los roles
          */
+        /**
+         * del project
+         */
+        'XSS' => \App\Http\Middleware\XSS::class,
 
     ];
 

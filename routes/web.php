@@ -310,7 +310,7 @@ Route::namespace('Project')->prefix('project')->name('project.')->group(function
         Route::get('/{slug}/searchJson/{search?}',['as' => 'search.json','uses' =>'ProjectController@getSearchJson'])->middleware(['auth:client','XSS']);
         Route::get('/userProjectJson/{id}',['as' => 'user.project.json','uses' =>'UserController@getProjectUserJson'])->middleware(['auth:client','XSS']);
         Route::get('/projectMilestoneJson/{id}',['as' => 'project.milestone.json','uses' =>'UserController@getProjectMilestoneJson'])->middleware(['auth:client','XSS']);
-        Route::get('/{slug?}', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['auth:client','XSS']);
+        Route::get('/{slug?}', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['auth:client','XSS'])->name('home.index');
     });
 
 // Calender
@@ -343,7 +343,7 @@ Route::namespace('Project')->prefix('project')->name('project.')->group(function
     Route::delete('/my-account',['as' => 'delete.avatar','uses' =>'UserController@deleteAvatar'])->middleware(['auth','XSS']);
 
 
-    Route::get('/','HomeController@index')->middleware(['auth','XSS']);
+    Route::get('/','HomeController@index')->middleware(['auth','XSS'])->name('home.get');
     Route::get('/{slug?}', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['auth','XSS']);
 
 

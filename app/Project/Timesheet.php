@@ -16,6 +16,6 @@ class Timesheet extends Model
 
     public function task()
     {
-        return $this->hasOne('App\Task', 'id', 'task_id');
+        return $this->hasOne('App\Project\Task', 'id', 'task_id');
     }
 }

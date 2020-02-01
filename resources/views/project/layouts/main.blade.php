@@ -33,10 +33,10 @@
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
             <nav class="navbar navbar-expand-lg main-navbar">
-                @include('partials.topnav')
+                @include('project.partials.topnav')
             </nav>
             <div class="main-sidebar">
-                @include('partials.sidebar')
+                @include('project.partials.sidebar')
             </div>
 
             <!-- Main Content -->
@@ -44,7 +44,7 @@
                 @yield('content')
             </div>
             <footer class="main-footer">
-                @include('partials.footer')
+                @include('project.partials.footer')
             </footer>
         </div>
     </div>
@@ -71,7 +71,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="pl-3 pr-3" method="post" action="{{ route('add_workspace') }}">
+                    <form class="pl-3 pr-3" method="post" action="{{ route('project.add_workspace') }}">
                         @csrf
                         <div class="form-group">
                             <label for="workspacename">{{ __('Name') }}</label>
@@ -109,7 +109,7 @@
 <script>
     var options = {
         url: function(phrase) {
-            return "@auth('web'){{route('search.json',$currantWorkspace->slug)}}@elseauth{{route('client.search.json',$currantWorkspace->slug)}}@endauth/" + phrase ;
+            return "@auth('web'){{route('project.search.json',$currantWorkspace->slug)}}@elseauth{{route('project.client.search.json',$currantWorkspace->slug)}}@endauth/" + phrase ;
         },
         categories: [
             {

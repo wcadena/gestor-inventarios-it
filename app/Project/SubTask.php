@@ -17,6 +17,6 @@ class SubTask extends Model
 
     public function client()
     {
-        return $this->hasOne('App\Client', 'id', 'created_by');
+        return $this->hasOne('App\Project\Client', 'id', 'created_by');
     }
 }

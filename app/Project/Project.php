@@ -17,7 +17,7 @@ class Project extends Model
 
     public function workspaceData()
     {
-        return $this->hasOne('App\Workspace', 'id', 'workspace');
+        return $this->hasOne('App\Project\Workspace', 'id', 'workspace');
     }
 
     public function users()
@@ -27,7 +27,7 @@ class Project extends Model
 
     public function clients()
     {
-        return $this->belongsToMany('App\Client', 'client_projects', 'project_id', 'client_id');
+        return $this->belongsToMany('App\Project\Client', 'client_projects', 'project_id', 'client_id');
     }
 
     public function countTask()
@@ -73,16 +73,16 @@ class Project extends Model
 
     public function milestones()
     {
-        return $this->hasMany('App\Milestone', 'project_id', 'id');
+        return $this->hasMany('App\Project\Milestone', 'project_id', 'id');
     }
 
     public function files()
     {
-        return $this->hasMany('App\ProjectFile', 'project_id', 'id');
+        return $this->hasMany('App\Project\ProjectFile', 'project_id', 'id');
     }
 
     public function activities()
     {
-        return $this->hasMany('App\ActivityLog', 'project_id', 'id')->orderBy('id', 'desc');
+        return $this->hasMany('App\Project\ActivityLog', 'project_id', 'id')->orderBy('id', 'desc');
     }
 }

@@ -64,11 +64,11 @@ class Client extends Authenticatable
 
     public function workspace()
     {
-        return $this->belongsToMany('App\Workspace', 'client_workspaces', 'client_id', 'workspace_id');
+        return $this->belongsToMany('App\Project\Workspace', 'client_workspaces', 'client_id', 'workspace_id');
     }
 
     public function currantWorkspace()
     {
-        return $this->hasOne('App\Workspace', 'id', 'currant_workspace');
+        return $this->hasOne('App\Project\Workspace', 'id', 'currant_workspace');
     }
 }

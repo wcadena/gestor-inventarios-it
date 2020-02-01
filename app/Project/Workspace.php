@@ -35,12 +35,12 @@ class Workspace extends Model
 
     public function clients()
     {
-        return $this->belongsToMany('App\Client', 'client_workspaces', 'workspace_id', 'client_id');
+        return $this->belongsToMany('App\Project\Client', 'client_workspaces', 'workspace_id', 'client_id');
     }
 
     public function projects()
     {
-        return $this->hasMany('App\Project', 'workspace', 'id');
+        return $this->hasMany('App\Project\Project', 'workspace', 'id');
     }
 
     public function languages()

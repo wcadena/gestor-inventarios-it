@@ -26,7 +26,7 @@ class BugReport extends Model
 
     public function project()
     {
-        return $this->hasOne('App\Project', 'id', 'project_id');
+        return $this->hasOne('App\Project\Project', 'id', 'project_id');
     }
 
     public function user()
@@ -36,11 +36,11 @@ class BugReport extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\BugComment', 'bug_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Project\BugComment', 'bug_id', 'id')->orderBy('id', 'DESC');
     }
 
     public function bugFiles()
     {
-        return $this->hasMany('App\BugFile', 'bug_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Project\BugFile', 'bug_id', 'id')->orderBy('id', 'DESC');
     }
 }

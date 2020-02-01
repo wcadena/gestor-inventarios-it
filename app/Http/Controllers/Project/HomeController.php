@@ -50,7 +50,7 @@ class HomeController extends Controller
                 $arrProcessClass = ['text-success', 'text-primary', 'text-danger'];
                 $chartData = app('App\Http\Controllers\ProjectController')->getProjectChart(['workspace_id' => $currantWorkspace->id, 'duration' => 'week']);
 
-                return view('home', compact('currantWorkspace', 'totalProject', 'totalBugs', 'totalTask', 'totalMembers', 'arrProcessLable', 'arrProcessPer', 'arrProcessClass', 'completeTask', 'tasks', 'chartData'));
+                return view('project.home', compact('currantWorkspace', 'totalProject', 'totalBugs', 'totalTask', 'totalMembers', 'arrProcessLable', 'arrProcessPer', 'arrProcessClass', 'completeTask', 'tasks', 'chartData'));
             } else {
                 $totalProject = UserProject::join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_id', '=', $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->count();
 
@@ -80,10 +80,10 @@ class HomeController extends Controller
 
                 $chartData = app('App\Http\Controllers\ProjectController')->getProjectChart(['workspace_id' => $currantWorkspace->id, 'duration' => 'week']);
 
-                return view('home', compact('currantWorkspace', 'totalProject', 'totalBugs', 'totalTask', 'totalMembers', 'arrProcessLable', 'arrProcessPer', 'arrProcessClass', 'completeTask', 'tasks', 'chartData'));
+                return view('project.home', compact('currantWorkspace', 'totalProject', 'totalBugs', 'totalTask', 'totalMembers', 'arrProcessLable', 'arrProcessPer', 'arrProcessClass', 'completeTask', 'tasks', 'chartData'));
             }
         } else {
-            return view('home', compact('currantWorkspace'));
+            return view('project.home', compact('currantWorkspace'));
         }
     }
 }

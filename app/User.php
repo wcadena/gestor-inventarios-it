@@ -134,4 +134,40 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Custodios', 'id', 'custodio_id');
     }
+    /**
+     * project
+     */
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function getGuard()
+    {
+        return $this->guard;
+    }
+
+    public function workspace()
+    {
+        return $this->belongsToMany('App\Project\Workspace', 'user_workspaces', 'user_id', 'workspace_id')->withPivot('permission');
+    }
+
+    public function currantWorkspace()
+    {
+        return $this->hasOne('App\Project\Workspace', 'id', 'currant_workspace');
+    }
+
+    public function countProject($workspace_id)
+    {
+        return UserProject::join('projects', 'projects.id', '=', 'user_projects.project_id')->where('user_projects.user_id', '=', $this->id)->where('projects.workspace', '=', $workspace_id)->count();
+    }
+
+    public function countTask($workspace_id)
+    {
+        return Task::join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.workspace', '=', $workspace_id)->where('tasks.assign_to', '=', $this->id)->count();
+    }
 }

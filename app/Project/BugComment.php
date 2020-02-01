@@ -12,11 +12,11 @@ class BugComment extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User', 'id', 'created_by');
+        return $this->hasOne('App\Project\User', 'id', 'created_by');
     }
 
     public function client()
     {
-        return $this->hasOne('App\Client', 'id', 'created_by');
+        return $this->hasOne('App\Project\Client', 'id', 'created_by');
     }
 }
