@@ -134,8 +134,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Custodios', 'id', 'custodio_id');
     }
+
     /**
-     * project
+     * project.
      */
     /**
      * The attributes that should be cast to native types.
