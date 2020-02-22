@@ -127,7 +127,7 @@ class WorkspaceController extends Controller
             }
         }
 
-        return view('lang.index', compact('currantWorkspace', 'currantLang', 'arrLabel', 'arrMessage'));
+        return view('project.lang.index', compact('currantWorkspace', 'currantLang', 'arrLabel', 'arrMessage'));
     }
 
     public function storeLangDataWorkspace($slug, $currantLang, Request $request)
@@ -188,7 +188,7 @@ class WorkspaceController extends Controller
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('lang.create', compact('currantWorkspace'));
+        return view('project.lang.create', compact('currantWorkspace'));
     }
 
     public function storeLangWorkspace($slug, Request $request)
@@ -242,7 +242,7 @@ class WorkspaceController extends Controller
         $workspace = Workspace::find($workspaceID);
 
         if ($workspace->created_by == $objUser->id) {
-            return view('users.rename_workspace', compact('workspace'));
+            return view('project.users.rename_workspace', compact('workspace'));
         } else {
             return redirect()->route('home')->with('error', __('You can\'t rename Workspace!'));
         }

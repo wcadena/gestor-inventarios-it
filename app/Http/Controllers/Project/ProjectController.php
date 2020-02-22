@@ -49,7 +49,7 @@ class ProjectController extends Controller
             $projects = Project::select('projects.*')->join('user_projects', 'projects.id', '=', 'user_projects.project_id')->where('user_projects.user_id', '=', $objUser->id)->where('projects.workspace', '=', $currantWorkspace->id)->get();
         }
 
-        return view('projects.index', compact('currantWorkspace', 'projects'));
+        return view('project.projects.index', compact('currantWorkspace', 'projects'));
     }
 
     /**
@@ -211,7 +211,7 @@ class ProjectController extends Controller
         }
         $chartData = $this->getProjectChart(['project_id'=>$projectID, 'duration'=>'week']);
 
-        return view('projects.show', compact('currantWorkspace', 'project', 'chartData'));
+        return view('project.projects.show', compact('currantWorkspace', 'project', 'chartData'));
     }
 
     public function getProjectChart($arrParam)
@@ -286,14 +286,14 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::select('projects.*')->join('user_projects', 'projects.id', '=', 'user_projects.project_id')->where('user_projects.user_id', '=', $objUser->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('projects.id', '=', $projectID)->first();
 
-        return view('projects.edit', compact('currantWorkspace', 'project'));
+        return view('project.projects.edit', compact('currantWorkspace', 'project'));
     }
 
     public function create($slug)
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('projects.create', compact('currantWorkspace'));
+        return view('project.projects.create', compact('currantWorkspace'));
     }
 
     /**
@@ -309,7 +309,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::select('projects.*')->join('user_projects', 'projects.id', '=', 'user_projects.project_id')->where('user_projects.user_id', '=', $objUser->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('projects.id', '=', $projectID)->first();
 
-        return view('projects.invite', compact('currantWorkspace', 'project'));
+        return view('project.projects.invite', compact('currantWorkspace', 'project'));
     }
 
     public function userDelete($slug, $project_id, $user_id)
@@ -336,7 +336,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::select('projects.*')->join('user_projects', 'projects.id', '=', 'user_projects.project_id')->where('user_projects.user_id', '=', $objUser->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('projects.id', '=', $projectID)->first();
 
-        return view('projects.share', compact('currantWorkspace', 'project'));
+        return view('project.projects.share', compact('currantWorkspace', 'project'));
     }
 
     public function clientDelete($slug, $project_id, $client_id)
@@ -484,7 +484,7 @@ class ProjectController extends Controller
             $tasks[$status] = $task->where('status', '=', $status)->get();
         }
 
-        return view('projects.taskboard', compact('currantWorkspace', 'project', 'tasks', 'statusClass'));
+        return view('project.projects.taskboard', compact('currantWorkspace', 'project', 'tasks', 'statusClass'));
     }
 
     public function taskCreate($slug, $projectID)
@@ -500,7 +500,7 @@ class ProjectController extends Controller
         }
         $users = User::select('users.*')->join('user_projects', 'user_projects.user_id', '=', 'users.id')->where('project_id', '=', $projectID)->get();
 
-        return view('projects.taskCreate', compact('currantWorkspace', 'project', 'projects', 'users'));
+        return view('project.projects.taskCreate', compact('currantWorkspace', 'project', 'projects', 'users'));
     }
 
     public function taskStore(Request $request, $slug, $projectID)
@@ -588,7 +588,7 @@ class ProjectController extends Controller
         $users = User::select('users.*')->join('user_projects', 'user_projects.user_id', '=', 'users.id')->where('project_id', '=', $projectID)->get();
         $task = Task::find($taskId);
 
-        return view('projects.taskEdit', compact('currantWorkspace', 'project', 'projects', 'users', 'task'));
+        return view('project.projects.taskEdit', compact('currantWorkspace', 'project', 'projects', 'users', 'task'));
     }
 
     /**
@@ -642,7 +642,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $task = Task::find($taskID);
 
-        return view('projects.taskShow', compact('currantWorkspace', 'task', 'clientID'));
+        return view('project.projects.taskShow', compact('currantWorkspace', 'task', 'clientID'));
     }
 
     public function commentStore(Request $request, $slug, $projectID, $taskID, $clientID = '')
@@ -761,7 +761,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::find($projectID);
 
-        return view('projects.milestone', compact('currantWorkspace', 'project'));
+        return view('project.projects.milestone', compact('currantWorkspace', 'project'));
     }
 
     public function milestoneStore($slug, $projectID, Request $request)
@@ -797,7 +797,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $milestone = Milestone::find($milestoneID);
 
-        return view('projects.milestoneEdit', compact('currantWorkspace', 'milestone'));
+        return view('project.projects.milestoneEdit', compact('currantWorkspace', 'milestone'));
     }
 
     public function milestoneUpdate($slug, $milestoneID, Request $request)
@@ -834,7 +834,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $milestone = Milestone::find($milestoneID);
 
-        return view('projects.milestoneShow', compact('currantWorkspace', 'milestone'));
+        return view('project.projects.milestoneShow', compact('currantWorkspace', 'milestone'));
     }
 
     public function subTaskStore(Request $request, $slug, $projectID, $taskID, $clientID = '')
@@ -953,7 +953,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::find($projectID);
 
-        return view('projects.timesheet', compact('currantWorkspace', 'project'));
+        return view('project.projects.timesheet', compact('currantWorkspace', 'project'));
     }
 
     public function timesheetCreate($slug, $projectID)
@@ -961,7 +961,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $project = Project::find($projectID);
 
-        return view('projects.timesheetCreate', compact('currantWorkspace', 'project'));
+        return view('project.projects.timesheetCreate', compact('currantWorkspace', 'project'));
     }
 
     public function timesheetStore($slug, $projectID, Request $request)
@@ -1003,7 +1003,7 @@ class ProjectController extends Controller
         $timesheet = Timesheet::find($timesheetID);
         $project = Project::find($timesheet->project_id);
 
-        return view('projects.timesheetEdit', compact('currantWorkspace', 'timesheet', 'project'));
+        return view('project.projects.timesheetEdit', compact('currantWorkspace', 'timesheet', 'project'));
     }
 
     public function timesheetUpdate($slug, $timesheetID, Request $request)
@@ -1042,7 +1042,7 @@ class ProjectController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $timesheet = Milestone::find($timesheetID);
 
-        return view('projects.timesheetShow', compact('currantWorkspace', 'timesheet'));
+        return view('project.projects.timesheetShow', compact('currantWorkspace', 'timesheet'));
     }
 
     public function clientPermission($slug, $project_id, $client_id)
@@ -1055,7 +1055,7 @@ class ProjectController extends Controller
             $permissions = [];
         }
 
-        return view('projects.client_permission', compact('currantWorkspace', 'project', 'client', 'permissions'));
+        return view('project.projects.client_permission', compact('currantWorkspace', 'project', 'client', 'permissions'));
     }
 
     public function clientPermissionStore($slug, $project_id, $client_id, Request $request)
@@ -1093,7 +1093,7 @@ class ProjectController extends Controller
             $bugs[$status] = $bug->where('status', '=', $status)->get();
         }
 
-        return view('projects.bug_report', compact('currantWorkspace', 'project', 'bugs', 'statusClass'));
+        return view('project.projects.bug_report', compact('currantWorkspace', 'project', 'bugs', 'statusClass'));
     }
 
     public function bugReportCreate($slug, $project_id)
@@ -1108,7 +1108,7 @@ class ProjectController extends Controller
         $arrStatus = BugReport::$arrStatus;
         $users = User::select('users.*')->join('user_projects', 'user_projects.user_id', '=', 'users.id')->where('project_id', '=', $project_id)->get();
 
-        return view('projects.bug_report_create', compact('currantWorkspace', 'project', 'users', 'arrStatus'));
+        return view('project.projects.bug_report_create', compact('currantWorkspace', 'project', 'users', 'arrStatus'));
     }
 
     public function bugReportStore(Request $request, $slug, $project_id)
@@ -1197,7 +1197,7 @@ class ProjectController extends Controller
         $bug = BugReport::find($bug_id);
         $arrStatus = BugReport::$arrStatus;
 
-        return view('projects.bug_report_edit', compact('currantWorkspace', 'project', 'users', 'bug', 'arrStatus'));
+        return view('project.projects.bug_report_edit', compact('currantWorkspace', 'project', 'users', 'bug', 'arrStatus'));
     }
 
     public function bugReportUpdate(Request $request, $slug, $project_id, $bug_id)
@@ -1254,7 +1254,7 @@ class ProjectController extends Controller
             $clientID = $objUser->id;
         }
 
-        return view('projects.bug_report_show', compact('currantWorkspace', 'bug', 'clientID'));
+        return view('project.projects.bug_report_show', compact('currantWorkspace', 'bug', 'clientID'));
     }
 
     public function bugCommentStore(Request $request, $slug, $project_id, $bugID, $clientID = '')

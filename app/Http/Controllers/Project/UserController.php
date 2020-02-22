@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Mail\SendLoginDetail;
 use App\Mail\SendWorkspaceInvication;
 use App\Project\Project;
-use App\Project\User;
 use App\Project\UserWorkspace;
 use App\Project\Utility;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +37,7 @@ class UserController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $users = User::select('users.*', 'user_workspaces.permission')->join('user_workspaces', 'user_workspaces.user_id', '=', 'users.id')->where('user_workspaces.workspace_id', '=', $currantWorkspace->id)->get();
 
-        return view('users.index', compact('currantWorkspace', 'users'));
+        return view('project.users.index', compact('currantWorkspace', 'users'));
     }
 
     public function account()
@@ -45,7 +45,7 @@ class UserController extends Controller
         $user = Auth::user();
         $currantWorkspace = Utility::getWorkspaceBySlug('');
 
-        return view('users.account', compact('currantWorkspace', 'user'));
+        return view('project.users.account', compact('currantWorkspace', 'user'));
     }
 
     public function deleteAvatar()
@@ -145,7 +145,7 @@ class UserController extends Controller
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('users.invite', compact('currantWorkspace'));
+        return view('project.users.invite', compact('currantWorkspace'));
     }
 
     public function inviteUser($slug, Request $request)
@@ -200,7 +200,7 @@ class UserController extends Controller
         $user = User::find($id);
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('users.edit', compact('currantWorkspace', 'user'));
+        return view('project.users.edit', compact('currantWorkspace', 'user'));
     }
 
     public function removeUser($slug, $id)

@@ -1,60 +1,57 @@
 @extends('layouts.master')
 
 @section('content')
-
+    @include('project.partials.sidebar')
     <section class="section">
     @if($currantWorkspace)
             <h2 class="section-title">{{ __('Projects') }}</h2>
 
             <div class="row">
-                <div class="col-12">
-                    <div class="card widget-inline">
-                        <div class="card-body p-0">
-                            <div class="row no-gutters">
-                                <div class="col-sm-6 col-xl-3 animated">
-                                    <div class="card shadow-none m-0">
-                                        <div class="card-body text-center">
-                                            <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
-                                            <h3><span>{{$totalProject}}</span></h3>
-                                            <p class="text-muted font-15 mb-0">{{ __('Total Projects') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-xl-3 animated">
-                                    <div class="card shadow-none m-0 border-left">
-                                        <div class="card-body text-center">
-                                            <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
-                                            <h3><span>{{$totalTask}}</span></h3>
-                                            <p class="text-muted font-15 mb-0">{{ __('Total Tasks') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-xl-3 animated">
-                                    <div class="card shadow-none m-0 border-left">
-                                        <div class="card-body text-center">
-                                            <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
-                                            <h3><span>{{$totalMembers}}</span></h3>
-                                            <p class="text-muted font-15 mb-0">{{ __('Members') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-xl-3 animated">
-                                    <div class="card shadow-none m-0 border-left">
-                                        <div class="card-body text-center">
-                                            <i class="mdi mdi-bug-outline text-muted" style="font-size: 24px;"></i>
-                                            <h3><span>{{$totalBugs}}</span></h3>
-                                            <p class="text-muted font-15 mb-0">{{ __('Bugs') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div> <!-- end row -->
+                <div class="col-sm-6 col-xl-3 animated">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary text-center" href="javascript:void(0)">
+                        <div class="ribbon-box">{{$totalProject}}</div>
+                        <div class="block-content">
+                            <p class="my-2">
+                                <i class="fa fa-briefcase fa-2x text-muted"></i>
+                            </p>
+                            <p class="font-w600">{{ __('Total Projects') }}</p>
                         </div>
-                    </div> <!-- end card-box-->
-                </div> <!-- end col-->
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-3 animated">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary text-center" href="javascript:void(0)">
+                        <div class="ribbon-box">{{$totalTask}}</div>
+                        <div class="block-content">
+                            <p class="my-2">
+                                <i class="fa fa-tasks fa-2x text-muted"></i>
+                            </p>
+                            <p class="font-w600">{{ __('Total Tasks') }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-3 animated">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary text-center" href="javascript:void(0)">
+                        <div class="ribbon-box">{{$totalMembers}}</div>
+                        <div class="block-content">
+                            <p class="my-2">
+                                <i class="fa fa-user-tie fa-2x text-muted"></i>
+                            </p>
+                            <p class="font-w600">{{ __('Members') }}</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-xl-3 animated">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-modern ribbon-primary text-center" href="javascript:void(0)">
+                        <div class="ribbon-box">{{$totalBugs}}</div>
+                        <div class="block-content">
+                            <p class="my-2">
+                                <i class="fa fa-bug fa-2x text-muted"></i>
+                            </p>
+                            <p class="font-w600">{{ __('Bugs') }}</p>
+                        </div>
+                    </a>
+                </div>
             </div>
             <!-- end row-->
 

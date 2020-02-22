@@ -20,7 +20,7 @@ class NoteController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $notes = Note::select(['id', 'title', 'text', 'color'])->where('workspace', '=', $currantWorkspace->id)->where('created_by', '=', Auth::user()->id)->get();
 
-        return view('notes.index', compact('currantWorkspace', 'notes'));
+        return view('project.notes.index', compact('currantWorkspace', 'notes'));
     }
 
     /**
@@ -32,7 +32,7 @@ class NoteController extends Controller
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('notes.create', compact('currantWorkspace'));
+        return view('project.notes.create', compact('currantWorkspace'));
     }
 
     /**
@@ -84,7 +84,7 @@ class NoteController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $notes = Note::where('workspace', '=', $currantWorkspace->id)->where('created_by', '=', Auth::user()->id)->where('id', '=', $noteID)->first();
 
-        return view('notes.edit', compact('currantWorkspace', 'notes'));
+        return view('project.notes.edit', compact('currantWorkspace', 'notes'));
     }
 
     /**

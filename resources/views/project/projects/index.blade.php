@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.master')
 
 @section('content')
 
@@ -13,7 +13,7 @@
         <div class="col-sm-4">
             @auth('web')
                 @if($currantWorkspace->creater->id == Auth::user()->id)
-                    <button type="button" class="btn btn-primary btn-rounded mb-3" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Project') }}" data-url="{{route('projects.create',$currantWorkspace->slug)}}">
+                    <button type="button" class="btn btn-primary btn-rounded mb-3" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Project') }}" data-url="{{route('project.projects.create',$currantWorkspace->slug)}}">
                         <i class="mdi mdi-plus"></i> {{ __('Create Project') }}
                     </button>
                 @endif
@@ -47,17 +47,17 @@
                                 <a href="#" class="btn active dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="dripicons-gear"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                 @if($currantWorkspace->permission == 'Owner')
-                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Project') }}" data-url="{{route('projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
+                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Project') }}" data-url="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{ __('Delete')}}</a>
-                                    <form id="delete-form-{{$project->id}}" action="{{ route('projects.destroy',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{$project->id}}" action="{{ route('project.projects.destroy',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" class="dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
-                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
+                                    <a href="#" class="dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
+                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
                                 @else
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('leave-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i>{{ __('Leave')}}</a>
-                                    <form id="leave-form-{{$project->id}}" action="{{ route('projects.leave',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
+                                    <form id="leave-form-{{$project->id}}" action="{{ route('project.projects.leave',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -69,7 +69,7 @@
 
                     <div class="author-box-name">
 
-                        <a href="@auth('web'){{route('projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" title="{{ $project->name }}" class="text-title">{{ $project->name }}</a>
+                        <a href="@auth('web'){{route('project.projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" title="{{ $project->name }}" class="text-title">{{ $project->name }}</a>
 
                     </div>
                     <div class="author-box-job">
@@ -84,7 +84,7 @@
 
                     <div class="author-box-description">
                         <p>
-                            {{Str::limit($project->description, $limit = 100, $end = '...')}}
+                            {{\Illuminate\Support\Str::limit($project->description, $limit = 100, $end = '...')}}
                         </p>
                     </div>
                     <p class="mb-1">
@@ -107,7 +107,7 @@
                     @endforeach
 
                     <div class="float-right mt-sm-0 mt-3">
-                        <a href="@auth('web'){{route('projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" class="btn btn-sm btn-primary">{{__('View More')}} <i class="dripicons-arrow-right"></i></a>
+                        <a href="@auth('web'){{route('project.projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" class="btn btn-sm btn-primary">{{__('View More')}} <i class="dripicons-arrow-right"></i></a>
                     </div>
 
                 </div>

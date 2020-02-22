@@ -20,7 +20,7 @@ class TodoController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $todos = Todo::select(['id', 'text', 'done'])->where('workspace', '=', $currantWorkspace->id)->where('created_by', '=', Auth::user()->id)->get()->toJson();
 
-        return view('todos.index', compact('currantWorkspace', 'todos'));
+        return view('project.todos.index', compact('currantWorkspace', 'todos'));
     }
 
     /**

@@ -28,6 +28,6 @@ class CalenderController extends Controller
             ];
         }
 
-        return view('calendar.index', compact('currantWorkspace', 'arrayJson'));
+        return view('project.calendar.index', compact('currantWorkspace', 'arrayJson'));
     }
 }
