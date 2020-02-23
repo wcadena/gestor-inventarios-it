@@ -41,7 +41,7 @@
                                         <td>{{$timesheet->time}}</td>
                                         @auth('web')
                                         <td>
-                                            {{--                                            <a href="#" class="milestone-detail" data-ajax-popup="true" data-title="{{ __('Timesheet Details') }}" data-url="{{route('projects.milestone.show',[$currantWorkspace->slug,$timesheet->id])}}">{{$timesheet->date}}</a>--}}
+                                            {{--                                            <a href="#" class="milestone-detail" data-ajax-popup="true" data-title="{{ __('Timesheet Details') }}" data-url="{{route('project.projects.milestone.show',[$currantWorkspace->slug,$timesheet->id])}}">{{$timesheet->date}}</a>--}}
                                             <small>
                                                 <a href="#" class="btn btn-sm btn-outline-primary" data-ajax-popup="true" data-title="{{ __('Edit Milestone') }}" data-url="{{route('projects.timesheet.edit',[$currantWorkspace->slug,$timesheet->id])}}"><i class="mdi mdi-pencil"></i></a>
                                                 <a href="#" class="btn btn-sm btn-outline-danger" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form1-{{$timesheet->id}}').submit(): '');"><i class="mdi mdi-delete"></i></a>

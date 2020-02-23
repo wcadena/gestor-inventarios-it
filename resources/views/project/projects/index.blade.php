@@ -51,14 +51,14 @@
                                 <a href="#" class="brd btn active dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="dripicons-gear"></i></a>
                                 <div class="brd dropdown-menu dropdown-menu-right">
                                 @if($currantWorkspace->permission == 'Owner')
-                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Project') }}" data-url="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
+                                    <a class="dropdown-item" href="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{ __('Delete')}}</a>
                                     <form id="delete-form-{{$project->id}}" action="{{ route('project.projects.destroy',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" class="brd dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
-                                    <a href="#" class="brd dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
+                                    <a class="brd dropdown-item" href="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
+                                    <a class="brd dropdown-item" href="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
                                 @else
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('leave-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i>{{ __('Leave')}}</a>
                                     <form id="leave-form-{{$project->id}}" action="{{ route('project.projects.leave',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">

@@ -1,7 +1,7 @@
 
 @if($project && $currantWorkspace)
 
-    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('projects.milestone.store',[$currantWorkspace->slug,$project->id]) }}@elseauth{{ route('client.projects.milestone.store',[$currantWorkspace->slug,$project->id]) }}@endauth">
+    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('project.projects.milestone.store',[$currantWorkspace->slug,$project->id]) }}@elseauth{{ route('client.projects.milestone.store',[$currantWorkspace->slug,$project->id]) }}@endauth">
         @csrf
 
         <div class="row">

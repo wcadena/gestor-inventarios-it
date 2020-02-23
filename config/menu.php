@@ -51,7 +51,7 @@ Menu::macro('sidebar_new', function () {
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->add(Link::to('/proyecto', '<i class="nav-main-link-icon fa fa-project-diagram"></i>
+        ->add(Link::to('/project', '<i class="nav-main-link-icon fa fa-project-diagram"></i>
                                 <span class="nav-main-link-name">'.trans('Proyectos').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')

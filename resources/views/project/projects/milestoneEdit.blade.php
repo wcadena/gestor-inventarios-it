@@ -1,7 +1,7 @@
 
 @if($milestone && $currantWorkspace)
 
-    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('projects.milestone.update',[$currantWorkspace->slug,$milestone->id]) }}@elseauth{{ route('client.projects.milestone.update',[$currantWorkspace->slug,$milestone->id]) }}@endauth">
+    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('project.projects.milestone.update',[$currantWorkspace->slug,$milestone->id]) }}@elseauth{{ route('client.projects.milestone.update',[$currantWorkspace->slug,$milestone->id]) }}@endauth">
         @csrf
         @method('put')
         <div class="row">

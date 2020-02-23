@@ -56,7 +56,7 @@
                                     <a href="#" class="btn active dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="dripicons-gear"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         @if($currantWorkspace->permission == 'Owner')
-                                            <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Project') }}" data-url="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
+                                            <a class="dropdown-item"  href="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
                                             <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{ __('Delete')}}</a>
                                             <form id="delete-form-{{$project->id}}" action="{{ route('project.projects.destroy',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
                                                 @csrf
@@ -184,7 +184,7 @@
                                 <div class="card-header-action">
                                     @if($currantWorkspace->permission == 'Owner')
                                         <div class="dropdown card-widgets">
-                                            <a href="#" class="btn btn-sm btn-primary" data-ajax-popup="true" data-title="{{ __('Invite') }}" data-url="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
+                                            <a class="btn btn-sm btn-primary" href="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
                                         </div>
                                     @endif
                                 </div>
@@ -229,7 +229,7 @@
                                 <div class="card-header-action">
                                     @if($currantWorkspace->permission == 'Owner')
                                         <div class="dropdown card-widgets">
-                                            <a href="#" class="btn btn-sm btn-primary" data-ajax-popup="true" data-title="{{ __('Share to Clients') }}" data-url="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
+                                            <a class="btn btn-sm btn-primary" href="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
                                         </div>
                                     @endif
                                 </div>
@@ -246,7 +246,7 @@
                                                 @auth('web')
                                                     @if($currantWorkspace->permission == 'Owner')
                                                         <a href="#" class="btn btn-sm btn-outline-danger float-right" onclick="(confirm('Are you sure ?')?document.getElementById('delete-client-{{$client->id}}').submit(): '');"><i class="mdi mdi-delete"></i></a>
-                                                        <a href="#" class="btn btn-sm btn-outline-primary float-right mr-1" data-ajax-popup="true" data-size="lg" data-title="{{__('Edit Permission')}}" data-url="{{route('project.projects.client.permission',[$currantWorkspace->slug,$project->id,$client->id])}}"><i class="mdi mdi-lock"></i></a>
+                                                        <a class="btn btn-sm btn-outline-primary float-right mr-1" href="{{route('project.projects.client.permission',[$currantWorkspace->slug,$project->id,$client->id])}}"><i class="mdi mdi-lock"></i></a>
                                                         <form id="delete-client-{{$client->id}}" action="{{ route('project.projects.client.delete',[$currantWorkspace->slug,$project->id,$client->id]) }}" method="POST" style="display: none;">
                                                             @csrf
                                                             @method('DELETE')
@@ -273,7 +273,7 @@
                                 <div class="dropdown card-widgets">
 
                                     @if((isset($permisions) && in_array('create milestone',$permisions)) || $currantWorkspace->permission == 'Owner')
-                                        <a href="#" class="btn btn-sm btn-primary" data-ajax-popup="true" data-title="{{ __('Create Milestone') }}" data-url="@auth('web'){{route('project.projects.milestone',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.milestone',[$currantWorkspace->slug,$project->id])}}@endauth">{{__('Create Milestone')}}</a>
+                                        <a class="btn btn-sm btn-primary" href="@auth('web'){{route('project.projects.milestone',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.milestone',[$currantWorkspace->slug,$project->id])}}@endauth">{{__('Create Milestone')}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -287,11 +287,11 @@
                                     <div class="ribbon ribbon-corner"><span class="milestone-count">#{{$key+1}}</span></div>
                                     <div class="ribbon-content">
                                         <h5 class="media-heading text-info font-light">
-                                            <a href="#" class="milestone-detail" data-ajax-popup="true" data-title="{{ __('Milestones Details') }}" data-url="@auth('web'){{route('project.projects.milestone.show',[$currantWorkspace->slug,$milestone->id])}}@elseauth{{route('project.client.projects.milestone.show',[$currantWorkspace->slug,$milestone->id])}}@endauth">{{$milestone->title}}</a>
+                                            <a class="milestone-detail" href="@auth('web'){{route('project.projects.milestone.show',[$currantWorkspace->slug,$milestone->id])}}@elseauth{{route('project.client.projects.milestone.show',[$currantWorkspace->slug,$milestone->id])}}@endauth">{{$milestone->title}}</a>
                                             @if($currantWorkspace->permission == 'Owner')
                                                 <div class="float-right">
                                                     <small>
-                                                        <a href="#" class="btn btn-sm btn-outline-primary" data-ajax-popup="true" data-title="{{ __('Edit Milestone') }}" data-url="{{route('projects.milestone.edit',[$currantWorkspace->slug,$milestone->id])}}"><i class="mdi mdi-pencil"></i></a>
+                                                        <a class="btn btn-sm btn-outline-primary"  href="{{route('project.projects.milestone.edit',[$currantWorkspace->slug,$milestone->id])}}"><i class="mdi mdi-pencil"></i></a>
                                                         <a href="#" class="btn btn-sm btn-outline-danger" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form1-{{$milestone->id}}').submit(): '');"><i class="mdi mdi-delete"></i></a>
                                                         <form id="delete-form1-{{$milestone->id}}" action="{{ route('project.projects.milestone.destroy',[$currantWorkspace->slug,$milestone->id]) }}" method="POST" style="display: none;">
                                                             @csrf
@@ -303,7 +303,7 @@
                                                 <div class="float-right">
                                                     <small>
                                                         @if(in_array('edit milestone',$permisions))
-                                                            <a href="#" class="btn btn-sm btn-outline-primary" data-ajax-popup="true" data-title="{{ __('Edit Milestone') }}" data-url="{{route('project.client.projects.milestone.edit',[$currantWorkspace->slug,$milestone->id])}}"><i class="mdi mdi-pencil"></i></a>
+                                                            <a class="btn btn-sm btn-outline-primary" href="{{route('project.client.projects.milestone.edit',[$currantWorkspace->slug,$milestone->id])}}"><i class="mdi mdi-pencil"></i></a>
                                                         @endif
                                                         @if(in_array('delete milestone',$permisions))
                                                             <a href="#" class="btn btn-sm btn-outline-danger" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form1-{{$milestone->id}}').submit(): '');"><i class="mdi mdi-delete"></i></a>
