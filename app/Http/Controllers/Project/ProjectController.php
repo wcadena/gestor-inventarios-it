@@ -21,10 +21,10 @@ use App\Project\SubTask;
 use App\Project\Task;
 use App\Project\TaskFile;
 use App\Project\Timesheet;
-use App\User;
 use App\Project\UserProject;
 use App\Project\UserWorkspace;
 use App\Project\Utility;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -292,6 +292,7 @@ class ProjectController extends Controller
     public function create($slug)
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
+
         return view('project.projects.create', compact('currantWorkspace'));
     }
 
