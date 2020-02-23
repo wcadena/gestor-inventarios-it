@@ -22,7 +22,7 @@
                         @if($currantWorkspace && $currantWorkspace->permission == 'Owner')
                             <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
                                data-title="{{ __('Create New Task') }}"
-                               data-url="{{route('tasks.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                               data-url="{{route('project.tasks.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
                         @elseif(isset($permisions) && in_array('create task',$permisions))
                             <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
                                data-title="{{ __('Create New Task') }}"
@@ -53,11 +53,11 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                 @if($currantWorkspace->permission == 'Owner')
-                                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Task') }}" data-url="{{route('tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Task') }}" data-url="{{route('project.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
                                                         <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                                     <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
                                                         <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
-                                                    <form id="delete-form-{{$taskDetail->id}}" action="{{ route('tasks.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
+                                                    <form id="delete-form-{{$taskDetail->id}}" action="{{ route('project.tasks.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
@@ -82,7 +82,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" data-url="@auth('web'){{route('tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@elseauth{{route('client.tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@endauth"
+                                                <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" data-url="@auth('web'){{route('project.tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@elseauth{{route('client.tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@endauth"
                                                    class="text-body">{{$taskDetail->title}}</a>
                                             </div>
                                             @if($taskDetail->priority=="High")
@@ -177,7 +177,7 @@
                         $("#"+source.id).parent().find('.count').text($("#"+source.id+" > div").length);
                         $("#"+target.id).parent().find('.count').text($("#"+target.id+" > div").length);
                         $.ajax({
-                            url:'@auth('web'){{route('tasks.update.order',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('client.tasks.update.order',[$currantWorkspace->slug,$project->id])}}@endauth',
+                            url:'@auth('web'){{route('project.tasks.update.order',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('client.tasks.update.order',[$currantWorkspace->slug,$project->id])}}@endauth',
                             type:'PUT',
                             data:{id:id,sort:sort,new_status:new_status,old_status:old_status,project_id:project_id,"_token":$('meta[name="csrf-token"]').attr('content')},
                             success: function(data){

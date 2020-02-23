@@ -23,7 +23,7 @@ class CalenderController extends Controller
             $arrayJson[] = [
                 'title'      => $task->title,
                 'start'      => $task->due_date,
-                'url'        => route('tasks.show', [$currantWorkspace->slug, $task->project_id, $task->id]),
+                'url'        => route('project.tasks.show', [$currantWorkspace->slug, $task->project_id, $task->id]),
                 'classNames' => (($task->priority == 'Medium') ? 'bg-warning border-warning' : (($task->priority == 'High') ? 'bg-danger border-danger' : '')),
             ];
         }

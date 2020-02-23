@@ -1,7 +1,7 @@
 
 @if($project && $currantWorkspace)
 
-    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('tasks.store',[$currantWorkspace->slug,$project->id]) }}@elseauth{{ route('client.tasks.store',[$currantWorkspace->slug,$project->id]) }}@endauth">
+    <form class="pl-3 pr-3" method="post" action="@auth('web'){{ route('project.tasks.store',[$currantWorkspace->slug,$project->id]) }}@elseauth{{ route('client.tasks.store',[$currantWorkspace->slug,$project->id]) }}@endauth">
         @csrf
         <div class="row">
             <div class="col-md-8">

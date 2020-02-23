@@ -20,7 +20,7 @@
                                         <div class="card mb-0" id="{{$taskDetail->id}}">
                                             <div class="card-body p-3">
                                                 <div>
-                                                    <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" data-url="{{route('tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id,$clientID])}}"
+                                                    <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" data-url="{{route('project.tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id,$clientID])}}"
                                                        class="text-body">{{$taskDetail->title}}</a>
                                                 </div>
                                                 @if($taskDetail->priority=="High")
@@ -113,7 +113,7 @@
                         $("#"+source.id).parent().find('.count').text($("#"+source.id+" > div").length);
                         $("#"+target.id).parent().find('.count').text($("#"+target.id+" > div").length);
                         $.ajax({
-                            url:'{{route('tasks.update.order',[$currantWorkspace->slug,$project->id])}}',
+                            url:'{{route('project.tasks.update.order',[$currantWorkspace->slug,$project->id])}}',
                             type:'PUT',
                             data:{id:id,sort:sort,client_id:{{$clientID}},new_status:new_status,old_status:old_status,project_id:project_id,"_token":$('meta[name="csrf-token"]').attr('content')},
                             success: function(data){
