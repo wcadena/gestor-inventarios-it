@@ -20,13 +20,14 @@
                 <div class="text-sm-right">
                     <div class="btn-group mt-4">
                         @if($currantWorkspace && $currantWorkspace->permission == 'Owner')
-                            <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
-                               data-title="{{ __('Create New Task') }}"
-                               data-url="{{route('project.tasks.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                            <a class="btn btn-primary ml-3" href="{{route('project.tasks.create',[$currantWorkspace->slug,$project->id])}}">
+                                <i class="mdi mdi-plus"></i> {{ __('Add New')}}
+                            </a>
                         @elseif(isset($permisions) && in_array('create task',$permisions))
-                            <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
-                               data-title="{{ __('Create New Task') }}"
-                               data-url="{{route('client.tasks.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                            <a class="btn btn-primary ml-3"
+                               href="{{route('client.tasks.create',[$currantWorkspace->slug,$project->id])}}">
+                                <i class="mdi mdi-plus"></i> {{ __('Add New')}}
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                 @if($currantWorkspace->permission == 'Owner')
-                                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Task') }}" data-url="{{route('project.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                    <a class="dropdown-item" href="{{ __('Edit Task') }}" data-url="{{route('project.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
                                                         <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                                     <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
                                                         <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
@@ -63,7 +64,7 @@
                                                     </form>
                                                 @elseif(isset($permisions))
                                                     @if(in_array('edit task',$permisions))
-                                                        <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Task') }}" data-url="{{route('client.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                        <a class="dropdown-item" href="{{route('client.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
                                                             <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}
                                                         </a>
                                                     @endif

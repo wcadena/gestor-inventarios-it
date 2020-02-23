@@ -525,9 +525,9 @@ class ProjectController extends Controller
                 'remark'     => \Auth::user()->name.' '.__('Create new Task').' <b>'.$task->title.'</b>',
             ]);
 
-            return redirect()->route('projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('success', __('Task Create Successfully!'));
+            return redirect()->route('project.projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('success', __('Task Create Successfully!'));
         } else {
-            return redirect()->route('projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('error', __('You can \'t Add Task!'));
+            return redirect()->route('project.projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('error', __('You can \'t Add Task!'));
         }
     }
 
@@ -616,9 +616,9 @@ class ProjectController extends Controller
             $task = Task::find($taskID);
             $task->update($post);
 
-            return redirect()->route('projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('success', __('Task Updated Successfully!'));
+            return redirect()->route('project.projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('success', __('Task Updated Successfully!'));
         } else {
-            return redirect()->route('projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('error', __('You can \'t Edit Task!'));
+            return redirect()->route('project.projects.task.board', [$currantWorkspace->slug, $request->project_id])->with('error', __('You can \'t Edit Task!'));
         }
     }
 
@@ -632,7 +632,7 @@ class ProjectController extends Controller
 
             return redirect()->route('projects.task.board', [$slug, $projectID])->with('success', __('Task Deleted Successfully!'));
         } else {
-            return redirect()->route('projects.task.board', [$slug, $projectID])->with('error', __('You can\'t Delete Task!'));
+            return redirect()->route('project.projects.task.board', [$slug, $projectID])->with('error', __('You can\'t Delete Task!'));
         }
     }
 
@@ -748,7 +748,7 @@ class ProjectController extends Controller
             $objTask = Task::select(['tasks.project_id', 'tasks.title'])->join('projects', 'tasks.project_id', '=', 'projects.id')->join('user_projects', 'user_projects.project_id', '=', 'projects.id')->where('user_projects.user_id', '=', $user->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.title', 'LIKE', $search.'%')->get();
             $arrTask = [];
             foreach ($objTask as $task) {
-                $arrTask[] = ['text'=>$task->title, 'link'=>route('projects.task.board', [$currantWorkspace->slug, $task->project_id])];
+                $arrTask[] = ['text'=>$task->title, 'link'=>route('project.projects.task.board', [$currantWorkspace->slug, $task->project_id])];
             }
         }
 
