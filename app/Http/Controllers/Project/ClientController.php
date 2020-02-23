@@ -34,14 +34,14 @@ class ClientController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $clients = Client::join('client_workspaces', 'client_workspaces.client_id', '=', 'clients.id')->where('client_workspaces.workspace_id', '=', $currantWorkspace->id)->get();
 
-        return view('project.clients.index', compact('currantWorkspace', 'clients'));
+        return view('project.project.clients.index', compact('currantWorkspace', 'clients'));
     }
 
     public function create($slug)
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('project.clients.create', compact('currantWorkspace'));
+        return view('project.project.clients.create', compact('currantWorkspace'));
     }
 
     public function store($slug, Request $request)
@@ -80,7 +80,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
 
-        return view('project.clients.edit', compact('client', 'currantWorkspace'));
+        return view('project.project.clients.edit', compact('client', 'currantWorkspace'));
     }
 
     public function update($slug, $id, Request $request)
