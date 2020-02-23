@@ -2,7 +2,8 @@
 
 namespace App\Mail;
 
-use App\Project;
+
+use App\Project\Project;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

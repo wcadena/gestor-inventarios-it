@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
+<style>
+    .brd{
+        border: #0b0b0b 1px solid;
+    }
+</style>
 <section class="section">
 
     <h2 class="section-title">{{ __('Projects') }}</h2>
@@ -13,12 +17,38 @@
         <div class="col-sm-4">
             @auth('web')
                 @if($currantWorkspace->creater->id == Auth::user()->id)
-                    <button type="button" class="btn btn-primary btn-rounded mb-3" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Project') }}" data-url="{{route('project.projects.create',$currantWorkspace->slug)}}">
+                    <a class="btn btn-primary btn-rounded mb-3"  href="{{route('project.projects.create',$currantWorkspace->slug)}}">
                         <i class="mdi mdi-plus"></i> {{ __('Create Project') }}
-                    </button>
+                    </a>
                 @endif
             @endauth
         </div>
+
+        <!-- Extra Large Block Modal -->
+        <div class="modal" id="modal-block-extra-large" tabindex="-1" role="dialog" aria-labelledby="modal-block-extra-large" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="block block-themed block-transparent mb-0">
+                        <div class="block-header bg-primary-dark">
+                            <h3 class="block-title">Modal Title</h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="block-content">
+                            <p>Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.</p>
+                        </div>
+                        <div class="block-content block-content-full text-right bg-light">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Extra Large Block Modal -->
 
         <div class="col-sm-8">
             <div class="text-sm-right status-filter">
@@ -39,13 +69,13 @@
         @foreach ($projects as $project)
 
         <div class="col-12 col-sm-12 col-lg-6 animated filter {{$project->status}}">
-            <div class="card author-box card-primary">
-                <div class="card-body">
-                    <div class="card-header-action">
-                        <div class="dropdown card-widgets">
+            <div class="brd card author-box card-primary">
+                <div class="brd card-body">
+                    <div class="brd card-header-action">
+                        <div class="brd dropdown card-widgets">
                             @auth('web')
-                                <a href="#" class="btn active dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="dripicons-gear"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="brd btn active dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="dripicons-gear"></i></a>
+                                <div class="brd dropdown-menu dropdown-menu-right">
                                 @if($currantWorkspace->permission == 'Owner')
                                     <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Project') }}" data-url="{{route('project.projects.edit',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{ __('Edit')}}</a>
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{ __('Delete')}}</a>
@@ -53,8 +83,8 @@
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" class="dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
-                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
+                                    <a href="#" class="brd dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('project.projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
+                                    <a href="#" class="brd dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('project.projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a>
                                 @else
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('leave-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i>{{ __('Leave')}}</a>
                                     <form id="leave-form-{{$project->id}}" action="{{ route('project.projects.leave',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
@@ -67,12 +97,12 @@
                         </div>
                     </div>
 
-                    <div class="author-box-name">
+                    <div class="brd author-box-name">
 
                         <a href="@auth('web'){{route('project.projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" title="{{ $project->name }}" class="text-title">{{ $project->name }}</a>
 
                     </div>
-                    <div class="author-box-job">
+                    <div class="brd author-box-job">
                         @if($project->status == 'Finished')
                             <div class="badge badge-success">{{ __('Finished')}}</div>
                         @elseif($project->status == 'Ongoing')
@@ -82,12 +112,12 @@
                         @endif
                     </div>
 
-                    <div class="author-box-description">
+                    <div class="brd author-box-description">
                         <p>
                             {{\Illuminate\Support\Str::limit($project->description, $limit = 100, $end = '...')}}
                         </p>
                     </div>
-                    <p class="mb-1">
+                    <p class="mb-1 brd">
                         <span class="pr-2 text-nowrap mb-2 d-inline-block">
                             <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
                             <b>{{$project->countTask()}}</b> {{ __('Tasks')}}
@@ -100,13 +130,13 @@
 
                     @foreach($project->users as $user)
 
-                            <figure class="avatar mr-2 avatar-sm animated" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{$user->name}}">
+                            <figure class="brd avatar mr-2 avatar-sm animated" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{$user->name}}">
                                 <img @if($user->avatar) src="{{asset('/storage/avatars/'.$user->avatar)}}" @else avatar="{{ $user->name }}"@endif class="rounded-circle">
                             </figure>
 
                     @endforeach
 
-                    <div class="float-right mt-sm-0 mt-3">
+                    <div class="brd float-right mt-sm-0 mt-3">
                         <a href="@auth('web'){{route('project.projects.show',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.show',[$currantWorkspace->slug,$project->id])}}@endauth" class="btn btn-sm btn-primary">{{__('View More')}} <i class="dripicons-arrow-right"></i></a>
                     </div>
 
@@ -120,14 +150,14 @@
 
         <div class="container mt-5">
             <div class="page-error">
-                <div class="page-inner">
+                <div class="brd page-inner">
                     <h1>404</h1>
                     <div class="page-description">
                         {{ __('Page Not Found') }}
                     </div>
-                    <div class="page-search">
-                        <p class="text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
-                        <div class="mt-3">
+                    <div class="brd page-search">
+                        <p class="brd text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
+                        <div class="brd mt-3">
                             <a class="btn btn-info mt-3" href="{{route('home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
                         </div>
                     </div>

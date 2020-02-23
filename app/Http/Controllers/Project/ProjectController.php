@@ -21,7 +21,7 @@ use App\Project\SubTask;
 use App\Project\Task;
 use App\Project\TaskFile;
 use App\Project\Timesheet;
-use App\Project\User;
+use App\User;
 use App\Project\UserProject;
 use App\Project\UserWorkspace;
 use App\Project\Utility;
@@ -108,7 +108,7 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('projects.index', $currantWorkspace->slug)
+        return redirect()->route('project.projects.index', $currantWorkspace->slug)
             ->with('success', __('Project Created Successfully!').((isset($smtp_error)) ? ' <br> <span class="text-danger">'.$smtp_error.'</span>' : ''));
     }
 
@@ -189,7 +189,7 @@ class ProjectController extends Controller
             ]);
         }
 
-        return redirect()->route('projects.index', $currantWorkspace->slug)
+        return redirect()->route('project.projects.index', $currantWorkspace->slug)
             ->with('success', __('Users Invited Successfully!').((isset($smtp_error)) ? ' <br> <span class="text-danger">'.$smtp_error.'</span>' : ''));
     }
 
@@ -292,7 +292,6 @@ class ProjectController extends Controller
     public function create($slug)
     {
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
-
         return view('project.projects.create', compact('currantWorkspace'));
     }
 
@@ -326,7 +325,7 @@ class ProjectController extends Controller
                 return redirect()->back()->with('warning', __('Please Remove User From Tasks!'));
             }
         } else {
-            return redirect()->route('projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
+            return redirect()->route('project.projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
         }
     }
 
@@ -348,7 +347,7 @@ class ProjectController extends Controller
 
             return redirect()->back()->with('success', __('Client Deleted Successfully!'));
         } else {
-            return redirect()->route('projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
+            return redirect()->route('project.projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
         }
     }
 
@@ -423,9 +422,9 @@ class ProjectController extends Controller
             UserProject::where('project_id', '=', $projectID)->delete();
             $project->delete();
 
-            return redirect()->route('projects.index', $slug)->with('success', __('Project Deleted Successfully!'));
+            return redirect()->route('project.projects.index', $slug)->with('success', __('Project Deleted Successfully!'));
         } else {
-            return redirect()->route('projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
+            return redirect()->route('project.projects.index', $slug)->with('error', __('You can\'t Delete Project!'));
         }
     }
 
@@ -442,7 +441,7 @@ class ProjectController extends Controller
         $userProject = Project::find($projectID);
         UserProject::where('project_id', '=', $userProject->id)->where('user_id', '=', $objUser->id)->delete();
 
-        return redirect()->route('projects.index', $slug)->with('success', __('Project Leave Successfully!'));
+        return redirect()->route('project.projects.index', $slug)->with('success', __('Project Leave Successfully!'));
     }
 
     /**
