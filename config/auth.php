@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
         'client' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'clients',
         ],
         'api' => [
@@ -75,7 +75,7 @@ return [
         ],
         'clients' => [
             'driver' => 'eloquent',
-            'model' => \App\Project\Client::class,
+            'model'  => \App\Project\Client::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

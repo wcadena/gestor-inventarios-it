@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-
 use App\Project\Project;
 use App\User;
 use Illuminate\Bus\Queueable;
