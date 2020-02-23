@@ -34,7 +34,7 @@ class ClientController extends Controller
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
         $clients = Client::join('client_workspaces', 'client_workspaces.client_id', '=', 'clients.id')->where('client_workspaces.workspace_id', '=', $currantWorkspace->id)->get();
 
-        return view('project.project.clients.index', compact('currantWorkspace', 'clients'));
+        return view('project.clients.index', compact('currantWorkspace', 'clients'));
     }
 
     public function create($slug)
@@ -72,7 +72,7 @@ class ClientController extends Controller
             );
         }
 
-        return redirect()->route('clients.index', $currantWorkspace->slug)->with('success', __('Client Created Successfully!'));
+        return redirect()->route('project.clients.index', $currantWorkspace->slug)->with('success', __('Client Created Successfully!'));
     }
 
     public function edit($slug, $id)
@@ -94,7 +94,7 @@ class ClientController extends Controller
             }
             $client->save();
 
-            return redirect()->route('clients.index', $currantWorkspace->slug)->with('success', __('Client Updated Successfully!'));
+            return redirect()->route('project.clients.index', $currantWorkspace->slug)->with('success', __('Client Updated Successfully!'));
         } else {
             return redirect()->back()->with('error', __('Something is wrong.'));
         }
@@ -109,7 +109,7 @@ class ClientController extends Controller
             ClientProject::where('client_id', '=', $client->id)->delete();
             $client->delete();
 
-            return redirect()->route('clients.index', $currantWorkspace->slug)->with('success', __('Client Deleted Successfully!'));
+            return redirect()->route('project.clients.index', $currantWorkspace->slug)->with('success', __('Client Deleted Successfully!'));
         } else {
             return redirect()->back()->with('error', __('Something is wrong.'));
         }

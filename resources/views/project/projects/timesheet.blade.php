@@ -10,7 +10,7 @@
                 <div class="col-sm-8">
                     <div class="text-sm-right">
                         <div class="btn-group mt-4">
-                            <a href="#" class="btn btn-sm btn-primary" data-ajax-popup="true" data-title="{{ __('Create Timesheet') }}" data-url="{{route('projects.timesheet.create',[$currantWorkspace->slug,$project->id])}}">{{__('Create Timesheet')}}</a>
+                            <a href="#" class="btn btn-sm btn-primary" data-ajax-popup="true" data-title="{{ __('Create Timesheet') }}" data-url="{{route('project.projects.timesheet.create',[$currantWorkspace->slug,$project->id])}}">{{__('Create Timesheet')}}</a>
                         </div>
                     </div>
                 </div>

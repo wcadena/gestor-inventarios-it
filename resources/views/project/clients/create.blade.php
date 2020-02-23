@@ -1,4 +1,4 @@
-<form class="pl-3 pr-3" method="post" action="{{ route('clients.store',[$currantWorkspace->slug]) }}">
+<form class="pl-3 pr-3" method="post" action="{{ route('project.clients.store',[$currantWorkspace->slug]) }}">
     @csrf
     <div class="form-group">
         <label for="name">{{ __('Name') }}</label>

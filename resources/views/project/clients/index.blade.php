@@ -13,7 +13,7 @@
             <div class="col-sm-8">
                 @if($currantWorkspace->creater->id == Auth::user()->id)
                 <div class="text-sm-right">
-                    <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Add Client') }}" data-url="{{route('clients.create',$currantWorkspace->slug)}}">
+                    <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Add Client') }}" data-url="{{route('project.clients.create',$currantWorkspace->slug)}}">
                         <i class="mdi mdi-plus"></i> {{ __('Add Client') }}
                     </button>
                 </div>
@@ -38,9 +38,9 @@
                                     <i class="dripicons-gear"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{__('Edit Client')}}" data-url="{{route('clients.edit',[$currantWorkspace->slug,$client->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
+                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{__('Edit Client')}}" data-url="{{route('project.clients.edit',[$currantWorkspace->slug,$client->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                     <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$client->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
-                                    <form method="post" id="delete-form-{{$client->id}}" action="{{route('clients.destroy',[$currantWorkspace->slug,$client->id])}}">
+                                    <form method="post" id="delete-form-{{$client->id}}" action="{{route('project.clients.destroy',[$currantWorkspace->slug,$client->id])}}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
