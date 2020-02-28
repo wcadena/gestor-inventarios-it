@@ -13,6 +13,7 @@ class CreateBugFilesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('bug_files');
         Schema::create('bug_files', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('file');

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminUserSeeder::class);
         $this->call(ContactosTableSeeder::class);
         $this->call(InformeMantenimientoPreventivoSeeder::class);
+        $this->call(ProjectSeeder::class);
 
         \Illuminate\Database\Eloquent\Model::reguard();
     }

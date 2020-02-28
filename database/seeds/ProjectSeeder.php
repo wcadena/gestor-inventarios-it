@@ -11,15 +11,37 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        /*\Illuminate\Support\Facades\DB::table('workspaces')->insert([
-            'proyecto_id'                     => App\Proyecto::where('name', '=', 'Desarrollo')->first()->id,
-            'name'                            => 'QA',
-            'descripcion'                     => '',
-            'tipo'                            => 'seccion', //es donde van los informes, si es titulo seria solo un titulo sin secciones, titulo es un titulo sin opciones solo es decorativo
-            'orden'                           => 4,
-            'principal'                       => 'no', //solo debe haber un principal, ya q la ide es q tome este cuando se crea un informe de bolada
+        \Illuminate\Support\Facades\Auth::login(App\User::inRandomOrder()->first());
+        $faker = \Faker\Factory::create();
+
+        \Illuminate\Support\Facades\DB::table('workspaces')->insert([
+            'name'                            => $kj = $faker->word,
+            'slug'                            => $kj,
+            'created_by'                      => App\User::inRandomOrder()->first()->id,
+            'lang'                            => app()->getLocale(),
             'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
             'updated_at'                      => $faker->date($format = 'Y-m-d'),
-        ]);*/
+        ]);
+
+        \Illuminate\Support\Facades\DB::table('user_workspaces')->insert([
+            'user_id'                         => App\User::inRandomOrder()->first()->id,
+            'workspace_id'                    => \App\Project\Workspace::inRandomOrder()->first()->id,
+            'permission'                      => 'Owner',
+            'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'                      => $faker->date($format = 'Y-m-d'),
+        ]);
+
+        \Illuminate\Support\Facades\DB::table('projects')->insert([
+            'name'                         => $kj2 = $faker->word,
+            'status'                         => $faker->randomElement($array = ['Ongoing','Finished','OnHold']),
+            'description'                      => $faker->text,
+            'start_date'                      => \Carbon\Carbon::now(),
+            'end_date'                      => $faker->date($format = 'Y-m-d', $min = 'now'),
+            'budget'                      => $faker->numberBetween(1000,1000*100),
+            'workspace'                      => \App\Project\Workspace::inRandomOrder()->first()->id,
+            'created_by'                      => App\User::inRandomOrder()->first()->id,
+            'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'                      => $faker->date($format = 'Y-m-d'),
+        ]);
     }
 }
