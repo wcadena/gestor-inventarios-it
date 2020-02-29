@@ -23,11 +23,11 @@ class ProjectSeeder extends Seeder
 
         $users = \App\User::all();
 
-        foreach ($users as $user){
+        foreach ($users as $user) {
             factory(\App\Project\UserWorkspace::class)->make(
                 [
                     'workspace_id' => $workspace->id,
-                    'user_id' => $user->id,
+                    'user_id'      => $user->id,
                 ]
             )->save();
 
@@ -40,28 +40,28 @@ class ProjectSeeder extends Seeder
                 $project->save();
                 factory(\App\Project\ClientProject::class)->make(
                     [
-                        'client_id' =>$client1->id,
-                        'project_id'=>$project->id
+                        'client_id' => $client1->id,
+                        'project_id'=> $project->id,
                     ]
                 )->save();
                 factory(\App\Project\ClientProject::class)->make(
                     [
-                        'client_id' =>$client2->id,
-                        'project_id'=>$project->id
+                        'client_id' => $client2->id,
+                        'project_id'=> $project->id,
                     ]
                 )->save();
                 factory(\App\Project\UserProject::class)->make(
                     [
-                        'user_id' => $user->id,
-                        'project_id'=>$project->id
+                        'user_id'   => $user->id,
+                        'project_id'=> $project->id,
                     ]
                 )->save();
 
-                $milestone=factory(\App\Project\Milestone::class)->make();
+                $milestone = factory(\App\Project\Milestone::class)->make();
                 $milestone->save();
                 $tasks = factory(\App\Project\Task::class, 5)->make(
                     [
-                        'project_id'=>$project->id,
+                        'project_id'   => $project->id,
                         'milestone_id' => $milestone->id,
                     ]
                 );
