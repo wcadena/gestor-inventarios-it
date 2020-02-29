@@ -33,21 +33,20 @@ class ProjectSeeder extends Seeder
         factory(\App\Project\Milestone::class)->make()->save();
 
         factory(\App\Project\Note::class)->make()->save();
-        $UserProjects = factory(\App\Project\UserProject::class,2)->make();
+        $UserProjects = factory(\App\Project\UserProject::class, 2)->make();
         foreach ($UserProjects as $UserProject) {
             $UserProject->save();
         }
 
-        $tasks = factory(\App\Project\Task::class,5)->make();
+        $tasks = factory(\App\Project\Task::class, 5)->make();
         foreach ($tasks as $task) {
             $task->save();
-            $subtasks =factory(\App\Project\SubTask::class,7)->make([
+            $subtasks = factory(\App\Project\SubTask::class, 7)->make([
                 'task_id' => $task->id,
             ]);
             foreach ($subtasks as $subtask) {
                 $subtask->save();
             }
         }
-
     }
 }
