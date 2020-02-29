@@ -19,13 +19,13 @@ class ProjectSeeder extends Seeder
 
         factory(\App\Project\UserWorkspace::class)->make()->save();
 
-        $projects = factory(\App\Project\Project::class,6)->make();
-        foreach ($projects as $project){
+        $projects = factory(\App\Project\Project::class, 6)->make();
+        foreach ($projects as $project) {
             $project->save();
         }
 
-        $clients = factory(\App\Project\Client::class,6)->make();
-        foreach ($clients as $client){
+        $clients = factory(\App\Project\Client::class, 6)->make();
+        foreach ($clients as $client) {
             $client->save();
         }
     }
