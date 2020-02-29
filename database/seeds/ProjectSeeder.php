@@ -14,34 +14,19 @@ class ProjectSeeder extends Seeder
         \Illuminate\Support\Facades\Auth::login(App\User::inRandomOrder()->first());
         $faker = \Faker\Factory::create();
 
-        \Illuminate\Support\Facades\DB::table('workspaces')->insert([
-            'name'                            => $kj = $faker->word,
-            'slug'                            => $kj,
-            'created_by'                      => App\User::inRandomOrder()->first()->id,
-            'lang'                            => app()->getLocale(),
-            'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
-            'updated_at'                      => $faker->date($format = 'Y-m-d'),
-        ]);
+        factory(\App\Project\Workspace::class)->make()->save();
+        factory(\App\Project\Workspace::class)->make()->save();
 
-        \Illuminate\Support\Facades\DB::table('user_workspaces')->insert([
-            'user_id'                         => App\User::inRandomOrder()->first()->id,
-            'workspace_id'                    => \App\Project\Workspace::inRandomOrder()->first()->id,
-            'permission'                      => 'Owner',
-            'created_at'                      => $faker->date($format = 'Y-m-d', $max = 'now'),
-            'updated_at'                      => $faker->date($format = 'Y-m-d'),
-        ]);
+        factory(\App\Project\UserWorkspace::class)->make()->save();
 
-        \Illuminate\Support\Facades\DB::table('projects')->insert([
-            'name'                             => $kj2 = $faker->word,
-            'status'                           => $faker->randomElement($array = ['Ongoing', 'Finished', 'OnHold']),
-            'description'                      => $faker->text,
-            'start_date'                       => \Carbon\Carbon::now(),
-            'end_date'                         => $faker->date($format = 'Y-m-d', $min = 'now'),
-            'budget'                           => $faker->numberBetween(1000, 1000 * 100),
-            'workspace'                        => \App\Project\Workspace::inRandomOrder()->first()->id,
-            'created_by'                       => App\User::inRandomOrder()->first()->id,
-            'created_at'                       => $faker->date($format = 'Y-m-d', $max = 'now'),
-            'updated_at'                       => $faker->date($format = 'Y-m-d'),
-        ]);
+        $projects = factory(\App\Project\Project::class,6)->make();
+        foreach ($projects as $project){
+            $project->save();
+        }
+
+        $clients = factory(\App\Project\Client::class,6)->make();
+        foreach ($clients as $client){
+            $client->save();
+        }
     }
 }
