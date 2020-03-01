@@ -56,7 +56,7 @@ class NoteController extends Controller
         $post['created_by'] = $objUser->id;
         Note::create($post);
 
-        return redirect()->route('notes.index', $currantWorkspace->slug)
+        return redirect()->route('project.notes.index', $currantWorkspace->slug)
             ->with('success', 'Note   created successfully.');
     }
 
@@ -107,7 +107,7 @@ class NoteController extends Controller
         $notes = Note::where('workspace', '=', $currantWorkspace->id)->where('created_by', '=', Auth::user()->id)->where('id', '=', $noteID)->first();
         $notes->update($request->all());
 
-        return redirect()->route('notes.index', $slug)
+        return redirect()->route('project.notes.index', $slug)
             ->with('success', __('Note Updated Successfully!'));
     }
 
@@ -125,9 +125,9 @@ class NoteController extends Controller
         if ($note->created_by == $objUser->id) {
             $note->delete();
 
-            return redirect()->route('notes.index', $slug)->with('success', __('Note Deleted Successfully!'));
+            return redirect()->route('project.notes.index', $slug)->with('success', __('Note Deleted Successfully!'));
         } else {
-            return redirect()->route('notes.index', $slug)->with('error', __('You can\'t delete Note!'));
+            return redirect()->route('project.notes.index', $slug)->with('error', __('You can\'t delete Note!'));
         }
     }
 }

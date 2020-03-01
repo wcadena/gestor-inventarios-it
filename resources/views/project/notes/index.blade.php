@@ -12,9 +12,9 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="text-sm-right">
-                        <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Note') }}" data-url="{{route('project.notes.create',$currantWorkspace->slug)}}">
+                        <a class="btn btn-primary btn-rounded mt-4" title="{{ __('Create New Note') }}" href="{{route('project.notes.create',$currantWorkspace->slug)}}">
                             <i class="mdi mdi-plus"></i> {{ __('Create Note') }}
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -28,9 +28,9 @@
                                     <div class="card mb-0 mt-3 text-white {{$note->color}}">
                                         <div class="card-body">
                                             <div class="card-widgets float-right">
-                                                <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Note') }}" data-url="{{route('notes.edit',[$currantWorkspace->slug,$note->id])}}"><i class="mdi mdi-pencil"></i></a>
-                                                <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$note->id}}').submit(): '');"><i class="mdi mdi-trash-can    "></i></a>
-                                                <form id="delete-form-{{$note->id}}" action="{{ route('notes.destroy',[$currantWorkspace->slug,$note->id]) }}" method="POST" style="display: none;">
+                                                <a itle="{{ __('Edit Note') }}" href="{{route('project.notes.edit',[$currantWorkspace->slug,$note->id])}}">Editar<i class="fa fa-edit"></i></a>
+                                                <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$note->id}}').submit(): '');">Borrar<i class="fa fa-trash-alt"></i></a>
+                                                <form id="delete-form-{{$note->id}}" action="{{ route('project.notes.destroy',[$currantWorkspace->slug,$note->id]) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -59,7 +59,7 @@
                         <div class="page-search">
                             <p class="text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
                             <div class="mt-3">
-                                <a class="btn btn-info mt-3" href="{{route('home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
+                                <a class="btn btn-info mt-3" href="{{route('project.home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
                             </div>
                         </div>
                     </div>
