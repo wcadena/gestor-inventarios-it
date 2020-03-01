@@ -66,9 +66,9 @@
                                                 <i class="dripicons-gear"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{__('Edit User')}}" data-url="{{route('users.edit',[$currantWorkspace->slug,$user->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
+                                                <a class="dropdown-item" data-ajax-popup="true" title="{{__('Edit User')}}" href="{{route('users.edit',[$currantWorkspace->slug,$user->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                                 <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$user->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{__('Remove User From Workspace')}}</a>
-                                                <form method="post" id="delete-form-{{$user->id}}" action="{{route('users.remove',[$currantWorkspace->slug,$user->id])}}">
+                                                <form method="post" id="delete-form-{{$user->id}}" action="{{route('project.users.remove',[$currantWorkspace->slug,$user->id])}}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -98,7 +98,7 @@
                     <div class="page-search">
                         <p class="text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
                         <div class="mt-3">
-                            <a class="btn btn-info mt-3" href="{{route('home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
+                            <a class="btn btn-info mt-3" href="{{route('project.home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
                         </div>
                     </div>
                 </div>

@@ -213,10 +213,10 @@ class UserController extends Controller
             if ($userProjectCount == 0) {
                 $userWorkspace->delete();
             } else {
-                return redirect()->route('users.index', $currantWorkspace->slug)->with('warning', __('Please Remove User From Project!'));
+                return redirect()->route('project.users.index', $currantWorkspace->slug)->with('warning', __('Please Remove User From Project!'));
             }
 
-            return redirect()->route('users.index', $currantWorkspace->slug)->with('success', __('User Removed Successfully!'));
+            return redirect()->route('project.users.index', $currantWorkspace->slug)->with('success', __('User Removed Successfully!'));
         } else {
             return redirect()->back()->with('error', __('Something is wrong.'));
         }

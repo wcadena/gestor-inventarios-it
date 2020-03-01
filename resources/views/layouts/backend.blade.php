@@ -444,7 +444,23 @@
 
         <!-- Laravel Scaffolding JS -->
         <script src="{{ mix('js/inventarios.app.js') }}"></script>
-
+        <!-- Page JS Plugins -->
+        <script src="{{asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+        <!-- Page JS Helpers (BS Notify Plugin) -->
         @yield('js_after')
+        @if ($message = Session::get('success'))
+            <script>jQuery(function(){Dashmix.helpers('notify', {type: 'success', icon: 'fa fa-check mr-1', message: '{!! $message !!}'});});</script>
+        @endif
+
+        @if ($message = Session::get('error'))
+            <script>jQuery(function(){Dashmix.helpers('notify', {type: 'danger', icon: 'fa fa-times mr-1', message: '{!! $message !!}'});});</script>
+        @endif
+
+        @if ($message = Session::get('info'))
+            <script>jQuery(function(){Dashmix.helpers('notify', {type: 'info', icon: 'fa fa-info-circle mr-1', message: '{!! $message !!}'});});</script>
+        @endif
+        @if ($message = Session::get('warning'))
+            <script>jQuery(function(){Dashmix.helpers('notify', {type: 'warning', icon: 'fa fa-exclamation mr-1', message: '{!! $message !!}'});});</script>
+        @endif
     </body>
 </html>

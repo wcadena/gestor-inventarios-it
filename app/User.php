@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Notifications\MyOwnResetPassword;
+use App\Project\Task;
+use App\Project\UserProject;
 use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
