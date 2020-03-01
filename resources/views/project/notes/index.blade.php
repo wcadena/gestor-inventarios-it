@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="text-sm-right">
-                        <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Note') }}" data-url="{{route('notes.create',$currantWorkspace->slug)}}">
+                        <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Create New Note') }}" data-url="{{route('project.notes.create',$currantWorkspace->slug)}}">
                             <i class="mdi mdi-plus"></i> {{ __('Create Note') }}
                         </button>
                     </div>
