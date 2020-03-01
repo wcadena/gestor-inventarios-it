@@ -9,7 +9,7 @@ $factory->define(\App\Project\Note::class, function (Faker $faker) {
 
         'title'                              => $faker->text,
         'text'                               => $faker->text(189),
-        'color'                              => $faker->randomElements(['bg-primary','bg-secondary','bg-info','bg-warning','bg-danger']),
+        'color'                              => $faker->randomElements(['bg-primary', 'bg-secondary', 'bg-info', 'bg-warning', 'bg-danger']),
         'workspace'                          => \App\Project\Workspace::inRandomOrder()->first()->id,
         'created_by'                         => \App\User::inRandomOrder()->first()->id,
         'created_at'                         => $faker->date($format = 'Y-m-d', $max = 'now'),
