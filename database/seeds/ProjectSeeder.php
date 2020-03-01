@@ -76,9 +76,15 @@ class ProjectSeeder extends Seeder
                     }
                 }
             }
+            factory(\App\Project\Note::class)->make(
+                [
+                    'workspace'         => $workspace->id,
+                    'created_by'        => $user->id,
+                ]
+            )->save();
         }
 
-        factory(\App\Project\Note::class)->make()->save();
+
         $UserProjects = factory(\App\Project\UserProject::class, 2)->make();
         foreach ($UserProjects as $UserProject) {
             $UserProject->save();
