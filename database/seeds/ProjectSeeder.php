@@ -84,7 +84,6 @@ class ProjectSeeder extends Seeder
             )->save();
         }
 
-
         $UserProjects = factory(\App\Project\UserProject::class, 2)->make();
         foreach ($UserProjects as $UserProject) {
             $UserProject->save();
