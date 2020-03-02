@@ -20,13 +20,12 @@
                 <div class="text-sm-right">
                     <div class="btn-group mt-4">
                         @if($currantWorkspace && $currantWorkspace->permission == 'Owner')
-                            <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
-                               data-title="{{ __('Create New Bug') }}"
-                               data-url="{{route('projects.bug.report.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                            <a class="btn btn-primary ml-3"
+                               title="{{ __('Create New Bug') }}"
+                               href="{{route('project.projects.bug.report.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
                         @elseif(isset($permisions) && in_array('create bug report',$permisions))
-                            <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
-                               data-title="{{ __('Create New Bug') }}"
-                               data-url="{{route('client.projects.bug.report.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                            <a class="btn btn-primary ml-3" title="{{ __('Create New Bug') }}"
+                               href="{{route('project.client.projects.bug.report.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
                         @endif
                     </div>
                 </div>
@@ -53,17 +52,17 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                 @if($currantWorkspace->permission == 'Owner')
-                                                    <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Bug') }}" data-url="{{route('projects.bug.report.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                    <a class="dropdown-item" title="{{ __('Edit Bug') }}" href="{{route('project.projects.bug.report.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
                                                         <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                                     <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
                                                         <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
-                                                    <form id="delete-form-{{$taskDetail->id}}" action="{{ route('projects.bug.report.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
+                                                    <form id="delete-form-{{$taskDetail->id}}" action="{{ route('project.projects.bug.report.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
                                                 @elseif(isset($permisions))
                                                     @if(in_array('edit bug report',$permisions))
-                                                        <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Bug') }}" data-url="{{route('client.projects.bug.report.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                        <a class="dropdown-item" title="{{ __('Edit Bug') }}" href="{{route('project.client.projects.bug.report.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
                                                             <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}
                                                         </a>
                                                     @endif
@@ -71,7 +70,7 @@
                                                         <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
                                                             <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}
                                                         </a>
-                                                        <form id="delete-form-{{$taskDetail->id}}" action="{{ route('client.projects.bug.report.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
+                                                        <form id="delete-form-{{$taskDetail->id}}" action="{{ route('project.client.projects.bug.report.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
@@ -80,7 +79,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" data-url="@auth('web'){{route('projects.bug.report.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@elseauth{{route('client.projects.bug.report.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@endauth"
+                                                <a title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-info'>{{ __('Medium')}}</span>@else<span class='badge badge-success'>{{ __('Low')}}</span>@endif" href="@auth('web'){{route('project.projects.bug.report.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@elseauth{{route('project.client.projects.bug.report.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}@endauth"
                                                    class="text-body">{{$taskDetail->title}}</a>
                                             </div>
                                             @if($taskDetail->priority=="High")
@@ -125,7 +124,7 @@
                         <div class="page-search">
                             <p class="text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
                             <div class="mt-3">
-                                <a class="btn btn-info mt-3" href="{{route('home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
+                                <a class="btn btn-info mt-3" href="{{route('project.home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +174,7 @@
                         $("#"+source.id).parent().find('.count').text($("#"+source.id+" > div").length);
                         $("#"+target.id).parent().find('.count').text($("#"+target.id+" > div").length);
                         $.ajax({
-                            url:'@auth('web'){{route('projects.bug.report.update.order',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('client.projects.bug.report.update.order',[$currantWorkspace->slug,$project->id])}}@endauth',
+                            url:'@auth('web'){{route('project.projects.bug.report.update.order',[$currantWorkspace->slug,$project->id])}}@elseauth{{route('project.client.projects.bug.report.update.order',[$currantWorkspace->slug,$project->id])}}@endauth',
                             type:'PUT',
                             data:{id:id,sort:sort,new_status:new_status,old_status:old_status,project_id:project_id,"_token":$('meta[name="csrf-token"]').attr('content')},
                             success: function(data){
@@ -231,7 +230,7 @@
                                 "                        <h5 class='mt-0'>"+data.user.name+"</h5>" +
                                 "                        "+data.comment +
                                 "                           <div class='float-right'>"+
-                                "                               <a href='#' class='text-danger text-muted delete-comment' data-url='"+data.deleteUrl+"'>"+
+                                "                               <a class='text-danger text-muted delete-comment' href='"+data.deleteUrl+"'>"+
                                 "                                   <i class='dripicons-trash'></i>"+
                                 "                               </a>"+
                                 "                           </div>"+
@@ -260,7 +259,7 @@
             if(confirm('Are You Sure ?')) {
                 var btn = $(this);
                 $.ajax({
-                    url: $(this).attr('data-url'),
+                    url: $(this).attr('href'),
                     type: 'DELETE',
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     dataType: 'JSON',
@@ -297,7 +296,7 @@
                     var delLink = '';
 
                     if(data.deleteUrl.length > 0){
-                        delLink = "<a href='#' class='text-danger text-muted delete-comment-file'  data-url='"+data.deleteUrl+"'>" +
+                        delLink = "<a class='text-danger text-muted delete-comment-file'  href='"+data.deleteUrl+"'>" +
                             "                                        <i class='dripicons-trash'></i>" +
                             "                                    </a>";
                     }
@@ -345,7 +344,7 @@
             if(confirm('Are You Sure ?')) {
                 var btn = $(this);
                 $.ajax({
-                    url: $(this).attr('data-url'),
+                    url: $(this).attr('href'),
                     type: 'DELETE',
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     dataType: 'JSON',

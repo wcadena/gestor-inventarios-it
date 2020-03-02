@@ -2,6 +2,60 @@
 
 @section('content')
 
+    <style>
+        .card-body .card-header-action{
+            float: right;
+        }
+        .card-body .card-header-action .btn:after{
+            display: none;
+        }
+        .board .dropdown-toggle{
+            outline: none;
+        }
+        .board .dropdown-toggle:after{
+            display: none;
+        }
+        .board {
+            display: block;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .tasks.tasks:not(:last-child) {
+            margin-right: 1.25rem;
+        }
+        .tasks {
+            display: inline-block;
+            width: 22rem;
+            padding: 0 1rem 1rem 1rem;
+            border: 1px solid #e3eaef;
+            vertical-align: top;
+            margin-bottom: 30px;
+            border-radius: .25rem;
+        }
+        .tasks .task-header {
+            background-color: #fff;
+            color: #78828a;
+            padding: 1rem;
+            margin: 0 -1rem;
+            font-weight: bold;
+        }
+        .task-list-items {
+            min-height: 100px;
+            position: relative;
+        }
+        .task-list-items:before {
+            position: absolute;
+            line-height: 110px;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+        }
+        .tasks .card {
+            white-space: normal;
+            margin-top: 1rem;
+        }
+
+    </style>
     @auth('client')
         <?php
         $permisions = Auth::user()->getPermission($project->id);
@@ -36,28 +90,28 @@
 
         @if($project && $currantWorkspace)
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" >
 
                     <div class="board" data-plugin="dragula" data-containers='{{json_encode($statusClass)}}'>
 
                         @foreach($tasks as $status => $task)
-                            <div class="tasks animated">
-                                <div class="mt-0 task-header text-uppercase">{{__(ucwords($status))}} (<span class="count">{{count($task)}}</span>)</div>
+                            <div class="block tasks animated" >
+                                <div class="mt-0 task-header text-uppercase block-header block-header-default"><h3 class="block-title">{{__(ucwords($status))}} (<span class="count">{{count($task)}}</span>)</h3></div>
                                 <div id="{{'task-list-'.str_replace(' ','_',$status)}}" data-status="{{$status}}" class="task-list-items">
                                 @foreach($task as $taskDetail)
 
-                                    <div class="card mb-0" id="{{$taskDetail->id}}">
-                                        <div class="card-body p-3">
+                                    <div class="block-content card mb-0" id="{{$taskDetail->id}}" >
+                                        <div class="card-body p-3" >
                                             <div class="dropdown float-right">
                                                 <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="dripicons-gear"></i>
+                                                    <i class="fa fa-pen"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                 @if($currantWorkspace->permission == 'Owner')
                                                     <a class="dropdown-item" href="{{ __('Edit Task') }}" data-url="{{route('project.tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
-                                                        <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
+                                                        <i class="fa fa-edit"></i> {{__('Edit')}}</a>
                                                     <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
-                                                        <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
+                                                        <i class="fa fa-trash-alt"></i> {{__('Delete')}}</a>
                                                     <form id="delete-form-{{$taskDetail->id}}" action="{{ route('project.tasks.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
