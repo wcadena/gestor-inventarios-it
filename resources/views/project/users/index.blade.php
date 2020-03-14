@@ -13,7 +13,7 @@
             @if($currantWorkspace && $currantWorkspace->creater->id == Auth::user()->id)
             <div class="col-sm-8">
                 <div class="text-sm-right">
-                    <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite New User') }}" data-url="{{route('users.invite',$currantWorkspace->slug)}}">
+                    <button type="button" class="btn btn-primary btn-rounded mt-4" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite New User') }}" data-url="{{route('project.users.invite',$currantWorkspace->slug)}}">
                         <i class="mdi mdi-plus"></i> {{ __('Invite User') }}
                     </button>
                 </div>
@@ -66,7 +66,7 @@
                                                 <i class="dripicons-gear"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" data-ajax-popup="true" title="{{__('Edit User')}}" href="{{route('users.edit',[$currantWorkspace->slug,$user->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
+                                                <a class="dropdown-item" data-ajax-popup="true" title="{{__('Edit User')}}" href="{{route('project.users.edit',[$currantWorkspace->slug,$user->id])}}"><i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
                                                 <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$user->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>{{__('Remove User From Workspace')}}</a>
                                                 <form method="post" id="delete-form-{{$user->id}}" action="{{route('project.users.remove',[$currantWorkspace->slug,$user->id])}}">
                                                     @csrf

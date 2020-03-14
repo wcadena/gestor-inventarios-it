@@ -2,12 +2,13 @@
 
 namespace App\Project;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User;
 use Illuminate\Notifications\Notifiable;
 
-class Client extends Authenticatable
+class Client extends User
 {
-    use Notifiable;
+    protected $table = 'users';
+
     protected $guard = 'client';
     /**
      * The attributes that are mass assignable.
@@ -15,9 +16,9 @@ class Client extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'currant_workspace',
+        'name', 'email', 'password',
     ];
-
+    // , 'avatar', 'currant_workspace'
     protected $hidden = [
         'password',
         'remember_token',

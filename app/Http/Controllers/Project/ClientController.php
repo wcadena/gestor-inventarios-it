@@ -32,7 +32,8 @@ class ClientController extends Controller
     {
         $this->middleware('auth');
         $currantWorkspace = Utility::getWorkspaceBySlug($slug);
-        $clients = Client::join('client_workspaces', 'client_workspaces.client_id', '=', 'clients.id')->where('client_workspaces.workspace_id', '=', $currantWorkspace->id)->get();
+        $clients = Client::join('client_workspaces', 'client_workspaces.client_id', '=', 'users.id')
+            ->where('client_workspaces.workspace_id', '=', $currantWorkspace->id)->get();
 
         return view('project.clients.index', compact('currantWorkspace', 'clients'));
     }
