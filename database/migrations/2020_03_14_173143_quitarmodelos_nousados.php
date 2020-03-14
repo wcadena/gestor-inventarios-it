@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class QuitarmodelosNousados extends Migration
@@ -19,7 +18,6 @@ class QuitarmodelosNousados extends Migration
         Schema::dropIfExists('events');
         Schema::dropIfExists('motivos__denuncias');
         Schema::dropIfExists('posts');
-
     }
 
     /**

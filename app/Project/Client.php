@@ -3,7 +3,6 @@
 namespace App\Project;
 
 use App\User;
-use Illuminate\Notifications\Notifiable;
 
 class Client extends User
 {
