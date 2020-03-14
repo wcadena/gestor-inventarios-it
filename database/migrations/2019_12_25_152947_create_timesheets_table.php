@@ -14,7 +14,8 @@ class CreateTimesheetsTable extends Migration
     public function up()
     {
         Schema::create(
-            'timesheets', function (Blueprint $table) {
+            'timesheets',
+            function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->integer('project_id');
                 $table->integer('task_id');

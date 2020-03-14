@@ -32,8 +32,11 @@ class ReporteController extends Controller
 
     public function estaciones($estacione_id)
     {
-        $estaciones = Equipos::select('estaciones.estacion', DB::raw('Count(estacione_id) as Contador'),
-            DB::raw('MAX(estacione_id) as estacione_id'))
+        $estaciones = Equipos::select(
+            'estaciones.estacion',
+            DB::raw('Count(estacione_id) as Contador'),
+            DB::raw('MAX(estacione_id) as estacione_id')
+        )
             ->join('estaciones', 'estaciones.id', '=', 'equipos.estacione_id')
             ->groupBy('estacione_id')
             ->get();

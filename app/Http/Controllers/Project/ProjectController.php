@@ -1278,7 +1278,8 @@ class ProjectController extends Controller
         }
         if (empty($clientID)) {
             $comment->deleteUrl = route(
-                'bug.comment.destroy', [
+                'bug.comment.destroy',
+                [
                     $currantWorkspace->slug,
                     $project_id,
                     $bugID,
@@ -1323,7 +1324,8 @@ class ProjectController extends Controller
         $TaskFile->deleteUrl = '';
         if (empty($clientID)) {
             $TaskFile->deleteUrl = route(
-                'bug.comment.destroy.file', [
+                'bug.comment.destroy.file',
+                [
                     $currantWorkspace->slug,
                     $project_id,
                     $bug_id,
