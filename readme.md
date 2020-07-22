@@ -4,7 +4,7 @@
 # Sistema de Gestión de Inventarios de Activos Fijos con Laravel 5.8
 
 Sistema de gestión de inventarios de Activos Fijos con Laravel 5.8 , proyectado para RestFull, uso de Progressive web application PWA y JAVA
-Si necesitas una demostracion escribe a wcadena@outlook.com, antes te invito a que veas la parte del wiki que aumenté:
+Te invito a que veas la parte del wiki que aumenté:
 [Instalación](https://github.com/wcadena/gestor-inventarios-it/wiki/Instalaci%C3%B3n)
 
 En linux puedes usar(Recomiendo Homestead):
