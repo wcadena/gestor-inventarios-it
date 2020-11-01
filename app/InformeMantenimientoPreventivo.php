@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Wuwx\LaravelAutoNumber\AutoNumberTrait;
+
 
 class InformeMantenimientoPreventivo extends Model
 {
     use SoftDeletes;
-    use AutoNumberTrait; //para autonumerico
+    //use AutoNumberTrait; //para autonumerico
 
     public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;
     protected $table = 'informe_manto_prevs';

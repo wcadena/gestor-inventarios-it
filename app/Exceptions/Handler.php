@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponser;
 use Asm89\Stack\CorsService;
-use Exception;
+use Throwable;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -39,77 +39,79 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param \Exception $exception
+     * @param Throwable $throwable
+     * @throws Throwable
      *
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(Throwable $throwable)
     {
-        parent::report($exception);
+        parent::report($throwable);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Exception               $exception
+     * @param Throwable $throwable
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Throwable $throwable)
     {
-        $response = $this->handleException($request, $exception);
+        $response = $this->handleException($request, $throwable);
         app(CorsService::class)->addActualRequestHeaders($response, $request);
 
         return $response;
     }
 
-    public function handleException($request, Exception $exception)
+    public function handleException($request, Throwable $throwable)
     {
         if (config('app.debug') && !$request->is('api/*')) {
-            if ($exception instanceof TokenMismatchException) {
+            if ($throwable instanceof TokenMismatchException) {
                 Session::flash('TokenMismatchException_ev', true);
 
                 return redirect('/login?TokenMismatchException_ev=true');
             }
 
-            return parent::render($request, $exception);
+            return parent::render($request, $throwable);
         }
-        if ($exception instanceof ValidationException) {
-            return $this->convertValidationExceptionToResponse($exception, $request);
+        if ($throwable instanceof ValidationException) {
+            return $this->convertValidationExceptionToResponse($throwable, $request);
         }
-        if ($exception instanceof ModelNotFoundException) {
-            $modelo = strtolower(class_basename($exception->getModel()));
+        if ($throwable instanceof ModelNotFoundException) {
+            $modelo = strtolower(class_basename($throwable->getModel()));
 
             return $this->errorResponse("No existe ninguna instancia de {$modelo} con el id especificado", 404);
         }
-        if ($exception instanceof AuthenticationException) {
-            return $this->unauthenticated($request, $exception);
+        if ($throwable instanceof AuthenticationException) {
+            return $this->unauthenticated($request, $throwable);
         }
-        if ($exception instanceof AuthorizationException) {
+        if ($throwable instanceof AuthorizationException) {
             return $this->errorResponse('No posee permisos para ejecutar esta acción', 403);
         }
-        if ($exception instanceof NotFoundHttpException) {
+        if ($throwable instanceof NotFoundHttpException) {
             return $this->errorResponse('No se encontró la URL especificada', 404);
         }
-        if ($exception instanceof MethodNotAllowedHttpException) {
+        if ($throwable instanceof MethodNotAllowedHttpException) {
             return $this->errorResponse('El método especificado en la petición no es válido', 405);
         }
-        if ($exception instanceof HttpException) {
-            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+        if ($throwable instanceof HttpException) {
+            return $this->errorResponse($throwable->getMessage(), $throwable->getStatusCode());
         }
-        if ($exception instanceof QueryException) {
-            $codigo = $exception->errorInfo[1];
+        if ($throwable instanceof QueryException) {
+            $codigo = $throwable->errorInfo[1];
             if ($codigo == 1451) {
                 return $this->errorResponse('No se puede eliminar de forma permamente el recurso porque está relacionado con algún otro.', 409);
             }
         }
-        if ($exception instanceof TokenMismatchException) {
+        if ($throwable instanceof TokenMismatchException) {
             return redirect()->back()->withInput($request->input());
         }
 
         if (config('app.debug')) {
-            return parent::render($request, $exception);
+            return parent::render($request, $throwable);
         }
 
         return $this->errorResponse('Falla inesperada. Intente luego', 500);
@@ -123,7 +125,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    protected function unauthenticated($request, AuthenticationException $authenticationException)
     {
         if ($this->isFrontend($request)) {
             return redirect()->guest('login');

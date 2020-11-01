@@ -92,7 +92,7 @@ class EquiposController extends Controller
 
         ];
 
-        return view('directory.equipos.create', compact('dtos', 'equipo'));
+        return view('directory.equipos.create', compact('dtos', 'util'));
     }
 
     /**
