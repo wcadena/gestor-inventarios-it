@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class RepoNovedades extends Model
 {
@@ -32,7 +33,7 @@ class RepoNovedades extends Model
 
     public static function generarUnico()
     {
-        return str_random(50);
+        return Str::random(50);
     }
 
     public function custodioxc()

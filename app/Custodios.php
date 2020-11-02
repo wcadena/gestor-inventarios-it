@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class Custodios extends Model
@@ -78,12 +79,12 @@ class Custodios extends Model
 
     public static function generarVerificationToken()
     {
-        return str_random(36);
+        return Str::random(36);
     }
 
     public static function generarToken()
     {
-        return str_random(6);
+        return Str::random(6);
     }
 
     public function sendPasswordResetNotification(self $custodios)

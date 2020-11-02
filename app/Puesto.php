@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class Puesto extends Model
@@ -35,7 +36,7 @@ class Puesto extends Model
 
     public static function generarCodigo()
     {
-        return str_random(36);
+        return Str::random(36);
     }
 
     public function modelo_equipoxc()
