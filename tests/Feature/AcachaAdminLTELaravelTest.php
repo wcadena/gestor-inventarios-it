@@ -226,7 +226,9 @@ class AcachaAdminLTELaravelTest extends TestCase
                     'terms'         => ['El terms es necesario como campo.'],
                 ],
                 'code'=> 422,
-            ], false);
+            ],
+            false
+        );
     }
 
     /**
