@@ -12,7 +12,6 @@ use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Webpatser\Uuid\Uuid;
 
-        'modelo_equipo_id'         => function () {
 class EquiposFactory extends Factory
 {
     /**
