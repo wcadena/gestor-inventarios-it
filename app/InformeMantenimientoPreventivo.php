@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class InformeMantenimientoPreventivo extends Model
 {
     use SoftDeletes;
+    use HasFactory;
     //use AutoNumberTrait; //para autonumerico
 
     public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;

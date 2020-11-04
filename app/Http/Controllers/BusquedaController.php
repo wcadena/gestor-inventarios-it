@@ -63,15 +63,15 @@ class BusquedaController extends Controller
 
             $datoaux2 = '';
             $aux2 = strtoupper($tag->nombre_responsable);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->nombre_responsable;
             }
             $aux2 = strtoupper($tag->cargo);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->cargo;
             }
             $aux2 = strtoupper($tag->area_piso);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->area_piso;
             }
 
@@ -103,19 +103,19 @@ class BusquedaController extends Controller
             $datoaux2 = '';
             $aux2 = strtoupper($tag->no_serie);
 
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->no_serie;
             }
             $aux2 = strtoupper($tag->codigo_barras);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->codigo_barras;
             }
             $aux2 = strtoupper($tag->descripcion);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->descripcion;
             }
             $aux2 = strtoupper($tag->observaciones);
-            if (str_contains($aux2, $term_mat)) {
+            if (\Illuminate\Support\Str::contains($aux2, $term_mat)) {
                 $datoaux2 = $datoaux2.$tag->observaciones;
             }
 

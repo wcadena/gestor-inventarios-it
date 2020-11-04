@@ -4,6 +4,7 @@ namespace App;
 
 use App\Scopes\EmpresaScope;
 use App\Transformers\EquiposTransformer;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class Equipos extends Model
 {
     use SoftDeletes;
+    use HasFactory;
     protected $dates = ['deleted_at'];
     public $transformer = EquiposTransformer::class;
 

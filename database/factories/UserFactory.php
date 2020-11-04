@@ -1,33 +1,40 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| User Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
+namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+use App\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-    return [
-        'name'               => $faker->name,
-        'first_name'         => $faker->firstName,
-        'last_name'          => $faker->lastName,
-        'rol'                => 'system',
-        'username'           => $faker->userName,
-        'email'              => $faker->companyEmail,
-        'password'           => bcrypt('secret'),
-        'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-        'token'              => App\User::generarVerificationToken(),
-        'verification_token' => App\User::generarVerificationToken(),
-        'verified'           => App\User::USUARIO_VERIFICADO,
-    ];
-});
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name'               => $this->faker->name,
+            'first_name'         => $this->faker->firstName,
+            'last_name'          => $this->faker->lastName,
+            'rol'                => 'system',
+            'username'           => $this->faker->userName,
+            'email'              => $this->faker->companyEmail,
+            'password'           => bcrypt('secret'),
+            'created_at'         => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'         => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
+            'token'              => User::generarVerificationToken(),
+            'verification_token' => User::generarVerificationToken(),
+            'verified'           => User::USUARIO_VERIFICADO,
+        ];
+    }
+}

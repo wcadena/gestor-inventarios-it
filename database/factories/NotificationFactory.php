@@ -1,16 +1,34 @@
 <?php
 
-use App\Notification;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(Notification::class, function (Faker $faker) {
-    return [
-        'type'            => null,
-        'notifiable_id'   => null,
-        'notifiable_type' => null,
-        'data'            => null,
-        'read_at'         => null,
-        'created_at'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-    ];
-});
+use App\Notification;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class NotificationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Notification::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'type'            => null,
+            'notifiable_id'   => null,
+            'notifiable_type' => null,
+            'data'            => null,
+            'read_at'         => null,
+            'created_at'      => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'      => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+        ];
+    }
+}

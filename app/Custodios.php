@@ -5,6 +5,7 @@ namespace App;
 use App\Notifications\CustodioDarClave;
 use App\Scopes\CustodiosScope;
 use App\Transformers\CustodiosTransformer;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -17,6 +18,7 @@ class Custodios extends Model
     use SoftDeletes;
     use Notifiable;
     use HasApiTokens;
+    use HasFactory;
     protected static function boot()
     {
         parent::boot();

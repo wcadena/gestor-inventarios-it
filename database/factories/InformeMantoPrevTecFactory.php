@@ -1,18 +1,37 @@
 <?php
 
+namespace Database\Factories;
+
 use App\InformeMantoPrevTec;
-use Faker\Generator as Faker;
+use App\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(InformeMantoPrevTec::class, function (Faker $faker) {
-    return [
-        'user_id' => function () {
-            factory(App\User::class, 1)->create();
+class InformeMantoPrevTecFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = InformeMantoPrevTec::class;
 
-            return App\User::inRandomOrder()->first()->id;
-        },
-        'informe_manto_prev_id' => null,
-        'created_at'            => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'            => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'deleted_at'            => null,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'user_id' => function () {
+                User::factory()->create();
+
+                return User::inRandomOrder()->first()->id;
+            },
+            'informe_manto_prev_id' => null,
+            'created_at'            => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'            => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'deleted_at'            => null,
+        ];
+    }
+}

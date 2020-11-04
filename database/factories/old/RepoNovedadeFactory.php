@@ -3,7 +3,7 @@
 use App\RepoNovedade;
 use Faker\Generator as Faker;
 
-$factory->define(RepoNovedade::class, function (Faker $faker) {
+$factory->define(RepoNovedade::class, function (Faker $this->faker) {
     return [
         'custodio_id'          => null,
         'fecha_novedades'      => null,
@@ -13,8 +13,8 @@ $factory->define(RepoNovedade::class, function (Faker $faker) {
         'antiguo_custodio_id'  => null,
         'traslado_custodio_id' => null,
         'estado'               => null,
-        'created_at'           => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'           => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'created_at'           => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+        'updated_at'           => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'           => null,
         'token_unico'          => null,
     ];

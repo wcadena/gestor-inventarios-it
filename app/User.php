@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\MyOwnResetPassword;
 use App\Transformers\UserTransformer;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,6 +19,7 @@ class User extends Authenticatable
     use Notifiable;
     use HasApiTokens;
     use SoftDeletes;
+    use HasFactory;
     public $transformer = UserTransformer::class;
 
     const USUARIO_VERIFICADO = '1';
