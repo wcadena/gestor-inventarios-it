@@ -12,11 +12,9 @@
 */
 
 $app = new Illuminate\Foundation\Application(
-    dirname(__DIR__)
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
-$app->bind('path.public', function () {
-    return base_path().'/public';
-});
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

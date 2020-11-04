@@ -13,7 +13,7 @@ class CheckList_OpcionesCheckListController extends ApiController
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion']);
+        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion', 'borrartipo']);
         $this->middleware('auth:api')->except(['verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
@@ -79,5 +79,20 @@ class CheckList_OpcionesCheckListController extends ApiController
     {
         //dd($equipos);
         return $this->showOne($checkList_OpcionesCheckList);
+    }
+
+    public function borrartipo(Request $request)
+    {
+        $request->validate([
+            'opciones_check_list_id'     => 'required',
+            'check_list_id'              => 'required',
+        ]);
+        $utilssacs = CheckList_OpcionesCheckList::where('opciones_check_list_id', $request->opciones_check_list_id)
+            ->where('check_list_id', $request->check_list_id)->get();
+        foreach ($utilssacs as $utilssac) {
+            $utilssac->delete();
+        }
+
+        return response()->json(['success' => true]);
     }
 }

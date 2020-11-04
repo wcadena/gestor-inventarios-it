@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class OAuthApp extends Model
 {
@@ -11,7 +12,7 @@ class OAuthApp extends Model
 
     public static function generarToken()
     {
-        return str_random(100);
+        return Str::random(100);
     }
 
     public function esActivo()

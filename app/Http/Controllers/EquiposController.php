@@ -92,7 +92,7 @@ class EquiposController extends Controller
 
         ];
 
-        return view('directory.equipos.create', compact('dtos', 'equipo'));
+        return view('directory.equipos.create', compact('dtos', 'util'));
     }
 
     /**
@@ -238,14 +238,14 @@ class EquiposController extends Controller
             //$check_lists["1"]="Seleccione";
 
             $dtos = [
-            'modelos'    => $modelos,
-            'orden'      => $orden,
-            'custodio'   => $custodio,
-            'estaciones' => $estaciones,
-            'areas'      => $areas,
-            'check_lists'=> $check_lists,
-            'empresa'    => $empresa,
-        ];
+                'modelos'    => $modelos,
+                'orden'      => $orden,
+                'custodio'   => $custodio,
+                'estaciones' => $estaciones,
+                'areas'      => $areas,
+                'check_lists'=> $check_lists,
+                'empresa'    => $empresa,
+            ];
 
             $equipo->extras2 = $dtos;
 

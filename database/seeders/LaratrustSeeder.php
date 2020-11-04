@@ -1,8 +1,11 @@
 <?php
+namespace Database\Seeders;
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class LaratrustSeeder extends Seeder
 {
@@ -54,7 +57,7 @@ class LaratrustSeeder extends Seeder
             $this->command->info("Creating '{$key}' user");
 
             // Create default user for each role
-            $user = \App\User::create([
+            $user = User::create([
 
                 'name'     => ($key == 'superadministrator') ? env('ADMIN_USER', 'wcadena') : ucwords(str_replace('_', ' ', $key)),
                 'email'    => ($key == 'superadministrator') ? env('ADMIN_EMAIL', $USER_EMAIL) : $key.'@app.com',
@@ -68,9 +71,9 @@ class LaratrustSeeder extends Seeder
                 'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-                'token'              => App\User::generarVerificationToken(),
-                'verification_token' => App\User::generarVerificationToken(),
-                'verified'           => App\User::USUARIO_VERIFICADO,
+                'token'              => User::generarVerificationToken(),
+                'verification_token' => User::generarVerificationToken(),
+                'verified'           => User::USUARIO_VERIFICADO,
 
             ]);
 
@@ -83,11 +86,11 @@ class LaratrustSeeder extends Seeder
                 foreach ($modules as $module => $value) {
 
                     // Create default user for each permission set
-                    $user = \App\User::create([
+                    $user = User::create([
                         'name'           => ucwords(str_replace('_', ' ', $key)),
                         'email'          => $key.'@app.com',
                         'password'       => bcrypt('password'),
-                        'remember_token' => str_random(10),
+                        'remember_token' => Str::random(10),
 
                         'first_name'         => $faker->firstName,
                         'last_name'          => $faker->lastName,
@@ -97,9 +100,9 @@ class LaratrustSeeder extends Seeder
                         'created_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                         'updated_at'         => $faker->date($format = 'Y-m-d', $max = 'now'),
                         'empresa'            => env('EMP_PRINCIPAL', 'Ecuatask'),
-                        'token'              => App\User::generarVerificationToken(),
-                        'verification_token' => App\User::generarVerificationToken(),
-                        'verified'           => App\User::USUARIO_VERIFICADO,
+                        'token'              => User::generarVerificationToken(),
+                        'verification_token' => User::generarVerificationToken(),
+                        'verified'           => User::USUARIO_VERIFICADO,
                     ]);
                     $permissions = [];
 
@@ -133,7 +136,7 @@ class LaratrustSeeder extends Seeder
         DB::table('permission_role')->truncate();
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
-        \App\User::truncate();
+        User::truncate();
         \App\Role::truncate();
         \App\Permission::truncate();
         Schema::enableForeignKeyConstraints();

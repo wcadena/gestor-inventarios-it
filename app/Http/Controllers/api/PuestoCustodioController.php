@@ -39,7 +39,7 @@ class PuestoCustodioController extends ApiController
     public function store(Puesto $puesto, Custodios $custodio, Request $request)
     {
         $rules = [
-           // 'fecha_inicio' => 'required|date|',
+            // 'fecha_inicio' => 'required|date|',
             'horas_trabajadas' => 'required|integer|min:1',
             'estado'           => 'required|in:OCUPADO,RESERVADO,LIBRE',
         ];

@@ -60,3 +60,4 @@ Route::resource('/equipos.checkList', 'api\EquipoCheckListController', ['only' =
 Route::get('equipo_no_serie', 'api\EquiposController@equipo_no_serie');
 Route::resource('/checkList', 'api\CheckListController', ['only' => ['index', 'show', 'store']]);
 Route::resource('/check_list__opciones_check_lists', 'api\CheckList_OpcionesCheckListController', ['only' => ['index', 'show', 'store']]);
+Route::post('/check_list__opciones_check_lists_delete', 'api\CheckList_OpcionesCheckListController@borrartipo')->name('check_list__opciones_check_lists_tip.borrartipo');

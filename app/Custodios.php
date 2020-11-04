@@ -5,17 +5,20 @@ namespace App;
 use App\Notifications\CustodioDarClave;
 use App\Scopes\CustodiosScope;
 use App\Transformers\CustodiosTransformer;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class Custodios extends Model
 {
     use SoftDeletes;
-    use Notifiable, HasApiTokens;
-
+    use Notifiable;
+    use HasApiTokens;
+    use HasFactory;
     protected static function boot()
     {
         parent::boot();
@@ -70,7 +73,7 @@ class Custodios extends Model
         $enum = [];
         foreach (explode(',', $matches[1]) as $value) {
             $v = trim($value, "'");
-            $enum = array_add($enum, $v, $v);
+            $enum = \Illuminate\Support\Arr::add($enum, $v, $v);
         }
 
         return $enum;
@@ -78,12 +81,12 @@ class Custodios extends Model
 
     public static function generarVerificationToken()
     {
-        return str_random(36);
+        return Str::random(36);
     }
 
     public static function generarToken()
     {
-        return str_random(6);
+        return Str::random(6);
     }
 
     public function sendPasswordResetNotification(self $custodios)

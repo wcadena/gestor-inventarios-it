@@ -1,35 +1,58 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\InformeMantenimientoPreventivo::class, function (Faker $faker) {
-    return [
-        'custodio_id'         => function () {
-            return App\Custodios::inRandomOrder()->first()->id;
-        },
-        'area_id'         => function () {
-            return App\Areas::inRandomOrder()->first()->id;
-        },
-        'fecha_solicitud'                    => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'fecha_ejecucion'                    => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'hora_inicio'                        => $faker->time($format = 'H:i:s', $max = 'now'),
-        'hora_fin'                           => $faker->time($format = 'H:i:s', $max = 'now'),
-        'informe_manto_prev_cate_id'         => function () {
-            return App\InformeMantenimientoPreventivoCategoria::inRandomOrder()->first()->id;
-        },
-        'requerimiento'             => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'solucion'                  => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-        'resolucion'                => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-        'created_at'                => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'                => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'vinculo'                   => Webpatser\Uuid\Uuid::generate(),
-        'observacion'               => $faker->text,
-        'telefono_contacto'         => $faker->phoneNumber,
-        'celular_contacto'          => $faker->phoneNumber,
-        'email_contacto'            => $faker->companyEmail,
-        'ip'                        => $faker->ipv4,
-        'like'                      => $faker->randomElement($array = ['blanco', 'like', 'unlike']),
-        'publico_privado'           => $faker->randomElement($array = ['publico', 'privado']),
+use App\Areas;
+use App\Custodios;
+use App\InformeMantenimientoPreventivo;
+use App\InformeMantenimientoPreventivoCategoria;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Webpatser\Uuid\Uuid;
 
-    ];
-});
+class InformeMantenimientoPreventivoFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = InformeMantenimientoPreventivo::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'custodio_id'         => function () {
+                return Custodios::inRandomOrder()->first()->id;
+            },
+            'area_id'         => function () {
+                return Areas::inRandomOrder()->first()->id;
+            },
+            'fecha_solicitud'                    => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'fecha_ejecucion'                    => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'hora_inicio'                        => $this->faker->time($format = 'H:i:s', $max = 'now'),
+            'hora_fin'                           => $this->faker->time($format = 'H:i:s', $max = 'now'),
+            'informe_manto_prev_cate_id'         => function () {
+                return InformeMantenimientoPreventivoCategoria::inRandomOrder()->first()->id;
+            },
+            'requerimiento'             => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'solucion'                  => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+            'resolucion'                => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+            'created_at'                => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'                => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'vinculo'                   => Uuid::generate(),
+            'observacion'               => $this->faker->text,
+            'telefono_contacto'         => $this->faker->phoneNumber,
+            'celular_contacto'          => $this->faker->phoneNumber,
+            'email_contacto'            => $this->faker->companyEmail,
+            'ip'                        => $this->faker->ipv4,
+            'like'                      => $this->faker->randomElement($array = ['blanco', 'like', 'unlike']),
+            'publico_privado'           => $this->faker->randomElement($array = ['publico', 'privado']),
+
+        ];
+    }
+}

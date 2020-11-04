@@ -62,7 +62,7 @@
                         <button type="button" class="btn-block-option">
                             <a href="{{ url('equipos', $equipo->id) }}" class="btn btn-hero-primary js-click-ripple-enabled">@lang('form.hojatrabaj')</a>
                         </button>
-                        @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
+                        @if(\Illuminate\Support\Str::contains(Auth::getUser()->rol, ["administrador", 'system']))
                             {!! Form::open([
 
                                                 'method'=>'DELETE',
@@ -97,7 +97,7 @@
             'class' => 'form-horizontal',
             'files' => true
         ]) !!}
-                    @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
+                    @if(\Illuminate\Support\Str::contains(Auth::getUser()->rol, ["administrador", 'system']))
                         <div class="form-group ">
                             {!! Form::label('orden_de_compra_id', trans('form.ordencompra'), ['class' => 'control-label']) !!}
                             <div class="ekihk">
@@ -167,7 +167,7 @@
                             {!! $errors->first('sociedad', '<p class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
-                    @if(str_contains(Auth::getUser()->rol, ["administrador", 'system']))
+                    @if(\Illuminate\Support\Str::contains(Auth::getUser()->rol, ["administrador", 'system']))
                         <div class="form-group ">
                             {!! Form::label('no_serie', trans('form.noserie'), ['class' => 'control-label']) !!}
                             <div class="ekihk">

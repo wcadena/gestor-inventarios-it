@@ -2,22 +2,24 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Wuwx\LaravelAutoNumber\AutoNumberTrait;
+
 
 class InformeMantenimientoPreventivo extends Model
 {
     use SoftDeletes;
-    use AutoNumberTrait; //para autonumerico
+    use HasFactory;
+    //use AutoNumberTrait; //para autonumerico
 
     public $transformer = \App\Transformers\InformeMantenimientoPreventivoTransformer::class;
     protected $table = 'informe_manto_prevs';
     protected $dates = ['deleted_at'];
     protected $fillable = ['id', 'custodio_id', 'area_id',
-    'no_orden', 'fecha_solicitud', 'fecha_ejecucion', 'hora_inicio',
-    'hora_fin', 'informe_manto_prev_cate_id', 'requerimiento', 'solucion', 'resolucion', 'observacion', 'vinculo', 'telefono_contacto', 'celular_contacto',
+        'no_orden', 'fecha_solicitud', 'fecha_ejecucion', 'hora_inicio',
+        'hora_fin', 'informe_manto_prev_cate_id', 'requerimiento', 'solucion', 'resolucion', 'observacion', 'vinculo', 'telefono_contacto', 'celular_contacto',
         'email_contacto', 'ip', 'like', 'publico_privado', ];
     /*
      * estado	enum('BUENO', 'MALO', 'NUEVO')

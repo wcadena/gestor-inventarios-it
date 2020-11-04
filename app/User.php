@@ -4,18 +4,22 @@ namespace App;
 
 use App\Notifications\MyOwnResetPassword;
 use App\Transformers\UserTransformer;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
-    use Notifiable, HasApiTokens, SoftDeletes;
-
+    use Notifiable;
+    use HasApiTokens;
+    use SoftDeletes;
+    use HasFactory;
     public $transformer = UserTransformer::class;
 
     const USUARIO_VERIFICADO = '1';
@@ -55,7 +59,7 @@ class User extends Authenticatable
         $enumerado = explode(',', $matches[1]);
         foreach ($enumerado as $value) {
             $v = trim($value, "'");
-            $enum = array_add($enum, $v, $v);
+            $enum = \Illuminate\Support\Arr::add($enum, $v, $v);
         }
 
         return $enum;
@@ -63,7 +67,7 @@ class User extends Authenticatable
 
     public static function generarVerificationToken()
     {
-        return str_random(36);
+        return Str::random(36);
     }
 
     //////////////////////////////////////////////inicio mutadores

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class RepoNovedades extends Model
 {
@@ -24,7 +25,7 @@ class RepoNovedades extends Model
         $enum = [];
         foreach (explode(',', $matches[1]) as $value) {
             $v = trim($value, "'");
-            $enum = array_add($enum, $v, $v);
+            $enum = \Illuminate\Support\Arr::add($enum, $v, $v);
         }
 
         return $enum;
@@ -32,7 +33,7 @@ class RepoNovedades extends Model
 
     public static function generarUnico()
     {
-        return str_random(50);
+        return Str::random(50);
     }
 
     public function custodioxc()

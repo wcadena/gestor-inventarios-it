@@ -1,21 +1,39 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Busqueda;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Busqueda::class, function (Faker $faker) {
-    return [
-        'user_id' => function () {
-            factory(App\User::class, 1)->create();
+class BusquedaFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Busqueda::class;
 
-            return App\User::inRandomOrder()->first()->id;
-        },
-        'palabra_q'    => $faker->word,
-        'instancia'    => $faker->word,
-        'instancia_id' => $faker->randomDigit,
-        'dato'         => $faker->word,
-        'created_at'   => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'updated_at'   => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'deleted_at'   => null,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'user_id' => function () {
+                factory(App\User::class, 1)->create();
+
+                return App\User::inRandomOrder()->first()->id;
+            },
+            'palabra_q'    => $this->faker->word,
+            'instancia'    => $this->faker->word,
+            'instancia_id' => $this->faker->randomDigit,
+            'dato'         => $this->faker->word,
+            'created_at'   => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at'   => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'deleted_at'   => null,
+        ];
+    }
+}
