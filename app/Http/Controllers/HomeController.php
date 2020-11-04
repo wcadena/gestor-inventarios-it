@@ -78,8 +78,11 @@ class HomeController extends Controller
         });
 
         $pie_estaciones = Cache::remember('pie_estaciones'.Auth::user()->getEmpresa(), $minutos, function () {
-            return Equipos::select('estaciones.estacion', DB::raw('COUNT(estacione_id) as Contador'),
-                DB::raw('MAX(estacione_id) as estacione_id'))
+            return Equipos::select(
+                'estaciones.estacion',
+                DB::raw('COUNT(estacione_id) as Contador'),
+                DB::raw('MAX(estacione_id) as estacione_id')
+            )
                 ->join('estaciones', 'estaciones.id', '=', 'equipos.estacione_id')
                 ->groupBy('estacione_id')
                 ->get();

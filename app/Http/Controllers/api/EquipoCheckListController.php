@@ -58,7 +58,7 @@ class EquipoCheckListController extends ApiController
         ]);
 
         /********************************/
-        return DB::transaction(function () use ($request, $equipos) {
+        return DB::transaction(function () use ($request) {
             $campos = $request->all();
             $opcion = OpcionesCheckList::findOrFail($request->opciones_check_list_id);
             $campos['tipo'] = $opcion->tipo;

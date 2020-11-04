@@ -5,11 +5,11 @@ namespace app;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id
- * @property string $categoria
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
+ * @property int                $id
+ * @property string             $categoria
+ * @property string             $created_at
+ * @property string             $updated_at
+ * @property string             $deleted_at
  * @property InformeMantoPrev[] $informeMantoPrevs
  */
 class InformeMantoPrevCate extends Model

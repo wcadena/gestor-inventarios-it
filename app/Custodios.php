@@ -19,6 +19,7 @@ class Custodios extends Model
     use Notifiable;
     use HasApiTokens;
     use HasFactory;
+
     protected static function boot()
     {
         parent::boot();
