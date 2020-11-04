@@ -59,7 +59,7 @@ class User extends Authenticatable
         $enumerado = explode(',', $matches[1]);
         foreach ($enumerado as $value) {
             $v = trim($value, "'");
-            $enum = Illuminate\Support\Arr::add($enum, $v, $v);
+            $enum = \Illuminate\Support\Arr::add($enum, $v, $v);
         }
 
         return $enum;

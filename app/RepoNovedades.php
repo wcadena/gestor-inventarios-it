@@ -25,7 +25,7 @@ class RepoNovedades extends Model
         $enum = [];
         foreach (explode(',', $matches[1]) as $value) {
             $v = trim($value, "'");
-            $enum = Illuminate\Support\Arr::add($enum, $v, $v);
+            $enum = \Illuminate\Support\Arr::add($enum, $v, $v);
         }
 
         return $enum;
