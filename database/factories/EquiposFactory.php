@@ -23,7 +23,6 @@ class EquiposFactory extends Factory
 
     protected $area_id_glb9;
 
-
     /**
      * Define the model's default state.
      *
@@ -32,6 +31,7 @@ class EquiposFactory extends Factory
     public function definition()
     {
         $this->area_id_glb9 = Areas::inRandomOrder()->first()->id;
+
         return [
             'modelo_equipo_id'         => function () {
                 return ModeloEquipo::inRandomOrder()->first()->id;
