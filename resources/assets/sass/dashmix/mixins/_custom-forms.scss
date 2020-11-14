@@ -45,7 +45,6 @@
         }
 
         .custom-control-input:checked ~ .custom-control-label {
-            background-color: $background;
             border-color: $background-checked;
         }
 

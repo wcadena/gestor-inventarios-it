@@ -5,9 +5,6 @@
  *
  */
 
-// Import global dependencies
-import './../bootstrap';
-
 // Tools
 export default class Tools {
     /*

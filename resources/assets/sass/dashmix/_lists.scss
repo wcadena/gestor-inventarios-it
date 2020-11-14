@@ -19,6 +19,11 @@
     &-li-push-sm > li {
         margin-bottom: .625rem;
     }
+
+    &-icons > li {
+        margin-bottom: 1.25rem;
+        padding-left: .5rem;
+    }
 }
 
 // Activity
@@ -47,19 +52,18 @@
 }
 
 // Events
-.list-events > li {
-    margin-bottom: .25rem;
-    padding: .5rem;
-    font-size: $font-size-sm;
-    font-weight: 600;
-    background-color: theme-color('info-light');
-    border-right: .125rem dashed rgba(0,0,0,.15);
-    transition: transform .3s ease-out;
-    border-radius: $border-radius-sm;
+.list-events {
+    > li {
+        margin-bottom: .25rem;
+    }
 
-    @include hover {
-        cursor: move;
-        border-left-color: rgba(0,0,0,.3);
-        transform: translateX(.25rem);
+    .js-event {
+        background-color: theme-color("info");
+        transition: transform .3s ease-out;
+
+        @include hover() {
+            cursor: move;
+            transform: translateX(.25rem);
+        }
     }
 }

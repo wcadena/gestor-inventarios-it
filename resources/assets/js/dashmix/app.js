@@ -9,8 +9,6 @@
 import './bootstrap';
 
 // Import required modules
-import Tools from './modules/tools';
-import Helpers from './modules/helpers';
 import Template from './modules/template';
 
 // App extends Template

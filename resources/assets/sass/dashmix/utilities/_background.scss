@@ -112,6 +112,21 @@
 @include bg-gradient-variant-linear('.bg-gd-lake-op', 135deg, rgba(#00f260, .5), rgba(#0575e6, .5));
 @include bg-gradient-variant-linear('.bg-gd-sun-op', 135deg, rgba(#e65c00, .5), rgba(#f9d423, .5));
 
+.bg-gd-white-op-r,
+.bg-gd-white-op-l,
+.bg-gd-white-op-rl {
+    background: rgba(#ffffff, .98);
+}
+
+@include media-breakpoint-up(md) {
+    @include bg-gradient-variant-linear('.bg-gd-white-op-r', 90deg, rgba(#ffffff, .3) 0%, rgba(#ffffff, .98) 50%);
+    @include bg-gradient-variant-linear('.bg-gd-white-op-l', -90deg, rgba(#ffffff, .3) 0%, rgba(#ffffff, .98) 50%);
+
+    .bg-gd-white-op-rl {
+        background: linear-gradient(90deg, rgba(#ffffff, .75) 0%, rgba(#ffffff, .97) 30%, rgba(#ffffff, .97) 70%, rgba(#ffffff, .75) 100%);
+    }
+}
+
 // Default Color Theme
 @include bg-variant('.bg-default', theme-color("primary"));
 @include bg-variant('.bg-default-op', rgba(theme-color("primary"), .75));

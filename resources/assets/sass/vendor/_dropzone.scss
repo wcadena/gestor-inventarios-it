@@ -18,7 +18,7 @@
         color: $body-color;
     }
 
-    @include hover {
+    @include hover() {
         background-color: $white;
         border-color: theme-color("primary");
 

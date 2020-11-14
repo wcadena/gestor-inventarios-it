@@ -17,6 +17,39 @@
     &.btn-sm .fa { top: 0; }
 }
 
+// Alternate variant buttons
+.btn-alt-primary {
+    @include button-alt-variant($btn-alt-primary-bg, theme-color("primary-dark"));
+}
+
+.btn-alt-secondary {
+    @include button-alt-variant($body-bg, $body-color);
+}
+
+.btn-alt-success {
+    @include button-alt-variant(lighten(theme-color("success-light"), 10%), darken(theme-color("success"), 25%));
+}
+
+.btn-alt-info {
+    @include button-alt-variant(lighten(theme-color("info-light"), 10%), darken(theme-color("info"), 25%));
+}
+
+.btn-alt-warning {
+    @include button-alt-variant(lighten(theme-color("warning-light"), 10%), darken(theme-color("warning"), 25%));
+}
+
+.btn-alt-danger {
+    @include button-alt-variant(lighten(theme-color("danger-light"), 10%), darken(theme-color("danger"), 25%));
+}
+
+.btn-alt-dark {
+    @include button-alt-variant(lighten(theme-color("dark"), 60%), theme-color("dark"));
+}
+
+.btn-alt-light {
+    @include button-alt-variant(theme-color("light"), theme-color("dark"));
+}
+
 // Hero variant buttons
 .btn-hero-primary {
     @include button-hero-variant(theme-color("primary"));
@@ -61,10 +94,14 @@
 
 // Used for buttons that adapt to light/dark header and sidebar variations
 .btn-dual {
-    @include button-dual-variant(darken($body-color, 22%), darken($body-bg, 10%));
+    @include button-dual-variant(darken($body-color, 22%), darken($body-bg, 10%), $body-bg-light);
 }
 
 .page-header-dark #page-header .btn-dual,
 .sidebar-dark #sidebar .btn-dual {
-    @include button-dual-variant($white, theme-color("primary-dark"));
+    @include button-dual-variant($white, darken($header-dark-bg, 6%), lighten($header-dark-bg, 4.5%));
+}
+
+.page-header-dark.page-header-glass:not(.page-header-scroll) #page-header .btn-dual {
+    @include button-dual-variant($white, darken($header-dark-bg, 6%));
 }

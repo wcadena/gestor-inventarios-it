@@ -4,13 +4,11 @@
 
 // Document
 html {
-    height: 100%;
     font-size: $font-size-root;
 }
 
 // Body
 body {
-    height: 100%;
     @if $enable-text-optimize-legibility {
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -47,7 +45,7 @@ a {
         }
     }
 
-    @include hover {
+    @include hover() {
         &.link-fx::before {
             visibility: visible;
             transform: scale(1);

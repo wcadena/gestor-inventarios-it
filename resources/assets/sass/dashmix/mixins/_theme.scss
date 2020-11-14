@@ -34,7 +34,8 @@
                    $main-nav-submenu-bg,
                    $main-nav-link-icon-dark-color,
                    $main-nav-link-dark-hover-bg,
-                   $main-nav-submenu-dark-bg) {
+                   $main-nav-submenu-dark-bg,
+                   $btn-alt-primary-bg) {
     // Scaffolding
     body {
         color: $body-color;
@@ -49,7 +50,7 @@
             background-color: $link-color;
         }
 
-        @include hover {
+        @include hover() {
             color: $link-hover-color;
         }
     }
@@ -117,7 +118,7 @@
     .btn-link {
         color: $link-color;
 
-        @include hover {
+        @include hover() {
             color: $link-hover-color;
         }
     }
@@ -128,6 +129,14 @@
 
     .btn-outline-primary {
         @include button-outline-variant($brand-primary);
+    }
+
+    .btn-alt-primary {
+        @include button-alt-variant($btn-alt-primary-bg, $brand-dark);
+    }
+
+    .btn-alt-secondary {
+        @include button-alt-variant($body-bg, $body-color);
     }
 
     .btn-hero-primary {
@@ -145,12 +154,16 @@
 
     // Used for buttons that adapt to light/dark header and sidebar variations
     .btn-dual {
-        @include button-dual-variant(darken($body-color, 22%), darken($body-bg, 10%));
+        @include button-dual-variant(darken($body-color, 22%), darken($body-bg, 10%), $body-bg-light);
     }
 
     .page-header-dark #page-header .btn-dual,
     .sidebar-dark #sidebar .btn-dual {
-        @include button-dual-variant($white, $brand-dark);
+        @include button-dual-variant($white, darken($header-dark-bg, 6%), lighten($header-dark-bg, 4.5%));
+    }
+
+    .page-header-dark.page-header-glass:not(.page-header-scroll) #page-header .btn-dual {
+        @include button-dual-variant($white, darken($header-dark-bg, 6%));
     }
 
     // Alerts
@@ -259,7 +272,7 @@
         a {
             border-bottom-color: $body-bg;
 
-            @include hover {
+            @include hover() {
                 background-color: $body-bg-light;
             }
 
@@ -452,7 +465,7 @@
 
     .table-hover {
         tbody tr {
-            @include hover {
+            @include hover() {
                 background-color: darken($body-bg, 1.5%);
             }
         }
@@ -559,8 +572,8 @@
         }
     }
 
-    @include form-validation-state("valid", theme-color('success'), false);
-    @include form-validation-state("invalid", theme-color('danger'), false);
+    @include form-validation-state("valid", theme-color('success'), $form-feedback-icon-valid);
+    @include form-validation-state("invalid", theme-color('danger'), $form-feedback-icon-invalid);
 
     .form-control.form-control-alt {
         border-color: $body-bg;
@@ -643,11 +656,11 @@
 
             &.page-header-fixed {
                 &.page-header-scroll #page-header {
-                    background-color: $header-bg;
+                    background-color: rgba($header-bg, .9);
                 }
 
                 &.page-header-scroll.page-header-dark #page-header {
-                    background-color: $header-dark-bg;
+                    background-color: rgba($header-dark-bg, .9);
                 }
             }
         }
@@ -660,7 +673,7 @@
     }
 
     // Blocks
-    .block { box-shadow: 0 2px 6px rgba($body-bg-dark,.4); }
+    .block { box-shadow: 0 1px 3px rgba(darken($body-bg-dark, 2.5%), .5), 0 1px 2px rgba(darken($body-bg-dark, 2.5%), .5); }
     .block-header-default { background-color: $body-bg-light; }
 
     // Block Variations
@@ -678,16 +691,7 @@
     .block {
         &.block-mode-loading {
             &::after {
-                color: $brand-dark;
-                box-shadow: 0 0 .75rem .75rem rgba($brand-dark,.05);
-            }
-
-            &.block-mode-hidden::after {
-                box-shadow: 0 0 .5rem .5rem rgba($brand-dark,.05);
-            }
-
-            &.block-mode-loading-dark::after {
-                background-color: $brand-dark;
+                color: $brand-primary;
             }
         }
     }
@@ -696,7 +700,7 @@
     a.block {
         color: $body-color;
 
-        @include hover {
+        @include hover() {
             color: $body-color;
         }
 
@@ -736,7 +740,7 @@
     .btn-block-option {
         color: $brand-primary;
 
-        @include hover {
+        @include hover() {
             color: $brand-light;
         }
 
@@ -766,7 +770,7 @@
 
     // Default links
     .nav-main-link {
-        color: $body-color;
+        color: lighten($body-color, 5%);
 
         .nav-main-link-icon {
             color: $main-nav-link-icon-color;
@@ -784,11 +788,11 @@
         background-color: $main-nav-submenu-bg;
 
         .nav-main-link {
-            color: rgba($body-color, .75);
+            color: lighten($body-color, 20%);
 
             &:hover,
             &.active {
-                color: $black;
+                color: darken($body-color, 7.5%);
                 background-color: transparent;
             }
         }
@@ -827,12 +831,12 @@
     .page-header-dark #page-header {
         // Headings
         .nav-main-heading {
-            color: darken($body-color-light, 20%);
+            color: lighten($sidebar-dark-bg, 30%);
         }
-
+        
         // Default links
         .nav-main-link {
-            color: $body-color-light;
+            color: lighten($sidebar-dark-bg, 55%);
 
             > .nav-main-link-icon {
                 color: $main-nav-link-icon-dark-color;
@@ -850,7 +854,7 @@
             background-color: $main-nav-submenu-dark-bg;
 
             .nav-main-link {
-                color: rgba($body-color-light, .75);
+                color: lighten($sidebar-dark-bg, 45%);
 
                 &:hover,
                 &.active {
@@ -881,14 +885,20 @@
         .nav-main-dark.nav-main-horizontal.nav-main-hover,
         .sidebar-dark #sidebar .nav-main-horizontal.nav-main-hover,
         .page-header-dark #page-header .nav-main-horizontal.nav-main-hover {
+            .nav-main-link {    
+                &:hover,
+                &.active {
+                    background-color: darken($header-dark-bg, 5%);
+                }
+            }
+
             .nav-main-item:hover {
                 > .nav-main-link-submenu {
-                    color: $white;
-                    background-color: $main-nav-link-dark-hover-bg;
+                    background-color: darken($header-dark-bg, 5%);
                 }
 
                 > .nav-main-submenu {
-                    background-color: $main-nav-submenu-dark-bg;
+                    background-color: darken($header-dark-bg, 5%);
                 }
             }
 
@@ -903,7 +913,7 @@
         a {
             border-bottom-color: $body-bg;
 
-            @include hover {
+            @include hover() {
                 background-color: $body-bg-light;
             }
         }
@@ -976,13 +986,20 @@
     }
 
     // CKEditor
-    .cke_chrome {
+    .cke_chrome,
+    .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused),
+    .ck.ck-toolbar {
         border-color: $body-bg-dark !important;
     }
 
-    .cke_top {
+    .cke_top,
+    .ck.ck-toolbar {
         border-bottom-color: $body-bg-dark !important;
         background: $body-bg-light !important;
+    }
+
+    .ck.ck-toolbar .ck.ck-toolbar__separator {
+        background: $body-bg-dark !important;
     }
 
     .cke_bottom {
@@ -999,7 +1016,7 @@
             color: $body-color;
         }
 
-        @include hover {
+        @include hover() {
             background-color: $white;
             border-color: $brand-primary;
 
@@ -1010,45 +1027,14 @@
     }
 
     // FullCalendar
-    .fc-bootstrap4 {
-        a.fc-event:not([href]):not([tabindex]) {
-            color: $body-color-dark;
+    .fc-theme-bootstrap {
+        .fc-h-event {
+            background-color: $brand-primary;
+            border: $brand-primary;
         }
-
-        .fc-event {
-            color: $body-color-dark;
-
-            @include hover {
-                color: $body-color;
-            }
-        }
-
-        thead th.fc-day-header {
+    
+        .fc-col-header-cell {
             background-color: $body-bg-light;
-        }
-
-        th,
-        td,
-        thead,
-        tbody,
-        .fc-divider,
-        .fc-row,
-        .fc-content,
-        .fc-popover,
-        .fc-list-view,
-        .fc-list-heading td,
-        .fc-list-table.table {
-            border-color: $body-bg-dark;
-        }
-
-        .fc-divider,
-        .fc-list-heading td,
-        .fc-popover .fc-header {
-            background: $body-bg;
-        }
-
-        .fc-today {
-            background: $body-bg-light;
         }
     }
 
@@ -1110,15 +1096,16 @@
         .select2-results__option--highlighted[aria-selected] {
             background-color: $brand-primary;
         }
+
+        .select2-dropdown .select2-search__field:focus {
+            border-color: $input-focus-border-color;
+            box-shadow: $input-btn-focus-box-shadow;
+        }
     }
 
     // Simple Bar
     .simplebar-scrollbar::before {
-        background: $brand-darker;
-
-        .sidebar-dark #sidebar & {
-            background: $brand-lighter;
-        }
+        background: rgba(darken($brand-darker, 10%), .75);
     }
 
     // Slick
@@ -1171,5 +1158,33 @@
     .dd-placeholder {
         border-color: $brand-darker;
         background: $brand-lighter;
+    }
+
+    // Flatpickr
+    .flatpickr-day.selected,
+    .flatpickr-day.startRange,
+    .flatpickr-day.endRange,
+    .flatpickr-day.selected.inRange,
+    .flatpickr-day.startRange.inRange,
+    .flatpickr-day.endRange.inRange,
+    .flatpickr-day.selected:focus,
+    .flatpickr-day.startRange:focus,
+    .flatpickr-day.endRange:focus,
+    .flatpickr-day.selected:hover,
+    .flatpickr-day.startRange:hover,
+    .flatpickr-day.endRange:hover,
+    .flatpickr-day.selected.prevMonthDay,
+    .flatpickr-day.startRange.prevMonthDay,
+    .flatpickr-day.endRange.prevMonthDay,
+    .flatpickr-day.selected.nextMonthDay,
+    .flatpickr-day.startRange.nextMonthDay,
+    .flatpickr-day.endRange.nextMonthDay {
+        border-color: $brand-primary;
+        background: $brand-primary;
+    }
+
+    .flatpickr-months .flatpickr-prev-month:hover svg,
+    .flatpickr-months .flatpickr-next-month:hover svg {
+        fill: $brand-primary;
     }
 }

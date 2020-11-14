@@ -72,7 +72,7 @@ $spacers: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   #f4f6fa !default;
+$body-bg:                   darken(#f4f6fa, 1%) !default;
 $body-color:                $gray-700 !default;
 
 
@@ -104,7 +104,7 @@ $border-color:                darken($body-bg, 4%) !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:      "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
@@ -155,6 +155,7 @@ $table-border-color:          darken($body-bg, 4%) !default;
 
 $table-head-bg:               darken($body-bg, 4%) !default;
 $table-head-color:            $body-color !default;
+$table-th-font-weight:        $font-weight-bold !default;
 
 $table-dark-bg:               theme-color("dark") !default;
 $table-dark-border-color:     theme-color("dark") !default;
@@ -175,6 +176,7 @@ $input-color:                       $body-color !default;
 $input-border-color:                darken($body-bg, 8%) !default;
 
 $form-text-margin-top:              .5rem !default;
+$form-group-margin-bottom:          1.25rem !default;
 
 $input-group-addon-color:           $input-color !default;
 $input-group-addon-bg:              $body-bg !default;

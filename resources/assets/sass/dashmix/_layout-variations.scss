@@ -4,13 +4,20 @@
 
 #page-container {
     // Main content
+    > #page-header .content-header,
+    > #page-header .content,
+    > #main-container .content,
+    > #page-footer .content {
+        max-width: $space-main-max-width;
+    }
+
     @include media-breakpoint-up(xl) {
         &.main-content-narrow {
             > #page-header .content-header,
             > #page-header .content,
             > #main-container .content,
             > #page-footer .content {
-                max-width: $space-narrow;
+                width: $space-narrow;
             }
         }
     }
@@ -44,13 +51,15 @@
             }
 
             &.page-header-scroll #page-header {
-                background-color: $header-bg;
+                background-color: rgba($header-bg, .9);
                 box-shadow: 0 .25rem .625rem rgba(0,0,0,.02);
+                backdrop-filter: blur(1rem);
             }
 
             &.page-header-scroll.page-header-dark #page-header {
-                background-color: $header-dark-bg;
+                background-color: rgba($header-dark-bg, .9);
                 box-shadow: none;
+                backdrop-filter: blur(1rem);
             }
         }
 
@@ -167,11 +176,11 @@
         box-shadow: none;
     }
 
-    // Side Scroll (Disable native scrolling, it will be enabled with JS)
+    // Side Scroll
     &.side-scroll {
-        #sidebar,
+        #sidebar .js-sidebar-scroll,
         #side-overlay {
-            overflow-y: hidden;
+            overflow-y: visible;
         }
 
         @include media-breakpoint-up(lg) {
