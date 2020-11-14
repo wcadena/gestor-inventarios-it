@@ -20,6 +20,20 @@
     }
 }
 
+// Responsive grid gutters
+@include media-breakpoint-down(sm) {
+    .row:not(.gutters-tiny):not(.no-gutters) {
+        margin-right: (-($space-mobile / 2));
+        margin-left: (-($space-mobile / 2));
+
+        > .col,
+        > [class*="col-"] {
+            padding-left: ($space-mobile / 2);
+            padding-right: ($space-mobile / 2);
+        }
+    }
+}
+
 // Equal height of elements inside columns
 .row.row-deck > div {
     display: flex;

@@ -5,6 +5,7 @@
 // Font weight
 .font-w300 { font-weight: 300 !important; }
 .font-w400 { font-weight: 400 !important; }
+.font-w500 { font-weight: 500 !important; }
 .font-w600 { font-weight: 600 !important; }
 .font-w700 { font-weight: 700 !important; }
 
@@ -15,6 +16,14 @@
 
 // Helpers
 .text-wrap-break-word { word-wrap: break-word; }
+
+// Letter Spacing
+.tracking-tighter { letter-spacing: -0.05em; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-normal { letter-spacing: 0; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
 
 // Contextual colors
 @include text-emphasis-variant('.text-primary-dark', theme-color("primary-dark"));

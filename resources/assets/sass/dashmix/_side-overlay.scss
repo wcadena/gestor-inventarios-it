@@ -9,6 +9,7 @@
     bottom: 0;
     z-index: $zindex-side-overlay;
     width: 100%;
+    height: 100%;
     background-color: $side-overlay-bg;
     overflow-y: auto;
     transform: translateX(100%) translateY(0) translateZ(0);

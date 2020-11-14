@@ -5,9 +5,6 @@
  *
  */
 
-// Import global dependencies
-import './../bootstrap';
-
 // Import required modules
 import Tools from './tools';
 
@@ -38,6 +35,7 @@ export default class Helpers {
            'magnific-popup': () => this.magnific(),
            summernote: () => this.summernote(),
            ckeditor: () => this.ckeditor(),
+           ckeditor5: () => this.ckeditor5(),
            simplemde: () => this.simpleMDE(),
            slick: () => this.slick(),
            datepicker: () => this.datepicker(),
@@ -51,7 +49,8 @@ export default class Helpers {
            rangeslider: () => this.rangeslider(),
            sparkline: () => this.sparkline(),
            validation: () => this.validation(),
-           'pw-strength': () => this.pwstrength()
+           'pw-strength': () => this.pwstrength(),
+           flatpickr: () => this.flatpickr()
        };
 
        if (helpers instanceof Array) {
@@ -79,7 +78,7 @@ export default class Helpers {
      */
 
     /*
-     * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/4.3/components/tooltips/
+     * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/4.5/components/tooltips/
      *
      * Helpers.run('core-bootstrap-tooltip');
      *
@@ -102,7 +101,7 @@ export default class Helpers {
     }
 
     /*
-     * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/4.3/components/popovers/
+     * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/4.5/components/popovers/
      *
      * Helpers.run('core-bootstrap-popover');
      *
@@ -126,7 +125,7 @@ export default class Helpers {
     }
 
     /*
-     * Bootstrap Tab, for examples you can check out https://getbootstrap.com/docs/4.3/components/navs/#tabs
+     * Bootstrap Tab, for examples you can check out https://getbootstrap.com/docs/4.5/components/navs/#tabs
      *
      * Helpers.run('core-bootstrap-tabs');
      *
@@ -190,7 +189,7 @@ export default class Helpers {
             let el = jQuery(e.currentTarget);
 
             // Add .js-class-toggle-enabled class to tag it as activated and then blur it
-            el.addClass('js-class-toggle-enabled').blur();
+            el.addClass('js-class-toggle-enabled').trigger('blur');
 
             // Toggle class
             jQuery(el.data('target').toString()).toggleClass(el.data('class').toString());
@@ -237,7 +236,7 @@ export default class Helpers {
      * Example usage (it will get populated with current year if empty or will append it to specified year if needed):
      *
      * <span data-toggle="year-copy"></span> or
-     * <span data-toggle="year-copy">2018</span>
+     * <span data-toggle="year-copy"></span>
      *
      */
     static coreYearCopy() {
@@ -587,6 +586,50 @@ export default class Helpers {
     }
 
     /*
+     * CKEditor 5 init, for more examples you can check out http://ckeditor.com/
+     *
+     * Helpers.run('ckeditor5');
+     *
+     * Example usage:
+     *
+     * <div id="js-ckeditor5-classic">Hello classic CKEditor 5!</div>
+     * ..or..
+     * <div id="js-ckeditor5-inline">Hello inline CKEditor 5!</div>
+     *
+     */
+    static ckeditor5() {
+        // Init inline text editor
+        if (jQuery('#js-ckeditor5-inline:not(.js-ckeditor5-inline-enabled)').length) {
+            InlineEditor
+                .create( document.querySelector( '#js-ckeditor5-inline' ) )
+                .then( editor => {
+                    window.editor = editor;
+                } )
+                .catch( error => {
+                    console.error( 'There was a problem initializing the inline editor.', error );
+                } );
+
+            // Add .js-ckeditor5-inline-enabled class to tag it as activated
+            jQuery('#js-ckeditor5-inline').addClass('js-ckeditor5-inline-enabled');
+        }
+
+        // Init full text editor
+        if (jQuery('#js-ckeditor5-classic:not(.js-ckeditor5-classic-enabled)').length) {
+            ClassicEditor
+                .create( document.querySelector( '#js-ckeditor5-classic' ) )
+                .then( editor => {
+                    window.editor = editor;
+                } )
+                .catch( error => {
+                    console.error( 'There was a problem initializing the classic editor.', error );
+                } );
+
+            // Add .js-ckeditor5-classic-enabled class to tag it as activated
+            jQuery('#js-ckeditor5-classic').addClass('js-ckeditor5-classic-enabled');
+        }
+    }
+
+    /*
      * SimpleMDE init, for more examples you can check out https://github.com/NextStepWebs/simplemde-markdown-editor
      *
      * Helpers.run('simplemde');
@@ -605,7 +648,7 @@ export default class Helpers {
             el.addClass('js-simplemde-enabled');
 
             // Init editor
-            new SimpleMDE({ element: el[0] });
+            new SimpleMDE({ element: el[0], autoDownloadFontAwesome: false });
         });
     }
 
@@ -1087,6 +1130,29 @@ export default class Helpers {
                     }
                 }
             });
+        });
+    }
+
+    /*
+     * Flatpickr init, for more examples you can check out https://github.com/flatpickr/flatpickr
+     *
+     * Helpers.run('flatpickr');
+     *
+     * Example usage:
+     *
+     * <input type="text" class="js-flatpickr form-control">
+     *
+     */
+    static flatpickr() {
+        // Init Flatpickr (with .js-flatpickr class)
+        jQuery('.js-flatpickr:not(.js-flatpickr-enabled)').each((index, element) => {
+            let el = jQuery(element);
+
+            // Add .js-flatpickr-enabled class to tag it as activated
+            el.addClass('js-flatpickr-enabled');
+
+            // Init it
+            flatpickr(el, {});
         });
     }
 }

@@ -5,9 +5,6 @@
  *
  */
 
-// Import global dependencies
-import './../bootstrap';
-
 // Import required modules
 import Tools from './tools';
 import Helpers from './helpers';
@@ -33,6 +30,7 @@ export default class Template {
         this._lpageLoader           = jQuery('#page-loader');
         this._lPage                 = jQuery('#page-container');
         this._lSidebar              = jQuery('#sidebar');
+        this._lSidebarScrollCon     = jQuery('.js-sidebar-scroll', '#sidebar');
         this._lSideOverlay          = jQuery('#side-overlay');
         this._lHeader               = jQuery('#page-header');
         this._lHeaderSearch         = jQuery('#page-header-search');
@@ -90,12 +88,12 @@ export default class Template {
         } else {
             // If .side-scroll is added to #page-container enable custom scrolling
             if (self._lPage.hasClass('side-scroll')) {
-                // Init custom scrolling on Sidebar
+                // Init custom scrolling on Sidebar container
                 if ((self._lSidebar.length > 0) && !self._lSidebarScroll) {
-                    self._lSidebarScroll = new SimpleBar(self._lSidebar[0]);
+                    self._lSidebarScroll = new SimpleBar(self._lSidebarScrollCon[0]);
 
                     // Enable scrolling lock
-                    jQuery('.simplebar-scroll-content', self._lSidebar).scrollLock('enable');
+                    jQuery('.simplebar-content-wrapper', self._lSidebar).scrollLock('enable');
                 }
 
                 // Init custom scrolling on Side Overlay
@@ -103,27 +101,27 @@ export default class Template {
                     self._lSideOverlayScroll = new SimpleBar(self._lSideOverlay[0]);
 
                     // Enable scrolling lock
-                    jQuery('.simplebar-scroll-content', self._lSideOverlay).scrollLock('enable');
+                    jQuery('.simplebar-content-wrapper', self._lSideOverlay).scrollLock('enable');
                 }
             } else {
                 // If custom scrolling exists on Sidebar remove it
                 if (self._lSidebar && self._lSidebarScroll) {
                     // Disable scrolling lock
-                    jQuery('.simplebar-scroll-content', self._lSidebar).scrollLock('disable');
+                    jQuery('.simplebar-content-wrapper', self._lSidebar).scrollLock('disable');
 
                     // Unmount Simplebar
                     self._lSidebarScroll.unMount();
                     self._lSidebarScroll = null;
 
                     // Remove Simplebar leftovers
-                    self._lSidebar.removeAttr('data-simplebar')
-                            .html(jQuery('.simplebar-content', self._lSidebar).html());
+                    self._lSidebarScrollCon.removeAttr('data-simplebar')
+                        .html(jQuery('.simplebar-content', self._lSidebar).html());
                 }
 
                 // If custom scrolling exists on Side Overlay remove it
                 if (self._lSideOverlay && self._lSideOverlayScroll) {
                     // Disable scrolling lock
-                    jQuery('.simplebar-scroll-content', self._lSideOverlay).scrollLock('disable');
+                    jQuery('.simplebar-content-wrapper', self._lSideOverlay).scrollLock('disable');
 
                     // Unmount Simplebar
                     self._lSideOverlayScroll.unMount();
@@ -131,7 +129,7 @@ export default class Template {
 
                     // Remove Simplebar leftovers
                     self._lSideOverlay.removeAttr('data-simplebar')
-                            .html(jQuery('.simplebar-content', self._lSideOverlay).html());
+                        .html(jQuery('.simplebar-content', self._lSideOverlay).html());
                 }
             }
         }
@@ -189,7 +187,7 @@ export default class Template {
                 }
 
                 // Remove focus from submenu link
-                link.blur();
+                link.trigger('blur');
             }
 
             return false;
@@ -269,7 +267,7 @@ export default class Template {
             }
 
             // Blur the link/button
-            el.blur();
+            el.trigger('blur');
         });
     }
 
@@ -296,7 +294,7 @@ export default class Template {
 
                     self._uiApiLayout(el.data('action'));
 
-                    el.blur();
+                    el.trigger('blur');
                 });
 
                 // Prepend Page Overlay div if enabled (used when Side Overlay opens)
@@ -442,7 +440,7 @@ export default class Template {
             },
             header_search_off: () => {
                 self._lHeaderSearch.removeClass('show');
-                self._lHeaderSearchInput.blur();
+                self._lHeaderSearchInput.trigger('blur');
 
                 // Unbind ESCAPE key
                 jQuery(document).off('keydown.pixelcave.header.search');

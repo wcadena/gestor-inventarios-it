@@ -22,8 +22,9 @@
     left: 0;
     z-index: $zindex-sidebar;
     width: 100%;
+    height: 100%;
+    overflow-y: visible;
     background-color: $sidebar-bg;
-    overflow-y: auto;
     transform: translateX(-100%) translateY(0) translateZ(0);
     -webkit-overflow-scrolling: touch;
     will-change: transform;
@@ -36,6 +37,15 @@
         right: 0;
         left: auto;
         transform: translateX(100%) translateY(0) translateZ(0);
+    }
+
+    .js-sidebar-scroll {
+        height: calc(100% - #{$header-height});
+        overflow-y: auto;
+
+        &.full-height {
+            height: 100%;
+        }
     }
 
     @include media-breakpoint-down(md) {
@@ -89,7 +99,7 @@
             // Main navigation
             .nav-main {
                 &,
-                .nav-main-link-icon, {
+                .nav-main-link-icon {
                     transition: transform $side-transition;
                 }
 

@@ -91,7 +91,7 @@
     a {
         border-bottom: 1px solid $body-bg;
 
-        @include hover {
+        @include hover() {
             background-color: $body-bg-light;
         }
 

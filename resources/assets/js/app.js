@@ -1,10 +1,3 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -12,11 +5,11 @@ window.Vue = require('vue');
 /**para vuetify
  *
  */
-import 'babel-polyfill'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+import 'babel-polyfill';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css'; // Ensure you are using css-loader
 
-Vue.use(Vuetify)
+Vue.use(Vuetify);
 
 
 
@@ -29,18 +22,18 @@ Vue.use(Vuetify)
 Vue.component('example', require('./components/Example.vue'));
 
 Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue')
+  'passport-clients',
+  require('./components/passport/Clients.vue')
 );
 
 Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue')
+  'passport-authorized-clients',
+  require('./components/passport/AuthorizedClients.vue')
 );
 
 Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
+  'passport-personal-access-tokens',
+  require('./components/passport/PersonalAccessTokens.vue')
 );
 
 Vue.component('upload-files', require('./components/UploadFiles.vue'));
@@ -52,7 +45,7 @@ Vue.component('permiso', require('./components/directorio/roles/Permiso'));
 Vue.component('rol', require('./components/directorio/roles/Rol'));
 
 const app = new Vue({
-    el: '#app'
+  el: '#app'
 });
 import _ from 'lodash';
 
@@ -60,10 +53,10 @@ function init() {
   if ( navigator.serviceWorker ) {
     navigator.serviceWorker.register('/sw.js')
       .then( reg => {
-         setTimeout(() => {
-             reg.sync.register('posteo-gatitos');
-             console.log('Se enviaron fotos de gatitos al server');
-         }, 3000);
+        setTimeout(() => {
+          reg.sync.register('posteo-gatitos');
+          console.log('Se enviaron fotos de gatitos al server');
+        }, 3000);
         Notification.requestPermission().then( result => {
           console.log(result);
           //reg.showNotification('Hola Mundo!');

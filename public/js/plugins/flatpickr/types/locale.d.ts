@@ -16,6 +16,7 @@ export declare type Locale = {
     toggleTitle: string;
     amPM: [string, string];
     yearAriaLabel: string;
+    monthAriaLabel: string;
     hourAriaLabel: string;
     minuteAriaLabel: string;
     time_24hr: boolean;
@@ -42,4 +43,4 @@ export declare type CustomLocale = {
         longhand: [string, string, string, string, string, string, string, string, string, string, string, string];
     };
 };
-export declare type key = "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw";
+export declare type key = "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "ca" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "uz" | "uz_latn" | "zh_tw";

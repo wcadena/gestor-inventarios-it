@@ -5,7 +5,7 @@
 .block {
     margin-bottom: $space-base;
     background-color: $white;
-    box-shadow: 0 2px 6px rgba($body-bg-dark,.4);
+    box-shadow: 0 1px 3px rgba(darken($body-bg-dark, 2.5%), .5), 0 1px 2px rgba(darken($body-bg-dark, 2.5%), .5);
 
     & &,
     .content-side & {
@@ -160,12 +160,6 @@
         position: relative;
         overflow: hidden;
 
-        > .block-header,
-        > .block-content,
-        > .nav-tabs {
-            opacity: .05;
-        }
-
         &::before {
             position: absolute;
             top: 0;
@@ -173,8 +167,9 @@
             bottom: 0;
             left: 0;
             display: block;
-            z-index: 1;
+            z-index: 9;
             content: " ";
+            background-color: rgba($white, .85);
         }
 
         &::after {
@@ -185,15 +180,14 @@
             width: 3rem;
             height: 3rem;
             line-height: 3rem;
-            color: theme-color("primary-dark");
+            color: theme-color("primary");
             font-family: Simple-Line-Icons;
             font-size: 1.125rem;
             text-align: center;
-            z-index: 2;
+            z-index: 10;
             content: '\e09a';
             animation: fa-spin 1.75s infinite linear;
             border-radius: 1.5rem;
-            box-shadow: 0 0 .75rem .75rem rgba(theme-color("primary-dark"),.05);
         }
 
         &.block-mode-hidden::after {
@@ -201,13 +195,16 @@
             width: 2rem;
             height: 2rem;
             line-height: 2rem;
-            box-shadow: 0 0 .5rem .5rem rgba(theme-color("primary-dark"),.05);
         }
 
-        &.block-mode-loading-dark::after {
-            background-color: theme-color("primary-dark");
-            color: $white;
-            box-shadow: 0 0 1rem 1rem rgba($white,.1);
+        &.block-mode-loading-dark {
+            &::before {
+                background-color: rgba($black, .85);
+            }
+
+            &::after {
+                color: $white;
+            }
         }
 
         &.block-mode-loading-location::after {
@@ -286,7 +283,7 @@ a.block {
     font-weight: normal;
     transition: transform .15s ease-out, opacity .15s ease-out, box-shadow .15s ease-out;
 
-    @include hover {
+    @include hover() {
         color: $body-color;
         opacity: .65;
     }
@@ -410,7 +407,7 @@ a.block {
         top: 1px;
     }
 
-    @include hover {
+    @include hover() {
         text-decoration: none;
         color: theme-color("primary-light");
     }
@@ -426,6 +423,7 @@ a.block {
 
     &:focus {
         outline: none !important;
+        color: theme-color("primary-light");
     }
 
     &:active {
@@ -436,7 +434,7 @@ a.block {
         color: $white;
         opacity: .7;
 
-        @include hover {
+        @include hover() {
             color: $white;
             opacity: 1;
         }
@@ -448,6 +446,11 @@ a.block {
                 color: $white;
                 opacity: 1;
             }
+        }
+
+        &:focus {
+            color: $white;
+            opacity: 1;
         }
 
         &:active {

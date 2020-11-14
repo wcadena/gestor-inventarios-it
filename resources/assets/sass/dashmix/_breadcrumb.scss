@@ -6,9 +6,10 @@
     .breadcrumb-item + .breadcrumb-item::before {
         position: relative;
         top: 1px;
-        width: 1.25rem;
-        font-family: "simple-line-icons";
-        font-size: $font-size-sm;
-        content: "\e606";
+        width: 1rem;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: gray("400");
+        content: "\f105";
     }
 }

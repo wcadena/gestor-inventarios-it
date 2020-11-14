@@ -5,30 +5,28 @@
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.3.1",
-        "browser-sync": "^2.26.3",
+        "axios": "^0.19",
+        "bootstrap": "^4.5.3",
+        "browser-sync": "^2.26.12",
         "browser-sync-webpack-plugin": "^2.2.2",
-        "cross-env": "^5.2.0",
-        "jquery": "^3.3.1",
-        "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.11",
-        "popper.js": "^1.14.6",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.6.9",
-        "vue-template-compiler": "^2.6.9"
-    },
-    "dependencies": {
+        "cross-env": "^7.0",
+        "jquery": "^3.5.1",
         "jquery-scroll-lock": "^3.1.3",
         "jquery.appear": "^1.0.1",
-        "js-cookie": "^2.2.0",
-        "simplebar": "^2.6.1"
+        "js-cookie": "^2.2.1",
+        "laravel-mix": "^5.0.7",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.16.1",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.27.0",
+        "sass-loader": "^10.0.3",
+        "simplebar": "^5.3.0",
+        "vue": "^2.6.9",
+        "vue-template-compiler": "^2.6.12"
     }
 }
