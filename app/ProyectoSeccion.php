@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @property int $id
- * @property int $proyecto_id
- * @property string $name
- * @property string $descripcion
- * @property string $decoracion
- * @property string $tipo
- * @property int $orden
- * @property string $principal
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
- * @property Proyecto $proyecto
+ * @property int                       $id
+ * @property int                       $proyecto_id
+ * @property string                    $name
+ * @property string                    $descripcion
+ * @property string                    $decoracion
+ * @property string                    $tipo
+ * @property int                       $orden
+ * @property string                    $principal
+ * @property string                    $created_at
+ * @property string                    $updated_at
+ * @property string                    $deleted_at
+ * @property Proyecto                  $proyecto
  * @property InformeProyectosSeccion[] $informeProyectosSeccions
  */
 class ProyectoSeccion extends Model

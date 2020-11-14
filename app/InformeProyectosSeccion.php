@@ -5,16 +5,16 @@ namespace app;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id
- * @property int $informe_manto_prev_id
- * @property int $proyecto_seccion_id
- * @property string $tipo
- * @property int $orden
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
+ * @property int              $id
+ * @property int              $informe_manto_prev_id
+ * @property int              $proyecto_seccion_id
+ * @property string           $tipo
+ * @property int              $orden
+ * @property string           $created_at
+ * @property string           $updated_at
+ * @property string           $deleted_at
  * @property InformeMantoPrev $informeMantoPrev
- * @property ProyectoSeccion $proyectoSeccion
+ * @property ProyectoSeccion  $proyectoSeccion
  */
 class InformeProyectosSeccion extends Model
 {
