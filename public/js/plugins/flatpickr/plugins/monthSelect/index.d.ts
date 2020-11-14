@@ -5,6 +5,9 @@ export interface Config {
     altFormat: string;
     theme: string;
 }
+export interface ElementDate extends Element {
+    dateObj: Date;
+}
 export declare type MonthElement = HTMLSpanElement & {
     dateObj: Date;
     $i: number;

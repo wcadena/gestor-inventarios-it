@@ -58,8 +58,6 @@ export declare type Instance = Elements & Formatting & {
     isMobile: boolean;
     minDateHasTime: boolean;
     maxDateHasTime: boolean;
-    showTimeInput: boolean;
-    _showTimeInput: boolean;
     changeMonth: (value: number, isOffset?: boolean, fromKeyboard?: boolean) => void;
     changeYear: (year: number) => void;
     clear: (emitChangeEvent?: boolean, toInitial?: boolean) => void;

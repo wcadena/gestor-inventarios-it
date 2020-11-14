@@ -12,6 +12,7 @@ declare const _default: {
     bg?: CustomLocale | undefined;
     bn?: CustomLocale | undefined;
     bs?: CustomLocale | undefined;
+    ca?: CustomLocale | undefined;
     cat?: CustomLocale | undefined;
     cs?: CustomLocale | undefined;
     cy?: CustomLocale | undefined;
@@ -59,6 +60,8 @@ declare const _default: {
     uk?: CustomLocale | undefined;
     vn?: CustomLocale | undefined;
     zh?: CustomLocale | undefined;
+    uz?: CustomLocale | undefined;
+    uz_latn?: CustomLocale | undefined;
     zh_tw?: CustomLocale | undefined;
 } & {
     default: import("../types/locale").Locale;
