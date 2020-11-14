@@ -5,15 +5,15 @@ namespace app;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id
- * @property int $user_id
- * @property int $informe_manto_prev_id
- * @property string $accion
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
+ * @property int              $id
+ * @property int              $user_id
+ * @property int              $informe_manto_prev_id
+ * @property string           $accion
+ * @property string           $created_at
+ * @property string           $updated_at
+ * @property string           $deleted_at
  * @property InformeMantoPrev $informeMantoPrev
- * @property User $user
+ * @property User             $user
  */
 class InformeMantoHistorico extends Model
 {

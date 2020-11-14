@@ -18,13 +18,15 @@ Menu::macro('ConfiguracionsSystem', function () {
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/config', '<i class="nav-main-link-icon fa cog"></i>
                                 <span class="nav-main-link-name">'.trans('home.men13').'</span>
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/oautho2', '<i class="nav-main-link-icon fa fa-key"></i>
                                 <span class="nav-main-link-name">'.trans('OAuth2').'</span>
                                 ')->addClass('nav-main-link')
@@ -35,42 +37,50 @@ Menu::macro('ConfiguracionsSystem', function () {
 Menu::macro('sidebar_new', function () {
     return Menu::new()->addClass('nav-main')
         ->setActiveFromRequest()
-        ->add(Link::to('/home', '<i class="nav-main-link-icon fa fa-tachometer-alt"></i>
+        ->add(
+            Link::to('/home', '<i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                                 <span class="nav-main-link-name">'.trans('home.men1').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->add(Link::to('/equipos', '<i class="nav-main-link-icon fa fa-laptop"></i>
+        ->add(
+            Link::to('/equipos', '<i class="nav-main-link-icon fa fa-laptop"></i>
                                 <span class="nav-main-link-name">'.trans('home.men2').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
-
         )
-        ->add(Link::to('/custodio', '<i class="nav-main-link-icon fa fa-users"></i>
+        ->add(
+            Link::to('/custodio', '<i class="nav-main-link-icon fa fa-users"></i>
                                 <span class="nav-main-link-name">'.trans('home.men3').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->add(Link::to('/proyecto', '<i class="nav-main-link-icon fa fa-project-diagram"></i>
+        ->add(
+            Link::to('/proyecto', '<i class="nav-main-link-icon fa fa-project-diagram"></i>
                                 <span class="nav-main-link-name">'.trans('Proyectos').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
-            Html::raw('Planta Fisica')->addParentClass('nav-main-heading'))
-        ->addIf(Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
+            Html::raw('Planta Fisica')->addParentClass('nav-main-heading')
+        )
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
             Link::to('/ubicacion', '<i class="nav-main-link-icon fa fa-map-marked-alt"></i>
                                 <span class="nav-main-link-name">'.trans('Ubicaciones').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
             Link::to('/puesto', '<i class="nav-main-link-icon fa fa-suitcase"></i>
                                 <span class="nav-main-link-name">'.trans('Puestos').'</span>
                                 ')->addClass('nav-main-link')
             ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['planta_fisica', 'system']),
             Link::to('/informes', '<i class="nav-main-link-icon fa fa-tasks"></i>
                                 <span class="nav-main-link-name">'.trans('Informes').'</span>
                                 ')->addClass('nav-main-link')
@@ -90,13 +100,15 @@ Menu::macro('reportes', function () {
                                 <i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                                 <span class="nav-main-link-name">Reportes</span>
                             </a>')
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/reporte1', '<i class="nav-main-link-icon fa fa-chart-bar"></i>
                                 <span class="nav-main-link-name">'.trans('home.menrep1').'</span>
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/reporteEstaciones/1', '<i class="nav-main-link-icon si si-bar-chart"></i>
                                 <span class="nav-main-link-name">'.trans('home.menrep2').'</span>
                                 ')->addClass('nav-main-link')
@@ -116,7 +128,8 @@ Menu::macro('fullsubmenuConfiguracions', function () {
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/garantiasHP', '<i class="nav-main-link-icon fa fa-scroll"></i>
                                 <span class="nav-main-link-name">'.trans('home.garantiasHP').'</span>
                                 ')->addClass('nav-main-link')
@@ -134,7 +147,8 @@ Menu::macro('fullsubmenuConfiguracions', function () {
                                 ')->addClass('nav-main-link')
                 ->addParentClass('nav-main-item')
         )
-        ->addIf(Str::contains(Auth::getUser()->rol, ['system']),
+        ->addIf(
+            Str::contains(Auth::getUser()->rol, ['system']),
             Link::to('/checklist_opcionescheck', '<i class="nav-main-link-icon fa fa-list-alt"></i>
                                 <span class="nav-main-link-name">'.trans('home.men5').'</span>
                                 ')->addClass('nav-main-link')

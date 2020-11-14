@@ -15,7 +15,6 @@ use App\Estaciones;
 use App\Http\Requests;
 use App\ModeloEquipo;
 use App\OrdenDeCompra;
-use App\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -63,7 +62,8 @@ class EquiposController extends Controller
         $config_custodio_prin = Configuracion::where('atributo', '=', 'CUSTODIO_BODEGA')->first();
 
         //--------------------------------------------------------------------------
-        $check_lists = CheckList::whereNotIn('id',
+        $check_lists = CheckList::whereNotIn(
+            'id',
             $util
         )
             ->pluck('id_check_lists', 'id');
@@ -167,7 +167,9 @@ class EquiposController extends Controller
         if ($equipo->modelo_equipoxc->fabricante == 'HP_noseUSa' &&
             $equipo->hp_warrantyLevel == null) {
             $http = new Client();
-            $res = $http->request('GET', 'https://support.hp.com/hp-pps-services/os/getWarrantyInfo?serialnum='.$equipo->no_serie.'&counpurchase=es&cc=es&lc=es&redirectPage=WarrantyResult'
+            $res = $http->request(
+                'GET',
+                'https://support.hp.com/hp-pps-services/os/getWarrantyInfo?serialnum='.$equipo->no_serie.'&counpurchase=es&cc=es&lc=es&redirectPage=WarrantyResult'
             );
             $respuesta = json_decode((string) $res->getBody(), true);
             //dd($respuesta["newProduct"]["imageUrl"]);
@@ -231,9 +233,10 @@ class EquiposController extends Controller
             $util = Equipos::whereNotIn('id', [$id])->pluck('check_list_id');
             $empresa = Empresa::orderBy('empresa', 'asc')->pluck('empresa', 'empresa');
             //--------------------------------------------------------------------------
-            $check_lists = CheckList::whereNotIn('id',
-            $util
-        )
+            $check_lists = CheckList::whereNotIn(
+                'id',
+                $util
+            )
             ->pluck('id_check_lists', 'id');
             //$check_lists["1"]="Seleccione";
 
