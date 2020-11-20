@@ -11,11 +11,13 @@ use Tests\TestCase;
 class RouteTestStoreTest extends TestCase
 {
     use RefreshDatabase;
+
     private function loginuser()
     {
         $faker = Factory::create();
         $correo = $faker->email;
         $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+
         return \App\User::where('email', $correo)->first();
     }
 
@@ -205,7 +207,7 @@ class RouteTestStoreTest extends TestCase
         $user = User::factory(User::class)->create();
         $user2 = User::factory(User::class)->create();
         $user->attachRoles([
-            Role::create(['name' => 'tecnico'])
+            Role::create(['name' => 'tecnico']),
         ]);
         $this->actingAs($user2)
             ->get('/informes/create')
