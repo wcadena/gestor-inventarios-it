@@ -14,6 +14,7 @@ use Tests\TestCase;
 class AcachaAdminLTELaravelTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * Set up tests.
      */
