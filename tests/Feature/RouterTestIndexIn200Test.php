@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +13,7 @@ class RouterTestIndexIn200Test extends TestCase
     {
         $faker = Factory::create();
         $correo = $faker->email;
-        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
+        $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
         return \App\User::where('email', $correo)->first();
     }
@@ -80,13 +81,14 @@ class RouterTestIndexIn200Test extends TestCase
     public function testLogin()
     {
         $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
+        $correo = $faker->email;
+        $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
         $response = $this->json('POST', '/login', [
-            'email'    => $user[0]->email,
+            'email'    => $correo,
             'password' => 'passw0RD',
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     ////////////////////////////////////////////////////

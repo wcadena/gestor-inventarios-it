@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Faker\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
@@ -11,6 +13,7 @@ use Tests\TestCase;
  */
 class AcachaAdminLTELaravelTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * Set up tests.
      */
@@ -86,9 +89,9 @@ class AcachaAdminLTELaravelTest extends TestCase
      */
     public function testLogout0()
     {
-        $response = $this->json('POST', '/logout');
-
-        $response->assertStatus(302);
+        $admin = User::factory(User::class)->create();
+        $response = $this->actingAs($admin)->json('POST', '/logout');
+        $response->assertStatus(204);
     }
 
     /**
@@ -181,7 +184,7 @@ class AcachaAdminLTELaravelTest extends TestCase
             'last_name'             => 'Salad',
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(201);
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Sergi Tur Badenas',
@@ -196,7 +199,7 @@ class AcachaAdminLTELaravelTest extends TestCase
     {
         $response = $this->json('POST', '/logout');
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     /**
@@ -239,13 +242,13 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testLogin()
     {
         $faker = Factory::create();
-        $user = factory(\App\User::class, 1)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
+        $user = User::factory(User::class)->create(['email' => $faker->email, 'password' => bcrypt('passw0RD')]);
         $response = $this->json('POST', '/login', [
-            'email'    => $user[0]->email,
+            'email'    => $user->email,
             'password' => 'passw0RD',
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     /**
@@ -255,7 +258,7 @@ class AcachaAdminLTELaravelTest extends TestCase
     {
         $response = $this->json('POST', '/logout');
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     /**

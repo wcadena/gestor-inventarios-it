@@ -2,17 +2,20 @@
 
 namespace Tests\Feature;
 
+use App\Role;
+use App\User;
 use Faker\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class RouteTestStoreTest extends TestCase
 {
+    use RefreshDatabase;
     private function loginuser()
     {
         $faker = Factory::create();
         $correo = $faker->email;
-        $user = factory(\App\User::class, 1)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
-
+        $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
         return \App\User::where('email', $correo)->first();
     }
 
@@ -87,7 +90,7 @@ class RouteTestStoreTest extends TestCase
             'password' => 'passw0RD',
         ]);
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     ////////////////////////////////////////////////////
@@ -199,7 +202,14 @@ class RouteTestStoreTest extends TestCase
     public function testinformes_create()
     {
         //crear primero perfiles
-        $this->actingAs($this->loginuser())->urlReturns200('/informes/create');
+        $user = User::factory(User::class)->create();
+        $user2 = User::factory(User::class)->create();
+        $user->attachRoles([
+            Role::create(['name' => 'tecnico'])
+        ]);
+        $this->actingAs($user2)
+            ->get('/informes/create')
+        ->assertStatus(200);
     }
 
     /**
