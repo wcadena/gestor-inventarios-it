@@ -29,7 +29,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        $modulo = Empresa::all();
+        $empresa = Empresa::all();
         /* foreach($modulo AS $item){
              dd($item->permisos);
          }*/

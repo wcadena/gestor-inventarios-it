@@ -15,7 +15,7 @@ class ProjectTest extends TestCase
     {
         $response = $this->json('POST', '/logout');
 
-        $response->assertStatus(302);
+        $response->assertStatus(204);
     }
 
     /**

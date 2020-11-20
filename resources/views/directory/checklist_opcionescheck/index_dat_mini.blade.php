@@ -148,7 +148,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination" id="as55trgyu"> {!!($checklist_opcionescheck->appends(['sort' => 'votes'])->render() )!!} </div>
+        <div class="pagination" id="as55trgyu"> {!!($checklist_opcionescheck->appends(['sort' => 'votes'])->links('pagination::simple-bootstrap-4') )!!} </div>
     </div>
 @endsection
 @section('scripts')
