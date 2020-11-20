@@ -3,7 +3,7 @@
 use App\PuestosCustodio;
 use Faker\Generator as Faker;
 
-$factory->define(PuestosCustodio::class, function (Faker $this->faker) {
+/*$factory->define(PuestosCustodio::class, function (Faker $this->faker) {
     return [
         'puesto_id' => function () {
             factory(App\Puesto::class, 1)->create();
@@ -22,4 +22,4 @@ $factory->define(PuestosCustodio::class, function (Faker $this->faker) {
         'updated_at'       => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'       => null,
     ];
-});
+});*/

@@ -3,7 +3,7 @@
 use App\ProyectoSeccion;
 use Faker\Generator as Faker;
 
-$factory->define(ProyectoSeccion::class, function (Faker $this->faker) {
+/*$factory->define(ProyectoSeccion::class, function (Faker $this->faker) {
     return [
         'proyecto_id' => function () {
             factory(App\Proyecto::class, 1)->create();
@@ -20,4 +20,4 @@ $factory->define(ProyectoSeccion::class, function (Faker $this->faker) {
         'updated_at'  => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'  => null,
     ];
-});
+});*/

@@ -3,7 +3,7 @@
 use App\RepoNovedadesDetalle;
 use Faker\Generator as Faker;
 
-$factory->define(RepoNovedadesDetalle::class, function (Faker $this->faker) {
+/*$factory->define(RepoNovedadesDetalle::class, function (Faker $this->faker) {
     return [
         'repo_novedades_id'  => null,
         'id_equipos'         => null,
@@ -30,4 +30,4 @@ $factory->define(RepoNovedadesDetalle::class, function (Faker $this->faker) {
         'updated_at'         => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'         => null,
     ];
-});
+});*/

@@ -3,7 +3,7 @@
 use App\OrdenDeCompra;
 use Faker\Generator as Faker;
 
-$factory->define(OrdenDeCompra::class, function (Faker $this->faker) {
+/*$factory->define(OrdenDeCompra::class, function (Faker $this->faker) {
     return [
         'ordenCompra'  => null,
         'fecha_compra' => null,
@@ -11,4 +11,4 @@ $factory->define(OrdenDeCompra::class, function (Faker $this->faker) {
         'updated_at'   => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'   => null,
     ];
-});
+});*/

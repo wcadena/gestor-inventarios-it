@@ -3,7 +3,7 @@
 use App\Puesto;
 use Faker\Generator as Faker;
 
-$factory->define(Puesto::class, function (Faker $this->faker) {
+/*$factory->define(Puesto::class, function (Faker $this->faker) {
     return [
         'ubicacion_id' => function () {
             factory(App\Ubicacion::class, 1)->create();
@@ -19,4 +19,4 @@ $factory->define(Puesto::class, function (Faker $this->faker) {
         'updated_at' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at' => null,
     ];
-});
+});*/

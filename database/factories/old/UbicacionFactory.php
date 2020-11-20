@@ -3,7 +3,7 @@
 use App\Ubicacion;
 use Faker\Generator as Faker;
 
-$factory->define(Ubicacion::class, function (Faker $this->faker) {
+/*$factory->define(Ubicacion::class, function (Faker $this->faker) {
     return [
         'estacione_id' => function () {
             return App\Estaciones::inRandomOrder()->first()->id;
@@ -18,4 +18,4 @@ $factory->define(Ubicacion::class, function (Faker $this->faker) {
         'updated_at' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at' => null,
     ];
-});
+});*/

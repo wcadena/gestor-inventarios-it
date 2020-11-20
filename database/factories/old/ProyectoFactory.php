@@ -3,7 +3,7 @@
 use App\Proyecto;
 use Faker\Generator as Faker;
 
-$factory->define(Proyecto::class, function (Faker $this->faker) {
+/*$factory->define(Proyecto::class, function (Faker $this->faker) {
     return [
         'name'        => $this->faker->title,
         'descripcion' => $this->faker->text,
@@ -13,4 +13,4 @@ $factory->define(Proyecto::class, function (Faker $this->faker) {
         'updated_at'  => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'deleted_at'  => null,
     ];
-});
+});*/
