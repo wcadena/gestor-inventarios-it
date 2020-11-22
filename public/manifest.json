@@ -1,5 +1,5 @@
 {
-    "name": "EcuaInventario Gestor de Inventarios",
+    "name": "EcuaTask-Inventario Gestor de Inventarios",
     "short_name": "EcuaInventarios",
     "icons": [
         {
@@ -16,7 +16,7 @@
     "theme_color": "#314499",
     "background_color": "#314499",
     "display": "standalone",
-    "start_url": "https://devinventario.ecuatask.com/",
+    "start_url": "https://inventarios.local/",
     "orientation": "portrait",
     "scope": "/",
     "display": "standalone",

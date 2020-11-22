@@ -2,13 +2,6 @@
     "/js/dashmix.app.js": "/js/dashmix.app.js",
     "/js/laravel.app.js": "/js/laravel.app.js",
     "/css/dashmix.css": "/css/dashmix.css",
-    "/css/themes/xeco.css": "/css/themes/xeco.css",
-    "/css/themes/xinspire.css": "/css/themes/xinspire.css",
-    "/css/themes/xmodern.css": "/css/themes/xmodern.css",
-    "/css/themes/xsmooth.css": "/css/themes/xsmooth.css",
-    "/css/themes/xwork.css": "/css/themes/xwork.css",
     "/css/themes/xdream.css": "/css/themes/xdream.css",
-    "/css/themes/xpro.css": "/css/themes/xpro.css",
-    "/css/themes/xplay.css": "/css/themes/xplay.css",
     "/js/pages/tables_datatables.js": "/js/pages/tables_datatables.js"
 }

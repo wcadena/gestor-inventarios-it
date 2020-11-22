@@ -45,7 +45,7 @@ export default class Template {
         this._windowW               = Tools.getWidth();
 
         // Base UI Init
-        this._uiHandleSidebars('init');
+        //this._uiHandleSidebars('init');
         this._uiHandleHeader();
         this._uiHandleNav();
         this._uiHandleTheme();

@@ -7,7 +7,7 @@
         <title>{{env('APP_NAME', 'Laravel')}} - @yield('htmlheader_title', env('APP_TITLE_PAGE', 'Your title here')) </title>
 
         <meta name="description" content="@yield('htmlheader_description', env('APP_TITLE_PAGE', 'Your title here'))">
-        <meta name="author" content="pixelcave">
+        <meta name="author" content="Wagner Cadena">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- CSRF Token -->
@@ -18,15 +18,8 @@
         <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
         <!-- de anteriorSistema-->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon-16x16.png') }}">
-        <link rel="manifest" href="{{ asset('/manifest.json') }}">
-        <link rel="mask-icon" href="{{ asset('/safari-pinned-tab.svg') }}" color="#3570C1">
         <meta name="apple-mobile-web-app-title" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
         <meta name="application-name" content="{{env('APP_MOBILE_TITLE_PAGE', 'Inventario Activos Fijos')}}">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
-        <meta name="theme-color" content="#3570C1">
 
         <!-- Fonts and Styles -->
         @yield('css_before')
@@ -34,7 +27,7 @@
         <link rel="stylesheet" id="css-theme" href="{{ mix('/css/dashmix.css') }}">
 
         <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" href="{{ mix('/css/themes/xdream.css') }}"> -->
+        <link rel="stylesheet" href="{{ mix('/css/themes/xdream.css') }}">
         @yield('css_after')
 
         <!-- Scripts -->
@@ -102,7 +95,7 @@
         <script src="{{ mix('/js/dashmix.app.js') }}"></script>
 
         <!-- Laravel Original JS -->
-        <script src="{{ mix('/js/laravel.app.js') }}"></script>
+        <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script>  -->
 
         @yield('js_after')
     </body>

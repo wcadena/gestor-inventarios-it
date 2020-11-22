@@ -7,7 +7,7 @@
     <title>{{env('APP_NAME', 'Laravel')}} - @yield('htmlheader_title', env('APP_TITLE_PAGE', 'Your title here')) </title>
 
     <meta name="description" content="@yield('htmlheader_description', env('APP_TITLE_PAGE', 'Your title here'))">
-    <meta name="author" content="pixelcave">
+    <meta name="author" content="Wagner Cadena">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- CSRF Token -->
@@ -24,7 +24,7 @@
     <link rel="stylesheet" id="css-theme" href="{{ mix('/css/dashmix.css') }}">
 
     <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
-<!-- <link rel="stylesheet" href="{{ mix('/css/themes/xdream.css') }}"> -->
+    <link rel="stylesheet" href="{{ mix('css/themes/xdream.css') }}">
 @yield('css_after')
 
 <!-- Scripts -->
@@ -92,7 +92,7 @@ MAIN CONTENT LAYOUT
 <script src="{{ mix('/js/dashmix.app.js') }}"></script>
 
 <!-- Laravel Original JS -->
-<script src="{{ mix('/js/laravel.app.js') }}"></script>
+<!-- <script src="{{ mix('/js/laravel.app.js') }}"></script>  -->
 
 @yield('js_after')
 </body>
