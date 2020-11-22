@@ -142,12 +142,12 @@
                 <div class="bg-header-dark">
                     <div class="content-header bg-white-10">
                         <!-- Logo -->
-                        <a class="link-fx font-w600 font-size-lg text-white" href="/">
+                        <a class="font-w600 text-white tracking-wide" href="/">
                             <span class="smini-visible">
-                                <span class="text-white-75">D</span><span class="text-white">x</span>
+                                E<span class="opacity-75">i</span>
                             </span>
                             <span class="smini-hidden">
-                                <span class="text-white-75">Ecua</span><span class="text-white">Inventarios</span>
+                                Ecua<span class="opacity-75">Inventarios</span>
                             </span>
                         </a>
                         <!-- END Logo -->
@@ -157,7 +157,7 @@
                             <!-- Toggle Sidebar Style -->
                             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                             <!-- Class Toggle, functionality initialized in Helpers.coreToggleClass() -->
-                            <a class="js-class-toggle text-white-75" data-target="#sidebar-style-toggler" data-class="fa-toggle-off fa-toggle-on" data-toggle="layout" data-action="sidebar_style_toggle" href="javascript:void(0)">
+                            <a class="js-class-toggle text-white-75" data-target="#sidebar-style-toggler" data-class="fa-toggle-off fa-toggle-on" onclick="Dashmix.layout('sidebar_style_toggle');Dashmix.layout('header_style_toggle');" href="javascript:void(0)">
                                 <i class="fa fa-toggle-off" id="sidebar-style-toggler"></i>
                             </a>
                             <!-- END Toggle Sidebar Style -->
@@ -174,48 +174,16 @@
                 </div>
                 <!-- END Side Header -->
 
-                <!-- Side Navigation -->
-                <div class="content-side content-side-full">
-				{!! Menu::sidebar_new() !!}
-                    {{--<ul class="nav-main">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
-                                <i class="nav-main-link-icon si si-cursor"></i>
-                                <span class="nav-main-link-name">Dashboard</span>
-                                <span class="nav-main-link-badge badge badge-pill badge-success">5</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-heading">Various</li>
-                        <li class="nav-main-item{{ request()->is('examples/*') ? ' open' : '' }}">
-                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                                <i class="nav-main-link-icon si si-bulb"></i>
-                                <span class="nav-main-link-name">Examples</span>
-                            </a>
-                            <ul class="nav-main-submenu">
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('examples/plugin') ? ' active' : '' }}" href="/examples/plugin">
-                                        <span class="nav-main-link-name">Plugin</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('examples/blank') ? ' active' : '' }}" href="/examples/blank">
-                                        <span class="nav-main-link-name">Blank</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-main-heading">More</li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="/">
-                                <i class="nav-main-link-icon si si-globe"></i>
-                                <span class="nav-main-link-name">Landing</span>
-                            </a>
-                        </li>
-                    </ul>--}}
+                <!-- Sidebar Scrolling -->
+                <div class="js-sidebar-scroll">
+                    <!-- Side Navigation -->
+                    {{ Menu::sidebar_new() }}
+                    <!-- END Side Navigation -->
                 </div>
-                <!-- END Side Navigation -->
+                <!-- END Sidebar Scrolling -->
             </nav>
             <!-- END Sidebar -->
+
 
             <!-- Header -->
             <header id="page-header">
