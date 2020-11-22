@@ -177,7 +177,9 @@
                 <!-- Sidebar Scrolling -->
                 <div class="js-sidebar-scroll">
                     <!-- Side Navigation -->
-                    {{ Menu::sidebar_new() }}
+                    <div class="content-side content-side-full">
+                        {{ Menu::sidebar_new() }}
+                    </div>
                     <!-- END Side Navigation -->
                 </div>
                 <!-- END Sidebar Scrolling -->
