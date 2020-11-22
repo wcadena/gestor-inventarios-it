@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Mail\UserCreated;
 use App\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -64,6 +65,7 @@ class AppServiceProvider extends ServiceProvider
             'informe_proyectos_seccion' => 'App\InformeMantenimientoPreventivo',
             //'videos' => 'App\Video',
         ]);
+        Paginator::defaultView('pagination::default');
     }
 
     /**
