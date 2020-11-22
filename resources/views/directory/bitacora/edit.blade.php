@@ -63,7 +63,7 @@
                     <div class="form-group {{ $errors->has('fecha_ingreso') ? ' form-control-alt is-invalid' : ''}}">
                         {!! Form::label('fecha_ingreso', 'Fecha Ingreso: ', ['class' => 'control-label']) !!}
                         <div class="ekihk">
-                            {!! Form::text('fecha_ingreso', null, ['class' => 'form-control','js-datepicker','form-control']) !!}
+                            {!! Form::text('fecha_ingreso', null, ['class' => 'form-control js-datepicker']) !!}
                             {!! $errors->first('fecha_ingreso', '<p class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
