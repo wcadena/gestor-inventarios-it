@@ -443,7 +443,7 @@
         <script src="{{ mix('js/dashmix.app.js') }}"></script>
 
         <!-- Laravel Scaffolding JS -->
-        <script src="{{ mix('js/inventarios.app.js') }}"></script>
+        <script src="{{ mix('js/laravel.app.js') }}"></script>
 
         @yield('js_after')
     </body>
