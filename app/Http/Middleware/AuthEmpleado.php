@@ -67,7 +67,7 @@ class AuthEmpleado
         /*
              * verifica el permiso con el rol
              */
-        if (! \Illuminate\Support\Str::contains($role, $rol_emp)) {
+        if (!\Illuminate\Support\Str::contains($role, $rol_emp)) {
             if ($rol_emp == 'registrado') {
                 Session::flash('flash_message', 'El Rol ("'.$rol_emp.'") no permite ver esta información, Solicitar activacion a un Administrador.');
             } elseif ($rol_emp == 'administrador') {

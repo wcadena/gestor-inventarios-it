@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Models\Areas;
 use App\Http\Controllers\ApiController;
+use App\Models\Areas;
 
 class AreasController extends ApiController
 {
