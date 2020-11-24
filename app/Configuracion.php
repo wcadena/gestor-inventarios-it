@@ -35,7 +35,7 @@ class Configuracion extends Model
 
     public function empresaxc()
     {
-        return $this->hasOne('App\Empresa', 'empresa', 'empresa');
+        return $this->hasOne(\App\Empresa::class, 'empresa', 'empresa');
     }
 
     public function scopeConfig($query, $type)

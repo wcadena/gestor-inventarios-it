@@ -25,6 +25,6 @@ class OpcionesCheckList extends Model
 
     public function areaxc()
     {
-        return $this->hasOne('App\Areas', 'id', 'area_id');
+        return $this->hasOne(\App\Areas::class, 'id', 'area_id');
     }
 }

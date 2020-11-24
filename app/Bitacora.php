@@ -27,16 +27,16 @@ class Bitacora extends Model
 
     public function custodioxc()
     {
-        return $this->hasOne('App\Custodios', 'id', 'custodio_id');
+        return $this->hasOne(\App\Custodios::class, 'id', 'custodio_id');
     }
 
     public function userxc()
     {
-        return $this->hasOne('App\User', 'id', 'user_id');
+        return $this->hasOne(\App\User::class, 'id', 'user_id');
     }
 
     public function equiposxc()
     {
-        return $this->hasMany('App\Equipos', 'id_equipos', 'id');
+        return $this->hasMany(\App\Equipos::class, 'id_equipos', 'id');
     }
 }

@@ -48,7 +48,7 @@ class ProyectoSeccion extends Model
      */
     public function proyecto()
     {
-        return $this->hasOne('App\Proyecto');
+        return $this->hasOne(\App\Proyecto::class);
     }
 
     /**
@@ -56,7 +56,7 @@ class ProyectoSeccion extends Model
      */
     public function informeProyectosSeccions()
     {
-        return $this->hasMany('App\InformeProyectosSeccion');
+        return $this->hasMany(\App\InformeProyectosSeccion::class);
     }
 
     /**

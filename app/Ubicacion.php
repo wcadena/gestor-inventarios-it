@@ -36,16 +36,16 @@ class Ubicacion extends Model
 
     public function estacionxc()
     {
-        return $this->hasOne('App\Estaciones', 'id', 'estacione_id');
+        return $this->hasOne(\App\Estaciones::class, 'id', 'estacione_id');
     }
 
     public function areaxc()
     {
-        return $this->hasOne('App\Areas', 'id', 'area_id');
+        return $this->hasOne(\App\Areas::class, 'id', 'area_id');
     }
 
     public function puestosxc()
     {
-        return $this->hasMany('App\Puesto', 'ubicacion_id', 'id');
+        return $this->hasMany(\App\Puesto::class, 'ubicacion_id', 'id');
     }
 }

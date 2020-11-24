@@ -17,21 +17,21 @@ class CheckList extends Model
 
     public function areaxc()
     {
-        return $this->hasOne('App\Areas', 'id', 'area_id');
+        return $this->hasOne(\App\Areas::class, 'id', 'area_id');
     }
 
     public function userxc()
     {
-        return $this->hasOne('App\User', 'id', 'user_id');
+        return $this->hasOne(\App\User::class, 'id', 'user_id');
     }
 
     public function equiposxm()
     {
-        return $this->belongsTo('App\Equipos', 'id', 'check_list_id');
+        return $this->belongsTo(\App\Equipos::class, 'id', 'check_list_id');
     }
 
     public function checklistxm()
     {
-        return $this->belongsTo('App\CheckList_OpcionesCheckList', 'id', 'check_list_id');
+        return $this->belongsTo(\App\CheckList_OpcionesCheckList::class, 'id', 'check_list_id');
     }
 }

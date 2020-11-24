@@ -14,11 +14,11 @@ class InformeMantenimientoPreventivoTecnico extends Model
 
     public function userxc()
     {
-        return $this->hasOne('App\User', 'id', 'user_id');
+        return $this->hasOne(\App\User::class, 'id', 'user_id');
     }
 
     public function InformeMantenimientoPreventivoxc()
     {
-        return $this->hasOne('App\InformeMantenimientoPreventivo', 'id', 'informe_manto_prev_id');
+        return $this->hasOne(\App\InformeMantenimientoPreventivo::class, 'id', 'informe_manto_prev_id');
     }
 }
