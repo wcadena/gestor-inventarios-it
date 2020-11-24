@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\ApiController;
 use App\Models\CheckList_OpcionesCheckList;
 use App\Models\Equipos;
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

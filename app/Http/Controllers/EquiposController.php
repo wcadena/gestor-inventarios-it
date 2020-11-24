@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
 use App\Models\Areas;
 use App\Models\Bitacora;
 use App\Models\CheckList;
@@ -12,7 +13,6 @@ use App\Models\Empresa;
 use App\Models\Equipos;
 use App\Models\Equipos_log;
 use App\Models\Estaciones;
-use App\Http\Requests;
 use App\Models\ModeloEquipo;
 use App\Models\OrdenDeCompra;
 use Carbon\Carbon;
@@ -183,7 +183,7 @@ class EquiposController extends Controller
             $equipo->hp_warrantyResultRedirectUrl = $respuesta['warrantyResultRedirectUrl'];
             $equipo->empresa_procede1 = $respuesta['empresa_procede1'];
         }
-        if (! $equipo->hp_endDate == null) {
+        if (!$equipo->hp_endDate == null) {
             $fecha_caduca = Carbon::createFromFormat('Y-m-d', $equipo->hp_endDate);
             $diferenciaanios = Carbon::now()->diffInDays($fecha_caduca, false);
             if ($diferenciaanios < 0) {

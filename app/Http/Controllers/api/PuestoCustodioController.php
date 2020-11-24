@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Models\Custodios;
 use App\Http\Controllers\ApiController;
+use App\Models\Custodios;
 use App\Models\Puesto;
 use App\Models\PuestoCustodios;
 use Carbon\Carbon;
@@ -44,7 +44,7 @@ class PuestoCustodioController extends ApiController
             'estado'           => 'required|in:OCUPADO,RESERVADO,LIBRE',
         ];
         $this->validate($request, $rules);
-        if (! $puesto->estado == 'LIBRE') {
+        if (!$puesto->estado == 'LIBRE') {
             return $this->errorResponse('El puesto no está disponible', 409);
         }
         /********************************/

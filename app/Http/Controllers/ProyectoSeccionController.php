@@ -23,7 +23,7 @@ class ProyectoSeccionController extends Controller
     {
         $keyword = $request->get('search');
 
-        if (! empty($keyword)) {
+        if (!empty($keyword)) {
             $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->get();
         } else {
             $proyecto_seccion = ProyectoSeccion::ProyectoId($proyecto->id)->latest()->get();

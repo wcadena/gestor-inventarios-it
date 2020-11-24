@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\ApiController;
+use App\Mail\NotificaCustodioCambio;
 use App\Models\Areas;
 use App\Models\Custodios;
 use App\Models\Empresa;
-use App\Http\Controllers\ApiController;
-use App\Mail\NotificaCustodioCambio;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
