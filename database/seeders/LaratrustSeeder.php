@@ -82,7 +82,7 @@ class LaratrustSeeder extends Seeder
         }
 
         // Creating user with permissions
-        if (!empty($userPermission)) {
+        if (! empty($userPermission)) {
             foreach ($userPermission as $key => $modules) {
                 foreach ($modules as $module => $value) {
 
