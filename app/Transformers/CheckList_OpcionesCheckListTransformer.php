@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\CheckList_OpcionesCheckList;
+use App\Models\CheckList_OpcionesCheckList;
 use League\Fractal\TransformerAbstract;
 
 class CheckList_OpcionesCheckListTransformer extends TransformerAbstract

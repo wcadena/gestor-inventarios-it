@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Custodios;
+use App\Models\Custodios;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CustodiosFactory extends Factory

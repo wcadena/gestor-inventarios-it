@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Custodios;
+use App\Models\Custodios;
 use App\Http\Controllers\ApiController;
-use App\Puesto;
-use App\PuestoCustodios;
+use App\Models\Puesto;
+use App\Models\PuestoCustodios;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;

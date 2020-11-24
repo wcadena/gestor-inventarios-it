@@ -23,9 +23,9 @@ class InformeMantoHistoricoFactory extends Factory
     {
         return [
             'user_id' => function () {
-                factory(App\User::class, 1)->create();
+                factory(App\Models\User::class, 1)->create();
 
-                return App\User::inRandomOrder()->first()->id;
+                return App\Models\User::inRandomOrder()->first()->id;
             },
             'informe_manto_prev_id' => null,
             'accion'                => null,

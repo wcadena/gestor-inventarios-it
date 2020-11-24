@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Role;
-use App\User;
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -18,12 +18,12 @@ class RouteTestStoreTest extends TestCase
         $correo = $faker->email;
         $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
-        return \App\User::where('email', $correo)->first();
+        return \App\Models\User::where('email', $correo)->first();
     }
 
     private function loginuser_rol($rol)
     {
-        return \App\User::where('rol', $rol)->first();
+        return \App\Models\User::where('rol', $rol)->first();
     }
 
     /**

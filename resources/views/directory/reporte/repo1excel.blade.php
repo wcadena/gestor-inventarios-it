@@ -60,7 +60,7 @@
                     <td>{{ $item->no_serie }}</td>
                     <td>
                         @php
-                            $checklist=\App\CheckList_OpcionesCheckList::OpcionesCheckLists(11,$item->check_listxc->id)->first();
+                            $checklist=\App\Models\CheckList_OpcionesCheckList::OpcionesCheckLists(11,$item->check_listxc->id)->first();
 
                         @endphp
                         {{$checklist['valor1']}} / {{$checklist['valor2']}}

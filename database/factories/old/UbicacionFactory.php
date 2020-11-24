@@ -1,6 +1,6 @@
 <?php
 
-use App\Ubicacion;
+use App\Models\Ubicacion;
 use Faker\Generator as Faker;
 
 /*$factory->define(Ubicacion::class, function (Faker $this->faker) {

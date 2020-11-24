@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Modulo;
+use App\Models\Modulo;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;

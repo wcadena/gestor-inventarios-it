@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User;
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -15,7 +15,7 @@ class RouterTestIndexIn200Test extends TestCase
         $correo = $faker->email;
         $user = User::factory(User::class)->create(['email' => $correo, 'password' => bcrypt('passw0RD')]);
 
-        return \App\User::where('email', $correo)->first();
+        return \App\Models\User::where('email', $correo)->first();
     }
 
     // use DatabaseTransactions;

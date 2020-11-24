@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Empresa;
-use App\User;
+use App\Models\Empresa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Session;
 

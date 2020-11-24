@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Busqueda;
+use App\Models\Busqueda;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BusquedaFactory extends Factory
@@ -23,9 +23,9 @@ class BusquedaFactory extends Factory
     {
         return [
             'user_id' => function () {
-                factory(App\User::class, 1)->create();
+                factory(App\Models\User::class, 1)->create();
 
-                return App\User::inRandomOrder()->first()->id;
+                return App\Models\User::inRandomOrder()->first()->id;
             },
             'palabra_q'    => $this->faker->word,
             'instancia'    => $this->faker->word,

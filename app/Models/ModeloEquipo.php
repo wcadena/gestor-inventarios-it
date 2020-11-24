@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +16,6 @@ class ModeloEquipo extends Model
 
     public function equiposhm()
     {
-        return $this->hasMany(\App\Equipos::class, 'modelo_equipo_id', 'id');
+        return $this->hasMany(\App\Models\Equipos::class, 'modelo_equipo_id', 'id');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Notifications\CustodioDarClave;
 use App\Scopes\CustodiosScope;
@@ -44,17 +44,17 @@ class Custodios extends Model
 
     public function equiposhm()
     {
-        return $this->hasMany(\App\Equipos::class, 'custodio_id', 'id');
+        return $this->hasMany(\App\Models\Equipos::class, 'custodio_id', 'id');
     }
 
     public function reponovedadeshm()
     {
-        return $this->hasMany(\App\RepoNovedades::class, 'custodio_id', 'id');
+        return $this->hasMany(\App\Models\RepoNovedades::class, 'custodio_id', 'id');
     }
 
     public function puestoCustodios()
     {
-        return $this->hasMany(\App\PuestoCustodios::class, 'custodio_id');
+        return $this->hasMany(\App\Models\PuestoCustodios::class, 'custodio_id');
     }
 
     public function mandarNotificacion()

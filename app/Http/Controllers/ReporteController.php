@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipos;
+use App\Models\Equipos;
 use App\Exports\Equipos2Export;
 use App\Exports\EquiposExport;
 use Illuminate\Http\Request;

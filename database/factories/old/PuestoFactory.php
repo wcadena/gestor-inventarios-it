@@ -1,6 +1,6 @@
 <?php
 
-use App\Puesto;
+use App\Models\Puesto;
 use Faker\Generator as Faker;
 
 /*$factory->define(Puesto::class, function (Faker $this->faker) {

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Configuracion;
-use App\Custodios;
-use App\Empresa;
-use App\Equipos;
-use App\User;
+use App\Models\Configuracion;
+use App\Models\Custodios;
+use App\Models\Empresa;
+use App\Models\Equipos;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
 

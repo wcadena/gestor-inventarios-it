@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\CheckList_OpcionesCheckList;
-use App\Equipos;
+use App\Models\CheckList_OpcionesCheckList;
+use App\Models\Equipos;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

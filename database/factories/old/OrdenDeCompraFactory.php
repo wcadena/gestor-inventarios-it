@@ -1,6 +1,6 @@
 <?php
 
-use App\OrdenDeCompra;
+use App\Models\OrdenDeCompra;
 use Faker\Generator as Faker;
 
 /*$factory->define(OrdenDeCompra::class, function (Faker $this->faker) {

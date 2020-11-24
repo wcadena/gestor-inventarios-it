@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\Custodios;
+use App\Models\Areas;
+use App\Models\Custodios;
 use Illuminate\Http\Request;
 use Session;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\ApiController;
-use App\InformeMantenimientoPreventivo;
+use App\Models\InformeMantenimientoPreventivo;
 use Illuminate\Http\Request;
 
 class InformeMantenimientoPreventivoController extends ApiController

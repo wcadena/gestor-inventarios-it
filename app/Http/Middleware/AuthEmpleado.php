@@ -13,7 +13,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Controllers\UserApiController;
-use App\User;
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Session;

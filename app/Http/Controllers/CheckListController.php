@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\CheckList;
-use App\CheckList_OpcionesCheckList;
-use App\OpcionesCheckList;
-use App\User;
+use App\Models\Areas;
+use App\Models\CheckList;
+use App\Models\CheckList_OpcionesCheckList;
+use App\Models\OpcionesCheckList;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;

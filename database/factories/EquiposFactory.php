@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Areas;
-use App\Custodios;
-use App\Equipos;
-use App\Estaciones;
-use App\ModeloEquipo;
-use App\OrdenDeCompra;
-use App\User;
+use App\Models\Areas;
+use App\Models\Custodios;
+use App\Models\Equipos;
+use App\Models\Estaciones;
+use App\Models\ModeloEquipo;
+use App\Models\OrdenDeCompra;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Webpatser\Uuid\Uuid;
 
@@ -50,7 +50,7 @@ class EquiposFactory extends Factory
             },
             'check_list_id'         => function () {
                 \Illuminate\Support\Facades\Session::flash('Crear_checklist', 'Crear_checklist');
-                $checklistmod = new \App\CheckList();
+                $checklistmod = new \App\Models\CheckList();
                 $checklistmod->area_id = $this->area_id_glb9;
                 $checklistmod->user_id = User::inRandomOrder()->first()->id;
                 $checklistmod->id_check_lists = uniqid('CHK-');

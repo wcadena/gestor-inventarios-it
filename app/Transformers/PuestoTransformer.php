@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Puesto;
+use App\Models\Puesto;
 use League\Fractal\TransformerAbstract;
 
 class PuestoTransformer extends TransformerAbstract

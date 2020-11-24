@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Mail\UserCreated;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
@@ -62,7 +62,7 @@ class AppServiceProvider extends ServiceProvider
         \Carbon\Carbon::setLocale(config('app.locale'));
         //Custom Polymorphic Types
         Relation::morphMap([
-            'informe_proyectos_seccion' => \App\InformeMantenimientoPreventivo::class,
+            'informe_proyectos_seccion' => \App\Models\InformeMantenimientoPreventivo::class,
             //'videos' => 'App\Video',
         ]);
         Paginator::defaultView('pagination::default');
