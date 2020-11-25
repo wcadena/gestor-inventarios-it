@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\CheckList;
 use App\Http\Controllers\ApiController;
+use App\Models\CheckList;
 
 class ChecklistController extends ApiController
 {

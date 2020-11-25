@@ -14,11 +14,11 @@ class NormalizarUnicoToReporteNovedadesTable extends Migration
     public function up()
     {
 
-        //$affected = DB::update('update repo_novedades set token_unico = ?', \App\RepoNovedades::generarUnico());
-        $todos = \App\RepoNovedades::all();
+        //$affected = DB::update('update repo_novedades set token_unico = ?', \App\Models\RepoNovedades::generarUnico());
+        $todos = \App\Models\RepoNovedades::all();
         foreach ($todos as $uno) {
             if ($uno->token_unico == null) {
-                $uno->token_unico = \App\RepoNovedades::generarUnico();
+                $uno->token_unico = \App\Models\RepoNovedades::generarUnico();
                 $uno->save();
             }
         }

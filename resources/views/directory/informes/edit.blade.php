@@ -126,7 +126,7 @@
                                 <div class="col-md-6 col-xl-4">
                                     <div class="custom-control custom-block custom-control-primary">
                                         {{ Form::checkbox('tecnicos[]', $item->id, false,['class' => 'custom-control-input', 'id' =>'dm-project-new-people-'.$x,'checked' =>
-                                        isset(\App\InformeMantenimientoPreventivoTecnico::where('informe_manto_prev_id',$informe->id)->where('user_id',$item->id)->first()->id)?'checked':''
+                                        isset(\App\Models\InformeMantenimientoPreventivoTecnico::where('informe_manto_prev_id',$informe->id)->where('user_id',$item->id)->first()->id)?'checked':''
                                         ]) }}
 
                                         <label class="custom-control-label" for="dm-project-new-people-{{$x}}">

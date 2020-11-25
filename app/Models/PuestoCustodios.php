@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\PuestoCustodiosTransformer;
 use Illuminate\Database\Eloquent\Model;

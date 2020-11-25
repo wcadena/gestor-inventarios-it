@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Modulo;
+use App\Models\Modulo;
 use Illuminate\Http\Request;
 use Session;
 

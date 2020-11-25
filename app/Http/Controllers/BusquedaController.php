@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Busqueda;
-use App\Custodios;
-use App\Equipos;
+use App\Models\Busqueda;
+use App\Models\Custodios;
+use App\Models\Equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

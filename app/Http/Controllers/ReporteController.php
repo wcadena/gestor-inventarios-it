@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipos;
 use App\Exports\Equipos2Export;
 use App\Exports\EquiposExport;
+use App\Models\Equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;

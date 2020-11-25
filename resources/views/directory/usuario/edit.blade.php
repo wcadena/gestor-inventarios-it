@@ -36,7 +36,7 @@
             <div class="form-group {{ $errors->has('rol') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('rol', 'Rol: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('rol', \App\User::getENUM('rol'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('rol', \App\Models\User::getENUM('rol'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('rol', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -73,7 +73,7 @@
     <div class="form-group {{ $errors->has('custodio_id') ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label('custodio_id', 'Solicitante: ', ['class' => 'control-label']) !!}
         <div class="col-sm-4">
-            {{ Form::select('custodio_id', \App\Custodios::all()->pluck('nombre_responsable','id'), null, ['class' => 'form-control']) }}
+            {{ Form::select('custodio_id', \App\Models\Custodios::all()->pluck('nombre_responsable','id'), null, ['class' => 'form-control']) }}
             {!! $errors->first('custodio_id', '<p class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="col-sm-2">

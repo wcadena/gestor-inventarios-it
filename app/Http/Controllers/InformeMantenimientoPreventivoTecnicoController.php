@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\InformeMantenimientoPreventivoTecnico;
-use App\User;
+use App\Models\InformeMantenimientoPreventivoTecnico;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Session;
 

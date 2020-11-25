@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\OrdenDeCompra;
+use App\Models\OrdenDeCompra;
 use Illuminate\Http\Request;
 use Session;
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Custodios;
-use App\RepoNovedades;
+use App\Models\Custodios;
+use App\Models\RepoNovedades;
 
 class PdfController extends Controller
 {

@@ -137,7 +137,7 @@
         <div class="form-group {{ $errors->has('novedad') ? ' form-control-alt is-invalid' : ''}}">
             {!! Form::label('novedad', 'Novedad: ', ['class' => 'control-label']) !!}
             <div class="ekihk">
-                {!! Form::select('novedad', \App\RepoNovedades::getENUM('novedad'), null, ['class' => 'chosen-select form-control']) !!}
+                {!! Form::select('novedad', \App\Models\RepoNovedades::getENUM('novedad'), null, ['class' => 'chosen-select form-control']) !!}
                 {!! $errors->first('novedad', '<p class="invalid-feedback">:message</p>') !!}
             </div>
         </div>
@@ -145,7 +145,7 @@
             {!! Form::label('antiguo_custodio_id', "Antiguo Responsable", ['class' => 'control-label']) !!}
             <div class="ekihk">
 
-                {{ Form::select('antiguo_custodio_id', $custodios, App\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'chosen-select form-control']) }}
+                {{ Form::select('antiguo_custodio_id', $custodios, App\Models\Configuracion::Config('CUSTODIO_BODEGA'), ['class' => 'chosen-select form-control']) }}
                 {!! $errors->first('antiguo_custodio_id', '<p class="invalid-feedback">:message</p>') !!}
             </div>
         </div>
@@ -160,7 +160,7 @@
         <div class="form-group {{ $errors->has('estado') ? ' form-control-alt is-invalid' : ''}}">
             {!! Form::label('estado', 'Estado: ', ['class' => 'control-label']) !!}
             <div class="ekihk">
-                {!! Form::select('estado', \App\RepoNovedades::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
+                {!! Form::select('estado', \App\Models\RepoNovedades::getENUM('estado'), null, ['class' => 'chosen-select form-control']) !!}
                 {!! $errors->first('estado', '<p class="invalid-feedback">:message</p>') !!}
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\CheckList_OpcionesCheckListTransformer;
 use Illuminate\Database\Eloquent\Model;

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Areas;
-use App\Custodios;
-use App\FileEntry;
-use App\InformeMantenimientoPreventivo;
-use App\InformeMantenimientoPreventivoCategoria;
-use App\InformeMantenimientoPreventivoTecnico;
 use App\InformeProyectosSeccion;
+use App\Models\Areas;
+use App\Models\Custodios;
+use App\Models\FileEntry;
+use App\Models\InformeMantenimientoPreventivo;
+use App\Models\InformeMantenimientoPreventivoCategoria;
+use App\Models\InformeMantenimientoPreventivoTecnico;
+use App\Models\User;
 use App\ProyectoSeccion;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;

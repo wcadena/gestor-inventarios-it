@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\InformeMantenimientoPreventivo;
 use App\InformeMantoPrevCate;
+use App\Models\InformeMantenimientoPreventivo;
+use App\Models\User;
 use App\Proyecto;
-use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

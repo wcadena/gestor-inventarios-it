@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipos;
-use App\RepoNovedades;
-use App\RepoNovedadesDetalle;
+use App\Models\Equipos;
+use App\Models\RepoNovedades;
+use App\Models\RepoNovedadesDetalle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use League\Flysystem\Exception;

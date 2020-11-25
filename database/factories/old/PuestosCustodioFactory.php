@@ -6,9 +6,9 @@ use Faker\Generator as Faker;
 /*$factory->define(PuestosCustodio::class, function (Faker $this->faker) {
     return [
         'puesto_id' => function () {
-            factory(App\Puesto::class, 1)->create();
+            factory(App\Models\Puesto::class, 1)->create();
 
-            return App\Puesto::inRandomOrder()->first()->id;
+            return App\Models\Puesto::inRandomOrder()->first()->id;
         },
         'custodio_id' => function () {
             factory(App\Custodios::class, 1)->create();

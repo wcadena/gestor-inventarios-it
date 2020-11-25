@@ -25,7 +25,7 @@
     <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
         <div class="ekihk">
-            {{ Form::select($campo, \App\Ubicacion::all()->pluck('edificio','id'), null, ['class' => 'chosen-select form-control','id' => $campo ]) }}
+            {{ Form::select($campo, \App\Models\Ubicacion::all()->pluck('edificio','id'), null, ['class' => 'chosen-select form-control','id' => $campo ]) }}
             {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
         <div class="ekihk">
-            {!! Form::text($campo, \App\Puesto::generarCodigo(), ['class' => 'form-control','id'=>$campo]) !!}
+            {!! Form::text($campo, \App\Models\Puesto::generarCodigo(), ['class' => 'form-control','id'=>$campo]) !!}
             {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
         {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
         <div class="ekihk">
-            {{ Form::select($campo, \App\Puesto::getENUM('estado'), null, ['class' => 'chosen-select form-control']) }}
+            {{ Form::select($campo, \App\Models\Puesto::getENUM('estado'), null, ['class' => 'chosen-select form-control']) }}
             {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
         </div>
     </div>

@@ -24,14 +24,14 @@
             <div class="form-group {{ $errors->has('mandatorio') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('mandatorio', 'Mandatorio: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('mandatorio', \App\OpcionesCheckList::getENUM('mandatorio'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('mandatorio', \App\Models\OpcionesCheckList::getENUM('mandatorio'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('mandatorio', '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('tipo') ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label('tipo', 'Tipo: ', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {!! Form::select('tipo', \App\OpcionesCheckList::getENUM('tipo'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('tipo', \App\Models\OpcionesCheckList::getENUM('tipo'), null, ['class' => 'form-control']) !!}
 
                     {!! $errors->first('tipo', '<p class="invalid-feedback">:message</p>') !!}
                 </div>

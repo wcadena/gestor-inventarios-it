@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\CheckList_OpcionesCheckList;
 use App\Http\Controllers\ApiController;
-use App\OpcionesCheckList;
+use App\Models\CheckList_OpcionesCheckList;
+use App\Models\OpcionesCheckList;
 use Illuminate\Http\Request;
 
 class CheckList_OpcionesCheckListController extends ApiController

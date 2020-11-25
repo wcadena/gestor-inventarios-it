@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Areas;
-use App\Custodios;
-use App\InformeMantenimientoPreventivo;
-use App\InformeMantenimientoPreventivoCategoria;
+use App\Models\Areas;
+use App\Models\Custodios;
+use App\Models\InformeMantenimientoPreventivo;
+use App\Models\InformeMantenimientoPreventivoCategoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Webpatser\Uuid\Uuid;
 

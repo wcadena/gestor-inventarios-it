@@ -19,7 +19,7 @@
             <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {{ Form::select($campo,  \App\Estaciones::all()->pluck('estacion','id'), null, ['class' => 'chosen-select form-control']) }}
+                    {{ Form::select($campo,  \App\Models\Estaciones::all()->pluck('estacion','id'), null, ['class' => 'chosen-select form-control']) }}
                     {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="form-group {{ $errors->has($campo) ? ' form-control-alt is-invalid' : ''}}">
                 {!! Form::label($campo, $campo.':', ['class' => 'control-label']) !!}
                 <div class="ekihk">
-                    {{ Form::select($campo,  \App\Areas::all()->pluck('area','id'), null, ['class' => 'chosen-select form-control']) }}
+                    {{ Form::select($campo,  \App\Models\Areas::all()->pluck('area','id'), null, ['class' => 'chosen-select form-control']) }}
                     {!! $errors->first($campo, '<p class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>

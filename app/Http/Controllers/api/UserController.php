@@ -4,8 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\ApiController;
 use App\Mail\UserCreated;
+use App\Models\User;
 use App\Transformers\UserTransformer;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 

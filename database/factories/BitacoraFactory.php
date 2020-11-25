@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Bitacora;
-use App\Custodios;
-use App\Equipos;
-use App\ModeloEquipo;
-use App\User;
+use App\Models\Bitacora;
+use App\Models\Custodios;
+use App\Models\Equipos;
+use App\Models\ModeloEquipo;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BitacoraFactory extends Factory

@@ -1,6 +1,6 @@
 <?php
 
-use App\RepoNovedadesDetalle;
+use App\Models\RepoNovedadesDetalle;
 use Faker\Generator as Faker;
 
 /*$factory->define(RepoNovedadesDetalle::class, function (Faker $this->faker) {
