@@ -647,6 +647,7 @@ CREATE TABLE `oauth_clients` (
   `user_id` int(11) DEFAULT NULL,
   `name` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `secret` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `provider` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `redirect` text COLLATE utf8_unicode_ci NOT NULL,
   `personal_access_client` tinyint(1) NOT NULL,
   `password_client` tinyint(1) NOT NULL,
