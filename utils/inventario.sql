@@ -708,7 +708,7 @@ CREATE TABLE `opciones_check_lists` (
   `area_id` int(10) UNSIGNED NOT NULL,
   `atributo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mandatorio` enum('SI','NO') COLLATE utf8_unicode_ci NOT NULL,
-  `tipo` enum('si-no','text','equipo_id','fecha','si-no&version','ip','equipo_id&texto','ARD','CM','FM','SAPE','CM TA','SAPE TA','CM AV','SAPE AV','OBSERVACIONES') COLLATE utf8_unicode_ci NOT NULL,
+  `tipo` enum('si-no','text','equipo_id','fecha','si-no&version','ip','equipo_id&texto','ARD','CM','FM','SAPE','CM TA','SAPE TA','CM AV','SAPE AV','OBSERVACIONES','cpu','bateria','discos','graficos','redes','sistemas_op','info_sistemas','ram','programas') COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
