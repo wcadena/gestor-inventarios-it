@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Models\CheckList_OpcionesCheckList;
 use App\Models\OpcionesCheckList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CheckList_OpcionesCheckListController extends ApiController
 {
@@ -13,7 +14,7 @@ class CheckList_OpcionesCheckListController extends ApiController
     {
         //Auth::login(User::findOrFail(env('APP_PUESTOS_USER'))->firstOrFail());
         //dd(Auth::user());
-        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion', 'borrartipo']);
+        $this->middleware('client.credentials')->only(['store', 'resend', 'notificacion', 'borrartipo','uploadFilestore']);
         $this->middleware('auth:api')->except(['verify', 'resend']);
         /*$this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
@@ -66,6 +67,23 @@ class CheckList_OpcionesCheckListController extends ApiController
         $custodios = CheckList_OpcionesCheckList::create($campos);
 
         return $this->showOne($custodios, 201);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function uploadFilestore(Request $request)
+    {
+        $request->validate([
+            'uploadfile'    => 'required',
+            //'field_hash'    => 'required',
+        ]);
+        
+        $file = $request->file('uploadfile'); //la imagen se lee aca
+        Log::info(print_r($file,true));
+
+        return $this->showMessage('Hola', 201);
     }
 
     /**
