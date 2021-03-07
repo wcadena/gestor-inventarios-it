@@ -21,7 +21,7 @@ class CreateOpcionesCheckListsTable extends Migration
 
                 $table->string('atributo');
                 $table->enum('mandatorio', ['SI', 'NO']);
-                $table->enum('tipo', ['si-no', 'text', 'equipo_id', 'fecha', 'si-no&version', 'ip', 'equipo_id&texto','cpu','bateria','discos','graficos','redes','sistemas_op','info_sistemas','ram','programas']);
+                $table->enum('tipo', ['si-no', 'text', 'equipo_id', 'fecha', 'si-no&version', 'ip', 'equipo_id&texto','cpu','bateria','discos','graficos','redes','sistemas_op','info_sistemas','ram','programas','version','sistema','bios', 'baseboard', 'chassis','uuid','versions','time','wifiNetworks','users']);
 
                 $table->timestamps();
             });

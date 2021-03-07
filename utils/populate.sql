@@ -267,7 +267,17 @@ INSERT INTO `opciones_check_lists` (`id`, `area_id`, `atributo`, `mandatorio`, `
 (69, 5, 'SISTEMAS OPERATIVOS', 'NO', 'sistemas_op', NULL, NULL),
 (70, 5, 'INFORMACION DEL SISTEMA', 'NO', 'info_sistemas', NULL, NULL),
 (71, 5, 'RAM', 'NO', 'ram', NULL, NULL),
-(72, 5, 'PROGRAMAS INSTALADOS', 'NO', 'programas', NULL, NULL);
+(72, 5, 'PROGRAMAS INSTALADOS', 'NO', 'programas', NULL, NULL),
+(73, 5, 'VERSION SYSTEM', 'NO', 'version', NULL, NULL),
+(74, 5, 'SISTEMA', 'NO', 'sistema', NULL, NULL),
+(75, 5, 'BIOS', 'NO', 'bios', NULL, NULL),
+(76, 5, 'BASEBOARD', 'NO', 'baseboard', NULL, NULL),
+(77, 5, 'chassis', 'NO', 'chassis', NULL, NULL),
+(78, 5, 'uuid', 'NO', 'uuid', NULL, NULL),
+(79, 5, 'versions', 'NO', 'versions', NULL, NULL),
+(80, 5, 'time', 'NO', 'time', NULL, NULL),
+(81, 5, 'wifiNetworks', 'NO', 'wifiNetworks', NULL, NULL),
+(82, 5, 'users', 'NO', 'users', NULL, NULL);
 
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES

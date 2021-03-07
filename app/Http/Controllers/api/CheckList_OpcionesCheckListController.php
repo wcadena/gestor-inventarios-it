@@ -4,9 +4,11 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\ApiController;
 use App\Models\CheckList_OpcionesCheckList;
+use App\Models\Equipos;
 use App\Models\OpcionesCheckList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class CheckList_OpcionesCheckListController extends ApiController
 {
@@ -77,13 +79,145 @@ class CheckList_OpcionesCheckListController extends ApiController
     {
         $request->validate([
             'uploadfile'    => 'required',
-            //'field_hash'    => 'required',
+            'hash'    => 'required',
+            'tiposha'    => 'required',
+            'no_serie'    => 'required',
         ]);
-        
-        $file = $request->file('uploadfile'); //la imagen se lee aca
-        Log::info(print_r($file,true));
+        $file       = base64_decode($request->uploadfile); //la imagen se lee aca
+        $hash_p     = hash("sha256",$file);
+        Storage::disk('local')->put($hash_p.'.txt', $file);
+        $sistema    = json_decode($file);
+        $equipo = Equipos::where('no_serie', 'like', '%'.$request->no_serie.'%')->firstOrFail();
 
+        //dd($sistema->programas[0]);
+
+        foreach ($sistema->sistema as $key=>$value){
+            $campos = [];
+            $campos['check_list_id']    = $equipo->check_listxc->id;
+            if(in_array($key ,['version','node','v8','inetLatency'])){
+                $opcion = OpcionesCheckList::findOrFail($this->buscaOpcion($key));
+                $campos['valor1']                   = $value;
+                $campos['valor2']                   = $key;
+                $campos['valor3']                   = $key;
+                $campos['tipo']                     = $opcion->tipo;
+                $campos['atributo']                 = $opcion->atributo;
+                $campos['opciones_check_list_id']   = $opcion->id;
+                CheckList_OpcionesCheckList::create($campos);
+            }elseif(in_array($key, ['system','bios','baseboard','chassis','os','uuid','versions','cpu','graphics','net','memLayout','diskLayout','time','cpuCurrentSpeed','services','currentLoad','networkConnections','fsSize','battery','temp','mem','wifiNetworks','users','processes','networkStats'])){
+                foreach ($value as $key_sub=>$value_sub) {
+                    if(!is_array($value_sub) && !is_object($value_sub)){
+                        $opcion = OpcionesCheckList::findOrFail($this->buscaOpcion($key));
+                        $campos['valor1']                   = $value_sub;
+                        $campos['valor2']                   = $key_sub;
+                        $campos['valor3']                   = $key;
+                        $campos['tipo']                     = $opcion->tipo;
+                        $campos['atributo']                 = $opcion->atributo;
+                        $campos['opciones_check_list_id']   = $opcion->id;
+                        CheckList_OpcionesCheckList::create($campos);
+                    }else{
+                        foreach ($value_sub as $key_sub2=>$value_sub2) {
+                            //$this->add_CheckList_OpcionesCheckList($key,$key_sub.'.'.$key_sub2,$value_sub2 );
+                            $opcion = OpcionesCheckList::findOrFail($this->buscaOpcion($key));
+                            $campos['valor1']                   = json_encode($value_sub2);
+                            $campos['valor2']                   = $key_sub.'.'.$key_sub2;
+                            $campos['valor3']                   = $key;
+                            $campos['tipo']                     = $opcion->tipo;
+                            $campos['atributo']                 = $opcion->atributo;
+                            $campos['opciones_check_list_id']   = $opcion->id;
+                            CheckList_OpcionesCheckList::create($campos);
+                        }
+                    }
+                }
+            }else{
+                // return json_encode($sistema->sistema);
+                dd($sistema->sistema,$key,$value);
+            }
+
+        }
         return $this->showMessage('Hola', 201);
+    }
+    private function add_CheckList_OpcionesCheckList($key,$key_sub,$value_sub2){
+        $opcion = OpcionesCheckList::findOrFail($this->buscaOpcion($key));
+        $campos['valor1']                   = json_encode($value_sub2);
+        $campos['valor2']                   = $key_sub;
+        $campos['valor3']                   = $key;
+        $campos['tipo']                     = $opcion->tipo;
+        $campos['atributo']                 = $opcion->atributo;
+        $campos['opciones_check_list_id']   = $opcion->id;
+        CheckList_OpcionesCheckList::create($campos);
+    }
+    private function buscaOpcion($sysoption){
+        switch ($sysoption) {
+            case 'system':
+            case 'processes':
+                return 74;
+            case 'bios':
+                return 75;
+            case 'baseboard':
+                return 76;
+            case 'chassis':
+                return 77;
+            case 'os':
+                return 69;
+            case 'uuid':
+                return 78;
+            case 'versions':
+                return 79;
+            case 'cpu':
+                return 64;
+            case 'graphics':
+                return 67;
+            case 'net':
+                return 68;
+            case 'memLayout':
+            case 'mem':
+                return 71;
+            case 'diskLayout':
+                return 66;
+            case 'time':
+                return 74;
+            case 'node':
+                return 72;
+            case 'version':
+                return 73;
+            case 'v8':
+                return 74;
+            case 'cpuCurrentSpeed':
+                return 74;
+            case 'services':
+                return 74;
+            case 'currentLoad':
+            case 'temp':
+                return 74;
+            case 'networkConnections':
+            case 'wifiNetworks':
+            case 'networkStats':
+                return 68;
+            case 'inetLatency':
+                return 68;
+            case 'fsSize':
+                return 66;
+            case 'battery':
+                return 65;
+            case 'users':
+                return 82;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+            case 2:
+                return 74;
+
+
+        }
     }
 
     /**
